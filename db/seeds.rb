@@ -2,11 +2,12 @@
 # Initial seed file to use with Devise User Model
 
 User.create!(
-    username: "notactiveadmin",
+    username: "test",
+    show_name: "test",
+    password: "123456",
     email: "admin@example.com",
-    password: "password",
-    show_name: "张三",
-    cellphone: "13912345678",
+    cellphone: "13888888888",
+    sex: "男"
     #avatar",
     #provider",
     #tokens",
@@ -26,7 +27,6 @@ User.create!(
     #confirmation_sent_at"
     #unconfirmed_email",
     #main_video",
-    sex: "男",
     #user_number",
     #wechat_openid",
     #vcode",
@@ -38,22 +38,21 @@ User.create!(
     #total_consumption",
     #user_type",
     #is_top",
-    merchant_id: '111'
 )
 
 
 # Test ApplyRecord :tw
-i = 1
-while i < 3 do
-    ApplyRecord.create! ({
-      resume_id: 1,
-      job_id: 1,
-      apply_at: "2016-5-26",
-      resume_status: "筛选",
-      recieve_at: "2016-5-27",
-    })
-  i += 1
-end
+# i = 1
+# while i < 3 do
+#     ApplyRecord.create! ({
+#       resume_id: 1,
+#       job_id: 1,
+#       apply_at: "2016-5-26",
+#       resume_status: "筛选",
+#       recieve_at: "2016-5-27",
+#     })
+#   i += 1
+# end
 
 # Test UserInfo :tw
 # i = 1

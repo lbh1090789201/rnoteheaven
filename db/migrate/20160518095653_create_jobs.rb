@@ -1,16 +1,17 @@
 class CreateJobs < ActiveRecord::Migration
   def change
     create_table :jobs do |t|
-      t.references :hospital
+      t.references :hospital #医院id
 
-      t.string :name
-      t.string :expected_salary_range
-      t.string :location
-      t.string :job_desc
-      t.integer :needed_number
-      t.string :job_type
-      t.boolean :is_top
-      t.datetime :is_top_at
+      t.string :name #职位名称
+      t.string :job_type #工作类型
+      t.string :salary_range #薪酬
+      t.string :location #工作地点
+      t.text :job_desc #职位描述
+      t.integer :needed_number #需求人数
+
+      t.boolean :is_top #工作置顶
+      t.datetime :is_top_at #置顶时间
 
       t.timestamps null: false
     end
