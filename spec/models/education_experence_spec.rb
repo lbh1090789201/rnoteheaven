@@ -6,4 +6,7 @@ RSpec.describe EducationExperience, type: :model do
    education_experience = build(:education_experience)
    assert education_experience.valid?
   end
+  describe "when " do
+
+  end
 end
