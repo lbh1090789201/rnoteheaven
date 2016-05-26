@@ -42,25 +42,18 @@ User.create!(
 )
 
 
-# Test User :tw
-# i = 1
-# while i < 5 do
-#     User.create! ({
-#     :longitude => '我是User经纬度',
-#     :password => 111222,
-#     :username => rand(66666).to_s,
-#     :email => rand(9999999).to_s + '@qq.com',
-#     :cellphone => '13068649526',
-#     :created_at => '10/04/2015'.to_date,
-#     :confirmed_at => 'tw',
-#     :avatar => 'tw',
-#     :user_number => 114,
-#     :show_name => '鬼五十七',
-#     :user_type => 'merchant',
-#     :merchant_id => i
-#     })
-#   i += 1
-# end
+# Test ApplyRecord :tw
+i = 1
+while i < 3 do
+    ApplyRecord.create! ({
+      resume_id: 1,
+      job_id: 1,
+      apply_at: "2016-5-26",
+      resume_status: "筛选",
+      recieve_at: "2016-5-27",
+    })
+  i += 1
+end
 
 # Test UserInfo :tw
 # i = 1
