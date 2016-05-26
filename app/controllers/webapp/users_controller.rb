@@ -51,15 +51,15 @@ class Webapp::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.select(:id, :show_name, :sex, :work_time, :highest_degree,
-                                 :cellphone, :email, :location, :job_status).find_by_id(1)
+    @user = User.select(:id, :show_name, :sex, :start_work_at, :highest_degree,
+                                 :cellphone, :email, :location, :seeking_job).find_by_id(current_user.id)
   end
 
   def update
-    user = User.find_by_id(1) # 需要替换为 current_user.id
+    user = User.find_by_id(current_user.id) # 需要替换为 current_user.id
 
     if user.update(user_params)
-      redirect_to :back
+      redirect_to webapp_resume_path(current_user.id)
     else
 
     end
@@ -69,8 +69,8 @@ class Webapp::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:show_name, :sex, :work_time, :highest_degree,
-                                 :cellphone, :email, :location, :job_status)
+    params.require(:user).permit(:show_name, :sex, :start_work_at, :highest_degree,
+                                 :cellphone, :email, :location, :seeking_job)
   end
 
 end
