@@ -6,20 +6,10 @@ class Devise::SessionsController < DeviseController
 
   # GET /resource/sign_in
   def new
-    if params[:openid]
-      user = User.find_by(wechat_openid: params[:openid])
-      @username = user.username
-      @password = '123456'
-      @user_type = 'webapp'
-    elsif params[:type]=='console' || (params[:user] != nil && params[:user][:user_type] != nil && params[:user][:user_type] == 'console') #"user"=>{"username"=>"02728728468", "password"=>"[FILTERED]", "user_type"=>"console"}
-      @user_type = 'console'
-    else
-      @user_type = 'console'
-    end
-    self.resource = resource_class.new(sign_in_params)
-    clean_up_passwords(resource)
-    yield resource if block_given?
-    respond_with(resource, serialize_options(resource))
+        self.resource = resource_class.new(sign_in_params)
+        clean_up_passwords(resource)
+        yield resource if block_given?
+        respond_with(resource, serialize_options(resource))
   end
 
   # POST /resource/sign_in
@@ -78,6 +68,10 @@ class Devise::SessionsController < DeviseController
     users = Devise.mappings.keys.map { |s| warden.user(scope: s, run_callbacks: false) }
 
     users.all?(&:blank?)
+  end
+
+  def after_sign_in_path_for(resource)
+      return '/'
   end
 
   def respond_to_on_destroy

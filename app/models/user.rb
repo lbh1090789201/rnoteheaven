@@ -12,7 +12,8 @@ class User < ActiveRecord::Base #用户
   extend FriendlyId
   friendly_id :friendify, use: :slugged
   mount_uploader :avatar, AvatarUploader
-  mount_uploader :main_video, AlbumnUploader
+  # mount_uploader :main_video, AlbumnUploader
+
 
   # for user_albumns
   has_many :user_albumns
@@ -93,26 +94,26 @@ class User < ActiveRecord::Base #用户
     :desc).limit(count).select("id","username","slug","last_sign_in_at")
   end
 
-  def self.users_count
-    #where("admin = ? AND locked = ?",false,false).count
-    where("locked = ?",false).count
-  end
+  # def self.users_count
+  #   #where("admin = ? AND locked = ?",false,false).count
+  #   where("locked = ?",false).count
+  # end
 
   def admin?
     false
   end
 
-  #check vcode and then set username, cellphone, email accordingly
-  def verify_vcode_and_set_username! vcode
-    return false if !vcode || vcode == ''
-
-    return false unless ValidationCode.verify_vcode_effective? self.cellphone, vcode
-    # self.username = self.cellphone unless self.username && self.username != ""
-    # self.email = self.username+'@'+'luyun.com' unless self.email && self.email != ""
-    # self.show_name = self.cellphone unless self.show_name && self.show_name != ""
-    return true
-
-  end
+  # #check vcode and then set username, cellphone, email accordingly
+  # def verify_vcode_and_set_username! vcode
+  #   return false if !vcode || vcode == ''
+  #
+  #   return false unless ValidationCode.verify_vcode_effective? self.cellphone, vcode
+  #   # self.username = self.cellphone unless self.username && self.username != ""
+  #   # self.email = self.username+'@'+'luyun.com' unless self.email && self.email != ""
+  #   # self.show_name = self.cellphone unless self.show_name && self.show_name != ""
+  #   return true
+  #
+  # end
 
   def email_required?
     false
