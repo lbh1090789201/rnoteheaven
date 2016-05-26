@@ -5,9 +5,10 @@ class CreateHospitals < ActiveRecord::Migration
       t.string :name
       t.string :scale
       t.string :property
-      t.string :location
-      t.string :introduction
-      t.string :region
+      t.text :introduction #相关介绍
+      t.string :region #地区
+      t.string :location #地点
+      t.string :image   #医院预览图
 
       t.timestamps null: false
     end

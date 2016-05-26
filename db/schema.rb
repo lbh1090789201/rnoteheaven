@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523021020) do
+ActiveRecord::Schema.define(version: 20160526083331) do
 
   create_table "apply_records", force: :cascade do |t|
     t.integer  "resume_id",     limit: 4
     t.integer  "job_id",        limit: 4
+    t.integer  "user_id",       limit: 4
+    t.datetime "end_at"
     t.datetime "apply_at"
-    t.string   "resume_status", limit: 191
-    t.datetime "recieve_at"
     t.datetime "view_at"
+    t.datetime "recieve_at"
+    t.string   "resume_status", limit: 191
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
@@ -28,10 +30,23 @@ ActiveRecord::Schema.define(version: 20160523021020) do
     t.integer  "user_id",          limit: 4
     t.string   "college",          limit: 191
     t.string   "education_degree", limit: 191
+    t.datetime "entry_at"
     t.datetime "graduated_at"
     t.string   "major",            limit: 191
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+  end
+
+  create_table "expect_jobs", force: :cascade do |t|
+    t.string   "name",                  limit: 191
+    t.string   "job_type",              limit: 191
+    t.string   "location",              limit: 191
+    t.string   "expected_salary_range", limit: 191
+    t.string   "job_desc",              limit: 191
+    t.boolean  "is_top"
+    t.datetime "is_top_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "favorite_jobs", force: :cascade do |t|
@@ -60,11 +75,12 @@ ActiveRecord::Schema.define(version: 20160523021020) do
     t.string   "name",         limit: 191
     t.string   "scale",        limit: 191
     t.string   "property",     limit: 191
-    t.string   "location",     limit: 191
-    t.string   "introduction", limit: 191
+    t.text     "introduction", limit: 65535
     t.string   "region",       limit: 191
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "location",     limit: 191
+    t.string   "image",        limit: 191
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "job_fairs", force: :cascade do |t|
@@ -77,17 +93,17 @@ ActiveRecord::Schema.define(version: 20160523021020) do
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.integer  "hospital_id",           limit: 4
-    t.string   "name",                  limit: 191
-    t.string   "expected_salary_range", limit: 191
-    t.string   "location",              limit: 191
-    t.string   "job_desc",              limit: 191
-    t.integer  "needed_number",         limit: 4
-    t.string   "job_type",              limit: 191
+    t.integer  "hospital_id",   limit: 4
+    t.string   "name",          limit: 191
+    t.string   "job_type",      limit: 191
+    t.string   "salary_range",  limit: 191
+    t.string   "location",      limit: 191
+    t.text     "job_desc",      limit: 65535
+    t.integer  "needed_number", limit: 4
     t.boolean  "is_top"
     t.datetime "is_top_at"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "resume_views", force: :cascade do |t|
@@ -150,20 +166,12 @@ ActiveRecord::Schema.define(version: 20160523021020) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 191
-    t.string   "main_video",             limit: 191
-    t.integer  "sex",                    limit: 4
+    t.string   "sex",                    limit: 191
     t.string   "user_number",            limit: 191
-    t.string   "wechat_openid",          limit: 191
-    t.string   "vcode",                  limit: 191
-    t.string   "update_vcode_time",      limit: 191
-    t.string   "transaction_password",   limit: 191
     t.string   "longitude",              limit: 191
     t.string   "latitude",               limit: 191
-    t.float    "balance",                limit: 24
-    t.float    "total_consumption",      limit: 24
     t.string   "user_type",              limit: 191
     t.boolean  "is_top",                               default: false,   null: false
-    t.integer  "merchant_id",            limit: 4
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
   end
@@ -183,13 +191,14 @@ ActiveRecord::Schema.define(version: 20160523021020) do
 
   create_table "work_experiences", force: :cascade do |t|
     t.integer  "resume_id",  limit: 4
+    t.integer  "user_id",    limit: 4
     t.string   "company",    limit: 191
     t.string   "position",   limit: 191
     t.datetime "started_at"
     t.datetime "left_time"
-    t.string   "job_desc",   limit: 191
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.text     "job_desc",   limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
 end

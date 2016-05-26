@@ -58,25 +58,18 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.integer  :failed_attempts, :default => 0, :null => false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
-
-      t.string :main_video #视频
-      t.integer :sex #性别  0:女　１：男
+      t.string :sex #性别
 
       t.string :user_number #用户ID
-      t.string :wechat_openid #微信id
-      t.string :vcode #验证码
-      t.string :update_vcode_time #生成验证码的时间
-      t.string :transaction_password #交易密码
+
       t.string :longitude #实时经度
       t.string :latitude #实时纬度
 
-      t.float :balance #余额
-      t.float :total_consumption #消费累计
+
 
       t.string :user_type #用户类型  webapp/merchant/admin
       t.boolean :is_top, :null => false, :default => false #是否是置顶数据
-      t.integer :merchant_id #用户是商家时对应的商家id
+
 
       t.timestamps null: false
     end
