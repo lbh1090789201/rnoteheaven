@@ -8,6 +8,7 @@ class CreateHospitals < ActiveRecord::Migration
       t.string :location
       t.string :introduction
       t.string :region
+      t.string :image   #医院预览图
 
       t.timestamps null: false
     end

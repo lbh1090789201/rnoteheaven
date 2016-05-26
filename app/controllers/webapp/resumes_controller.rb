@@ -13,6 +13,7 @@ class Webapp::ResumesController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit

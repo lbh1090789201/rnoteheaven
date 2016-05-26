@@ -41,10 +41,6 @@ class ApplicationController < ActionController::Base
     #inside_path
     # puts "-----=======:"+resource.to_json.to_s
     return "" unless resource
-    return "/webapp/restaurants" if resource.user_type.to_s == 'webapp'
-    return "/console/orders/0/code" if resource.user_type.to_s == 'merchant'
-    return "/console/users/" + resource.id.to_s if resource.user_type.to_s == 'admin'
-    ""
   end
 
   # Auto-sign out locked users
