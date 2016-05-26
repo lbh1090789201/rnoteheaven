@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :reject_locked!, if: :devise_controller?
+  # before_filter :reject_locked!, if: :devise_controller?
 
   #alias_method :devise_current_user, :current_user
   #alias_method :devise_user_signed_in?, :user_signed_in?
@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
       :username,
       :show_name,
       :cellphone,
-      :avatar,
       :email,
       :password,
       :password_confirmation)
@@ -27,7 +26,6 @@ class ApplicationController < ActionController::Base
       :username,
       :show_name,
       :cellphone,
-      :avatar,
       :email,
       :password,
       :password_confirmation,
@@ -40,32 +38,34 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     #inside_path
     # puts "-----=======:"+resource.to_json.to_s
-    return "" unless resource
+    # return "" unless resource
+    # redirect_to '/' and return
   end
 
   # Auto-sign out locked users
-  def reject_locked!
-    if current_user && current_user.locked?
-      sign_out current_user
-      user_session = nil
-      current_user = nil
-      flash[:alert] = "Your account is locked."
-      flash[:notice] = nil
-      redirect_to root_url
-    end
-  end
-  helper_method :reject_locked!
+  # def reject_locked!
+  #   if current_user && current_user.locked?
+  #     sign_out current_user
+  #     user_session = nil
+  #     current_user = nil
+  #     flash[:alert] = "Your account is locked."
+  #     flash[:notice] = nil
+  #     redirect_to root_url
+  #   end
+  # end
+
+  # helper_method :reject_locked!
 
   # Only permits admin users
-  def require_admin!
-    authenticate_user!
-
-    if current_user && !current_user.admin?
-      redirect_to root_path
-    end
-
-
-  end
-  helper_method :require_admin!
+  # def require_admin!
+  #   authenticate_user!
+  #
+  #   if current_user && !current_user.admin?
+  #     redirect_to root_path
+  #   end
+  #
+  #
+  # end
+  # helper_method :require_admin!
 
 end
