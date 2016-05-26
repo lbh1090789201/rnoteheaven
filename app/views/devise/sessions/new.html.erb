@@ -1,41 +1,17 @@
 
-    <div class="login_main">
-        <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
-            <div class="box">
-              <div class="form-group">
-                <%= f.text_field :username, :value => @username, autofocus: true, placeholder: "请输入您的账号",autocomplete:"off" %>
-              </div>
-              <div class="form-group">
-                <%= f.password_field :password, :value => @password, autocomplete: "off", placeholder: "请输入您的密码" %>
-                <%= f.hidden_field :user_type, :value => @user_type, autocomplete: "off", placeholder: "" %>
-              </div>
+    <% provide :link, "sign_up"  %>
+    <% provide :title, "用户登陆" %>
+    <% provide :content, "注册"  %>
+    <div class="edit_basic edit-work-experiences no-icon">
 
-              <div class="actions">
-                <button type="submit" id="login_content_btn_load" class="login-btn btn btn-default">登录</button>
-              </div>
-              <div class="form-group remember_me">
-                <input type="checkbox" />
-                <span>记住我</span>
-              </div>
-            </div>
+        <%= simple_form_for(resource, :as => resource_name, :url => user_session_path) do |f| %>
+            <%= f.input :username, label: '用户名', input_html: {class: "form-control"} %>
+            <%= f.input :password, label: '密码',as: :password, input_html: {class: "form-control"} %>
+            <%= f.button :submit, "登陆", class: "btn-save", style: "width: 100%" %>
         <% end %>
-        <div style="clear:both"></div>
+
     </div>
 
-    <!-- <script language="javascript" type="">
-        $('#login_content_btn_load').on('click',function(event){
-            event.preventDefault();
-            var user_name = $('#user_username').val();
-            var user_type = $('#user_user_type').val();
-            $.get("/users/check_username_usertype",{
-                user_type:user_type,
-                username: user_name
-            },function(data, status){
-                if(data.success){
-                    $("#new_user").submit();
-                }else{
-                    alert(data.errMsg)
-                }
-            });
-        });
-    </script> -->
+    <script type="text/javascript">
+        fullScreen('.edit_basic');
+    </script>

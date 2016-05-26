@@ -457,6 +457,14 @@ header {
 }
 /* 编辑工作经历 结束 bobo */
 
+/* 登陆注册页面 开始 bobo */
+.no-icon {
+  .form-group::after {
+    content: " ";
+  }
+}
+/* 登陆注册页面 结束 bobo */
+
 /* 我的页面 开始-汤伟*/
 .main.user-first-page {
   $color: #e4e3dc;
