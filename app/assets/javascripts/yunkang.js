@@ -5,6 +5,7 @@ $('.flexslider').flexslider({
     slideshow: true
 });
 /*搜索首页轮播结束*/
+
 /*屏幕自适应开始*/
 screenWidth = window.screen.width;
 if (screenWidth == 414){
@@ -63,3 +64,13 @@ function change_val(obj) {
   },300);
 };
 /* 蒙版 结束 */
+
+
+/* 模拟点击右上按钮 开始 bobo */
+function clickRignt(ojb) {
+  $('.right').bind('click', function() {
+    $(ojb).trigger("click");
+    console.log('ok');
+  });
+}
+/* 模拟点击右上按钮 结束 bobo */

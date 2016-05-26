@@ -1,21 +1,22 @@
-<% provide :link, "/webapp/resumes/show"  %>
+
 <% provide :title, "基本信息" %>
 <% provide :content, "保存" %>
 
 <div class="edit_basic">
-    <%= simple_form_for :user, url: webapp_user_path(1),:method => :patch do |f| %>
+    <%= simple_form_for :user, url: webapp_user_path(current_user.id),:method => :patch do |f| %>
       <%= f.input :show_name, label: "姓名", input_html: { class: "user-input"} %>
       <%= f.input :sex, label: '性别', input_html: { class: "user-input"} %>
       <%= f.input :highest_degree, label: '最高学历', input_html: { class: "user-input"} %>
-      <%= f.input :work_time, label: '工作年限', input_html: { class: "user-input"} %>
+      <%= f.input :start_work_at, label: '工作年限', input_html: { class: "user-input"} %>
       <%= f.input :cellphone, label: '手机号码', input_html: { class: "user-input"} %>
       <%= f.input :email, label: '邮箱', input_html: { class: "user-input"} %>
       <%= f.input :location, label: '所在区域', input_html: { class: "user-input"} %>
-      <%= f.input :job_status, label: '是否求职', input_html: { class: "user-input"} %>
-      <%= f.submit %>
+      <%= f.input :seeking_job, label: '是否求职', input_html: { class: "user-input"} %>
+      <%= f.submit id: "submit" %>
     <% end %>
 </div>
 
 <script type="text/javascript">
   fullScreen('.edit_basic');
+  clickRignt('#submit');
 </script>
