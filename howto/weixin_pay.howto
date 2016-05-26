@@ -1,0 +1,185 @@
+微信公众号支付
+
+微信公众号支付需要申请微信公众号和微信商户平台账号
+
+完成微信支付需借鉴《微信支付｜商户平台开发文档》和《微信｜公众平台开发者文档》
+
+１,获取access_token（参照　微信｜公众平台开发者文档->开始开发->获取接口调用凭据->获取access token
+                      或者是　　微信｜公众平台开发者文档->获取接口调用凭据->获取access token）
+
+２,获取openId　（参照　微信｜公众平台开发者文档->用户管理->网页授权获取用户基本信息）
+
+(以上两步在weixin.howto中有说明，在这里不做详细讲解)
+
+这里值得注意的是需要在微信公众号平台配置OAuth2.0网页授权回调页面域名，配置授权回调页面域名的地点为：
+微信。公众平台->开发->接口权限->网页服务->网页账号，点击网页账号后的修改即可配置
+
+３,在微信公众号上设置支付授权目录和测试授权目录（微信。公众平台->微信支付->开发配置）
+   在这两个目录下才能调用微信支付窗口
+　注意：在测试白名单中添加了的微信号只能在测试授权目录下完成支付
+(配置方法参照　　微信支付｜商户平台开发文档->公众号支付->开发步骤)
+
+４,微信支付首先需要统一下单/支付下单，获取预支付交易会话标识prepay_id
+　　（参照　　微信支付｜商户平台开发文档->api列表->统一下单
+    值得注意的是生成签名sign需要的key不是微信公众号的AppSecret(应用密钥),而是获取微信商户平台的key。
+        　　　key设置路径：微信商户平台(pay.weixin.qq.com)-->账户设置-->API安全-->密钥设置）
+但是按照文档做总是报“签名错误”，后来调用了“前辈”写的jasl/wx_pay（项目在github上有，网页地址为：https://github.com/jasl/wx_pay）
+　  在Gemfile中添加gem 'wx_pay'
+    调用时再传入
+    params = {
+      body: '',
+      out_trade_no: '', #商户单号
+      total_fee: 1, #订单总金额，单位为分，详见支付金额
+      spbill_create_ip: '', #终端IP
+      notify_url: '',
+      trade_type: 'JSAPI', # could be "JSAPI", "NATIVE" or "APP",
+      openid: ''#为步骤２获取的openId
+    } (params中的每个参数的配置说明在参考文档中都有详细说明)
+    执行　WxPay::Service.invoke_unifiedorder params　在返回的参数中prepay_id即为所需
+
+　　值得注意的是：
+       1.获取微信公众号的AppID(应用ID)和商户号(mch_id)
+       　在调用invoke_unifiedorder接口时还需要微信公众号的AppID(应用ID)和商户号(mch_id)
+        　　AppID(应用ID)在微信公众号的基本配置下获取
+        　　商户号(mch_id)在微信公众号的微信支付的商户信息下获取
+       2.获取微信商户平台的key
+        除开AppID(应用ID)和商户号外，在调用invoke_unifiedorder接口时还需要一个微信商户平台的key用于生成签名sign,
+        　　key设置路径：微信商户平台(pay.weixin.qq.com)-->账户设置-->API安全-->密钥设置
+       3.将获取到的AppID(应用ID),商户号(mch_id)和key初始化配置到项目中，做法为：
+       　在项目的config/initializers下创建文件wx_pay.rb,在文件中写入：
+       　　WxPay.appid = '获取的AppID(应用ID)'
+       　　WxPay.key = '获取的key'
+       　　WxPay.mch_id = '获取的商户号(mch_id)'
+       　　WxPay.extra_rest_client_options = {timeout: 2, open_timeout: 3}
+
+５，第４步执行完获取到prepay_id回调到在第３步配置的支付授权目录和测试授权目录，在此目录下调用微信支付窗口完成支付
+    第一种方法：（只能在微信的浏览器使用） （微信已不支持此种方法）
+　　（参考　微信支付｜商户平台开发文档->公众号支付->h5调起支付API）
+    html页面的js代码为：
+    <script>
+          var appId = '';     //公众号id 商户注册具有支付权限的公众号成功后即可获得
+          var timeStamp = '';        //时间戳，自1970年以来的秒数
+          var nonceStr = ''; //随机串 随机字符串5K8264ILTKCH16CQ2502SI8ZNMTM67VS	随机字符串，不长于32位。推荐随机数生成算法
+          var prepay_id = '';//统一下单接口返回的prepay_id参数值
+          var paySign = ''; //微信签名
+          var packages = ''; //
+
+          var out_trade_no = ''; //订单号
+          var recharge_money = ''; //支付金额
+          var user_id = ''; //下单用户
+          var account_money = ''; //用户账户增长金额
+          function onBridgeReady(){
+              WeixinJSBridge.invoke(
+                      'getBrandWCPayRequest', {
+                          "appId": appId,     //公众号名称，由商户传入
+                          "timeStamp": timeStamp,         //时间戳，自1970年以来的秒数
+                          "nonceStr": nonceStr, //随机串
+                          "package": "prepay_id="　+　prepay_id,
+                          "signType": "MD5",         //微信签名方式：
+                          "paySign": paySign //微信签名
+          },
+          function(res){
+              if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                  //支付成功
+              }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+          }
+          );
+          }
+          if (typeof WeixinJSBridge == "undefined"){
+              if( document.addEventListener ){
+                  document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+              }else if (document.attachEvent){
+                  document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                  document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+              }
+          }else{
+              onBridgeReady();
+          }
+      </script>
+      rails传参代码为：
+            require 'digest/md5'
+            @appId = '获取的AppID(应用ID)'
+            @timeStamp = Time.now.to_i.to_s
+            @nonceStr = generate_code(32)
+            @prepay_id = params[:prepay_id] #第４步执行完获取到prepay_id
+            @packages = "prepay_id=" + @prepay_id
+            stringSignTemp = 'appId='+@appId+'&nonceStr='+@nonceStr+'&package='+@packages+'&signType=MD5&timeStamp='+@timeStamp+'&key='+$key
+            @paySign = Digest::MD5.hexdigest(stringSignTemp)
+
+    第二种方法：
+    （参考　微信｜公众平台开发者文档->微信网页开发->微信JS-SDK->14微信支付->14.1发起一个微信支付请求）
+    1.需要准备环境－－获取signature，timestamp，nonceStr
+    （参考　微信｜公众平台开发者文档->微信网页开发->微信JS-SDK->1概述->1.1JSSDK使用步骤）
+    （参考　weixin_demo.howto的 一、准备阶段）
+
+    2.html页面部分为：
+          var pageUrl = window.location.href.split('#')[0];
+          //pageUrl = pageUrl.replace(/\&/g, '%26');
+          get_share_sign(pageUrl, function (data) {
+
+              wx.config({
+                  debug: false,
+                  appId: data.appId,
+                  timestamp: data.timestamp,
+                  nonceStr: data.nonceStr,
+                  signature: data.signature,
+                  jsApiList: ['chooseWXPay']
+              });
+
+              wx.ready(function () {
+                  var timeStamp = get_now_seconds();
+                  var nonceStr = get_generate_number_code(32);
+                  var prepay_id = $('#pay_prepay_id').attr('value');//统一下单接口返回的prepay_id参数值
+                  var packages = "prepay_id=" + prepay_id;
+                  var key = $('#pay_key').attr('value');
+                  var stringSignTemp = 'appId='+data.appId+'&nonceStr='+nonceStr+'&package='+packages+'&signType=MD5&timeStamp='+timeStamp+'&key='+key;
+                  var paySign = hex_md5(stringSignTemp);
+                  wx.chooseWXPay({　//参数同第一种方法
+                      timestamp: timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+                      nonceStr: nonceStr, // 支付签名随机串，不长于 32 位
+                      package: "prepay_id="　+　prepay_id, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+                      signType: 'MD5', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+                      paySign: paySign, // 支付签名
+                      success: function (res) {
+                          // 支付成功后的回调函数
+                          var out_trade_no = $('#pay_out_trade_no').attr('value'); //订单号
+                          var recharge_money = $('#pay_recharge_money').attr('value'); //支付金额
+                          var user_id = $('#pay_user_id').attr('value'); //下单用户
+                          var account_money = $('#pay_account_money').attr('value'); //用户账户增长金额
+                          window.location.href = "/webapp/recharge_records/"+ out_trade_no +"/save?user_id=" + user_id + "&recharge_money=" + recharge_money + "&account_money=" + account_money;
+                      }
+                  });
+              });
+
+              wx.error(function (res) {
+                  alert(res.errMsg);
+              });
+          });
+
+          function get_share_sign(url,callback) {
+              $.get("/webapp/restaurants/0/ticket?callback=?",{
+                  url:url
+              },function(data, status){
+                  console.log("数据：" + data + "\n状态：" + status);
+                  console.log(data);
+                  if(callback){
+                      callback(data)
+                  }
+              });
+          }
+
+          //生成随机数
+          function get_generate_number_code(count) {
+              var code = '';
+              while (count > 0){
+                  code = code + Math.floor(Math.random()*10);
+                  count = count - 1;
+              }
+              return code;
+          }
+
+          function get_now_seconds() {
+              var time_str = new Date().getTime() + "";
+              time_str = time_str.substring(0, time_str.length - 3);
+              return parseInt(time_str);
+          }

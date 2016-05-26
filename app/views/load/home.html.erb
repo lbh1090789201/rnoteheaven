@@ -1,0 +1,12 @@
+<a href="javascript:countDown"></a>
+<meta http-equiv=refresh content=0;url='/webapp/restaurants'</ul>
+<script language="javascript" type="">
+ //自动跳转的脚本　
+    function countDown(secs){
+        if(--secs>0){
+            setTimeout("countDown("+secs+")",1000);
+        }
+    }
+    countDown(3)
+</script>
+

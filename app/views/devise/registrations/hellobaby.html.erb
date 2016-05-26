@@ -1,0 +1,143 @@
+<%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group signup infoConfirm">
+    <div class="main">
+      <h1>确认个人资料</h1>
+      <div class="form-group nickname" >
+        <%= f.label :昵称 %>
+        <%= f.text_field :show_name, :value => @show_name, class: "form-control" %>
+      </div>
+    </div>
+
+
+      <div class="form-group" style="display: none;">
+      <%= f.label :wechat_openid %>
+      <div class="row">
+        <div class="col-sm-6">
+          <% openid = @openid %>
+          <%= f.text_field :wechat_openid, :value => openid, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: none;">
+      <%= f.label :avatar %>
+       <div class="row">
+         <div class="col-sm-6">
+           <%= f.text_field :avatar, :value => @avatar_url, class: "form-control" %>
+         </div>
+       </div>
+    </div>
+
+    <div class="form-group" style="display: none;">
+      <%= f.label :username %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.text_field :username, :value => @username, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: none;">
+      <%= f.label :user_type %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.text_field :user_type, :value => @user_type, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: none;">
+      <%= f.label :user_number %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.text_field :user_number, :value => @user_number, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: none;">
+      <%= f.label :cellphone %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.text_field :cellphone, :value => @cellphone, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" style="display: none;">
+      <%= f.label :email %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.text_field :email, :value => @email, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group" style="display: none;">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.label :password %>
+          <%= f.password_field :password, :value => @password, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group" style="display: none;">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, :value => @password_confirmation, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+        <div class="form-group" style="display: none;">
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.label :latitude %>
+              <%= f.text_field :latitude, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+            <div class="form-group" style="display: none;">
+              <div class="row">
+                <div class="col-sm-6">
+                  <%= f.label :longitude %>
+                  <%= f.text_field :longitude, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+    <div class="form-group next">
+      <button type="submit" class="login-btn btn btn-default">下一步</button>
+    </div>
+  </div>
+<% end %>
+
+<!--<#%= render "devise/shared/links" %>-->
+
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MisYn2tnsrvBrLj7vCXprVdW"></script>
+<script type="text/javascript">
+  function new_user_location() {
+      var geolocation = new BMap.Geolocation();
+      geolocation.getCurrentPosition(function (r) {
+          if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+              console.log('----------您的位置：' + JSON.stringify(r.point));
+              var baidu_point = r.point;
+              console.log("/webapp/restaurants?do=save_loc&lng=" + baidu_point.lng + "&lat=" + baidu_point.lat + "&page=0");
+              $('#user_longitude').attr('value', baidu_point.lng);
+              $('#user_latitude').attr('value',baidu_point.lat );
+          }
+      }, {enableHighAccuracy: true});
+      //关于状态码
+      //BMAP_STATUS_SUCCESS	检索成功。对应数值“0”。
+      //BMAP_STATUS_CITY_LIST	城市列表。对应数值“1”。
+      //BMAP_STATUS_UNKNOWN_LOCATION	位置结果未知。对应数值“2”。
+      //BMAP_STATUS_UNKNOWN_ROUTE	导航结果未知。对应数值“3”。
+      //BMAP_STATUS_INVALID_KEY	非法密钥。对应数值“4”。
+      //BMAP_STATUS_INVALID_REQUEST	非法请求。对应数值“5”。
+      //BMAP_STATUS_PERMISSION_DENIED	没有权限。对应数值“6”。(自 1.1 新增)
+      //BMAP_STATUS_SERVICE_UNAVAILABLE	服务不可用。对应数值“7”。(自 1.1 新增)
+      //BMAP_STATUS_TIMEOUT	超时。对应数值“8”。(自 1.1 新增)
+  }
+  new_user_location();
+
+</script>

@@ -1,0 +1,28 @@
+default: &default
+  adapter: mysql2 
+  pool: 10
+  encoding: utf8
+  reconnect: false
+  socket: <%= begin IO.read("/usr/local/.db/mysql.socket") rescue "/var/run/mysqld/mysqld.sock" end %>
+  username: root
+  password: <%= begin IO.read("/usr/local/.db/mysql.pas") rescue "root" end %>
+  host: 127.0.0.1
+
+development:
+  <<: *default
+  database: ryunkang_development
+  # database: rtuyu_production
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+
+test:
+  <<: *default
+  database: ryunkang_test
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+
+production:
+  <<: *default
+  database: ryunkang_production
+  encoding: utf8mb4
+  collation: utf8mb4_bin

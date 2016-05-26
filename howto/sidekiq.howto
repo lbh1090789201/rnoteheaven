@@ -1,0 +1,12 @@
+# install sidekiq
+# refer to
+https://www.codefellows.org/blog/how-to-set-up-a-rails-4-2-mailer-with-sidekiq
+
+#create a start shellscript for sidekiq within
+utils/start_sidekiq.sh
+
+#monitor sidekiq:
+http://website/sidekiq
+
+#checkout result
+tail -f log/nohup.log

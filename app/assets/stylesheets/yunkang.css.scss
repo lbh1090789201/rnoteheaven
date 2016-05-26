@@ -1,0 +1,1389 @@
+/* 变量区 开始 */
+$light-gray: #f4f4f4;
+$font-gray: #a5a5a5;
+$beauty-blue: #3a9da0;
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+      -ms-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+@mixin link-colors($normal: #333, $hover: $normal, $visited: $normal) {
+    color: $normal;
+    &:hover,&:visited,&:link {
+        color: $hover;
+        text-decoration: none;
+    }
+}
+@mixin border($color) {
+  border-bottom:1px solid $color;
+}
+@mixin button() {
+    display: inline-block;
+    margin-left: 0.1rem;
+    border-radius: 0.1rem;
+    box-shadow: none;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    width:4.32rem;
+    height: 1.73rem;
+    background-color: #fff;
+    color: #a1a1a1;
+    &:last-child {
+      margin-top: 0.37rem;
+    }
+    &:nth-of-child(5) {
+      margin-top: 0.37rem;
+    }
+}
+
+/* 变量区 结束 */
+
+/*通用样式开始*/
+* {
+    margin: 0;
+    padding: 0;
+}
+html,
+body,
+#wrap {
+  height: 100%;
+}
+header {
+    padding-top: 0.01rem;
+    background: rgb(59,157,160);
+    height: 2.32rem;
+    color: white;
+    text-align: center;
+    a {
+      float: left;
+      margin-top: 0.6rem;
+    }
+    a img {
+          height: 0.79rem;
+          float: left;
+      }
+      .top {
+          margin: 0 auto;
+          width: 18.71rem;
+      }
+    .title {
+      display: inline-block;
+      font-size: 0.82rem;
+      line-height: 2.32rem;
+    }
+    .right {
+      float: right;
+      color: white;
+      font-size: 0.72rem;
+  }
+}
+/*通用样式结束*/
+
+/*搜索首页开始*/
+.search-box {
+  background: rgb(244,244,244);
+  .box {
+    margin: auto;
+    padding: 0.25rem 0;
+    width: 19.83rem;
+    .left {
+      width: 4.58rem;
+      height: 1.62rem;
+      float: left;
+      border: 1px solid rgb(198,198,198);
+      line-height: 1.62rem;
+      background: white;
+      border-radius: 0.2rem;
+      text-align: center;
+    }
+    .right {
+      float: right;
+      margin-left: 0.4rem;
+      background: white;
+      height: 1.62rem;
+      line-height: 1.62rem;
+      width: 14.72rem;
+      border-radius: 0.2rem;
+      border: 1px solid rgb(198,198,198);
+      color: rgb(193,193,193);
+      padding-left: 1.92rem;
+    }
+  }
+}
+.jobs {
+  .jobs-list {
+    width: 19.08rem;
+    margin: 0 auto;
+    .job {
+      border-bottom: 1px solid rgb(194,194,194);
+      padding-top: 0.85rem;
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+      }
+      .title {
+        .left {
+          font-size: 0.85rem;
+          font-weight: bold;
+        }
+        .right {
+          color: rgb(255,162,0);
+        }
+      }
+      .detail {
+        color: rgb(195,195,195);
+        line-height: 1.9rem;
+      }
+    }
+  }
+}
+.flex-control-nav {
+  position: absolute;
+  text-align: center;
+  z-index:10000;
+  left:0;
+  right:0;
+  margin:auto;
+  bottom:10.7em;
+}
+
+/*搜索首页结束*/
+@media only screen and  ( min-width: 374px ) {
+    html  {
+        font-size: 18px  ! important ;
+    }
+}
+@media only screen and ( min-width: 401px ) {
+    html {
+        font-size: 20px !important;
+    }
+}
+@media only screen and ( min-width : 428px ) {
+    html {
+        font-size: 26.75px !important;
+    }
+}
+@media only screen and (min-width: 481px ) {
+    html {
+        font-size: 30px !important;
+    }
+}
+@media only screen and (min-width : 569px ) {
+    html {
+        font-size: 35px !important;
+    }
+}
+@media only screen and ( min-width : 641px ) {
+    html {
+        font-size: 40px !important;
+    }
+}
+
+/* 我的简历 开始 bobo */
+.resume-show {
+  background-color: $light-gray;
+    .wrap {
+        width: 18.9rem;
+        margin: 0 auto;
+
+        h2 {
+            font-size: 0.72rem;
+            span {
+              margin-left: 0.36rem;
+              padding-left: 0.36rem;
+              padding-right: 0.36rem;
+              border: 1px solid #939393;
+              border-radius: 0.36rem;
+
+              background-color: #fff;
+              color: #939393;
+            }
+        }
+        h3 {
+          font-size: 0.8rem;
+          a {
+            color: #686868;
+            font-size: 0.6rem;
+          }
+        }
+        .box {
+            padding: 0.95rem 0.75rem 0.95rem 0.75rem;
+            // height: 6.3rem;
+            border-radius: 0.36rem;
+            background-color: #fff;
+            font-size: 0.77rem;
+            overflow: hidden;
+            table {
+              tr {
+                line-height: 1.6rem;
+                td:nth-of-type(1) {
+                  margin-left: 0.77rem;
+                }
+              }
+            }
+            .edit {
+              float: right;
+              display: block;
+              padding-left: 0.5rem;
+              padding-right: 0.5rem;
+              height: 1.17rem;
+
+              line-height: 1.17rem;
+              text-align: center;
+              border-radius: 0.36rem;
+              color: #fff;
+              background-color: $beauty-blue;
+              img {
+                height: 0.7rem;
+                margin-top: -0.2rem;
+                margin-right: 0.2rem;
+              }
+            }
+            .expend {
+              float: right;
+              display: block;
+              padding-left: 0.5rem;
+              padding-right: 0.5rem;
+              height: 1.17rem;
+
+              line-height: 1.17rem;
+              text-align: center;
+              img {
+                // height: 0.77rem;
+                width: 0.7rem;
+                margin-left: 0.2rem;
+                margin-top: -0.2rem;
+              }
+            }
+            time {
+              padding-left: 0.77rem;
+              margin-bottom: 0;
+            }
+            time::before {
+              content: "";
+              display: block;
+              position: absolute;
+              margin-left: -0.25rem;
+              margin-top: 0.25rem;
+              width: 0.6rem;
+              height: 0.6rem;
+              border-radius: 0.3rem;
+              background-color: $beauty-blue;
+
+            }
+            .time-line-box {
+              margin-top: -0.8rem;
+              padding-top: 0.5rem;
+              border-left: 1px solid $beauty-blue;
+              padding-left: 0.77rem;
+            }
+        }
+
+        .box-avatar {
+          padding-top: 1.55rem;
+          padding-bottom: 1.55rem;
+          .avatar {
+            width: 3.75rem;
+            height: 5.6rem;
+            margin: 0 auto;
+            text-align: center;
+            .pencil {
+              float: right;
+              width: 1.2rem;
+            }
+            .avatar-img {
+              height: 3.95rem;
+              margin-bottom: 0.3rem;
+                img {
+                  margin-top: -1rem;
+                  height: 3.65rem;
+                }
+            }
+          }
+        }
+        .refresh {
+          display: block;
+          width: 15.15rem;
+          margin: 1.6rem auto 1.6rem auto;
+          border: 0;
+          border-radius: 0.36rem;
+          height: 2.4rem;
+          color: #fff;
+          background-color: $beauty-blue;
+        }
+    }
+
+}
+/* 我的简历 结束 bobo */
+
+/* 基本信息编辑 开始 bobo */
+.edit_basic {
+  position: absolute;
+
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
+  width: 100%;
+  font-size: 0.86rem;
+  background-color: $light-gray;
+  .form-group {
+    margin-top: 0.5rem;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 0.36rem;
+    label {
+      float: left;
+      padding-left: 1rem;
+      padding-right: 1.47rem;
+      line-height: 2.58rem;
+      font-weight: normal;
+      color: $font-gray;
+      abbr {
+        display: none;
+      }
+    }
+    input {
+      float: right;
+      padding: 0;
+      width: 14rem;
+      height: 2.58rem;
+      border: 0;
+      font-size: 0.86rem;
+    }
+    textarea:focus, input:focus {
+      outline: none;
+      border-color: inherit;
+      -webkit-box-shadow: none;
+    }
+  }
+}
+/* 基本信息编辑 结束 bobo */
+
+/* 工作经历页面 开始 bobo*/
+.work-experience {
+  position: absolute;
+  width: 100%;
+  background: $light-gray;
+  .wrap {
+    margin: 0;
+    width: 100%;
+    .box {
+      border-radius: 0;
+      margin-bottom: 0.7rem;
+      box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.1);
+      time {
+        padding-left: 0!important;
+      }
+      time::before {
+        display: none!important;
+      }
+    }
+    .education {
+        time {
+            font-weight: bold;
+        }
+        h3 {
+            font-weight: bold;
+            font-size: 0.86rem;
+        }
+    }
+  }
+}
+/* 工作经历页面 结束 bobo */
+
+/* 编辑工作经历 开始 bobo */
+.edit-work-experiences {
+  textarea {
+    border: 0;
+    height: 10rem;
+    padding-left: 1rem;
+    resize: none;
+
+    @include  box-shadow(inset 0 0 #fff);
+  }
+  .btn {
+    position: absolute;
+    height: 3.67rem;
+    width: 50%;
+    bottom: 0;
+    border: 0;
+    font-size: 0.83rem;
+  }
+  .btn-del {
+    left: 0;
+    background-color: #fff;
+    color: $beauty-blue;
+  }
+  .btn-save {
+    right: 0;
+    background-color: $beauty-blue;
+  }
+
+  // job_fairs
+  .job-fair {
+    text-align: right;
+    padding-right: 2rem !important;
+
+  }
+  .form-group::after {
+    content: ">";
+    display: block;
+    position: absolute;
+    right: 1rem;
+    margin-top: 0.8rem;
+  }
+  .form-group:nth-of-type(5)::after {
+    content: "";
+  }
+  .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    button {
+      display: block;
+      width: 100%;
+      height: 3.5rem;
+      text-align: left;
+      @include border($light-gray);
+      background-color: #fff;
+      box-shadow: none;
+      padding-left: 0.9rem;
+    }
+  }
+}
+/* 编辑工作经历 结束 bobo */
+
+/* 我的页面 开始-汤伟*/
+.main.user-first-page {
+  $color: #e4e3dc;
+  $mask-color: #f4f4f4;
+  color: $color;
+  background-color: $light-gray;
+  overflow: hidden;
+  .user-info {
+    position: relative;
+    margin: 0 auto;
+    height: 12.83rem;
+    width: 20.8rem;
+    background-color: rgb(15, 149, 145);
+    .user-info-list {
+      margin: 0 auto;
+      width: 15rem;
+      height: 100%;
+      text-align: center;
+      padding-top: 2.3rem;
+      .avatar {
+        img {
+          width: 3.85rem;
+        }
+        border-radius: 50%;
+        border: 1px solid $color;
+        width: 3.85rem;
+        height: 3.85rem;
+        margin: 0 auto;
+
+      }
+      .info-name{
+        font-size: 0.93rem;
+        margin-top: 0.57rem;
+      }
+      .info-major {
+        font-size: 0.73rem;
+      }
+    }
+    .user-status {
+      position: absolute;
+      right: 0.85rem;
+      top: 3.55rem;
+      .info-major{
+        display: inline-block;
+        background-color: rgb(235,235,235);
+        width: 6.25rem;
+        height: 1.45rem;
+        line-height: 1.45rem;
+        text-align: center;
+        color: #1f1c1e;
+        border-radius: 1rem;
+      }
+      img {
+        display: inline-block;
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-left: 0.2rem;
+      }
+    }
+  }
+  .resumes-info-list {
+    .mask {
+      background:  $mask-color;
+      height: 1.05rem;
+      width: 20.5rem;
+    }
+    position: relative;
+    overflow: hidden;
+    .content {
+      display: block;
+      margin: 0 auto;
+      padding-left: 0.59rem;
+      padding-right: 0.59rem;
+      width: 100%;
+      background-color: #fff;
+      .icon1{
+        height: 0.81rem;
+      }
+      .icon2{
+        height: 1.15rem;
+      }
+      .icon3{
+        width: 1.12rem;
+      }
+      .icon4{
+        height: 1.1rem;
+      }
+      .icon5{
+        height: 1rem;
+      }
+      a {
+        display: block;
+        height: 2.8rem;
+        line-height: 2.8rem;
+        border-bottom: 1px solid rgb(196,196,196);
+        img {
+          display: inline-block;
+        }
+        span {
+          display: inline-block;
+          margin-left: 0.55rem;
+        }
+        &:active,&:visited,&:link {
+          color: black;
+          text-decoration: none;
+        }
+      }
+      a:first-child {
+        span:last-child {
+          color: rgba(186, 186, 186, 0.8);
+          margin-left: 1.1rem;
+        }
+      }
+      a:last-child {
+        position: relative;
+        .right {
+          position: absolute;
+          top:0.69rem;
+          right:0.96rem;
+          background: #3a9da0;
+          width: 2.6rem;
+          height: 1.35rem;
+          border-radius: 0.8rem;
+          .swich {
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            background-color: #fff;
+          }
+        }
+      }
+      .mask {
+        background:  $mask-color;
+        height: 1rem;
+      }
+    }
+
+
+    .model {
+      position: absolute;
+      top: 1.6rem;
+      left: 3.28rem;
+      width: 13.8rem;
+      height: 4.73rem;
+      display: none;
+      font-size: 0.8rem;
+      line-height: 6.33rem;
+      text-align: center;
+      background-color: #212121;
+      border-radius: 1rem;
+      p {
+        display: inline-block;
+        width: 11.2rem;
+        line-height: 1.2rem;
+        text-align: left;
+      }
+    }
+  }
+}
+
+/* 我的页面 结束-汤伟*/
+
+
+/* 专场列表页 开始-冰华*/
+.hospital-list {
+  width: 100%;
+  height: 6.9rem;
+  overflow: hidden;
+  position: relative;
+  img {
+    width: inherit;
+    height: inherit;
+  }
+  .hospital-bg {
+    width: inherit;
+    height: 1.87rem;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    background: #000000;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+  }
+  .hospital-note {
+    width: inherit;
+    height: 1.87rem;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    h2 {
+      width: 40%;
+      height: 1.87rem;
+      line-height: 1.87rem;
+      float: left;
+      font-size: 0.7rem;
+      color: white;
+      font-weight: 400;
+      text-indent: 1.1rem;
+      margin: 0;
+      padding: 0;
+    }
+    span {
+      display: block;
+      width: 1.9rem;
+      height: 0.9rem;
+      line-height: 0.9rem;
+      text-align: center;
+      margin-top: 0.45rem;
+      border: 1px solid white;
+      border-radius: 0.3rem;
+      float: right;
+      color: white;
+      font-size: 0.7rem;
+    }
+    p {
+      width: 2.1rem;
+      height: 1.87rem;
+      line-height: 1.87rem;
+      color: white;
+      float: right;
+      font-size: 0.7rem;
+      margin: 0 0.52rem 0 0.35rem;
+    }
+  }
+  a {
+    display: block;
+    width: 100%;
+    height: 6.9rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
+}
+/* 专场列表页 结束-冰华*/
+
+/* 我的应聘记录 开始-汤伟*/
+.main.my_apply_records {
+  $color: #cfcfcf;
+  $color-font: #9e9e9e;
+  $color-blue: #3f9d9f;
+  $color-yellow: #ff7d01;
+
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  .nav-bar{
+    border-bottom: 1px solid $color;
+    margin-top: -5px;
+  }
+  ul.apply_records {
+    margin: auto;
+    height: 1.93rem;
+    line-height: 1.93rem;
+    color: $color-font !important;
+    display: inline-block;
+   li {
+    list-style: none;
+    float: left;
+    width: 2.23rem;
+    margin-right: 2.17rem;
+    text-align: center;
+    margin-top: -1px;
+    color: $color-font;
+    a {
+      color: $color-font;
+      &:active,&:visited,&:link,&:hover {
+        text-decoration: none;
+      }
+    }
+   }
+   li.active {
+     border-bottom: 2px solid $color-blue;
+   }
+   li:last-child {
+     margin-right: 0;
+   }
+  }
+  .nav{
+    width: 18.2rem;
+    margin: auto;
+    .tab {
+      clear: both;
+      .tab-all {
+        a {
+          &:active,&:hover {
+            color: black;
+          }
+        }
+        li {
+          height: 6rem;
+          border-bottom: 1px solid $color;
+          .left {
+            float: left;
+            display: inline-block;
+            h3 {
+              text-align: left;
+            }
+            p {
+              text-align: left;
+              color: $color-font;
+            }
+          }
+          .right {
+            float: right;
+            display: inline-block;
+            h3 {
+              text-align: right;
+              color: $color-yellow;
+            }
+            p {
+              text-align: right;
+              color: $color-yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/* 我的应聘记录 结束-汤伟*/
+
+/* 双选会列表页 开始-冰华*/
+#hospital-home {
+  position: relative;
+  width: 100%;
+  height: 11.75rem;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 11.75rem;
+  }
+  .home-bg {
+    width: 100%;
+    height: 2.4rem;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    background: #000000;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+  }
+  .home-note {
+    width: inherit;
+    height: 2.4rem;
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    p {
+      height: 2.4rem;
+      line-height: 2.4rem;
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+}
+#hospital-data {
+  width: 100%;
+  height: 2.9rem;
+  margin-top: 1.1rem;
+  overflow:hidden;
+  text-align: center;
+  .hospital-number {
+    width: 50%;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #6c6c6c;
+    p:nth-child(1) {
+      font-size: 0.6rem;
+      color: #6c6c6c;
+      margin-bottom: 0;
+    }
+    p:nth-child(2) {
+      font-size: 0.9rem;
+      color: #399da0;
+      span {
+        font-size: 1.8rem;
+        font-weight: bolder;
+      }
+    }
+  }
+  .hospital-time {
+    width: 50%;
+    height: 100%;
+    float: left;
+    p:nth-child(1) {
+      font-size: 0.6rem;
+      color: #6c6c6c;
+      margin-bottom: 0;
+    }
+    p:nth-child(2) {
+      font-size: 1.8rem;
+      color: #399da0;
+    }
+  }
+}
+#hospital-rule {
+  width: 78%;
+  margin: 3.87rem auto 0 auto;
+  h2 {
+    color: #6c6c6c;
+    font-size: 1.1rem;
+    margin-bottom: 1.8rem;
+    text-align: center;
+  }
+  p {
+    color: #000;
+    font-size: 0.9rem;
+  }
+}
+.button {
+  text-align: center;
+  height: 1.9rem;
+  margin-top: 3.03rem;
+  a {
+    display: block;
+    width: 6.5rem;
+    height: 1.9rem;
+    line-height: 1.9rem;
+    background: #3a9da0;
+    border-radius: 0.3rem;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+}
+/* 双选会列表页 结束-冰华*/
+
+/* 谁看过我的简历 开始-汤伟*/
+  .resume-views {
+    .resume-views-list {
+      width: 19.08rem;
+      margin: 0 auto;
+      a {
+        @include link-colors;
+        .hospital-list {
+          position: relative;
+          border-bottom: 1px solid rgb(194,194,194);
+          height: 6.17rem;
+          padding-top: 1.33rem;
+          .title {
+            font-size: 0.87rem;
+          }
+          .job {
+            line-height: 2.17rem;
+            span {
+              display: inline-block;
+              margin-left: 0.33rem;
+              width: 1.63rem;
+              height: 0.78rem;
+              line-height: 0.89rem;
+              text-align: center;
+              color: #3f9e9d;
+              border: 1px solid #3f9e9d;
+              border-radius:0.33rem;
+            }
+          }
+          .right {
+            img {
+              height: 0.58rem;
+            }
+          }
+          .view-time {
+            font-size: 0.63rem;
+            color: #9f9f9f;
+          }
+          .right {
+            position: absolute;
+            top: 2.6rem;
+            right: 1.32rem;
+            width: 0.49rem;
+            height: 0.5rem;
+          }
+          .title {
+            .left {
+              font-size: 0.85rem;
+              font-weight: bold;
+            }
+            .right {
+              color: rgb(255,162,0);
+            }
+          }
+          .detail {
+            color: rgb(195,195,195);
+            line-height: 1.9rem;
+          }
+        }
+      }
+    }
+  }
+/* 谁看过我的简历 结束-汤伟*/
+
+/* 医院详情 开始-汤伟*/
+.hospital-details {
+  margin: 0  auto;
+  .hospital-introduce{
+    margin: 0 auto;
+    padding-top: 1.63rem;
+    padding-left: 1rem;
+    padding-right:  1rem;
+    @include border(#cfcfcf);
+    .title {
+      font-size: 0.93rem;
+    }
+    p {
+      margin-top: 1.1rem;
+      font-size: 0.8rem;
+      color: #9b9b9b;
+    }
+  }
+  .job-bg {
+    background-color: #f3f3f3;
+    height: 0.56rem;
+  }
+  .work-address {
+    margin: auto;
+    line-height: 2.22rem;
+    @include border(#cfcfcf);
+    padding-left: 1rem;
+    span {
+      color: #9b9b9b;
+      margin-right: 0.76rem;
+    }
+    img {
+      height: 0.6rem;
+      margin-left: 4.38rem;
+    }
+  }
+  .jobs{
+    padding-left: 1rem;
+    line-height: 2.7rem;
+    font-size: 0.87rem;
+    border-top: 1px solid #cfcfcf;
+    @include border(#cfcfcf);
+    span {
+      display: inline-block;
+      border: 1px solid #3f9e9f;
+      border-radius: 0.33rem;
+      width: 1.67rem;
+      height: 1rem;
+      line-height: 0.98rem;
+      text-align: center;
+      color: #3f9e9f;
+    }
+    img {
+      height: 0.6rem;
+      margin-left: 11.17rem;
+    }
+  }
+  .details{
+    border-top: 1px solid #cfcfcf;
+    .title {
+      line-height: 2.17rem;
+      color: #9b9b9b;
+      padding-left: 1rem;
+    }
+    p {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    p:last-child {
+      margin-top: 1.33rem;
+    }
+  }
+}
+/* 医院详情 结束-汤伟*/
+
+
+.resumes-preview-bg {
+  min-height: 8.5rem;
+  border-radius: 0.3rem;
+  border: 2px solid #ccc;
+  margin-top: 0.57rem;
+  padding-bottom: 0.95rem;
+  .preview-image {
+    width: 3.65rem;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 2.42rem;
+    position: relative;
+    .image-head {
+      width: 3.65rem;
+      height: 3.65rem;
+      img {
+        width: 3.65rem;
+        height: 3.65rem;
+      }
+    }
+  }
+
+  .work-time {
+    h3 {
+      margin: 0.93rem 0 0.78rem 0;
+      font-size: 0.8rem;
+    }
+    p {
+      font-size: 0.7rem;
+      color: #696969;
+      line-height: 1.08rem;
+    }
+  }
+}
+
+#preview-expect {
+  border-radius: 0.3rem;
+  border: 2px solid #ccc;
+  margin-top: 0.57rem;
+  margin-bottom: 5rem;
+}
+.resumes-preview-base {
+  height: 17.33rem;
+  .resumes-base {
+    font-size: 0.7rem;
+    margin-left: 0.7rem;
+    margin-top: 0.5rem;
+    tr {
+      height: 1.7rem;
+      line-height: 1.7rem;
+      td+td {
+        padding-left: 0.8rem;
+      }
+      span {
+        display: inline-block;
+        margin-right: 1.4rem;
+      }
+    }
+  }
+}
+/* 简历预览 结束-冰华*/
+
+/* 职位详情 开始-冰华*/
+.job-head {
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  div {
+    width: 9.64rem;
+    position: absolute;
+    top: 0;
+    left: -4.82rem;
+    font-size: 0.87rem;
+    text-align: center;
+    .job-page {
+      display: block;
+      width: 4.72rem;
+      height: 1.4rem;
+      background: #fff;
+      color: #3f9e9f;
+      border: 2px solid #fff;
+      float: left;
+      text-decoration: none;
+    }
+    .hospital-page {
+      display: block;
+      width: 4.72rem;
+      height: 1.4rem;
+      background: #3f9e9f;
+      color: #fff;
+      border: 2px solid #fff;
+      float: left;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+}
+
+#job-detail {
+  width: 100%;
+  background: #f3f3f3;
+  section {
+    width: 100%;
+    background: #efefef;
+    .job-introduce {
+      padding: 0.92rem 0 0 1.02rem;
+      border-bottom: 1px solid #cfcfcf;
+      h3 {
+        margin: 0;
+        font-size: 0.87rem;
+      }
+      p {
+        font-size: 0.7rem;
+        color: #ff8b00;
+        margin-top: 0.72rem;
+      }
+      ul {
+        list-style: none;
+        li {
+          height: 1.52rem;
+          line-height: 1.52rem;
+          color: #424242;
+          font-size: 0.7rem;
+          span {
+            color: #9b9b9b;
+            margin-right: 0.75rem;
+          }
+          .job-scale {
+            margin-left: 2.85rem;
+          }
+          .job-number {
+            margin-left: 4.3rem;
+          }
+        }
+        .job-place {
+          margin-top: 2rem;
+          a {
+            color: #424242;
+            text-decoration: none;
+            i {
+              margin-left: 4.85rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .job-right {
+    margin-top: 0.62rem;
+    border-top: 1px solid #cfcfcf;
+  }
+  .job-descripte {
+    width: 18.67rem;
+    padding-top: 0.65rem;
+    padding-bottom: 3rem;
+    font-size: 0.7rem;
+    padding-left: 1.02rem;
+    h2 {
+      color: #9b9b9b;
+      margin: 0;
+      font-size: 0.7rem;
+    }
+    h3 {
+      font-size: 0.7rem;
+      margin: 0.6rem 0 0.8rem 0;
+    }
+    h4 {
+      font-size: 0.7rem;
+      margin: 0 0 0.3rem 0;
+    }
+    p {
+      font-size: 0.7rem;
+      margin: 0 0 0.2rem 0;
+    }
+    .job-post {
+      margin: 0;
+      padding-top: 2.22rem;
+    }
+  }
+}
+.job-list {
+  width: 100%;
+  height: 2.78rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #f3f3f3;
+  li {
+    width: 33.33%;
+
+    height: 100%;
+    float: left;
+    list-style: none;
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      color: #444444;
+      font-size: 0.87rem;
+      text-align: center;
+      line-height: 2.78rem;
+      text-decoration: none;
+      img {
+        width: 0.66rem;
+        height: 0.66rem;
+        margin: 0 0.5rem 0.1rem 0;
+      }
+    }
+  }
+}
+/* 职位详情 结束-冰华*/
+
+/* 搜索 开始-tw*/
+
+.search {
+  margin: auto;
+  position: relative;
+  padding: 0.25rem 0;
+  width: 21rem;
+  line-height: 2.08rem;
+  background-color: #f4f4f4;
+  overflow: hidden;
+
+  .search-img {
+      position: absolute;
+      width: 0.83rem;
+      top: 0.62rem;
+      left: 0.78rem;
+    }
+  .close-img {
+      position: absolute;
+      width: 0.78rem;
+      top: 0.62rem;
+      right: 4.66rem;
+      }
+  .left {
+    width: 16.3rem;
+    height: 1.62rem;
+    float: left;
+    border: 1px solid rgb(198,198,198);
+    line-height: 1.62rem;
+    background: white;
+    border-radius: 0.2rem;
+    text-align: center;
+    margin-left: 0.2rem;
+  }
+  .right {
+    float: right;
+    margin-right: 0.4rem;
+    background: #3f9e9f;
+    height: 1.62rem;
+    line-height: 1.62rem;
+    width: 3.88rem;
+    border-radius: 0.3rem;
+    border: 1px solid rgb(198,198,198);
+    color: rgb(193,193,193);
+    text-align: center;
+
+  }
+}
+/* 搜索 结束-tw*/
+
+/* 搜索详情 开始-tw*/
+.search-details{
+  margin: auto;
+  background-color: $light-gray;
+
+  .search-conditions{
+    border-top: 1px solid #939393;
+    @include border(#636363);
+    font-size: 0.77rem;
+    .dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    border-right: 1px solid #636363;
+    width: 32%;
+    line-height: 2.1rem;
+    text-align: center;
+      .triangle {
+        position: absolute;
+        top: 0.8rem;
+        left: 5rem;
+        /* 1.idth和height设置为0 */
+        width: 0;
+        height: 0;
+        /* 2.设置三角形三边（上三角, 高为10px, 底边长为14px, 背景色为lime)*/
+        border-top: 10px solid #7c7c7c;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+
+      }
+    }
+    .dropdown:last-child {
+      border-right: 1px solid #fff;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+  }
+  .work-experences{
+    margin: 0 auto;
+    margin-top: 2.4rem;
+    width: 19.62rem;
+    .title{
+      font-size: 0.78rem;
+      color: #767676;
+    }
+    .work-experences-items{
+      margin-top: 0.5rem;
+      button {
+        @include button();
+      }
+      button.big {
+        width: 5.62rem;
+      }
+    }
+
+  }
+  .major-requirements{
+    margin: 0 auto;
+    margin-top: 3.11rem;
+    width: 19.62rem;
+    .title{
+      font-size: 0.78rem;
+      color: #767676;
+    }
+    .major-requirements-items{
+      margin-top: 0.5rem;
+
+      button {
+        @include button();
+      }
+      button.big {
+        width: 5.62rem;
+      }
+    }
+  }
+  .submit {
+    display: block;
+    color: #fff;
+    margin:6.51rem auto 0;
+    border-radius: 0.6rem;
+    width: 80%;
+    height: 2.3rem;
+    background-color: #3f9e9f;
+    font-size: 0.78rem;
+  }
+}
+/* 搜索详情 结束-tw*/

@@ -1,0 +1,8 @@
+1.安装参考官网说明
+2.修改任务config/schedule.rb
+3.命令行执行 whenever -c //清除已有任务
+4.命令行执行 whenever -w //写入已有任务
+5.命令行执行 whenever -i //更新已有任务
+注意：开发环境下上述3条命令要添加 --set environment=development
+6.命令行执行 crontab -l //查看任务状态
+7.查看是否成功执行 /var/log/syslog

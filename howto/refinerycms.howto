@@ -1,0 +1,15 @@
+1. Gemfile add
+gem 'refinerycms', :git => 'https://github.com/refinery/refinerycms', :branch => 'master'
+2. after bundle install, run
+rails g refinery:cms --fresh-installation
+由于有Bug，第一次执行的时候，会在Gemfile中加入sqlite3，导致后面有问题，无法执行，将Gemfile中Sqlite删除，再执行一次
+
+refinerycms_devise_registration导致原有用户的注册、登录有问题，解决方案：
+http://stackoverflow.com/questions/12986818/refinerycms-devise-custom-user-cant-find-the-devise-helpers-how-to-add-a-se
+
+You need to change
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) %>
+to
+
+<%= form_for(resource, :as => resource_name, :url => mktgeistuser_session_path) %>

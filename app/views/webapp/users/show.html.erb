@@ -1,0 +1,81 @@
+<% provide :title, "我的" %>
+<div class="main user-first-page">
+  <div class="user-info">
+    <div class="user-info-list">
+      <div class="avatar">
+        <%= image_tag "avator2.png"  %>
+      </div>
+      <p class="info-name">严锐</p>
+      <p class="info-major">医学护理专业</p>
+      <p class="info-major">武汉大学医学院</p>
+    </div>
+    <div class="user-status">
+      <span class="info-major">离职,正在找工作</span>
+      <%= image_tag "right2.png"  %>
+    </div>
+  </div>
+
+  <div class="resumes-info-list">
+    <div class="mask"></div>
+    <div class="content">
+      <a class="resumes-list" href="/webapp/resumes/:id">
+          <%= image_tag "resumes.png",class:"icon1"%>
+          <span class="resume">我的简历</span><span>完整度 80%</span>
+      </a>
+      <a class="resumes-list" href="<%= webapp_apply_records_index_path %>">
+          <%= image_tag "apply_records.png",class:"icon2"%>
+          <span class="resume">我的应聘记录</span>
+      </a>
+      <a class="resumes-list" href="/webapp/resume_views/index">
+          <%= image_tag "resume_views.png",class:"icon3"%>
+          <span class="resume">谁看过我的简历</span>
+      </a>
+      <a class="resumes-list" href="/webapp/jobs/index">
+          <%= image_tag "jobs_collection.png",class:"icon4"%>
+          <span class="resume">我收藏的职位</span>
+      </a>
+      <div class="mask">
+      </div>
+      <a class="resumes-list" href="#">
+          <%= image_tag "resume_open.png",class:"icon5"%>
+          <span class="resume">公开我的简历</span>
+          <div class="right">
+            <div class="swich"></div>
+          </div>
+      </a>
+  </div>
+  <!--  弹窗-->
+  <div class="model">
+    <div class="model-p">
+
+      <p>设置成功，已投递简历的公司
+      仍可看到哦</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript">
+  $('.right').click(function() {
+    if($('.swich').css('margin-left') == '0px') {
+      $('.swich').animate({  marginLeft: "1.2rem"}, 500);
+      $(this).css({'background': '#a3a3a3',});
+      $('.model').fadeIn('fast', function() {
+        var j = setInterval(function () {
+          $('.model').fadeOut('slow');
+        },1000);
+        // clearInterval(j);
+      })
+
+    } else {
+
+      $('.swich').animate({  marginLeft: "0px"}, 500);
+      $(this).css({'background': '#3a9da0',});
+      $('.model').fadeOut('fast', function() {
+
+      });
+    }
+  });
+
+  fullScreen('.user-first-page');
+</script>

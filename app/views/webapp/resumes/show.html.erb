@@ -1,0 +1,142 @@
+<% provide :link, "/users/index"  %>
+<% provide :title, "我的简历" %>
+<div class="container resume-show">
+    <div class="wrap">
+
+        <section>
+            <h2>设置头像</h2>
+            <div class="box box-avatar">
+                <div class="avatar">
+                    <%= image_tag "pencil.png", class: "pencil" %>
+                    <div class="avatar-img">
+                        <%= image_tag "avator.png"%>
+                     </div>
+                    <span>点击更换</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>基本信息<span>必填</span>
+            </h2>
+            <div class="box">
+                <a href=" <%= edit_webapp_user_path %>  " class="edit">
+                    <%= image_tag "pencil3.png" %>编辑
+                </a>
+                <table>
+                    <tr>
+                        <td>姓名：</td>
+                        <td>严锐</td>
+                    </tr>
+                    <tr>
+                        <td>性别：</td>
+                        <td>男</td>
+                    </tr>
+                    <tr>
+                        <td>最高学历：</td>
+                        <td>本科</td>
+                    </tr>
+                    <tr>
+                        <td>工作年限：</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>出生年限：</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>所在城市：</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>联系电话：</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>联系邮箱：</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>当前状态：</td>
+                        <td></td>
+                    </tr>
+
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>工作经历<span>必填</span>
+            </h2>
+            <div class="box">
+                <a href="<%= webapp_work_experiences_path %>" class="edit">
+                    <%= image_tag "pencil3.png" %>编辑
+                </a>
+                <time>2015.01-2016.01</time>
+                <div class="time-line-box">
+                    <h3>武汉市解放军——六一医院<a class="expend">
+                            展开<%= image_tag "down2.png" %>
+                        </a>
+                    </h3>
+                    <p>
+                        工作内容：夕阳最美时，也总是将近黄昏。 世上有很多事都是这样子的，尤其是一些特别辉煌美好的事。 所以你不必伤感，也不用惋惜，纵然到江湖去赶上了春，也不必留住它。 因为这就是人生，有些事你留也留不住。 你一定要先学会忍受它的无情，才会懂得享受它的温柔。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>教育经历<span>必填</span>
+            </h2>
+            <div class="box">
+                <a href="/webapp/education_experiences/:id" class="edit">
+                    <%= image_tag "pencil3.png" %>编辑
+                </a>
+                <time>2016年毕业</time>
+                <div class="time-line-box">
+                    <h3>武汉大学同济医学院<a class="expend" >
+                            展开<%= image_tag "down2.png" %></a>
+                    </h3>
+                    <p id="test">
+                        工作内容：夕阳最美时，也总是将近黄昏。 世上有很多事都是这样子的，尤其是一些特别辉煌美好的事。 所以你不必伤感，也不用惋惜，纵然到江湖去赶上了春，也不必留住它。 因为这就是人生，有些事你留也留不住。 你一定要先学会忍受它的无情，才会懂得享受它的温柔。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>期望工作<span>必填</span>
+            </h2>
+            <div class="box">
+                <a href="<%= webapp_job_fair_path(:id) %>" class="edit">
+                    <%= image_tag "pencil3.png" %>编辑
+                </a>
+                <h3>护士</h3>
+                <p>
+                    全职/武汉/4k-6k
+                </p>
+            </div>
+        </section>
+
+        <button type="button" name="button" class="refresh">刷新简历</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+  var content = "工作内容：夕阳最美时，也总是将近黄昏。 世上有很多事都是这样子的，尤其是一些特别辉煌美好的事。 所以你不必伤感，也不用惋惜，纵然到江湖去赶上了春，也不必留住它。 因为这就是人生，有些事你留也留不住。 你一定要先学会忍受它的无情，才会懂得享受它的温柔。";
+
+  wordLimit('.time-line-box p', 60);
+
+  $('.expend').click(function() {
+    var p = $(this).parent().parent().find('p').html();
+    console.log(p.length);
+
+    if (p.length > 62) {
+      $(this).parent().parent().find('p').html(p.substr(0, 60) + '……');
+    } else {
+      $(this).parent().parent().find('p').html(content);
+    }
+  });
+
+</script>

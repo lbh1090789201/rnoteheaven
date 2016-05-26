@@ -1,0 +1,8 @@
+<h1>Home Page <small>success</small></h1>
+<tr>
+  <td>成功获取用户信息</td><br>
+  <td><%= "用户姓名: #{ @user_info.result["nickname"]}" %></td><br>
+  <td><%= "城市: #{ @user_info.result["city"]}" %></td><br>
+  <td><%= "国家: #{ @user_info.result["country"]}" %></td><br>
+  <td><%= "Openid: #{ @user_info.result["openid"]}" %></td><br>
+</tr>

@@ -1,0 +1,41 @@
+
+    <div class="login_main">
+        <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+            <div class="box">
+              <div class="form-group">
+                <%= f.text_field :username, :value => @username, autofocus: true, placeholder: "请输入您的账号",autocomplete:"off" %>
+              </div>
+              <div class="form-group">
+                <%= f.password_field :password, :value => @password, autocomplete: "off", placeholder: "请输入您的密码" %>
+                <%= f.hidden_field :user_type, :value => @user_type, autocomplete: "off", placeholder: "" %>
+              </div>
+
+              <div class="actions">
+                <button type="submit" id="login_content_btn_load" class="login-btn btn btn-default">登录</button>
+              </div>
+              <div class="form-group remember_me">
+                <input type="checkbox" />
+                <span>记住我</span>
+              </div>
+            </div>
+        <% end %>
+        <div style="clear:both"></div>
+    </div>
+
+    <!-- <script language="javascript" type="">
+        $('#login_content_btn_load').on('click',function(event){
+            event.preventDefault();
+            var user_name = $('#user_username').val();
+            var user_type = $('#user_user_type').val();
+            $.get("/users/check_username_usertype",{
+                user_type:user_type,
+                username: user_name
+            },function(data, status){
+                if(data.success){
+                    $("#new_user").submit();
+                }else{
+                    alert(data.errMsg)
+                }
+            });
+        });
+    </script> -->

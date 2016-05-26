@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Show Name:</strong>
+  <%= @user.show_name %>
+</p>
+
+<p>
+  <strong>Cellphone:</strong>
+  <%= @user.cellphone %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= image_tag(@user.avatar_url) %>
+
+  <% @user.user_albumns.each do |albumn| %>
+      <strong>Albumn:</strong>
+      <%= image_tag(albumn.image_url) %>
+  <% end %>
+
+  <h2>Add an albumn:</h2>
+  <%= form_for([@user, @user.user_albumns.build]) do |f| %>
+      <p>
+        <%= f.hidden_field :image_cache %>
+        <%= f.file_field :image, :autofocus => true, class: "form-control" %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+  <% end %>
+</p>
