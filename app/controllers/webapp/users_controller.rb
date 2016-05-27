@@ -60,7 +60,7 @@ class Webapp::UsersController < ApplicationController
     user = User.find_by_id(current_user.id)
 
     if user.update(user_params)
-      redirect_to webapp_resume_path(current_user.id)
+      redirect_to :back
     else
 
     end
@@ -70,8 +70,8 @@ class Webapp::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:show_name, :sex, :start_work_at, :highest_degree,
-                                 :cellphone, :email, :location, :seeking_job)
+    params.require(:user).permit(:show_name, :sex, :work_time, :highest_degree,
+                                 :cellphone, :email, :location, :job_status)
   end
 
 end
