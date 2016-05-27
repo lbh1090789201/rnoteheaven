@@ -1,5 +1,7 @@
 include BdLbsHelper
+include Webapp::ResumeHelper
 class Webapp::UsersController < ApplicationController
+
   #bafore_filer代表需要加载请求头　except代表除开它指定的请求外其它都需要
   #bafore_filer注释后就整个不需要加载请求头
   before_action :authenticate_user!, only: [:edit, :save_user_previous_url, :index, :update]
@@ -51,12 +53,11 @@ class Webapp::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.select(:id, :show_name, :sex, :work_time, :highest_degree,
-                                 :cellphone, :email, :location, :job_status).find_by_id(1)
+    @user = User.get_user_main(current_user.id)
   end
 
   def update
-    user = User.find_by_id(1) # 需要替换为 current_user.id
+    user = User.find_by_id(current_user.id)
 
     if user.update(user_params)
       redirect_to :back

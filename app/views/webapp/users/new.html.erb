@@ -1,14 +1,9 @@
 
 <% provide :title, "基本信息" %>
-<% if User.highest_degree(current_user.id) %>
-  <% provide :content, "保存" %>
-<% else %>
-  <% provide :content, "下一步" %>
-  <% provide :link, '/webapp/work_experiences/new' %>
-<% end %>
+<% provide :content, "下一步" %>
 
 <div class="edit_basic">
-    <%= simple_form_for :user, url: webapp_user_path(current_user.id),:method => :patch do |f| %>
+    <%= simple_form_for :user, url: webapp_users_path,:method => :post do |f| %>
       <%= f.input :show_name, label: "姓名", input_html: { class: "user-input"} %>
       <%= f.input :sex, label: '性别', input_html: { class: "user-input"} %>
       <%= f.input :highest_degree, label: '最高学历', input_html: { class: "user-input"} %>
