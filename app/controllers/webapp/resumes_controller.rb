@@ -19,6 +19,9 @@ class Webapp::ResumesController < ApplicationController
     # end
   end
 
+  def update
+  end
+
   def edit
     if params[:val] == 'basic'
       # render partial: "edit_basic", layout: "header"
