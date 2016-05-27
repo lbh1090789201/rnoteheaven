@@ -2,10 +2,10 @@
 # Initial seed file to use with Devise User Model
 
 User.create!(
-    username: "test",
+    username: "testsss",
     show_name: "test",
     password: "123456",
-    email: "admin@example.com",
+    email: "kkkkk@example.com",
     cellphone: "13888888888",
     sex: "男"
     #avatar",
@@ -72,3 +72,18 @@ User.create!(
 #     })
 #   i += 1
 # end
+
+# test FavoriteJob bh
+i = 1
+while i < 5 do
+  FavoriteJob.create! ({
+    use_id: 1,
+    job_id: i,
+    # name: "全职护士",
+    # location: "广州白云",
+    # salary_range: "5000-8000",
+    # hospital_name: "人民医院",
+    collected_at: "2016-11-11",
+  })
+  i += 1
+end
