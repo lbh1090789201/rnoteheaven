@@ -47,7 +47,7 @@ class Webapp::UsersController < ApplicationController
     end
   end
 
-
+  # 页面代码开始
   def index
 
   end

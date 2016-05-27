@@ -1,31 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe Webapp::ExpectJobsController, type: :controller do
+  render_views
+  let (:json) { JSON.parse(response.body) }
 
-  describe "GET #index" do
-    it "returns http success" do
+  before :each do
+    @user = create(:user)
+    login_with @user
+    request.env['devise.mapping'] = Devise.mappings[:user]
+  end
+
+  # 页面测试开始
+  describe 'GET #index' do
+    it 'returns http success' do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(response.status).to eq(200)
     end
   end
 
-  describe "GET #edit" do
-    it "returns http success" do
-      expect(:get => "/webapp/expect_jobs/:id/edit").to be_routable
+  describe 'GET #edit' do
+    it 'returns http success' do
+      get :edit, id: @user.id
+      expect(response.status).to eq(200)
     end
   end
 
-  describe "GET #show" do
-    it "returns http success" do
-      expect(:get => "/webapp/expect_jobs/:id").to be_routable
+  describe 'GET #show' do
+    it 'returns http success' do
+      get :show, id: @user.id
+      expect(response.status).to eq(200)
     end
   end
 
-  describe "GET #new" do
-    it "returns http success" do
+  describe 'GET #new' do
+    it 'returns http success' do
       get :new
-      expect(response).to have_http_status(:success)
+      expect(response.status).to eq(200)
     end
   end
-
 end

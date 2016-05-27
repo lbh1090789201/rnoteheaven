@@ -19,6 +19,7 @@ class User < ActiveRecord::Base #用户
   has_many :user_albumns
   has_many :resumes
   has_many :favorite_jobs
+  has_many :work_experiences
 
   # necessary to override friendly_id reserved words
   def friendify
