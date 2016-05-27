@@ -63,6 +63,7 @@ Ryunkang::Application.routes.draw do
      resources :education_experiences
      resources :job_fairs
      resources :jobs
+     resources :expect_jobs
 
      get 'resume_views/index'
      get 'resume_views/show'
