@@ -20,6 +20,14 @@ FactoryGirl.define do
     cellphone "13944445555"
     password "123465"
   end
+  factory :myuser do
+    show_name "zahng"
+    username "username"
+    email  { Faker::Internet.email }
+    # email "644381492@qq.com"
+    cellphone "13944445555"
+    password "123465"
+  end
 end
 
 #cellphone",
