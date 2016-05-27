@@ -19,6 +19,7 @@ class User < ActiveRecord::Base #用户
   has_many :user_albumns
   has_many :resumes
   has_many :favorite_jobs
+  has_many :work_experiences
 
   # necessary to override friendly_id reserved words
   def friendify
@@ -100,7 +101,7 @@ class User < ActiveRecord::Base #用户
                                 :location, :cellphone, :email,  :seeking_job).find_by_id(user_id)
   end
 
-  #判断是否填过简历
+  #判断是否填过简历 bobo
   def self.highest_degree(user_id)
     !User.find_by_id(user_id)[:highest_degree].nil?
   end

@@ -74,3 +74,9 @@ function clickRignt(ojb) {
   });
 }
 /* 模拟点击右上按钮 结束 bobo */
+
+/* notice 自动消失 开始 bobo */
+setTimeout(function() {
+    $('.alert').fadeOut();
+}, 1000);
+/* notice 自动消失 结束 bobo */

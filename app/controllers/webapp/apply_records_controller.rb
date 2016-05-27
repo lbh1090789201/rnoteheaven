@@ -1,11 +1,14 @@
+include Webapp::ApplyRecordsHelper
+
 class Webapp::ApplyRecordsController < ApplicationController
   before_action :authenticate_user!
   helper_method :apply_records_infos
+
   def index
-    @apply_records = ApplyRecord.select(:id, :resume_id, :job_id, :apply_at,
-    :resume_status, :recieve_at).all
-    puts 'bbbbbbbbbbb' + @apply_records.to_json.to_s
-    @hospitals = Hospital.all
+    job = Job.get_job_infos(1)
+    @data = get_date(current_user.id)
+    puts 'bbbbbbbbbbb' + @data.to_json.to_s
+
   end
 
   def show

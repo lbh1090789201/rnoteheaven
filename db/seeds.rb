@@ -1,13 +1,21 @@
 # Generated with RailsBricks
 # Initial seed file to use with Devise User Model
 
+<<<<<<< HEAD
 User.create!(
-    username: "testsss",
+    username: "test",
     show_name: "test",
     password: "123456",
-    email: "kkkkk@example.com",
+    email: "admin@example.com",
     cellphone: "13888888888",
     sex: "男"
+# User.create!(
+    # username: "test",
+    # show_name: "test",
+    # password: "123456",
+    # email: "admin@example.com",
+    # cellphone: "13888888888",
+    # sex: "男"
     #avatar",
     #provider",
     #tokens",
@@ -38,21 +46,21 @@ User.create!(
     #total_consumption",
     #user_type",
     #is_top",
-)
+# )
 
 
-# Test ApplyRecord :tw
-# i = 1
-# while i < 3 do
-#     ApplyRecord.create! ({
-#       resume_id: 1,
-#       job_id: 1,
-#       apply_at: "2016-5-26",
-#       resume_status: "筛选",
-#       recieve_at: "2016-5-27",
-#     })
-#   i += 1
-# end
+Test ApplyRecord :tw
+i = 1
+while i < 3 do
+    ApplyRecord.create! ({
+      resume_id: 1,
+      job_id: 1,
+      apply_at: "2016-5-26",
+      resume_status: "筛选",
+      recieve_at: "2016-5-27",
+    })
+  i += 1
+end
 
 # Test UserInfo :tw
 # i = 1
