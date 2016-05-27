@@ -4,12 +4,6 @@ class Webapp::SearchsController < ApplicationController
   def index
   end
 
-  def show
-  end
-
-  def create
-  end
-
   def update
   end
 
@@ -19,6 +13,6 @@ class Webapp::SearchsController < ApplicationController
   def edit
   end
 
-  def new
+  def search
   end
 end
