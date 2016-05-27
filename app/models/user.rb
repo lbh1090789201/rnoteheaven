@@ -29,10 +29,10 @@ class User < ActiveRecord::Base #用户
     end
   end
 
-  # for merchant
-  belongs_to :merchant
 
-      # Pagination
+
+
+  # Pagination
   paginates_per 100
 
   # Validations
@@ -94,29 +94,29 @@ class User < ActiveRecord::Base #用户
     :desc).limit(count).select("id","username","slug","last_sign_in_at")
   end
 
-  # def self.users_count
-  #   #where("admin = ? AND locked = ?",false,false).count
-  #   where("locked = ?",false).count
-  # end
+  #获取User基本信息 bobo
+  def self.get_user_main(user_id)
+    user = User.select(:id, :show_name, :sex, :highest_degree,:start_work_at, :birthday,
+                                :location, :cellphone, :email,  :seeking_job).find_by_id(user_id)
+  end
+
+  #判断是否填过简历
+  def self.highest_degree(user_id)
+    !User.find_by_id(user_id)[:highest_degree].nil?
+  end
+
+
 
   def admin?
     false
   end
 
-  # #check vcode and then set username, cellphone, email accordingly
-  # def verify_vcode_and_set_username! vcode
-  #   return false if !vcode || vcode == ''
-  #
-  #   return false unless ValidationCode.verify_vcode_effective? self.cellphone, vcode
-  #   # self.username = self.cellphone unless self.username && self.username != ""
-  #   # self.email = self.username+'@'+'luyun.com' unless self.email && self.email != ""
-  #   # self.show_name = self.cellphone unless self.show_name && self.show_name != ""
-  #   return true
-  #
-  # end
 
   def email_required?
     false
   end
+
+
+
 
 end

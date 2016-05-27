@@ -7,13 +7,16 @@ class Webapp::ResumesController < ApplicationController
   end
 
   def new
+    # @user = User.get_user_main(current_user.id)
   end
 
   def destroy
   end
 
   def show
-    
+    unless User.highest_degree(current_user.id)
+      redirect_to edit_webapp_user_path(current_user.id)
+    end
   end
 
   def edit

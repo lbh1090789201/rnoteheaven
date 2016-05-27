@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160526083331) do
   end
 
   create_table "expect_jobs", force: :cascade do |t|
+    t.integer  "user_id",               limit: 4
     t.string   "name",                  limit: 191
     t.string   "job_type",              limit: 191
     t.string   "location",              limit: 191
