@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 20160526083331) do
   end
 
   create_table "favorite_jobs", force: :cascade do |t|
-    t.integer  "user　_id",     limit: 4
-    t.integer  "job　_id",      limit: 4
+    t.integer  "user_id",      limit: 4
+    t.integer  "job_id",       limit: 4
     t.datetime "collected_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
