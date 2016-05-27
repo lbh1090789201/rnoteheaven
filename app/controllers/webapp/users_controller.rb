@@ -60,9 +60,11 @@ class Webapp::UsersController < ApplicationController
     user = User.find_by_id(current_user.id)
 
     if user.update(user_params)
-      redirect_to :back
+      redirect_to webapp_resume_path(current_user.id), notice: "修改成功"
+      return
     else
-
+      redirect_to :back, alert: "修改失败"
+      return
     end
   end
 

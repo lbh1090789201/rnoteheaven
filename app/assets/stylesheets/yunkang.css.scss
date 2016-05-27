@@ -48,6 +48,20 @@ html,
 body,
 #wrap {
   height: 100%;
+  .alert {
+  position: fixed;
+  top: 46px;
+  width: 98%;
+  margin-left: 1%;
+  }
+  // 右上角的按钮
+  .btn-right {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 46px;
+    opacity: 0;
+  }
 }
 header {
     padding-top: 0.01rem;
