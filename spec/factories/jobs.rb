@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :job do
+    id 1
     name "MyString"
     salary_range "MyString"
     location "MyString"
