@@ -6,7 +6,9 @@ RSpec.describe EducationExperience, type: :model do
    education_experience = build(:education_experience)
    assert education_experience.valid?
   end
-  describe "when " do
+  it "is valid with a college, education_degree, entry_at, graduated_at and major" do
+    education_experience = create(:education_experience)
+    expect(education_experience).to be_valid
 
   end
 end

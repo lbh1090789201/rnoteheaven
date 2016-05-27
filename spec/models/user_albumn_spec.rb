@@ -18,4 +18,12 @@ require 'rails_helper'
 #   end
 #
 #
+# RSpec.describe UserAlbumn, type: :model do
 # end
+RSpec.describe UserAlbumn, type: :model do
+  it "is valid to create UserAlbumn" do
+    # user_albumn = build(:user_albumn)
+    # expect(user_albumn).to be_valid
+
+  end
+end

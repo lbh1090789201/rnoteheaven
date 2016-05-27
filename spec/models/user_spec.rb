@@ -41,4 +41,7 @@ RSpec.describe User, :type => :model do
 		expect(create(:user2)).to be_valid
 	end
 
+
+
+
 end
