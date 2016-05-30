@@ -1,5 +1,6 @@
 module Webapp::ResumeViewsHelper
 
+
   def get_resume_views(user_id)
   #   拿谁看过我的简历数据
     resume_views = ResumeView.where(user_id: user_id )
@@ -15,4 +16,5 @@ module Webapp::ResumeViewsHelper
     end
     res
   end
+
 end
