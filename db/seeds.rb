@@ -1,47 +1,18 @@
 # Generated with RailsBricks
 # Initial seed file to use with Devise User Model
 
-# User.create!(
-    # username: "test",
-    # show_name: "test",
-    # password: "123456",
-    # email: "admin@example.com",
-    # cellphone: "13888888888",
-    # sex: "男"
-    #avatar",
-    #provider",
-    #tokens",
-    #encrypted_password",
-    #locked",
-    #slug",
-    #reset_password_token",
-    #reset_password_sent_at"
-    #remember_created_at"
-    #sign_in_count",
-    #current_sign_in_at"
-    #last_sign_in_at"
-    #current_sign_in_ip",
-    #last_sign_in_ip",
-    #confirmation_token",
-    #confirmed_at"
-    #confirmation_sent_at"
-    #unconfirmed_email",
-    #main_video",
-    #user_number",
-    #wechat_openid",
-    #vcode",
-    #update_vcode_time",
-    #transaction_password",
-    #longitude",
-    #latitude",
-    #balance",
-    #total_consumption",
-    #user_type",
-    #is_top",
-# )
+User.create!(
+    username: "test",
+    show_name: "test",
+    password: "123456",
+    email: "admin@example.com",
+    cellphone: "13888888778",
+    sex: "男"
+)
 
 
 # Test ApplyRecord :tw
+
 i = 1
 while i < 2 do
     ApplyRecord.create! ({
@@ -54,6 +25,8 @@ while i < 2 do
     })
   i += 1
 end
+
+
 
 # Test Job :tw
 i = 1
@@ -87,5 +60,23 @@ end
 #     :verification_status => '审核通过',
 #     :unpass_reason => '照片不合法'
 #     })
+#   i += 1
+# end
+
+# test FavoriteJob bh
+
+# Job.create! ({
+#    name: "全职护士",
+#    salary_range: "4000-6000",
+#    location: "广州白云区"
+# })
+#
+# i = 1
+# while i < 5 do
+#   FavoriteJob.create! ({
+#     user_id: 1,
+#     job_id: i,
+#     collected_at: "2016-11-11"
+#   })
 #   i += 1
 # end

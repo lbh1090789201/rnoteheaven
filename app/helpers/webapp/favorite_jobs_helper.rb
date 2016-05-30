@@ -1,4 +1,5 @@
 module Webapp::FavoriteJobsHelper
+
   # 获取数据
   def get_favorite_jobs(user_id)
     ars = FavoriteJob.where(user_id: user_id)
