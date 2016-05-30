@@ -6,11 +6,11 @@ module Webapp::ResumeViewsHelper
     resume_views = ResumeView.where(user_id: user_id )
     res = []
     resume_views.each do |r|
-      hospital = Hospital.find(r.hospital_id)
+      hospital = Hospital.find_by_id r.hospital_id
       o = {
-          name:hospital.name,
-          view_at:r.view_at,
-          scale:hospital.scale
+          hospital_name:hospital.name,
+          view_at:r.view_at.strftime("%y-%m-%d %H:%M:%S"),
+          # scale:hospital.scale
       }
       res.push(o)
     end

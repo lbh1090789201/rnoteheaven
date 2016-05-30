@@ -3,7 +3,11 @@
 <div class="search-box">
   <div class="box">
     <a href="" class="left">成都</a>
-    <input type="text" class="right" placeholder="搜索职位/医院"/>
+
+    <%= form_tag webapp_searchs_path, method: :get do %>
+        <%= text_field :search,  nil, id: 'search', class: "right", placeholder: "搜索职位/医院" %>
+        <%= button_tag "搜索", class: "btn btn-success btn-order", value: "search" %>
+    <% end %>
     <div style="clear:both"></div>
   </div>
 </div>
@@ -25,80 +29,83 @@
     </ul>
   </div>
 </div>
+
 <div class="jobs">
   <div class="jobs-list">
+    <% @jobs.each do |f| %>
     <div class="job">
       <div class="title">
-        <div class="left">儿科护士</div>
-        <div class="right">4000-5000/月</div>
+        <div class="left"><%= f.name %></div>
+        <div class="right"><%= f.salary_range %>/月</div>
         <div style="clear:both"></div>
       </div>
       <div class="detail">
         <div class="left">荔湾区人民医院</div>
-        <div class="right">广州市白云区</div>
+        <div class="right"><%= f.location %>市白云区</div>
         <div style="clear:both"></div>
       </div>
     </div>
-    <div class="job">
-      <div class="title">
-        <div class="left">儿科护士</div>
-        <div class="right">4000-5000/月</div>
-        <div style="clear:both"></div>
-      </div>
-      <div class="detail">
-        <div class="left">荔湾区人民医院</div>
-        <div class="right">广州市白云区</div>
-        <div style="clear:both"></div>
-      </div>
-    </div>
-    <div class="job">
-      <div class="title">
-        <div class="left">儿科护士</div>
-        <div class="right">4000-5000/月</div>
-        <div style="clear:both"></div>
-      </div>
-      <div class="detail">
-        <div class="left">荔湾区人民医院</div>
-        <div class="right">广州市白云区</div>
-        <div style="clear:both"></div>
-      </div>
-    </div>
-    <div class="job">
-      <div class="title">
-        <div class="left">儿科护士</div>
-        <div class="right">4000-5000/月</div>
-        <div style="clear:both"></div>
-      </div>
-      <div class="detail">
-        <div class="left">荔湾区人民医院</div>
-        <div class="right">广州市白云区</div>
-        <div style="clear:both"></div>
-      </div>
-    </div>
-    <div class="job">
-      <div class="title">
-        <div class="left">儿科护士</div>
-        <div class="right">4000-5000/月</div>
-        <div style="clear:both"></div>
-      </div>
-      <div class="detail">
-        <div class="left">荔湾区人民医院</div>
-        <div class="right">广州市白云区</div>
-        <div style="clear:both"></div>
-      </div>
-    </div>
-    <div class="job">
-      <div class="title">
-        <div class="left">儿科护士</div>
-        <div class="right">4000-5000/月</div>
-        <div style="clear:both"></div>
-      </div>
-      <div class="detail">
-        <div class="left">荔湾区人民医院</div>
-        <div class="right">广州市白云区</div>
-        <div style="clear:both"></div>
-      </div>
-    </div>
+    <% end %>
+    <!--<div class="job">-->
+      <!--<div class="title">-->
+        <!--<div class="left">儿科护士</div>-->
+        <!--<div class="right">4000-5000/月</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+      <!--<div class="detail">-->
+        <!--<div class="left">荔湾区人民医院</div>-->
+        <!--<div class="right">广州市白云区</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="job">-->
+      <!--<div class="title">-->
+        <!--<div class="left">儿科护士</div>-->
+        <!--<div class="right">4000-5000/月</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+      <!--<div class="detail">-->
+        <!--<div class="left">荔湾区人民医院</div>-->
+        <!--<div class="right">广州市白云区</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="job">-->
+      <!--<div class="title">-->
+        <!--<div class="left">儿科护士</div>-->
+        <!--<div class="right">4000-5000/月</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+      <!--<div class="detail">-->
+        <!--<div class="left">荔湾区人民医院</div>-->
+        <!--<div class="right">广州市白云区</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="job">-->
+      <!--<div class="title">-->
+        <!--<div class="left">儿科护士</div>-->
+        <!--<div class="right">4000-5000/月</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+      <!--<div class="detail">-->
+        <!--<div class="left">荔湾区人民医院</div>-->
+        <!--<div class="right">广州市白云区</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="job">-->
+      <!--<div class="title">-->
+        <!--<div class="left">儿科护士</div>-->
+        <!--<div class="right">4000-5000/月</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+      <!--<div class="detail">-->
+        <!--<div class="left">荔湾区人民医院</div>-->
+        <!--<div class="right">广州市白云区</div>-->
+        <!--<div style="clear:both"></div>-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
 </div>
 <script>
