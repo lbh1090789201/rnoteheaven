@@ -765,6 +765,12 @@ header {
     .tab {
       clear: both;
       .tab-all {
+        .content {
+          display: none;
+        }
+        .active {
+          display: block;
+        }
         a {
           &:active,&:hover {
             color: black;

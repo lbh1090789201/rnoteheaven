@@ -20,10 +20,12 @@ RSpec.describe Webapp::ApplyRecordsController, type: :controller do
 
   describe 'GET #show' do
     it 'returns http success' do
-      get :show, id: @user.id
+      get :show
       expect(response.status).to eq(200)
     end
   end
+
+  
 
   # describe "GET #show" do
   #   it "returns http success" do
