@@ -13,7 +13,7 @@ module Webapp::ApplyRecordsHelper
         job_name: job.name,
         salary_range: job.salary_range,
         location: job.location,
-        resume_status: ar.resume_status
+        resume_status: ar.resume_status,
       }
 
       apply_records.push(a)

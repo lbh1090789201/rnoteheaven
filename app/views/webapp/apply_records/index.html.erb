@@ -18,39 +18,103 @@
     <div class="nav">
         <div class="tab">
             <ul class="tab-all">
-                <a href="/webapp/apply_records/show/">
+              <div class="content active">
+                <% @data.each do |d| %>
+                  <% if d[:resume_status]%>
+                  <a href="/webapp/apply_records/show/" class="">
                     <li>
+                      <div class="left">
+                        <h3><%= d[:job_name] %></h3>
+                        <p><%= d[:name] %> | <%= d[:salary_range] %></p>
+                        <p><%= d[:location] %></p>
+                      </div>
+                      <div class="right">
+                        <h3><%= d[:salary_range] %></h3>
+                        <p><%= d[:resume_status] %></p>
+                      </div>
+                    </li>
+                  </a>
+                  <% end %>
+                <% end  %>
+              </div>
+
+              <div class="content">
+                <% @data.each do |d| %>
+                  <% if d[:resume_status]=="筛选" %>
+                    <a href="/webapp/apply_records/show/">
+                      <li>
                         <div class="left">
-                            <h3>全科医生</h3>
-                            <p>2016-03-22 | 广州</p>
-                            <p>广州市XXXXXX社区医疗中心</p>
+                          <h3><%= d[:job_name] %></h3>
+                          <p><%= d[:name] %> | <%= d[:salary_range] %></p>
+                          <p><%= d[:location] %></p>
                         </div>
                         <div class="right">
-                            <h3>6000-10000</h3>
-                            <p>筛选中</p>
+                          <h3><%= d[:salary_range] %></h3>
+                          <p><%= d[:resume_status] %></p>
                         </div>
-                    </li>
-                </a>
-                <a href="/webapp/apply_records/show/">
-                    <li>
+                      </li>
+                    </a>
+                  <% end %>
+                <% end  %>
+              </div>
+
+              <div class="content">
+                <% @data.each do |d| %>
+                  <% if d[:resume_status]=="面试" %>
+                    <a href="/webapp/apply_records/show/">
+                      <li>
                         <div class="left">
-                            <h3>全科医生</h3>
-                            <p>2016-03-22 | 广州</p>
-                            <p>广州市XXXXXX社区医疗中心</p>
+                          <h3><%= d[:job_name] %></h3>
+                          <p><%= d[:name] %> | <%= d[:salary_range] %></p>
+                          <p><%= d[:location] %></p>
                         </div>
                         <div class="right">
-                            <h3>6000-10000</h3>
-                            <p>不合适</p>
+                          <h3><%= d[:salary_range] %></h3>
+                          <p><%= d[:resume_status] %></p>
                         </div>
-                    </li>
-                </a>
+                      </li>
+                    </a>
+                  <% end %>
+                <% end  %>
+              </div>
+
+              <div class="content">
+                <% @data.each do |d| %>
+                  <% if d[:resume_status]=="不合适" %>
+                    <a href="/webapp/apply_records/show/">
+                      <li>
+                        <div class="left">
+                          <h3><%= d[:job_name] %></h3>
+                          <p><%= d[:name] %> | <%= d[:salary_range] %></p>
+                          <p><%= d[:location] %></p>
+                        </div>
+                        <div class="right">
+                          <h3><%= d[:salary_range] %></h3>
+                          <p><%= d[:resume_status] %></p>
+                        </div>
+                      </li>
+                    </a>
+                  <% end %>
+                <% end  %>
+              </div>
+
             </ul>
         </div>
     </div>
 </div>
 <script type="text/javascript">
+// $('.nav a').click(function(){
+//     $(this).siblings().removeClass('active').addClass('active');
+// });
   $('.apply_records li').click(function(event) {
-    $(this).addClass('active');
-    $(this).siblings().removeClass('active');
+    $(this).addClass('active show');
+    $(this).siblings().removeClass('active show');
+
+
+    var index = $(this).index();
+    console.log($('content').eq(index));
+
+    $('.content').eq(index).show().addClass('active').siblings().removeClass('active').hide();
   });
+
 </script>

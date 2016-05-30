@@ -6,7 +6,7 @@ class Webapp::ApplyRecordsController < ApplicationController
 
   def index
 
-    # @data = get_date(current_user.id)
+    @data = get_apply_records(current_user.id)
     puts 'bbbbbbbbbbb' + @data.to_json.to_s
 
   end
