@@ -5,10 +5,7 @@ class Webapp::ApplyRecordsController < ApplicationController
   helper_method :apply_records_infos
 
   def index
-
     @data = get_apply_records(current_user.id)
-    puts 'bbbbbbbbbbb' + @data.to_json.to_s
-
   end
 
   def show

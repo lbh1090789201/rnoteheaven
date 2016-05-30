@@ -1,9 +1,4 @@
 Ryunkang::Application.routes.draw do
-
-  namespace :webapp do
-  get 'favorite_jobs/index'
-  end
-
   # This line mounts Refinery's routes at the root of your application.
   # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.
   # If you would like to change where this extension is mounted, simply change the
@@ -70,7 +65,8 @@ Ryunkang::Application.routes.draw do
 
      get 'apply_records/index'
      get 'apply_records/show'
-     get 'favorite_jobs/index'
+
+     resources :favorite_jobs, :only => [:index]
 
      end
    ########### yunkang end ###########
