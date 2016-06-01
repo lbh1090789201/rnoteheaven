@@ -9,7 +9,7 @@ RSpec.describe Webapp::ApplyRecordsHelper, type: :helper do
     job = create(:job)
     job2 = create(:job2)
 
-    res = get_apply_records(1)
+    res = get_apply_records(2)
     expect(res.size).to eq 2
 
   end

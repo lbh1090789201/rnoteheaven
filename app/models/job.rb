@@ -2,17 +2,15 @@ class Job < ActiveRecord::Base
   belongs_to :hospital
 
   # 按城市搜索
-  scope :location, -> (location) {
-    where(:location => location)
+  scope :filter_location, -> (location) {
+    filter = "location like '%" + location + "%'" if location.present?
+    where(filter) if location.present?
   }
 
   # 按职位
-  scope :position_name, -> (name) {
-    where(:name => name)
+  scope :filter_job_name, -> (name) {
+    filter = "name like '%" + name + "%'" if name.present?
+    where(filter) if name.present?
   }
 
-  #按医院
-  scope :hospital_name, -> (name) {
-    where(:name => name)
-  }
 end
