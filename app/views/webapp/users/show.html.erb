@@ -1,6 +1,7 @@
 <% provide :title, "我的" %>
 <div class="main user-first-page">
   <div class="user-info">
+    <a href="/webapp/resumes/<%= current_user.id %>" class="hidden">
     <div class="user-info-list">
       <div class="avatar">
         <%= image_tag "avator2.png"  %>
@@ -13,6 +14,8 @@
       <span class="info-major">离职,正在找工作</span>
       <%= image_tag "right2.png"  %>
     </div>
+    </a>
+
   </div>
 
   <div class="resumes-info-list">

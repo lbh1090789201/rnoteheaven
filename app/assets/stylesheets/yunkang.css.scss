@@ -494,6 +494,11 @@ header {
     height: 12.83rem;
     width: 20.8rem;
     background-color: rgb(15, 149, 145);
+    .hidden {
+      display: block;
+      position: absolute;
+      top: 10px;
+    }
     .user-info-list {
       margin: 0 auto;
       width: 15rem;
