@@ -12,7 +12,7 @@ RSpec.describe Webapp::ResumeViewsController, type: :controller do
 
   describe 'GET #index' do
     it 'returns http success' do
-      get :index
+      get :index, format: :html
       expect(response.status).to eq(200)
     end
   end

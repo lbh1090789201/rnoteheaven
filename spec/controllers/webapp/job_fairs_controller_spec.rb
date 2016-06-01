@@ -28,11 +28,10 @@ RSpec.describe Webapp::JobFairsController, type: :controller do
   # describe 'POST #create' do
   #   context 'when sex is invalid' do
   #     it 'renders the page with error' do
-  #       user = create(:user)
   #
-  #       post :create, session: { id: user.id, sex: '女' }
+  #       post :create, session: { id: @user.id, sex: '女' }, format: :html
   #
-  #       expect(response).to render_template(:show, user.id)
+  #       expect(response).to render_template(:show, @user.id)
   #       expect(flash[:notice]).to match(/^Email and password do not match/)
   #     end
   #   end

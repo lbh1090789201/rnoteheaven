@@ -1,6 +1,6 @@
 # Generated with RailsBricks
 # Initial seed file to use with Devise User Model
-
+#
 User.create!(
     username: "test",
     show_name: "test",
@@ -43,6 +43,21 @@ while i < 3 do
     })
   i += 1
 end
+
+# Test FavoriteJob :bh
+
+i = 1
+while i < 4 do
+  FavoriteJob.create!({
+     user_id: 1,
+     job_id: i,
+     collected_at: "2016-05-25 17:56:53"
+  })
+  i += 1
+end
+
+
+
 
 # Test UserInfo :tw
 # i = 1
