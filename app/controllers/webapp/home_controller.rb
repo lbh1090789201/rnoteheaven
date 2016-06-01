@@ -12,7 +12,7 @@ class Webapp::HomeController < ApplicationController
     end
 
     #搜索城市和医院
-    if filter[:city] && filter[:search] && !filter[:search].blank?
+    if filter[:city] && filter[:search]
       job_careers = Job.filter_location(filter[:city]).filter_job_name(filter[:search])
       hospitals = Hospital.filter_location(filter[:city]).filter_hospital_name(filter[:search])
       @jobs = []
@@ -30,7 +30,19 @@ class Webapp::HomeController < ApplicationController
       end
     end
 
-    puts "....."+@jobs.to_json.to_s
-    return @jobs
+      @arjob = []
+      @jobs.each do |r|
+        hospital = Hospital.find_by_id r.hospital_id
+        o = {
+          id: r.id,
+          job_name: r.name,
+          salary_range: r.salary_range,
+          location: r.location,
+          hospital_name: hospital.name
+        }
+        @arjob.push(o)
+      end
+    # puts "....."+@arjob.to_json.to_s
+    return @arjob
   end
 end

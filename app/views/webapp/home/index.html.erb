@@ -7,7 +7,7 @@
     <form id="myform" name="filter" method="get" action="/webapp/home">
       <input class="left" type="text" name="city" placeholder="城市" />
       <input id="search" class="right" type="text" name="search" placeholder="搜索职位/医院" />
-      <input id="submit" class="btn btn-success btn-order" type="submit" value="搜索"/>
+      <input id="submit" class="btn btn-success btn-order" type="submit" value="搜索" style="display:none"/>
     </form>
 
     <div style="clear:both"></div>
@@ -34,19 +34,21 @@
 
 <div class="jobs">
   <div class="jobs-list">
-　　<% @jobs.each do |j| %>
+　　<% @arjob.each do |j| %>
+    <a href="jobs/<%= j[:id] %>">
     <div class="job">
     <div class="title">
-    <div class="left"><%= j.name %></div>
-    <div class="right"><%= j.salary_range %>/月</div>
+    <div class="left"><%= j[:job_name] %></div>
+    <div class="right"><%= j[:salary_range] %>/月</div>
     <div style="clear:both"></div>
     </div>
     <div class="detail">
-    <div class="left">荔湾区人民医院</div>
-    <div class="right"><%= j.location %>市白云区</div>
+    <div class="left"><%= j[:hospital_name] %></div>
+    <div class="right"><%= j[:location] %>市白云区</div>
     <div style="clear:both"></div>
     </div>
     </div>
+    </a>
     <% end %>
 
     <!--<div class="job">-->

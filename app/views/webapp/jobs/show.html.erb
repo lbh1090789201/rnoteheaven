@@ -1,7 +1,9 @@
 <div class="job-head">
   <div>
     <%= link_to "职位详情", webapp_job_path, class: "job-page" %>
-    <%= link_to "医院详情", webapp_resume_views_show_path, class: "hospital-page" %>
+
+    <a href="../resume_views/<%= @job.hospital_id %>" class="hospital-page">医院详情</a>
+
   </div>
 </div>
 
