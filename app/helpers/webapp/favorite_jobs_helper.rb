@@ -7,6 +7,7 @@ module Webapp::FavoriteJobsHelper
       job = Job.find_by_id a.job_id
       if job
       o = {
+          job_id:job.id,
           job_name:job.name,
           salary_range:job.salary_range,
           location:job.location,
@@ -16,5 +17,4 @@ module Webapp::FavoriteJobsHelper
       end
     favorite_jobs
   end
-
 end

@@ -8,6 +8,7 @@ module Webapp::ResumeViewsHelper
     resume_views.each do |r|
       hospital = Hospital.find_by_id r.hospital_id
       o = {
+          hospital_id:r.hospital_id,
           hospital_name:hospital.name,
           view_at:r.view_at.strftime("%y-%m-%d %H:%M:%S"),
           # scale:hospital.scale

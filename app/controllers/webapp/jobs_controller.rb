@@ -4,11 +4,12 @@ class Webapp::JobsController < ApplicationController
    end
 
    def show
+     @job = Job.find_by_id(params[:id])
    end
 
    # private
    # def job_params
    #   params.require(:job).permit(:name, :job_type, :salary_range, :location)
    # end
-  
+
 end

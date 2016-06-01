@@ -2,7 +2,7 @@
 <div class="jobs">
   <div class="jobs-list">
     <% @favorite_jobs.each do |f| %>
-    <a href="/webapp/jobs/<%= current_user.id %>">
+    <a href="/webapp/jobs/<%= f[:job_id] %>">
       <div class="job">
         <div class="title">
           <div class="left"><%= f[:job_name] %></div>

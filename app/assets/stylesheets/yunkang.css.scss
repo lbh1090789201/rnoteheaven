@@ -130,6 +130,9 @@ header {
   .jobs-list {
     width: 19.08rem;
     margin: 0 auto;
+    a {
+      display: block;
+    }
     .job {
       border-bottom: 1px solid rgb(194,194,194);
       padding-top: 0.85rem;
@@ -494,9 +497,9 @@ header {
     height: 12.83rem;
     width: 20.8rem;
     background-color: rgb(15, 149, 145);
-    .hidden {
+    .user-hidden {
       display: block;
-      position: absolute;
+      // position: absolute;
       top: 10px;
     }
     .user-info-list {
