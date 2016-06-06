@@ -57,9 +57,11 @@ class Webapp::UsersController < ApplicationController
   end
 
   def update
-    user = User.find_by_id(current_user.id)
+    @user = User.find_by_id(current_user.id)
 
-    if user.update(user_params)
+
+    if @user.update(user_params)
+      puts "...."+@user.to_json.to_s
       redirect_to webapp_resume_path(current_user.id), notice: "修改成功"
       return
     else
@@ -72,7 +74,7 @@ class Webapp::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:show_name, :sex, :work_time, :highest_degree,
+    params.require(:user).permit(:show_name, :sex, :work_time, :highest_degree, :start_work_at, :seeking_job,
                                  :cellphone, :email, :location, :job_status)
   end
 
