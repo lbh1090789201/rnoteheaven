@@ -68,6 +68,7 @@ Ryunkang::Application.routes.draw do
     #  get 'apply_records/index'
     #  get 'apply_records/show'
 
+
     #  get 'home/index'
 
      resources :favorite_jobs, :only => [:index]
