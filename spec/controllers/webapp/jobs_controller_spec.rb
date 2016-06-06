@@ -11,18 +11,21 @@ RSpec.describe Webapp::JobsController, type: :controller do
   end
 
   # 页面测试开始
-  describe 'get #index' do
+  describe 'get #index #show' do
+    before :each do
+      @job = create :job
+    end
+
     it 'returns http success' do
-      get :index
+      get :index, format: :html
       expect(response.status).to eq(200)
     end
   end
 
-  describe 'GET #show' do
     it 'returns http success' do
-      get :show, id: @user.id
+      get :show, id: @job.id, format: :html
       expect(response.status).to eq(200)
     end
-  end
+
 
 end

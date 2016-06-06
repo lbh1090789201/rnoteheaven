@@ -11,16 +11,19 @@ RSpec.describe Webapp::ApplyRecordsController, type: :controller do
   end
 
   # 页面测试开始
-  describe 'GET #index' do
+
+  describe 'test #index #show ... ' do
+    before :each do
+      @apply_record = create :apply_record
+    end
+
     it 'returns http success' do
-      get :index
+      get :index, format: :html
       expect(response.status).to eq(200)
     end
-  end
 
-  describe 'GET #show' do
     it 'returns http success' do
-      get :show
+      get :show, id: @apply_record.id, format: :html
       expect(response.status).to eq(200)
     end
   end
