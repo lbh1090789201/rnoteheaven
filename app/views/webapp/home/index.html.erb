@@ -40,7 +40,7 @@
     <div class="job">
     <div class="title">
     <div class="left"><%= j[:job_name] %></div>
-    <div class="right"><%= j[:salary_range] %>/月</div>
+    <div class="right right-range"><%= j[:salary_range] %>/月</div>
     <div style="clear:both"></div>
     </div>
     <div class="detail">
@@ -51,6 +51,10 @@
     </div>
     </a>
     <% end %>
+
+    <div id="show-me">
+      <%= image_tag "showme.png", class: "img-size" %>
+    </div>
 
     <!--<div class="job">-->
     <!--<div class="title">-->
@@ -105,20 +109,21 @@
 <script>
 
 
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if(event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
-            /*隐藏软键盘*/
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            if(inputMethodManager.isActive()){
-                inputMethodManager.hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
-            }
+//    public boolean dispatchKeyEvent(KeyEvent event) {
+//        if(event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
+//            /*隐藏软键盘*/
+//            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//            if(inputMethodManager.isActive()){
+//                inputMethodManager.hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
+//            }
+//
+//            edittext.setText("success");
+//            webview.loadUrl(URL);
+//            return true;
+//        }
+//        return super.dispatchKeyEvent(event);
+//    }
 
-            edittext.setText("success");
-            webview.loadUrl(URL);
-            return true;
-        }
-        return super.dispatchKeyEvent(event);
-    }
 
 
 </script>

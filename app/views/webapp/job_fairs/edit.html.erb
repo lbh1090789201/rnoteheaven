@@ -1,4 +1,4 @@
-<% provide :link, webapp_job_fair_path(:id) %>
+<% provide :link, webapp_job_fair_path(current_user.id) %>
 <% provide :title, "编辑期望工作" %>
 <% provide :content, "保存" %>
 
@@ -9,10 +9,6 @@
       <%= f.input :name, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
       <%= f.input :name, label: '期望薪水', input_html: { class: "job-fair", value: "5K~6K"} %>
       <%= f.input :name, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
-
-
-      <%= f.button :button, '撤销', class: "btn-del" %>
-      <%= f.button :submit, '保存',  class: "btn-save" %>
     <% end %>
 </div>
 

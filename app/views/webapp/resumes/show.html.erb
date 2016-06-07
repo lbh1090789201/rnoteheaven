@@ -1,5 +1,6 @@
-<% provide :link, "/users/index"  %>
 <% provide :title, "我的简历" %>
+<% provide :link, "#{current_user.id}/preview" %>
+<%= provide :content, "预览" %>
 <div class="container resume-show">
     <div class="wrap">
 
@@ -22,9 +23,6 @@
             <h2>基本信息<span>必填</span>
             </h2>
             <div class="box">
-                <a href=" <%= edit_webapp_user_path %>  " class="edit">
-                    <%= image_tag "pencil3.png" %>编辑
-                </a>
                 <table>
                     <tr>
                         <td>姓名：</td>
@@ -71,7 +69,7 @@
             <h2>工作经历<span>必填</span>
             </h2>
             <div class="box">
-                <a href="<%= webapp_work_experiences_path %>" class="edit">
+                <a href="<%= webapp_work_experience_path(current_user.id) %>" class="edit">
                     <%= image_tag "pencil3.png" %>编辑
                 </a>
                 <time>2015.01-2016.01</time>
@@ -91,7 +89,7 @@
             <h2>教育经历<span>必填</span>
             </h2>
             <div class="box">
-                <a href="/webapp/education_experiences/:id" class="edit">
+                <a href="/webapp/education_experiences/<%= current_user.id %>" class="edit">
                     <%= image_tag "pencil3.png" %>编辑
                 </a>
                 <time>2016年毕业</time>
@@ -110,7 +108,7 @@
             <h2>期望工作<span>必填</span>
             </h2>
             <div class="box">
-                <a href="<%= webapp_job_fair_path(:id) %>" class="edit">
+                <a href="<%= webapp_job_fair_path(current_user.id) %>" class="edit">
                     <%= image_tag "pencil3.png" %>编辑
                 </a>
                 <h3>护士</h3>

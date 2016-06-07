@@ -1,5 +1,6 @@
-<% provide :link, "/webapp/resumes/show"  %>
+<% provide :link, "/webapp/resumes/#{current_user.id}"  %>
 <% provide :title, "编辑工作经历" %>
+<% provide :content, "保存" %>
 
 <div class="edit_basic edit-work-experiences">
     <%= simple_form_for :user_info, url: webapp_search_path(params[:id]) do |f| %>
@@ -9,9 +10,6 @@
       <%= f.input :left_time, label: '离职时间', input_html: { class: "user-input"} %>
       <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
 
-
-      <%= f.button :button, '删除此经历', class: "btn-del" %>
-      <%= f.button :submit, '保存',  class: "btn-save" %>
     <% end %>
 </div>
 

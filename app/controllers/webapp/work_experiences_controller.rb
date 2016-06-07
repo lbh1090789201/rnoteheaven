@@ -2,8 +2,7 @@ class Webapp::WorkExperiencesController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
 
   def index
-    @work_experiences = WorkExperience.where(:user_id => current_user.id)
-    # puts "........."+@work_experiences.to_json.to_s
+
   end
 
   def new
@@ -24,6 +23,8 @@ class Webapp::WorkExperiencesController < ApplicationController
   end
 
   def show
+    @work_experiences = WorkExperience.where(:user_id => current_user.id)
+    # puts "........."+@work_experiences.to_json.to_s
   end
 
   def edit

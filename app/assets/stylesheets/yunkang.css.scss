@@ -109,7 +109,7 @@ a:hover {
       width: 4.58rem;
       height: 1.62rem;
       float: left;
-      border: 1px solid rgb(198,198,198);
+      border: 1px solid #E3E3E3;
       line-height: 1.62rem;
       background: white;
       border-radius: 0.2rem;
@@ -123,7 +123,7 @@ a:hover {
       line-height: 1.62rem;
       width: 14.72rem;
       border-radius: 0.2rem;
-      border: 1px solid rgb(198,198,198);
+      border: 1px solid #E3E3E3;
       color: rgb(193,193,193);
       padding-left: 1.92rem;
     }
@@ -132,23 +132,27 @@ a:hover {
 .jobs {
   .jobs-list {
     width: 19.08rem;
-    margin: 0 auto;
+    margin: -0.9rem auto 0 auto;
+    font-size: 0.63rem;
     a {
       display: block;
     }
     .job {
-      border-bottom: 1px solid rgb(194,194,194);
-      padding-top: 0.85rem;
+      border-bottom: 1px solid #e3e3e3;
+      padding-top: 0.5rem;
+      padding-bottom: 0.2rem;
       .left {
         float: left;
       }
       .right {
         float: right;
       }
+      .right-range {
+        margin-top: 0.2rem;
+      }
       .title {
         .left {
-          font-size: 0.85rem;
-          font-weight: bold;
+          font-size: 0.9rem;
         }
         .right {
           color: rgb(255,162,0);
@@ -156,7 +160,7 @@ a:hover {
       }
       .detail {
         color: rgb(195,195,195);
-        line-height: 1.9rem;
+        line-height: 1.07rem;
       }
     }
   }
@@ -170,7 +174,26 @@ a:hover {
   margin:auto;
   bottom:10.7em;
 }
-
+.pro-switch {
+  height: 5.95rem;
+  width: 100%;
+  overflow: hidden;
+  img {
+    height: 5.95rem;
+  }
+}
+#show-me {
+  width: 3.08rem;
+  height: 3.08rem;
+  position: fixed;
+  bottom: 2.5rem;
+  right: 1rem;
+  overflow: hidden;
+  .img-size {
+    width: 3.08rem;
+    height: 3.08rem;
+  }
+}
 /*搜索首页结束*/
 @media only screen and  ( min-width: 374px ) {
     html  {
@@ -499,7 +522,9 @@ a:hover {
     margin: 0 auto;
     height: 12.83rem;
     width: 20.8rem;
-    background-color: rgb(15, 149, 145);
+    background: url(resumes_bg.png);
+    background-size: 20.8rem 12.83rem;
+
     .user-hidden {
       display: block;
       // position: absolute;
@@ -511,7 +536,7 @@ a:hover {
       height: 100%;
       text-align: center;
       padding-top: 2.3rem;
-
+      color: #fff;
       .avatar {
         img {
           width: 3.85rem;
@@ -542,8 +567,9 @@ a:hover {
         height: 1.45rem;
         line-height: 1.45rem;
         text-align: center;
-        color: #1f1c1e;
+        color: #6a6a6a;
         border-radius: 1rem;
+        font-size: 0.66rem;
       }
       img {
         display: inline-block;
@@ -1148,9 +1174,10 @@ a:hover {
       height: 1.4rem;
       background: #fff;
       color: #3f9e9f;
-      border: 2px solid #fff;
+      border: 1px solid #fff;
       float: left;
       text-decoration: none;
+      text-align: center;
     }
     .hospital-page {
       display: block;
@@ -1158,23 +1185,23 @@ a:hover {
       height: 1.4rem;
       background: #3f9e9f;
       color: #fff;
-      border: 2px solid #fff;
+      border: 1px solid #fff;
       float: left;
       cursor: pointer;
       text-decoration: none;
+      text-align: center;
     }
   }
 }
 
 #job-detail {
   width: 100%;
-  background: #f3f3f3;
+  background: #DCDCDC;
   section {
     width: 100%;
     background: #efefef;
     .job-introduce {
       padding: 0.92rem 0 0 1.02rem;
-      border-bottom: 1px solid #cfcfcf;
       h3 {
         margin: 0;
         font-size: 0.87rem;
@@ -1182,7 +1209,7 @@ a:hover {
       p {
         font-size: 0.7rem;
         color: #ff8b00;
-        margin-top: 0.72rem;
+        padding-top: 0.5rem;
       }
       ul {
         list-style: none;
@@ -1202,19 +1229,33 @@ a:hover {
             margin-left: 4.3rem;
           }
         }
-        .job-place {
-          margin-top: 2rem;
-          a {
-            color: #424242;
-            text-decoration: none;
-            i {
-              margin-left: 4.85rem;
-            }
+      }
+    }
+    .job-place {
+      margin-top: 2rem;
+      line-height: 2.32rem;
+      border-top: 1px solid #dcdcdc;
+      border-bottom: 1px solid #cfcfcf;
+      text-indent: 1.02rem;
+      font-size: 0.7rem;
+      a {
+        color: #424242;
+        text-decoration: none;
+        span {
+          color: #9b9b9b;
+          margin-right: 0.75rem;
+        }
+        i {
+          margin-left: 4.85rem;
+          img {
+            width: 0.33rem;
+            height: 0.58rem;
           }
         }
       }
     }
   }
+
   .job-right {
     margin-top: 0.62rem;
     border-top: 1px solid #cfcfcf;
@@ -1222,7 +1263,7 @@ a:hover {
   .job-descripte {
     width: 18.67rem;
     padding-top: 0.65rem;
-    padding-bottom: 3rem;
+    padding-bottom: 6rem;
     font-size: 0.7rem;
     padding-left: 1.02rem;
     h2 {
@@ -1254,7 +1295,7 @@ a:hover {
   position: fixed;
   bottom: 0;
   left: 0;
-  background: #f3f3f3;
+  background: #DCDCDC;
   li {
     width: 33.33%;
 
@@ -1449,7 +1490,7 @@ a:hover {
         margin-left: 0.4rem;
       }
       .position-detail {
-        width: 16.6rem;
+        width: 100%;
         height: 6rem;
         float: left;
         text-indent: 0.3rem;
@@ -1458,14 +1499,14 @@ a:hover {
           font-size: 0.93rem;
           span {
             color: #ff7d01;
-            margin-left: 9.6rem;
+            margin-left: 12.6rem;
           }
         }
         p {
           color: #9e9e9e;
           font-size: 0.7rem;
           span {
-            margin-left: 9.3rem;
+            margin-left: 12rem;
           }
         }
       }

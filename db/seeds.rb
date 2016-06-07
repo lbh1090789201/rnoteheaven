@@ -1,14 +1,14 @@
 # Generated with RailsBricks
 # Initial seed file to use with Devise User Model
 #
-# User.create!(
-#     username: "test",
-#     show_name: "test",
-#     password: "123456",
-#     email: "admin@example.com",
-#     cellphone: "13888888778",
-#     sex: "男"
-# )
+User.create!(
+    username: "test",
+    show_name: "test",
+    password: "123456",
+    email: "admin@example.com",
+    cellphone: "13888888778",
+    sex: "男"
+)
 
 
 # Test ApplyRecord :tw
