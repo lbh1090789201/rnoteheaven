@@ -1,11 +1,10 @@
-module Webapp::ResumeViewsHelper
+module Webapp::ResumeViewersHelper
 
-
-  def get_resume_views(user_id)
+  def get_resume_viewers(user_id)
   #   拿谁看过我的简历数据
-    resume_views = ResumeView.where(user_id: user_id )
+    resume_viewers = ResumeViewer.where(user_id: user_id )
     res = []
-    resume_views.each do |r|
+    resume_viewers.each do |r|
       hospital = Hospital.find_by_id r.hospital_id
       o = {
           hospital_id:r.hospital_id,

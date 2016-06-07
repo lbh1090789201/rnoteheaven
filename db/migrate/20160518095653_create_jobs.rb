@@ -6,12 +6,14 @@ class CreateJobs < ActiveRecord::Migration
       t.string :name #职位名称
       t.string :job_type #工作类型
       t.string :salary_range #薪酬
+
+      t.integer :needed_number #需求人数
       t.string :location #工作地点
       t.text :job_desc #职位描述
-      t.integer :needed_number #需求人数
 
       t.boolean :is_top #工作置顶
       t.datetime :is_top_at #置顶时间
+
 
       t.timestamps null: false
     end
