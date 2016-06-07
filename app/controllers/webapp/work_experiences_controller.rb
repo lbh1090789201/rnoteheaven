@@ -28,7 +28,7 @@ class Webapp::WorkExperiencesController < ApplicationController
   end
 
   def edit
-      @work_experience = WorkExperience.find_by_id params[:id]
+      @work_experience = WorkExperience.find_by params[:id]
       puts "........."+@work_experience.to_json.to_s
   end
 
