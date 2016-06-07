@@ -17,6 +17,7 @@ class Webapp::ResumesController < ApplicationController
     # unless User.highest_degree(current_user.id)
     #   redirect_to edit_webapp_user_path(current_user.id)
     # end
+    @user = User.find_by_id(current_user.id)
   end
 
   def update

@@ -104,4 +104,21 @@
 </div>
 <script>
 
+
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if(event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
+            /*隐藏软键盘*/
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            if(inputMethodManager.isActive()){
+                inputMethodManager.hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
+            }
+
+            edittext.setText("success");
+            webview.loadUrl(URL);
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+
 </script>
