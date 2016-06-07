@@ -11,19 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160526083331) do
+ActiveRecord::Schema.define(version: 20160607055900) do
 
   create_table "apply_records", force: :cascade do |t|
-    t.integer  "resume_id",     limit: 4
-    t.integer  "job_id",        limit: 4
-    t.integer  "user_id",       limit: 4
+    t.integer  "resume_id",       limit: 4
+    t.integer  "user_id",         limit: 4
+    t.integer  "job_id",          limit: 4
+    t.integer  "hospital_id",     limit: 4
     t.datetime "end_at"
     t.datetime "apply_at"
     t.datetime "view_at"
     t.datetime "recieve_at"
-    t.string   "resume_status", limit: 191
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "resume_status",   limit: 191
+    t.string   "job_name",        limit: 191
+    t.string   "job_type",        limit: 191
+    t.string   "job_location",    limit: 191
+    t.string   "salary_range",    limit: 191
+    t.string   "hospital_region", limit: 191
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "block_hospitals", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "hospital_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "education_experiences", force: :cascade do |t|
@@ -76,9 +89,9 @@ ActiveRecord::Schema.define(version: 20160526083331) do
     t.string   "name",         limit: 191
     t.string   "scale",        limit: 191
     t.string   "property",     limit: 191
-    t.text     "introduction", limit: 65535
     t.string   "region",       limit: 191
     t.string   "location",     limit: 191
+    t.text     "introduction", limit: 65535
     t.string   "image",        limit: 191
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
@@ -98,16 +111,16 @@ ActiveRecord::Schema.define(version: 20160526083331) do
     t.string   "name",          limit: 191
     t.string   "job_type",      limit: 191
     t.string   "salary_range",  limit: 191
+    t.integer  "needed_number", limit: 4
     t.string   "location",      limit: 191
     t.text     "job_desc",      limit: 65535
-    t.integer  "needed_number", limit: 4
     t.boolean  "is_top"
     t.datetime "is_top_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
-  create_table "resume_views", force: :cascade do |t|
+  create_table "resume_viewers", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.integer  "hospital_id", limit: 4
     t.datetime "view_at"
@@ -117,7 +130,7 @@ ActiveRecord::Schema.define(version: 20160526083331) do
 
   create_table "resumes", force: :cascade do |t|
     t.integer  "user_id",               limit: 4
-    t.datetime "last_refresh_time"
+    t.datetime "refresh_at"
     t.string   "expected_job",          limit: 191
     t.string   "expected_job_type",     limit: 191
     t.string   "expected_base",         limit: 191

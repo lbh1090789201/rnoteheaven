@@ -1,11 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Webapp::ResumeViewsController, type: :controller do
+RSpec.describe Webapp::ResumeViewersController, type: :controller do
   render_views
   let(:json) { JSON.parse(response.body)}
 
   before :each do
     @user = create(:user)
+    @resume_viewer = create :resume_viewer
     login_with @user
     request.env['devise.mapping'] = Devise.mappings[:user]
   end
@@ -19,7 +20,7 @@ RSpec.describe Webapp::ResumeViewsController, type: :controller do
 
   describe 'GET #show' do
     it 'returns http success' do
-      get :show
+      get :show, id: @resume_viewer.id
       expect(response.status).to eq 200
     end
   end

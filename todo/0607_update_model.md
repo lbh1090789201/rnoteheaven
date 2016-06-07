@@ -1,9 +1,10 @@
 # 云康二次会议
 
 ## 模型修改
-1. resume 添加字段 refresh_at
-2. 应聘记录表，添加医院等冗余信息
-3. 修改谁看过我的简历，resume_viewers
+1. resume 添加字段 refresh_at //z
+2. 应聘记录表，添加医院等冗余信息 //z
+3. 修改谁看过我的简历，resume_viewers //z
+4. 添加 block_hospitals //z
 
 ## 逻辑实现
 1. home页面，search 搜索  ajax -> api/jobs_controller.rb/search
@@ -18,3 +19,6 @@
 
 ## 特别提醒
 1. 测试优先，每个方法都需要有测试
+
+## 新功能
+1. 做个医院端的 dashboard
