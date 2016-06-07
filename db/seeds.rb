@@ -71,15 +71,12 @@ while i<8 do
 end
 
 #Test ResumeView :bh
-hospital_id = [1, 2, 3]
-i = 0
-while i<8 do
-  ResumeView.create! ({
-                       hospital_id: hospital_id[i],
+(1..8).each do |i|
+  ResumeViewer.create! ({
+                       hospital_id: hospital_id[i-1],
                        user_id: 1,
                        view_at: "2016-05-10 02:10:00"
                    })
-  i += 1
 end
 
 #Test WorkExperience :bh

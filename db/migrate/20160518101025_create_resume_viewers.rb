@@ -1,7 +1,7 @@
 class CreateResumeViewers < ActiveRecord::Migration
   def change
     # 谁看过我的简历
-    create_table :ResumeViewers do |t|
+    create_table :resume_viewers do |t|
       t.references :user #用户id
       t.references :hospital #医院id
 

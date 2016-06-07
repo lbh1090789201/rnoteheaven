@@ -20,12 +20,11 @@ RSpec.describe Webapp::JobsController, type: :controller do
       get :index, format: :html
       expect(response.status).to eq(200)
     end
-  end
 
     it 'returns http success' do
       get :show, id: @job.id, format: :html
       expect(response.status).to eq(200)
     end
-
+  end
 
 end
