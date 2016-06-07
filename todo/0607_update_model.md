@@ -1,7 +1,7 @@
 # 云康二次会议
 
 ## 模型修改
-1. resume 添加字段 refresh_at
+1. resume 添加字段 refresh_at //
 2. 应聘记录表，添加医院等冗余信息
 3. 修改谁看过我的简历，resume_viewers
 

@@ -3,7 +3,7 @@ class CreateResumes < ActiveRecord::Migration
     create_table :resumes do |t|
       t.references :user
 
-      t.datetime :last_refresh_time
+      t.datetime :refresh_at
       t.string :expected_job
       t.string :expected_job_type
       t.string :expected_base

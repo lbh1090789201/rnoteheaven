@@ -62,7 +62,7 @@ Ryunkang::Application.routes.draw do
      resources :job_fairs
      resources :jobs
      resources :expect_jobs
-     resources :resume_views, :only => [:index, :show]
+     resources :resume_viewers, :only => [:index, :show]
      resources :apply_records, :only => [:index, :show]
 
     #  get 'apply_records/index'
