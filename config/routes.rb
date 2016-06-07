@@ -39,6 +39,19 @@ Ryunkang::Application.routes.draw do
     resources :user_albumns
   end
 
+  namespace :api do
+    scope :v1 do
+      resources :jobs do
+        collection do
+          post :search
+        end
+      end
+
+      resources :apply_records
+      resources :favorite_jobs
+    end
+  end
+
   ############ ryunkang ##########
   get '/webapp/home', to: 'webapp/home#index'
 
