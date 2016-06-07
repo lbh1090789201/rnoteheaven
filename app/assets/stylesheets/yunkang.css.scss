@@ -96,6 +96,9 @@ header {
 /*通用样式结束*/
 
 /*搜索首页开始*/
+a:hover {
+  text-decoration: none;
+}
 .search-box {
   background: rgb(244,244,244);
   .box {
@@ -508,6 +511,7 @@ header {
       height: 100%;
       text-align: center;
       padding-top: 2.3rem;
+
       .avatar {
         img {
           width: 3.85rem;
