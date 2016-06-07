@@ -24,7 +24,6 @@ RSpec.describe Api::FavoriteJobsController, type: :controller do
     it '收藏职位' do
       p = {:job_id => @job.id}
       post :create, format: :json, favorite_job: p
-      puts response.body.to_s
       expect(response.status).to eq(200)
     end
 

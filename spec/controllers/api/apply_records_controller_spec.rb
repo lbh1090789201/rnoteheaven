@@ -24,7 +24,6 @@ RSpec.describe Api::ApplyRecordsController, type: :controller do
     it 'returns http success' do
       p = {:job_id => @job.id}
       post :create, format: :json, apply_record: p
-      puts response.body.to_s
       expect(response.status).to eq(200)
     end
 
