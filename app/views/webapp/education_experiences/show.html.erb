@@ -3,31 +3,22 @@
 <% provide :content, "添加" %>
 <div class="resume-show work-experience">
   <div class="wrap">
+    <% if @education_experiences %>
+     <% @education_experiences.each do |e| %>
     <section>
         <div class="box education">
-            <a href="<%= edit_webapp_education_experience_path(:id) %>" class="edit">编辑</a>
-            <time>2016年毕业</time>
+            <a href="<%= edit_webapp_education_experience_path(e.id) %>" class="edit">编辑</a>
+            <time><%= e.graduated_at.strftime("%Y") %>年毕业</time>
             <div class="work-box">
-                <h3>武汉大学同济学院</h3>
+                <h3><%= e.college %></h3>
                 <p>
-                <span>硕士</span>，<span>医学护理专业</span>
+                <span><%= e.education_degree %></span>，<span><%= e.major %></span>
                 </p>
             </div>
         </div>
     </section>
-
-    <section>
-        <div class="box education">
-            <a href="<%= edit_webapp_work_experience_path(:id) %>" class="edit">编辑</a>
-            <time>2015.01-2016.01</time>
-            <div class="work-box">
-                <h3>复旦大学医学院</h3>
-                <p>
-                 <span>本科</span>，<span>医学护理专业</span>
-                </p>
-            </div>
-        </div>
-    </section>
+    <% end %>
+    <% end %>
   </div>
 </div>
 

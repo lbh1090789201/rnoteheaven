@@ -7,7 +7,7 @@
     <% @work_experiences.each do|w| %>
         <section>
           <div class="box">
-            <a href="<%= edit_webapp_work_experience_path(:id) %>" class="edit">编辑</a>
+            <a href="<%= edit_webapp_work_experience_path(w.id) %>" class="edit">编辑</a>
             <time><%= w.started_at.strftime("%Y-%m-%d") %>-<%= w.left_time.strftime("%Y-%m-%d") %></time>
             <div class="work-box">
               <h3><%= w.company %></h3>
@@ -19,19 +19,6 @@
         </section>
     <% end %>
     <% end %>
-
-    <!-- <section>
-        <div class="box">
-            <a href="<%=edit_webapp_work_experience_path(current_user.id) %>" class="edit">编辑</a>
-            <time>2015.01-2016.01</time>
-            <div class="work-box">
-                <h3>武汉市解放军——六一医院</h3>
-                <p>
-                    工作内容：世上有很多事都是这样子的，尤其是一些特别辉煌美好的事。 所以你不必伤感，也不用惋惜，夕阳最美时，也总是将近黄昏。 纵然到江湖去赶上了春，也不必留住它。 因为这就是人生，有些事你留也留不住。 你一定要先学会忍受它的无情，才会懂得享受它的温柔。
-                </p>
-            </div>
-        </div>
-    </section> -->
 
   </div>
 </div>

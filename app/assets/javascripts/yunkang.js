@@ -68,7 +68,7 @@ function change_val(obj) {
 
 /* 模拟点击右上按钮 开始 bobo */
 function clickRignt(ojb) {
-  $('.right').bind('click', function() {
+  $('#btn-submit-btn').bind('click', function() {
     $(ojb).trigger("click");
     console.log('ok');
   });

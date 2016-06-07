@@ -1,0 +1,28 @@
+<% provide :content, "添加" %>
+<% provide :link, new_webapp_expect_job_path  %>
+<% provide :title, "期望工作" %>
+<div class="resume-show work-experience">
+  <div class="wrap">
+    <% if @expect_jobs %>
+        <% @expect_jobs.each do|e| %>
+            <section>
+              <div class="box education">
+                <a href="<%= edit_webapp_expect_job_path(:id) %>" class="edit">编辑</a>
+                <div class="work-box">
+                  <h3><%= e.name %></h3>
+                  <p>
+                    <span><%= e.job_type %></span>/
+                    <span><%= e.location %></span>/
+                    <span><%= e.expected_salary_range %></span>
+                  </p>
+                </div>
+              </div>
+            </section>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+    fullScreen('.work-experience');
+</script>

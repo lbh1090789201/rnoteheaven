@@ -61,7 +61,6 @@ class Webapp::UsersController < ApplicationController
 
 
     if @user.update(user_params)
-      puts "...."+@user.to_json.to_s
       redirect_to webapp_resume_path(current_user.id), notice: "修改成功"
       return
     else
