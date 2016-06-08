@@ -266,6 +266,10 @@ a:hover {
                 line-height: 1.6rem;
                 td:nth-of-type(1) {
                   margin-left: 0.77rem;
+                  span {
+                    display: inline-block;
+                    margin-right: 1.5rem;
+                  }
                 }
               }
             }
@@ -310,7 +314,7 @@ a:hover {
             time {
               padding-left: 0.77rem;
               margin-bottom: 0;
-              margin-top: -0.15rem;
+              //margin-top: -0.15rem;
               display:block;
             }
             time::before {
@@ -330,7 +334,7 @@ a:hover {
               padding-top: 0.5rem;
               border-left: 1px solid $beauty-blue;
               padding-left: 0.77rem;
-              padding-bottom: 1rem;
+              padding-bottom: 0.3rem;
             }
         }
 
@@ -419,7 +423,7 @@ a:hover {
   width: 100%;
   background: $light-gray;
   .wrap {
-    margin: 0;
+    margin: 0.4rem 0 0 0;
     width: 100%;
     .box {
       border-radius: 0;
