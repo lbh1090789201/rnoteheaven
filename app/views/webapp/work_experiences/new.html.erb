@@ -8,11 +8,11 @@
     <%= f.input :started_at, label: '入职时间', input_html: { class: "user-input"} %>
     <%= f.input :left_time, label: '离职时间', input_html: { class: "user-input"} %>
     <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
-
-    <%= f.button :submit, '保存',  class: "btn-right" %>
+      <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
 </div>
 
 <script type="text/javascript">
     fullScreen('.edit_basic');
+    clickRignt('#submit');
 </script>
