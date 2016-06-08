@@ -101,6 +101,25 @@ EducationExperience.create! ({
                                 major: "计算机专业"
                             })
 
+EducationExperience.create! ({
+                                user_id: 2,
+                                college: "贝贝大学",
+                                education_degree: "本科",
+                                entry_at: "2012-05-10",
+                                graduated_at: "2015-05-10",
+                                major: "计算机专业"
+                            })
+
+#Test ExpectJob :bh
+
+ExpectJob.create! ({
+                                user_id: 1,
+                                name: "儿科护士",
+                                job_type: "全职",
+                                location: "北京",
+                                expected_salary_range: "3000-6000",
+                            })
+
 
 
 # Test UserInfo :tw

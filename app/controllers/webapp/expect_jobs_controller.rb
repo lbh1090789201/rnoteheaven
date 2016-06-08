@@ -5,11 +5,12 @@ class Webapp::ExpectJobsController < ApplicationController
   end
 
   def edit
-    @expect_job = ExpectJob.find_by_id params[:id]
+    @expect_job = ExpectJob.find_by_user_id current_user.id
+    puts "........"+@expect_job.to_json.to_s
   end
 
   def show
-    @expect_jobs = ExpectJob.all
+    @expect_job = ExpectJob.find_by_user_id current_user.id
   end
 
   def new

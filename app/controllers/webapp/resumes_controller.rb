@@ -18,6 +18,10 @@ class Webapp::ResumesController < ApplicationController
     #   redirect_to edit_webapp_user_path(current_user.id)
     # end
     @user = User.find_by_id(current_user.id)
+    @work_experiences = WorkExperience.where(:user_id => @user.id)
+    @education_experiences = EducationExperience.where(:user_id => @user.id)
+    @expect_job = ExpectJob.find @user.id
+    puts "...."+@expect_job.to_json.to_s
   end
 
   def update

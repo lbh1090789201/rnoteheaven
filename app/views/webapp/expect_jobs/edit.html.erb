@@ -2,13 +2,13 @@
 <% provide :content, "保存" %>
 
 <div class="edit_basic edit-work-experiences">
-  <%= simple_form_for @expect_job, method: :patch, url: webapp_expect_job_path(params[:id]) do |f| %>
-      <%= f.input :name, label: "职能", input_html: { class: "job-fair", value: "护士", id: "name"} %>
-      <%= f.input :job_type, label: '工作类型', input_html: { class: "job-fair", value: "全职"} %>
-      <%= f.input :location, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
-      <%= f.input :expected_salary_range, label: '期望薪水', input_html: { class: "job-fair", value: "5K~6K"} %>
-      <%= f.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
-      <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
+  <%= simple_form_for @expect_job, method: :patch, url: webapp_expect_job_path(params[:id]) do |e| %>
+      <%= e.input :name, label: "职能", input_html: { class: "job-fair", value: "护士", id: "name"} %>
+      <%= e.input :job_type, label: '工作类型', input_html: { class: "job-fair", value: "全职"} %>
+      <%= e.input :location, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
+      <%= e.input :expected_salary_range, label: '期望薪水', input_html: { class: "job-fair", value: "5K~6K"} %>
+      <%= e.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
+      <%= e.submit id: "submit", class: "btn btn-info btn-right"%>
 <% end %>
 </div>
 
