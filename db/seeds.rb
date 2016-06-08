@@ -59,15 +59,14 @@ hospital_id = [1, 1, 2, 2, 3, 3, 3, 3]
 name= ["护士", "护士", "护士", "护士", "全科医生", "儿科护士", "医生", "医生"]
 salary_range = ["1000-6000", "1000-6000", "2000-5000", "2000-5000", "2000-5000", "2000-7000", "2000-7000", "2000-7000"]
 location = ["深圳", "深圳", "成都", "成都", "成都", "成都", "成都", "深圳"]
-i = 0
-while i<8 do
+
+(1..8).each do |i|
   Job.create! ({
                        hospital_id: hospital_id[i],
                        name: name[i],
                        salary_range: salary_range[i],
                        location: location[i]
                    })
-  i += 1
 end
 
 #Test ResumeView :bh
