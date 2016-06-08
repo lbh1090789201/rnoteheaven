@@ -42,11 +42,7 @@
     <li><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
 
     <!-- 判断是否已应聘过 -->
-    <% if @is_applied %>
-      <li><a href="#" class="no_applied"><%= image_tag "apply_records.png" %><span>应聘职位</span></a></li>
-    <% else %>
-      <li><a href="#" class="is_applied"><%= image_tag "apply_records.png" %><span>已应聘</span></a></li>
-    <% end %>
+    <li><a class= <%= @btn_apply[:css] %> id="apply_job"> <%= image_tag "apply_records.png" %><span><%= @btn_apply[:text] %></span></a></li>
 
     <li><a href="#"><%= image_tag "jobs_collection.png" %><span>收藏职位</span></a></li>
   </ul>
@@ -71,7 +67,9 @@
       authenticity_token: authToken()
     }).done(function() {
       $('#apply_box').attr('class', 'hidden');
-      alert('应聘成功！');
+      $('#apply_job > span').html('已应聘');
+      $('#apply_job').attr('class', 'is_applied');
+      // alert('应聘成功！');
     }).fail(function() {
       alert('failed');
     });
@@ -83,6 +81,10 @@
 
   $('.no_applied').bind('click', function() {
     $('#apply_box').toggleClass('hidden', 'show');
+  });
+
+  $('.no_resume').bind('click', function() {
+    alert('请先完善简历！');
   });
 
 
