@@ -11,7 +11,7 @@ class CreateApplyRecords < ActiveRecord::Migration
       t.datetime :view_at # 查看时间
       t.datetime :recieve_at # 接收时间
 
-      t.string :resume_status #简历状态
+      t.string :resume_status #简历状态 1.筛选 2.面试 3.不合适
 
       # 关于职位冗余信息
       t.string :job_name #职位名称

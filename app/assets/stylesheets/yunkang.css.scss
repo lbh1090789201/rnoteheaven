@@ -773,6 +773,7 @@ a:hover {
   text-align: center;
   margin: 0 auto;
   width: 100%;
+
   .nav-bar{
     border-bottom: 1px solid $color;
     margin-top: -5px;
@@ -825,6 +826,7 @@ a:hover {
         li {
           height: 6rem;
           border-bottom: 1px solid $color;
+          list-style: none;
           .left {
             float: left;
             display: inline-block;
@@ -1556,3 +1558,22 @@ a:hover {
   }
 }
 /*我的应聘记录　结束－冰华*/
+
+// mask 蒙版
+.mask-all {
+  #apply_box {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    margin-left: -8em;
+    text-align: center;
+    background-color: #fff;
+    div {
+      height: 8em;
+      width: 16em;
+    }
+    button {
+      width: 45%;
+    }
+  }
+}

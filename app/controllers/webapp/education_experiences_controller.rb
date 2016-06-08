@@ -1,6 +1,6 @@
 class Webapp::EducationExperiencesController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
-  
+
   def index
     @education_experiences = EducationExperience.where(:user_id => current_user.id)
     puts "........."+@education_experience.to_json.to_s
@@ -25,6 +25,7 @@ class Webapp::EducationExperiencesController < ApplicationController
 
   def edit
     @education_experience = EducationExperience.find_by_id params[:id]
+    @education_experience.entry_at = Time.at(@education_experience.entry_at).utc.strftime("%H:%M:%S")
   end
 
   def update

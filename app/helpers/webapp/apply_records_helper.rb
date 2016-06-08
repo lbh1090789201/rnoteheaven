@@ -6,13 +6,14 @@ module Webapp::ApplyRecordsHelper
     ars.each do |ar|
       job = Job.find_by_id ar.job_id
       hospital = Hospital.find job.hospital_id #bh
+
       a = {
         id: ar.id,
         job_name: job.name,
         salary_range: job.salary_range,
         location: job.location,
         resume_status: ar.resume_status,
-        apply_at: ar.apply_at.strftime("%y-%m-%d"),#bh
+        apply_at: ar.apply_at,#bh
         hospital_name: hospital.name #bh
       }
       apply_records.push(a)
