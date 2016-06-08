@@ -34,6 +34,8 @@
       <h3 class="job-post">任职资格</h3>
     </div>
   </section>
+
+  <%= render 'mask' %>
 </div>
 <div class="job-list">
   <ul>
@@ -48,9 +50,7 @@
 
     <li><a href="#"><%= image_tag "jobs_collection.png" %><span>收藏职位</span></a></li>
   </ul>
-<div>
-
-  <%= render 'mask' %>
+</div>
 
   <script>
   // 获取签名
@@ -73,7 +73,7 @@
   // })
 
   // 应聘职位
-  $('#no_applied').bind('click', function(){
+  $('#').bind('click', function(){
     $.post("/api/v1/apply_records", {
       apply_record: {job_id: <%= params[:id] %>},
       authenticity_token: authToken()
@@ -82,6 +82,10 @@
     }).fail(function() {
       alert('failed');
     });
+  });
+
+  $('.no_applied').bind('click', function() {
+    $('#apply_box').toggleClass('hidden', 'show');
   });
 
 
