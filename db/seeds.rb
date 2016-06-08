@@ -1,14 +1,14 @@
 # Generated with RailsBricks
 # Initial seed file to use with Devise User Model
 #
-# User.create!(
-#     username: "test",
-#     show_name: "test",
-#     password: "123456",
-#     email: "admin@example.com",
-#     cellphone: "13888888778",
-#     sex: "男"
-# )
+User.create!(
+    username: "test",
+    show_name: "test",
+    password: "123456",
+    email: "admin@example.com",
+    cellphone: "13888888778",
+    sex: "男"
+)
 
 
 # Test ApplyRecord :tw
@@ -99,6 +99,25 @@ EducationExperience.create! ({
                                 entry_at: "2012-05-10",
                                 graduated_at: "2015-05-10",
                                 major: "计算机专业"
+                            })
+
+EducationExperience.create! ({
+                                user_id: 2,
+                                college: "贝贝大学",
+                                education_degree: "本科",
+                                entry_at: "2012-05-10",
+                                graduated_at: "2015-05-10",
+                                major: "计算机专业"
+                            })
+
+#Test ExpectJob :bh
+
+ExpectJob.create! ({
+                                user_id: 1,
+                                name: "儿科护士",
+                                job_type: "全职",
+                                location: "北京",
+                                expected_salary_range: "3000-6000",
                             })
 
 

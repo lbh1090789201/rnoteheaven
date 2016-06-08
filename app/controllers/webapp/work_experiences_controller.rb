@@ -24,11 +24,23 @@ class Webapp::WorkExperiencesController < ApplicationController
   end
 
   def show
+
   end
 
   def edit
-      @work_experience = WorkExperience.find_by_id params[:id]
-      puts "........."+@work_experience.to_json.to_s
+      @work_experience = WorkExperience.find_by params[:id]
+      # puts "........."+@work_experience.to_json.to_s
+  end
+
+  def update
+    @work_experience = WorkExperience.find_by params[:id]
+    if @work_experience.update(work_experience_params)
+      redirect_to webapp_resume_path(current_user.id), notice: "修改成功"
+      return
+    else
+      redirect_to :back, alert: "修改失败"
+      return
+    end
   end
 
   def destroy

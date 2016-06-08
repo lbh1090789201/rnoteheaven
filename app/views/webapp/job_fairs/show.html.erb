@@ -1,25 +1,29 @@
-<% provide :link, new_webapp_work_experience_path  %>
+<% provide :link, new_webapp_job_fair_path  %>
 <% provide :title, "期望工作" %>
 <div class="resume-show work-experience">
   <div class="wrap">
+    <% if @job_fairs %>
+    <% @job_fairs.each do|j| %>
     <section>
         <div class="box education">
             <a href="<%= edit_webapp_job_fair_path(:id) %>" class="edit">编辑</a>
             <div class="work-box">
-                <h3>护士</h3>
+                <h3><%= f.name %></h3>
                 <p>
-                <span>全职</span>/
-                <span>武汉</span>/
-                <span>4k~6k</span>
+                <span><%= f.job_type %></span>/
+                <span><%= f.location %></span>/
+                <span><%= f.expected_salary_range %></span>
                 </p>
             </div>
         </div>
     </section>
+    <% end %>
+    <% end %>
     </div>
 </div>
 
 <script type="text/javascript">
-
+wordLimit('.work-box p', 65);
 fullScreen('.work-experience');
 
 </script>

@@ -1,7 +1,7 @@
 <% provide :title, "我的" %>
 <div class="main user-first-page">
   <div class="user-info">
-    <a href="/webapp/resumes/<%= current_user.id %>" class="user-hidden">
+    <a href="/webapp/users/<%= current_user.id %>/edit" class="user-hidden">
     <div class="user-info-list">
       <div class="avatar">
         <%= image_tag "avator2.png"  %>

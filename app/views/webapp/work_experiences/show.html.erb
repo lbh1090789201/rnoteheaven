@@ -1,0 +1,31 @@
+<% provide :link, new_webapp_work_experience_path  %>
+<% provide :title, "工作经历" %>
+<% provide :content, "添加" %>
+<div class="resume-show work-experience">
+  <div class="wrap">
+    <% if @work_experiences %>
+    <% @work_experiences.each do|w| %>
+        <section>
+          <div class="box">
+            <a href="<%= edit_webapp_work_experience_path(w.id) %>" class="edit">编辑</a>
+            <time><%= w.started_at.strftime("%Y-%m-%d") %>-<%= w.left_time.strftime("%Y-%m-%d") %></time>
+            <div class="work-box">
+              <h3><%= w.company %></h3>
+              <p>
+                <%= w.job_desc %>
+              </p>
+            </div>
+          </div>
+        </section>
+    <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+    wordLimit('.work-box p', 65);
+    fullScreen('.work-experience');
+
+</script>

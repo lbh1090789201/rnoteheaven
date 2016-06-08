@@ -3,11 +3,10 @@
 <% provide :content, "我的" %>
 <div class="search-box">
   <div class="box">
-    <!--<a href="" class="left">成都</a>-->
 
     <form id="myform" name="filter" method="get" action="/webapp/home">
-      <input class="left" type="text" name="city" placeholder="城市" />
-      <input id="search" class="right" type="text" name="search" placeholder="搜索职位/医院" />
+      <input class="left" type="text" name="city" placeholder="城市"  onkeydown="show();" />
+      <input id="search" class="right" type="text" name="search" placeholder="搜索职位/医院" onkeydown="show();" />
       <input id="submit" class="btn btn-success btn-order" type="submit" value="搜索" style="display:none"/>
     </form>
 
@@ -40,7 +39,7 @@
     <div class="job">
     <div class="title">
     <div class="left"><%= j[:job_name] %></div>
-    <div class="right"><%= j[:salary_range] %>/月</div>
+    <div class="right right-range"><%= j[:salary_range] %>/月</div>
     <div style="clear:both"></div>
     </div>
     <div class="detail">
@@ -52,73 +51,18 @@
     </a>
     <% end %>
 
-    <!--<div class="job">-->
-    <!--<div class="title">-->
-    <!--<div class="left">儿科护士</div>-->
-    <!--<div class="right">4000-5000/月</div>-->
-    <!--<div style="clear:both"></div>-->
-    <!--</div>-->
-    <!--<div class="detail">-->
-    <!--<div class="left">荔湾区人民医院</div>-->
-    <!--<div class="right">广州市白云区</div>-->
-    <!--<div style="clear:both"></div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="job">-->
-    <!--<div class="title">-->
-    <!--<div class="left">儿科护士</div>-->
-    <!--<div class="right">4000-5000/月</div>-->
-    <!--<div style="clear:both"></div>-->
-    <!--</div>-->
-    <!--<div class="detail">-->
-    <!--<div class="left">荔湾区人民医院</div>-->
-    <!--<div class="right">广州市白云区</div>-->
-    <!--<div style="clear:both"></div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="job">-->
-    <!--<div class="title">-->
-    <!--<div class="left">儿科护士</div>-->
-    <!--<div class="right">4000-5000/月</div>-->
-    <!--<div style="clear:both"></div>-->
-    <!--</div>-->
-    <!--<div class="detail">-->
-    <!--<div class="left">荔湾区人民医院</div>-->
-    <!--<div class="right">广州市白云区</div>-->
-    <!--<div style="clear:both"></div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="job">-->
-    <!--<div class="title">-->
-    <!--<div class="left">儿科护士</div>-->
-    <!--<div class="right">4000-5000/月</div>-->
-    <!--<div style="clear:both"></div>-->
-    <!--</div>-->
-    <!--<div class="detail">-->
-    <!--<div class="left">荔湾区人民医院</div>-->
-    <!--<div class="right">广州市白云区</div>-->
-    <!--<div style="clear:both"></div>-->
-    <!--</div>-->
-    <!--</div>-->
+    <div id="show-me">
+      <a href="<%= webapp_user_path(current_user.id) %>"><%= image_tag "showme.png", class: "img-size" %></a>
+    </div>
+
   </div>
 </div>
 <script>
-
-
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if(event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
-            /*隐藏软键盘*/
-            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            if(inputMethodManager.isActive()){
-                inputMethodManager.hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
-            }
-
-            edittext.setText("success");
-            webview.loadUrl(URL);
-            return true;
+    function show () {
+        var e=window.event||arguments.callee.caller.arguments[0];
+        if(e.keyCode==13){
+            $("#submit").trigger("click");
         }
-        return super.dispatchKeyEvent(event);
     }
-
 
 </script>
