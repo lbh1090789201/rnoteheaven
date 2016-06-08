@@ -254,12 +254,13 @@ a:hover {
           }
         }
         .box {
-            padding: 0.95rem 0.75rem 0.95rem 0.75rem;
+            padding: 0 0.75rem 0 0.75rem;
             // height: 6.3rem;
             border-radius: 0.36rem;
             background-color: #fff;
             font-size: 0.77rem;
             overflow: hidden;
+          position: relative;
             table {
               tr {
                 line-height: 1.6rem;
@@ -269,11 +270,15 @@ a:hover {
               }
             }
             .edit {
-              float: right;
+              //float: right;
               display: block;
               padding-left: 0.5rem;
               padding-right: 0.5rem;
               height: 1.17rem;
+              width: 3.5rem;
+              position: absolute;
+              top: 0;
+              right: 0.5rem;
 
               line-height: 1.17rem;
               text-align: center;
@@ -305,12 +310,14 @@ a:hover {
             time {
               padding-left: 0.77rem;
               margin-bottom: 0;
+              margin-top: -0.15rem;
+              display:block;
             }
             time::before {
               content: "";
               display: block;
               position: absolute;
-              margin-left: -0.25rem;
+              margin-left: -1.05rem;
               margin-top: 0.25rem;
               width: 0.6rem;
               height: 0.6rem;
@@ -323,6 +330,7 @@ a:hover {
               padding-top: 0.5rem;
               border-left: 1px solid $beauty-blue;
               padding-left: 0.77rem;
+              padding-bottom: 1rem;
             }
         }
 
