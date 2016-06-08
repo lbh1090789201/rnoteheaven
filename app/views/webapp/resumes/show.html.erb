@@ -76,15 +76,18 @@
                 <a href="<%= webapp_work_experiences_path %>" class="edit">
                     <%= image_tag "pencil3.png" %>编辑
                 </a>
-                <time><%= w.started_at.strftime("%Y-%m") %>-<%= w.left_time.strftime("%Y-%m") %></time>
+                <time><%= w.started_at %>-<%= w.left_time %></time>
                 <div class="time-line-box">
                     <h3><%= w.company %><a class="expend">
                             展开<%= image_tag "down2.png" %>
                         </a>
                     </h3>
                     <p>
-                      <%= w.job_desc %>
+                      <%= w.job_desc[0, 60] + '……' %>
                     </p>
+                     <p>
+                       <%= w.job_desc %>
+                     </p>
                 </div>
             </div>
           <% end %>
@@ -106,9 +109,6 @@
                     <h3><%= e.college %><a class="expend" >
                             展开<%= image_tag "down2.png" %></a>
                     </h3>
-                    <p id="test">
-
-                    </p>
                 </div>
             </div>
           <% end %>
@@ -139,9 +139,10 @@
 
 <script type="text/javascript">
 
-//  var content = "工作内容：夕阳最美时，也总是将近黄昏。 世上有很多事都是这样子的，尤其是一些特别辉煌美好的事。 所以你不必伤感，也不用惋惜，纵然到江湖去赶上了春，也不必留住它。 因为这就是人生，有些事你留也留不住。 你一定要先学会忍受它的无情，才会懂得享受它的温柔。";
-
-  wordLimit('.time-line-box p', 60);
+//var content = $('.time-line-box p').html();
+//if (content.length > 60) {
+//    $('.time-line-box p').html(content.substr(0, 60) + '……');
+//}
 
   $('.expend').click(function() {
     var p = $(this).parent().parent().find('p').html();

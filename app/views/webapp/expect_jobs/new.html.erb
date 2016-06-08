@@ -10,20 +10,18 @@
 <div class="edit_basic edit-work-experiences">
     <%= simple_form_for :user_info, url: webapp_expect_jobs_path,:method => :post do |f| %>
       <%= f.input :name, label: "职能", input_html: { class: "job-fair", value: "护士", id: "name"} %>
-      <%= f.input :name, label: '工作类型', input_html: { class: "job-fair", value: "全职"} %>
-      <%= f.input :name, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
-      <%= f.input :name, label: '期望薪水', input_html: { class: "job-fair", value: "5K~6K"} %>
-      <%= f.input :name, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
-
-
-      <%= f.button :button, '撤销', class: "btn-del" %>
-      <%= f.button :submit, '保存',  class: "btn-save" %>
+      <%= f.input :job_type, label: '工作类型', input_html: { class: "job-fair", value: "全职"} %>
+      <%= f.input :location, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
+      <%= f.input :expected_salary_range, label: '期望薪水', input_html: { class: "job-fair", value: "5K~6K"} %>
+      <%= f.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
+      <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
 </div>
 
 
 <script type="text/javascript">
   fullScreen('.edit_basic');
+  clickRignt('#submit');
   $('.job-fair').click(function() {
     workExperience();
     $(".before-mask").addClass('mask');

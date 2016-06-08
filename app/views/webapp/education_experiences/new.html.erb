@@ -11,19 +11,16 @@
 
 <div class="edit_basic edit-work-experiences">
     <%= simple_form_for :user_info, url: webapp_education_experiences_path, :method => :post  do |f| %>
-      <%= f.input :name, label: "学校", input_html: { class: "user-input"} %>
-      <%= f.input :name, label: '学位', input_html: { class: "user-input"} %>
-      <%= f.input :name, label: '专业', input_html: { class: "user-input"} %>
-      <%= f.input :name, label: '开始时间', input_html: { class: "user-input"} %>
-      <%= f.input :name, label: '结束时间', input_html: { class: "user-input"} %>
-
-
-
-      <%= f.button :button, '删除此经历', class: "btn-del" %>
-      <%= f.button :submit, '保存',  class: "btn-save" %>
+      <%= f.input :college, label: "学校", input_html: { class: "user-input"} %>
+      <%= f.input :education_degree, label: '学位', input_html: { class: "user-input"} %>
+      <%= f.input :major, label: '专业', input_html: { class: "user-input"} %>
+      <%= f.input :entry_at, label: '开始时间', input_html: { class: "user-input"} %>
+      <%= f.input :graduated_at, label: '结束时间', input_html: { class: "user-input"} %>
+      <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
 </div>
 
 <script type="text/javascript">
   fullScreen('.edit_basic');
+  clickRignt('#submit');
 </script>
