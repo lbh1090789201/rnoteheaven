@@ -14,7 +14,7 @@ class Api::ApplyRecordsController < ApiController
     @apply_record.resume_id = resume.id
 
     #职位相关
-    job = Job.find params[:job_id]
+    job = Job.find params[:apply_record][:job_id]
     @apply_record.hospital_id = job.hospital_id
     @apply_record.hospital_region =
     @apply_record.job_name = job.name
