@@ -1,6 +1,7 @@
 class Api::ApplyRecordsController < ApiController
   before_action :authenticate_user!   # 登陆验证
 
+  # protect_from_forgery :except => [:create]
   #post to 应聘
   def create
     @apply_record = ApplyRecord.new apply_records_params

@@ -37,23 +37,52 @@
 </div>
 <div class="job-list">
   <ul>
-    <li><a href="#"><%= image_tag "jobs_collection.png" %><span>私信Ta</span></a></li>
-    <li><a href="#"><%= image_tag "jobs_collection.png" %><span>应聘职位</span></a></li>
+    <li><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
+
+    <!-- 判断是否已应聘过 -->
+    <% if @is_applied %>
+      <li><a href="#" class="no_applied"><%= image_tag "apply_records.png" %><span>应聘职位</span></a></li>
+    <% else %>
+      <li><a href="#" class="is_applied"><%= image_tag "apply_records.png" %><span>已应聘</span></a></li>
+    <% end %>
+
     <li><a href="#"><%= image_tag "jobs_collection.png" %><span>收藏职位</span></a></li>
   </ul>
 <div>
 
+  <%= render 'mask' %>
+
   <script>
+  // 获取签名
+    function authToken() {
+     return '<%= form_authenticity_token if protect_against_forgery? -%>';
+   }
+
   // 顶部导航
   $(".job-head>div>span").click(function(){
     var index = $(this).index();
     $(".job-head>div>span").eq(index).addClass("job-page").removeClass("hospital-page").siblings().removeClass("job-page").addClass("hospital-page");
-  })
-  // 底部导航
-  $(".job-list li").eq(1).children("a").css({"color":"#fff","background":"#3f9e9f"});
-  $(".job-list li").click(function(){
-    var index = $(this).index();
-    $(".job-list li").eq(index).children("a").css({"color":"#fff","background":"#3f9e9f"});
-    $(".job-list li").eq(index).siblings().children("a").css({"color":"#444444","background":"#fff"});
-  })
+  });
+
+  // // 底部导航
+  // $(".job-list li").eq(1).children("a").css({"color":"#fff","background":"#3f9e9f"});
+  // $(".job-list li").click(function(){
+  //   var index = $(this).index();
+  //   $(".job-list li").eq(index).children("a").css({"color":"#fff","background":"#3f9e9f"});
+  //   $(".job-list li").eq(index).siblings().children("a").css({"color":"#444444","background":"#fff"});
+  // })
+
+  // 应聘职位
+  $('#no_applied').bind('click', function(){
+    $.post("/api/v1/apply_records", {
+      apply_record: {job_id: <%= params[:id] %>},
+      authenticity_token: authToken()
+    }).done(function() {
+      alert('收藏成功！');
+    }).fail(function() {
+      alert('failed');
+    });
+  });
+
+
   </script>
