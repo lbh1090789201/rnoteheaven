@@ -14,9 +14,8 @@ class Webapp::ResumesController < ApplicationController
   end
 
   def show
-    # unless User.highest_degree(current_user.id)
-    #   redirect_to edit_webapp_user_path(current_user.id)
-    # end
+    resume = Resume.where(user_id: current_user.id).first_or_create!
+
     @user = User.find_by_id(current_user.id)
     @work_experiences = WorkExperience.where(:user_id => @user.id)
     @education_experiences = EducationExperience.where(:user_id => @user.id)

@@ -64,24 +64,21 @@
     $(".job-head>div>span").eq(index).addClass("job-page").removeClass("hospital-page").siblings().removeClass("job-page").addClass("hospital-page");
   });
 
-  // // 底部导航
-  // $(".job-list li").eq(1).children("a").css({"color":"#fff","background":"#3f9e9f"});
-  // $(".job-list li").click(function(){
-  //   var index = $(this).index();
-  //   $(".job-list li").eq(index).children("a").css({"color":"#fff","background":"#3f9e9f"});
-  //   $(".job-list li").eq(index).siblings().children("a").css({"color":"#444444","background":"#fff"});
-  // })
-
   // 应聘职位
-  $('#').bind('click', function(){
+  $('#btn_apply').bind('click', function(){
     $.post("/api/v1/apply_records", {
       apply_record: {job_id: <%= params[:id] %>},
       authenticity_token: authToken()
     }).done(function() {
-      alert('收藏成功！');
+      $('#apply_box').attr('class', 'hidden');
+      alert('应聘成功！');
     }).fail(function() {
       alert('failed');
     });
+  });
+
+  $('#btn_cancel').bind('click', function() {
+    $('#apply_box').attr('class', 'hidden');
   });
 
   $('.no_applied').bind('click', function() {

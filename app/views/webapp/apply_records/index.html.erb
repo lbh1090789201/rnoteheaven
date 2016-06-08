@@ -25,7 +25,7 @@
                     <li>
                       <div class="left">
                         <h3><%= d[:job_name] %></h3>
-                        <p><%= d[:apply_at] %> | <%= d[:location] %></p>
+                        <p><%= d[:apply_at].strftime("%H:%M:%S") if d[:apply_at] %> | <%= d[:location] %></p>
                         <p><%= d[:hospital_name] %></p>
                       </div>
                       <div class="right">
@@ -110,9 +110,7 @@
     $(this).addClass('active show');
     $(this).siblings().removeClass('active show');
 
-
     var index = $(this).index();
-    console.log($('content').eq(index));
 
     $('.content').eq(index).show().addClass('active').siblings().removeClass('active').hide();
   });
