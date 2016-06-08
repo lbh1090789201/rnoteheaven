@@ -2,7 +2,7 @@
 <% provide :content, "保存" %>
 
 <div class="edit_basic edit-work-experiences">
-    <%= simple_form_for :work_experience, as: :post, url: webapp_work_experiences_path do |f| %>
+    <%= simple_form_for :work_experience, as: :post,remote: true, url: webapp_work_experiences_path do |f| %>
     <%= f.input :company, label: "医院", input_html: { class: "user-input"} %>
     <%= f.input :position, label: '职位', input_html: { class: "user-input"} %>
     <%= f.input :started_at, label: '入职时间', input_html: { class: "user-input"} %>
@@ -15,4 +15,9 @@
 <script type="text/javascript">
     fullScreen('.edit_basic');
     clickRignt('#submit');
+
+    $('form').on("ajax:success", function(event, data) {
+      alert('ok');
+    });
+
 </script>

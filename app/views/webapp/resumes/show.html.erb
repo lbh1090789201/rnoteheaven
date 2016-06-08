@@ -122,7 +122,7 @@
             <h2>期望工作<span>必填</span>
             </h2>
             <div class="box">
-                <a href="<%= edit_webapp_expect_job_path(current_user.id) %>" class="edit">
+                <a href="<%= edit_webapp_expect_job_path(@expect_job.id) %>" class="edit">
                     <%= image_tag "pencil3.png" %>编辑
                 </a>
                 <h3><%= @expect_job.name %></h3>

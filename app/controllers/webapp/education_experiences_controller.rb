@@ -15,8 +15,7 @@ class Webapp::EducationExperiencesController < ApplicationController
     education_experiences = user.education_experiences.build(education_experience_params)
 
     if education_experiences.save
-      redirect_to webapp_resume_path(current_user.id), notice: "添加成功"
-      return
+      render js: ' history.go(-1);', notice: '创建成功！'
     else
       redirect_to :back, alert: "添加失败"
       return
