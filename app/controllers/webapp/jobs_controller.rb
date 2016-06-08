@@ -5,6 +5,7 @@ class Webapp::JobsController < ApplicationController
 
    def show
      @job = Job.find_by_id(params[:id])
+     @is_applied = ApplyRecord.is_applied(current_user.id , params[:id])
    end
 
    # private

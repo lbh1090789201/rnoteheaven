@@ -1,0 +1,23 @@
+<!-- Mask 您还没有设置密码 -->
+<div class="pwdShow mask_box" style="border-radius:4px;display:none;z-index:100000;position:absolute;left:0;right:0;margin:auto;top:12em;width:20em;background:white;text-align:center;">
+  <h1 style="margin-top:3em;font-size:1.4em;font-weight: normal">您还没有设置密码</h1>
+  <a style="font-size:1.4em;line-height:3.2em;color:white;margin-top:3em;display:block;background:#f4c036;" href="#">前去设置</a>
+</div>
+
+<!-- Mask 支付失败弹窗 -->
+<div class="charge_box agree_box" id="pay_failed">
+  <h1>支付失败</h1>
+  <p>余额不足，请充值</p>
+  <form>
+    <a href="#" style="border-right: 1px solid rgb(227,227,227);" id="cancle_box">取消</a>
+    <a href="#">充值</a>
+  </form>
+</div>
+
+<!-- Mask 投递弹窗 -->
+<div class="pwdInput mask_box">
+
+</div>
+
+<!-- Mask 支付成功 -->
+<div class="pay_box" id="pay_box"><%= image_tag 'pay_success.png' %><p class='upload_order_massage'>付款成功</p></div>
