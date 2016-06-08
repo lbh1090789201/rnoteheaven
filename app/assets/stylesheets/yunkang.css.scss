@@ -1103,13 +1103,53 @@ a:hover {
 }
 /* 医院详情 结束-汤伟*/
 
-
+/* 简历预览 开始-冰华*/
+#resumes-preview {
+  background: #f4f4f4;
+  margin-top: -2.1rem;
+  .resumes-preview-img {
+    position: relative;
+    height: 10.43rem;
+    background: url(preview_bg.png);
+    .resumes-preview-md {
+      height: inherit;
+      width: 3.6rem;
+      margin: 0 auto 0 auto;
+      position: relative;
+      top: 2rem;
+      p {
+        font-size: 0.7rem;
+        text-align: center;
+        margin-top: 1rem;
+      }
+      .image-head {
+        width: 3.65rem;
+        height: 3.65rem;
+        margin-top: 2rem;
+        img {
+          width: 3.6rem;
+          height: 3.6rem;
+        }
+      }
+    }
+  }
+  .resumes-preview-public {
+    h1 {
+      text-indent: 0.82rem;
+      font-size: 0.7rem;
+      margin: 0.72rem 0 0.57rem 0;
+    }
+  }
+}
 .resumes-preview-bg {
   min-height: 8.5rem;
   border-radius: 0.3rem;
-  border: 2px solid #ccc;
-  margin-top: 0.57rem;
+  border: 1px solid #dedede;
+  //margin-top: 0.57rem;
   padding-bottom: 0.95rem;
+  width: 18.93rem;
+  margin: 0.57rem auto 0 auto;
+  background: #fff;
   .preview-image {
     width: 3.65rem;
     height: 100%;
@@ -1141,7 +1181,7 @@ a:hover {
 
 #preview-expect {
   border-radius: 0.3rem;
-  border: 2px solid #ccc;
+  border: 1px solid #dedede;
   margin-top: 0.57rem;
   margin-bottom: 5rem;
 }
