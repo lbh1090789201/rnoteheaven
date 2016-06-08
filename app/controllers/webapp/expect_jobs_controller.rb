@@ -1,12 +1,11 @@
 class Webapp::ExpectJobsController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
-  
+
   def index
   end
 
   def edit
-    @expect_job = ExpectJob.find_by_user_id current_user.id
-    puts "........"+@expect_job.to_json.to_s
+    @expect_job = ExpectJob.where(user_id: current_user.id).first_or_create!
   end
 
   def show

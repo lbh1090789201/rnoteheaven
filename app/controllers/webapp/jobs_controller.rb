@@ -8,7 +8,6 @@ class Webapp::JobsController < ApplicationController
      is_applied = ApplyRecord.is_applied(current_user.id , params[:id])
      has_resume = Resume.find_by_user_id current_user.id
      @btn_apply = btn_info(is_applied, has_resume)
-     puts '------------' + @btn_apply.to_json.to_s
    end
 
    # private

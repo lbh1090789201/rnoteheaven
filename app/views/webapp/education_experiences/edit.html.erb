@@ -3,7 +3,7 @@
 <% provide :content, "保存" %>
 
 <div class="edit_basic edit-work-experiences">
-    <%= simple_form_for @education_experience, method: :patch, url: webapp_education_experience_path(params[:id]) do |f| %>
+    <%= simple_form_for @education_experience, method: :patch,remote: true, url: webapp_education_experience_path(params[:id]) do |f| %>
       <%= f.input :college, label: "学校", input_html: { class: "user-input"} %>
       <%= f.input :education_degree, label: '学位', input_html: { class: "user-input"} %>
       <%= f.input :major, label: '专业', input_html: { class: "user-input"} %>
