@@ -1,3 +1,10 @@
+<div class="job-head">
+  <div>
+    <a href="../jobs/<%= params[:id] %>" class="hospital-page">职位详情</a>
+    <%= link_to "医院详情", webapp_resume_viewer_path, class: "job-page" %>
+  </div>
+</div>
+
 <% provide :title, "医院详情" %>
 <div class="content hospital-details">
   <div class="hospital-introduce">
