@@ -43,7 +43,9 @@
     <li><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
     <li><a class= <%= @btn_apply[:css] %> id="apply_job"> <%= image_tag "apply_records.png" %>
                                                 <span><%= @btn_apply[:text] %></span></a></li>
-    <li><a href="#"><%= image_tag "jobs_collection.png" %><span>收藏职位</span></a></li>
+    <li><a id="favorite_job"><%= image_tag "jobs_collection.png" %><span>收藏职位</span></a></li>
+    <lidd> <%= image_tag "jobs_collection.png" %><%= link_to "收藏职位",
+                    api_favorite_jobs_path(id: params[:id]), method: :post %> </li>
   </ul>
 </div>
 
@@ -86,6 +88,17 @@
   $('.no_resume').bind('click', function() {
     alert('请先完善简历！');
   });
+
+// 收藏职位
+$('#favorite_job').bind('click', function() {
+  $.post("/api/v1/favorite_jobs", {
+  favorite_job: {job_id: <%= params[:id] %>}
+  }).done(function() {
+      $('#favorite_job > span').html('已收藏');
+  }).failed(function() {
+    alert('收藏失败');
+  });
+ });
 
 
   </script>
