@@ -9,6 +9,10 @@ RSpec.describe Webapp::WorkExperiencesController, type: :controller do
     request.env['devise.mapping'] = Devise.mappings[:user]
   end
   # 页面测试开始
+  before :each do
+    @work_experience = create :work_experience
+  end
+
   describe 'GET #index' do
     it 'returns http success' do
       get :index
@@ -18,14 +22,14 @@ RSpec.describe Webapp::WorkExperiencesController, type: :controller do
 
   describe 'GET #edit' do
     it 'returns http success' do
-      get :edit, id: @user.id
+      get :edit, id: @work_experience.id
       expect(response.status).to eq(200)
     end
   end
 
   describe 'GET #show' do
     it 'returns http success' do
-      get :show, id: @user.id
+      get :show, id: @work_experience.id
       expect(response.status).to eq(200)
     end
   end
@@ -33,7 +37,7 @@ RSpec.describe Webapp::WorkExperiencesController, type: :controller do
   describe 'GET #new' do
     it 'returns http success' do
 
-      get :new, id: @user.id
+      get :new, id: @work_experience.id
 
       expect(response.status).to eq(200)
     end

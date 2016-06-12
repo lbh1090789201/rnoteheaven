@@ -3,7 +3,6 @@ class Webapp::WorkExperiencesController < ApplicationController
 
   def index
     @work_experiences = WorkExperience.where(:user_id => current_user.id)
-    # puts "........."+@work_experiences.to_json.to_s
   end
 
   def new
@@ -15,8 +14,7 @@ class Webapp::WorkExperiencesController < ApplicationController
     work_experiences = user.work_experiences.build(work_experience_params)
 
     if work_experiences.save
-      redirect_to webapp_resume_path(current_user.id), notice: "添加成功"
-      return
+      render js: ' history.go(-1);', notice: '创建成功！'
     else
       redirect_to :back, alert: "添加失败"
       return
@@ -29,14 +27,12 @@ class Webapp::WorkExperiencesController < ApplicationController
 
   def edit
       @work_experience = WorkExperience.find params[:id]
-      puts "........."+@work_experience.to_json.to_s
   end
 
   def update
     @work_experience = WorkExperience.find params[:id]
     if @work_experience.update(work_experience_params)
-      redirect_to webapp_resume_path(current_user.id), notice: "修改成功"
-      return
+      render js: ' history.go(-1);', notice: '修改成功！'
     else
       redirect_to :back, alert: "修改失败"
       return

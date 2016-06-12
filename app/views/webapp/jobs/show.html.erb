@@ -36,17 +36,17 @@
   </section>
 
   <%= render 'mask' %>
+
 </div>
 <div class="job-list">
   <ul>
     <li><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
-
-    <!-- 判断是否已应聘过 -->
-    <li><a class= <%= @btn_apply[:css] %> id="apply_job"> <%= image_tag "apply_records.png" %><span><%= @btn_apply[:text] %></span></a></li>
-
+    <li><a class= <%= @btn_apply[:css] %> id="apply_job"> <%= image_tag "apply_records.png" %>
+                                                <span><%= @btn_apply[:text] %></span></a></li>
     <li><a href="#"><%= image_tag "jobs_collection.png" %><span>收藏职位</span></a></li>
   </ul>
 </div>
+
 
   <script>
   // 获取签名

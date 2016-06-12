@@ -61,8 +61,7 @@ class Webapp::UsersController < ApplicationController
 
 
     if @user.update(user_params)
-      redirect_to webapp_resume_path(current_user.id), notice: "修改成功"
-      return
+      render js: 'history.back();'
     else
       redirect_to :back, alert: "修改失败"
       return

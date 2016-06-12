@@ -2,7 +2,7 @@
 <% provide :content, "保存" %>
 
 <div class="edit_basic edit-work-experiences">
-  <%= simple_form_for @expect_job, method: :patch, url: webapp_expect_job_path(params[:id]) do |e| %>
+  <%= simple_form_for @expect_job, method: :patch,remote: true, url: webapp_expect_job_path(params[:id]) do |e| %>
       <%= e.input :name, label: "职能", input_html: { class: "job-fair", value: "护士", id: "name"} %>
       <%= e.input :job_type, label: '工作类型', input_html: { class: "job-fair", value: "全职"} %>
       <%= e.input :location, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>

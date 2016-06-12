@@ -11,7 +11,7 @@ class Api::ApplyRecordsController < ApiController
 
     #简历相关
     resume = Resume.find_by_user_id current_user.id
-    @apply_record.resume_id = resume.id
+    @apply_record.resume_id = resume.id if resume
 
     #职位相关
     job = Job.find params[:apply_record][:job_id]

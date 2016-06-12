@@ -1,12 +1,11 @@
 class Webapp::ExpectJobsController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
-  
+
   def index
   end
 
   def edit
-    @expect_job = ExpectJob.find_by_user_id current_user.id
-    puts "........"+@expect_job.to_json.to_s
+    @expect_job = ExpectJob.where(user_id: current_user.id).first_or_create!
   end
 
   def show
@@ -19,8 +18,7 @@ class Webapp::ExpectJobsController < ApplicationController
   def update
     @expect_job = ExpectJob.find_by_id params[:id]
     if @expect_job.update(expect_job_params)
-      redirect_to webapp_resume_path(current_user.id), notice: "修改成功"
-      return
+      render js: 'history.go(-1);'
     else
       redirect_to :back, alert("修改失败")
     end
@@ -28,6 +26,6 @@ class Webapp::ExpectJobsController < ApplicationController
 
   private
   def expect_job_params
-    params.require(:expect_job).permit(:name, :job_type, :location, :expected_salary_range)
+    params.require(:expect_job).permit(:name, :job_type, :location, :expected_salary_range, :job_desc)
   end
 end

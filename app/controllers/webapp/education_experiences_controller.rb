@@ -3,7 +3,6 @@ class Webapp::EducationExperiencesController < ApplicationController
 
   def index
     @education_experiences = EducationExperience.where(:user_id => current_user.id)
-    puts "........."+@education_experience.to_json.to_s
   end
 
   def new
@@ -11,12 +10,12 @@ class Webapp::EducationExperiencesController < ApplicationController
   end
 
   def create
-    user = User.find_by_id(current_user.id)
-    education_experiences = user.education_experiences.build(education_experience_params)
+    education_experience = EducationExperience.new education_experience_params
+    education_experience.user_id = current_user.id
 
-    if education_experiences.save
-      redirect_to webapp_resume_path(current_user.id), notice: "添加成功"
-      return
+    if education_experience.save
+      flash.now[:notice] = "创建成功！"
+      render js: ' history.go(-1);'
     else
       redirect_to :back, alert: "添加失败"
       return
@@ -30,10 +29,9 @@ class Webapp::EducationExperiencesController < ApplicationController
 
   def update
     @education_experience = EducationExperience.find_by_id params[:id]
-    puts "........."+@education_experience.to_json.to_s
+
     if @education_experience.update(education_experience_params)
-      redirect_to webapp_resume_path(current_user.id), notice: "修改成功"
-      return
+      render js: ' history.go(-1);', notice: '修改成功！'
     else
       redirect_to :back, alert("修改失败")
       return

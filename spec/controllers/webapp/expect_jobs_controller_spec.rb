@@ -11,12 +11,6 @@ RSpec.describe Webapp::ExpectJobsController, type: :controller do
   end
 
   # 页面测试开始
-  describe 'GET #index' do
-    it 'returns http success' do
-      get :index
-      expect(response.status).to eq(200)
-    end
-  end
 
   describe 'GET #edit' do
     it 'returns http success' do

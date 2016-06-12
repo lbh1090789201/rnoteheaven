@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="edit_basic edit-work-experiences">
-    <%= simple_form_for :user_info, url: webapp_education_experiences_path, :method => :post  do |f| %>
+    <%= simple_form_for :education_experience, url: webapp_education_experiences_path,remote: true, :method => :post  do |f| %>
       <%= f.input :college, label: "学校", input_html: { class: "user-input"} %>
       <%= f.input :education_degree, label: '学位', input_html: { class: "user-input"} %>
       <%= f.input :major, label: '专业', input_html: { class: "user-input"} %>
