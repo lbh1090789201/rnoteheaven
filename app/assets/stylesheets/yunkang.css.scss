@@ -690,6 +690,10 @@ a:hover {
     }
   }
 }
+.home-user {
+  position: relative;
+  top: -0.05rem;
+}
 
 /* 我的页面 结束-汤伟*/
 
@@ -854,6 +858,25 @@ a:hover {
               color: $color-yellow;
             }
           }
+        }
+        .job-li {
+          height: 6.02rem;
+        }
+        .job-name {
+          font-size: 0.87rem;
+          //margin: 1.31rem 0 0.87rem;
+        }
+        .job-time {
+          font-size: 0.7rem;
+        }
+        .job-hsname {
+          font-size: 0.7rem;
+        }
+        .job-range {
+          font-size: 0.88rem;
+        }
+        .job-status {
+          font-size: 0.7rem;
         }
       }
     }
@@ -1104,6 +1127,9 @@ a:hover {
       margin-top: 1.33rem;
     }
   }
+}
+.favorite-job {
+  padding-top: 1.5rem;
 }
 /* 医院详情 结束-汤伟*/
 

@@ -1,5 +1,5 @@
 <% provide :title, "我收藏的职位" %>
-<div class="jobs">
+<div class="jobs favorite-job">
   <div class="jobs-list">
     <% @favorite_jobs.each do |f| %>
     <a href="/webapp/jobs/<%= f[:job_id] %>">
