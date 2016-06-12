@@ -66,9 +66,13 @@ ActiveRecord::Schema.define(version: 20160607055900) do
   create_table "favorite_jobs", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
     t.integer  "job_id",       limit: 4
+    t.string   "name",         limit: 191
+    t.string   "job_type",     limit: 191
+    t.string   "salary_range", limit: 191
+    t.string   "region",       limit: 191
     t.datetime "collected_at"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|

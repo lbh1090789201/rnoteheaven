@@ -42,7 +42,7 @@ class Webapp::HomeController < ApplicationController
         }
         @arjob.push(o)
       end
-    # puts "....."+@arjob.to_json.to_s
+
     return @arjob
   end
 end

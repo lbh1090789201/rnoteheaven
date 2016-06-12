@@ -7,7 +7,9 @@ class Webapp::JobsController < ApplicationController
      @job = Job.find_by_id(params[:id])
      is_applied = ApplyRecord.is_applied(current_user.id , params[:id])
      has_resume = Resume.find_by_user_id current_user.id
+     is_favor = FavoriteJob.is_favor(current_user.id, params[:id])
      @btn_apply = btn_info(is_applied, has_resume)
+     @btn_favor = btn_favor(is_favor)
    end
 
    # private
@@ -25,6 +27,14 @@ class Webapp::JobsController < ApplicationController
        else
          return {css: 'no_resume', text: '应聘职位'}
        end
+     end
+   end
+
+   def btn_favor(is_favor)
+     if is_favor
+       return {css: "is_favor", img_url: "star_yellow.png", text: "已收藏"}
+     else
+       return {css: "no_favor", img_url: "star_black.png", text: "收藏职位"}
      end
    end
 

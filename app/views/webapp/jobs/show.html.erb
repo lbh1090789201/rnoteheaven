@@ -1,9 +1,7 @@
 <div class="job-head">
   <div>
     <%= link_to "职位详情", webapp_job_path, class: "job-page" %>
-
     <a href="../resume_viewers/<%= @job.hospital_id %>" class="hospital-page">医院详情</a>
-
   </div>
 </div>
 
@@ -36,25 +34,20 @@
   </section>
 
   <%= render 'mask' %>
-
 </div>
+
 <div class="job-list">
   <ul>
     <li><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
-    <li><a class= <%= @btn_apply[:css] %> id="apply_job"> <%= image_tag "apply_records.png" %>
+    <li><a class="<%= @btn_apply[:css] %>" id="apply_job"> <%= image_tag "apply_records.png" %>
                                                 <span><%= @btn_apply[:text] %></span></a></li>
-    <li><a id="favorite_job"><%= image_tag "jobs_collection.png" %><span>收藏职位</span></a></li>
-    <lidd> <%= image_tag "jobs_collection.png" %><%= link_to "收藏职位",
-                    api_favorite_jobs_path(id: params[:id]), method: :post %> </li>
+    <li><a class="<%= @btn_favor[:css] %>" id="favorite_job" onclick=favor(this)><%= image_tag @btn_favor[:img_url] %>
+                                                <span><%= @btn_favor[:text] %></span></a></li>
   </ul>
 </div>
 
 
   <script>
-  // 获取签名
-    function authToken() {
-     return '<%= form_authenticity_token if protect_against_forgery? -%>';
-   }
 
   // 顶部导航
   $(".job-head>div>span").click(function(){
@@ -65,13 +58,11 @@
   // 应聘职位
   $('#btn_apply').bind('click', function(){
     $.post("/api/v1/apply_records", {
-      apply_record: {job_id: <%= params[:id] %>},
-      authenticity_token: authToken()
+      apply_record: {job_id: <%= params[:id] %>}
     }).done(function() {
       $('#apply_box').attr('class', 'hidden');
       $('#apply_job > span').html('已应聘');
       $('#apply_job').attr('class', 'is_applied');
-      // alert('应聘成功！');
     }).fail(function() {
       alert('failed');
     });
@@ -89,16 +80,48 @@
     alert('请先完善简历！');
   });
 
+// 收藏按钮
+function favor(obj) {
+  console.log(obj);
+  if($(obj).attr('class') == 'no_favor') {
+    is_favor();
+  } else if ($(obj).attr('class') == 'is_favor') {
+    no_favor();
+  } else {
+    alert('failed');
+  }
+}
 // 收藏职位
-$('#favorite_job').bind('click', function() {
+function is_favor() {
   $.post("/api/v1/favorite_jobs", {
   favorite_job: {job_id: <%= params[:id] %>}
   }).done(function() {
       $('#favorite_job > span').html('已收藏');
-  }).failed(function() {
+      $('#favorite_job > img').remove();
+      $('#favorite_job').prepend( '<%= image_tag "star_yellow.png" %>');
+      $('#favorite_job').attr('class', 'is_favor');
+      $('#favorite_job').off();
+  }).fail(function() {
     alert('收藏失败');
   });
- });
+ }
 
+ // 取消收藏
+function no_favor() {
+   $.ajax({
+     url: '<%= api_favorite_job_path(params[:id]) %>',
+     type: 'DELETE',
+     success: function() {
+       $('#favorite_job > span').html('收藏职位');
+       $('#favorite_job > img').remove();
+       $('#favorite_job').prepend( '<%= image_tag "star_black.png" %>');
+       $('#favorite_job').attr('class', 'no_favor');
+       $('#favorite_job').off();
+     },
+     error: function() {
+       alert('删除失败。')
+     }
+   });
+}
 
-  </script>
+</script>
