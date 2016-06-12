@@ -3,7 +3,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       # merge user_info
-      t.integer :start_work_at #工作年限
+      t.string :start_work_at #工作年限
       t.string :location #所在区域
       t.string :seeking_job #是否求职
       t.string :highest_degree #最高学历

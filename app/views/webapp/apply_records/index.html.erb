@@ -42,15 +42,15 @@
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="筛选" %>
                   <a href="/webapp/apply_records/<%= d[:id] %>" class="">
-                    <li>
+                    <li class="job-li">
                       <div class="left">
-                        <h3><%= d[:job_name] %></h3>
-                        <p><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
-                        <p><%= d[:hospital_name] %></p>
+                        <h3 class="job-name"><%= d[:job_name] %></h3>
+                        <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
+                        <p class="job-hsname"><%= d[:hospital_name] %></p>
                       </div>
                       <div class="right">
-                        <h3><%= d[:salary_range] %></h3>
-                        <p><%= d[:resume_status] %></p>
+                        <h3 class="job-range"><%= d[:salary_range] %></h3>
+                        <p class="job-status"><%= d[:resume_status] %></p>
                       </div>
                     </li>
                   </a>
@@ -62,15 +62,15 @@
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="面试" %>
                   <a href="/webapp/apply_records/<%= d[:id] %>" class="">
-                    <li>
+                    <li class="job-li">
                       <div class="left">
-                        <h3><%= d[:job_name] %></h3>
-                        <p><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
-                        <p><%= d[:hospital_name] %></p>
+                        <h3 class="job-name"><%= d[:job_name] %></h3>
+                        <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
+                        <p class="job-hsname"><%= d[:hospital_name] %></p>
                       </div>
                       <div class="right">
-                        <h3><%= d[:salary_range] %></h3>
-                        <p><%= d[:resume_status] %></p>
+                        <h3 class="job-range"><%= d[:salary_range] %></h3>
+                        <p class="job-status"><%= d[:resume_status] %></p>
                       </div>
                     </li>
                   </a>
@@ -82,15 +82,15 @@
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="不合适" %>
                   <a href="/webapp/apply_records/<%= d[:id] %>" class="">
-                    <li>
+                    <li class="job-li">
                       <div class="left">
-                        <h3><%= d[:job_name] %></h3>
-                        <p><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
-                        <p><%= d[:hospital_name] %></p>
+                        <h3 class="job-name"><%= d[:job_name] %></h3>
+                        <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
+                        <p class="job-hsname"><%= d[:hospital_name] %></p>
                       </div>
                       <div class="right">
-                        <h3><%= d[:salary_range] %></h3>
-                        <p><%= d[:resume_status] %></p>
+                        <h3 class="job-range"><%= d[:salary_range] %></h3>
+                        <p class="job-status"><%= d[:resume_status] %></p>
                       </div>
                     </li>
                   </a>

@@ -15,4 +15,6 @@
 
 //= require bootstrap
 //= require bootstrap/alert
+//= require cityData
+//= require cityPicker
 //= require_tree

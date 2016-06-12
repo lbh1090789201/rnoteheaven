@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 20160607055900) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.integer  "start_work_at",          limit: 4
+    t.string   "start_work_at",          limit: 191
     t.string   "location",               limit: 191
     t.string   "seeking_job",            limit: 191
     t.string   "highest_degree",         limit: 191

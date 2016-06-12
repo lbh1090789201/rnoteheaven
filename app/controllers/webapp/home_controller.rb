@@ -12,7 +12,7 @@ class Webapp::HomeController < ApplicationController
     end
 
     #搜索城市和医院
-    if filter[:city] && filter[:search]
+    if filter[:city] && filter[:search] && !filter[:search].blank?
       job_careers = Job.filter_location(filter[:city]).filter_job_name(filter[:search])
       hospitals = Hospital.filter_location(filter[:city]).filter_hospital_name(filter[:search])
       @jobs = []

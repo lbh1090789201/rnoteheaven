@@ -8,12 +8,12 @@
 
 
 <div class="edit_basic edit-work-experiences">
-    <%= simple_form_for :user_info, url: webapp_expect_jobs_path,:method => :post do |f| %>
-      <%= f.input :name, label: "职能", input_html: { class: "job-fair", value: "护士", id: "name"} %>
-      <%= f.input :job_type, label: '工作类型', input_html: { class: "job-fair", value: "全职"} %>
-      <%= f.input :location, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
-      <%= f.input :expected_salary_range, label: '期望薪水', input_html: { class: "job-fair", value: "5K~6K"} %>
-      <%= f.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
+   <%= simple_form_for :user_info, url: webapp_expect_jobs_path,:method => :post do |f| %>
+     <%= f.input :name, label: "职能", input_html: { class: "expect-name job-fair", value: "护士", id: "expect_name"} %>
+     <%= f.input :job_type, label: '工作类型', input_html: { class: "expect-type job-fair", value: "全职", id: "expect_type"} %>
+     <%= f.input :location, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
+     <%= f.input :expected_salary_range, label: '期望薪水', input_html: { class: "expect-range job-fair", value: "5K~6K", id: "expect_range"} %>
+     <%= f.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
 </div>
@@ -22,10 +22,31 @@
 <script type="text/javascript">
   fullScreen('.edit_basic');
   clickRignt('#submit');
-  $('.job-fair').click(function() {
-    workExperience();
-    $(".before-mask").addClass('mask');
-    $('.title').text('选择职能');
-    $('.right').text('');
+  // $('.job-fair').click(function() {
+  //   workExperience();
+  //   $(".before-mask").addClass('mask');
+  //   $('.title').text('选择职能');
+  //   $('.right').text('');
+  // });
+
+  //职能
+  $('.expect-name').click(function() {
+    var expect_name = ['综合门诊／全科医生','内科医生', '外科医生', '专科医生', '牙科医生', '外科医生', '护士'];
+    var pclass = 'expect_name';
+    workExperience(expect_name, ".expect-name", pclass);
+  });
+
+  //工作类型
+  $('.expect-type').click(function() {
+    var expect_type = ['全职','兼职', '实习'];
+    var pclass = 'expect_type';
+    workExperience(expect_type, ".expect-type", pclass);
+  });
+
+  //期望薪水
+  $('.expect-range').click(function() {
+    var expect_range = ['1500以下','2000-5000', '5000-10000', '10000-15000', '15000-25000', '25000-50000', '50000以上'];
+    var pclass = 'expect_range';
+    workExperience(expect_range, ".expect-range", pclass);
   });
 </script>

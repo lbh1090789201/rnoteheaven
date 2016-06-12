@@ -1,3 +1,6 @@
+/*
+ *= require cityPicker
+ */
 /* 变量区 开始 */
 $light-gray: #f4f4f4;
 $font-gray: #a5a5a5;
@@ -407,6 +410,8 @@ a:hover {
       height: 2.58rem;
       border: 0;
       font-size: 0.86rem;
+      text-align: right;
+      padding-right: 1.78rem;
     }
     textarea:focus, input:focus {
       outline: none;
@@ -414,7 +419,29 @@ a:hover {
       -webkit-box-shadow: none;
     }
   }
+  .form-group::after {
+    content: "";
+    width: 0.41rem;
+    height: 0.66rem;
+    display: block;
+    position: absolute;
+    right: 1rem;
+    margin-top: 0.9rem;
+    background: url("icon.png");
+    background-size: 0.41rem 0.66rem;
+  }
+  .form-group:nth-of-type(1)::after{
+    display: none;
+  }
+  .form-group:nth-of-type(6)::after{
+    display: none;
+  }
+  .form-group:nth-of-type(7)::after{
+    display: none;
+  }
+
 }
+
 /* 基本信息编辑 结束 bobo */
 
 /* 工作经历页面 开始 bobo*/
@@ -483,16 +510,22 @@ a:hover {
     padding-right: 2rem !important;
 
   }
-  .form-group::after {
-    content: ">";
-    display: block;
-    position: absolute;
-    right: 1rem;
-    margin-top: 0.8rem;
-  }
+  // .form-group::after {
+  //   content: ">";
+  //   // content: "";
+  //   // width: 0.41rem;
+  //   // height: 0.66rem;
+  //   display: block;
+  //   position: absolute;
+  //   right: 1rem;
+  //   margin-top: 0.8rem;
+  //   // background: url("icon.png");
+  //   // background-size: 0.41rem 0.66rem;
+  // }
   .form-group:nth-of-type(5)::after {
-    content: "";
+    display: none;
   }
+
   .mask {
     position: absolute;
     top: 0;
@@ -1645,5 +1678,51 @@ a:hover {
     button {
       width: 45%;
     }
+  }
+}
+
+//筛选列表样式
+.before-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #F4F4F4;
+  p {
+    width: 19.05rem;
+    height: 2.53rem;
+    line-height: 2.53rem;
+    font-size: 0.8rem;
+    margin: 0 auto;
+    border-bottom: 1px solid #c4c4c4;
+    text-indent: 4px;
+    cursor: pointer;
+  }
+}
+
+//resumes show页面
+.education-edit {
+  position: relative;
+  top: -1rem;
+}
+//education_experience edit页面
+.edit-education {
+  .form-group:nth-of-type(2)::after {
+    display: none;
+  }
+}
+
+.edit-expectjob {
+  .form-group:nth-of-type(1)::after {
+    content: "";
+    width: 0.41rem;
+    height: 0.66rem;
+    display: block;
+    position: absolute;
+    right: 1rem;
+    margin-top: 0.9rem;
+    background: url("icon.png");
+    background-size: 0.41rem 0.66rem;
   }
 }

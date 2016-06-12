@@ -9,12 +9,11 @@
   <% provide :link, '/webapp/expect_jobs/new' %>
 <% end %>
 
-<div class="edit_basic edit-work-experiences">
+<div class="edit_basic edit-work-experiences edit-education">
     <%= simple_form_for :education_experience, url: webapp_education_experiences_path,remote: true, :method => :post  do |f| %>
       <%= f.input :college, label: "学校", input_html: { class: "user-input"} %>
-      <%= f.input :education_degree, label: '学位', input_html: { class: "user-input"} %>
       <%= f.input :major, label: '专业', input_html: { class: "user-input"} %>
-      <%= f.input :entry_at, label: '开始时间', input_html: { class: "user-input"} %>
+      <%= f.input :education_degree, label: '学历', input_html: { class: "education-degree user-input", id: "education_degree"} %>
       <%= f.input :graduated_at, label: '结束时间', input_html: { class: "user-input"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
@@ -23,4 +22,11 @@
 <script type="text/javascript">
   fullScreen('.edit_basic');
   clickRignt('#submit');
+
+  //学历
+      $('.education-degree').click(function() {
+        var education_degree = ['大专以下', '大专','本科', '硕士', '博士', '博士后'];
+        var pclass = 'education_degree';
+        workExperience(education_degree, ".education-degree", pclass);
+      });
 </script>

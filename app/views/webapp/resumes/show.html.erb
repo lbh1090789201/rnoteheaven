@@ -37,6 +37,10 @@
                         <td><%= @user.highest_degree %></td>
                     </tr>
                     <tr>
+                        <td><span>职</span>称：</td>
+                        <td><%= @user.highest_degree %></td>
+                    </tr>
+                    <tr>
                         <td>工作年限：</td>
                         <td><%= @user.start_work_at %></td>
                     </tr>
@@ -115,10 +119,22 @@
           <% end %>
         </section>
 
-
+          <section>
+              <h2>持有证书
+              </h2>
+              <div class="box">
+                  <a href="javascript:void(0);" class="edit">
+                      <%= image_tag "pencil3.png" %>编辑
+                  </a>
+                  <h3>持有证书</h3>
+                  <p>
+                    中国医师协会奖
+                  </p>
+              </div>
+          </section>
 
       　<% if @expect_job %>
-        <section>
+        <section class="education-edit">
             <h2>期望工作<span>必填</span>
             </h2>
             <div class="box">

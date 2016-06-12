@@ -31,7 +31,8 @@ module Ryunkang
     I18n.enforce_available_locales = false
     # turn off warnings triggered by active record
     config.active_record.raise_in_transactional_callbacks = true
-
+    # use assets
+    config.assets.enabled = true
     # Test framework
     config.generators do |g|
       g.test_framework :rspec,

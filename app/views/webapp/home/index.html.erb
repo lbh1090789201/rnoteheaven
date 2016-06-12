@@ -5,7 +5,10 @@
   <div class="box">
 
     <form id="myform" name="filter" method="get" action="/webapp/home">
-      <input class="left" type="text" name="city" placeholder="城市"  onkeydown="show();" />
+      <input class="left" type="text" name="city" id="cityChoice" placeholder="城市" onchange="show();" >
+      <input type="hidden" id="province" value="">
+      <input type="hidden" id="city" value="">
+      <!--<input class="left" type="text" name="city" placeholder="城市"  onkeydown="show();" />-->
       <input id="search" class="right" type="text" name="search" placeholder="搜索职位/医院" onkeydown="show();" />
       <input id="submit" class="btn btn-success btn-order" type="submit" value="搜索" style="display:none"/>
     </form>
@@ -65,4 +68,17 @@
         }
     }
 
+// 城市插件
+    var cityPicker = new IIInsomniaCityPicker({
+          data: cityData,
+          target: '#cityChoice',
+          valType: 'k-v',
+          hideCityInput: '#city',
+          hideProvinceInput: '#province',
+          callback: function(){
+            $("#submit").trigger("click");
+          }
+      });
+
+      cityPicker.init();
 </script>

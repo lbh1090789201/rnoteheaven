@@ -2,16 +2,21 @@
 <% provide :title, "基本信息" %>
 <% provide :content, "保存" %>
 
-<div class="edit_basic">
-    <%= simple_form_for @user, url: webapp_user_path(current_user.id),remote: true, :method => :patch do |f| %>
+<div class="edit_basic" id="user-edit">
+    <%= simple_form_for @user, url: webapp_user_path(current_user.id),remote: true, :method => :patch, class: "user-form" do |f| %>
       <%= f.input :show_name, label: "姓名", input_html: { class: "user-input"} %>
-      <%= f.input :sex, label: '性别', input_html: { class: "user-input"} %>
-      <%= f.input :highest_degree, label: '最高学历', input_html: { class: "user-input"} %>
-      <%= f.input :start_work_at, label: '工作年限', input_html: { class: "user-input"} %>
+      <%= f.input :sex, label: '性别', input_html: { class: "user-sex user-input", id: "sex"} %>
+      <%= f.input :highest_degree, label: '最高学历', input_html: { class: "highest-degree user-input", id: "highest_degree"} %>
+      <!-- 职称属性 -->
+      <%= f.input :location, label: '职称', input_html: { class: "user-title user-input", id: "user_title"} %>
+
+      <%= f.input :start_work_at, label: '工作年限', as: :string, input_html: { class: "start-work user-input", id: "start_work"} %>
+
       <%= f.input :cellphone, label: '手机号码', input_html: { class: "user-input"} %>
       <%= f.input :email, label: '邮箱', input_html: { class: "user-input"} %>
       <%= f.input :location, label: '所在区域', input_html: { class: "user-input"} %>
-      <%= f.input :seeking_job, label: '是否求职', input_html: { class: "user-input"} %>
+      <!-- 当前状态属性 -->
+      <%= f.input :seeking_job, label: '当前状态', input_html: { class: "seeking-job user-input", id: "seeking_job"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
 </div>
@@ -19,4 +24,40 @@
 <script type="text/javascript">
   fullScreen('.edit_basic');
   clickRignt('#submit');
+
+　　//性别
+    $('.user-sex').click(function() {
+        var sex = ['男','女'];
+        var pclass = 'sex';
+        workExperience(sex,".user-sex",pclass);
+    });
+
+　　　//最高学历
+    $('.highest-degree').click(function() {
+      var highest_degree = ['大专以下', '大专','本科', '硕士', '博士', '博士后'];
+      var pclass = 'highest_degree';
+      workExperience(highest_degree, ".highest-degree", pclass);
+    });
+
+　　　//职称
+    $('.user-title').click(function() {
+      var user_title = ['医师','主治医师', '副主任医师', '主任医师'];
+      var pclass = 'user_title';
+      workExperience(user_title, ".user-title", pclass);
+    });
+
+    //工作年限
+    $('.start-work').click(function() {
+      var start_work = ['在读学生','应届毕业生', '1年', '２年', '3-4年', '5-7年', '8-9年', '10年以上'];
+      var pclass = 'start_work';
+      workExperience(start_work, ".start-work", pclass);
+    });
+
+    //当前状态
+    $('.seeking-job').click(function() {
+      var seeking_job = ['目前正在找工作','半年内无换工作的计划', '一年内无换工作的计划', '观望有好的机会再考虑', '我暂时不想找工作'];
+      var pclass = 'seeking_job';
+      workExperience(seeking_job, ".seeking-job", pclass);
+    });
+
 </script>

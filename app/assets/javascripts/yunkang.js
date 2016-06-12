@@ -1,3 +1,5 @@
+
+
 /*搜索首页轮播开始*/
 $('.flexslider').flexslider();
 
@@ -39,29 +41,34 @@ function wordLimit(dom, word) {
 /* 超过一定字体变成省略号 结束 */
 
 /* 蒙版 开始 */
-var expectValue = {
-  jobType: ['医院/医疗/护理','医院管理人员','综合门诊/全科医生','内科医生','外科医生','专科医生','牙科医生','护士','内科医生','内科医生','内科医生']
-}
-function workExperience(jobType) {
+
+
+function workExperience(obj,api,pclass) {
   var parentdiv = $('<div></div>');
   parentdiv.attr('class','before-mask');;
-  for (var i = 0; i < expectValue.jobType.length; i++) {
-    var childBtn = $('<button>'+expectValue.jobType[i]+'</button>');
-    childBtn.attr('value',expectValue.jobType[i]);
+  for (var i = 0; i < obj.length; i++) {
+    var childBtn = $('<p>'+obj[i]+'</p>');
+    childBtn.attr('value',obj[i]);
     childBtn.attr('onclick', 'change_val(this)');
+    childBtn.attr('class', pclass)
     parentdiv.append(childBtn);
   }
   var workExperienceDiv = $('.edit_basic');
   parentdiv.appendTo(workExperienceDiv);
+  edit_title =  $(".title").text();
+  var h1 = $(api).siblings().text();
+  $(".title").text(h1);
+  $('.right').text('');
 }
 
 function change_val(obj) {
-  $('#name').attr('value', obj.value);
-  $('.title').text('编辑期望工作')
+  $("#" + $(obj).attr("class")).attr('value', obj.value);
+  $('.title').text(edit_title)
   $('.right').text('保存');
   $('.before-mask').animate({
     top: '1500px',
   },300);
+  $('.before-mask').css("display","none");
 };
 /* 蒙版 结束 */
 
