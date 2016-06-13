@@ -10,12 +10,14 @@
                 <div class="avatar">
                     <%= image_tag "pencil.png", class: "pencil" %>
                     <div class="avatar-img">
-                      <%# image_tag "avator.png"%>
+                      <div class="avatar-box" style="background-img:url(<%= @avatar %>)">
 
-
+                      </div>
+                      <%= image_tag @avatar %>
                      </div>
-                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]) do |u| %>
-                         <%= u.input :avatar, label: '头像', input_html: { class: "job-fair", id:"file_img", value: "武汉"} %>
+                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]) do |f| %>
+                         <%= f.input :avatar, label: '头像', input_html: {id:"avatar"} %>
+                         <%= f.button :submit %>
                      <% end %>
                     <span>点击更换</span>
                 </div>
@@ -199,14 +201,15 @@
 </div>
 
 <script type="text/javascript">
-
-
 function expend_desc(obj) {
     console.log();
-//    obj.parent.children(3).fadeOut();
     $(obj).parent().siblings('.job-desc-show').toggle(300);
     $(obj).parent().siblings('.job-desc-hide').toggle(300);
 
 };
+
+$($('#avatar').change(function() {
+  $('input[type=submit]').click();
+}));
 
 </script>

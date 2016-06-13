@@ -2,7 +2,7 @@
     <% provide :link, "sign_up"  %>
     <% provide :title, "用户登陆" %>
     <% provide :content, "注册"  %>
-    <div class="edit_basic edit-work-experiences no-icon">
+    <div class="edit_basic edit-work-experiences no-icon sessions">
 
         <%= simple_form_for(resource, :as => resource_name, :url => user_session_path) do |f| %>
             <%= f.input :username, label: '用户名', input_html: {class: "form-control"} %>
