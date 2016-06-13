@@ -5,13 +5,16 @@
     <%= simple_form_for :work_experience, as: :post,remote: true, url: webapp_work_experiences_path do |f| %>
     <%= f.input :company, label: "医院", input_html: { class: "user-input"} %>
     <%= f.input :position, label: '职位', input_html: { class: "user-input"} %>
-    <%= f.input :started_at, label: '入职时间', input_html: { class: "user-input"} %>
-    <%= f.input :left_time, label: '离职时间', input_html: { class: "user-input"} %>
+    <%= f.input :started_at, label: '入职时间', input_html: { class: "user-input", id: "beginTime"} %>
+    <%= f.input :left_time, label: '离职时间', input_html: { class: "user-input", id: "endTime"} %>
     <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
+    <div id="datePlugin"></div>
 </div>
 
+
+<%= javascript_include_tag "date" %>
 <script type="text/javascript">
     fullScreen('.edit_basic');
     clickRignt('#submit');
@@ -19,5 +22,10 @@
     $('form').on("ajax:success", function(event, data) {
       alert('ok');
     });
+
+    $(function(){
+  	$('#beginTime').date();
+  	$('#endTime').date({theme:"datetime"});
+  });
 
 </script>

@@ -39,46 +39,10 @@
       </a>
       <div class="mask">
       </div>
-      <a class="resumes-list" href="#">
+      <a class="resumes-list" href="<%= webapp_block_hospitals_path %>">
           <%= image_tag "resume_open.png",class:"icon5"%>
-          <span class="resume">公开我的简历</span>
-          <div class="right">
-            <div class="swich"></div>
-          </div>
+          <span class="resume">简历隐私</span>
       </a>
   </div>
-  <!--  弹窗-->
-  <div class="model">
-    <div class="model-p">
-
-      <p>设置成功，已投递简历的公司
-      仍可看到哦</p>
-    </div>
-  </div>
 </div>
 </div>
-
-<script type="text/javascript">
-  $('.right').click(function() {
-    if($('.swich').css('margin-left') == '0px') {
-      $('.swich').animate({  marginLeft: "1.2rem"}, 500);
-      $(this).css({'background': '#a3a3a3',});
-      $('.model').fadeIn('fast', function() {
-        var j = setInterval(function () {
-          $('.model').fadeOut('slow');
-        },1000);
-        // clearInterval(j);
-      })
-
-    } else {
-
-      $('.swich').animate({  marginLeft: "0px"}, 500);
-      $(this).css({'background': '#3a9da0',});
-      $('.model').fadeOut('fast', function() {
-
-      });
-    }
-  });
-
-  fullScreen('.user-first-page');
-</script>

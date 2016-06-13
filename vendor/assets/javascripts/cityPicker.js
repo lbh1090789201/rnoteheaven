@@ -8,7 +8,7 @@
  *      hideCityInput: '#hideID'       城市隐藏域ID
  *      hideProvinceInput: '#hideID'   省份隐藏域ID（如果不需要存省份，此项可以省略）
  *      callback: function(city_id){   回调函数，选择城市后调用，city_id为选择的城市的ID
- *         
+ *
  *      }
  * });
  *
@@ -247,7 +247,7 @@ IIInsomniaCityPicker.prototype = {
             var top = offset.top + _this.outerHeight() + 15;
 
             that.template.css({
-                'left': offset.left,
+                // 'left': offset.left,
                 'top': top
             });
 

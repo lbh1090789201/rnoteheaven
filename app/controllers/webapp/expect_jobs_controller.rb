@@ -12,8 +12,6 @@ class Webapp::ExpectJobsController < ApplicationController
     @expect_job = ExpectJob.find_by_user_id current_user.id
   end
 
-  def new
-  end
 
   def update
     @expect_job = ExpectJob.find_by_id params[:id]
