@@ -1,5 +1,7 @@
 class Webapp::ResumesController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
+  protect_from_forgery except: :update
+
   def index
   end
 
@@ -20,6 +22,7 @@ class Webapp::ResumesController < ApplicationController
     @work_experiences = WorkExperience.where(:user_id => @user.id)
     @education_experiences = EducationExperience.where(:user_id => @user.id)
     @expect_job = ExpectJob.find_by_user_id(@user.id)
+    @user.avatar? ? @avatar = @user.avatar_url : "avator.png"
   end
 
   def show
@@ -30,10 +33,26 @@ class Webapp::ResumesController < ApplicationController
     @education_experiences = EducationExperience.where(:user_id => @user.id).order(updated_at: :desc)
     @expect_job = ExpectJob.find_by_user_id(@user.id)
     @user.avatar? ? @avatar = @user.avatar_url : "avator.png"
+    @refresh_left = Resume.refresh_left(resume.id)
   end
 
   def update
+    if params[:refresh]
+      resume = Resume.find params[:id]
+      resume.refresh_at = Time.now
 
+      if resume.save
+        render json: {
+          success: true,
+          info: "简历刷新成功"
+        },status: 200
+      else
+        render json: {
+                   success: false,
+                   info: '简历刷新失败'
+               }, status: 403
+      end
+    end
   end
 
   def edit

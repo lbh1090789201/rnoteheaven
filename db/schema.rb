@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607055900) do
+ActiveRecord::Schema.define(version: 20160613094103) do
 
   create_table "apply_records", force: :cascade do |t|
     t.integer  "resume_id",       limit: 4
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20160607055900) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
+
+  create_table "certificates", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "title",      limit: 191
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "certificates", ["user_id"], name: "index_certificates_on_user_id", using: :btree
 
   create_table "education_experiences", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -161,6 +170,7 @@ ActiveRecord::Schema.define(version: 20160607055900) do
     t.string   "seeking_job",            limit: 191
     t.string   "highest_degree",         limit: 191
     t.string   "birthday",               limit: 191
+    t.string   "position",               limit: 191,   default: ""
     t.string   "cellphone",              limit: 191,   default: "",      null: false
     t.string   "avatar",                 limit: 191
     t.string   "show_name",              limit: 191,                     null: false
@@ -219,4 +229,5 @@ ActiveRecord::Schema.define(version: 20160607055900) do
     t.datetime "updated_at",               null: false
   end
 
+  add_foreign_key "certificates", "users"
 end

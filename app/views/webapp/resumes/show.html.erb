@@ -11,11 +11,11 @@
                     <%= image_tag "pencil.png", class: "pencil" %>
                     <div class="avatar-img">
                       <div class="avatar-box" style="background-img:url(<%= @avatar %>)">
-
+                          <!-- 待修改样式 bobo -->
                       </div>
                       <%= image_tag @avatar %>
                      </div>
-                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]) do |f| %>
+                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]),remote: true do |f| %>
                          <%= f.input :avatar, label: '头像', input_html: {id:"avatar"} %>
                          <%= f.button :submit %>
                      <% end %>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td><span>职</span>称：</td>
-                        <td><%= @user.highest_degree %></td>
+                        <td><%= @user.position %></td>
                     </tr>
                     <tr>
                         <td>工作年限：</td>
@@ -160,7 +160,7 @@
               <h2>持有证书
               </h2>
               <div class="box work-show">
-                  <a href="javascript:void(0);" class="edit">
+                  <a href="/webapp/certificates" class="edit">
                       <%= image_tag "pencil3.png" %>编辑
                   </a>
                   <h3>持有证书</h3>
@@ -208,8 +208,45 @@ function expend_desc(obj) {
 
 };
 
+// 点击上传头像
 $($('#avatar').change(function() {
   $('input[type=submit]').click();
 }));
+
+$($('.avatar-img').click(function() {
+  $('#avatar').click();
+}));
+
+
+$('#edit_user_1').bind('ajax:success', function(){
+  alert('ok');
+  history.go(0);
+});
+
+// 刷新简历
+$('.refresh').click(function() {
+  $.ajax({
+    url: '<%= webapp_resume_path(params[:id]) %>',
+    type: 'PATCH',
+    data: {refresh: true},
+    success: function() {
+      $('.refresh').html('下次刷新剩余7天');
+      $('.refresh').css('background-color', 'gray');
+      $('.refresh').off();
+    },
+    error: function() {
+      alert('刷新失败。')
+    }
+  });
+});
+
+// 判断剩余写几天
+<% if @refresh_left  %>
+  $(function() {
+    $('.refresh').html('<%= @refresh_left %>天后可再次刷新');
+    $('.refresh').css('background-color', 'gray');
+    $('.refresh').off();
+  });
+<% end %>
 
 </script>

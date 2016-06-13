@@ -1823,6 +1823,10 @@ a:hover {
     height: 46px;
   }
   .new_user input {
-    text-align: center !important;
+    text-align: left !important;
   }
+}
+
+#edit_user_1 {
+  display: none;
 }
