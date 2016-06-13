@@ -77,6 +77,7 @@ Ryunkang::Application.routes.draw do
      resources :expect_jobs
      resources :resume_viewers, :only => [:index, :show]
      resources :apply_records, :only => [:index, :show]
+     resources :block_hospitals, :only => [:index, :edit]
 
     #  get 'apply_records/index'
     #  get 'apply_records/show'

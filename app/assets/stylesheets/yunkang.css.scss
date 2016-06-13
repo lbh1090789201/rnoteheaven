@@ -1668,6 +1668,71 @@ a:hover {
 }
 /*我的应聘记录　结束－冰华*/
 
+// 公开简历　开始－李冰华
+.block-hospital {
+  .block-btn {
+    height: 5.82rem;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #dedede;
+    .block-middle {
+      width: 9rem;
+      margin: 2.22rem auto 0 auto;
+      position: relative;
+      .block-board {
+        font-size: 0.8rem;
+      }
+      .right {
+        position: absolute;
+        top: -0.2rem;
+        right: 0.5rem;
+        background: #3a9da0;
+        width: 3rem;
+        height: 1.35rem;
+        border-radius: 0.8rem;
+        .swich {
+          position: relative;
+          top: 0.05rem;
+          width: 1.25rem;
+          height: 1.25rem;
+          border-radius: 50%;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  h5 {
+    color: #767676;
+    font-size: 0.8rem;
+    margin: 0.8rem 0 0.58rem 0.68rem;
+  }
+}
+.model {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -6.9rem;
+  margin-top: -2.37rem;
+  width: 13.8rem;
+  height: 4.73rem;
+  display: none;
+  font-size: 0.8rem;
+  line-height: 6.33rem;
+  text-align: center;
+  background-color: #212121;
+  opacity: 0.8;
+  border-radius: 1rem;
+  p {
+    display: inline-block;
+    width: 11.2rem;
+    line-height: 1.2rem;
+    text-align: left;
+    color: #fff;
+  }
+}
+
+// 公开简历　结束－李冰华
+
 // mask 蒙版
 .mask-all {
   #apply_box {
@@ -1740,8 +1805,15 @@ a:hover {
 //resumes show页面
 .show-style {
   padding-top: 0.7rem;
+  padding-bottom: 2rem;
   h2 {
     margin-bottom: 0.5rem;
+  }
+  .work-show {
+    time {
+      padding-top: 1.11rem;
+    }
+
   }
 }
 .work-show {
