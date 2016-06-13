@@ -4,7 +4,8 @@
     <a href="/webapp/users/<%= current_user.id %>/edit" class="user-hidden">
     <div class="user-info-list">
       <div class="avatar">
-        <%= image_tag "avator2.png"  %>
+        <%# image_tag "avator2.png"  %>
+        <%= image_tag @avatar %>
       </div>
       <p class="info-name">严锐</p>
       <p class="info-major">医学护理专业</p>

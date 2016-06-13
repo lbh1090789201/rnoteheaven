@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :seeking_job #是否求职
       t.string :highest_degree #最高学历
       t.string :birthday #出生年月
-
+      t.string :position, :default => "" #职称，主治医师，医师……
 
       # added for a basic user
       t.string :cellphone,         :null => false, :default => "" #电话

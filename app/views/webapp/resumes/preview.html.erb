@@ -5,7 +5,7 @@
     <div class="resumes-preview-md">
 
         <div class="image-head">
-          <%= image_tag "avator.png" %>
+        <%= image_tag @avatar %>
         </div>
       <p><%= @user.show_name %></p>
 
@@ -25,8 +25,12 @@
           <td><%= @user.sex %></td>
         </tr>
         <tr>
-          <td>最高学力：</td>
+          <td>最高学历：</td>
           <td><%= @user.highest_degree %></td>
+        </tr>
+        <tr>
+            <td><span>职</span>称：</td>
+            <td><%= @user.position %></td>
         </tr>
         <tr>
           <td>工作年限：</td>

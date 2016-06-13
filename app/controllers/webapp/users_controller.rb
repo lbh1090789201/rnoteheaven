@@ -7,6 +7,7 @@ class Webapp::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :save_user_previous_url, :index, :update]
 
   after_filter "save_user_previous_url", only: [:edit]
+  protect_from_forgery except: :update
 
   def save_user_previous_url
     # session[:previous_url] is a Rails built-in variable to save last url.
@@ -61,11 +62,20 @@ class Webapp::UsersController < ApplicationController
 
 
     if @user.update(user_params)
-      render js: 'history.back();'
+      redirect_to webapp_resume_path(params[:id]), notice: "修改成功！"
+      # render json: {
+      #         success: true,
+      #         info: "简历刷新成功"
+      #       },status: 200
     else
       redirect_to :back, alert: "修改失败"
       return
     end
+  end
+
+  def show
+    @user = current_user
+    @user.avatar? ? @avatar = @user.avatar_url : "avator.png"
   end
 
 
@@ -73,7 +83,7 @@ class Webapp::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:show_name, :sex, :work_time, :highest_degree, :start_work_at, :seeking_job,
-                                 :cellphone, :email, :location, :job_status)
+                                 :cellphone, :email, :location, :job_status, :avatar, :position)
   end
 
 end
