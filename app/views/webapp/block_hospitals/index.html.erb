@@ -1,0 +1,56 @@
+<% provide :title, "简历隐私" %>
+<div class="block-hospital">
+  <section class="block-btn">
+    <div class="block-middle">
+      <p class="block-board">公开我的简历</p>
+      <div class="right">
+         <div class="swich"></div>
+      </div>
+   </div>
+  </section>
+
+  <h5>不希望以下机构看到我的简历</h5>
+
+  <section class="block-selet">
+    <ul>
+      <li>
+        <span></span>
+        <%= image_tag "" %>
+      </li>
+    </ul>
+  </section>
+
+  <!--  弹窗-->
+  <div class="model">
+    <div class="model-p">
+
+      <p>设置成功，已投递简历的公司
+      仍可看到哦</p>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $('.right').click(function() {
+    if($('.swich').css('margin-left') == '0px') {
+      $('.swich').animate({  marginLeft: "1.5rem"}, 500);
+      $(this).css({'background': '#a3a3a3',});
+      $('.model').fadeIn('fast', function() {
+        var j = setInterval(function () {
+          $('.model').fadeOut('slow');
+        },2000);
+      })
+
+    } else {
+
+      $('.swich').animate({  marginLeft: "0px"}, 500);
+      $(this).css({'background': '#3a9da0',});
+      $('.model').fadeOut('fast', function() {
+
+      });
+    }
+  });
+
+  fullScreen('.block-hospital');
+</script>
