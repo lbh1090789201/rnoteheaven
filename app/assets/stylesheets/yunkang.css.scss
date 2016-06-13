@@ -1,6 +1,9 @@
 /*
  *= require cityPicker
  */
+ /*
+  *= require common
+  */
 /* 变量区 开始 */
 $light-gray: #f4f4f4;
 $font-gray: #a5a5a5;
@@ -333,11 +336,14 @@ a:hover {
 
             }
             .time-line-box {
-              margin-top: -0.8rem;
+              margin-top: -0.4rem;
               padding-top: 0.5rem;
               border-left: 1px solid $beauty-blue;
               padding-left: 0.77rem;
               padding-bottom: 0.3rem;
+              h3 {
+                margin: 0.3rem 0 0.5rem 0;
+              }
             }
         }
 
@@ -1702,10 +1708,10 @@ a:hover {
 }
 
 //resumes show页面
-.education-edit {
-  position: relative;
-  top: -1rem;
-}
+// .education-edit {
+//   position: relative;
+//   top: 0.3rem;
+// }
 //education_experience edit页面
 .edit-education {
   .form-group:nth-of-type(2)::after {
@@ -1724,5 +1730,86 @@ a:hover {
     margin-top: 0.9rem;
     background: url("icon.png");
     background-size: 0.41rem 0.66rem;
+  }
+  .form-group:nth-of-type(5) {
+      margin-bottom: 5.7rem;
+  }
+}
+
+
+//resumes show页面
+.show-style {
+  padding-top: 0.7rem;
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+}
+.work-show {
+  .time-line-box {
+    padding-top: 0;
+  }
+  h3 {
+    margin: 0.5rem 0 0.4rem 0;
+  }
+}
+.edit-blank {
+  margin-top: 0.1rem;
+  width: 100%;
+  height: 6.83rem;
+  border: 1px solid #f3f3f3 ;
+  background: #fff;
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin-top: 3rem;
+    p {
+      img {
+        width: 0.72rem;
+        height: 0.72rem;
+        margin-right: 0.4rem;
+        margin-top: -0.4rem;
+      }
+      span {
+        display: inline-block;
+        font-size: 0.8rem;
+        color: #3f9e9f;
+        height: 0.72rem;
+        line-height: 0.72rem;
+      }
+    }
+
+  }
+}
+
+
+// 底部导航
+.btm-nav {
+  position: fixed;
+  width: 100%;
+  height: 3.05rem;
+  bottom: 0;
+  left: 0;
+  background: #f3f3f3;
+  .btm-delete {
+    display: block;
+    width: 51%;
+    height: 3.05rem;
+    float: left;
+    font-size: 0.87rem;
+    line-height: 3.05rem;
+    text-align: center;
+    color: #3f9e9f;
+  }
+  .btm-save {
+    width: 49%;
+    height: 3.05rem;
+    float: left;
+    font-size: 0.87rem;
+    line-height: 3.05rem;
+    background: #3f9e9f;
+    text-align: center;
+    color: #fff;
   }
 }

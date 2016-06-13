@@ -91,23 +91,23 @@ end
 
 #Test EducationExperience :bh
 
-EducationExperience.create! ({
-                                user_id: 1,
-                                college: "某某大学",
-                                education_degree: "本科",
-                                entry_at: "2012-05-10",
-                                graduated_at: "2015-05-10",
-                                major: "计算机专业"
-                            })
-
-EducationExperience.create! ({
-                                user_id: 2,
-                                college: "贝贝大学",
-                                education_degree: "本科",
-                                entry_at: "2012-05-10",
-                                graduated_at: "2015-05-10",
-                                major: "计算机专业"
-                            })
+# EducationExperience.create! ({
+#                                 user_id: 1,
+#                                 college: "某某大学",
+#                                 education_degree: "本科",
+#                                 entry_at: "2012-05-10",
+#                                 graduated_at: "2015-05-10",
+#                                 major: "计算机专业"
+#                             })
+#
+# EducationExperience.create! ({
+#                                 user_id: 2,
+#                                 college: "贝贝大学",
+#                                 education_degree: "本科",
+#                                 entry_at: "2012-05-10",
+#                                 graduated_at: "2015-05-10",
+#                                 major: "计算机专业"
+#                             })
 
 #Test ExpectJob :bh
 

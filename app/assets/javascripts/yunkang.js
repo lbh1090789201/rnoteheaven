@@ -79,6 +79,11 @@ function clickRignt(ojb) {
     $(ojb).trigger("click");
     console.log('ok');
   });
+
+  $('.btm-save').bind('click', function() {
+    $(ojb).trigger("click");
+    console.log('ok');
+  });
 }
 /* 模拟点击右上按钮 结束 bobo */
 

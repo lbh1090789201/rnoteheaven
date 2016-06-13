@@ -24,7 +24,7 @@ class Webapp::EducationExperiencesController < ApplicationController
 
   def edit
     @education_experience = EducationExperience.find_by_id params[:id]
-    @education_experience.entry_at = Time.at(@education_experience.entry_at).utc.strftime("%H:%M:%S")
+    # @education_experience.entry_at = Time.at(@education_experience.entry_at).utc.strftime("%H:%M:%S")
   end
 
   def update
@@ -35,6 +35,15 @@ class Webapp::EducationExperiencesController < ApplicationController
     else
       redirect_to :back, alert("修改失败")
       return
+    end
+  end
+
+  def destroy
+    @education_experience = EducationExperience.find(params[:id])
+    if @education_experience.destroy
+      redirect_to webapp_education_experiences_path, alert:"用户删除成功！"
+    else
+      redirect_to :back, alert:"删除失败，请重新操作！"
     end
   end
 

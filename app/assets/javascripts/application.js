@@ -18,3 +18,5 @@
 //= require cityData
 //= require cityPicker
 //= require_tree
+
+//= require iscroll

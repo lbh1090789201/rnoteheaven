@@ -1,13 +1,6 @@
 
 <% provide :title, "教育经历" %>
-
-<% if User.highest_degree(current_user.id) %>
   <% provide :content, "保存" %>
-  <% provide :link, "webapp_education_experiences_path"  %>
-<% else %>
-  <% provide :content, "下一步" %>
-  <% provide :link, '/webapp/expect_jobs/new' %>
-<% end %>
 
 <div class="edit_basic edit-work-experiences edit-education">
     <%= simple_form_for :education_experience, url: webapp_education_experiences_path,remote: true, :method => :post  do |f| %>

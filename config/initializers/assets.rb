@@ -12,3 +12,5 @@ Rails.application.config.assets.precompile += %w( jquery.form.js )
 Rails.application.config.assets.precompile += %w( slider.js )
 Rails.application.config.assets.precompile += %w( flickerplate.min.js )
 Rails.application.config.assets.precompile += %w( yunkang.js )
+
+Rails.application.config.assets.precompile += %w( date.js )

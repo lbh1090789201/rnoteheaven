@@ -1,5 +1,4 @@
 <% provide :title, "编辑期望工作" %>
-<% provide :content, "保存" %>
 
 <div class="edit_basic edit-work-experiences edit-expectjob">
   <%= simple_form_for @expect_job, method: :patch,remote: true, url: webapp_expect_job_path(params[:id]) do |e| %>
@@ -9,6 +8,10 @@
       <%= e.input :expected_salary_range, label: '期望薪水', input_html: { class: "expect-range job-fair", value: "5K~6K", id: "expect_range"} %>
       <%= e.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
       <%= e.submit id: "submit", class: "btn btn-info btn-right"%>
+      <div class="btm-nav">
+        <%= link_to "删除此经历", webapp_expect_job_path(params[:id]), method: :delete, class: "btm-delete"%>
+        <p class="btm-save">保存</p>
+      </div>
 <% end %>
 </div>
 
