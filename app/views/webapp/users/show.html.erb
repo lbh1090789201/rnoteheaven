@@ -9,8 +9,8 @@
         </div>
       </div>
       <p class="info-name"><%= @user.show_name %></p>
-      <p class="info-major"><%= @education_experience.major %></p>
-      <p class="info-major"><%= @education_experience.college %></p>
+      <p class="info-major">学历：<%= @user.highest_degree %></p>
+      <p class="info-major">职称：<%= @user.position %></p>
     </div>
     <div class="user-status">
       <span class="info-major info-job">
