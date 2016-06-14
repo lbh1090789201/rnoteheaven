@@ -23,6 +23,7 @@ class Webapp::ResumesController < ApplicationController
     @education_experiences = EducationExperience.where(:user_id => @user.id)
     @expect_job = ExpectJob.find_by_user_id(@user.id)
     @user.avatar? ? @avatar = @user.avatar_url : "avator.png"
+    @certificates = Certificate.where(:user_id => @user.id)
   end
 
   def show

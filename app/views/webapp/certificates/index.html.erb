@@ -1,12 +1,12 @@
 
 <% provide :title, "持有证书" %>
 
-<ul>
+<ul class="certificate-show">
   <% @certificates.each do |f| %>
-  <li><%= f.title %> <%= image_tag "delete.png", onclick: "del(this)", index: f.id %></li>
+  <li><span><%= f.title %></span> <%= image_tag "delete.png", onclick: "del(this)", index: f.id %></li>
   <% end %>
 
-  <li><a href="/webapp/certificates/new">添加 <%= image_tag "add.png" %></a></li>
+  <li><span>添加</span> <a href="/webapp/certificates/new"><%= image_tag "add.png" %></a></li>
 </ul>
 
 <script type="text/javascript">
