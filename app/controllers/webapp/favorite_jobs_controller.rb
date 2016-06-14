@@ -5,7 +5,6 @@ class Webapp::FavoriteJobsController < ApplicationController
   helper_method :get_favorite_jobs
 
   def index
-    @favorite_jobs = get_favorite_jobs(current_user.id)
-    # puts 'sssss' + @favorite_jobs.to_json.to_s
+    @favorite_jobs = get_favorite_jobs current_user.id
   end
 end

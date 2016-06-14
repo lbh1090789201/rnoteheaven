@@ -5,12 +5,15 @@ module Webapp::FavoriteJobsHelper
     favorite_jobs = []
     ars.each do |a|
       job = Job.find_by_id a.job_id
+      hospital = Hospital.find job.hospital_id
+
       if job
       o = {
           job_id:job.id,
           job_name:job.name,
           salary_range:job.salary_range,
           location:job.location,
+          hospital: hospital.name
       }
       favorite_jobs.push(o)
       end
