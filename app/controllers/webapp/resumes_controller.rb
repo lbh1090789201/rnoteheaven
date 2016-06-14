@@ -36,7 +36,7 @@ class Webapp::ResumesController < ApplicationController
     expect_job = ExpectJob.where(user_id: current_user.id).first_or_create!
     @expect_job = ExpectJob.find_by_user_id(@user.id)
     @certificates = Certificate.where user_id: current_user.id
-    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
+    @user.avatar_url.blank? ? @avatar = "avator.png" : @avatar = @user.avatar_url
     @refresh_left = Resume.refresh_left(resume.id)
   end
 
