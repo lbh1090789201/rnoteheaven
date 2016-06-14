@@ -41,7 +41,8 @@ class Webapp::EducationExperiencesController < ApplicationController
   def destroy
     @education_experience = EducationExperience.find(params[:id])
     if @education_experience.destroy
-      redirect_to webapp_education_experiences_path, alert:"用户删除成功！"
+      # redirect_to webapp_education_experiences_path, alert:"用户删除成功！"
+      render js: ' history.go(-1);', notice: '删除成功！'
     else
       redirect_to :back, alert:"删除失败，请重新操作！"
     end

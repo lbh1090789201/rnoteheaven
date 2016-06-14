@@ -42,7 +42,7 @@ class Webapp::WorkExperiencesController < ApplicationController
   def destroy
     @work_experience = WorkExperience.find(params[:id])
     if @work_experience.destroy
-      redirect_to webapp_work_experiences_path, alert:"用户删除成功！"
+      render js: ' history.go(-1);', notice: '删除工作经历成功！'
     else
       redirect_to :back, alert:"删除失败，请重新操作！"
     end

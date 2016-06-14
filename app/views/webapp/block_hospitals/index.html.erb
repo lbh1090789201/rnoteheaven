@@ -13,20 +13,11 @@
 
   <section class="block-selet">
     <ul>
+      <% @blockhospitals.each do |f| %>
+      <li><span><%= f.hospital_name %></span> <%= image_tag "delete.png", onclick: "del(this)", index: f.id %></li>
+      <% end %>
 
-      <li>
-        <span>青海公司</span>
-        <a href="<%= new_webapp_block_hospital_path %>">
-          <%= image_tag "delete" %>
-        </a>
-      </li>
-
-      <li>
-        <span>添加</span>
-        <a href="<%= new_webapp_block_hospital_path %>">
-          <%= image_tag "add" %>
-        </a>
-      </li>
+      <li><a href="<%= new_webapp_block_hospital_path %>"><span>添加</span> <%= image_tag "add.png" %></a></li>
     </ul>
   </section>
 
@@ -63,4 +54,21 @@
   });
 
   fullScreen('.block-hospital');
+
+// 删除屏蔽机构
+  function del(obj) {
+    var c_id = $(obj).attr('index');
+
+    $.ajax({
+      url: "/webapp/block_hospitals/" + c_id,
+      type: 'DELETE',
+      success: function() {
+        $(obj).parent().remove();
+      },
+      error: function() {
+        alert('删除失败。')
+      }
+    });
+  }
+
 </script>

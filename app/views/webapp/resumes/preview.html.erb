@@ -5,7 +5,9 @@
     <div class="resumes-preview-md">
 
         <div class="image-head">
-        <%= image_tag @avatar %>
+          <div class="avatar-box" style="background:url('<%= @avatar %>') no-repeat;" id="avatar_box">
+              <!-- 已修改样式 bobo -->
+          </div>
         </div>
       <p><%= @user.show_name %></p>
 

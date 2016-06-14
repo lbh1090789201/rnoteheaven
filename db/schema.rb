@@ -33,10 +33,11 @@ ActiveRecord::Schema.define(version: 20160613094103) do
   end
 
   create_table "block_hospitals", force: :cascade do |t|
-    t.integer  "user_id",     limit: 4
-    t.integer  "hospital_id", limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "user_id",       limit: 4
+    t.integer  "hospital_id",   limit: 4
+    t.string   "hospital_name", limit: 191
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "certificates", force: :cascade do |t|
