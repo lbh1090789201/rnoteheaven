@@ -1,29 +1,55 @@
-<% provide :link, new_webapp_job_fair_path  %>
-<% provide :title, "期望工作" %>
-<div class="resume-show work-experience">
-  <div class="wrap">
-    <% if @job_fairs %>
-    <% @job_fairs.each do|j| %>
-    <section>
-        <div class="box education">
-            <a href="<%= edit_webapp_job_fair_path(:id) %>" class="edit">编辑</a>
-            <div class="work-box">
-                <h3><%= f.name %></h3>
-                <p>
-                <span><%= f.job_type %></span>/
-                <span><%= f.location %></span>/
-                <span><%= f.expected_salary_range %></span>
-                </p>
-            </div>
-        </div>
-    </section>
-    <% end %>
-    <% end %>
-    </div>
+<%= provide :title, "广州三甲医院实习医生专场" %>
+<div class="hospital-list">
+  <%= image_tag "hs-1.jpg" %>
+  <div class="hospital-bg"></div>
+  <div class="hospital-note">
+    <h2>广州市第二人民医院</h2>
+    <p>人投递</p>
+    <span>441</span>
+  </div>
+  <%= link_to "" , webapp_hospitals_path %>
 </div>
 
-<script type="text/javascript">
-wordLimit('.work-box p', 65);
-fullScreen('.work-experience');
+<div class="hospital-list">
+  <%= image_tag "hs-2.jpg" %>
+  <div class="hospital-bg"></div>
+  <div class="hospital-note">
+    <h2>广州市第二人民医院</h2>
+    <p>人投递</p>
+    <span>441</span>
+  </div>
+  <%= link_to "" , webapp_hospitals_path %>
+</div>
 
-</script>
+<div class="hospital-list">
+  <%= image_tag "hs-3.jpg" %>
+  <div class="hospital-bg"></div>
+  <div class="hospital-note">
+    <h2>广州市第二人民医院</h2>
+    <p>人投递</p>
+    <span>441</span>
+  </div>
+  <%= link_to "" , webapp_hospitals_path %>
+</div>
+
+<div class="hospital-list">
+  <%= image_tag "hs-4.jpg" %>
+  <div class="hospital-bg"></div>
+  <div class="hospital-note">
+    <h2>广州市第二人民医院</h2>
+    <p>人投递</p>
+    <span>441</span>
+  </div>
+  <%= link_to "" , webapp_hospitals_path %>
+</div>
+
+<div class="hospital-list">
+  <%= image_tag "hs-1.jpg" %>
+  <div class="hospital-bg"></div>
+  <div class="hospital-note">
+    <h2>广州市第二人民医院</h2>
+    <p>人投递</p>
+    <span>441</span>
+  </div>
+  <%= link_to "" , webapp_hospitals_path %>
+</div>

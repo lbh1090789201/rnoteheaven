@@ -1,13 +1,4 @@
-
-<div class="job-head">
-  <div>
-    <a href="../jobs/<%= params[:id] %>" class="hospital-page">职位详情</a>
-    <%= link_to "医院详情", webapp_resume_viewer_path, class: "job-page" %>
-  </div>
-</div>
-
-<% provide :title, "医院详情" %>
-<div class="content hospital-details">
+<div class="content hospital-details" id="hospital_detail">
   <div class="hospital-introduce">
     <div class="title">武汉市同济医院</div>
     <p>医院 | 5000人以上 | 医疗/护理/卫生</p>
@@ -17,7 +8,7 @@
   </div>
   <div class="job-bg"></div>
   <div class="jobs">
-    <a href="#">查看所有职位 <span>18</span><%= image_tag "right.png",class:"right"%> </a>
+    <a href="<%= webapp_hospital_path(:id) %>">查看所有职位 <span>18</span><%= image_tag "right.png",class:"right"%> </a>
   </div>
   <div class="job-bg"></div>
   <div class="details">
@@ -30,5 +21,3 @@
     </p>
   </div>
 </div>
-<script type="text/javascript">
-</script>
