@@ -1,5 +1,6 @@
 class Webapp::WorkExperiencesController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
+  protect_from_forgery except: :destroy
 
   def index
     @work_experiences = WorkExperience.where(:user_id => current_user.id)

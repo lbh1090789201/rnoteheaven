@@ -8,12 +8,23 @@
       <%= f.input :left_time, label: '离职时间', as: :string, input_html: { class: "user-input", id: "endTime"} %>
       <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
+
       <div class="btm-nav">
-        <%= link_to "删除此经历", webapp_work_experience_path(params[:id]), method: :delete, remote: true, class: "btm-delete"%>
+        <p class="btm-delete" onclick="ClickShow(this)">删除此经历</p>
         <p class="btm-save">保存</p>
       </div>
-<% end %>
+      <% end %>
+      <%= link_to "删除此经历", webapp_work_experience_path(params[:id]), method: :delete, remote: true, id: "delete_bottom_id"%>
 <div id="datePlugin"></div>
+
+
+</div>
+<div id="popup">
+  <ul>
+    <li>删除将无法恢复，确认删除吗？</li>
+    <li onclick="ClickDelete(this)">确定</li>
+    <li onclick="ClickDelete(this)">取消</li>
+  </ul>
 </div>
 
 
@@ -27,4 +38,21 @@
 	$('#beginTime').date();
 	$('#endTime').date();
    });
+
+  function ClickShow(){
+    $("#popup").show();
+  }
+  function ClickDelete(obj){
+    var text = $(obj).text();
+
+    if(text == "取消"){
+      $("#popup").hide();
+    }
+    if(text == "确定"){
+          console.log(text);
+          $("#popup").hide();
+      $('#delete_bottom_id')[0].click();
+    }
+  }
+
 </script>
