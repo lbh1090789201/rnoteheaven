@@ -55,18 +55,19 @@ class Webapp::UsersController < ApplicationController
 
   def edit
     @user = User.get_user_main(current_user.id)
+    # puts "-----" + @user.to_json.to_s
   end
 
   def update
-    @user = User.find_by_id(current_user.id)
-
+    @user = User.find_by(current_user.id)
 
     if @user.update(user_params)
-      redirect_to webapp_resume_path(params[:id]), notice: "修改成功！"
+      # redirect_to webapp_resume_path(params[:id]), notice: "修改成功！"
       # render json: {
       #         success: true,
       #         info: "简历刷新成功"
       #       },status: 200
+      render js: 'history.go(-1);', notice: '修改成功'
     else
       redirect_to :back, alert: "修改失败"
       return
@@ -76,6 +77,8 @@ class Webapp::UsersController < ApplicationController
   def show
     @user = current_user
     @user.avatar? ? @avatar = @user.avatar_url : "avator.png"
+    education_experience = EducationExperience.where(user_id: current_user.id).first_or_create!
+    @education_experience = EducationExperience.find_by current_user.id
   end
 
 
