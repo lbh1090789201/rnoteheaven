@@ -134,6 +134,7 @@
     background-image: none !important;
     border: 5px solid #d15b47;
     border-radius: 0;
+		display: none;
 }
 .IIInsomnia-city-picker .IIInsomnia-clean-btn:hover{
 	background-color: #b74635 !important;

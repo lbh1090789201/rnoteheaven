@@ -38,11 +38,13 @@ class Webapp::HomeController < ApplicationController
           job_name: r.name,
           salary_range: r.salary_range,
           location: r.location,
-          hospital_name: hospital.name
+          hospital_name: hospital.name,
+          city: filter[:city]
         }
         @arjob.push(o)
       end
 
     return @arjob
+
   end
 end

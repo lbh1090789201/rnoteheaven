@@ -35,6 +35,17 @@
   </div>
 </div>
 
+<div id="hide_content" style="display:none;">
+  <% @arjob.each do |j| %>
+     <p><%= j[:city] %></p>
+  <% end %>
+</div>
+<script>
+   var text = $("#hide_content>p").eq(0).text();
+   console.log(text);
+   $("#cityChoice").attr('value',text);
+</script>
+
 <div class="jobs">
   <div class="jobs-list">
 　　<% @arjob.each do |j| %>
@@ -68,6 +79,7 @@
         }
     }
 
+
 // 城市插件
     var cityPicker = new IIInsomniaCityPicker({
           data: cityData,
@@ -78,7 +90,15 @@
           callback: function(){
             $("#submit").trigger("click");
           }
-      });
 
+      });
       cityPicker.init();
+
+<% if params[:city] %>
+$(function() {
+    console.log('<%= params[:city] %>');
+    $('#cityChoice').val( '<%= params[:city] %>' );
+});
+<% end %>
+
 </script>

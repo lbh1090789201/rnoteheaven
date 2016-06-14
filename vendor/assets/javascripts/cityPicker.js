@@ -147,7 +147,7 @@ IIInsomniaCityPicker.prototype = {
 
             if(that.settings.hideCityInput){
                 if(that.settings.valType == 'k-v'){
-                    that.settings.hideCityInput.val(cid + '-' + cname);
+                    that.settings.hideCityInput.val(cname);
                 }else{
                     that.settings.hideCityInput.val(cid);
                 }
