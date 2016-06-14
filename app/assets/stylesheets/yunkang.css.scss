@@ -2096,8 +2096,11 @@ a:hover {
   }
 }
 
+
 .expect-img {
   a.expect-expend {
     margin-top: 01rem;
   }
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: #fff !important;
 }

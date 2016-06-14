@@ -1,4 +1,9 @@
 <% provide :title, "我收藏的职位" %>
+
+<script type="text/javascript">
+  refreshOnce(); //刷新一次页面
+</script>
+
 <div class="jobs favorite-job">
   <div class="jobs-list">
     <% @favorite_jobs.each do |f| %>
@@ -10,7 +15,7 @@
           <div style="clear:both"></div>
         </div>
         <div class="detail">
-          <div class="left"><%= f[:job_name] %></div>
+          <div class="left"><%= f[:hospital] %></div>
           <div class="right"><%= f[:location] %></div>
           <div style="clear:both"></div>
         </div>

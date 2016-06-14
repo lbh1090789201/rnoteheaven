@@ -1,5 +1,5 @@
- # source 'https://ruby.taobao.org'
-source 'http://gems.ruby-china.org'
+ source 'https://ruby.taobao.org'
+# source 'http://gems.ruby-china.org'
 
 # Standard Rails gems
 gem 'rails', '4.2.4'
@@ -19,6 +19,7 @@ gem 'carrierwave'
 gem 'ffmpeg'
 gem 'streamio-ffmpeg'
 gem 'carrierwave-video'
+gem 'remotipart'
 # gem 'responder', '~> 2.0'
 
 #for admin console, discarded 20160530

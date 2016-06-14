@@ -15,7 +15,7 @@
 <!-- 底部栏 -->
 <div class="job-list">
   <ul>
-    <li><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
+    <li id="msg"><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
     <li><a class="<%= @btn_apply[:css] %>" id="apply_job"> <%= image_tag "apply_records.png" %>
                                                 <span><%= @btn_apply[:text] %></span></a></li>
     <li><a class="<%= @btn_favor[:css] %>" id="favorite_job" onclick=favor(this)><%= image_tag @btn_favor[:img_url] %>
@@ -104,5 +104,9 @@ function no_favor() {
   $(job_page());
 
   fullScreen('#job-detail');
+
+  $('#msg').bind('click', function() {
+    alert("功能正在开发中");
+  });
 
 </script>

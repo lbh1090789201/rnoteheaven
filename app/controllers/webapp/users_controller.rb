@@ -64,14 +64,13 @@ class Webapp::UsersController < ApplicationController
     @user = current_user
 
     if @user.update(user_params)
-      # redirect_to webapp_resume_path(params[:id]), notice: "修改成功！"
-      render js: 'history.go(-1);', notice: '修改成功'
 
-      # render json: {
-      #         success: true,
-      #         info: "简历刷新成功"
-      #       },status: 200
-      # render js: 'history.go(-1);', notice: '修改成功'
+      if user_params[:avatar]
+        render js: 'history.go(0);', notice: '修改成功'
+      else
+        render js: 'history.go(-1);', notice: '修改成功'
+      end
+
     else
       redirect_to :back, alert: "修改失败"
       return
