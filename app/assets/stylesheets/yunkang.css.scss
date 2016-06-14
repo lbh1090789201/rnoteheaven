@@ -2101,6 +2101,8 @@ a:hover {
   a.expect-expend {
     margin-top: 01rem;
   }
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+}
+
+.form-control[readonly] {
   background-color: #fff !important;
 }
