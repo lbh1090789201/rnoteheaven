@@ -152,3 +152,19 @@ function ClickDeleteBtn(obj){
       $("#popup").hide();
   }
 }
+
+
+// 切换 job & hospital
+  function job_page() {
+    $('#job-detail').show();
+    $('#hospital_detail').hide();
+    $('#job_page').attr('class', 'job-page');
+    $('#hospital_page').attr('class', 'hospital-page');
+  }
+
+  function hospital_page() {
+    $('#job-detail').hide();
+    $('#hospital_detail').show();
+    $('#job_page').attr('class', 'hospital-page');
+    $('#hospital_page').attr('class', 'job-page');
+  }
