@@ -199,8 +199,9 @@
 
 function expend_desc(obj) {
     console.log();
-    $(obj).parent().siblings('.job-desc-show').toggle(300);
-    $(obj).parent().siblings('.job-desc-hide').toggle(300);
+    $(obj).parent().siblings('.job-desc-hide').slideToggle(300);
+    $(obj).parent().siblings('.job-desc-show').slideToggle(300);
+
 
 };
 

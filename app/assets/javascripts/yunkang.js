@@ -41,8 +41,6 @@ function wordLimit(dom, word) {
 /* 超过一定字体变成省略号 结束 */
 
 /* 蒙版 开始 */
-
-
 function workExperience(obj,api,pclass) {
   var parentdiv = $('<div></div>');
   parentdiv.attr('class','before-mask div-hidden');;

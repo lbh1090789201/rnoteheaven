@@ -1,6 +1,10 @@
 <% provide :link, new_webapp_education_experience_path  %>
 <% provide :title, "教育经历" %>
 <% provide :content, "添加" %>
+<script type="text/javascript">
+  $(refreshOnce()); //刷新一次页面
+</script>
+
 <div class="resume-show work-experience">
   <div class="wrap">
     <% if @education_experiences %>
@@ -23,6 +27,5 @@
 </div>
 
 <script type="text/javascript">
-  $(refreshOnce()); //刷新一次页面
   fullScreen('.work-experience');
 </script>
