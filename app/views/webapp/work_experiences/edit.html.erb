@@ -8,7 +8,7 @@
       <%= f.input :left_time, label: '离职时间', as: :string, input_html: { class: "user-input", id: "endTime"} %>
       <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
-        <div class="btm-nav">
+      <div class="btm-nav">
         <%= link_to "删除此经历", webapp_work_experience_path(params[:id]), method: :delete, remote: true, class: "btm-delete"%>
         <p class="btm-save">保存</p>
       </div>

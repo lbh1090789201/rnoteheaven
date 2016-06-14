@@ -1226,11 +1226,11 @@ a:hover {
   }
 }
 .resumes-preview-bg {
-  min-height: 8.5rem;
+  min-height: 2.5rem;
   border-radius: 0.3rem;
   border: 1px solid #dedede;
   //margin-top: 0.57rem;
-  padding-bottom: 0.95rem;
+  padding-bottom: 0.15rem;
   width: 18.93rem;
   margin: 0.57rem auto 0 auto;
   background: #fff;
@@ -1287,6 +1287,9 @@ a:hover {
       }
     }
   }
+}
+.preview-show {
+
 }
 /* 简历预览 结束-冰华*/
 
@@ -1798,6 +1801,52 @@ a:hover {
   }
 }
 // 添加屏蔽　结束－李冰华
+
+// 持有证书　开始－冰华
+.certificate-show {
+  width: 100%;
+  background: #fff;
+  li {
+    width: 94.4%;
+    margin: 0 auto;
+    height: 2.88rem;
+    line-height:  2.88rem;
+    font-size: 0.8rem;
+    border-bottom: 1px solid #c4c4c4;
+    span {
+      float: left;
+    }
+    img {
+      width: 0.8rem;
+      height: 0.8rem;
+      float: right;
+      margin: 1.05rem 0.95rem 0 0;
+    }
+  }
+  li:last-child {
+    color: #3d9f9d;
+    border: none;
+    border-bottom: 1px solid #dedede;
+  }
+}
+
+#new_certificate {
+  padding-top: 0.42rem;
+  .control-label {
+    display: none;
+  }
+  .btn-certificate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3.7rem;
+    height: 2.3rem;
+    opacity: 0;
+  }
+}
+
+// 持有证书　结束－冰华
+
 
 // mask 蒙版
 .mask-all {

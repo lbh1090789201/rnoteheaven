@@ -64,7 +64,7 @@
   <% end %>
 
 
-<section class="resume-show resumes-preview-public">
+<section class="resume-show resumes-preview-public preview-show">
     <h1>工作经历</h1>
     <div class="wrap resumes-preview-bg">
       <% if @work_experiences %>
@@ -104,6 +104,21 @@
       <% end %>
       <% end %>
     </div>
+  </section>
+
+  <section class="resume-show resumes-preview-public">
+      <h1>持有证书
+      </h1>
+      <div class="wrap resumes-preview-bg">
+      <% if @certificates %>
+      <div class="box" style="padding-bottom:0;">
+          <h3>持有证书</h3>
+          <% @certificates.each do |f| %>
+          <p><%= f.title %></p>
+          <% end %>
+      </div>
+      <% end %>
+      </div>
   </section>
 
   <% if @expect_job %>
