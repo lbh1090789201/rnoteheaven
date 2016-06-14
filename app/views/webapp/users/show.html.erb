@@ -4,8 +4,9 @@
     <a href="/webapp/users/<%= current_user.id %>/edit" class="user-hidden">
     <div class="user-info-list">
       <div class="avatar">
-        <%# image_tag "avator2.png"  %>
-        <%= image_tag @avatar %>
+        <div class="avatar-box" style="background:url('<%= @avatar %>') no-repeat;" id="avatar_box">
+            <!-- 已修改样式 bobo -->
+        </div>
       </div>
       <p class="info-name"><%= @user.show_name %></p>
       <p class="info-major"><%= @education_experience.major %></p>

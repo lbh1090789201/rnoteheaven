@@ -1,9 +1,14 @@
 <% provide :title, "添加屏蔽" %>
 <% provide :content, "保存" %>
+
 <div class="block-shield">
   <from action="" method="post" data-remote="true" class="block-form">
     <input class="edit-text" type="text" name="text" placeholder="请输入机构名称"/>
   </form>
+  <%= simple_form_for @blockhospital, url: webapp_block_hospitals_path, remote: true do |f| %>
+    <%= f.input :hospital_name, placeholder: "请输入机构名称" %>
+    <%= f.submit %>
+  <% end %>
 </div>
 <script>
 fullScreen('.block-shield');

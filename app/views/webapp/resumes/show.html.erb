@@ -1,6 +1,10 @@
 <% provide :title, "我的简历" %>
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
+<script type="text/javascript">
+  $(refreshOnce()); //刷新一次页面
+</script>
+
 <div class="container resume-show">
     <div class="wrap">
 
@@ -9,12 +13,9 @@
             <div class="box box-avatar">
                 <div class="avatar">
                     <%= image_tag "pencil.png", class: "pencil" %>
-                    <div class="avatar-img">
-                      <div class="avatar-box" style="background-img:url(<%= @avatar %>)">
-                          <!-- 待修改样式 bobo -->
-                      </div>
-                      <%= image_tag @avatar %>
-                     </div>
+                    <div class="avatar-box" style="background:url('<%= @avatar %>') no-repeat;" id="avatar_box">
+                        <!-- 已修改样式 bobo -->
+                    </div>
                      <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), id: "avatar_form", remote: true do |f| %>
                          <%= f.input :avatar, label: '头像', input_html: {id:"avatar"} %>
                          <%= f.button :submit %>
@@ -194,7 +195,7 @@
 
 <script type="text/javascript">
 
-$(refreshOnce()); //刷新一次页面
+
 
 function expend_desc(obj) {
     console.log();

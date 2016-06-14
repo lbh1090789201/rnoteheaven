@@ -80,7 +80,7 @@ Ryunkang::Application.routes.draw do
      resources :apply_records, :only => [:index, :show]
 
      resources :certificates, :except => [:update, :edit, :show]
-     resources :block_hospitals, :only => [:index, :edit]
+     resources :block_hospitals, :except => [:update, :edit, :show]
 
     #  get 'apply_records/index'
     #  get 'apply_records/show'
