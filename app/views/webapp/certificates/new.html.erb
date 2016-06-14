@@ -1,0 +1,11 @@
+<% provide :title, "添加持有证书" %>
+<% provide :content, "保存" %>
+
+<%= simple_form_for @Certificate, url: webapp_certificates_path, remote: true do |f| %>
+  <%= f.input :title, placeholder: "请输入证书名称" %>
+  <%= f.submit %>
+<% end %>
+
+<script type="text/javascript">
+
+</script>

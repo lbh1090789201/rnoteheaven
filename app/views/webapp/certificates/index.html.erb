@@ -1,2 +1,27 @@
-这里放置职称列表
-添加删除按钮
+
+<% provide :title, "持有证书" %>
+
+<ul>
+  <% @certificates.each do |f| %>
+  <li><%= f.title %> <%= image_tag "delete.png", onclick: "del(this)", index: f.id %></li>
+  <% end %>
+
+  <li><a href="/webapp/certificates/new">添加 <%= image_tag "add.png" %></a></li>
+</ul>
+
+<script type="text/javascript">
+  function del(obj) {
+    var c_id = $(obj).attr('index');
+
+    $.ajax({
+      url: "/webapp/certificates/" + c_id,
+      type: 'DELETE',
+      success: function() {
+        $(obj).parent().remove();
+      },
+      error: function() {
+        alert('删除失败。')
+      }
+    });
+  }
+</script>

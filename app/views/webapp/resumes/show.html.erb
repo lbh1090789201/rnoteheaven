@@ -163,10 +163,11 @@
                   <a href="/webapp/certificates" class="edit">
                       <%= image_tag "pencil3.png" %>编辑
                   </a>
+
                   <h3>持有证书</h3>
-                  <p>
-                    中国医师协会奖
-                  </p>
+                  <% @certificates.each do |f| %>
+                  <p><%= f.title %></p>
+                  <% end %>
               </div>
           </section>
 
