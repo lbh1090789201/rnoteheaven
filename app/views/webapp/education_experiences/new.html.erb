@@ -1,6 +1,6 @@
 
 <% provide :title, "教育经历" %>
-  <% provide :content, "保存" %>
+<% provide :content, "保存" %>
 
 <div class="edit_basic edit-work-experiences edit-education">
     <%= simple_form_for :education_experience, url: webapp_education_experiences_path,remote: true, :method => :post  do |f| %>
