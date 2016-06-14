@@ -99,16 +99,16 @@
                 var datestr = $("#yearwrapper ul li:eq("+indexY+")").html().substr(0,$("#yearwrapper ul li:eq("+indexY+")").html().length-1)+"-"+
                           $("#monthwrapper ul li:eq("+indexM+")").html().substr(0,$("#monthwrapper ul li:eq("+indexM+")").html().length-1)+"-"+
 			  $("#daywrapper ul li:eq("+Math.round(indexD)+")").html().substr(0,$("#daywrapper ul li:eq("+Math.round(indexD)+")").html().length-1);
-               if(datetime){
-                     if(Math.round(indexS)===1){//下午
-                        $("#Hourwrapper ul li:eq("+indexH+")").html(parseInt($("#Hourwrapper ul li:eq("+indexH+")").html().substr(0,$("#Hourwrapper ul li:eq("+indexH+")").html().length-1))+12)
-                     }else{
-                        $("#Hourwrapper ul li:eq("+indexH+")").html(parseInt($("#Hourwrapper ul li:eq("+indexH+")").html().substr(0,$("#Hourwrapper ul li:eq("+indexH+")").html().length-1)))
-                     }
-                     datestr+=" "+$("#Hourwrapper ul li:eq("+indexH+")").html().substr(0,$("#Minutewrapper ul li:eq("+indexH+")").html().length-1)+":"+
-                             $("#Minutewrapper ul li:eq("+indexI+")").html().substr(0,$("#Minutewrapper ul li:eq("+indexI+")").html().length-1);
-                         indexS=0;
-                }
+              //  if(datetime){
+              //        if(Math.round(indexS)===1){//下午
+              //           $("#Hourwrapper ul li:eq("+indexH+")").html(parseInt($("#Hourwrapper ul li:eq("+indexH+")").html().substr(0,$("#Hourwrapper ul li:eq("+indexH+")").html().length-1))+12)
+              //        }else{
+              //           $("#Hourwrapper ul li:eq("+indexH+")").html(parseInt($("#Hourwrapper ul li:eq("+indexH+")").html().substr(0,$("#Hourwrapper ul li:eq("+indexH+")").html().length-1)))
+              //        }
+              //        datestr+=" "+$("#Hourwrapper ul li:eq("+indexH+")").html().substr(0,$("#Minutewrapper ul li:eq("+indexH+")").html().length-1)+":"+
+              //                $("#Minutewrapper ul li:eq("+indexI+")").html().substr(0,$("#Minutewrapper ul li:eq("+indexI+")").html().length-1);
+              //            indexS=0;
+              //   }
 
                 if(Ycallback===undefined){
                      if(docType){that.val(datestr);}else{that.html(datestr);}
@@ -154,10 +154,10 @@
         function showdatetime(){
             init_iScroll_datetime();
             addTimeStyle();
-            $("#datescroll_datetime").show();
-            $("#Hourwrapper ul").html(createHOURS_UL());
-            $("#Minutewrapper ul").html(createMINUTE_UL());
-            $("#Secondwrapper ul").html(createSECOND_UL());
+            // $("#datescroll_datetime").show();
+            // $("#Hourwrapper ul").html(createHOURS_UL());
+            // $("#Minutewrapper ul").html(createMINUTE_UL());
+            // $("#Secondwrapper ul").html(createSECOND_UL());
         }
 
         //日期+时间滑动
@@ -200,9 +200,9 @@
                 '<div id="dateshadow"></div>'+
                 '<div id="datePage" class="page">'+
                     '<section>'+
-                        '<div id="datetitle"><h1>请选择日期</h1></div>'+
+                        // '<div id="datetitle"><h1>请选择日期</h1></div>'+
                         '<div id="datemark"><a id="markyear"></a><a id="markmonth"></a><a id="markday"></a></div>'+
-                        '<div id="timemark"><a id="markhour"></a><a id="markminut"></a><a id="marksecond"></a></div>'+
+                        // '<div id="timemark"><a id="markhour"></a><a id="markminut"></a><a id="marksecond"></a></div>'+
                         '<div id="datescroll">'+
                             '<div id="yearwrapper">'+
                                 '<ul></ul>'+
@@ -229,8 +229,8 @@
                     '<footer id="dateFooter">'+
                         '<div id="setcancle">'+
                             '<ul>'+
-                                '<li id="dateconfirm">确定</li>'+
                                 '<li id="datecancle">取消</li>'+
+                                '<li id="dateconfirm">确定</li>'+
                             '</ul>'+
                         '</div>'+
                     '</footer>'+
@@ -238,14 +238,14 @@
             $("#datePlugin").html(str);
         }
         function addTimeStyle(){
-            $("#datePage").css("height","380px");
-            $("#datePage").css("top","60px");
-            $("#yearwrapper").css("position","absolute");
-            $("#yearwrapper").css("bottom","200px");
-            $("#monthwrapper").css("position","absolute");
-            $("#monthwrapper").css("bottom","200px");
-            $("#daywrapper").css("position","absolute");
-            $("#daywrapper").css("bottom","200px");
+            // $("#datePage").css("height","380px");
+            // $("#datePage").css("top","60px");
+            // $("#yearwrapper").css("position","absolute");
+            // $("#yearwrapper").css("bottom","200px");
+            // $("#monthwrapper").css("position","absolute");
+            // $("#monthwrapper").css("bottom","200px");
+            // $("#daywrapper").css("position","absolute");
+            // $("#daywrapper").css("bottom","200px");
         }
         //创建 --年-- 列表
         function createYEAR_UL(){
@@ -276,29 +276,29 @@
             return str+"<li>&nbsp;</li>";;
         }
         //创建 --时-- 列表
-        function createHOURS_UL(){
-            var str="<li>&nbsp;</li>";
-            for(var i=opts.beginhour;i<=opts.endhour;i++){
-                str+='<li>'+i+'时</li>'
-            }
-            return str+"<li>&nbsp;</li>";;
-        }
+        // function createHOURS_UL(){
+        //     var str="<li>&nbsp;</li>";
+        //     for(var i=opts.beginhour;i<=opts.endhour;i++){
+        //         str+='<li>'+i+'时</li>'
+        //     }
+        //     return str+"<li>&nbsp;</li>";;
+        // }
         //创建 --分-- 列表
-        function createMINUTE_UL(){
-            var str="<li>&nbsp;</li>";
-            for(var i=opts.beginminute;i<=opts.endminute;i++){
-                if(i<10){
-                    i="0"+i
-                }
-                str+='<li>'+i+'分</li>'
-            }
-            return str+"<li>&nbsp;</li>";;
-        }
+        // function createMINUTE_UL(){
+        //     var str="<li>&nbsp;</li>";
+        //     for(var i=opts.beginminute;i<=opts.endminute;i++){
+        //         if(i<10){
+        //             i="0"+i
+        //         }
+        //         str+='<li>'+i+'分</li>'
+        //     }
+        //     return str+"<li>&nbsp;</li>";;
+        // }
         //创建 --分-- 列表
-        function createSECOND_UL(){
-            var str="<li>&nbsp;</li>";
-            str+="<li>上午</li><li>下午</li>"
-            return str+"<li>&nbsp;</li>";;
-        }
+        // function createSECOND_UL(){
+        //     var str="<li>&nbsp;</li>";
+        //     str+="<li>上午</li><li>下午</li>"
+        //     return str+"<li>&nbsp;</li>";;
+        // }
     }
 })(jQuery);

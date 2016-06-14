@@ -1670,21 +1670,23 @@ a:hover {
 
 // 公开简历　开始－李冰华
 .block-hospital {
+  background: #f4f4f4;
   .block-btn {
-    height: 5.82rem;
+    height: 5.81rem;
     width: 100%;
     background: #fff;
     border-bottom: 1px solid #dedede;
     .block-middle {
       width: 9rem;
-      margin: 2.22rem auto 0 auto;
+      margin: 0 auto 0 auto;
       position: relative;
+      padding-top: 2.4rem;
       .block-board {
         font-size: 0.8rem;
       }
       .right {
         position: absolute;
-        top: -0.2rem;
+        top: 2.3rem;
         right: 0.5rem;
         background: #3a9da0;
         width: 3rem;
@@ -1706,32 +1708,81 @@ a:hover {
     font-size: 0.8rem;
     margin: 0.8rem 0 0.58rem 0.68rem;
   }
-}
-.model {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -6.9rem;
-  margin-top: -2.37rem;
-  width: 13.8rem;
-  height: 4.73rem;
-  display: none;
-  font-size: 0.8rem;
-  line-height: 6.33rem;
-  text-align: center;
-  background-color: #212121;
-  opacity: 0.8;
-  border-radius: 1rem;
-  p {
-    display: inline-block;
-    width: 11.2rem;
-    line-height: 1.2rem;
-    text-align: left;
-    color: #fff;
+  .block-selet {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #dedede;
+      ul {
+        width: 94.4%;
+        margin: 0 auto;
+        li {
+          height: 2.88rem;
+          line-height:  2.88rem;
+          font-size: 0.8rem;
+          border-bottom: 1px solid #c4c4c4;
+          span {
+            float: left;
+          }
+          img {
+            width: 0.8rem;
+            height: 0.8rem;
+            float: right;
+            margin: 1.05rem 0.95rem 0 0;
+          }
+        }
+        li:last-child {
+          color: #3d9f9d;
+          border: none;
+        }
+      }
   }
+  .model {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -6.9rem;
+    margin-top: -2.37rem;
+    width: 13.8rem;
+    height: 4.73rem;
+    display: none;
+    font-size: 0.8rem;
+    line-height: 6.33rem;
+    text-align: center;
+    background-color: #212121;
+    opacity: 0.8;
+    border-radius: 1rem;
+    p {
+      display: inline-block;
+      width: 11.2rem;
+      line-height: 1.2rem;
+      text-align: left;
+      color: #fff;
+    }
+  }
+
 }
 
 // 公开简历　结束－李冰华
+
+// 添加屏蔽　开始－李冰华
+.block-shield {
+  background: #f4f4f4;
+  .edit-text {
+    display: block;
+    margin: 0.42rem auto 0 auto;
+    height: 2.57rem;
+    width: 96.62%;
+    border: 1px solid #dcdcdc;
+    border-radius: 0.3rem;
+    text-indent: 0.8rem;
+    color: #767676;
+    font-size: 0.8rem;
+  }
+  .edit-text:focus {
+    border: none;
+  }
+}
+// 添加屏蔽　结束－李冰华
 
 // mask 蒙版
 .mask-all {
@@ -1805,7 +1856,7 @@ a:hover {
 //resumes show页面
 .show-style {
   padding-top: 0.7rem;
-  padding-bottom: 2rem;
+  // padding-bottom: 2rem;
   h2 {
     margin-bottom: 0.5rem;
   }
@@ -1830,6 +1881,7 @@ a:hover {
   height: 6.83rem;
   border: 1px solid #f3f3f3 ;
   background: #fff;
+  border-radius: 0.2rem;
   a {
     display: block;
     width: 100%;

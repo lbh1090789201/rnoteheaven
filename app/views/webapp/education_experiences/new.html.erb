@@ -7,11 +7,14 @@
       <%= f.input :college, label: "学校", input_html: { class: "user-input"} %>
       <%= f.input :major, label: '专业', input_html: { class: "user-input"} %>
       <%= f.input :education_degree, label: '学历', input_html: { class: "education-degree user-input", id: "education_degree"} %>
-      <%= f.input :graduated_at, label: '结束时间', input_html: { class: "user-input"} %>
+      <%= f.input :graduated_at, label: '结束时间', input_html: { class: "user-input", id: "beginTime"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
+    <div id="datePlugin"></div>
 </div>
 
+
+<%= javascript_include_tag "date" %>
 <script type="text/javascript">
   fullScreen('.edit_basic');
   clickRignt('#submit');
@@ -22,4 +25,9 @@
         var pclass = 'education_degree';
         workExperience(education_degree, ".education-degree", pclass);
       });
+
+      //时间插件
+       $(function(){
+       	$('#beginTime').date();
+        });
 </script>

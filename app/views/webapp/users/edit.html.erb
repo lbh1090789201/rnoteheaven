@@ -14,12 +14,16 @@
 
       <%= f.input :cellphone, label: '手机号码', input_html: { class: "user-input"} %>
       <%= f.input :email, label: '邮箱', input_html: { class: "user-input"} %>
-      <%= f.input :location, label: '所在区域', input_html: { class: "user-input"} %>
+      <%= f.input :location, label: '所在区域', input_html: { class: "user-input", id: "locationChoice"} %>
+      <!-- 城市插件需要用到 -->
+      <input type="hidden" id="province" value="">
+      <input type="hidden" id="city" value="">
       <!-- 当前状态属性 -->
       <%= f.input :seeking_job, label: '当前状态', input_html: { class: "seeking-job user-input", id: "seeking_job"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
 </div>
+
 
 <script type="text/javascript">
   fullScreen('.edit_basic');
@@ -59,5 +63,19 @@
       var pclass = 'seeking_job';
       workExperience(seeking_job, ".seeking-job", pclass);
     });
+
+    // 城市插件
+        var cityPicker = new IIInsomniaCityPicker({
+              data: cityData,
+              target: '#locationChoice',
+              valType: 'k-v',
+              hideCityInput: '#city',
+              hideProvinceInput: '#province',
+              // callback: function(){
+              //   $("#submit").trigger("click");
+              // }
+          });
+
+          cityPicker.init();
 
 </script>

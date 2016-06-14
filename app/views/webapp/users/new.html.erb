@@ -10,7 +10,10 @@
       <%= f.input :start_work_at, label: '工作年限', input_html: { class: "user-input"} %>
       <%= f.input :cellphone, label: '手机号码', input_html: { class: "user-input"} %>
       <%= f.input :email, label: '邮箱', input_html: { class: "user-input"} %>
-      <%= f.input :location, label: '所在区域', input_html: { class: "user-input"} %>
+      <%= f.input :location, label: '所在区域', input_html: { class: "user-input", id: "locationChoice"} %>
+      <!-- 城市插件需要用到 -->
+      <input type="hidden" id="province" value="">
+      <input type="hidden" id="city" value="">
       <%= f.input :seeking_job, label: '是否求职', input_html: { class: "user-input"} %>
       <%= f.submit id: "submit", class: "btn btn-info"%>
     <% end %>
@@ -19,4 +22,19 @@
 <script type="text/javascript">
   fullScreen('.edit_basic');
   clickRignt('#submit');
+
+  // 城市插件
+      var cityPicker = new IIInsomniaCityPicker({
+            data: cityData,
+            target: '#locationChoice',
+            valType: 'k-v',
+            hideCityInput: '#city',
+            hideProvinceInput: '#province',
+            // callback: function(){
+            //   $("#submit").trigger("click");
+            // }
+        });
+
+        cityPicker.init();
+
 </script>

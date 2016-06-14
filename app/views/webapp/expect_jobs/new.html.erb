@@ -1,14 +1,9 @@
 <% provide :title, "期望工作" %>
-<% if User.highest_degree(current_user.id) %>
   <% provide :content, "保存" %>
-<% else %>
-  <% provide :content, "完成" %>
-  <% provide :link, edit_webapp_user_path(:id) %>
-<% end %>
 
 
 <div class="edit_basic edit-work-experiences">
-   <%= simple_form_for :user_info, url: webapp_expect_jobs_path,:method => :post do |f| %>
+   <%= simple_form_for :expect_job, url: webapp_expect_jobs_path,:method => :post do |f| %>
      <%= f.input :name, label: "职能", input_html: { class: "expect-name job-fair", value: "护士", id: "expect_name"} %>
      <%= f.input :job_type, label: '工作类型', input_html: { class: "expect-type job-fair", value: "全职", id: "expect_type"} %>
      <%= f.input :location, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
@@ -22,12 +17,6 @@
 <script type="text/javascript">
   fullScreen('.edit_basic');
   clickRignt('#submit');
-  // $('.job-fair').click(function() {
-  //   workExperience();
-  //   $(".before-mask").addClass('mask');
-  //   $('.title').text('选择职能');
-  //   $('.right').text('');
-  // });
 
   //职能
   $('.expect-name').click(function() {
