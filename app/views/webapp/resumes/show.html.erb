@@ -13,10 +13,10 @@
             <div class="box box-avatar">
                 <div class="avatar">
                     <%= image_tag "pencil.png", class: "pencil" %>
-                    <div class="avatar-box" style="background:url('<%= @avatar %>') no-repeat;" id="avatar_box">
+                    <div class="avatar-box" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
                         <!-- 已修改样式 bobo -->
                     </div>
-                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), id: "avatar_form", remote: true do |f| %>
+                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"}, remote: true do |f| %>
                          <%= f.input :avatar, label: '头像', input_html: {id:"avatar"} %>
                          <%= f.button :submit %>
                      <% end %>
@@ -209,7 +209,7 @@ $($('#avatar').change(function() {
   $('input[type=submit]').click();
 }));
 
-$($('.avatar-img').click(function() {
+$($('.avatar-box').click(function() {
   $('#avatar').click();
 }));
 
@@ -226,7 +226,7 @@ $('.refresh').click(function() {
     type: 'PATCH',
     data: {refresh: true},
     success: function() {
-      $('.refresh').html('下次刷新剩余7天');
+      $('.refresh').html('6天后可再次刷新');
       $('.refresh').css('background-color', 'gray');
       $('.refresh').off();
     },

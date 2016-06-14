@@ -4,6 +4,8 @@ class Webapp::UsersController < ApplicationController
 
   #bafore_filer代表需要加载请求头　except代表除开它指定的请求外其它都需要
   #bafore_filer注释后就整个不需要加载请求头
+
+  #
   before_action :authenticate_user!, only: [:edit, :save_user_previous_url, :index, :update]
 
   after_filter "save_user_previous_url", only: [:edit]
@@ -59,10 +61,11 @@ class Webapp::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(current_user.id)
+    @user = current_user
 
     if @user.update(user_params)
       redirect_to webapp_resume_path(params[:id]), notice: "修改成功！"
+
       # render json: {
       #         success: true,
       #         info: "简历刷新成功"
@@ -76,7 +79,8 @@ class Webapp::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @user.avatar? ? @avatar = @user.avatar_url : "avator.png"
+    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
+
     education_experience = EducationExperience.where(user_id: current_user.id).first_or_create!
     @education_experience = EducationExperience.find_by current_user.id
   end

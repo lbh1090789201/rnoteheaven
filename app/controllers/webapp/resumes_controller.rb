@@ -22,7 +22,7 @@ class Webapp::ResumesController < ApplicationController
     @work_experiences = WorkExperience.where(:user_id => @user.id)
     @education_experiences = EducationExperience.where(:user_id => @user.id)
     @expect_job = ExpectJob.find_by_user_id(@user.id)
-    @user.avatar? ? @avatar = @user.avatar_url : "avator.png"
+    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
     @certificates = Certificate.where(:user_id => @user.id)
   end
 
@@ -36,7 +36,7 @@ class Webapp::ResumesController < ApplicationController
     expect_job = ExpectJob.where(user_id: current_user.id).first_or_create!
     @expect_job = ExpectJob.find_by_user_id(@user.id)
     @certificates = Certificate.where user_id: current_user.id
-    @user.avatar? ? @avatar = @user.avatar_url : "avator.png"
+    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
     @refresh_left = Resume.refresh_left(resume.id)
   end
 
@@ -59,10 +59,4 @@ class Webapp::ResumesController < ApplicationController
     end
   end
 
-  def edit
-    if params[:val] == 'basic'
-      # render partial: "edit_basic", layout: "header"
-      # @val = 'basic'
-    end
-  end
 end
