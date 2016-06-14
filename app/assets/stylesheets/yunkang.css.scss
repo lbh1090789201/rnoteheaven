@@ -2038,15 +2038,10 @@ a:hover {
 
 // 二级脚本页面
 .div-hidden {
-  height: 34rem;
+  height: 36rem;
+  z-index: 1000;
 }
 
-
-.work-edit-page {
-  .form-group:nth-of-type(2)::after {
-    display: none;
-  }
-}
 
 // 删除弹窗
 #delete_bottom_id {
