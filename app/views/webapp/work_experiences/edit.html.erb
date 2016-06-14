@@ -10,7 +10,7 @@
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
 
       <div class="btm-nav">
-        <p class="btm-delete" onclick="ClickShow(this)">删除此经历</p>
+        <p class="btm-delete" onclick="ClickShowHide(this)">删除此经历</p>
         <p class="btm-save">保存</p>
       </div>
       <% end %>
@@ -22,8 +22,8 @@
 <div id="popup">
   <ul>
     <li>删除将无法恢复，确认删除吗？</li>
-    <li onclick="ClickDelete(this)">确定</li>
-    <li onclick="ClickDelete(this)">取消</li>
+    <li onclick="ClickDeleteBtn(this)">确定</li>
+    <li onclick="ClickDeleteBtn(this)">取消</li>
   </ul>
 </div>
 
@@ -39,20 +39,6 @@
 	$('#endTime').date();
    });
 
-  function ClickShow(){
-    $("#popup").show();
-  }
-  function ClickDelete(obj){
-    var text = $(obj).text();
 
-    if(text == "取消"){
-      $("#popup").hide();
-    }
-    if(text == "确定"){
-          console.log(text);
-          $("#popup").hide();
-      $('#delete_bottom_id')[0].click();
-    }
-  }
 
 </script>
