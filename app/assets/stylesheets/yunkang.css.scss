@@ -913,7 +913,8 @@ a:hover {
           }
         }
         .job-li {
-          height: 6.02rem;
+          padding-top: 0.4rem;
+          height: 3.72rem;
         }
         .job-name {
           font-size: 0.87rem;
@@ -1785,6 +1786,9 @@ a:hover {
 // 添加屏蔽　开始－李冰华
 .block-shield {
   background: #f4f4f4;
+  .control-label {
+    display: none;
+  }
   .edit-text {
     display: block;
     margin: 0.42rem auto 0 auto;
@@ -1798,6 +1802,14 @@ a:hover {
   }
   .edit-text:focus {
     border: none;
+  }
+  .btn-shield {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3.7rem;
+    height: 2.3rem;
+    opacity: 0;
   }
 }
 // 添加屏蔽　结束－李冰华
@@ -2028,5 +2040,58 @@ a:hover {
 .work-edit-page {
   .form-group:nth-of-type(2)::after {
     display: none;
+  }
+}
+
+// 删除弹窗
+#delete_bottom_id {
+  display: none;
+}
+#popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  display: none;
+  ul {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-top: -3.5rem;
+    margin-left: -6rem;
+    width: 12rem;
+    height: 7rem;
+    background: #fff;
+    font-size: 0.8rem;
+    border-radius: 7px;
+    li:nth-child(1) {
+      width: 100%;
+      height: 4.4rem;
+      text-align: center;
+      line-height: 4.4rem;
+      float: left;
+      border-radius: 7px;
+    }
+    li:nth-child(2) {
+      width: 50%;
+      height: 2.6rem;
+      background: green;
+      color: #fff;
+      float: left;
+      text-align: center;
+      line-height: 2.6rem;
+      border-radius: 7px;
+    }
+    li:nth-child(3) {
+      width: 50%;
+      height: 2.6rem;
+      background: gray;
+      color: green;
+      float: left;
+      text-align: center;
+      line-height: 2.6rem;
+      border-radius: 7px;
+    }
   }
 }
