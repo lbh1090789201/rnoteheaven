@@ -1,18 +1,20 @@
-<%= provide :link, "/webapp/apply_records/index/" %>
+<%= provide :back %>
 <%= provide :title, "我的应聘记录" %>
 <div id="apply-bg">
+  <% @applyrecord.each do |a|%>
   <section class="position-info">
-    <a href="/webapp/jobs/show/">
+    <a href="/webapp/jobs/<%= a[:id] %>">
       <div class="position-detail">
-        <h3>全科医生<span>6k-10k</span></h3>
-        <p>2016-03-22　|　广州<span>&gt;</span></p>
-        <p>广州市天河区社区医疗中心</p>
+        <h3><%= a[:job_name] %><span><%= a[:salary_range] %></span></h3>
+
+        <p><%= a[:created_at].strftime("%Y-%m-%d") %>　|　<%= a[:location] %><span>&gt;</span></p>
+        <p><%= a[:hospital_name] %></p>
       </div>
     </a>
   </section>
 
   <section class="apply-status">
-    <p>当前状态　筛选中</p>
+    <p>当前状态　<%= a[:resume_status] %></p>
   </section>
 
   <section class="resume-show apply-process">
@@ -20,21 +22,22 @@
       <div class="box" style="padding: 0;">
         <time>你的简历正在筛选</time>
         <div class="time-line-box process-box">
-          <p class="process-time">2016-03-15</p>
+          <p class="process-time"><%= a[:apply_at].strftime("%Y-%m-%d") if a[:apply_at] %></p>
         </div>
       </div>
       　<div class="box" style="padding: 0;margin-top: -2rem;">
       <time>查看简历</time>
       <div class="time-line-box process-box" style="height: 8rem;">
-        <p class="process-time">2016-03-19</p>
+        <p class="process-time"><%= a[:view_at].strftime("%Y-%m-%d") if a[:view_at] %></p>
       </div>
     </div>　
       <div class="box" style="padding: 0;margin-top: -2rem;">
         <time>已成功接收你的简历</time>
         <div class="time-line-box process-box" style="border: none;height: 3rem;">
-          <p class="process-time">2016-03-21</p>
+          <p class="process-time"><%= a[:recieve_at].strftime("%Y-%m-%d") if a[:recieve_at] %></p>
         </div>
       </div>
     </div>
+    <% end %>
   </section>
 </div>

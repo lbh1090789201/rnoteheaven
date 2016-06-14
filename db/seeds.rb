@@ -22,6 +22,7 @@ while i < 3 do
       job_id: job_id[i],
       user_id: 1,
       apply_at: "2016-5-26",
+      view_at: "2016-5-26",
       resume_status: resume_status[i],
       recieve_at: "2016-5-27",
     })
