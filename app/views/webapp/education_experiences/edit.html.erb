@@ -9,11 +9,19 @@
       <%= f.input :graduated_at, label: '结束时间', as: :string, input_html: { class: "user-input", id: "beginTime"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
       <div class="btm-nav">
-        <%= link_to "删除此经历", webapp_education_experience_path(params[:id]), method: :delete, remote: true, class: "btm-delete"%>
+        <p class="btm-delete" onclick="ClickShowHide(this)">删除此经历</p>
         <p class="btm-save">保存</p>
       </div>
 <% end %>
+<%= link_to "删除此经历", webapp_education_experience_path(params[:id]), method: :delete, remote: true, class: "btm-delete", id: "delete_bottom_id"%>
 <div id="datePlugin"></div>
+</div>
+<div id="popup">
+  <ul>
+    <li>删除将无法恢复，确认删除吗？</li>
+    <li onclick="ClickDeleteBtn(this)">确定</li>
+    <li onclick="ClickDeleteBtn(this)">取消</li>
+  </ul>
 </div>
 
 <%= javascript_include_tag "date" %>

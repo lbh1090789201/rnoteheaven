@@ -139,3 +139,18 @@ function delCookie(name)
         document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 }
 /* 单次刷新 结束 bobo */
+
+// 编辑　删除弹窗
+function ClickShowHide(){
+  $("#popup").show();
+}
+function ClickDeleteBtn(obj){
+  var text = $(obj).text();
+  if(text == "取消"){
+    $("#popup").hide();
+  }
+  if(text == "确定"){
+    $('#delete_bottom_id')[0].click();
+      $("#popup").hide();
+  }
+}
