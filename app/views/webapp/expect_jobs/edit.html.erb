@@ -1,17 +1,17 @@
 <% provide :title, "编辑期望工作" %>
+<% provide :content, "保存"%>
 
 <div class="edit_basic edit-work-experiences edit-expectjob">
   <%= simple_form_for @expect_job, method: :patch,remote: true, url: webapp_expect_job_path(params[:id]) do |e| %>
       <%= e.input :name, label: "职能", input_html: { class: "expect-name job-fair", value: "护士", id: "expect_name"} %>
       <%= e.input :job_type, label: '工作类型', input_html: { class: "expect-type job-fair", value: "全职", id: "expect_type"} %>
-      <%= e.input :location, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
+      <%= e.input :location, label: '期望城市', input_html: { class: "job-fair", id: "cityChoice", value: "武汉"} %>
+      <!-- 城市插件 -->
+      <input type="hidden" id="province" value="">
+      <input type="hidden" id="city" value="">
       <%= e.input :expected_salary_range, label: '期望薪水', input_html: { class: "expect-range job-fair", value: "5K~6K", id: "expect_range"} %>
       <%= e.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
       <%= e.submit id: "submit", class: "btn btn-info btn-right"%>
-      <div class="btm-nav">
-        <%= link_to "删除此经历", webapp_expect_job_path(params[:id]), method: :delete, class: "btm-delete"%>
-        <p class="btm-save">保存</p>
-      </div>
 <% end %>
 </div>
 
@@ -47,5 +47,19 @@
      var pclass = 'expect_range';
      workExperience(expect_range, ".expect-range", pclass);
    });
+
+   // 城市插件
+       var cityPicker = new IIInsomniaCityPicker({
+             data: cityData,
+             target: '#cityChoice',
+             valType: 'k-v',
+             hideCityInput: '#city',
+             hideProvinceInput: '#province',
+             callback: function(){
+               $("#submit").trigger("click");
+             }
+         });
+
+         cityPicker.init();
 
 </script>

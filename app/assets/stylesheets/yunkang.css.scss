@@ -1919,11 +1919,14 @@ a:hover {
 
 
 // 底部导航
+.delete-bottom {
+  display: none;
+}
 .btm-nav {
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 3.05rem;
-  bottom: 0;
+  bottom: -0.36rem;
   left: 0;
   background: #f3f3f3;
   .btm-delete {
@@ -1959,5 +1962,17 @@ a:hover {
   }
   .new_user input {
     text-align: left;
+  }
+}
+
+// 二级脚本页面
+.div-hidden {
+  height: 34rem;
+}
+
+
+.work-edit-page {
+  .form-group:nth-of-type(2)::after {
+    display: none;
   }
 }
