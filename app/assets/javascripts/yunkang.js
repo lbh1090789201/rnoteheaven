@@ -103,7 +103,8 @@ function refreshOnce() {
     delCookie('refresh');
   } else {
     setCookie('refresh','true');
-    history.go(0);
+    window.location.replace(window.location.href);
+    // history.go(0);
   }
 };
 
