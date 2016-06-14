@@ -27,4 +27,95 @@
   </section>
 
   <%= render '/webapp/jobs/mask' %>
+
+  <!-- 底部栏 -->
+  <div class="job-list">
+    <ul>
+      <li id="msg"><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
+      <li><a class="<%= @btn_apply[:css] %>" id="apply_job"> <%= image_tag "apply_records.png" %>
+                                                  <span><%= @btn_apply[:text] %></span></a></li>
+      <li><a class="<%= @btn_favor[:css] %>" id="favorite_job" onclick=favor(this)><%= image_tag @btn_favor[:img_url] %>
+                                                  <span><%= @btn_favor[:text] %></span></a></li>
+    </ul>
+  </div>
+  
 </div>
+
+
+
+<script type="text/javascript">
+// 应聘职位
+$('#btn_apply').bind('click', function(){
+  $.post("/api/v1/apply_records", {
+    apply_record: {job_id: <%= params[:id] %>}
+  }).done(function() {
+    $('#apply_box').attr('class', 'hidden');
+    $('#apply_job > span').html('已应聘');
+    $('#apply_job').attr('class', 'is_applied');
+  }).fail(function() {
+    alert('failed');
+  });
+});
+
+$('#btn_cancel').bind('click', function() {
+  $('#apply_box').attr('class', 'hidden');
+});
+
+$('.no_applied').bind('click', function() {
+  $('#apply_box').toggleClass('hidden', 'show');
+});
+
+$('.no_resume').bind('click', function() {
+  alert('请先完善简历！');
+});
+
+// 收藏按钮
+function favor(obj) {
+console.log(obj);
+if($(obj).attr('class') == 'no_favor') {
+  is_favor();
+} else if ($(obj).attr('class') == 'is_favor') {
+  no_favor();
+} else {
+  alert('failed');
+}
+}
+// 收藏职位
+function is_favor() {
+$.post("/api/v1/favorite_jobs", {
+favorite_job: {job_id: <%= params[:id] %>}
+}).done(function() {
+    $('#favorite_job > span').html('已收藏');
+    $('#favorite_job > img').remove();
+    $('#favorite_job').prepend( '<%= image_tag "star_yellow.png" %>');
+    $('#favorite_job').attr('class', 'is_favor');
+    $('#favorite_job').off();
+}).fail(function() {
+  alert('收藏失败');
+});
+}
+
+// 取消收藏
+function no_favor() {
+ $.ajax({
+   url: '<%= api_favorite_job_path(params[:id]) %>',
+   type: 'DELETE',
+   success: function() {
+     $('#favorite_job > span').html('收藏职位');
+     $('#favorite_job > img').remove();
+     $('#favorite_job').prepend( '<%= image_tag "star_black.png" %>');
+     $('#favorite_job').attr('class', 'no_favor');
+     $('#favorite_job').off();
+   },
+   error: function() {
+     alert('删除失败。')
+   }
+ });
+}
+
+// 私信Ta
+$('#msg').bind('click', function() {
+  alert("功能正在开发中");
+});
+
+</script>
