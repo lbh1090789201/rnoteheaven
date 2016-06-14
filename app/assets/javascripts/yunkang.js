@@ -45,7 +45,7 @@ function wordLimit(dom, word) {
 
 function workExperience(obj,api,pclass) {
   var parentdiv = $('<div></div>');
-  parentdiv.attr('class','before-mask');;
+  parentdiv.attr('class','before-mask div-hidden');;
   for (var i = 0; i < obj.length; i++) {
     var childBtn = $('<p>'+obj[i]+'</p>');
     childBtn.attr('value',obj[i]);
