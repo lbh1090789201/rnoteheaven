@@ -14,6 +14,9 @@ class Webapp::EducationExperiencesController < ApplicationController
     education_experience.user_id = current_user.id
 
     if education_experience.save
+      # 更新简历完整度
+      resume_maturity = Resume.get_maturity current_user.id
+
       flash.now[:notice] = "创建成功！"
       render js: ' history.go(-1);'
     else

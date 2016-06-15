@@ -16,6 +16,9 @@ class Webapp::ExpectJobsController < ApplicationController
   def update
     @expect_job = ExpectJob.find_by_id params[:id]
     if @expect_job.update(expect_job_params)
+      # 更新简历完整度
+      resume_maturity = Resume.get_maturity current_user.id
+
       render js: 'history.go(-1);'
     else
       redirect_to :back, alert("修改失败")

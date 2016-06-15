@@ -149,9 +149,9 @@ ActiveRecord::Schema.define(version: 20160613094103) do
     t.string   "expected_job_type",     limit: 191
     t.string   "expected_base",         limit: 191
     t.string   "expected_salary_range", limit: 191
-    t.integer  "maturity",              limit: 4
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.integer  "maturity",              limit: 4,   default: 0, null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20160613094103) do
     t.string   "seeking_job",            limit: 191
     t.string   "highest_degree",         limit: 191
     t.string   "birthday",               limit: 191
-    t.string   "position",               limit: 191,   default: ""
+    t.string   "position",               limit: 191
     t.string   "cellphone",              limit: 191,   default: "",      null: false
     t.string   "avatar",                 limit: 191
     t.string   "show_name",              limit: 191,                     null: false

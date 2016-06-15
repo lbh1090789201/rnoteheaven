@@ -64,6 +64,8 @@ class Webapp::UsersController < ApplicationController
     @user = current_user
 
     if @user.update(user_params)
+      # 更新简历完整度
+      resume_maturity = Resume.get_maturity @user.id
 
       if user_params[:avatar]
         render js: 'history.go(0);', notice: '修改成功'
@@ -80,9 +82,8 @@ class Webapp::UsersController < ApplicationController
   def show
     @user = current_user
     @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
-    #
-    # education_experience = EducationExperience.where(user_id: current_user.id).first_or_create!
-    # @education_experience = EducationExperience.find_by current_user.id
+    resume = Resume.find_by(user_id: @user.id)
+    @maturity = resume.nil? ?  0 : resume.maturity
   end
 
 

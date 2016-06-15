@@ -40,8 +40,7 @@
 
         <%# @user.each do |u| %>
         <section class="show-style">
-            <h2>基本信息
-            </h2>
+            <h2>基本信息<span>必填</span></h2>
             <div class="box">
                 <table>
                     <tr>
@@ -92,8 +91,7 @@
 
 
         <section class="show-style">
-            <h2>工作经历<span>必填</span>
-            </h2>
+            <h2>工作经历</h2>
             <% if !@work_experiences.blank? %>
             <div class="box work-show">
                 <a href="<%= webapp_work_experiences_path %>" class="edit">
