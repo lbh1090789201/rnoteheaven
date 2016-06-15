@@ -624,18 +624,18 @@ a:hover {
       }
       .info-username {
         font-size: 0.87rem;
-        margin-top: 0.62rem;
+        margin-top: 0.42rem;
       }
       .info-major {
         font-size: 0.73rem;
       }
       .info-usermajor {
         font-size: 0.7rem;
-        margin-top: 0.93rem;
+        margin-top: 0.73rem;
       }
       .info-userposition {
         font-size: 0.7rem;
-        margin-top: 0.47rem;
+        margin-top: 0.2rem;
       }
     }
     .user-status {
@@ -722,6 +722,7 @@ a:hover {
         height: 2.8rem;
         line-height: 2.8rem;
         border-bottom: 1px solid rgb(196,196,196);
+        font-size: 0.8rem;
         img {
           display: inline-block;
         }
