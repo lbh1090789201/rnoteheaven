@@ -578,6 +578,7 @@ a:hover {
 
 
 /* 我的页面 开始-汤伟*/
+
 .main.user-first-page {
   $color: #e4e3dc;
   $mask-color: #f4f4f4;
@@ -617,12 +618,24 @@ a:hover {
         margin: 0 auto;
 
       }
-      .info-name{
+      .info-name {
         font-size: 0.93rem;
         margin-top: 0.57rem;
       }
+      .info-username {
+        font-size: 0.87rem;
+        margin-top: 0.62rem;
+      }
       .info-major {
         font-size: 0.73rem;
+      }
+      .info-usermajor {
+        font-size: 0.7rem;
+        margin-top: 0.93rem;
+      }
+      .info-userposition {
+        font-size: 0.7rem;
+        margin-top: 0.47rem;
       }
     }
     .user-status {
@@ -651,20 +664,44 @@ a:hover {
     }
   }
   .resumes-info-list {
+    .resume-ali {
+      display: block;
+      height: 2.8rem;
+      line-height: 2.8rem;
+      padding-left: 0.8rem;
+      padding-right: 0.65rem;
+      margin-top: 1.05rem;
+      background: #fff;
+      .icon5{
+        height: 1rem;
+      }
+      img {
+        display: inline-block;
+      }
+      span {
+        display: inline-block;
+        margin-left: 0.55rem;
+      }
+      &:active,&:visited,&:link {
+        color: black;
+        text-decoration: none;
+      }
+    }
     .mask {
       background:  $mask-color;
       height: 1.05rem;
-      width: 20.5rem;
+      width: 100%;
     }
     position: relative;
     overflow: hidden;
     .content {
       display: block;
       margin: 0 auto;
-      padding-left: 0.59rem;
-      padding-right: 0.59rem;
+      padding-left: 0.65rem;
+      padding-right: 0.65rem;
       width: 100%;
       background-color: #fff;
+      margin-top: 1.05rem;
       .icon1{
         height: 0.81rem;
       }
@@ -726,8 +763,14 @@ a:hover {
         height: 1rem;
       }
     }
-
-
+    .user-content {
+      a:nth-of-type(4) {
+        border-bottom: none;
+      }
+      .user-complete {
+        font-size: 0.63rem;
+      }
+    }
     .model {
       position: absolute;
       top: 1.6rem;

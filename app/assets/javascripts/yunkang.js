@@ -119,7 +119,7 @@ function refreshOnce() {
   } else {
     setCookie('refresh','true');
     window.location.replace(window.location.href);
-    // history.go(0);
+    // history.go(-1);
   }
 };
 
