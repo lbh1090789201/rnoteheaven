@@ -132,7 +132,7 @@
             <% if !@education_experiences.blank? %>
             <div class="box work-show">
                 <% @education_experiences.each do |e| %>
-                <time><%= e.graduated_at.strftime("%Y") if e.graduated_at %>年毕业</time>
+                <time><%= e.entry_at.strftime("%Y-%m-%d") if e.entry_at %>－<%= e.graduated_at.strftime("%Y-%m-%d") if e.graduated_at %></time>
                 <div class="time-line-box">
                   <a href="<%= webapp_education_experiences_path %>" class="edit">
                       <%= image_tag "pencil3.png" %>编辑

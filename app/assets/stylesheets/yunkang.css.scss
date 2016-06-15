@@ -155,6 +155,7 @@ a:hover {
       }
       .right-range {
         margin-top: 0.2rem;
+        font-size: 0.7rem;
       }
       .title {
         .left {
@@ -1914,6 +1915,17 @@ a:hover {
   .form-group:nth-of-type(2)::after {
     display: none;
   }
+  .form-group:nth-of-type(5)::after {
+    content: "";
+    width: 0.41rem;
+    height: 0.66rem;
+    display: block;
+    position: absolute;
+    right: 1rem;
+    margin-top: 0.9rem;
+    background: url("icon.png");
+    background-size: 0.41rem 0.66rem;
+  }
 }
 
 .edit-expectjob {
@@ -2034,6 +2046,9 @@ a:hover {
   .new_user input {
     text-align: left;
   }
+  .form-group:nth-of-type(2)::after {
+    display: none;
+  }
 }
 
 // 二级脚本页面
@@ -2105,4 +2120,39 @@ a:hover {
 
 .form-control[readonly] {
   background-color: #fff !important;
+}
+
+
+
+.title-over {
+  display: inline-block;
+  width: 3rem;
+  height: 2.3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+//home
+#myform {
+  position: relative;
+  #cityChoice {
+    font-size: 0.7rem;
+    color: #949494;
+  }
+  img {
+    width: 0.72rem;
+    height: 0.72rem;
+    position: absolute;
+    top: 0.45rem;
+    left: 6rem;
+  }
+  #search:focus {
+    border: 1px solid #87CEFA;
+  }
+}
+
+// 职位列表
+.hospitaljob-list {
+  margin-top: 1rem;
 }

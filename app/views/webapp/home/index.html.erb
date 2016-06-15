@@ -5,11 +5,12 @@
   <div class="box">
 
     <form id="myform" name="filter" method="get" action="/webapp/home">
-      <input class="left" type="text" name="city" id="cityChoice" placeholder="城市" onchange="show();" >
+      <input class="left" type="text" name="city" id="cityChoice" placeholder="深圳市" onchange="show();" >
       <input type="hidden" id="province" value="">
       <input type="hidden" id="city" value="">
       <!--<input class="left" type="text" name="city" placeholder="城市"  onkeydown="show();" />-->
       <input id="search" class="right" type="text" name="search" placeholder="搜索职位/医院" onkeydown="show();" />
+      <%= image_tag "search.png"%>
       <input id="submit" class="btn btn-success btn-order" type="submit" value="搜索" style="display:none"/>
     </form>
 
@@ -21,13 +22,13 @@
     <ul>
       <div class="slides">
         <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.4s ease; z-index: 2;">
-          <%= image_tag "test.jpg" %>
+          <%= image_tag "hs-1.jpg" %>
         </li>
         <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.4s ease; z-index: 2;">
-          <%= image_tag "test.jpg" %>
+          <%= image_tag "hs-2.jpg" %>
         </li>
         <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.4s ease; z-index: 2;">
-          <%= image_tag "test.jpg" %>
+          <%= image_tag "hs-3.jpg" %>
         </li>
         <div style="clear:both"></div>
       </div>

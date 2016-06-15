@@ -57,6 +57,13 @@ function workExperience(obj,api,pclass) {
   var h1 = $(api).siblings().text();
   $(".title").text(h1);
   $('.right').text('');
+  //生成返回按钮
+  var span = document.createElement("span");
+  span.setAttribute('class','title-over');
+  span.setAttribute('onclick','TitleOver(this)');
+  console.log(span);
+  var div = $(".top");
+  div.prepend(span);
 }
 
 function change_val(obj) {
@@ -68,6 +75,16 @@ function change_val(obj) {
   },300);
   $('.before-mask').css("display","none");
 };
+
+function TitleOver(obj) {
+  $(".title-over").hide();
+  $('.title').text(edit_title);
+  $('.right').text('保存');
+  $('.before-mask').animate({
+    top: '1500px',
+  },300);
+  $('.before-mask').css("display","none");
+}
 /* 蒙版 结束 */
 
 
