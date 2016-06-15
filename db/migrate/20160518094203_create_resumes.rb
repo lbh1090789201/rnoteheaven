@@ -8,7 +8,7 @@ class CreateResumes < ActiveRecord::Migration
       t.string :expected_job_type
       t.string :expected_base
       t.string :expected_salary_range
-      t.integer :maturity
+      t.integer :maturity, :null => false, :default => 0 #完成度
 
       t.timestamps null: false
     end

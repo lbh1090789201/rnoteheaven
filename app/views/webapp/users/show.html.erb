@@ -1,4 +1,9 @@
 <% provide :title, "我的" %>
+
+<script type="text/javascript">
+  refreshOnce(); //刷新一次
+</script>
+
 <div class="main user-first-page home-user">
   <div class="user-info">
     <a href="/webapp/users/<%= current_user.id %>/edit" class="user-hidden">
@@ -31,7 +36,7 @@
     <div class="content">
       <a class="resumes-list" href="/webapp/resumes/<%= current_user.id %>">
           <%= image_tag "resumes.png",class:"icon1"%>
-          <span class="resume">我的简历</span><span>完整度 80%</span>
+          <span class="resume">我的简历</span><span>完整度 <%= @maturity %>%</span>
       </a>
       <a class="resumes-list" href="<%= webapp_apply_records_path %>">
           <%= image_tag "apply_records.png",class:"icon2"%>

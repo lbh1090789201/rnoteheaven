@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :user, :class => 'User' do
     username "test"
+    sex "男"
     email "public@roadclouding.com"
     cellphone "13076016866"
     password "12345678"
@@ -10,6 +11,7 @@ FactoryGirl.define do
     location "武汉"
     seeking_job "正在求职"
     highest_degree "本科"
+    position "高级护士"
     birthday "1992.2"
   end
 
@@ -24,7 +26,6 @@ FactoryGirl.define do
     show_name "zahng"
     username "username"
     email  { Faker::Internet.email }
-    # email "644381492@qq.com"
     cellphone "13944445555"
     password "123465"
   end

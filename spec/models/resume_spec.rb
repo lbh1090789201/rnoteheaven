@@ -17,4 +17,63 @@ RSpec.describe Resume, type: :model do
       expect(res2).to eq(false)
       expect(res3).to eq(false)
     end
+
+    describe 'test get_maturity' do
+      before :each do
+        @user = create(:user)
+        @resume = create(:resume, user_id: @user.id)
+        @education_experience = create(:education_experience, user_id: @user.id)
+        @expect_job = create(:expect_job, user_id: @user.id)
+      end
+
+      it "no resume" do
+        res = Resume.get_maturity 999
+        expect(res).to eq(0)
+      end
+
+      it "test maturity = 100" do
+        res = Resume.get_maturity @user.id
+        expect(res).to eq(100)
+      end
+
+      it "test lack user" do
+        @user.birthday = nil
+        @user.save!
+
+        res = Resume.get_maturity @user.id
+        expect(res).to eq(75)
+      end
+
+      it "test incomplete user" do
+        @user.birthday = nil
+        @user.save!
+
+        res = Resume.get_maturity @user.id
+        expect(res).to eq(75)
+      end
+
+      it "test without education_experience" do
+        @education_experience.destroy!
+
+        res = Resume.get_maturity @user.id
+        expect(res).to eq(75)
+      end
+
+      it "test without expect_job" do
+        @expect_job.destroy!
+
+        res = Resume.get_maturity @user.id
+        expect(res).to eq(75)
+      end
+
+      # it "test lack of avatar" do
+      #   @user.update_attributes(avatar: false)
+      #
+      #   puts '------------ava' + @user.avatar.to_s
+      #
+      #   res = Resume.get_maturity @user.id
+      #   expect(res).to eq(75)
+      # end
+
+    end
 end

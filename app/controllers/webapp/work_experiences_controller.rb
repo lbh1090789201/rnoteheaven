@@ -28,6 +28,8 @@ class Webapp::WorkExperiencesController < ApplicationController
 
   def edit
       @work_experience = WorkExperience.find params[:id]
+      @work_experience.started_at = @work_experience.started_at.strftime('%Y-%m-%d')
+      @work_experience.left_time = @work_experience.left_time.strftime('%Y-%m-%d')
   end
 
   def update
