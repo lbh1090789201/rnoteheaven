@@ -14,6 +14,8 @@
       <input id="submit" class="btn btn-success btn-order" type="submit" value="搜索" style="display:none"/>
     </form>
 
+
+
     <div style="clear:both"></div>
   </div>
 </div>
@@ -35,17 +37,6 @@
     </ul>
   </div>
 </div>
-
-<div id="hide_content" style="display:none;">
-  <% @arjob.each do |j| %>
-     <p><%= j[:city] %></p>
-  <% end %>
-</div>
-<script>
-   var text = $("#hide_content>p").eq(0).text();
-   console.log(text);
-   $("#cityChoice").attr('value',text);
-</script>
 
 <div class="jobs">
   <div class="jobs-list">
@@ -101,5 +92,13 @@ $(function() {
     $('#cityChoice').val( '<%= params[:city] %>' );
 });
 <% end %>
+
+ //软键盘弹出定位
+  $("#myform>input:eq(3)").bind('focus',function(){
+    $("#show-me").css({'position':'absolute','bottom':'-3rem'});
+  }).bind('blur',function(){
+    $("#show-me").css({'position':'fixed','bottom':'2.5rem'});
+  })
+
 
 </script>
