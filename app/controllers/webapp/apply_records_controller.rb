@@ -26,6 +26,5 @@ class Webapp::ApplyRecordsController < ApplicationController
       location: @job.location
     }
     @applyrecord.push(o)
-    puts "-----"+@applyrecord.to_json
   end
 end
