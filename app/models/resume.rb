@@ -9,7 +9,7 @@ class Resume < ActiveRecord::Base
     resume = Resume.find uid
 
     if resume.refresh_at && resume.refresh_at > 7.days.ago
-      return ((resume.refresh_at + 7.days - Time.now)/1.day).to_i
+      return ((resume.refresh_at + 7.days + 1.hours - Time.now)/1.day).to_i
     else
       return false
     end

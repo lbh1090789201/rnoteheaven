@@ -18,11 +18,4 @@ RSpec.describe Webapp::ResumeViewersController, type: :controller do
     end
   end
 
-  describe 'GET #show' do
-    it 'returns http success' do
-      get :show, id: @resume_viewer.id
-      expect(response.status).to eq 200
-    end
-  end
-
 end

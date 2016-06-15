@@ -11,6 +11,11 @@ RSpec.describe Webapp::JobFairsController, type: :controller do
   end
 
   # 测试
+  it 'returns http success' do
+    get :index, format: :html
+    expect(response.status).to eq(200)
+  end
+  
   describe 'GET #show' do
     it 'returns hettp success' do
       get :show, id: @user.id
