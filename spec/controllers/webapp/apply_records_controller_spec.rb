@@ -14,7 +14,10 @@ RSpec.describe Webapp::ApplyRecordsController, type: :controller do
 
   describe 'test #index #show ... ' do
     before :each do
-      @apply_record = create :apply_record
+      @hospital = create(:hospital)
+      @job = create(:job, hospital_id: @hospital.id)
+
+      @apply_record = create(:apply_record, user_id: @user.id, job_id: @job.id)
     end
 
     it 'returns http success' do
@@ -28,7 +31,7 @@ RSpec.describe Webapp::ApplyRecordsController, type: :controller do
     end
   end
 
-  
+
 
   # describe "GET #show" do
   #   it "returns http success" do

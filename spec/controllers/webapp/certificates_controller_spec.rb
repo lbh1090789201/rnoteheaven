@@ -4,6 +4,8 @@ RSpec.describe Webapp::CertificatesController, type: :controller do
 
   before :each do
     @user = create(:user)
+    login_with @user
+    request.env['devise.mapping'] = Devise.mappings[:user]
     @certificate = create(:certificate, user_id: @user.id)
   end
 
@@ -23,7 +25,7 @@ RSpec.describe Webapp::CertificatesController, type: :controller do
 
   describe "GET #create" do
     it "returns http success" do
-      get :create
+      get :create, certificate: {title: "一级证书"}
       expect(response).to have_http_status(:success)
     end
   end

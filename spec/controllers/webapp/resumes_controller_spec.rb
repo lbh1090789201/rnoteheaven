@@ -32,12 +32,6 @@ RSpec.describe Webapp::ResumesController, type: :controller do
     end
   end
 
-  describe 'GET #edit' do
-    it 'returns http success' do
-      get :edit, id: @user.id
-      expect(response.status).to eq(200)
-    end
-  end
 
   describe 'POST #create' do
     context 'when content is change' do
