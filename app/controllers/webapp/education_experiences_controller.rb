@@ -24,7 +24,7 @@ class Webapp::EducationExperiencesController < ApplicationController
 
   def edit
     @education_experience = EducationExperience.find_by_id params[:id]
-    # @education_experience.entry_at = Time.at(@education_experience.entry_at).utc.strftime("%H:%M:%S")
+    @education_experience.graduated_at = @education_experience.graduated_at.strftime('%Y-%m-%d')
   end
 
   def update
