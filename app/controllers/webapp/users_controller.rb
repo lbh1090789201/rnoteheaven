@@ -72,7 +72,7 @@ class Webapp::UsersController < ApplicationController
         render js: 'window.location.replace(window.location.href);', notice: '修改成功'
         # redirect_to "/webapp/resumes/#{@user.id}"
       else
-        render js: 'alert( "修改失败");'
+        render js: 'history.go(-1);'
       end
 
     else

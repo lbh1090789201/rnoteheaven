@@ -106,12 +106,14 @@
 // $('.nav a').click(function(){
 //     $(this).siblings().removeClass('active').addClass('active');
 // });
+
+   
   $('.apply_records li').click(function(event) {
     $(this).addClass('active show');
     $(this).siblings().removeClass('active show');
 
     var index = $(this).index();
-
+    
     $('.content').eq(index).show().addClass('active').siblings().removeClass('active').hide();
   });
 
