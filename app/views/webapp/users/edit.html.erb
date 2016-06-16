@@ -21,12 +21,18 @@
       <%= f.input :seeking_job, label: '当前状态', input_html: { readonly: "readonly", class: "seeking-job user-input", id: "seeking_job"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
+    <!-- 时间代码生成处 -->
+　　　<div id="datePlugin"></div>
 </div>
 
+<%= javascript_include_tag "date" %>
 <script type="text/javascript">
   fullScreen('.edit_basic');
   clickRignt('#submit');
 
+  $(function(){
+	$('#birthday').date();
+   });
 
 　　//性别
     $('.user-sex').click(function() {

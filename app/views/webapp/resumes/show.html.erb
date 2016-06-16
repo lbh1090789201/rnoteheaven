@@ -12,15 +12,15 @@
             <h2>设置头像</h2>
             <div class="box box-avatar">
                 <div class="avatar">
-                    <%= image_tag "pencil.png", class: "pencil" %>
-                    <div class="avatar-box" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
+                    <%= image_tag "pencil2.png", class: "pencil" %>
+                    <div class="avatar-box avatar-border" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
                         <!-- 已修改样式 bobo -->
                     </div>
                      <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"}, remote: true do |f| %>
                          <%= f.input :avatar, label: '头像', input_html: {id:"avatar"} %>
                          <%= f.button :submit %>
                      <% end %>
-                    <span>点击更换</span>
+                    <span class="update-img">点击更换</span>
                 </div>
             </div>
         </section>
@@ -41,7 +41,7 @@
         <%# @user.each do |u| %>
         <section class="show-style">
             <h2>基本信息<span>必填</span></h2>
-            <div class="box">
+            <div class="box box-table">
                 <table>
                     <tr>
                         <td><span>姓</span>名：</td>
@@ -95,7 +95,7 @@
             <% if !@work_experiences.blank? %>
             <div class="box work-show">
                 <a href="<%= webapp_work_experiences_path %>" class="edit">
-                    <%= image_tag "pencil3.png" %>编辑
+                    <%= image_tag "edit.png" %>
                 </a>
                <% @work_experiences.each do |w| %>
                 <time><%= w.started_at.strftime("%Y-%m-%d") if w.started_at %>-<%= w.left_time.strftime("%Y-%m-%d") if w.left_time %></time>
@@ -127,15 +127,15 @@
 
 
         <section class="show-style">
-            <h2>教育经历<span>必填</span>
+            <h2>教育经历<span><%= image_tag "must.png" %></span>
             </h2>
             <% if !@education_experiences.blank? %>
-            <div class="box work-show">
+            <div class="box work-show box-education">
                 <% @education_experiences.each do |e| %>
                 <time><%= e.entry_at.strftime("%Y-%m-%d") if e.entry_at %>－<%= e.graduated_at.strftime("%Y-%m-%d") if e.graduated_at %></time>
                 <div class="time-line-box">
                   <a href="<%= webapp_education_experiences_path %>" class="edit">
-                      <%= image_tag "pencil3.png" %>编辑
+                      <%= image_tag "edit.png" %>
                   </a>
                     <h3><%= e.college %>
                     </h3>
@@ -158,9 +158,9 @@
           <section class="show-style">
               <h2>持有证书
               </h2>
-              <div class="box work-show">
+              <div class="box work-show box-certif">
                   <a href="/webapp/certificates" class="edit">
-                      <%= image_tag "pencil3.png" %>编辑
+                      <%= image_tag "edit.png" %>
                   </a>
 
                   <h3>持有证书</h3>
@@ -174,9 +174,9 @@
             <h2>期望工作<span>必填</span>
             </h2>
             <% if @expect_job %>
-            <div class="box work-show">
+            <div class="box work-show box-certif">
                 <a href="<%= edit_webapp_expect_job_path(@expect_job.id) %>" class="edit">
-                    <%= image_tag "pencil3.png" %>编辑
+                    <%= image_tag "edit.png" %>
                 </a>
                 <h3><%= @expect_job.name %><a class="expend expect-expend" onclick="expend_desc(this)">
                         展开<%= image_tag "down2.png" %>
