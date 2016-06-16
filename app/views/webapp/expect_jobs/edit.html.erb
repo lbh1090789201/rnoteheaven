@@ -9,8 +9,8 @@
       <!-- 城市插件 -->
       <input type="hidden" id="province" value="">
       <input type="hidden" id="city" value="">
-      <%= e.input :expected_salary_range, label: '期望薪水', input_html: { readonly: "readonly", class: "expect-range job-fair", value: "5K~6K", id: "expect_range"} %>
-      <%= e.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
+      <%= e.input :expected_salary_range, label: '期望薪水', input_html: { readonly: "readonly", class: "expect-range job-fair", value: "5000-6000/月", id: "expect_range"} %>
+      <%= e.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "请输入最多1000字"} %>
       <%= e.submit id: "submit", class: "btn btn-info btn-right"%>
 <% end %>
 </div>

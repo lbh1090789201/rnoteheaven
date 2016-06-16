@@ -54,12 +54,14 @@ html,
 body,
 #wrap {
   height: 100%;
+  background: #f3f3f3;
   .alert {
   position: fixed;
   top: 46px;
   width: 98%;
   margin-left: 1%;
   }
+  .container{background: #FFFFFF;}
   // 右上角的按钮
   .btn-right {
     position: fixed;
@@ -69,6 +71,7 @@ body,
     width: auto !important;
     opacity: 0;
   }
+  
 }
 header {
     padding-top: 0.01rem;
@@ -87,12 +90,15 @@ header {
       .top {
           margin: 0 auto;
           width: 18.71rem;
+          
       }
     .title {
       display: inline-block;
       font-size: 0.82rem;
       line-height: 2.32rem;
     }
+    
+    
     .right {
       float: right;
       color: white;
@@ -138,20 +144,26 @@ a:hover {
 .jobs {
   .jobs-list {
     width: 19.08rem;
-    margin: -0.9rem auto 0 auto;
+    margin: -1.55rem auto 0 auto;
     font-size: 0.63rem;
     a {
       display: block;
     }
     .job {
       border-bottom: 1px solid #e3e3e3;
-      padding-top: 0.5rem;
+      padding-top: 0.2rem;
       padding-bottom: 0.2rem;
+      margin-top: 0.7rem;
       .left {
         float: left;
+        font-size: 0.88rem;
+        margin-top: 0.263rem;
+        margin-bottom: 0.3rem;
       }
       .right {
         float: right;
+        font-size: 0.85rem;
+        margin-top: 0.18rem;
       }
       .right-range {
         margin-top: 0.2rem;
@@ -163,6 +175,7 @@ a:hover {
         }
         .right {
           color: rgb(255,162,0);
+          margin-top: 0.38rem;
         }
       }
       .detail {
@@ -239,7 +252,7 @@ a:hover {
     .wrap {
         width: 18.9rem;
         margin: 0 auto;
-
+        
         h2 {
             font-size: 0.72rem;
             span {
@@ -403,17 +416,18 @@ a:hover {
 /* 基本信息编辑 开始 bobo */
 .edit_basic {
   position: absolute;
-
   padding-left: 0.35rem;
   padding-right: 0.35rem;
   width: 100%;
   font-size: 0.86rem;
   background-color: $light-gray;
+  
   .form-group {
     margin-top: 0.5rem;
     overflow: hidden;
     background-color: #fff;
     border-radius: 0.36rem;
+    margin-bottom: -2px;
     label {
       float: left;
       padding-left: 1rem;
@@ -772,25 +786,25 @@ a:hover {
         font-size: 0.63rem;
       }
     }
-    .model {
-      position: absolute;
-      top: 1.6rem;
-      left: 3.28rem;
-      width: 13.8rem;
-      height: 4.73rem;
-      display: none;
-      font-size: 0.8rem;
-      line-height: 6.33rem;
-      text-align: center;
-      background-color: #212121;
-      border-radius: 1rem;
-      p {
-        display: inline-block;
-        width: 11.2rem;
-        line-height: 1.2rem;
-        text-align: left;
-      }
-    }
+//  .model {
+//    position: absolute;
+//    top: 1.6rem;
+//    left: 3.28rem;
+//    width: 13.8rem;
+//    height: 4.73rem;
+//    display: none;
+//    font-size: 0.8rem;
+//    line-height: 6.33rem;
+//    text-align: center;
+//    background-color: #212121;
+//    border-radius: 1rem;
+//    p {
+//      display: inline-block;
+//      width: 11.2rem;
+//      line-height: 1.2rem;
+//      text-align: left;
+//    }
+//  }
   }
 }
 .home-user {
@@ -884,6 +898,7 @@ a:hover {
   text-align: center;
   margin: 0 auto;
   width: 100%;
+  background-color: #FFFFFF;
 
   .nav-bar{
     border-bottom: 1px solid $color;
@@ -895,34 +910,43 @@ a:hover {
     line-height: 1.93rem;
     color: $color-font !important;
     display: inline-block;
+    margin-top: 0.42rem;
    li {
     list-style: none;
     float: left;
     width: 2.6rem;
     margin-right: 2.17rem;
     text-align: center;
-    margin-top: -1px;
+    margin-top: -0.20rem;
     color: $color-font;
     a {
       color: $color-font;
+      font-size: 0.65rem;
       &:active,&:visited,&:link,&:hover {
         text-decoration: none;
       }
     }
+    
    }
    li.active {
-     border-bottom: 2px solid $color-blue;
+     border-bottom: 0.1rem solid $color-blue;
+   }
+   li.active  a{
+       color: $color-blue;
    }
    li:last-child {
      margin-right: 0;
    }
   }
   .nav{
-    width: 18.2rem;
+    width: 100%;
     margin: auto;
     .tab {
       clear: both;
+      background: #FFFFFF;
+      border-bottom:1px solid $color;
       .tab-all {
+          padding: 0 1.3rem 0 1.3rem;
         .content {
           display: none;
         }
@@ -932,12 +956,18 @@ a:hover {
         a {
           &:active,&:hover {
             color: black;
+            
           }
         }
+        a:last-child>li{
+            border: none;
+        }
+      
         li {
           height: 6rem;
           border-bottom: 1px solid $color;
           list-style: none;
+          
           .left {
             float: left;
             display: inline-block;
@@ -962,30 +992,37 @@ a:hover {
             }
           }
         }
+        
+          
         .job-li {
-          padding-top: 0.4rem;
-          height: 3.72rem;
+          padding-top: 1.26rem;
+          height: 6.4rem;
         }
         .job-name {
-          font-size: 0.87rem;
+          font-size: 0.83rem;
           //margin: 1.31rem 0 0.87rem;
         }
         .job-time {
           font-size: 0.7rem;
+          display: inline-block;
+          margin-top: 0.58rem;
         }
         .job-hsname {
           font-size: 0.7rem;
+          margin-top: 0.55rem;
         }
         .job-range {
           font-size: 0.88rem;
         }
         .job-status {
           font-size: 0.7rem;
+          margin-top: 0.47rem;
         }
       }
     }
   }
 }
+
 /* 我的应聘记录 结束-汤伟*/
 
 /* 双选会列表页 开始-冰华*/
@@ -1157,6 +1194,8 @@ a:hover {
       }
     }
   }
+  
+  
 /* 谁看过我的简历 结束-汤伟*/
 
 /* 医院详情 开始-汤伟*/
@@ -1815,17 +1854,20 @@ a:hover {
     height: 4.73rem;
     display: none;
     font-size: 0.8rem;
-    line-height: 6.33rem;
+    line-height: 2rem;
     text-align: center;
     background-color: #212121;
     opacity: 0.8;
-    border-radius: 1rem;
+    border-radius: 0.7rem;
     p {
-      display: inline-block;
+      display: block;
       width: 11.2rem;
-      line-height: 1.2rem;
-      text-align: left;
+      line-height: 0.5rem;
+      text-align: center;
       color: #fff;
+      height: auto;
+      margin-top: 1.2rem;
+      margin-left: 1.4rem;
     }
   }
 
@@ -2200,3 +2242,4 @@ a:hover {
 .hospitaljob-list {
   margin-top: 1rem;
 }
+
