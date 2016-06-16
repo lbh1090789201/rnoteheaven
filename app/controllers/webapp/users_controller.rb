@@ -69,9 +69,9 @@ class Webapp::UsersController < ApplicationController
       resume_maturity = Resume.get_maturity @user.id
 
       if user_params[:avatar]
-        render js: 'refreshOnce();', notice: '修改成功'
+        render js: 'window.location.replace(window.location.href);', notice: '修改成功'
       else
-        render js: 'history.go(-1);', notice: '修改成功'
+        render js: 'alert( "修改失败");'
       end
 
     else
