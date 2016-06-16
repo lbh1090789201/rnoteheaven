@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 20160613094103) do
     t.string   "location",               limit: 191
     t.string   "seeking_job",            limit: 191
     t.string   "highest_degree",         limit: 191
-    t.string   "birthday",               limit: 191
+    t.datetime "birthday"
     t.string   "position",               limit: 191
     t.string   "cellphone",              limit: 191,   default: "",      null: false
     t.string   "avatar",                 limit: 191

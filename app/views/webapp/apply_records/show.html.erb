@@ -4,7 +4,7 @@
   <% @applyrecord.each do |a|%>
   <section class="position-info">
     <a href="/webapp/jobs/<%= a[:id] %>">
-      <div class="position-detail">
+      <div class="position-detail record-job">
         <h3><%= a[:job_name] %><span><%= a[:salary_range] %></span></h3>
 
         <p><%= a[:created_at].strftime("%Y-%m-%d") %>　|　<%= a[:location] %><span>&gt;</span></p>
@@ -18,20 +18,20 @@
   </section>
 
   <section class="resume-show apply-process">
-    <div class="wrap">
-      <div class="box" style="padding: 0;">
+    <div class="wrap apply-time">
+      <div class="box">
         <time>你的简历正在筛选</time>
         <div class="time-line-box process-box">
           <p class="process-time"><%= a[:apply_at].strftime("%Y-%m-%d") if a[:apply_at] %></p>
         </div>
       </div>
-      　<div class="box" style="padding: 0;margin-top: -2rem;">
+      　<div class="box read-resume">
       <time>查看简历</time>
       <div class="time-line-box process-box" style="height: 8rem;">
         <p class="process-time"><%= a[:view_at].strftime("%Y-%m-%d") if a[:view_at] %></p>
       </div>
     </div>　
-      <div class="box" style="padding: 0;margin-top: -2rem;">
+      <div class="box" style="margin-top: -2rem;">
         <time>已成功接收你的简历</time>
         <div class="time-line-box process-box" style="border: none;height: 3rem;">
           <p class="process-time"><%= a[:recieve_at].strftime("%Y-%m-%d") if a[:recieve_at] %></p>
