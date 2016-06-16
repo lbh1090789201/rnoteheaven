@@ -1990,6 +1990,13 @@ a:hover {
   }
 }
 
+.block-form {
+  width: 96.62%;
+  margin: 0 auto;
+  #new_certificate>div>input {
+    box-shadow: none;
+  }
+}
 // 持有证书　结束－冰华
 
 
@@ -2138,7 +2145,7 @@ a:hover {
   height: 3.05rem;
   bottom: -0.36rem;
   left: 0;
-  background: #f3f3f3;
+  background: #FFF;
   .btm-delete {
     display: block;
     width: 51%;
@@ -2220,23 +2227,22 @@ a:hover {
     }
     li:nth-child(2) {
       width: 50%;
-      height: 2.6rem;
+      height: 2.8rem;
       background: #3f9e9f;
       color: #fff;
       float: left;
       text-align: center;
-      line-height: 2.6rem;
-      border-radius: 0.23rem;
+      line-height: 2.8rem;
+      border-radius: 0 0.23rem 0 0.23rem;
     }
     li:nth-child(3) {
       width: 50%;
-      height: 2.6rem;
-      background: #a1a1a1;
-      color: green;
+      height: 2.8rem;
+      color: #3f9e9f;
       float: left;
       text-align: center;
       line-height: 2.6rem;
-      border-radius: 5px;
+      border-radius: 0 0 0.23rem 0;
     }
   }
 }
@@ -2318,12 +2324,18 @@ a:hover {
     width: 90%;
     margin: 0 auto;
     position: relative;
-    img {
+    a {
+      display: block;
       width: 2.68rem;
       height: 0.87rem;
       position: absolute;
       top: 0.4rem;
       right: 0;
+    }
+    img {
+      width: 2.68rem;
+      height: 0.87rem;
+
     }
     time {
       font-size: 0.7rem;
@@ -2341,4 +2353,8 @@ a:hover {
   }
 }
 
-// 工作经历首页　bh
+// 工作经历编辑页　bh
+#blank-none {
+  min-height: 100px;
+  background: #f4f4f4;
+}
