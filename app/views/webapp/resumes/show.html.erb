@@ -16,27 +16,14 @@
                     <div class="avatar-box avatar-border" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
                         <!-- 已修改样式 bobo -->
                     </div>
-                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"}, remote: true do |f| %>
-                         <%= f.input :avatar, label: '头像', input_html: {id:"avatar"} %>
-                         <%= f.button :submit %>
+                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"},remote: true do |f| %>
+                         <%= f.input :avatar, label: '头像', input_html: {id:"avatar", onchange: "uploadAvatar()"} %>
+                         <%= f.button :submit, id: "avatar_submit" %>
                      <% end %>
                     <span class="update-img">点击更换</span>
                 </div>
             </div>
         </section>
-
-        <script>
-        function setImagePreview(){
-        var docObj=document.getElementById("file_img");
-        var text = innerHTML=window.URL.createObjectURL(docObj.files[0]);
-        var img = document.createElement("img");
-        img.setAttribute("src", text);
-        img.setAttribute("width", "170px");
-        img.setAttribute("height", "170px");
-        $(".avatar-img").html(img);
-    }
-        </script>
-
 
         <%# @user.each do |u| %>
         <section class="show-style">
@@ -64,8 +51,8 @@
                         <td><%= @user.start_work_at %></td>
                     </tr>
                     <tr>
-                        <td>出生年限：</td>
-                        <td><%= @user.birthday %></td>
+                        <td>出生年月：</td>
+                        <td><%= @user.birthday.strftime('%Y-%m-%d') if @user.birthday %></td>
                     </tr>
                     <tr>
                         <td>所在城市：</td>
@@ -209,14 +196,12 @@ function expend_desc(obj) {
     console.log();
     $(obj).parent().siblings('.job-desc-hide').slideToggle(300);
     $(obj).parent().siblings('.job-desc-show').slideToggle(300);
-
-
 };
 
 // 点击上传头像
-$($('#avatar').change(function() {
-  $('input[type=submit]').click();
-}));
+function uploadAvatar() {
+  $('#avatar_submit').click();
+};
 
 $($('.avatar-box').click(function() {
   $('#avatar').click();

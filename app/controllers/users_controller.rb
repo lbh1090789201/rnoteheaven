@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   #bafore_filer代表需要加载请求头　except代表除开它指定的请求外其它都需要
   #bafore_filer注释后就整个不需要加载请求头
   # before_filter :authenticate_user!, except: [:forgot_password]
-  
+
   def index
     @user = User.new
   end
