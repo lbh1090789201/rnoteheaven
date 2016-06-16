@@ -36,7 +36,6 @@ class Webapp::ResumesController < ApplicationController
     @expect_job = ExpectJob.find_by_user_id(@user.id)
     @certificates = Certificate.where user_id: current_user.id
     @user.avatar_url.blank? ? @avatar = "avator.png" : @avatar = @user.avatar_url
-    @user.birthday = @user.birthday.strftime('%Y-%M-%D') if @user.birthday
     @refresh_left = Resume.refresh_left(resume.id)
   end
 

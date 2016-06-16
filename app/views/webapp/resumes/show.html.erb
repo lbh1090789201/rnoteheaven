@@ -64,8 +64,8 @@
                         <td><%= @user.start_work_at %></td>
                     </tr>
                     <tr>
-                        <td>出生年限：</td>
-                        <td><%= @user.birthday %></td>
+                        <td>出生年月：</td>
+                        <td><%= @user.birthday.strftime('%Y-%m-%d') if @user.birthday %></td>
                     </tr>
                     <tr>
                         <td>所在城市：</td>

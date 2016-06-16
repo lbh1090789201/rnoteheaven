@@ -57,6 +57,7 @@ class Webapp::UsersController < ApplicationController
 
   def edit
     @user = User.get_user_main(current_user.id)
+    @user.birthday = @user.birthday.strftime('%Y-%m-%d') if @user.birthday
     # puts "-----" + @user.to_json.to_s
   end
 
