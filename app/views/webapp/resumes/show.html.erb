@@ -16,7 +16,7 @@
                     <div class="avatar-box avatar-border" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
                         <!-- 已修改样式 bobo -->
                     </div>
-                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"}, remote: true do |f| %>
+                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"} do |f| %>
                          <%= f.input :avatar, label: '头像', input_html: {id:"avatar", onchange: "uploadAvatar()"} %>
                          <%= f.button :submit, id: "avatar_submit" %>
                      <% end %>
