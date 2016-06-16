@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-ssh uprunning@hb.yundaioa.com
-cd ryunkang
 git pull
 rm -rf public/assets/
 RAILS_ENV=production bundle exec rake assets:precompile
