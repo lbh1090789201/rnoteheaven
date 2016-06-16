@@ -27,7 +27,13 @@ class Webapp::EducationExperiencesController < ApplicationController
 
   def edit
     @education_experience = EducationExperience.find_by_id params[:id]
-    @education_experience.graduated_at = @education_experience.graduated_at.strftime('%Y-%m-%d')
+    if @education_experience.graduated_at
+      @education_experience.graduated_at = @education_experience.graduated_at.strftime('%Y-%m-%d')
+    end
+
+    if @education_experience.entry_at
+       @education_experience.entry_at = @education_experience.entry_at.strftime('%Y-%m-%d')
+    end
   end
 
   def update
