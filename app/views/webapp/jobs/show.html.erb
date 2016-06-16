@@ -1,10 +1,13 @@
-
+<% if params[:hospital] %>
+  <%= provide :title, "职位详情" %>
+<% else %>
 <div class="job-head">
   <div>
     <a class="job-page" onclick="job_page()" id="job_page">职位详情</a>
     <a class="hospital-page" onclick="hospital_page()" id="hospital_page">医院详情</a>
   </div>
 </div>
+<% end %>
 
 <!-- #job-detail职位详情 -->
 <%= render 'job_detail' %>

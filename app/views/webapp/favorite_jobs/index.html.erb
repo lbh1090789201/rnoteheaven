@@ -1,9 +1,5 @@
 <% provide :title, "我收藏的职位" %>
 
-<script type="text/javascript">
-  refreshOnce(); //刷新一次页面
-</script>
-
 <div class="jobs favorite-job">
   <div class="jobs-list">
     <% @favorite_jobs.each do |f| %>
@@ -24,3 +20,7 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+  refreshOnce(); //刷新一次页面
+</script>

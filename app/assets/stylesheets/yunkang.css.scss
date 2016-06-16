@@ -49,6 +49,7 @@ $beauty-blue: #3a9da0;
 * {
     margin: 0;
     padding: 0;
+    font-family: "Microsoft YaHei", "微软雅黑","SanFrancisco", "苹方字体";
 }
 html,
 body,
@@ -256,6 +257,7 @@ a:hover {
         h2 {
             font-size: 0.72rem;
             span {
+<<<<<<< HEAD
               margin-left: 0.36rem;
               padding-left: 0.36rem;
               padding-right: 0.36rem;
@@ -264,10 +266,20 @@ a:hover {
 
               background-color: #fff;
               color: #939393;
+=======
+              display: inline-block;
+              margin-left: 0.43rem;
+              img {
+                 width: 2.37rem;
+                 height: 0.87rem;
+                 margin-top: -0.2rem;
+              }
+>>>>>>> a35e5ab85b67ab72fb0d7affe27fceddcd4cbed8
             }
         }
         h3 {
           font-size: 0.8rem;
+          position: relative;
           a {
             color: #686868;
             font-size: 0.6rem;
@@ -301,6 +313,7 @@ a:hover {
               height: 1.17rem;
               width: 3.5rem;
               position: absolute;
+<<<<<<< HEAD
               top: 0;
               right: 0.5rem;
 
@@ -309,12 +322,18 @@ a:hover {
               border-radius: 0.36rem;
               color: #fff;
               background-color: $beauty-blue;
+=======
+              top: 0.5rem;
+              right: 0.7rem;
+              z-index: 100;
+>>>>>>> a35e5ab85b67ab72fb0d7affe27fceddcd4cbed8
               img {
                 height: 0.7rem;
                 margin-top: -0.2rem;
                 margin-right: 0.2rem;
               }
             }
+<<<<<<< HEAD
             .expend {
               float: right;
               display: block;
@@ -329,6 +348,40 @@ a:hover {
                 width: 0.7rem;
                 margin-left: 0.2rem;
                 margin-top: -0.2rem;
+=======
+            // .expend {
+              // float: right;
+              // display: block;
+              // padding-left: 0.5rem;
+              // padding-right: 0.5rem;
+              // height: 1.17rem;
+              //
+              // line-height: 1.17rem;
+              // text-align: center;
+              // img {
+                // height: 0.77rem;
+                // width: 0.7rem;
+                // margin-left: 0.2rem;
+                // margin-top: -0.2rem;
+            //   }
+            // }
+            .expend-show {
+              position: absolute;
+              top: 0;
+              right: 0;
+              img {
+                width: 2.18rem;
+                height: 0.6rem;
+              }
+            }
+            .expend-education {
+              position: absolute;
+              top: 0.2rem;
+              right: 0;
+              img {
+                width: 2.18rem;
+                height: 0.6rem;
+>>>>>>> a35e5ab85b67ab72fb0d7affe27fceddcd4cbed8
               }
             }
             time {
@@ -1284,16 +1337,21 @@ a:hover {
     position: relative;
     height: 10.43rem;
     background: url(preview_bg.png);
+    background-size: 20.7rem 10.43rem;
     .resumes-preview-md {
       height: inherit;
       width: 3.6rem;
       margin: 0 auto 0 auto;
       position: relative;
       top: 2rem;
+      .avatar-box {
+        width: 3.75rem;
+      }
       p {
-        font-size: 0.7rem;
+        font-size: 0.87rem;
         text-align: center;
-        margin-top: 1rem;
+        margin-top: 0.67rem;
+        color: #fff;
       }
       .image-head {
         width: 3.65rem;
@@ -1360,11 +1418,11 @@ a:hover {
   margin-bottom: 5rem;
 }
 .resumes-preview-base {
-  height: 17.33rem;
+  height: 18.4rem;
   .resumes-base {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     margin-left: 0.7rem;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
     tr {
       height: 1.7rem;
       line-height: 1.7rem;
@@ -1378,9 +1436,27 @@ a:hover {
     }
   }
 }
-.preview-show {
 
-}
+  .public-preview-style {
+    padding-top: 0.7rem;
+    padding-bottom: 0.5rem;
+    time {
+      font-size: 0.7rem;
+    }
+    .expect-preview {
+      margin-top: 0.5rem;
+    }
+  }
+  .expect-preview-style {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    time {
+      font-size: 0.7rem;
+    }
+    .expect-preview {
+      margin-top: 0.5rem;
+    }
+  }
 /* 简历预览 结束-冰华*/
 
 /* 职位详情 开始-冰华*/
@@ -2148,31 +2224,34 @@ a:hover {
 #delete_bottom_id {
   display: none;
 }
-#popup {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  opacity: 0.8;
+#popup_delete {
   display: none;
+  #popup {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.8;
+  }
   ul {
     position: fixed;
     left: 50%;
     top: 50%;
-    margin-top: -3.5rem;
-    margin-left: -6rem;
-    width: 12rem;
-    height: 7rem;
+    margin-top: -4.2rem;
+    margin-left: -6.75rem;
+    width: 13.5rem;
+    height: 8.4rem;
     background: #fff;
     font-size: 0.8rem;
-    border-radius: 5px;
+    border-radius: 0.23rem;
+    z-index: 100;
     li:nth-child(1) {
       width: 100%;
-      height: 4.4rem;
+      height: 5.6rem;
       text-align: center;
-      line-height: 4.4rem;
+      line-height: 5.6rem;
       float: left;
-      border-radius: 5px;
+      border-radius: 0.23rem;
     }
     li:nth-child(2) {
       width: 50%;
@@ -2182,7 +2261,7 @@ a:hover {
       float: left;
       text-align: center;
       line-height: 2.6rem;
-      border-radius: 5px;
+      border-radius: 0.23rem;
     }
     li:nth-child(3) {
       width: 50%;
@@ -2196,6 +2275,8 @@ a:hover {
     }
   }
 }
+
+
 
 
 .expect-img {
@@ -2243,3 +2324,59 @@ a:hover {
   margin-top: 1rem;
 }
 
+<<<<<<< HEAD
+=======
+#user-edit {
+  .form-group:nth-of-type(6)::after {
+    content: "";
+    width: 0.41rem;
+    height: 0.66rem;
+    display: block;
+    position: absolute;
+    right: 1rem;
+    margin-top: 0.9rem;
+    background: url("icon.png");
+    background-size: 0.41rem 0.66rem;
+  }
+}
+
+// 工作经历首页　bh
+#work_edit_wrap {
+  margin: 0;
+}
+.workindex-page {
+  border: 1px solid #dfdfdf;
+  padding-top: 0.6rem;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.58rem;
+  width: 100%;
+  background: #fff;
+  .box-table {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    img {
+      width: 2.68rem;
+      height: 0.87rem;
+      position: absolute;
+      top: 0.4rem;
+      right: 0;
+    }
+    time {
+      font-size: 0.7rem;
+    }
+    h3 {
+      font-size: 0.87rem;
+      margin: 0.7rem 0 0.89rem 0;
+    }
+    p {
+      font-size: 0.77rem;
+      color: #9c9c9c;
+      width: 98%;
+      line-height: 1.08rem;
+    }
+  }
+}
+
+// 工作经历首页　bh
+>>>>>>> a35e5ab85b67ab72fb0d7affe27fceddcd4cbed8

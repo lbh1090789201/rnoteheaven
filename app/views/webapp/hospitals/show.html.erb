@@ -2,7 +2,7 @@
 <% provide :title, "广州XXXXXXXX人民医院" %>
 <div class="jobs hospitaljob-list">
   <div class="jobs-list">
-    <a href="/webapp/jobs/1">
+    <a href="/webapp/jobs/1?hospital=<%= params[:id] %>">
       <div class="job">
         <div class="title">
           <div class="left">儿科护士</div>
@@ -16,7 +16,7 @@
         </div>
       </div>
     </a>
-    <a href="/webapp/jobs/1">
+    <a href="/webapp/jobs/1?hospital=<%= params[:id] %>">
       <div class="job">
         <div class="title">
           <div class="left">儿科护士</div>
@@ -30,7 +30,7 @@
         </div>
       </div>
     </a>
-    <a href="/webapp/jobs/1">
+    <a href="/webapp/jobs/1?hospital=<%= params[:id] %>">
       <div class="job">
         <div class="title">
           <div class="left">儿科护士</div>

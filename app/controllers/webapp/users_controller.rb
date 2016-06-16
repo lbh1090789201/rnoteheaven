@@ -57,6 +57,7 @@ class Webapp::UsersController < ApplicationController
 
   def edit
     @user = User.get_user_main(current_user.id)
+    @user.birthday = @user.birthday.strftime('%Y-%m-%d') if @user.birthday
     # puts "-----" + @user.to_json.to_s
   end
 
@@ -68,9 +69,10 @@ class Webapp::UsersController < ApplicationController
       resume_maturity = Resume.get_maturity @user.id
 
       if user_params[:avatar]
-        render js: 'location.reload();', notice: '修改成功'
+        render js: 'window.location.replace(window.location.href);', notice: '修改成功'
+        # redirect_to "/webapp/resumes/#{@user.id}"
       else
-        render js: 'history.go(-1);', notice: '修改成功'
+        render js: 'history.go(-1);'
       end
 
     else
@@ -91,7 +93,7 @@ class Webapp::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:show_name, :sex, :work_time, :highest_degree, :start_work_at, :seeking_job,
-                                 :cellphone, :email, :location, :job_status, :avatar, :position)
+                                 :cellphone, :email, :location, :job_status, :avatar, :position, :birthday)
   end
 
 end
