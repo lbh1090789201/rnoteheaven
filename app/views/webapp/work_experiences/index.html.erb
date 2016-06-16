@@ -2,16 +2,16 @@
 <% provide :title, "工作经历" %>
 <% provide :content, "添加" %>
 <div class="resume-show work-experience">
-  <div class="wrap">
+  <div class="wrap" id="work_edit_wrap">
     <% if @work_experiences %>
         <% @work_experiences.each do|w| %>
-            <section>
-              <div class="box">
-                <a href="<%= edit_webapp_work_experience_path(w.id) %>" class="edit">编辑</a>
+            <section class="workindex-page">
+              <div class="box-table">
+                <a href="<%= edit_webapp_work_experience_path(w.id) %>" class="edit"><%= image_tag "edit2.png" %></a>
                 <time><%= w.started_at.strftime("%Y-%m-%d") if w.started_at %>-<%= w.left_time.strftime("%Y-%m-%d") if w.left_time %></time>
                 <div class="work-box">
                   <h3><%= w.company %></h3>
-                  <p>
+                  <p class="word_edit_page">
                     <%= w.job_desc %>
                   </p>
                 </div>
@@ -24,8 +24,16 @@
 </div>
 
 <script type="text/javascript">
+    //  job_desc　限制字数
+    var section = $(".word_edit_page");
+    for(var i=0;i<section.length;i++){
+      var text = section[i].innerText;
+      if(text.length>=60){
+        section[i].innerText = text.substr(0,60)+"....";
+      }
+    }
+    
 　　$(refreshOnce()); //刷新一次页面
-    wordLimit('.work-box p', 65);
-    fullScreen('.work-experience');
+    fullScreen('.resume-show');
 
 </script>
