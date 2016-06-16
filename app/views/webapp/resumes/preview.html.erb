@@ -66,7 +66,7 @@
 
 <section class="resume-show resumes-preview-public preview-show">
     <h1>工作经历</h1>
-    <div class="wrap resumes-preview-bg">
+    <div class="wrap resumes-preview-bg public-preview-style">
       <% if @work_experiences %>
       <% @work_experiences.each do |w| %>
       <div class="box" style="padding-bottom:0;">
@@ -88,7 +88,7 @@
 
   <section class="resume-show resumes-preview-public">
     <h1>教育经历</h1>
-    <div class="wrap resumes-preview-bg">
+    <div class="wrap resumes-preview-bg public-preview-style">
       <% if @education_experiences %>
       <% @education_experiences.each do |e| %>
       <div class="box" style="padding-bottom:0;">
@@ -109,7 +109,7 @@
   <section class="resume-show resumes-preview-public">
       <h1>持有证书
       </h1>
-      <div class="wrap resumes-preview-bg">
+      <div class="wrap resumes-preview-bg public-preview-style">
       <% if @certificates %>
       <div class="box" style="padding-bottom:0;">
           <h3>持有证书</h3>
@@ -124,10 +124,10 @@
   <% if @expect_job %>
   <section class="resume-show resumes-preview-public">
     <h1>期望工作</h1>
-    <div id="preview-expect" class="wrap">
+    <div id="preview-expect" class="wrap expect-preview-style">
       <div class="box work-time">
         <h3><%= @expect_job.name %></h3>
-        <p>
+        <p class="expect-preview">
           <%= @expect_job.job_type %>/<%= @expect_job.location %>/<%= @expect_job.expected_salary_range %>
         </p>
       </div>
