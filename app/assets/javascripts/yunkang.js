@@ -157,16 +157,16 @@ function delCookie(name)
 
 // 编辑　删除弹窗
 function ClickShowHide(){
-  $("#popup").show();
+  $("#popup_delete").show();
 }
 function ClickDeleteBtn(obj){
   var text = $(obj).text();
   if(text == "取消"){
-    $("#popup").hide();
+    $("#popup_delete").hide();
   }
   if(text == "确定"){
     $('#delete_bottom_id')[0].click();
-      $("#popup").hide();
+      $("#popup_delete").hide();
   }
 }
 

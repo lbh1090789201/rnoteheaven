@@ -6,12 +6,13 @@
 </script>
 
 <div class="resume-show work-experience">
-  <div class="wrap">
+  <div class="wrap" id="work_edit_wrap">
     <% if @education_experiences %>
         <% @education_experiences.each do |e| %>
             <section>
-              <div class="box education">
-                <a href="<%= edit_webapp_education_experience_path(e.id) %>" class="edit">编辑</a>
+              <div class="workindex-page">
+                <div class="box-table">
+                <a href="<%= edit_webapp_education_experience_path(e.id) %>" class="edit"><%= image_tag "edit2.png" %></a>
                 <time><%= e.graduated_at.strftime("%Y") if e.graduated_at %>年毕业</time>
                 <div class="work-box">
                   <h3><%= e.college %></h3>
@@ -20,6 +21,7 @@
                   </p>
                 </div>
               </div>
+              </div>
             </section>
         <% end %>
     <% end %>
@@ -27,5 +29,5 @@
 </div>
 
 <script type="text/javascript">
-  fullScreen('.work-experience');
+  fullScreen('.resume-show');
 </script>
