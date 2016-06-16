@@ -25,19 +25,6 @@
             </div>
         </section>
 
-        <script>
-        function setImagePreview(){
-        var docObj=document.getElementById("file_img");
-        var text = innerHTML=window.URL.createObjectURL(docObj.files[0]);
-        var img = document.createElement("img");
-        img.setAttribute("src", text);
-        img.setAttribute("width", "170px");
-        img.setAttribute("height", "170px");
-        $(".avatar-img").html(img);
-    }
-        </script>
-
-
         <%# @user.each do |u| %>
         <section class="show-style">
             <h2>基本信息</h2>
