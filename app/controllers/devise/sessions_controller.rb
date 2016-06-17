@@ -70,8 +70,13 @@ class Devise::SessionsController < DeviseController
     users.all?(&:blank?)
   end
 
+  # Redirects on successful sign in
   def after_sign_in_path_for(resource)
-      return '/'
+    # puts "-----=======:"+resource.to_json.to_s
+    return "" unless resource
+    return "/admin" if resource.admin?
+    return "/employer/home" if resource.has_role? :gold
+    return "/"
   end
 
   def respond_to_on_destroy

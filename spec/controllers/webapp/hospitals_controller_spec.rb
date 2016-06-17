@@ -10,12 +10,12 @@ RSpec.describe Webapp::HospitalsController, type: :controller do
     request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
-  describe 'GET #index' do
-    it 'returns http success' do
-      get :index
-      expect(response.status).to eq 200
-    end
-  end
+  # describe 'GET #index' do
+  #   it 'returns http success' do
+  #     get :index
+  #     expect(response.status).to eq 200
+  #   end
+  # end
 
   # show 测试开始
   describe "GET #show" do

@@ -109,15 +109,16 @@ class User < ActiveRecord::Base #用户
 
 
   def admin?
-    false
+    has_role? 'admin'
+  end
+
+  def employer?
+    has_role? 'gold'
   end
 
 
   def email_required?
     false
   end
-
-
-
 
 end
