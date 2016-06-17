@@ -1,0 +1,76 @@
+/*
+ * Overwritten by RailsBricks
+ *= require_self
+ *= require employer/home
+ *= require employer/jobs
+ *= require employer/resumes
+ *= require employer/users
+ */
+
+ /*通用样式开始*/
+ * {
+     margin: 0;
+     padding: 0;
+     font-family: "Microsoft YaHei", "微软雅黑","SanFrancisco", "苹方字体";
+ }
+ html,
+ body{
+   height: 100%;
+   background: #f3f3f3;
+   .alert {
+   position: fixed;
+   top: 46px;
+   width: 98%;
+   margin-left: 1%;
+   }
+   .container{background: #FFFFFF;}
+   // 右上角的按钮
+   .btn-right {
+     position: fixed;
+     top: 0;
+     right: 0;
+     height: 46px;
+     width: auto !important;
+     opacity: 0;
+   }
+
+ }
+ header {
+     padding-top: 0.01rem;
+     background: rgb(59,157,160);
+     height: 2.32rem;
+     color: white;
+     text-align: center;
+     a {
+       float: left;
+       margin-top: 0.6rem;
+     }
+     a img {
+           height: 0.79rem;
+       }
+       .left-img {
+         display: block;
+         width:2rem;
+         height: 2rem;
+         margin-top: 0.2rem;
+         padding: 0.5rem 0 0 0;
+         margin-left: -0.8rem;
+       }
+     .top {
+           margin: 0 auto;
+           width: 18.71rem;
+       }
+     .title {
+       display: inline-block;
+       font-size: 0.82rem;
+       line-height: 2.32rem;
+     }
+
+
+     .right {
+       float: right;
+       color: white;
+       font-size: 0.72rem;
+   }
+ }
+ /*通用样式结束*/

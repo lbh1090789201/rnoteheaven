@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" id="viewport">
+  <title><%= @title || "云康医才" %></title>
+  <%= favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
+  <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "employer" %>
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "employer", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body class="<%= params[:controller][9,99] + '-' + params[:action] %>" >
+
+    <header>
+        <%= render 'layouts/header' %>
+    </header>
+
+    <div class="wrap">
+          <%= notice_message %>
+          <%= yield %>
+    </div>
+</body>
+
+</html>

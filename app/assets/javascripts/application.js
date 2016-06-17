@@ -13,10 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require jquery.form
 //= require bootstrap
 //= require bootstrap/alert
 //= require cityData
 //= require cityPicker
+//= require yunkang
 //= require_tree
 
 //= require iscroll
