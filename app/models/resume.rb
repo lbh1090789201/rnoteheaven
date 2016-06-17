@@ -5,14 +5,25 @@ class Resume < ActiveRecord::Base
   has_many :apply_records
   has_many :resume_views
 
-  def self.refresh_left(uid)
-    resume = Resume.find uid
+  def self.refresh_left(rid)
+    resume = Resume.find rid
 
     if resume.refresh_at && resume.refresh_at > 7.days.ago
       return ((resume.refresh_at + 7.days + 1.hours - Time.now)/1.day).to_i
     else
       return false
     end
+  end
+
+  def self.info(uid)
+    resume = Resume.find_by user_id: uid
+
+    expect_job = ExpectJob.find_by(user_id: uid).name
+    info = User.select(:id, :show_name, :sex, :highest_degree, :start_work_at, :birthday).find(uid).as_json
+    info[:expect_job] = expect_job
+    info[:age] = ((Time.now - info["birthday"])/1.year).to_i
+
+    return info
   end
 
   # 获得完整度

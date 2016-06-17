@@ -21,6 +21,7 @@ FactoryGirl.define do
     email "644381492@qq.com"
     cellphone "13944445555"
     password "123465"
+    birthday Time.now - 1365.days
   end
   factory :myuser do
     show_name "zahng"
