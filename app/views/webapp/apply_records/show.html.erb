@@ -2,7 +2,7 @@
 <%= provide :title, "我的应聘记录" %>
 <div id="apply-bg">
   <% @applyrecord.each do |a|%>
-  <section class="position-info">
+  <section class="position-info apply-info">
     <a href="/webapp/jobs/<%= a[:id] %>">
       <div class="position-detail record-job">
         <h3><%= a[:job_name] %><span><%= a[:salary_range] %></span></h3>

@@ -49,7 +49,7 @@ $beauty-blue: #3a9da0;
 * {
     margin: 0;
     padding: 0;
-    font-family: "Microsoft YaHei", "微软雅黑","SanFrancisco", "苹方字体";
+    font-family: "Microsoft YaHei", "微软雅黑","SanFrancisco", "苹方字体"!important;
 }
 html,
 body,
@@ -62,7 +62,7 @@ body,
   width: 98%;
   margin-left: 1%;
   }
-  .container{background: #FFFFFF;}
+//.container{background: #FFFFFF;}
   // 右上角的按钮
   .btn-right {
     position: fixed;
@@ -92,7 +92,7 @@ header {
         width:2rem;
         height: 2rem;
         margin-top: 0.2rem;
-        padding: 0.5rem 0 0 0;
+        padding: 0.4rem 0 0 0;
         margin-left: -0.8rem;
       }
     .top {
@@ -104,12 +104,14 @@ header {
       font-size: 0.82rem;
       line-height: 2.32rem;
     }
-
-
     .right {
       float: right;
       color: white;
       font-size: 0.72rem;
+  }
+  .right:hover {
+    color: #fff;
+    text-decoration: none;
   }
 }
 /*通用样式结束*/
@@ -151,16 +153,17 @@ a:hover {
 .jobs {
   .jobs-list {
     width: 19.08rem;
-    margin: -1.55rem auto 0 auto;
+    margin: -.6rem auto 0 auto;
     font-size: 0.63rem;
     a {
       display: block;
     }
+
     .job {
       border-bottom: 1px solid #e3e3e3;
       padding-top: 0.2rem;
       padding-bottom: 0.2rem;
-      margin-top: 0.7rem;
+      margin-top: 0rem;
       .left {
         float: left;
         font-size: 0.88rem;
@@ -431,6 +434,7 @@ a:hover {
       line-height: 2.58rem;
       font-weight: normal;
       color: $font-gray;
+      white-space: pre;
       abbr {
         display: none;
       }
@@ -512,10 +516,9 @@ a:hover {
 .edit-work-experiences {
   textarea {
     border: 0;
-    height: 10rem;
+    height: 8rem!important;
     padding-left: 1rem;
     resize: none;
-
     @include  box-shadow(inset 0 0 #fff);
   }
   .btn {
@@ -594,6 +597,10 @@ a:hover {
     .user-hidden {
       display: block;
       top: 10px;
+    }
+    .user-hidden:hover {
+      text-decoration: none;
+      color: #fff;
     }
     .user-info-list {
       margin: 0 auto;
@@ -881,7 +888,7 @@ a:hover {
     width: 2.6rem;
     margin-right: 2.17rem;
     text-align: center;
-    margin-top: -0.20rem;
+//  margin-top: -0.20rem;
     color: $color-font;
     a {
       color: $color-font;
@@ -960,7 +967,7 @@ a:hover {
 
         .job-li {
           padding-top: 1.26rem;
-          height: 6.4rem;
+          min-height: 5rem;
         }
         .job-name {
           font-size: 0.83rem;
@@ -983,6 +990,19 @@ a:hover {
         }
       }
     }
+  }
+}
+.main.my_apply_records .nav .tab .tab-all .record-status .job-li {
+  padding-top: 0.3rem;
+  .job-name {
+    margin-bottom: 0.3rem;
+  }
+  .job-time {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .job-hsname {
+    margin: 0.4rem 0 0 0;
   }
 }
 
@@ -1018,79 +1038,90 @@ a:hover {
       height: 2.4rem;
       line-height: 2.4rem;
       color: #fff;
-      font-size: 1rem;
+      font-size: 0.87rem;
       text-align: center;
     }
   }
 }
 #hospital-data {
   width: 100%;
-  height: 2.9rem;
+  min-height: 2.9rem;
   margin-top: 1.1rem;
-  overflow:hidden;
   text-align: center;
   .hospital-number {
-    width: 50%;
+    width: 49%;
     height: 100%;
     float: left;
-    border-right: 1px solid #6c6c6c;
     p:nth-child(1) {
-      font-size: 0.6rem;
+      font-size: 0.67rem;
       color: #6c6c6c;
       margin-bottom: 0;
     }
     p:nth-child(2) {
-      font-size: 0.9rem;
+      font-size: 0.83rem;
       color: #399da0;
       span {
-        font-size: 1.8rem;
+        font-size: 2.53rem;
         font-weight: bolder;
       }
     }
   }
   .hospital-time {
-    width: 50%;
+    width: 49%;
     height: 100%;
     float: left;
     p:nth-child(1) {
-      font-size: 0.6rem;
+      font-size: 0.67rem;
       color: #6c6c6c;
-      margin-bottom: 0;
+      margin-bottom: 0.87rem;
     }
     p:nth-child(2) {
-      font-size: 1.8rem;
+      font-size: 1.55rem;
       color: #399da0;
     }
   }
+}
+#hospital-data>span {
+  display:inline-block;
+  float: left;
+  height: 3rem;
+  width: 0.5%;
+  background: #bdbdbd;
+  margin-top: 0.4rem;
 }
 #hospital-rule {
   width: 78%;
   margin: 3.87rem auto 0 auto;
   h2 {
-    color: #6c6c6c;
-    font-size: 1.1rem;
-    margin-bottom: 1.8rem;
+    color: #8f8f8f;
+    font-size: 1rem;
+    margin-bottom: 1.6rem;
     text-align: center;
+    padding-top: 1rem;
   }
   p {
     color: #000;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 .button {
   text-align: center;
   height: 1.9rem;
-  margin-top: 3.03rem;
+  margin-top: 2.98rem;
   a {
     display: block;
-    width: 6.5rem;
-    height: 1.9rem;
-    line-height: 1.9rem;
+    width: 6.45rem;
+    height: 1.97rem;
+    line-height: 1.97rem;
     background: #3a9da0;
     border-radius: 0.3rem;
     margin: 0 auto;
     color: #fff;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+  }
+  a:hover {
+    color: #fff;
+    text-decoration: none;
   }
 }
 /* 双选会列表页 结束-冰华*/
@@ -1157,7 +1188,9 @@ a:hover {
       }
     }
   }
-
+.resume-views .resume-byview a .hospital-list {
+    padding-top: 1rem;
+  }
 
 /* 谁看过我的简历 结束-汤伟*/
 
@@ -1188,13 +1221,25 @@ a:hover {
     line-height: 2.22rem;
     @include border(#cfcfcf);
     padding-left: 1rem;
+    a {
+      display: block;
+      width: 100%;
+      font-size: 0.7rem;
+    }
+    a:hover {
+      text-decoration: none;
+    }
     span {
       color: #9b9b9b;
       margin-right: 0.76rem;
+      font-size: 0.7rem;
     }
     img {
       height: 0.6rem;
-      margin-left: 4.38rem;
+      // margin-left: 4.38rem;
+      float: right;
+      margin-right: 0.87rem;
+      margin-top: 0.8rem;
     }
   }
   .jobs{
@@ -1203,19 +1248,27 @@ a:hover {
     font-size: 0.87rem;
     border-top: 1px solid #cfcfcf;
     @include border(#cfcfcf);
+    a {
+      display: block;
+      width: 100%;
+      font-size: 0.87rem;
+    }
     span {
       display: inline-block;
       border: 1px solid #3f9e9f;
       border-radius: 0.33rem;
       width: 1.67rem;
-      height: 1rem;
-      line-height: 0.98rem;
+      height: 0.98rem;
+      line-height: 0.92rem;
       text-align: center;
       color: #3f9e9f;
+      margin-left: 0.57rem;
     }
     img {
       height: 0.6rem;
-      margin-left: 11.17rem;
+      float: right;
+      margin-right: 0.87rem;
+      margin-top: 1rem;
     }
   }
   .details{
@@ -1224,10 +1277,13 @@ a:hover {
       line-height: 2.17rem;
       color: #9b9b9b;
       padding-left: 1rem;
+      font-size: 0.7rem;
     }
     p {
       padding-left: 1rem;
       padding-right: 1rem;
+      font-size: 0.7rem;
+      line-height: 1.1rem;
     }
     p:last-child {
       margin-top: 1.33rem;
@@ -1236,6 +1292,17 @@ a:hover {
 }
 .favorite-job {
   padding-top: 1.5rem;
+}
+.hospital-details .hospital-mainpage {
+  padding-top: 1.3rem;
+  title {
+    font-size: 0.97rem;
+  }
+  p {
+    margin-top:0.6rem;
+    font-size: 0.7rem;
+    margin-bottom: 1.2rem;
+  }
 }
 /* 医院详情 结束-汤伟*/
 
@@ -2109,7 +2176,7 @@ a:hover {
   position: absolute;
   width: 100%;
   height: 3.05rem;
-  bottom: -0.36rem;
+  bottom: -0.4rem;
   left: 0;
   background: #FFF;
   .btm-delete {
@@ -2121,6 +2188,7 @@ a:hover {
     line-height: 3.05rem;
     text-align: center;
     color: #3f9e9f;
+    margin: 0!important;
   }
   .btm-save {
     width: 49%;
@@ -2131,6 +2199,7 @@ a:hover {
     background: #3f9e9f;
     text-align: center;
     color: #fff;
+    margin: 0!important;
   }
 }
 
@@ -2319,9 +2388,61 @@ a:hover {
   }
 }
 
+.container .job-favr {
+  padding-top: 0.8rem;
+  .detail{
+    .left {
+      font-size: 0.7rem;
+    }
+    .right {
+      font-size: 0.7rem;
+    }
+  }
+}
+
 // 工作经历编辑页　bh
 #blank-none {
   min-height: 100px;
   background: #f4f4f4;
 }
 // 工作经历
+
+//职位列表
+.jobs .jobs-list .job .job-list-detail {
+  .left {
+    font-size: 0.7rem;
+  }
+  .right {
+    font-size: 0.7rem;
+  }
+}
+
+//应聘记录
+#apply-bg .apply-info {
+  padding-top: 0;
+  a .record-job {
+    h3{
+      span {
+        // margin-left: 0;
+        display: inline-block;
+      }
+    }
+    p span {
+      margin-left: 11.3rem;
+    }
+  }
+}
+
+
+//huangwei
+
+#preview-expect{padding: 0;}
+#preview-expect .work-time{padding: 0.8rem}
+#resumes-preview{padding-bottom: 3rem;}
+.wrap .borDer{border: 1px solid #c3c3c3;}
+.newContainer{background: #f3f3f3;}
+.workindex-page{padding-bottom: 1rem;padding-top: 1rem;}
+.box-table .edit{margin-top: -6px;}
+#noBorber{border: none;}
+.position-info {padding: 1rem 1rem 0 1rem;}
+.record-job h3 span{display: block;}

@@ -17,7 +17,9 @@
 <%= link_to "删除此经历", webapp_education_experience_path(params[:id]), method: :delete, remote: true, class: "btm-delete", id: "delete_bottom_id"%>
 <div id="datePlugin"></div>
 </div>
-<div id="popup">
+<div id="popup_delete">
+  <div id="popup">
+  </div>
   <ul>
     <li>删除将无法恢复，确认删除吗？</li>
     <li onclick="ClickDeleteBtn(this)">确定</li>

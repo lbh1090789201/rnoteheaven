@@ -1,1 +1,28 @@
-我是底部三个按钮
+
+<ul id="footer_btm_nav">
+  <li><a class="btm-image-nav" onclick="imageToggle(this)"><%= image_tag "icon_16.png" %><p>简历</p></a></li>
+  <li><a class="btm-image-nav" onclick="imageToggle(this)"><%= image_tag "icon_05.png" %><p>职位</p></a></li>
+  <li><a class="btm-image-nav" onclick="imageToggle(this)"><%= image_tag "icon_08.png" %><p>我的</p></a></li>
+</ul>
+
+<script>
+   function imageToggle(){
+     var img = $(".btm-image-nav").children("img");
+     console.log("111");
+     var src = img.attr("src");
+     console.log(src);
+     switch(src){
+      case 'icon_16.png':
+         img.attr('src','icon_16.png');
+         break;
+      case 'icon_05.png':
+    　  img.attr('src','icon_03.png');
+        break;
+      case 'icon_08.png':
+    　  img.attr('src','icon_11.png');
+        break;
+        default:
+        console.log("222");
+     }
+   }
+</script>

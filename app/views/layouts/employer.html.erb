@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" id="viewport">
   <title><%= @title || "云康医才" %></title>
   <%= favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
-  <%= stylesheet_link_tag "application" %>
-  <%= stylesheet_link_tag "employer" %>
+  <%= stylesheet_link_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "employer", "data-turbolinks-track" => true %>
 
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "employer", "data-turbolinks-track" => true %>
