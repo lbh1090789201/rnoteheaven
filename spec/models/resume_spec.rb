@@ -18,6 +18,15 @@ RSpec.describe Resume, type: :model do
       expect(res3).to eq(false)
     end
 
+    it "test Resume.info" do
+      @user = create(:user)
+      @resume = create(:resume, user_id: @user.id)
+      @expect_job = create(:expect_job, user_id: @user.id)
+
+      res = Resume.info @user.id
+      expect(res.length).to eq(9)
+    end
+
     describe 'test get_maturity' do
       before :each do
         @user = create(:user)

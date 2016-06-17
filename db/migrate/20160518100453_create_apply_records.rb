@@ -20,6 +20,13 @@ class CreateApplyRecords < ActiveRecord::Migration
       t.string :salary_range #薪酬
       t.string :hospital_region #地区
 
+      # 求职者冗余信息
+      t.string :show_name #姓名
+      t.string :sex #性别
+      t.integer :age #年龄
+      t.string :highest_degree #最高学历
+      t.string :start_work_at #工作年限
+
       t.timestamps null: false
     end
   end

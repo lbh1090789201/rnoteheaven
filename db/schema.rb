@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.string   "job_location",    limit: 191
     t.string   "salary_range",    limit: 191
     t.string   "hospital_region", limit: 191
+    t.string   "show_name",       limit: 191
+    t.string   "sex",             limit: 191
+    t.integer  "age",             limit: 4
+    t.string   "highest_degree",  limit: 191
+    t.string   "start_work_at",   limit: 191
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
@@ -156,9 +161,10 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.string   "expected_job_type",     limit: 191
     t.string   "expected_base",         limit: 191
     t.string   "expected_salary_range", limit: 191
-    t.integer  "maturity",              limit: 4,   default: 0, null: false
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.integer  "maturity",              limit: 4,   default: 0,    null: false
+    t.boolean  "public",                            default: true, null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   create_table "roles", force: :cascade do |t|

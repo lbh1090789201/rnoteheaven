@@ -36,6 +36,24 @@ class Job < ActiveRecord::Base
     end
   }
 
-  
+  # 获得求职者信息
+  def self.get_seekers jid
+    job = Job.select(:id, :name, :hospital_id).find(jid).as_json
+    apply_records = ApplyRecord.where(hospital_id: job["hospital_id"])
+    has_new = apply_records.where(view_at: nil).blank? ? false : true
+    seekers = []
+
+    apply_records.each do |f|
+      resume_info = Resume.info f.user_id
+      resume_info[:apply_at] = f.apply_at
+      seekers.push resume_info
+    end
+
+    job[:hospital_region] = Hospital.find_by(job[:hospital_id]).region
+    job[:has_new] = has_new
+    job[:seekers] = seekers
+
+    return job
+  end
 
 end

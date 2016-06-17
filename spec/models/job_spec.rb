@@ -12,6 +12,19 @@ RSpec.describe Job, type: :model do
     expect(job).to be_valid
   end
 
+  it "test Job.get_seekers rid" do
+    user = create :user
+    user2 = create :user2
+    expect_job = create(:expect_job, user_id: user.id)
+    expect_job2 = create(:expect_job, user_id: user2.id)
+    job = create :job, :hospital_id => @hospital1.id
+    apply_record = create(:apply_record, job_id: job.id, user_id: user.id, hospital_id: @hospital1.id)
+    apply_record2 = create(:apply_record, job_id: job.id, user_id: user2.id, hospital_id: @hospital1.id)
+
+    res = Job.get_seekers job.id
+    expect(res.length).to eq(6)
+  end
+
   describe 'test filters' do
     before :each do
       job = create :job, :hospital_id => @hospital1.id
