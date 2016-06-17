@@ -3,5 +3,6 @@ class Employer::HomeController < ApplicationController
   layout "employer"
 
   def index
+    # hospital = Employer.find_by user_id: current_user.id
   end
 end

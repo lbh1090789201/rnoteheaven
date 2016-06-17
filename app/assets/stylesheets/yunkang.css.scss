@@ -62,7 +62,7 @@ body,
   width: 98%;
   margin-left: 1%;
   }
-  .container{background: #FFFFFF;}
+//.container{background: #FFFFFF;}
   // 右上角的按钮
   .btn-right {
     position: fixed;
@@ -151,16 +151,17 @@ a:hover {
 .jobs {
   .jobs-list {
     width: 19.08rem;
-    margin: -1.55rem auto 0 auto;
+    margin: -.6rem auto 0 auto;
     font-size: 0.63rem;
     a {
       display: block;
     }
+    
     .job {
       border-bottom: 1px solid #e3e3e3;
       padding-top: 0.2rem;
       padding-bottom: 0.2rem;
-      margin-top: 0.7rem;
+      margin-top: 0rem;
       .left {
         float: left;
         font-size: 0.88rem;
@@ -431,6 +432,7 @@ a:hover {
       line-height: 2.58rem;
       font-weight: normal;
       color: $font-gray;
+      white-space: pre;
       abbr {
         display: none;
       }
@@ -881,7 +883,7 @@ a:hover {
     width: 2.6rem;
     margin-right: 2.17rem;
     text-align: center;
-    margin-top: -0.20rem;
+//  margin-top: -0.20rem;
     color: $color-font;
     a {
       color: $color-font;
@@ -2349,3 +2351,17 @@ a:hover {
   background: #f4f4f4;
 }
 // 工作经历
+
+
+//huangwei
+
+#preview-expect{padding: 0;}
+#preview-expect .work-time{padding: 0.8rem}
+#resumes-preview{padding-bottom: 3rem;}
+.wrap .borDer{border: 1px solid #c3c3c3;}
+.newContainer{background: #f3f3f3;}
+.workindex-page{padding-bottom: 1rem;padding-top: 1rem;}
+.box-table .edit{margin-top: -6px;}
+#noBorber{border: none;}
+.position-info {padding: 1rem 1rem 0 1rem;}
+.record-job h3 span{display: block;}

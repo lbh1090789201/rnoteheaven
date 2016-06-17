@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613094103) do
+ActiveRecord::Schema.define(version: 20160617063440) do
 
   create_table "apply_records", force: :cascade do |t|
     t.integer  "resume_id",       limit: 4
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 20160613094103) do
     t.string   "major",            limit: 191
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+  end
+
+  create_table "employers", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "hospital_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "expect_jobs", force: :cascade do |t|

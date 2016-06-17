@@ -70,7 +70,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :user_type #用户类型  webapp/employer/admin
       t.boolean :is_top, :null => false, :default => false #是否是置顶数据
 
-
       t.timestamps null: false
     end
 
