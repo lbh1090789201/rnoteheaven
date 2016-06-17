@@ -79,6 +79,7 @@ if($(obj).attr('class') == 'no_favor') {
 } else {
   alert('failed');
 }
+
 }
 // 收藏职位
 function is_favor() {
@@ -117,5 +118,11 @@ function no_favor() {
 $('#msg').bind('click', function() {
   alert("功能正在开发中");
 });
+
+// onchange
+function changecontent(obj){
+  console.log("1111");
+  window.opener.location.reload();
+}
 
 </script>
