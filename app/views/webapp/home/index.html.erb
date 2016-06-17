@@ -24,13 +24,13 @@
     <ul>
       <div class="slides">
         <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.4s ease; z-index: 2;">
-          <%= image_tag "test.jpg" %>
+          <%= image_tag "hs-1.jpg" %>
         </li>
         <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.4s ease; z-index: 2;">
-          <%= image_tag "test.jpg" %>
+          <%= image_tag "hs-2.jpg" %>
         </li>
         <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; transition: opacity 0.4s ease; z-index: 2;">
-          <%= image_tag "test.jpg" %>
+          <%= image_tag "hs-3.jpg" %>
         </li>
         <div style="clear:both"></div>
       </div>
@@ -70,7 +70,9 @@
             $("#submit").trigger("click");
         }
     }
-
+    
+    $('.flexslider').flexslider();
+    $('.flexslider').flexslider({slideshow: true});
 
 // 城市插件
     var cityPicker = new IIInsomniaCityPicker({
