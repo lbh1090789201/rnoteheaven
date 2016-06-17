@@ -5,15 +5,15 @@
   $(refreshOnce()); //刷新一次页面
 </script>
 
-<div class="container resume-show">
+<div class="container resume-show " style="background: f3f3f3;">
     <div class="wrap">
 
         <section class="show-style">
             <h2>设置头像</h2>
-            <div class="box box-avatar">
+            <div class="box box-avatar borDer">
                 <div class="avatar">
                     <%= image_tag "pencil2.png", class: "pencil" %>
-                    <div class="avatar-box avatar-border" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
+                    <div class="avatar-box avatar-border borDer" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
                         <!-- 已修改样式 bobo -->
                     </div>
                      <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"},remote: true do |f| %>
@@ -28,7 +28,7 @@
         <%# @user.each do |u| %>
         <section class="show-style">
             <h2>基本信息</h2>
-            <div class="box box-table">
+            <div class="box box-table borDer">
                 <table>
                     <tr>
                         <td><span>姓</span>名：</td>
@@ -52,7 +52,7 @@
                     </tr>
                     <tr>
                         <td>出生年月：</td>
-                        <td><%= @user.birthday.strftime('%Y-%m-%d') if @user.birthday %></td>
+                        <td><%= @user.birthday if @user.birthday %></td>
                     </tr>
                     <tr>
                         <td>所在城市：</td>
@@ -80,7 +80,7 @@
         <section class="show-style">
             <h2>工作经历</h2>
             <% if !@work_experiences.blank? %>
-            <div class="box work-show">
+            <div class="box work-show borDer">
                 <a href="<%= webapp_work_experiences_path %>" class="edit">
                     <%= image_tag "edit.png" %>
                 </a>
@@ -117,7 +117,7 @@
             <h2>教育经历<span><%= image_tag "must.png" %></span>
             </h2>
             <% if !@education_experiences.blank? %>
-            <div class="box work-show box-education">
+            <div class="box work-show box-education borDer">
                 <% @education_experiences.each do |e| %>
                 <time><%= e.entry_at.strftime("%Y-%m-%d") if e.entry_at %>－<%= e.graduated_at.strftime("%Y-%m-%d") if e.graduated_at %></time>
                 <div class="time-line-box">
@@ -145,7 +145,7 @@
           <section class="show-style">
               <h2>持有证书
               </h2>
-              <div class="box work-show box-certif">
+              <div class="box work-show box-certif borDer">
                   <a href="/webapp/certificates" class="edit">
                       <%= image_tag "edit.png" %>
                   </a>
@@ -161,7 +161,7 @@
             <h2>期望工作<span><%= image_tag "must.png" %></span>
             </h2>
             <% if @expect_job %>
-            <div class="box work-show box-certif">
+            <div class="box work-show box-certif borDer">
                 <a href="<%= edit_webapp_expect_job_path(@expect_job.id) %>" class="edit">
                     <%= image_tag "edit.png" %>
                 </a>
