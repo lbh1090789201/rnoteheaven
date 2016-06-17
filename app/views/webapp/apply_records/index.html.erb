@@ -21,7 +21,7 @@
               <div class="content active">
                 <% @data.each do |d| %>
                   <% if d[:resume_status] %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" class="">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status">
                     <li class="job-li">
                       <div class="left">
                         <h3 class="job-name"><%= d[:job_name] %></h3>
@@ -41,7 +41,7 @@
               <div class="content">
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="筛选" %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" class="">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status">
                     <li class="job-li">
                       <div class="left">
                         <h3 class="job-name"><%= d[:job_name] %></h3>
@@ -61,7 +61,7 @@
               <div class="content">
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="面试" %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" class="">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status">
                     <li class="job-li">
                       <div class="left">
                         <h3 class="job-name"><%= d[:job_name] %></h3>
@@ -81,7 +81,7 @@
               <div class="content">
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="不合适" %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" class="">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status">
                     <li class="job-li">
                       <div class="left">
                         <h3 class="job-name"><%= d[:job_name] %></h3>
@@ -107,13 +107,13 @@
 //     $(this).siblings().removeClass('active').addClass('active');
 // });
 
-   
+
   $('.apply_records li').click(function(event) {
     $(this).addClass('active show');
     $(this).siblings().removeClass('active show');
 
     var index = $(this).index();
-    
+
     $('.content').eq(index).show().addClass('active').siblings().removeClass('active').hide();
   });
 

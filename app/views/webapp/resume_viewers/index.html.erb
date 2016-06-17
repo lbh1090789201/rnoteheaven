@@ -1,7 +1,7 @@
 <% provide :title, "谁看过我的简历" %>
 <div class="resume-views">
   <% @resume_view.each do |r| %>
-  <div class="resume-views-list">
+  <div class="resume-views-list resume-byview">
     <a href="/webapp/hospitals/<%= r[:hospital_id] %>">
     <div class="hospital-list">
         <div class="title"><%= r[:hospital_name] %></div>
