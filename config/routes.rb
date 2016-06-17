@@ -55,9 +55,8 @@ Ryunkang::Application.routes.draw do
 
   ############ ryunkang ##########
   get '/webapp/home', to: 'webapp/home#index'
-
+    #  医生端
    namespace :webapp do
-
 
      resources :users do
      end
@@ -82,14 +81,16 @@ Ryunkang::Application.routes.draw do
      resources :certificates, :except => [:update, :edit, :show]
      resources :block_hospitals, :except => [:update, :edit, :show]
 
-    #  get 'apply_records/index'
-    #  get 'apply_records/show'
-
-
-    #  get 'home/index'
-
      resources :favorite_jobs, :only => [:index]
 
+     end
+
+    #  医院端
+     namespace :employer do
+       resources :home, :only => :index
+       resources :users, :only => [:index, :show, :update]
+       resources :jobs, :only => [:index, :show, :update, :create, :destroy]
+       resources :resumes, :only => [:index, :show, :update]
      end
    ########### yunkang end ###########
 

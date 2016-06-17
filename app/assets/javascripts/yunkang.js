@@ -1,13 +1,4 @@
 
-
-/*搜索首页轮播开始*/
-$('.flexslider').flexslider();
-
-$('.flexslider').flexslider({
-    slideshow: true
-});
-/*搜索首页轮播结束*/
-
 /*屏幕自适应开始*/
 screenWidth = window.screen.width;
 if (screenWidth == 414){

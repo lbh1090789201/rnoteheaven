@@ -34,13 +34,7 @@ class ApplicationController < ActionController::Base
     }
   end
 
-  # Redirects on successful sign in
-  def after_sign_in_path_for(resource)
-    #inside_path
-    # puts "-----=======:"+resource.to_json.to_s
-    # return "" unless resource
-    # redirect_to '/' and return
-  end
+
 
   # Auto-sign out locked users
   # def reject_locked!
@@ -53,19 +47,24 @@ class ApplicationController < ActionController::Base
   #     redirect_to root_url
   #   end
   # end
-
   # helper_method :reject_locked!
 
   # Only permits admin users
-  # def require_admin!
-  #   authenticate_user!
-  #
-  #   if current_user && !current_user.admin?
-  #     redirect_to root_path
-  #   end
-  #
-  #
-  # end
-  # helper_method :require_admin!
+  helper_method :require_admin!
+  def require_admin!
+    authenticate_user!
+    if current_user && !current_user.admin?
+      redirect_to root_path
+    end
+  end
+
+  # Only permits employer
+  helper_method :require_employer!
+  def require_employer!
+    authenticate_user!
+    if current_user && !current_user.employer?
+      redirect_to root_path
+    end
+  end
 
 end
