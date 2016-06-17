@@ -12,7 +12,7 @@ FactoryGirl.define do
     seeking_job "正在求职"
     highest_degree "本科"
     position "高级护士"
-    birthday "1992.2"
+    birthday Time.now - 365.days
   end
 
   factory :user2, :class => 'User' do

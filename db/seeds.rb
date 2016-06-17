@@ -20,6 +20,11 @@ u = User.create!(
 )
 u.add_role :gold
 
+Employer.create!({
+  user_id: u.id,
+  hospital_id: 1
+})
+
 
 # Test ApplyRecord :tw
 
