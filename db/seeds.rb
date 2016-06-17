@@ -10,6 +10,16 @@ User.create!(
     sex: "男"
 )
 
+u = User.create!(
+    username: "boss",
+    show_name: "boss",
+    password: "123456",
+    email: "employer@example.com",
+    cellphone: "13811112222",
+    sex: "女"
+)
+u.add_role :gold
+
 
 # Test ApplyRecord :tw
 

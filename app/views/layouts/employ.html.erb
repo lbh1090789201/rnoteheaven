@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" id="viewport">
+  <title><%= @title || "云康医才" %></title>
+  <%= favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
+  <!--<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>-->
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "yunkang" %>
+  <%= stylesheet_link_tag "flickerplate" %>
+  <%= stylesheet_link_tag "slider" %>
+  <%= stylesheet_link_tag "application" %>
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "jquery-1.8.3.min" %>
+  <%= javascript_include_tag "bootstrap.min" %>
+  <%= javascript_include_tag "jquery.form" %>
+
+  <%= javascript_include_tag "slider" %>
+  <%= javascript_include_tag "flickerplate.min" %>
+  <%#<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>%>
+  <%#<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MisYn2tnsrvBrLj7vCXprVdW"></script>%>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "yunkang" %>
+
+
+</head>
+<body>
+  <div id="wrap">
+    <header>
+        <%= render 'layouts/header' %>
+    </header>
+
+    <div class="container">
+          <%= notice_message %>
+          <%= yield %>
+    </div>
+  </div>
+  <%= render 'layouts/footer' %>
+</body>
+</html>
