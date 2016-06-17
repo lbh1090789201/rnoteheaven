@@ -1188,13 +1188,26 @@ a:hover {
     line-height: 2.22rem;
     @include border(#cfcfcf);
     padding-left: 1rem;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 0.7rem;
+    }
+    a:hover {
+      text-decoration: none;
+    }
     span {
       color: #9b9b9b;
       margin-right: 0.76rem;
+      font-size: 0.7rem;
     }
     img {
       height: 0.6rem;
-      margin-left: 4.38rem;
+      // margin-left: 4.38rem;
+      float: right;
+      margin-right: 0.87rem;
+      margin-top: 0.8rem;
     }
   }
   .jobs{
@@ -1236,6 +1249,17 @@ a:hover {
 }
 .favorite-job {
   padding-top: 1.5rem;
+}
+.hospital-details .hospital-mainpage {
+  padding-top: 1.3rem;
+  title {
+    font-size: 0.97rem;
+  }
+  p {
+    margin-top:0.6rem;
+    font-size: 0.7rem;
+    margin-bottom: 1.2rem;
+  }
 }
 /* 医院详情 结束-汤伟*/
 
