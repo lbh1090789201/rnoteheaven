@@ -25,6 +25,7 @@ class Employer::ResumesController < ApplicationController
   end
 
   def show
+
   end
 end
 
@@ -44,7 +45,8 @@ end
 #         "url": null
 #     },
 #     "expect_job": "solider",
-#     "age": 0
+#     "age": 0,
+#     "resume_id ": 49
 # },……]
 
 # @jobs_by_position 按职位查看 类型：hash 数组
@@ -66,6 +68,7 @@ end
 #         },
 #         "expect_job": "高级护士",
 #         "age": 0,
+#         "resume_id ": 49,
 #         "apply_at": "2016-05-18T18:04:53.000Z"
 #     }, {
 #         "id": 3337,
@@ -79,6 +82,7 @@ end
 #         },
 #         "expect_job": "高级护士",
 #         "age": 3,
+#         "resume_id ": 50,
 #         "apply_at": "2016-05-18T18:04:53.000Z"
 #     }]
 # },……]

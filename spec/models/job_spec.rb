@@ -15,6 +15,8 @@ RSpec.describe Job, type: :model do
   it "test Job.get_seekers rid" do
     user = create :user
     user2 = create :user2
+    resume = create :resume, user_id: user.id
+    resume = create :resume, user_id: user2.id
     expect_job = create(:expect_job, user_id: user.id)
     expect_job2 = create(:expect_job, user_id: user2.id)
     job = create :job, :hospital_id => @hospital1.id
