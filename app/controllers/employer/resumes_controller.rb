@@ -10,6 +10,7 @@ class Employer::ResumesController < ApplicationController
     @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",
                                         hospital.id, Time.now - 90.days).order("apply_at DESC")
 
+
     # 公开简历
     public_resumes = Resume.where(public: true).order("refresh_at DESC")
     @public_seekers = []
@@ -22,6 +23,14 @@ class Employer::ResumesController < ApplicationController
     jobs.each do |f|
       @jobs_by_position.push Job.get_seekers(f.id)
     end
+
+
+    puts "------" + @public_seekers.to_json.to_s
+
+
+
+
+
   end
 
   def show
