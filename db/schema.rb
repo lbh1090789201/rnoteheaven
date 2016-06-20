@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.datetime "apply_at"
     t.datetime "view_at"
     t.datetime "recieve_at"
+    t.string   "from",            limit: 191, default: "common", null: false
     t.string   "resume_status",   limit: 191
     t.string   "job_name",        limit: 191
     t.string   "job_type",        limit: 191
@@ -33,8 +34,8 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.integer  "age",             limit: 4
     t.string   "highest_degree",  limit: 191
     t.string   "start_work_at",   limit: 191
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "block_hospitals", force: :cascade do |t|

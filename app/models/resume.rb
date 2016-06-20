@@ -24,7 +24,7 @@ class Resume < ActiveRecord::Base
     info[:age] = ((Time.now - info["birthday"])/1.year).to_i
     info[:resume_id] = resume.id
 
-    return info
+    return info.as_json
   end
 
   # 获得完整度

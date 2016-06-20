@@ -25,15 +25,27 @@ class Employer::ResumesController < ApplicationController
   end
 
   def show
+    resume_id = params[:id]
+    job_id = params[:job_id]
 
+    resume = Resume.find resume_id
+    @seeker = Resume.info resume.user_id
+    @job_name = Job.find(job_id).name
+
+    @user = User.find_by(user_id: resume.user_id)
+    @work_experiences = WorkExperience.where(:user_id => @user.id)
+    @education_experiences = EducationExperience.where(:user_id => @user.id)
+    @expect_job = ExpectJob.find_by_user_id(@user.id)
+    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
+    @certificates = Certificate.where(:user_id => @user.id)
   end
 end
 
 
 # 接口说明
-# @apply_records 三个月内本医院的简历 类型： hash 数组
+# @apply_records 三个月内本医院的简历 类型： json 数组
 
-#@public_seekers 公开简历
+#@public_seekers 公开简历 类型：json 数组
 # [{
 #     "id": 2316,
 #     "start_work_at": "2010",
@@ -49,7 +61,7 @@ end
 #     "resume_id ": 49
 # },……]
 
-# @jobs_by_position 按职位查看 类型：hash 数组
+# @jobs_by_position 按职位查看 类型：json 数组
 # [{
 #     "id": 2109,
 #     "hospital_id": 2320,
@@ -69,6 +81,7 @@ end
 #         "expect_job": "高级护士",
 #         "age": 0,
 #         "resume_id ": 49,
+#         "from":"common",
 #         "apply_at": "2016-05-18T18:04:53.000Z"
 #     }, {
 #         "id": 3337,
@@ -83,6 +96,7 @@ end
 #         "expect_job": "高级护士",
 #         "age": 3,
 #         "resume_id ": 50,
+#         "from":"common",
 #         "apply_at": "2016-05-18T18:04:53.000Z"
 #     }]
 # },……]
