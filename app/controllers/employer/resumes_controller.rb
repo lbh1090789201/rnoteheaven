@@ -25,7 +25,7 @@ class Employer::ResumesController < ApplicationController
     end
 
 
-    puts "------" + @public_seekers.to_json.to_s
+    puts "------" + @jobs_by_position.to_json.to_s
 
 
 
