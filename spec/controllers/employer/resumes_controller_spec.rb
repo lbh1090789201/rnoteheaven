@@ -11,8 +11,11 @@ RSpec.describe Employer::ResumesController, type: :controller do
     request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
+
   describe "GET #index" do
     it "returns http success" do
+      hospital = create :hospital
+      employer = create :employer, user_id: @user.id, hospital_id: hospital.id
       get :index
       expect(response).to have_http_status(:success)
     end
