@@ -23,7 +23,13 @@ RSpec.describe Employer::ResumesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, id: @user.id
+      resume = create(:resume, user_id: @user.id)
+
+      hospital = create :hospital
+      job = create(:job, hospital_id: hospital.id)
+      expect_job = create(:expect_job, user_id: @user.id)
+
+      get :show, id: resume.id, job_id: job.id
       expect(response).to have_http_status(:success)
     end
   end
