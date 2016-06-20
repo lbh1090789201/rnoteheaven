@@ -24,7 +24,8 @@ RSpec.describe Resume, type: :model do
       @expect_job = create(:expect_job, user_id: @user.id)
 
       res = Resume.info @user.id
-      expect(res.length).to eq(9)
+      puts '------------' + res.to_json.to_s
+      expect(res.length).to eq(10)
     end
 
     describe 'test get_maturity' do

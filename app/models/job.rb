@@ -46,6 +46,7 @@ class Job < ActiveRecord::Base
     apply_records.each do |f|
       resume_info = Resume.info f.user_id
       resume_info[:apply_at] = f.apply_at
+      resume_info[:from] = f.from
       seekers.push resume_info
     end
 
@@ -53,7 +54,7 @@ class Job < ActiveRecord::Base
     job[:has_new] = has_new
     job[:seekers] = seekers
 
-    return job
+    return job.as_json
   end
 
 end
