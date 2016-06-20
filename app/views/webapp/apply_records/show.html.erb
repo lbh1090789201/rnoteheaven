@@ -17,7 +17,7 @@
     <p>当前状态　<%= a[:resume_status] %></p>
   </section>
 
-  <section class="resume-show apply-process">
+  <section class="resume-show apply-process resume-spply-style">
     <div class="wrap apply-time">
       <div class="box">
         <time>你的简历正在筛选</time>
@@ -25,7 +25,7 @@
           <p class="process-time"><%= a[:apply_at].strftime("%Y-%m-%d") if a[:apply_at] %></p>
         </div>
       </div>
-      　<div class="box read-resume">
+      　<div class="box read-resume box-margin">
       <time>查看简历</time>
       <div class="time-line-box process-box" style="height: 8rem;">
         <p class="process-time"><%= a[:view_at].strftime("%Y-%m-%d") if a[:view_at] %></p>
