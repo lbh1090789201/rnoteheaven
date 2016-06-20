@@ -28,22 +28,22 @@ Employer.create!({
 
 # Test ApplyRecord :tw
 
-job_id = [1, 2, 3]
-resume_status = ["筛选", "面试", "不合适"]
-i = 0
-while i < 3 do
-    ApplyRecord.create! ({
-      resume_id: 1,
-      job_id: job_id[i],
-      user_id: 1,
-      hospital_id: 1,
-      apply_at: "2016-5-26",
-      view_at: "2016-5-26",
-      resume_status: resume_status[i],
-      recieve_at: "2016-5-27",
-    })
-  i += 1
-end
+# job_id = [1, 2, 3]
+# resume_status = ["筛选", "面试", "不合适"]
+# i = 0
+# while i < 3 do
+#     ApplyRecord.create! ({
+#       resume_id: 1,
+#       job_id: job_id[i],
+#       user_id: 1,
+#       hospital_id: 1,
+#       apply_at: "2016-5-26",
+#       view_at: "2016-5-26",
+#       resume_status: resume_status[i],
+#       recieve_at: "2016-5-27",
+#     })
+#   i += 1
+# end
 
 
 # Test FavoriteJob :bh

@@ -1,2 +1,13 @@
-%h1 Employer::Resumes#show
-%p Find me in app/views/employer/resumes/show.html.haml
+
+<% if @user %>
+<div class="resume-show">
+  <div class="resume-avatar">
+    <div><%= image_tag "avator.png" %></div>
+    <p><%= @user.username %>　<span>应聘：</span><span>儿科护士</span></p>
+    <p><%= @user.sex %><span>21岁</span><span><%= @user.start_work_at %>工作经验</span></p>
+  </div>
+<% end %>
+
+  <%= render "/webapp/resumes/preview_content" %>
+
+</div>
