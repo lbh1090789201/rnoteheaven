@@ -22,6 +22,14 @@ class Api::ApplyRecordsController < ApiController
     @apply_record.job_location = job.location
     @apply_record.salary_range = job.salary_range
 
+    #用户相关
+    user = current_user
+    @apply_record.show_name = user.show_name #姓名
+    @apply_record.sex = user.sex #性别
+    @apply_record.age = user.age #年龄
+    @apply_record.highest_degree = user.highest_degree #最高学历
+    @apply_record.start_work_at = user.start_work_at  #工作年限
+
     @apply_record.save
   end
 

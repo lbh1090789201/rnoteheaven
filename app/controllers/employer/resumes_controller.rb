@@ -30,8 +30,9 @@ class Employer::ResumesController < ApplicationController
 
     resume = Resume.find resume_id
     @seeker = Resume.info resume.user_id
-    @job_name = Job.find(job_id).name
+    @apply_record = ApplyRecord.select(:id, :job_name).find_by(job_id: job_id, user_id: resume.user_id)
 
+    # 简历预览
     @user = User.find_by(user_id: resume.user_id)
     @work_experiences = WorkExperience.where(:user_id => @user.id)
     @education_experiences = EducationExperience.where(:user_id => @user.id)
