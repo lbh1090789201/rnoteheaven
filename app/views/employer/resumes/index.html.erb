@@ -1,15 +1,34 @@
+<%= @jobs_by_position %>
 <div class="">
   <div class="">
-    <ul>
+    <ul class="resume-nav">
       <li>按职位查看</li>
       <li>近三个月简历</li>
       <li>公开简历</li>
     </ul>
 
     <!-- 按职位查看 -->
+    <section>
     <ul>
-      <li></li>
+      <% @jobs_by_position.each do |j| %>
+      <li>
+        <%= j["name"] %>
+        <span><%= j["hospital_region"] %></span>
+        <%= image_tag "man.png", width: "20", height: "10" %>
+        <span><%= j[:seekers].length %>人</span>
+        <%= image_tag "list-icon.png", width: "10", height: "10" %>
+        <!-- 判断seekers是否为零 -->
+        <a href="/employer/resumes/<%= j['id'] %>?<%= j['hospital_id'] %>">链接</a>
+        <% if j[:seekers].length != 0 %>
+        <a href="/employer/resumes/<%= j['id'] %>?<%= j['hospital_id'] %>">链接</a>
+        <% end %>
+      </li>
+      <% end %>
     </ul>
+   </section>
+
+
+
   </div>
 </div>
 

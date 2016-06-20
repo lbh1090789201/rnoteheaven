@@ -1,3 +1,13 @@
 // Place all the styles related to the employer/resumes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ul.resume-nav {
+  width: 100%;
+  list-style: none;
+  li {
+    float: left;
+    width: 33%;
+  }
+}

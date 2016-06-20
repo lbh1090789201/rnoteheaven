@@ -84,6 +84,14 @@ location = ["深圳市", "深圳市", "成都市", "成都市", "成都市", "�
                        location: location[i]
                    })
 end
+(1..3).each do |i|
+  Job.create! ({
+                       hospital_id: 1,
+                       name: name[i],
+                       salary_range: salary_range[i],
+                       location: location[i]
+                   })
+end
 
 #Test ResumeView :bh
 (1..8).each do |i|
