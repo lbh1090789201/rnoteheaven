@@ -41,6 +41,8 @@ class Employer::ResumesController < ApplicationController
     @expect_job = ExpectJob.find_by_user_id(@user.id)
     @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
     @certificates = Certificate.where(:user_id => @user.id)
+
+    puts "------"+@seeker.to_json.to_s
   end
 end
 

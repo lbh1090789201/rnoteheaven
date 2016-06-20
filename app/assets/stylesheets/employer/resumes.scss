@@ -17,11 +17,21 @@
       li {
         float: left;
         width: 33%;
+        cursor: pointer;
       }
     }
     section {
       clear: both;
       background: yellow;
+    }
+    .order-job {
+      display: block;
+    }
+    .order-time {
+      display: none;
+    }
+    .order-resume {
+      display: none;
     }
   }
 }
