@@ -3,11 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-ul.resume-nav {
+
+#resume_content {
+  background: #fff;
   width: 100%;
-  list-style: none;
-  li {
-    float: left;
-    width: 33%;
+  .resume-content {
+    width: 96%;
+    margin: 0 auto;
+    ul.resume-nav {
+      width: 100%;
+      list-style: none;
+      background: gray;
+      li {
+        float: left;
+        width: 33%;
+      }
+    }
+    section {
+      clear: both;
+      background: yellow;
+    }
   }
 }

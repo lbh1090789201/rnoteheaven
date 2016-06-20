@@ -1,29 +1,29 @@
 # Generated with RailsBricks
 # Initial seed file to use with Devise User Model
 #
-User.create!(
-    username: "test",
-    show_name: "test",
-    password: "123456",
-    email: "admin@example.com",
-    cellphone: "13888888778",
-    sex: "男"
-)
-
-u = User.create!(
-    username: "boss",
-    show_name: "boss",
-    password: "123456",
-    email: "employer@example.com",
-    cellphone: "13811112222",
-    sex: "女"
-)
-u.add_role :gold
-
-Employer.create!({
-  user_id: u.id,
-  hospital_id: 1
-})
+# User.create!(
+#     username: "test",
+#     show_name: "test",
+#     password: "123456",
+#     email: "admin@example.com",
+#     cellphone: "13888888778",
+#     sex: "男"
+# )
+#
+# u = User.create!(
+#     username: "boss",
+#     show_name: "boss",
+#     password: "123456",
+#     email: "employer@example.com",
+#     cellphone: "13811112222",
+#     sex: "女"
+# )
+# u.add_role :gold
+#
+# Employer.create!({
+#   user_id: u.id,
+#   hospital_id: 1
+# })
 
 
 # Test ApplyRecord :tw
@@ -36,6 +36,7 @@ while i < 3 do
       resume_id: 1,
       job_id: job_id[i],
       user_id: 1,
+      hospital_id: 1,
       apply_at: "2016-5-26",
       view_at: "2016-5-26",
       resume_status: resume_status[i],
@@ -112,6 +113,8 @@ end
                        left_time: "2016-05-10",
                        job_desc: "工作描述指在该职位上员工实际工作业务流程及授权范围。它是以“工作”为中心对岗位进行全面、系统、深入的说明，为工作评价、工作分类提供依据。在简历中的工作描述部分，则概称为工作经验的描述作经验有多有少，时间有长有短，但是最关键的是从你的工作描述中应该可以体现你的成长以及进步。"
                    })
+
+#Test Resume :bh
 
 #Test EducationExperience :bh
 

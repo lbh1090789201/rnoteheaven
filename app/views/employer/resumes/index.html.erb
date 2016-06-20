@@ -1,6 +1,6 @@
-<%= @jobs_by_position %>
-<div class="">
-  <div class="">
+<%= @apply_records %>
+<div id="resume_content">
+  <div class="resume-content">
     <ul class="resume-nav">
       <li>按职位查看</li>
       <li>近三个月简历</li>
@@ -15,16 +15,42 @@
         <%= j["name"] %>
         <span><%= j["hospital_region"] %></span>
         <%= image_tag "man.png", width: "20", height: "10" %>
-        <span><%= j[:seekers].length %>人</span>
+        <span><%= j["seekers"].length %>人</span>
         <%= image_tag "list-icon.png", width: "10", height: "10" %>
         <!-- 判断seekers是否为零 -->
-        <a href="/employer/resumes/<%= j['id'] %>?<%= j['hospital_id'] %>">链接</a>
-        <% if j[:seekers].length != 0 %>
-        <a href="/employer/resumes/<%= j['id'] %>?<%= j['hospital_id'] %>">链接</a>
+        <% if j["seekers"] && ! j["seekers"].blank? %>
+        <a href="javascript:void(0);">跳转</a>
         <% end %>
       </li>
       <% end %>
     </ul>
+   </section>
+
+   <!-- 按时间查看 -->
+   <section>
+   <ul>
+     <% @apply_records.each do |a| %>
+     <li>
+       <%= a["show_name"] %>
+       <span><%= a["sex"] %></span>
+       <span><%= a["age"] %>岁/<%= a["start_work_at"] %>年/<%= a["hightest"] %></span>
+       <span><%= a["created_at"] %></span>
+       <%= image_tag "list-icon.png", width: "10", height: "10" %>
+       <a href="/employer/resumes/<%= a["resume_id"]%>">跳转</a>
+     </li>
+     <% end %>
+   </ul>
+   </section>
+
+   <!-- 按公开简历查看 -->
+   <section>
+   <ul>
+     <%# @public_seekers.each do |a| %>
+     <li>
+      <span>11111111111111</span>
+     </li>
+     <%# end %>
+   </ul>
    </section>
 
 
