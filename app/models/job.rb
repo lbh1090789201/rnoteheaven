@@ -47,6 +47,7 @@ class Job < ActiveRecord::Base
       resume_info = Resume.info f.user_id
       resume_info[:apply_at] = f.apply_at
       resume_info[:from] = f.from
+      resume_info[:resume_status] = f.resume_status
       seekers.push resume_info
     end
 

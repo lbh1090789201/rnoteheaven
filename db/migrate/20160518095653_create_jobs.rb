@@ -13,6 +13,8 @@ class CreateJobs < ActiveRecord::Migration
 
       t.boolean :is_top #工作置顶
       t.datetime :is_top_at #置顶时间
+      t.string :status #职位状态 1.saved 2.
+      t.datetime :review_at #
 
 
       t.timestamps null: false
