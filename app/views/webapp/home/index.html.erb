@@ -39,12 +39,12 @@
 </div>
 
 <div class="jobs">
-  <div class="jobs-list">
+  <div class="jobs-list" id="jobs_home_list">
 　　<% @arjob.each do |j| %>
     <a href="jobs/<%= j[:id] %>">
     <div class="job">
     <div class="title">
-    <div class="left"><%= j[:job_name] %></div>
+    <div class="left job-name"><%= j[:job_name] %></div>
     <div class="right right-range"><%= j[:salary_range] %>/月</div>
     <div style="clear:both"></div>
     </div>
@@ -70,7 +70,7 @@
             $("#submit").trigger("click");
         }
     }
-    
+
     $('.flexslider').flexslider();
     $('.flexslider').flexslider({slideshow: true});
 

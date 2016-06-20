@@ -91,8 +91,10 @@ header {
         display: block;
         width:2rem;
         height: 2rem;
-        margin-top: 0.2rem;
-        padding: 0.4rem 0 0 0;
+        margin-top: 0.4rem;
+        -webkit-margin: 0;
+        -webkit-padding: 0;
+        // padding: 0.4rem 0 0 0;
         margin-left: -0.8rem;
       }
     .top {
@@ -328,8 +330,9 @@ a:hover {
               top: 0.2rem;
               right: 0;
               img {
-                width: 2.18rem;
-                height: 0.6rem;
+                width: 2rem;
+                height: 0.55rem;
+                margin-top: 0.3rem;
               }
             }
             time {
@@ -657,14 +660,20 @@ a:hover {
         border-radius: 1rem;
         font-size: 0.66rem;
         overflow: hidden;
+        float: left;
       }
       img {
         display: inline-block;
         width: 0.5rem;
         height: 0.5rem;
-        margin-left: 0.2rem;
-        margin-top: -1rem;
+        margin-left: 0.3rem;
+        margin-top: 0.5rem;
+        float: left;
       }
+    }
+    .user-status-info {
+      height: 1.45rem;
+      width: 7.3rem;
     }
   }
   .resumes-info-list {
@@ -2342,6 +2351,9 @@ a:hover {
     background: url("icon.png");
     background-size: 0.41rem 0.66rem;
   }
+  .form-group:nth-of-type(8)::after {
+    display: none;
+  }
 }
 
 // 工作经历首页　bh
@@ -2456,3 +2468,10 @@ a:hover {
 #noBorber{border: none;}
 .position-info {padding: 1rem 1rem 0 1rem;}
 .record-job h3 span{display: block;}
+
+#jobs_home_list .left {font-size:0.7rem;}
+#jobs_home_list .right {font-size:0.7rem;}
+#jobs_home_list .job-name {font-size:0.93rem;}
+#jobs_home_list .right-range {font-size:0.8rem;}
+#myform #cityChoice{-webkit-appearance: none;}
+#myform #search{-webkit-appearance: none;}
