@@ -24,7 +24,6 @@ RSpec.describe Resume, type: :model do
       @expect_job = create(:expect_job, user_id: @user.id)
 
       res = Resume.info @user.id
-      puts '------------' + res.to_json.to_s
       expect(res.length).to eq(10)
     end
 
