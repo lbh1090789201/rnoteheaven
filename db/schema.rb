@@ -143,6 +143,10 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.text     "job_desc",      limit: 65535
     t.boolean  "is_top"
     t.datetime "is_top_at"
+    t.string   "status",        limit: 191
+    t.boolean  "is_update"
+    t.datetime "release_at"
+    t.datetime "end_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

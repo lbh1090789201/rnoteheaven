@@ -9,6 +9,7 @@ FactoryGirl.define do
     job_type "MyString"
     is_top false
     is_top_at "2016-05-18 17:56:53"
+    end_at Time.now + 60.days
   end
 
   factory :job2, :class => 'Job' do

@@ -11,16 +11,20 @@ RSpec.describe Employer::JobsController, type: :controller do
     request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
-  describe "GET #index" do
-    it "returns http success" do
+  describe "GET page " do
+    before :each do
+      @hospital = create(:hospital)
+      @employer = create(:employer, hospital_id: @hospital.id, user_id: @user.id)
+      @job = create(:job, hospital_id: @hospital.id)
+    end
+
+    it "index returns http success" do
       get :index
       expect(response).to have_http_status(:success)
     end
-  end
 
-  describe "GET #show" do
-    it "returns http success" do
-      get :show, id: @user.id
+    it "show returns http success" do
+      get :show, id: @job.id
       expect(response).to have_http_status(:success)
     end
   end

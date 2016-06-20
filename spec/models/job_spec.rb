@@ -56,4 +56,11 @@ RSpec.describe Job, type: :model do
     end
 
   end
+
+  it "test time_left jid" do
+    job = create :job
+
+    res = Job.time_left job.id
+    expect(res).to eq(60)
+  end
 end
