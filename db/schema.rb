@@ -144,7 +144,9 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.boolean  "is_top"
     t.datetime "is_top_at"
     t.string   "status",        limit: 191
-    t.datetime "review_at"
+    t.boolean  "is_update"
+    t.datetime "release_at"
+    t.datetime "end_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

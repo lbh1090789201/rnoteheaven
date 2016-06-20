@@ -58,4 +58,15 @@ class Job < ActiveRecord::Base
     return job.as_json
   end
 
+  # 获得剩余发布时间
+  def self.time_left jid
+    job = Job.find jid
+
+    if job.end_at > Time.now
+      return ((job.end_at + 1.hour - Time.now)/1.day).to_i
+    else
+      return 0
+    end
+  end
+
 end
