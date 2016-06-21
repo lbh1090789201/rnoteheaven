@@ -9,7 +9,6 @@ class Employer::JobsController < ApplicationController
       f.status = "end" if Time.new > f.end_at
       f.save
     end
-
   end
 
   def show
@@ -64,6 +63,10 @@ class Employer::JobsController < ApplicationController
         info: "删除失败"
       }, status: 403
     end
+  end
+
+  def preview
+    @job = Job.find params[:id]
   end
 
   private
