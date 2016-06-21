@@ -63,4 +63,15 @@ RSpec.describe Job, type: :model do
     res = Job.time_left job.id
     expect(res).to eq(60)
   end
+
+  it "test left_refresh_time time" do
+    time = (Time.now - 5.days)
+    time2 = (Time.now - 10.days)
+
+    res = Job.left_refresh_time time
+    res2 = Job.left_refresh_time time2
+
+    expect(res).to eq(2)
+    expect(res2).to eq(-1)
+  end
 end

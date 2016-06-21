@@ -5,6 +5,7 @@ class CreateFavoriteJobs < ActiveRecord::Migration
       t.references :user; #用户id
       t.references :job #职位id
 
+      t.boolean :has_new, null: false, default: false #employer 有更新
       # job 冗余数据
       t.string :name #职位名称
       t.string :job_type #工作类型

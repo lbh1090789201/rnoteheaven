@@ -42,7 +42,6 @@ class Employer::ResumesController < ApplicationController
     @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
     @certificates = Certificate.where(:user_id => @user.id)
 
-    puts "------"+@seeker.to_json.to_s
   end
 end
 
