@@ -4,6 +4,7 @@ class Employer::UsersController < ApplicationController
   before_action do
     :require_employer!
     @hospital = Employer.get_hospital current_user.id
+    @vip_status = Employer.get_status current_user.id
   end
 
   def index
