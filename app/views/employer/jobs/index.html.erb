@@ -1,4 +1,210 @@
-<div class="">
-  <span></span>
+<script type="text/javascript">
+  var getStatus = function(status) {
+    // status=="release";
+    if(status=="release"){
+      status = "发布中";
+
+    };
+    if(status=="reviewing"){
+      status = "审核中";
+    };
+    if(status=="freeze"){
+      status = "冻结中";
+    };
+    if(status=="pause"){
+      status = "暂停发布";
+    };
+    if(status=="end"){
+      status = "结束发布";
+    };
+    if(status=="saved"){
+      status = "已保存";
+    };
+    if(status=="fail"){
+      status = "审核拒绝";
+    };
+    // return(status);
+    document.write(status);
+  }
+
+  // 筛选弹框
+  $(function(){
+    $('.job-nav>span').bind('click',function(){
+      $('.job-status').toggle();
+    });
+  })
+
+  // 筛选不同的Jod状态
+  function JobScreen(li_id,li_class){
+    $('#'+li_id).parent().parent().css('display','none');
+    $('.sort-content').css('display','block').siblings().css('display','none');
+    $('.'+li_class).css('display','block').siblings().css('display','none');
+  }
+</script>
+
+<div id="job_content">
+  <div class="job-nav">
+    <span>全部</span><%= image_tag "icon_1.png", width: "20", height: "20" %>
+  </div>
+  <!-- 条件筛选 -->
+  <div class="job-status">
+    <!-- 蒙层 -->
+    <div class="job-maste"></div>
+    <ul>
+      <li id="job_release" onclick="JobScreen('job_release','job-release')">发布中</li>
+      <li id="job_end" onclick="JobScreen('job_end','job-end')">发布结束</li>
+      <li id="job_pause" onclick="JobScreen('job_pause','job-pause')">暂停发布</li>
+      <li id="job_reviewing" onclick="JobScreen('job_reviewing','job-reviewing')">审核中</li>
+      <li id="job_fail" onclick="JobScreen('job_fail','job-fail')">审核拒绝</li>
+      <li id="job_saved" onclick="JobScreen('job_saved','job-saved')">已保存</li>
+      <li id="job_freeze" onclick="JobScreen('job_freeze','job-freeze')">冻结中</li>
+    </ul>
+  </div>
+
+  <!-- 职位状态排序 -->
+  <div class="job-sort">
+    <!-- 刚进入时全部展示，按某种条件排序，待探讨 -->
+    <ul class="show-all">
+        <% @jobs.each do |j| %>
+          <li class="job-release">
+            <a href="<%= employer_job_path(j.id) %>">
+              <div class="">
+                <h4><%= j.name %></h4>
+                <span><%= j.location %></span>
+                <p><%= j.release_at %>至<%= j.end_at %></p>
+              </div>
+              <span>
+                <script>getStatus("<%= j.status %>");</script>
+              </span>
+              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+            </a>
+          </li>
+        <% end %>
+    </ul>
+
+    <!-- 条件筛选后展示的内容 -->
+    <ul class="sort-content">
+      <% @jobs.each do |j| %>
+          <!-- 发布中 -->
+        <% if j.status == "release" %>
+          <li class="job-release">
+            <a href="<%= employer_job_path(j.id) %>">
+              <div class="">
+                <h4><%= j.name %></h4>
+                <span><%= j.location %></span>
+                <p><%= j.release_at %>至<%= j.end_at %></p>
+              </div>
+              <span>
+                <script>getStatus("<%= j.status %>");</script>
+              </span>
+              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+            </a>
+          </li>
+        <% end %>
+
+        <!-- 审核中 -->
+        <% if j.status == "reviewing" %>
+          <li class="job-reviewing">
+            <a href="<%= employer_job_path(j.id) %>">
+              <div class="">
+                <h4><%= j.name %></h4>
+                <span><%= j.location %></span>
+                <p><%= j.release_at %>至<%= j.end_at %></p>
+              </div>
+              <span>
+                <script>getStatus("<%= j.status %>");</script>
+              </span>
+              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+            </a>
+          </li>
+        <% end %>
+
+        <!-- 冻结中 -->
+        <% if j.status == "freeze" %>
+          <li class="job-freeze">
+            <a href="<%= employer_job_path(j.id) %>">
+              <div class="">
+                <h4><%= j.name %></h4>
+                <span><%= j.location %></span>
+                <p><%= j.release_at %>至<%= j.end_at %></p>
+              </div>
+              <span>
+                <script>getStatus("<%= j.status %>");</script>
+              </span>
+              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+            </a>
+          </li>
+        <% end %>
+
+        <!-- 暂停发布 -->
+        <% if j.status == "pause" %>
+          <li class="job-pause">
+            <a href="<%= employer_job_path(j.id) %>">
+              <div class="">
+                <h4><%= j.name %></h4>
+                <span><%= j.location %></span>
+                <p><%= j.release_at %>至<%= j.end_at %></p>
+              </div>
+              <span>
+                <script>getStatus("<%= j.status %>");</script>
+              </span>
+              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+            </a>
+          </li>
+        <% end %>
+
+        <!-- 结束发布 -->
+        <% if j.status == "end" %>
+          <li class="job-end">
+            <a href="<%= employer_job_path(j.id) %>">
+              <div class="">
+                <h4><%= j.name %></h4>
+                <span><%= j.location %></span>
+                <p><%= j.release_at %>至<%= j.end_at %></p>
+              </div>
+              <span>
+                <script>getStatus("<%= j.status %>");</script>
+              </span>
+              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+            </a>
+          </li>
+        <% end %>
+
+        <!-- 已保存 -->
+        <% if j.status == "saved" %>
+          <li class="job-saved">
+            <a href="<%= employer_job_path(j.id) %>">
+              <div class="">
+                <h4><%= j.name %></h4>
+                <span><%= j.location %></span>
+                <p><%= j.release_at %>至<%= j.end_at %></p>
+              </div>
+              <span>
+                <script>getStatus("<%= j.status %>");</script>
+              </span>
+              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+            </a>
+          </li>
+        <% end %>
+
+        <!-- 审核拒绝 -->
+        <% if j.status == "fail" %>
+          <li class="job-fail">
+            <a href="<%= employer_job_path(j.id) %>">
+              <div class="">
+                <h4><%= j.name %></h4>
+                <span><%= j.location %></span>
+                <p><%= j.release_at %>至<%= j.end_at %></p>
+              </div>
+              <span>
+                <script>getStatus("<%= j.status %>");</script>
+              </span>
+              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 </div>
 <%= render '/layouts/employer_footer' %>

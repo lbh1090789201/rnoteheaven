@@ -76,21 +76,28 @@ hospital_id = [1, 1, 2, 2, 3, 3, 3, 3]
 name= ["护士", "护士", "护士", "护士", "全科医生", "儿科护士", "医生", "医生"]
 salary_range = ["1000-6000", "1000-6000", "2000-5000", "2000-5000", "2000-5000", "2000-7000", "2000-7000", "2000-7000"]
 location = ["深圳市", "深圳市", "成都市", "成都市", "成都市", "成都市", "成都市", "深圳市"]
+status = ["release", "reviewing", "freeze", "pause", "end", "saved", "fail", "release"]
 
 (1..8).each do |i|
   Job.create! ({
                        hospital_id: hospital_id[i],
                        name: name[i],
                        salary_range: salary_range[i],
-                       location: location[i]
+                       location: location[i],
+                       status: status[i],
+                       release_at: "2016-10-11 12:12:12",
+                       end_at: "2017-10-11 12:12:12"
                    })
 end
-(1..3).each do |i|
+(1..8).each do |i|
   Job.create! ({
                        hospital_id: 1,
                        name: name[i],
                        salary_range: salary_range[i],
-                       location: location[i]
+                       location: location[i],
+                       status: status[i],
+                       release_at: "2016-10-11 12:12:12",
+                       end_at: "2017-10-11 12:12:12"
                    })
 end
 
