@@ -15,6 +15,8 @@ class Employer::JobsController < ApplicationController
 
   def show
     @job = Job.find params[:id]
+    @hospital = Employer.get_hospital current_user.id
+    @seeker_count = ApplyRecord.where(job_id: @job.id).length
     @time_left = Job.time_left @job.id
     @left_refresh_time = Job.left_refresh_time @job.id
   end
@@ -36,7 +38,6 @@ class Employer::JobsController < ApplicationController
 
   def update
     job = Job.find params[:id]
-    job.refresh_at = Time.now
 
     if  Job.update job_params && job.save
       # 通知用户，职位信息有更新

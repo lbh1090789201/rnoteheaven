@@ -4,4 +4,5 @@ class Employer < ActiveRecord::Base
     hid = Employer.find_by(user_id: uid).hospital_id
     Hospital.find hid
   }
+
 end

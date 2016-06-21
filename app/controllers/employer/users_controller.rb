@@ -11,6 +11,8 @@ class Employer::UsersController < ApplicationController
   end
 
   def show
+    # 显示 vip 参数
+    @employer = Employer.find_by user_id: current_user.id
   end
 
   def edit
