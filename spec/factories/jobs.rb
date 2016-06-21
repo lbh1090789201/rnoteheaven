@@ -7,8 +7,7 @@ FactoryGirl.define do
     job_desc "MyString"
     needed_number 1
     job_type "MyString"
-    is_top false
-    is_top_at "2016-05-18 17:56:53"
+    refresh_at Time.now - 3.days
     end_at Time.now + 60.days
   end
 
@@ -20,8 +19,7 @@ FactoryGirl.define do
     job_desc "MyString"
     needed_number 1
     job_type "MyString"
-    is_top true
-    is_top_at "2016-05-18 17:56:53"
+    refresh_at Time.now - 3.days
   end
 
   factory :job3, :class => 'Job' do
@@ -32,8 +30,7 @@ FactoryGirl.define do
     job_desc "MyString"
     needed_number 1
     job_type "MyString"
-    is_top true
-    is_top_at "2016-05-18 17:56:53"
+    refresh_at Time.now - 3.days
   end
 
   factory :job4, :class => 'Job' do
@@ -44,8 +41,7 @@ FactoryGirl.define do
     job_desc "MyString"
     needed_number 1
     job_type "MyString"
-    is_top true
-    is_top_at "2016-05-18 17:56:53"
+    refresh_at Time.now - 3.days
   end
 
 end

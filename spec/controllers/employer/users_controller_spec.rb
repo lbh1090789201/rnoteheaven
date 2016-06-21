@@ -9,6 +9,9 @@ RSpec.describe Employer::UsersController, type: :controller do
     @user.add_role :gold
     login_with @user
     request.env['devise.mapping'] = Devise.mappings[:user]
+
+    @hospital = create(:hospital)
+    employer = create(:employer, user_id: @user.id, hospital_id: @hospital.id)
   end
 
   describe "GET #index" do

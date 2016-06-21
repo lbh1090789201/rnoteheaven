@@ -5,7 +5,6 @@ class Employer::JobsController < ApplicationController
   def index
     @hospital = Employer.get_hospital current_user.id
     @jobs = Job.where(hospital_id: @hospital.id)
-  puts "--------"+@jobs.to_json.to_s
     @jobs.each do |f|
       f.status = "end" if Time.new > f.end_at
       f.save
@@ -55,12 +54,12 @@ class Employer::JobsController < ApplicationController
     job = Job.find params[:id]
 
     if job.destroy
-      render :json {
+      render json: {
         success: true,
         info: "删除成功"
       }, status: 200
     else
-      render :json {
+      render json: {
         success: false,
         info: "删除失败"
       }, status: 403
