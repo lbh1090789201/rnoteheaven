@@ -5,11 +5,12 @@ class Employer::JobsController < ApplicationController
   def index
     @hospital = Employer.get_hospital current_user.id
     @jobs = Job.where(hospital_id: @hospital.id)
-
+  puts "--------"+@jobs.to_json.to_s
     @jobs.each do |f|
       f.status = "end" if Time.new > f.end_at
       f.save
     end
+
   end
 
   def show

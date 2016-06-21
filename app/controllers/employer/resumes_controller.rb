@@ -10,7 +10,6 @@ class Employer::ResumesController < ApplicationController
     @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",
                                         hospital.id, Time.now - 90.days).order("apply_at DESC")
 
-
     # 公开简历
     public_resumes = Resume.where(public: true).order("refresh_at DESC")
     @public_seekers = []
@@ -42,6 +41,7 @@ class Employer::ResumesController < ApplicationController
     @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
     @certificates = Certificate.where(:user_id => @user.id)
 
+    # puts "------"+@user.to_json.to_s
   end
 end
 

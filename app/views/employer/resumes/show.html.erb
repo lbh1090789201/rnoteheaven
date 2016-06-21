@@ -10,4 +10,44 @@
 
   <%= render "/webapp/resumes/preview_content" %>
 
+<!-- 按钮 -->
+<ul id="btn_action">
+  <li onClick="IsImproper(this)">不合适</li>
+  <li onClick="IsInterview(this)">通知面试</li>
+</ul>
 </div>
+
+<script type="text/javascript">
+// 不合适按钮
+function IsImproper(){
+  $.ajax({
+    url: "<%= api_employer_resumes_path %>",
+    type: "PATCH",
+    data: {apply_record_id: "<%= params[:id] %>",resume_status: "不合适"},
+    dataType: "json",
+    success: function(){
+      $("#btn_action>li").eq(1).css('display','none')
+                               .siblings().css({'width':'100%','background':'yellow'});
+    },
+    error: function(){
+      alert("操作失败");
+    }
+  });
+}
+
+// 通知面试按钮
+function IsInterview(){
+  $.ajax({
+    url: "<%= api_employer_resumes_path %>",
+    type: "PATCH",
+    data: {apply_record_id: "<%= params[:id] %>",resume_status: "面试"},
+    success: function(){
+      $("#btn_action>li").eq(0).css('display','none')
+                               .siblings().css({'width':'100%','background':'yellow'});
+    },
+    error: function(){
+      alert("操作失败");
+    }
+  })
+}
+</script>
