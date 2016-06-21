@@ -1,9 +1,10 @@
 class Employer::UsersController < ApplicationController
-  before_action :require_employer!
   layout "employer"
 
-  before :each do
+  before_action do
+    :require_employer!
     @hospital = Employer.get_hospital current_user.id
+    @vip_status = Employer.get_status current_user.id
   end
 
   def index
@@ -21,9 +22,9 @@ class Employer::UsersController < ApplicationController
 
   def update
     if @hospital.update hospital_params
-      render :js "location.href = document.referrer;"
+      render js: "location.href = document.referrer;"
     else
-      render :json {
+      render json: {
         success: false,
         info: "医院信息更新失败"
       }, status: 403

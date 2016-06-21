@@ -91,7 +91,7 @@ Ryunkang::Application.routes.draw do
      namespace :employer do
        resources :home, :only => :index
        resources :users, :only => [:index, :show, :update]
-       resources :jobs, :only => [:index, :show, :update, :create, :destroy, :new] do
+       resources :jobs do
          get 'preview', on: :member
        end
        resources :resumes, :only => [:index, :show, :update]

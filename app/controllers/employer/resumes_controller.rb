@@ -1,5 +1,6 @@
 class Employer::ResumesController < ApplicationController
   before_action :require_employer!
+  # before_action :require_vip!
   layout "employer"
 
   def index

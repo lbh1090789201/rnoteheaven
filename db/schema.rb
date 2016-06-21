@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.string   "expected_salary_range", limit: 191
     t.integer  "maturity",              limit: 4,   default: 0,     null: false
     t.boolean  "public",                            default: true,  null: false
-    t.boolean  "freeze",                            default: false, null: false
+    t.boolean  "resume_freeze",                     default: false, null: false
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
   end
