@@ -10,6 +10,7 @@ class CreateResumes < ActiveRecord::Migration
       t.string :expected_salary_range
       t.integer :maturity, :null => false, :default => 0 #完成度
       t.boolean :public, :null => false, :default => true # 简历公开
+      t.boolean :freeze :null => false, :default => false # 简历冻结
 
       t.timestamps null: false
     end
