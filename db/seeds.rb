@@ -86,7 +86,8 @@ status = ["release", "reviewing", "freeze", "pause", "end", "saved", "fail", "re
                        location: location[i],
                        status: status[i],
                        release_at: "2016-10-11 12:12:12",
-                       end_at: "2017-10-11 12:12:12"
+                       end_at: "2017-10-11 12:12:12",
+                       region: "深圳"
                    })
 end
 (1..8).each do |i|
@@ -97,7 +98,8 @@ end
                        location: location[i],
                        status: status[i],
                        release_at: "2016-10-11 12:12:12",
-                       end_at: "2017-10-11 12:12:12"
+                       end_at: "2017-10-11 12:12:12",
+                       region: "深圳"
                    })
 end
 

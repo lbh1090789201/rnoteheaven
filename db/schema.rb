@@ -69,8 +69,17 @@ ActiveRecord::Schema.define(version: 20160617063440) do
   create_table "employers", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.integer  "hospital_id", limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "vip_level",   limit: 4, default: 1, null: false
+    t.integer  "may_receive", limit: 4, default: 0, null: false
+    t.integer  "may_release", limit: 4, default: 0, null: false
+    t.integer  "may_set_top", limit: 4, default: 0, null: false
+    t.integer  "may_view",    limit: 4, default: 0, null: false
+    t.integer  "has_receive", limit: 4, default: 0, null: false
+    t.integer  "has_release", limit: 4, default: 0, null: false
+    t.integer  "has_set_top", limit: 4, default: 0, null: false
+    t.integer  "has_view",    limit: 4, default: 0, null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "expect_jobs", force: :cascade do |t|
@@ -115,8 +124,9 @@ ActiveRecord::Schema.define(version: 20160617063440) do
   create_table "hospitals", force: :cascade do |t|
     t.integer  "job_fair_id",  limit: 4
     t.string   "name",         limit: 191
-    t.string   "scale",        limit: 191
     t.string   "property",     limit: 191
+    t.string   "scale",        limit: 191
+    t.string   "industry",     limit: 191
     t.string   "region",       limit: 191
     t.string   "location",     limit: 191
     t.text     "introduction", limit: 65535
@@ -145,14 +155,13 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.string   "location",      limit: 191
     t.text     "job_desc",      limit: 65535
     t.text     "job_demand",    limit: 65535
-    t.boolean  "is_top"
-    t.datetime "is_top_at"
     t.string   "status",        limit: 191
-    t.boolean  "is_update"
+    t.boolean  "is_update",                   default: false, null: false
     t.datetime "release_at"
+    t.datetime "refresh_at"
     t.datetime "end_at"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   create_table "resume_viewers", force: :cascade do |t|
@@ -170,10 +179,11 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.string   "expected_job_type",     limit: 191
     t.string   "expected_base",         limit: 191
     t.string   "expected_salary_range", limit: 191
-    t.integer  "maturity",              limit: 4,   default: 0,    null: false
-    t.boolean  "public",                            default: true, null: false
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.integer  "maturity",              limit: 4,   default: 0,     null: false
+    t.boolean  "public",                            default: true,  null: false
+    t.boolean  "freeze",                            default: false, null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
   end
 
   create_table "roles", force: :cascade do |t|
