@@ -54,12 +54,12 @@ class Employer::JobsController < ApplicationController
     job = Job.find params[:id]
 
     if job.destroy
-      render :json {
+      render json: {
         success: true,
         info: "删除成功"
       }, status: 200
     else
-      render :json {
+      render json: {
         success: false,
         info: "删除失败"
       }, status: 403
