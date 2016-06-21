@@ -1,4 +1,5 @@
-<%= provide :title, "添加职位基本信息" %>
+<%= provide :title, "编辑职位基本信息" %>
+<%= provide :content, "保存" %>
 <div id="job_basic">
     <%= simple_form_for :job, as: :post, remote: true, id: "submit_form", url: employer_jobs_path do |f| %>
     <%= f.input :name, label: "职位名称", input_html: { class: ""} %>
@@ -16,27 +17,19 @@
     <%= f.input :location, label: '发布期限', input_html: { class: "", id: ""} %>
     <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status"} %>
     <%= f.submit id: "submit", class: ""%>
-    <div class="btn-status">
-      <button type="button" name="button" onclick="SubmitForm(this)">仅保存</button>
-      <button type="button" name="button">保存并提交发布</button>
-    </div>
+    <!-- <div class="btn-status">
+      <button type="button" name="button" onclick="SubmitForm(this)">保存</button>
+    </div> -->
     <% end %>
 
 </div>
 <script type="text/javascript">
   // 按钮提交表单
-  $(function(){
-    $('.btn-status>button').bind('click',function(){
-      var index = $(this).index();
-      if(index==0) {
-        $('#job_status').attr('value','saved');
-        $('#submit').trigger('click');
-      }else{
-        $('#job_status').attr('value','release');
-        $('#submit').trigger('click');
-      }
-    });
-  })
+  // $(function(){
+  //   $('.btn-status>button').bind('click',function(){
+  //       $('#submit').trigger('click');
+  //   });
+  // })
 
   // 职位类型
   $('.job-type').click(function() {

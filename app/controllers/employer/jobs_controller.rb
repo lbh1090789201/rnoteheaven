@@ -19,6 +19,10 @@ class Employer::JobsController < ApplicationController
     @left_refresh_time = Job.left_refresh_time @job.id
   end
 
+  def edit
+    @job = Job.find params[:id]
+  end
+
   def create
     job = Job.new job_params
     job.release_at = Time.now

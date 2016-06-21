@@ -2,7 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+// .resumes-index {
+//   .resume-content {
+//     position: relative;
+//     .resume-nav {
+//       width: 100%;
+//       height: 2rem;;
+//       background: green;
+//     }
+//   }
+// }
 
 #resume_content {
   background: #fff;
@@ -10,8 +19,10 @@
   .resume-content {
     width: 96%;
     margin: 0 auto;
+    position: relative;
     ul.resume-nav {
       width: 100%;
+      height: 2rem;
       list-style: none;
       background: gray;
       li {
@@ -33,5 +44,15 @@
     .order-resume {
       display: none;
     }
+  }
+  .order-job-list {
+    width: 100%;
+    height: 900px;
+    background: #fff;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
   }
 }
