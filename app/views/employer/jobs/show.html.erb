@@ -1,2 +1,49 @@
+<div id="job_show">
+  <div class="job-time">
+    发布日期:
+    <span><%= @job.release_at.strftime("%Y-%m-%d") %></span>
+    (剩余<%= @time_left %>天到期)
+  </div>
 
-<%= render "/layouts/employer_footer" %>
+  <section class="job-detail">
+    <div class="job-introduce">
+      <h3><%= @job.name %><span><%= @seeker_count %>人投递过简历</span></h3>
+      <p><%= @job.salary_range %>/月</p>
+      <ul>
+        <li><span>医院</span><%= @hospital.name %></li>
+        <li><span>性质</span><%= @hospital.property %><span class="job-scale">规模</span><%= @hospital.scale %>人</li>
+        <li><span>地区</span><%= @job.region %><span class="job-number">人数</span><%= @job.needed_number %>人</li>
+      </ul>
+    </div>
+    <div class="job-place"><a href="#"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
+
+    <!-- 刷新简历 -->
+    <div class="reflesh-job" style="background:yellow;height:50px;">
+      <%= image_tag "icon_1.png" %>
+      <span>刷新职位</span>
+    </div>
+  </section>
+
+  <section class="job-right">
+    <div class="job-descripte">
+      <h2>职位描述</h2>
+      <h3>职责说明</h3>
+      <p><%= @job.job_desc %></p>
+      <h3 class="job-post">任职资格</h3>
+      <p><%= @job.job_demand %></p>
+    </div>
+  </section>
+
+
+</div>
+
+<!-- <script type="text/javascript">
+  var left_refresh_time = "<%= @left_refresh_time %>";
+  console.log(left_refresh_time);
+  if(left_refresh_time == -1) {
+    $('.reflesh-job').children().remove();
+  }
+</script> -->
+
+
+<%# render "/layouts/employer_footer" %>

@@ -1,0 +1,50 @@
+<%= provide :title, "职位发布" %>
+<%= provide :content, "编辑" %>
+<%= provide :link, "../#{@job.id}/edit" %>
+
+<h2>职位基本信息<span>必填</span></h2>
+<div class="">
+  <div class="">
+    <table>
+        <tr>
+            <td>职位名称：</td>
+            <td><%= @job.name %></td>
+        </tr>
+        <tr>
+            <td>职位类型：</td>
+            <td><%= @job.job_type %></td>
+        </tr>
+        <tr>
+            <td><span>薪</span>资：</td>
+            <td><%= @job.salary_range %></td>
+        </tr>
+        <tr>
+            <td>经验要求：</td>
+            <td><%= @job.experience %></td>
+        </tr>
+        <tr>
+            <td>应聘人数：</td>
+            <td><%= @job.needed_number %></td>
+        </tr>
+        <tr>
+            <td>工作地区：</td>
+            <td><%= @job.region %></td>
+        </tr>
+        <tr>
+            <td>上班地址：</td>
+            <td><%= @job.location %></td>
+        </tr>
+    </table>
+  </div>
+</div>
+
+<h2>职位描述<span>必填</span></h2>
+<div class="">
+  <div class="">
+    <p><%= @job.job_desc %></p>
+    <h4>任职资格</h4>
+    <p><%= @job.job_demand %></p>
+    <h4>发布期限</h4>
+    <p><%= @job.end_at %></p>
+  </div>
+</div>
