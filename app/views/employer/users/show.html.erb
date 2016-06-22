@@ -1,2 +1,9 @@
-%h1 Employer::Users#show
-%p Find me in app/views/employer/users/show.html.haml
+<%= provide :title, "我购买的服务" %>
+<div class="">
+  <ul>
+    <li>可接受的简历<span><%= @employer.may_receive %>/500</span></li>
+    <li>可发布的职位数<span><%= @employer.may_release %>/100</span></li>
+    <li>可置顶的职位数<span><%= @employer.may_set_top %>/10</span></li>
+    <li>可查看的公开简历数<span><%= @employer.may_view %>/100</span></li>
+  </ul>
+</div>

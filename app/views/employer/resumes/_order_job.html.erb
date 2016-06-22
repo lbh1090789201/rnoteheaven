@@ -1,7 +1,7 @@
 <section class="order-job">
 <ul class="order-job-show">
   <% @jobs_by_position.each do |j| %>
-  <li onclick="JobListShow(this)">
+  <li class="job-Arrang" onclick="JobListShow(this)">
     <%= j["name"] %>
     <span><%= j["hospital_region"] %></span>
     <%= image_tag "man.png", width: "20", height: "10" %>
@@ -10,32 +10,34 @@
 
     <!-- 按职位查看二级页面 -->
     <div class="order-job-list">
-      <div href="javascript:void(0);" onclick="HandleResume(this)">待处理
-        <!-- 蒙层 -->
-        <div></div>
-        <!-- 待处理下选框 -->
-        <div class="handle-resume" style="display: none">
-          <ul>
-            <li onclick="sortResume(this)">待处理</li>
-            <li onclick="sortResume(this)">已处理</li>
-          </ul>
-        </div>
-      </div>
-      <div href="javascript:void(0);" onclick="HandleResume(this)">按年龄排序
-        <!-- 蒙层 -->
-        <div></div>
-        <!-- 按条件排序 -->
-        <div class="sort-resume" style="display: none">
-          <ul>
-            <li>按年龄排序</li>
-            <li>按经验排序</li>
-            <li>按学历排序</li>
-          </ul>
-        </div>
+      <div class="sort-nav">
+          <div class="job-unhandle" href="javascript:void(0);" onclick="HandleResume(this)">待处理
+            <!-- 蒙层 -->
+            <div class="after-mask"></div>
+            <!-- 待处理下选框 -->
+            <div class="handle-resume">
+              <ul>
+                <li onclick="sortResume(this)">待处理</li>
+                <li onclick="sortResume(this)">已处理</li>
+              </ul>
+            </div>
+          </div>
+          <div class="job-array" href="javascript:void(0);" onclick="HandleResume(this)">按年龄排序
+            <!-- 蒙层 -->
+            <div class="after-mask"></div>
+            <!-- 按条件排序 -->
+            <div class="sort-resume">
+              <ul>
+                <li>按年龄排序</li>
+                <li>按经验排序</li>
+                <li>按学历排序</li>
+              </ul>
+            </div>
+          </div>
       </div>
 
       <!-- 按待处理排序 -->
-      <ul>
+      <ul class="job-pubilc">
         <% j["seekers"].each do |s| %>
         <% if s["resume_status"]=='筛选' %>
           <li>
@@ -52,7 +54,7 @@
       </ul>
 
       <!-- 按已处理排序 -->
-      <ul style="display: none">
+      <ul class="job-pubilc">
         <% j["seekers"].each do |s| %>
         <% if s["resume_status"]=='不合适'|| s["resume_status"]=="面试"%>
           <li>
@@ -69,48 +71,48 @@
       </ul>
 
       <div class="sort-resume-ct">
-      <!-- 按年龄排序 -->
-      <ul style="display: none">
-        <% j["seekers"].each do |s| %>
-          <li>
-            <span>3333</span>
-            <%= s["show_name"] %>
-            <span><%= s["sex"] %></span>
-            <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
-            <span><%= s["created_at"] %></span>
-            <%= image_tag "list-icon.png", width: "10", height: "10" %>
-            <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
-          </li>
-        <% end %>
-      </ul>
-      <!-- 按经验排序 -->
-      <ul style="display: none">
-        <% j["seekers"].each do |s| %>
-          <li>
-            <span>4444</span>
-            <%= s["show_name"] %>
-            <span><%= s["sex"] %></span>
-            <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
-            <span><%= s["created_at"] %></span>
-            <%= image_tag "list-icon.png", width: "10", height: "10" %>
-            <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
-          </li>
-        <% end %>
-      </ul>
-      <!-- 按学历排序 -->
-      <ul style="display: none">
-        <% j["seekers"].each do |s| %>
-          <li>
-            <span>5555</span>
-            <%= s["show_name"] %>
-            <span><%= s["sex"] %></span>
-            <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
-            <span><%= s["created_at"] %></span>
-            <%= image_tag "list-icon.png", width: "10", height: "10" %>
-            <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
-          </li>
-        <% end %>
-      </ul>
+          <!-- 按年龄排序 -->
+          <ul class="job-pubilc">
+            <% j["seekers"].each do |s| %>
+              <li>
+                <span>3333</span>
+                <%= s["show_name"] %>
+                <span><%= s["sex"] %></span>
+                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
+                <span><%= s["created_at"] %></span>
+                <%= image_tag "list-icon.png", width: "10", height: "10" %>
+                <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
+              </li>
+            <% end %>
+          </ul>
+          <!-- 按经验排序 -->
+          <ul class="job-pubilc">
+            <% j["seekers"].each do |s| %>
+              <li>
+                <span>4444</span>
+                <%= s["show_name"] %>
+                <span><%= s["sex"] %></span>
+                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
+                <span><%= s["created_at"] %></span>
+                <%= image_tag "list-icon.png", width: "10", height: "10" %>
+                <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
+              </li>
+            <% end %>
+          </ul>
+          <!-- 按学历排序 -->
+          <ul class="job-pubilc">
+            <% j["seekers"].each do |s| %>
+              <li>
+                <span>5555</span>
+                <%= s["show_name"] %>
+                <span><%= s["sex"] %></span>
+                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
+                <span><%= s["created_at"] %></span>
+                <%= image_tag "list-icon.png", width: "10", height: "10" %>
+                <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
+              </li>
+            <% end %>
+          </ul>
       </div>
 
     </div>
@@ -142,7 +144,7 @@ function JobListShow(obj){
     })
   function sortResume(obj){
     console.log(y);
-    var ul = $(obj).parent().parent().parent().siblings('ul');
+    var ul = $(obj).parent().parent().parent().parent().siblings('ul');
     ul.eq(y).show().siblings('ul').hide();
  }
 

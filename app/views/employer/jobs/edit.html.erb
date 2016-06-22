@@ -1,7 +1,7 @@
 <%= provide :title, "编辑职位基本信息" %>
 <%= provide :content, "保存" %>
 <div id="job_basic">
-    <%= simple_form_for :job, as: :post, remote: true, id: "submit_form", url: employer_jobs_path do |f| %>
+    <%= simple_form_for :job, method: :patch, remote: true, id: "submit_form", url: employer_jobs_path do |f| %>
     <%= f.input :name, label: "职位名称", input_html: { class: ""} %>
     <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type"} %>
     <%= f.input :salary_range, label: '薪资', input_html: { class: "job-range", id: "job_range"} %>

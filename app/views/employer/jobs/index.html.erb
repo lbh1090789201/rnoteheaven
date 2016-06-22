@@ -38,8 +38,11 @@
   function JobScreen(li_id,li_class){
     $('#'+li_id).parent().parent().css('display','none');
     $('.sort-content').css('display','block').siblings().css('display','none');
-    $('.'+li_class).css('display','block').siblings().css('display','none');
+    $('.'+li_class).css('display','block');
+    $('.sort-content li').not('.'+li_class).css('display','none');
   }
+
+
 </script>
 
 <%= provide :title, "职位管理" %>
@@ -52,7 +55,7 @@
   <!-- 条件筛选 -->
   <div class="job-status">
     <!-- 蒙层 -->
-    <div class="job-maste"></div>
+    <div class="after-mask"></div>
     <ul>
       <li id="job_release" onclick="JobScreen('job_release','job-release')">发布中</li>
       <li id="job_end" onclick="JobScreen('job_end','job-end')">发布结束</li>
@@ -89,7 +92,7 @@
     <ul class="sort-content">
       <% @jobs.each do |j| %>
           <!-- 发布中 -->
-        <% if j.status == "release" %>
+        <% if j['status'] == "release" %>
           <li class="job-release">
             <a href="<%= employer_job_path(j.id) %>">
               <div class="">

@@ -8,7 +8,6 @@ class Employer::UsersController < ApplicationController
   end
 
   def index
-
   end
 
   def show
@@ -21,7 +20,7 @@ class Employer::UsersController < ApplicationController
   end
 
   def update
-    if @hospital.update hospital_params
+    if @hospital.update_columns hospital_params
       render js: "location.href = document.referrer;"
     else
       render json: {
@@ -33,6 +32,6 @@ class Employer::UsersController < ApplicationController
 
   private
     def hospital_params
-      params.require(:hospital1).permit(:name, :property, :scale, :industry, :region, :location, :introduction)
+      params.require(:hospital).permit(:name, :property, :scale, :industry, :region, :location, :introduction)
     end
 end

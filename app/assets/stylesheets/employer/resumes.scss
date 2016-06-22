@@ -1,64 +1,190 @@
 // Place all the styles related to the employer/resumes controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com
 
-// .resumes-index {
-//   .resume-content {
-//     position: relative;
-//     .resume-nav {
-//       width: 100%;
-//       height: 2rem;;
-//       background: green;
-//     }
-//   }
-// }
 
-#resume_content {
-  background: #fff;
-  width: 100%;
-  .resume-content {
-    width: 96%;
-    margin: 0 auto;
-    position: relative;
-    ul.resume-nav {
-      width: 100%;
-      height: 2rem;
-      list-style: none;
-      background: gray;
-      li {
-        float: left;
-        width: 33%;
-        cursor: pointer;
-      }
-    }
-    section {
-      clear: both;
-      background: yellow;
-    }
-    .order-job {
-      display: block;
-    }
-    .order-time {
-      display: none;
-    }
-    .order-resume {
-      display: none;
-    }
-  }
-  ul {
-    list-style: none;
-  }
-  .order-job-list {
+//简历管理首页
+.resumes-index {
+  #resume_content {
     width: 100%;
-    height: 900px;
+    min-height: 35rem;
     background: #fff;
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    ul {
-      list-style: none;
+    .resume-content {
+      width: 100%;
+      .resume-nav {
+        width: 100%;
+        height: 2rem;
+        line-height: 2rem;
+        list-style: none;
+        background: gray;
+        margin: 0;
+        li {
+          float: left;
+          cursor: pointer;
+          display: inline-block;
+          cursor: pointer;
+        }
+        li:nth-child(1) {
+          margin-left: 1rem;
+        }
+        li:nth-child(2) {
+          margin-left: 4rem;
+        }
+        li:nth-child(3) {
+          margin-left: 4rem;
+        }
+      }
+      .order-job {
+        width: 92%;
+        margin: 0 auto;
+        .order-job-show {
+          width: 100%;
+          list-style: none;
+          li.job-Arrang {
+            height: 3rem;
+            width: 100%;
+            .order-job-list {
+              width: 100%;
+              min-height: 35rem;
+              background: #fff;
+              display: none;
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 1000;
+              .sort-nav {
+                width: 100%;
+                height: 1.5rem;
+                background: gray;
+                line-height: 1.5rem;
+                position: relative;
+                .job-unhandle {
+                  width: 30%;
+                  height: inherit;
+                  float: left;
+                  text-align: center;
+                  .after-mask {
+                    position: absolute;
+                    top: 1.5rem;
+                    left: 0;
+                    width: 20.7rem;
+                    height: 33.5rem;
+                    background: #000;
+                    z-index: 10;
+                    opacity: 0.5;
+                    filter:alpha(opacity=50);
+                    display: none;
+                  }
+                  .handle-resume {
+                    position: absolute;
+                    top: 1.5rem;
+                    left: 0;
+                    width: 20.7rem;
+                    z-index: 11;
+                    background: #fff;
+                    display: none;
+                    ul {
+                      text-align: left;
+                    }
+                  }
+                }
+                .job-array {
+                  width: 30%;
+                  height: inherit;
+                  float: left;
+                  text-align: center;
+                  .after-mask {
+                    position: absolute;
+                    top: 1.5rem;
+                    left: 0;
+                    width: 20.7rem;
+                    height: 33.5rem;
+                    background: #000;
+                    z-index: 10;
+                    opacity: 0.5;
+                    filter:alpha(opacity=50);
+                    display: none;
+                  }
+                  .sort-resume {
+                    position: absolute;
+                    top: 1.5rem;
+                    left: 0;
+                    width: 20.7rem;
+                    z-index: 11;
+                    background: #fff;
+                    display: none;
+                    ul {
+                      text-align: left;
+                    }
+                  }
+                }
+              }
+              .job-pubilc {
+                width: 92%;
+                margin: 0 auto;
+                li {
+                  width: 100%;
+                  height: 2.5rem;
+                }
+              }
+              ul.job-pubilc+ul {
+                display: none;
+              }
+              .sort-resume-ct {
+                ul {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      .order-time {
+        display: none;
+        position: relative;
+        .sort-time-all {
+          width: 92%;
+          margin: 0 auto;
+          li {
+            height: 2.5rem;
+          }
+        }
+        .time-resume {
+          display: none;
+          position: relative;
+          .after-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20.7rem;
+            height: 33.5rem;
+            background: #000;
+            z-index: 10;
+            opacity: 0.5;
+            filter:alpha(opacity=50);
+          }
+          .time-date {
+            background: #fff;
+            width: 20.7rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 11;
+          }
+        }
+      }
+      .order-resume {
+        display: none;
+        ul {
+          width: 92%;
+          margin: 0 auto;
+          list-style: none;
+          li {
+            height: 2.5rem;
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }

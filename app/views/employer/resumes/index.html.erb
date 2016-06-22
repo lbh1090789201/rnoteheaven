@@ -1,4 +1,4 @@
-<% @jobs_by_position %>
+<%= provide :title, "简历管理" %>
 <div id="resume_content">
   <div class="resume-content">
     <ul class="resume-nav">
@@ -12,7 +12,7 @@
 
    <!-- 按时间查看 -->
    <section class="order-time">
-   <ul>
+   <ul class="sort-time-all">
      <% @apply_records.each do |a| %>
      <li>
        <%= a["show_name"] %>
@@ -25,8 +25,10 @@
      <% end %>
    </ul>
 
-   <div class="time-resume" style="display: none;">
-     <div class="">
+   <div class="time-resume">
+     <!-- 蒙板 -->
+     <div class="after-mask"></div>
+     <div class="time-date">
        <p>今天简历</p>
        <p>一周简历</p>
        <p>近三月简历</p>
@@ -49,7 +51,6 @@
        <% end %>
      </ul>
    </section>
-
 
 
   </div>
