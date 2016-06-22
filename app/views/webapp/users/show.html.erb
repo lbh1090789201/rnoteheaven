@@ -33,9 +33,9 @@
   <div class="resumes-info-list">
     <!-- <div class="mask"></div> -->
     <div class="content user-content">
-      <a class="resumes-list" href="/webapp/resumes/<%= current_user.id %>">
+      <a class="resumes-list" href="/webapp/resumes/<%= @resume.id %>">
           <%= image_tag "resumes.png",class:"icon1"%>
-          <span class="resume">我的简历</span><span class="user-complete">完整度 <%= @maturity %>%</span>
+          <span class="resume">我的简历</span><span class="user-complete">完整度 <%= @resume.maturity %>%</span>
       </a>
       <a class="resumes-list" href="<%= webapp_apply_records_path %>">
           <%= image_tag "apply_records.png",class:"icon2"%>

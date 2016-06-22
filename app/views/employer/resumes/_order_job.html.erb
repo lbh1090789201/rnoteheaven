@@ -47,7 +47,7 @@
             <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
             <span><%= s["created_at"] %></span>
             <%= image_tag "list-icon.png", width: "10", height: "10" %>
-            <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
+            <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
           </li>
         <% end %>
         <% end %>
@@ -64,7 +64,7 @@
             <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
             <span><%= s["created_at"] %></span>
             <%= image_tag "list-icon.png", width: "10", height: "10" %>
-            <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
+            <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
           </li>
         <% end %>
         <% end %>
@@ -81,7 +81,7 @@
                 <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
                 <span><%= s["created_at"] %></span>
                 <%= image_tag "list-icon.png", width: "10", height: "10" %>
-                <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
+                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
               </li>
             <% end %>
           </ul>
@@ -95,7 +95,7 @@
                 <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
                 <span><%= s["created_at"] %></span>
                 <%= image_tag "list-icon.png", width: "10", height: "10" %>
-                <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
+                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
               </li>
             <% end %>
           </ul>
@@ -109,7 +109,7 @@
                 <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
                 <span><%= s["created_at"] %></span>
                 <%= image_tag "list-icon.png", width: "10", height: "10" %>
-                <a href="/employer/resumes/<%= s["resume_id"]%>">跳转</a>
+                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
               </li>
             <% end %>
           </ul>

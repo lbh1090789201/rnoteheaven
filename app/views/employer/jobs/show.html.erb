@@ -81,7 +81,7 @@
 
 // 再发布按钮
   function release(obj) {
-    if(["pause", "end"].indexOf($(obj).attr("class")) != -1 ) {
+    if(["pause", "end", "saved"].indexOf($(obj).attr("class")) != -1 ) {
       $.ajax({
         url: '<%= api_employer_jobs_path %>',
         type: 'PATCH',

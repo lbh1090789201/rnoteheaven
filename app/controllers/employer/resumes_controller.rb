@@ -27,7 +27,7 @@ class Employer::ResumesController < ApplicationController
       @jobs_by_position.push Job.get_seekers(f.id)
     end
 
-    # puts '-----------' + @jobs_by_position.to_json.to_s
+    puts '-----------' + @jobs_by_position.to_json.to_s
   end
 
   def show
@@ -90,6 +90,7 @@ end
 #         "expect_job": "高级护士",
 #         "age": 0,
 #         "resume_id ": 49,
+#         "apply_record_id" :1,
 #         "from":"common",
 #         "apply_at": "2016-05-18T18:04:53.000Z"
 #     }, {
@@ -105,6 +106,7 @@ end
 #         "expect_job": "高级护士",
 #         "age": 3,
 #         "resume_id ": 50,
+#         "apply_record_id" :2,
 #         "from":"common",
 #         "apply_at": "2016-05-18T18:04:53.000Z"
 #     }]
