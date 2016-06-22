@@ -1,37 +1,105 @@
 // Place all the styles related to the employer/jobs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+// 职位管理首页
 .jobs-index {
-  .sort-content {
-    display: none;
-    li {
+  #job_content {
+    background: #fff;
+    min-height: 35rem;
+    .job-nav {
+      width: 100%;
+      height: 1.5rem;
+      background: gray;
+    }
+    .job-status {
+      width: 100%;
       display: none;
+      position: relative;
+      .after-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 33.5rem;
+        background: #000;
+        z-index: 10;
+        opacity: 0.5;
+        filter:alpha(opacity=50);
+      }
+      ul {
+        background: #fff;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 11;
+      }
+    }
+    .job-sort {
+      .show-all {
+        width: 92%;
+        margin: 0 auto;
+        list-style: none;
+        li {
+          background: #FFE4E1;
+        }
+      }
+      .sort-content {
+        display: none;
+        width: 92%;
+        margin: 0 auto;
+        list-style: none;
+        li {
+          background: #FFE4E1;
+          display: none;
+        }
+      }
     }
   }
 }
 
-.jobs-new{
-  //筛选列表样式
-  #job_basic {
-    position: relative;
+
+
+// 职位类型，工作经验等选择弹框的脚本样式
+.before-mask {
+  position: absolute;
+  width: 100%;
+  min-height: 50rem;
+  top: 2.32rem;
+  left: 0;
+  background: #F4F4F4;
+  z-index: 1000;
+  p {
+    width: 19.05rem;
+    height: 2.53rem;
+    line-height: 2.53rem;
+    font-size: 0.8rem;
+    margin: 0 auto;
+    border-bottom: 1px solid #c4c4c4;
+    text-indent: 4px;
+    cursor: pointer;
   }
-  .before-mask {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: #F4F4F4;
-    z-index: 1000;
-    p {
-      width: 19.05rem;
-      height: 2.53rem;
-      line-height: 2.53rem;
-      font-size: 0.8rem;
-      margin: 0 auto;
-      border-bottom: 1px solid #c4c4c4;
-      text-indent: 4px;
-      cursor: pointer;
+}
+
+// 城市脚本插件样式
+.IIInsomnia-hot-wrap {
+  position: absolute;
+  width: 100%;
+  height: 3rem;
+  top: 2.32rem;
+  left: 0;
+  // background: #F4F4F4;
+  background: green;
+  z-index: 1000;
+  ul {
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 1rem;
     }
   }
 }

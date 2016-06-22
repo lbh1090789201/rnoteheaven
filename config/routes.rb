@@ -90,7 +90,7 @@ Ryunkang::Application.routes.draw do
     #  医院端
      namespace :employer do
        resources :home, :only => :index
-       resources :users, :only => [:index, :show, :update]
+       resources :users, :only => [:index, :show, :update, :edit]
        resources :jobs do
          get 'preview', on: :member
        end
