@@ -18,6 +18,11 @@ class Job < ActiveRecord::Base
     where(filter) if name.present?
   }
 
+  # 按状态
+  scope :filter_job_status, -> (status) {
+    where(status: "#{status}") if status.present?
+  }
+
   # 按Hospital Name
   scope :filter_hospital_name, -> (name) {
     if name.present?

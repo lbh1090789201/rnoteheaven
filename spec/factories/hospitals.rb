@@ -5,7 +5,6 @@ FactoryGirl.define do
     name "深圳第一医院"
     scale "10~20人"
     property "社区医院"
-    location "深圳"
     industry "医疗"
     location "广东省深圳市宝安区第二人民医院"
     introduction "我是医院介绍"
