@@ -886,10 +886,11 @@ a:hover {
   }
   ul.apply_records {
     margin: 0 auto;
+    width: 17rem;
     height: 1.93rem;
     line-height: 1.93rem;
     color: $color-font !important;
-    display: inline-block;
+    display: block;
     margin-top: 0.42rem;
    li {
     list-style: none;
@@ -897,7 +898,7 @@ a:hover {
     width: 2.6rem;
     margin-right: 2.17rem;
     text-align: center;
-//  margin-top: -0.20rem;
+    margin-top: -0.25rem;
     color: $color-font;
     a {
       color: $color-font;
@@ -999,6 +1000,9 @@ a:hover {
         }
       }
     }
+  }
+  .nav-tab .tab {
+    border-bottom: none;
   }
 }
 .main.my_apply_records .nav .tab .tab-all .record-status .job-li {
@@ -1163,6 +1167,9 @@ a:hover {
               border: 1px solid #3f9e9d;
               border-radius:0.33rem;
             }
+            .view-count {
+              font-size: 0.58rem;
+            }
           }
           .right {
             img {
@@ -1222,7 +1229,7 @@ a:hover {
     }
   }
   .job-bg {
-    background-color: #f3f3f3;
+    background: #DCDCDC;
     height: 0.56rem;
   }
   .work-address {
