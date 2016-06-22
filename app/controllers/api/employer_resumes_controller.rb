@@ -7,7 +7,7 @@ class Api::EmployerResumesController < ApiController
   def update
     apply_record = ApplyRecord.find params[:apply_record_id]
 
-    if apply_record.update_attributes(resume_status: params[:resume_status])
+    if apply_record.update_columns(resume_status: params[:resume_status])
       render json: {
         success: true,
         info: "简历状态更新成功！",

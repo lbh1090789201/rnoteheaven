@@ -4,7 +4,6 @@ class Api::EmployerViewersController < ApiController
   protect_from_forgery :except => [:create]
 
   # 需要传入 user_id
-  # 待测试
   def create
     hospital = Employer.get_hospital current_user.id
 

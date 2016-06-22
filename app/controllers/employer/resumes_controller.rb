@@ -27,7 +27,7 @@ class Employer::ResumesController < ApplicationController
       @jobs_by_position.push Job.get_seekers(f.id)
     end
 
-    puts '-----------' + @jobs_by_position.to_json.to_s
+    # puts '-----------' + @jobs_by_position.to_json.to_s
   end
 
   def show

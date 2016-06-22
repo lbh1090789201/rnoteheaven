@@ -29,9 +29,10 @@ class Employer::JobsController < ApplicationController
 
   def create
     job = Job.new job_params
-    job.hospital_id = Employer.get_hospital(current_user.id).hospital_id
+    job.hospital_id = Employer.get_hospital(current_user.id).id
     job.release_at = Time.now
     job.refresh_at = Time.now
+    job.end_at = Time.now + job_params[:end_at].to_i.days
 
     if job.save
       Employer.vip_count current_user.id, "has_release"

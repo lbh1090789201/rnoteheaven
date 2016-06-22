@@ -8,7 +8,7 @@ class Job < ActiveRecord::Base
 
   # 按城市搜索
   scope :filter_location, -> (location) {
-    filter = "location like '%" + location + "%'" if location.present?
+    filter = "region like '%" + location + "%'" if location.present?
     where(filter) if location.present?
   }
 
@@ -39,7 +39,7 @@ class Job < ActiveRecord::Base
   # 获得求职者信息
   def self.get_seekers jid
     job = Job.select(:id, :name, :hospital_id).find(jid).as_json
-    apply_records = ApplyRecord.where(hospital_id: job["hospital_id"])
+    apply_records = ApplyRecord.where(job_id: job["id"])
     has_new = apply_records.where(view_at: nil).blank? ? false : true
     seekers = []
 

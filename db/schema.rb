@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.text     "job_demand",    limit: 65535
     t.string   "status",        limit: 191
     t.boolean  "is_update",                   default: false, null: false
+    t.boolean  "is_top",                      default: false, null: false
     t.datetime "release_at"
     t.datetime "refresh_at"
     t.datetime "end_at"
