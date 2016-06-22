@@ -74,15 +74,6 @@ class Job < ActiveRecord::Base
     end
   end
 
-  # 获得工作各种状态
-  # def self.get_state jid
-  #   job = Job.find jid
-  #   state = {}
-  #
-  #   state[:left_time] = left_refresh_time job.refresh_at
-  #
-  # end
-
   # 获得剩余更新时间
   def self.left_refresh_time t
     if Time.now.to_i < (t + 7.days).to_i

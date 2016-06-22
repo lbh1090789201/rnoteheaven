@@ -6,14 +6,14 @@ class Webapp::HomeController < ApplicationController
 
     #只搜索城市
     if filter[:city]
-      @jobs = Job.filter_location(filter[:city])
+      @jobs = Job.filter_location(filter[:city]).filter_job_status("release")
     else
-      @jobs = Job.filter_location("深圳")
+      @jobs = Job.filter_location("深圳").filter_job_status("release")
     end
 
     #搜索城市和医院
     if filter[:city] && filter[:search] && !filter[:search].blank?
-      job_careers = Job.filter_location(filter[:city]).filter_job_name(filter[:search])
+      job_careers = Job.filter_location(filter[:city]).filter_job_name(filter[:search]).filter_job_status("release")
       hospitals = Hospital.filter_location(filter[:city]).filter_hospital_name(filter[:search])
       @jobs = []
       if !job_careers.blank?

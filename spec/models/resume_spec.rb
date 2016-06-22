@@ -1,8 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe Resume, type: :model do
+
     it "has a valid factory" do
       expect(build(:resume)).to be_valid
+    end
+
+    it "test filter filter_maturity num" do
+      @resume = create(:resume, maturity: 80)
+      @resume2 = create(:resume, maturity: 70)
+
+      res = Resume.filter_maturity(70)
+
+      expect(res.length).to eq(1)
+    end
+
+    it "test filter_no_freeze filter_is_freeze" do
+      @resume = create(:resume, resume_freeze: true)
+      @resume2 = create(:resume)
+      @resume3 = create(:resume)
+
+      res = Resume.filter_no_freeze
+      res2= Resume.filter_is_freeze
+
+      expect(res.length).to eq(2)
+      expect(res2.length).to eq(1)
     end
 
     it "test refresh_left" do

@@ -5,6 +5,17 @@ class Resume < ActiveRecord::Base
   has_many :apply_records
   has_many :resume_views
 
+  # 按 完整度 筛选
+  scope :filter_maturity, -> (num){
+     where("maturity > ?", num) if num.present?
+   }
+
+  # 按 未冻结 筛选
+  scope :filter_no_freeze, -> { where(resume_freeze: false)  }
+
+  # 按 冻结 筛选
+  scope :filter_is_freeze, -> { where(resume_freeze: true)  }
+
   def self.refresh_left(rid)
     resume = Resume.find rid
 
