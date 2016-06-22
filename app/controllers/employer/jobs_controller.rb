@@ -17,6 +17,7 @@ class Employer::JobsController < ApplicationController
 
   def show
     @job = Job.find params[:id]
+    @job_sate = {id: @job.id, status: @job.status}
     @hospital = Employer.get_hospital current_user.id
     @seeker_count = ApplyRecord.where(job_id: @job.id).length
     @time_left = Job.time_left @job.id

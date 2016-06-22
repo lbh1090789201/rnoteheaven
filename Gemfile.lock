@@ -47,6 +47,10 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.6.1)
       execjs
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -212,6 +216,13 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.5.0)
+    react-rails (1.7.2)
+      babel-transpiler (>= 0.7.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      rails (>= 3.2)
+      tilt
     redis (3.3.0)
     remotipart (1.2.1)
     responders (2.2.0)
@@ -339,6 +350,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.4)
   rails_db_dump
+  react-rails (= 1.7.2)
   remotipart
   rolify
   rspec

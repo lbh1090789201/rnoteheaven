@@ -30,8 +30,8 @@ RSpec.describe Job, type: :model do
   describe 'test filters' do
     before :each do
       job = create :job, :hospital_id => @hospital1.id
-      job2 = create :job2, :hospital_id => @hospital2.id
-      job3 = create :job3, :hospital_id => @hospital1.id
+      job2 = create :job2, :hospital_id => @hospital2.id, :status => "saved"
+      job3 = create :job3, :hospital_id => @hospital1.id, :status => "release"
       job4 = create :job4, :hospital_id => @hospital2.id
     end
 
@@ -53,6 +53,10 @@ RSpec.describe Job, type: :model do
 
     it "test filter hospital name" do
       expect(Job.filter_hospital_name(@hospital1.name).size).to eq(2)
+    end
+
+    it "test filter status" do
+      expect(Job.filter_job_status("saved").size).to eq(2)
     end
 
   end

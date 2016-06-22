@@ -18,6 +18,11 @@ class Job < ActiveRecord::Base
     where(filter) if name.present?
   }
 
+  # 按状态
+  scope :filter_job_status, -> (status) {
+    where(status: "#{status}") if status.present?
+  }
+
   # 按Hospital Name
   scope :filter_hospital_name, -> (name) {
     if name.present?
@@ -68,15 +73,6 @@ class Job < ActiveRecord::Base
       return 0
     end
   end
-
-  # 获得工作各种状态
-  # def self.get_state jid
-  #   job = Job.find jid
-  #   state = {}
-  #
-  #   state[:left_time] = left_refresh_time job.refresh_at
-  #
-  # end
 
   # 获得剩余更新时间
   def self.left_refresh_time t
