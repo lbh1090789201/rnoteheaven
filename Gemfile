@@ -73,6 +73,8 @@ gem 'bootstrap-sass', '3.3.5.1'
 # SimpleForm http://railscasts.com/episodes/234-simple-form
 gem 'simple_form'
 
+gem 'react-rails', '1.7.2'
+
 #paginate
 # gem 'will_paginate'
 

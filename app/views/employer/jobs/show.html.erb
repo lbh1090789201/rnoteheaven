@@ -34,7 +34,20 @@
     </div>
   </section>
 
+</div>
 
+<!-- 待改写 -->
+<%# react_component 'PauseBtn', {job: @job_sate} %>
+<div class="pause-box">
+  <button type="button" id="postPause" class="<%= @job_sate[:status] %>" onclick="postPause(this)">暂停发布</button>
+</div>
+
+<div class="release-box">
+  <button type="button" id="release" class="<%= @job_sate[:status] %>" onclick="release(this)">再发布</button>
+</div>
+
+<div class="end-box">
+  <button type="button" id="end" class="<%= @job_sate[:status] %>" onclick="end(this)">结束发布</button>
 </div>
 
 <!-- <script type="text/javascript">
@@ -45,5 +58,69 @@
   }
 </script> -->
 
+<script type="text/javascript">
+// 暂停按钮
+  function postPause(obj) {
+    if($(obj).class == "release") {
+      $.ajax({
+        url: '<%= api_employer_jobs_path %>',
+        type: 'PATCH',
+        data: {"job_id":"<%= @job[:id] %>", "status": "pause"},
+        success: function() {
+          // $('#favorite_job > span').html('收藏职位');
+          $('#postPause').attr('class', 'pause');
+          $('#postPause').off();
+        },
+        error: function() {
+          alert('暂停失败。')
+        }
+      });
+    } else {
+      alert("当前无法暂停");
+    }
+  };
 
-<%# render "/layouts/employer_footer" %>
+// 再发布按钮
+  function release(obj) {
+    if(["pause", "end"].indexOf($(obj).attr("class")) != -1 ) {
+      $.ajax({
+        url: '<%= api_employer_jobs_path %>',
+        type: 'PATCH',
+        data: {"job_id":"<%= @job[:id] %>", "status": "release"},
+        success: function() {
+          $('#release').html('已发布');
+          $('#release').attr('class', 'release');
+          $('#postPause').attr('class', 'release');
+          $('#release').off();
+        },
+        error: function() {
+          alert('再次发布失败。')
+        }
+      });
+    } else {
+      alert("当前无法发布");
+    }
+  };
+
+  // 结束发布按钮
+    function end(obj) {
+      if(["release", "pause"].indexOf($(obj).attr("class")) != -1 ) {
+        $.ajax({
+          url: '<%= api_employer_jobs_path %>',
+          type: 'PATCH',
+          data: {"job_id":"<%= @job[:id] %>", "status": "end"},
+          success: function() {
+            $('#release').html('再发布');
+            $('#end').attr('class', 'end');
+            $('#release').attr('class', 'end');
+            $('#end').off();
+          },
+          error: function() {
+            alert('结束发布失败。')
+          }
+        });
+      } else {
+        alert("当前无法结束");
+      }
+    };
+</script>
