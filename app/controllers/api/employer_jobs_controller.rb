@@ -1,7 +1,7 @@
 class Api::EmployerJobsController < ApiController
   # before_action :require_employer!   # 登陆验证
   before_action :authenticate_user!   # 登陆验证
-  protect_from_forgery :except => [:update]
+  protect_from_forgery :except => [:update, :destroy]
 
   # 必传入 job_id，
   # 按需传入 refresh_at  刷新职位
@@ -25,6 +25,22 @@ class Api::EmployerJobsController < ApiController
       render json: {
         success: false,
         info: "工作更新失败。",
+      }, status: 403
+    end
+  end
+
+  def destroy
+    job = Job.find params[:id]
+
+    if job.destroy
+      render json: {
+        success: true,
+        info: "工作删除成功！",
+      }, status: 200
+    else
+      render json: {
+        success: false,
+        info: "工作删除失败。",
       }, status: 403
     end
   end
