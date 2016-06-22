@@ -1,6 +1,10 @@
 class Employer::JobsController < ApplicationController
-  before_action :require_employer!
   layout "employer"
+
+  before_action do
+    :require_employer!
+    @vip_status = Employer.get_status current_user.id
+  end
 
   def index
     @hospital = Employer.get_hospital current_user.id
@@ -25,6 +29,8 @@ class Employer::JobsController < ApplicationController
     job.refresh_at = Time.now
 
     if job.save
+      Employer.vip_count current_user.id, "has_release"
+
       render js: "location.href=document.referrer;"
     else
       render json: {

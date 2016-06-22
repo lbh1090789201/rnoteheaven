@@ -23,4 +23,11 @@ RSpec.describe Employer, type: :model do
 
     expect(res["may_receive"]).to eq(true)
   end
+
+  it "test vip_count uid, prop " do
+    res = Employer.vip_count @user.id, "has_view"
+    
+    expect(res).to eq(true)
+  end
+
 end

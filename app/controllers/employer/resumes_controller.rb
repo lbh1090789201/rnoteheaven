@@ -1,7 +1,10 @@
 class Employer::ResumesController < ApplicationController
-  before_action :require_employer!
-  # before_action :require_vip!
   layout "employer"
+
+  before_action do
+    :require_employer!
+    @vip_status = Employer.get_status current_user.id
+  end
 
   def index
     hospital = Employer.get_hospital current_user.id

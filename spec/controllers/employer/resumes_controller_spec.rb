@@ -26,6 +26,7 @@ RSpec.describe Employer::ResumesController, type: :controller do
       resume = create(:resume, user_id: @user.id)
 
       hospital = create :hospital
+      employer = create :employer, user_id: @user.id, hospital_id: hospital.id
       job = create(:job, hospital_id: hospital.id)
       expect_job = create(:expect_job, user_id: @user.id)
 

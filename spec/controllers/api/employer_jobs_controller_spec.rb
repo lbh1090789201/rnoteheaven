@@ -16,6 +16,7 @@ RSpec.describe Api::EmployerJobsController, type: :controller do
   # 页面测试开始
   describe 'employer refresh job refresh_at or status' do
     it "returns http success" do
+      employer = create(:employer, user_id: @user.id)
       patch :update, format: :json, refresh_at: Time.now, job_id: @job.id
       expect(response.status).to eq(200)
     end

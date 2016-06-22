@@ -15,6 +15,7 @@ class CreateJobs < ActiveRecord::Migration
 
       t.string :status #职位状态 1.saved 2.reviewing 3.release 4.pause 5.end 6.freeze 7.fail
       t.boolean :is_update, null: false, default: false #Admin 有更新
+      t.boolean :is_top, null: false, default: false #是否置顶
 
       t.datetime :release_at #发布时间
       t.datetime :refresh_at #刷新时间

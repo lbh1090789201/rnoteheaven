@@ -1,6 +1,10 @@
 class Employer::HomeController < ApplicationController
-  before_action :require_employer!
   layout "employer"
+
+  before_action do
+    :require_employer!
+    @vip_status = Employer.get_status current_user.id
+  end
 
   def index
 

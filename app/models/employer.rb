@@ -8,6 +8,7 @@ class Employer < ActiveRecord::Base
   # 获得 VIP 状态
   def self.get_status uid
     ee = Employer.find_by user_id: uid
+    ee[:has_receive] = ApplyRecord.where(hospital_id: ee.hospital_id).length
 
     vip_status = {}
     vip_status[:may_receive] = ee[:may_receive] > ee[:has_receive]
@@ -16,6 +17,18 @@ class Employer < ActiveRecord::Base
     vip_status[:may_view] = ee[:may_view] > ee[:has_view]
 
     return vip_status.as_json
+  end
+
+  # 改变 VIP 状态
+  def self.vip_count uid, prop
+    ee = Employer.find_by user_id: uid
+    ee[:"#{prop}"] += 1
+
+    if ee.save
+      return true
+    else
+      return false
+    end
   end
 
 end
