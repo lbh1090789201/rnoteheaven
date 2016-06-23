@@ -50,11 +50,11 @@
             border-bottom: 1px solid #cfcfcf;
             .job-h {
               font-size: 0.87rem;
-              float: left;
+              // float: left;
             }
             .job-reg {
               font-size: 0.7rem;
-              float: left;
+              // float: left;
               margin-left: 1.07rem;
               color: #9f9f9f;
             }
@@ -84,23 +84,26 @@
               background: #fff;
               display: none;
               position: absolute;
-              top: 0;
+              top: 2.27rem;;
               left: 0;
               z-index: 1000;
               .sort-nav {
                 width: 100%;
-                height: 1.5rem;
-                background: gray;
-                line-height: 1.5rem;
+                height: 1.93rem;
+                background: #f3f3f3;
+                line-height: 1.93rem;
                 position: relative;
                 .job-unhandle {
                   width: 30%;
                   height: inherit;
                   float: left;
                   text-align: center;
+                  span {
+                    font-size: 0.77rem;
+                  }
                   .after-mask {
                     position: absolute;
-                    top: 1.5rem;
+                    top: 1.95rem;
                     left: 0;
                     width: 20.7rem;
                     height: 33.5rem;
@@ -112,7 +115,7 @@
                   }
                   .handle-resume {
                     position: absolute;
-                    top: 1.5rem;
+                    top: 1.95rem;
                     left: 0;
                     width: 20.7rem;
                     z-index: 11;
@@ -120,17 +123,54 @@
                     display: none;
                     ul {
                       text-align: left;
+                      width: 89.53%;
+                      margin: 0 auto;
+                      list-style: none;
+                      li {
+                        width: 100%;
+                        height: 1.93rem;
+                        line-height: 1.93rem;
+                      }
+                      li:nth-child(1) {
+                        color: #3d9ea0;
+                      }
                     }
                   }
+                }
+                .job-unhandle::before {
+                  content: "";
+                  display: inline-block;
+                  width: 0.93rem;
+                  height: 0.8rem;
+                  background: url("../icon_3.png");
+                  background-size: 0.93rem 0.8rem;
+                  position: relative;
+                  top: 0.1rem;
+                  left: -0.28rem;
+                }
+                .job-array::before {
+                  content: "";
+                  display: inline-block;
+                  width: 0.93rem;
+                  height: 0.8rem;
+                  background: url("../icon_3.png");
+                  background-size: 0.93rem 0.8rem;
+                  position: relative;
+                  top: 0.1rem;
+                  left: -0.28rem;
                 }
                 .job-array {
                   width: 30%;
                   height: inherit;
                   float: left;
                   text-align: center;
+                  margin-left: 0.5rem;
+                  span {
+                    font-size: 0.77rem;
+                  }
                   .after-mask {
                     position: absolute;
-                    top: 1.5rem;
+                    top: 1.95rem;
                     left: 0;
                     width: 20.7rem;
                     height: 33.5rem;
@@ -142,7 +182,7 @@
                   }
                   .sort-resume {
                     position: absolute;
-                    top: 1.5rem;
+                    top: 1.95rem;
                     left: 0;
                     width: 20.7rem;
                     z-index: 11;
@@ -150,16 +190,30 @@
                     display: none;
                     ul {
                       text-align: left;
+                      width: 89.53%;
+                      margin: 0 auto;
+                      list-style: none;
+                      li {
+                        width: 100%;
+                        height: 1.93rem;
+                        line-height: 1.93rem;
+                      }
+                      li:nth-child(1) {
+                        color: #3d9ea0;
+                      }
                     }
                   }
                 }
               }
               .job-pubilc {
-                width: 92%;
+                width: 89.53%;
                 margin: 0 auto;
+                list-style: none;
                 li {
                   width: 100%;
-                  height: 2.5rem;
+                  height: 2.88rem;
+                  border-bottom: 1px solid #cfcfcf;
+                  span:nath-child(1) {}
                 }
               }
               ul.job-pubilc+ul {

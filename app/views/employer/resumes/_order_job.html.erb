@@ -13,7 +13,8 @@
     <!-- 按职位查看二级页面 -->
     <div class="order-job-list">
       <div class="sort-nav">
-          <div class="job-unhandle" href="javascript:void(0);" onclick="HandleResume(this)">待处理
+          <div class="job-unhandle" href="javascript:void(0);" onclick="HandleResume(this)">
+            <span>待处理</span>
             <!-- 蒙层 -->
             <div class="after-mask"></div>
             <!-- 待处理下选框 -->
@@ -24,7 +25,8 @@
               </ul>
             </div>
           </div>
-          <div class="job-array" href="javascript:void(0);" onclick="HandleResume(this)">按年龄排序
+          <div class="job-array" href="javascript:void(0);" onclick="HandleResume(this)">
+            <span>按年龄排序</span>
             <!-- 蒙层 -->
             <div class="after-mask"></div>
             <!-- 按条件排序 -->
@@ -43,8 +45,7 @@
         <% j["seekers"].each do |s| %>
         <% if s["resume_status"]=='筛选' %>
           <li>
-            <span>1111</span>
-            <%= s["show_name"] %>
+            <span><%= s["show_name"] %></span>
             <span><%= s["sex"] %></span>
             <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
             <span><%= s["created_at"] %></span>
