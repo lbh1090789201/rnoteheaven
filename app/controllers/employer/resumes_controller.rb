@@ -27,7 +27,6 @@ class Employer::ResumesController < ApplicationController
       @jobs_by_position.push Job.get_seekers(f.id)
     end
 
-    puts '-----------' + @jobs_by_position.to_json.to_s
   end
 
   def show
@@ -46,7 +45,6 @@ class Employer::ResumesController < ApplicationController
     @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
     @certificates = Certificate.where(:user_id => @user.id)
 
-    # puts "------"+@user.to_json.to_s
   end
 end
 

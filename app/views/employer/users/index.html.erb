@@ -1,12 +1,11 @@
 <%= provide :title, "我的" %>
 <div class="user-info">
-  <div class="">
-    <div class="">
-      <div class="" style="background:url('') no-repeat;">
-      </div>
+  <div class="top-box" style="background:url(<%= image_path "preview_bg.png" %>)">
+        <div class="avatar-box" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
+            <!-- 已修改样式 bobo -->
+        </div>
       <p><%= @hospital.name %></p>
       <p><%= @hospital.location %></p>
-    </div>
   </div>
 
   <ul>

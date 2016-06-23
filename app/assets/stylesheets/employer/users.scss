@@ -1,3 +1,21 @@
-// Place all the styles related to the employer/users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.users-index {
+  .top-box {
+    padding-top: 2.4rem;
+    height: 15.37rem;
+    text-align: center;
+    background-size: 100% 100%;
+  }
+
+  #avatar_box {
+    width: 3.75rem;
+    height: 3.75rem;
+    display: inline-block;
+    border-radius: 50%;
+    background-size: 3.75rem 3.75rem !important;
+  }
+  .box-avatar {
+    .edit_user {
+      display: none;
+    }
+  }
+}
