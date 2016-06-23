@@ -29,7 +29,7 @@ class Resume < ActiveRecord::Base
   def self.info(uid)
     resume = Resume.find_by user_id: uid
 
-    expect_job = ExpectJob.find_by(user_id: uid).name
+    expect_job = ExpectJob.find_by(user_id: uid).name if ExpectJob.find_by(user_id: uid)
     info = User.select(:id, :show_name, :sex, :highest_degree, :start_work_at, :birthday).find(uid).as_json
     info[:expect_job] = expect_job
     info[:age] = ((Time.now - info["birthday"])/1.year).to_i if info["birthday"]

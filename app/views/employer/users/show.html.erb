@@ -1,7 +1,7 @@
 <%= provide :title, "我购买的服务" %>
   <ul class="vip-list">
-    <li>可接受的简历<span><%= @employer.may_receive %>/500</span></li>
-    <li>可发布的职位数<span><%= @employer.may_release %>/100</span></li>
-    <li>可置顶的职位数<span><%= @employer.may_set_top %>/10</span></li>
-    <li>可查看的公开简历数<span><%= @employer.may_view %>/100</span></li>
+    <li>可接受的简历<span><span1><%= @employer.has_receive %></span1>/<%= @employer.may_receive %></span></li>
+    <li>可发布的职位数<span><span1><%= @employer.has_release %></span1>/<%= @employer.may_release %></span></li>
+    <li>可置顶的职位数<span><span1><%= @employer.has_set_top %></span1>/<%= @employer.may_set_top %></span></li>
+    <li>可查看的公开简历数<span><span1><%= @employer.has_view %></span1>/<%= @employer.may_view %></span></li>
   </ul>

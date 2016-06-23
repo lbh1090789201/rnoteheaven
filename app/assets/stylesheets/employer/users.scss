@@ -27,10 +27,14 @@
 
   .item {
     font-size: 0.9rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    // background-color: #fff;
 
     li {
       height: 3.03rem;
       line-height: 3.03rem;
+      list-style: none;
       border-bottom: 0.5px solid #c4c4c4;
       a {
         display: block;
@@ -39,11 +43,11 @@
     }
     .img-set {
       width: 0.93rem;
-      margin-left: 0.9rem;
+      // margin-left: 0.9rem;
       margin-right: 0.75rem;
     }
     .img-shop {
-      margin-left: 0.87rem;
+      margin-left: -0.03rem;
       margin-right: 0.67rem;
       width: 1.08rem;
     }
@@ -52,7 +56,7 @@
       width: 2.58rem;
     }
     .img-fair {
-      margin-left: 0.82rem;
+      margin-left: -0.08rem;
       margin-right: 0.48rem;
       width: 1.37rem;
     }
@@ -61,6 +65,9 @@
 
 
 .users-show {
+  .wrap {
+    background-color: #fff;
+  }
   .vip-list {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -75,6 +82,9 @@
       span {
         position: absolute;
         right: 0;
+      }
+      span1 {
+        color: #3f9e9f;
       }
     }
   }
