@@ -8,6 +8,8 @@ class Employer::UsersController < ApplicationController
   end
 
   def index
+    @user = current_user
+    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
   end
 
   def show
