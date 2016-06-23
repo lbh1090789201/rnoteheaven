@@ -1,21 +1,81 @@
 .users-index {
   .top-box {
+    box-sizing: border-box;
     padding-top: 2.4rem;
-    height: 15.37rem;
+    height: 12.83rem;
     text-align: center;
     background-size: 100% 100%;
+    color: #fff;
+
+    #avatar_box {
+      width: 3.75rem;
+      height: 3.75rem;
+      display: inline-block;
+      border-radius: 50%;
+      background-size: 3.75rem 3.75rem !important;
+    }
+    p:nth-of-type(1) {
+      margin-top: 1.3rem;
+      font-size: 0.87rem;
+      line-height: 0.87rem;
+    }
+    p:nth-of-type(2) {
+      margin-top: 0.65rem;
+      font-size: 0.7rem;
+    }
   }
 
-  #avatar_box {
-    width: 3.75rem;
-    height: 3.75rem;
-    display: inline-block;
-    border-radius: 50%;
-    background-size: 3.75rem 3.75rem !important;
+  .item {
+    font-size: 0.9rem;
+
+    li {
+      height: 3.03rem;
+      line-height: 3.03rem;
+      border-bottom: 0.5px solid #c4c4c4;
+      a {
+        display: block;
+        width: 100%;
+      }
+    }
+    .img-set {
+      width: 0.93rem;
+      margin-left: 0.9rem;
+      margin-right: 0.75rem;
+    }
+    .img-shop {
+      margin-left: 0.87rem;
+      margin-right: 0.67rem;
+      width: 1.08rem;
+    }
+    .img-vip {
+      margin-left: 0.9rem;
+      width: 2.58rem;
+    }
+    .img-fair {
+      margin-left: 0.82rem;
+      margin-right: 0.48rem;
+      width: 1.37rem;
+    }
   }
-  .box-avatar {
-    .edit_user {
-      display: none;
+}
+
+
+.users-show {
+  .vip-list {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.87rem;
+    li {
+      position: relative;
+      height: 3.12rem;
+      line-height: 3.12rem;
+      list-style: none;
+      border-bottom: 0.5px solid #dfdfdf;
+
+      span {
+        position: absolute;
+        right: 0;
+      }
     }
   }
 }
