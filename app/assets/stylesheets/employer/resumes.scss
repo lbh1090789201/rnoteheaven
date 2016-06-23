@@ -75,11 +75,11 @@
                 margin-left: 0.32rem;
               }
               .job-image{
-                img {
-                  width: 0.5rem;
-                  height: 0.5rem;
-                }
                 margin: 0 0.32rem 0 0.6rem;
+                img {
+                  width: 0.33rem;
+                  height: 0.48rem;
+                }
               }
             }
             .order-job-list {
@@ -97,6 +97,7 @@
                 background: #f3f3f3;
                 line-height: 1.93rem;
                 position: relative;
+                border-bottom: 1px solid #cfcfcf;
                 .job-unhandle {
                   width: 30%;
                   height: inherit;
@@ -224,25 +225,33 @@
                   width: 100%;
                   height: 100%;
                   span:nth-child(1) {
-                    font-size: 0.93rem;
+                    font-size: 0.87rem;
                   }
                   span:nth-child(2) {
                     font-size: 0.7rem;
                     color: #9e9e9e;
+                    margin: 0 1rem 0 0.88rem;
                   }
                   span:nth-child(3) {
                     font-size: 0.7rem;
                   }
-                  span:nth-child(4) {
-                    font-size: 0.7rem;
+                  .sort-right {
+                    display: inline-block;
                     float: right;
+                    span:nth-child(1) {
+                      font-size: 0.7rem;
+                    }
+                    img {
+                      width: 0.33rem;
+                      height: 0.48rem;
+                      // margin-top: 1.2rem;
+                      margin-right: 0.6rem;
+                      margin-left: 0.75rem;
+                    }
                   }
-                  img {
-                    width: 0.33rem;
-                    height: 0.48rem;
-                    float: right;
-                    margin-top: 1.2rem;
-                  }
+                }
+                a:hover {
+                  color: black;
                 }
               }
               .job-handle {
@@ -266,15 +275,53 @@
         display: none;
         position: relative;
         .sort-time-all {
-          width: 92%;
+          width: 89.53%;
           margin: 0 auto;
+          list-style: none;
           li {
-            height: 2.5rem;
+            height: 2.88rem;
+            line-height: 2.88rem;
+            border-bottom: 1px solid #cfcfcf;
+            a {
+              display: block;
+              width: 100%;
+              height: 100%;
+              span:nth-child(1) {
+                font-size: 0.87rem;
+              }
+              span:nth-child(2) {
+                font-size: 0.7rem;
+                color: #9e9e9e;
+                margin: 0 1rem 0 0.88rem;
+              }
+              span:nth-child(3) {
+                font-size: 0.7rem;
+              }
+              .sort-right {
+                display: inline-block;
+                float: right;
+                span:nth-child(1) {
+                  font-size: 0.7rem;
+                }
+                img {
+                  width: 0.33rem;
+                  height: 0.48rem;
+                  // margin-top: 1.2rem;
+                  margin-right: 0.6rem;
+                  margin-left: 0.75rem;
+                }
+              }
+            }
+            a:hover {
+              color: black;
+            }
           }
         }
         .time-resume {
           display: none;
-          position: relative;
+          position: absolute;
+          top: 0;
+          left: 0;
           .after-mask {
             position: absolute;
             top: 0;
@@ -293,20 +340,207 @@
             top: 0;
             left: 0;
             z-index: 11;
+            p {
+              width: 89.53%;
+              margin: 0 auto;
+              height: 1.93rem;
+              line-height: 1.93rem;
+            }
+            p:nth-child(1) {
+              color: #3d9ea0;
+            }
           }
         }
       }
       .order-resume {
         display: none;
         ul {
-          width: 92%;
+          width: 89.53%;
           margin: 0 auto;
           list-style: none;
           li {
-            height: 2.5rem;
+            height: 2.88rem;
+            line-height: 2.88rem;
             width: 100%;
+            border-bottom: 1px solid #cfcfcf;
+            a {
+              display: block;
+              width: 100%;
+              height: 100%;
+              span:nth-child(1) {
+                font-size: 0.87rem;
+              }
+              span:nth-child(2) {
+                font-size: 0.87rem;
+                margin: 0 1.02rem 0 2.58rem;
+              }
+              span:nth-child(3) {
+                font-size: 0.7rem;
+                color: #9e9e9e;
+              }
+              span:nth-child(4) {
+                font-size: 0.7rem;
+                margin: 0 1.72rem 0 1.25rem;
+              }
+              span:nth-child(5) {
+                font-size: 0.7rem;
+              }
+              img {
+                width: 0.33rem;
+                height: 0.48rem;
+                margin-top: 1.2rem;
+                margin-right: 0.6rem;
+                margin-left: 0.75rem;
+                float: right;
+              }
+            }
+            a:hover {
+              color: black;
+            }
           }
         }
+      }
+    }
+  }
+}
+
+
+.resumes-show {
+  .resume-content {
+    width: 100%;
+    background: #f4f4f4;
+    .resume-avatar {
+      height: 6.67rem;
+      width: 92.11%;
+      border: 1px solid #c3c3c3;
+      border-radius: 0.3rem;
+      position: relative;
+      margin: 0.43rem auto 0 auto;
+      .show-img {
+        width: 3.72rem;
+        height: 3.72rem;
+        border-radius: 50%;
+        // border: 1px solid #707070;
+        background: url('../avator.png');
+        background-size:  3.72rem 3.72rem;
+        margin: 1.37rem 0.68rem 0 1.32rem;
+        float: left;
+      }
+      .show-top {
+        width: 67%;
+        float: left;
+        p:nth-child(1) {
+          margin-top: 1.87rem;
+          font-size: 0.87rem;
+          margin-bottom: 0;
+          span:nth-of-type(1) {
+            margin-left: 2.98rem;
+          }
+          span:nth-of-type(2) {
+            font-size: 1.07rem;
+          }
+        }
+        p:nth-child(2) {
+          margin-top: 0.6rem;
+          font-size: 0.7rem;
+          color: #a5a5a5;
+          span:nth-of-type(1) {
+            margin-left: 1.1rem;
+            margin-right: 1.7rem;
+          }
+        }
+      }
+    }
+    .resumes-preview-public {
+      h1 {
+        display: none;
+      }
+      .resumes-preview-bg {
+        width: 92.11%;
+        border: 1px solid #c3c3c3;
+        border-radius: 0.3rem;
+        margin: 0.6rem auto 0 auto;
+        padding-left: 0.87rem;
+        padding-top: 1.17rem;
+        .resumes-base {
+          font-size: 0.8rem;
+          margin-bottom: 1.48rem;
+        }
+        tr {
+          display: block;
+          span {
+            margin-right: 1.68rem;
+          }
+        }
+        tr+tr {
+          display: block;
+          margin-top: 0.95rem;
+        }
+        td+td {
+          padding-left: 1.35rem;
+        }
+      }
+    }
+    .resume-show {
+      h1 {
+        display: block;
+        font-size: 0.7rem;
+        margin-top: 0.75rem;
+        margin-bottom: 0;
+        padding-left: 0.75rem;
+      }
+      .box {
+        border-left: 1px solid #3f9e9f;
+        padding-left: 0.7rem;
+        time {
+          font-size: 0.7rem;
+        }
+        h3 {
+          font-size: 0.8rem;
+          margin-top: 0.6rem;
+          margin-bottom: 0.6rem;
+        }
+        p {
+          font-size: 0.7rem;
+          color: #696969;
+          line-height: 1.1rem;
+          padding-bottom: 0.6rem;
+        }
+      }
+      .employer-style {
+        // padding-bottom: 1.4rem;
+        padding-top: 0.6rem;
+      }
+      #preview-expect {
+        width: 92.11%;
+        border: 1px solid #c3c3c3;
+        border-radius: 0.3rem;
+        margin: 0.6rem auto 0 auto;
+        padding-left: 0.87rem;
+        padding-top: 0.8rem;
+      }
+    }
+    #btn_action {
+      margin-top: 10.35rem;
+      height: 2.45rem;
+      width: 100%;
+      list-style: none;
+      text-align: center;
+      line-height: 2.45rem;
+      margin-bottom: 0;
+      font-size: 0.87rem;
+      li:nth-child(1) {
+        width: 50%;
+        height: inherit;
+        background-color: #fff;
+        float: left;
+      }
+      li:nth-child(2) {
+        width: 50%;
+        height: inherit;
+        background-color: #3f9e9f;
+        float: left;
+        color: #fff;
       }
     }
   }

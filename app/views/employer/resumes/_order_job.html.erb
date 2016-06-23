@@ -49,8 +49,10 @@
               <span><%= s["show_name"] %></span>
               <span><%= s["sex"] %></span>
               <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
-              <span><%= s["created_at"] %></span>
-              <%= image_tag "list-icon.png", width: "10", height: "10" %>
+              <div class="sort-right">
+                <span><%= s["created_at"] %></span>
+                <%= image_tag "list-icon.png" %>
+              </div>
             </a>
           </li>
         <% end %>
@@ -62,13 +64,15 @@
         <% j["seekers"].each do |s| %>
         <% if s["resume_status"]=='不合适'|| s["resume_status"]=="面试"%>
           <li>
-            <span>2222</span>
-            <%= s["show_name"] %>
-            <span><%= s["sex"] %></span>
-            <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
-            <span><%= s["created_at"] %></span>
-            <%= image_tag "list-icon.png", width: "10", height: "10" %>
-            <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
+            <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
+              <span><%= s["show_name"] %></span>
+              <span><%= s["sex"] %></span>
+              <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
+              <div class="sort-right">
+                <span><%= s["created_at"] %></span>
+                <%= image_tag "list-icon.png" %>
+              </div>
+            </a>
           </li>
         <% end %>
         <% end %>
@@ -79,13 +83,15 @@
           <ul class="job-pubilc">
             <% j["seekers"].each do |s| %>
               <li>
-                <span>3333</span>
-                <%= s["show_name"] %>
-                <span><%= s["sex"] %></span>
-                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
-                <span><%= s["created_at"] %></span>
-                <%= image_tag "list-icon.png", width: "10", height: "10" %>
-                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
+                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
+                  <span><%= s["show_name"] %></span>
+                  <span><%= s["sex"] %></span>
+                  <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
+                  <div class="sort-right">
+                    <span><%= s["created_at"] %></span>
+                    <%= image_tag "list-icon.png" %>
+                  </div>
+                </a>
               </li>
             <% end %>
           </ul>
@@ -93,13 +99,15 @@
           <ul class="job-pubilc">
             <% j["seekers"].each do |s| %>
               <li>
-                <span>4444</span>
-                <%= s["show_name"] %>
-                <span><%= s["sex"] %></span>
-                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
-                <span><%= s["created_at"] %></span>
-                <%= image_tag "list-icon.png", width: "10", height: "10" %>
-                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
+                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
+                  <span><%= s["show_name"] %></span>
+                  <span><%= s["sex"] %></span>
+                  <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
+                  <div class="sort-right">
+                    <span><%= s["created_at"] %></span>
+                    <%= image_tag "list-icon.png" %>
+                  </div>
+                </a>
               </li>
             <% end %>
           </ul>
@@ -107,13 +115,15 @@
           <ul class="job-pubilc">
             <% j["seekers"].each do |s| %>
               <li>
-                <span>5555</span>
-                <%= s["show_name"] %>
-                <span><%= s["sex"] %></span>
-                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
-                <span><%= s["created_at"] %></span>
-                <%= image_tag "list-icon.png", width: "10", height: "10" %>
-                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
+                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
+                  <span><%= s["show_name"] %></span>
+                  <span><%= s["sex"] %></span>
+                  <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
+                  <div class="sort-right">
+                    <span><%= s["created_at"] %></span>
+                    <%= image_tag "list-icon.png" %>
+                  </div>
+                </a>
               </li>
             <% end %>
           </ul>
@@ -125,31 +135,37 @@
 </ul>
 </section>
 <script type="text/javascript">
-// 职位查看二级页面展示
-function JobListShow(obj){
-  $(obj).children('div').css('display','block');
-}
+    // 职位查看二级页面展示
+    function JobListShow(obj){
+      var jobname = $(obj).children("span:eq(0)").text();
+      headertitle = $("header>div>div").text();
+      // console.log(headertitle);
+      $("header>div>div").text(jobname);
+      var div = $('<div></div>');
+      div.attr('onclick','HideList(this)');
+      div.css({'width':'2rem','height':'2rem','position':'absolute','top':'0.2rem','left':'0.2rem'});
+      $('header>div').append(div);
+      $(obj).children('div.order-job-list').css('display','block');
 
-//职位查看二级页面筛选or排序
-  function HandleResume(obj){
-    $(obj).children().toggle();
-  }
+    }
+    function HideList(obj){
+      $(obj).remove();
+      $("header>div>div").text(headertitle);
+      $('div.order-job-list').css('display','none');
+    }
 
-  //展示不同的类型
+    //职位查看二级页面筛选or排序
+    function HandleResume(obj){
+      $(obj).children().toggle();
+    }
 
-  // function sortResume(obj){
-  //   var index=$(".handle-resume>ul>li").index();
-  //   console.log(index);
-  //   $(obj).parent().parent().parent().siblings('ul').eq(index).show();
-  // }
+    //展示不同的类型
     $(".handle-resume>ul>li").bind('mouseover',function(){
-        y = $(this).index();
-
+      y = $(this).index();
     })
-  function sortResume(obj){
-    console.log(y);
-    var ul = $(obj).parent().parent().parent().parent().siblings('ul');
-    ul.eq(y).show().siblings('ul').hide();
- }
+    function sortResume(obj){
+      var ul = $(obj).parent().parent().parent().parent().siblings('ul');
+      ul.eq(y).show().siblings('ul').hide();
+    }
 
 </script>

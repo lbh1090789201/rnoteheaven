@@ -15,12 +15,15 @@
    <ul class="sort-time-all">
      <% @apply_records.each do |a| %>
      <li>
-       <%= a["show_name"] %>
-       <span><%= a["sex"] %></span>
-       <span><%= a["age"] %>岁/<%= a["start_work_at"] %>年/<%= a["hightest"] %></span>
-       <span><%= a["created_at"] %></span>
-       <%= image_tag "list-icon.png", width: "10", height: "10" %>
-       <a href="/employer/resumes/<%= a["resume_id"]%>?job_id=<%= a["job_id"] %>">跳转</a>
+        <a href="/employer/resumes/<%= a["resume_id"]%>?job_id=<%= a["job_id"] %>">
+           <span><%= a["show_name"] %></span>
+           <span><%= a["sex"] %></span>
+           <span><%= a["age"] %>岁/<%= a["start_work_at"] %>/<%= a["hightest"] %></span>
+           <div class="sort-right">
+             <span><%= a["created_at"] %></span>
+             <%= image_tag "list-icon.png" %>
+           </div>
+        </a>
      </li>
      <% end %>
    </ul>
@@ -41,12 +44,13 @@
      <ul>
        <% @public_seekers.each do |p| %>
        <li>
-         <%= p["expect_job"] %>
-         <span><%= p["show_name"] %></span>
-         <span><%= p["sex"] %></span>
-         <span><%= p["age"] %>岁/<%= p["start_work_at"] %>年/<%= p["hightest"] %></span>
-         <%= image_tag "list-icon.png", width: "10", height: "10" %>
-         <a href="/employer/resumes/<%= p["resume_id"]%>">跳转</a>
+         <a href="/employer/resumes/<%= p["resume_id"]%> ">
+             <span><%= p["expect_job"] %></span>
+             <span><%= p["show_name"] %></span>
+             <span><%= p["sex"] %></span>
+             <span><%= p["age"] %>岁/<%= p["start_work_at"] %>/<%= p["hightest"] %></span>
+             <%= image_tag "list-icon.png" %>
+         </a>
        </li>
        <% end %>
      </ul>
