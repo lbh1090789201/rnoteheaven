@@ -1,4 +1,7 @@
-
+<script type="text/javascript">
+console.log(status);
+  // if()
+</script>
 <% if @user %>
 <div class="resume-content">
   <div class="resume-avatar">
@@ -13,11 +16,12 @@
   <%= render "/webapp/resumes/preview_content" %>
 
   <!-- 按钮 -->
-  
-  <ul id="btn_action">
-    <li onClick="IsImproper(this)">不合适</li>
-    <li onClick="IsInterview(this)">通知面试</li>
-  </ul>
+  <% if params[:job_id] %>
+    <ul id="btn_action">
+      <li onClick="IsImproper(this)">不合适</li>
+      <li onClick="IsInterview(this)">通知面试</li>
+    </ul>
+  <% end %>
 </div>
 
 <script type="text/javascript">
