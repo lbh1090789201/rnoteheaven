@@ -45,26 +45,27 @@
         <% j["seekers"].each do |s| %>
         <% if s["resume_status"]=='筛选' %>
           <li>
-            <span><%= s["show_name"] %></span>
-            <span><%= s["sex"] %></span>
-            <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
-            <span><%= s["created_at"] %></span>
-            <%= image_tag "list-icon.png", width: "10", height: "10" %>
-            <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
+            <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
+              <span><%= s["show_name"] %></span>
+              <span><%= s["sex"] %></span>
+              <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
+              <span><%= s["created_at"] %></span>
+              <%= image_tag "list-icon.png", width: "10", height: "10" %>
+            </a>
           </li>
         <% end %>
         <% end %>
       </ul>
 
       <!-- 按已处理排序 -->
-      <ul class="job-pubilc">
+      <ul class="job-pubilc job-handle">
         <% j["seekers"].each do |s| %>
         <% if s["resume_status"]=='不合适'|| s["resume_status"]=="面试"%>
           <li>
             <span>2222</span>
             <%= s["show_name"] %>
             <span><%= s["sex"] %></span>
-            <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
+            <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
             <span><%= s["created_at"] %></span>
             <%= image_tag "list-icon.png", width: "10", height: "10" %>
             <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
@@ -81,7 +82,7 @@
                 <span>3333</span>
                 <%= s["show_name"] %>
                 <span><%= s["sex"] %></span>
-                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
+                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
                 <span><%= s["created_at"] %></span>
                 <%= image_tag "list-icon.png", width: "10", height: "10" %>
                 <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
@@ -95,7 +96,7 @@
                 <span>4444</span>
                 <%= s["show_name"] %>
                 <span><%= s["sex"] %></span>
-                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
+                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
                 <span><%= s["created_at"] %></span>
                 <%= image_tag "list-icon.png", width: "10", height: "10" %>
                 <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
@@ -109,7 +110,7 @@
                 <span>5555</span>
                 <%= s["show_name"] %>
                 <span><%= s["sex"] %></span>
-                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>年/<%= s["hightest"] %></span>
+                <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
                 <span><%= s["created_at"] %></span>
                 <%= image_tag "list-icon.png", width: "10", height: "10" %>
                 <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">跳转</a>
