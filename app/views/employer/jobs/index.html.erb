@@ -46,11 +46,12 @@
 </script>
 
 <%= provide :title, "职位管理" %>
-<%= provide :content, "+" %>
+<%= provide :content,  image_tag('add-white.png') %>
 <%= provide :link, "/employer/jobs/new" %>
+
 <div id="job_content">
   <div class="job-nav">
-    <span>全部</span><%= image_tag "icon_1.png", width: "20", height: "20" %>
+    <span><%= image_tag "down2.png" %>全部</span><%= image_tag "refresh.png", class: "refresh" %>
   </div>
   <!-- 条件筛选 -->
   <div class="job-status">
@@ -74,15 +75,16 @@
         <% @jobs.each do |j| %>
           <li class="job-release">
             <a href="<%= employer_job_path(j.id) %>">
-              <div class="">
+              <div class="name-box">
                 <h4><%= j.name %></h4>
-                <span><%= j.location %></span>
-                <p><%= j.release_at %>至<%= j.end_at %></p>
+                <span><%= j.region %></span>
+                <p><%= j.release_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at.strftime("%Y-%m-%d") %></p>
               </div>
-              <span>
-                <script>getStatus("<%= j.status %>");</script>
-              </span>
-              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+
+              <div class="status-box">
+                <span><script>getStatus("<%= j.status %>");</script></span>
+                <%= image_tag "list-icon.png",width: "10", height: "15" %>
+              </div>
             </a>
           </li>
         <% end %>
@@ -95,15 +97,16 @@
         <% if j['status'] == "release" %>
           <li class="job-release">
             <a href="<%= employer_job_path(j.id) %>">
-              <div class="">
+              <div class="name-box">
                 <h4><%= j.name %></h4>
-                <span><%= j.location %></span>
-                <p><%= j.release_at %>至<%= j.end_at %></p>
+                <span><%= j.region %></span>
+                <p><%= j.release_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at.strftime("%Y-%m-%d") %></p>
               </div>
-              <span>
-                <script>getStatus("<%= j.status %>");</script>
-              </span>
-              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+
+              <div class="status-box">
+                <span><script>getStatus("<%= j.status %>");</script></span>
+                <%= image_tag "list-icon.png",width: "10", height: "15" %>
+              </div>
             </a>
           </li>
         <% end %>
@@ -112,15 +115,16 @@
         <% if j.status == "reviewing" %>
           <li class="job-reviewing">
             <a href="<%= employer_job_path(j.id) %>">
-              <div class="">
+              <div class="name-box">
                 <h4><%= j.name %></h4>
-                <span><%= j.location %></span>
-                <p><%= j.release_at %>至<%= j.end_at %></p>
+                <span><%= j.region %></span>
+                <p><%= j.release_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at.strftime("%Y-%m-%d") %></p>
               </div>
-              <span>
-                <script>getStatus("<%= j.status %>");</script>
-              </span>
-              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+
+              <div class="status-box">
+                <span><script>getStatus("<%= j.status %>");</script></span>
+                <%= image_tag "list-icon.png",width: "10", height: "15" %>
+              </div>
             </a>
           </li>
         <% end %>
@@ -129,15 +133,16 @@
         <% if j.status == "freeze" %>
           <li class="job-freeze">
             <a href="<%= employer_job_path(j.id) %>">
-              <div class="">
+              <div class="name-box">
                 <h4><%= j.name %></h4>
-                <span><%= j.location %></span>
-                <p><%= j.release_at %>至<%= j.end_at %></p>
+                <span><%= j.region %></span>
+                <p><%= j.release_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at.strftime("%Y-%m-%d") %></p>
               </div>
-              <span>
-                <script>getStatus("<%= j.status %>");</script>
-              </span>
-              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+
+              <div class="status-box">
+                <span><script>getStatus("<%= j.status %>");</script></span>
+                <%= image_tag "list-icon.png",width: "10", height: "15" %>
+              </div>
             </a>
           </li>
         <% end %>
@@ -146,15 +151,16 @@
         <% if j.status == "pause" %>
           <li class="job-pause">
             <a href="<%= employer_job_path(j.id) %>">
-              <div class="">
+              <div class="name-box">
                 <h4><%= j.name %></h4>
-                <span><%= j.location %></span>
-                <p><%= j.release_at %>至<%= j.end_at %></p>
+                <span><%= j.region %></span>
+                <p><%= j.release_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at.strftime("%Y-%m-%d") %></p>
               </div>
-              <span>
-                <script>getStatus("<%= j.status %>");</script>
-              </span>
-              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+
+              <div class="status-box">
+                <span><script>getStatus("<%= j.status %>");</script></span>
+                <%= image_tag "list-icon.png",width: "10", height: "15" %>
+              </div>
             </a>
           </li>
         <% end %>
@@ -163,15 +169,16 @@
         <% if j.status == "end" %>
           <li class="job-end">
             <a href="<%= employer_job_path(j.id) %>">
-              <div class="">
+              <div class="name-box">
                 <h4><%= j.name %></h4>
-                <span><%= j.location %></span>
-                <p><%= j.release_at %>至<%= j.end_at %></p>
+                <span><%= j.region %></span>
+                <p><%= j.release_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at.strftime("%Y-%m-%d") %></p>
               </div>
-              <span>
-                <script>getStatus("<%= j.status %>");</script>
-              </span>
-              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+
+              <div class="status-box">
+                <span><script>getStatus("<%= j.status %>");</script></span>
+                <%= image_tag "list-icon.png",width: "10", height: "15" %>
+              </div>
             </a>
           </li>
         <% end %>
@@ -180,15 +187,16 @@
         <% if j.status == "saved" %>
           <li class="job-saved">
             <a href="<%= employer_job_path(j.id) %>">
-              <div class="">
+              <div class="name-box">
                 <h4><%= j.name %></h4>
-                <span><%= j.location %></span>
-                <p><%= j.release_at %>至<%= j.end_at %></p>
+                <span><%= j.region %></span>
+                <p><%= j.release_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at.strftime("%Y-%m-%d") %></p>
               </div>
-              <span>
-                <script>getStatus("<%= j.status %>");</script>
-              </span>
-              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+
+              <div class="status-box">
+                <span><script>getStatus("<%= j.status %>");</script></span>
+                <%= image_tag "list-icon.png",width: "10", height: "15" %>
+              </div>
             </a>
           </li>
         <% end %>
@@ -197,15 +205,16 @@
         <% if j.status == "fail" %>
           <li class="job-fail">
             <a href="<%= employer_job_path(j.id) %>">
-              <div class="">
+              <div class="name-box">
                 <h4><%= j.name %></h4>
-                <span><%= j.location %></span>
-                <p><%= j.release_at %>至<%= j.end_at %></p>
+                <span><%= j.region %></span>
+                <p><%= j.release_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at.strftime("%Y-%m-%d") %></p>
               </div>
-              <span>
-                <script>getStatus("<%= j.status %>");</script>
-              </span>
-              <%= image_tag "list-icon.png",width: "10", height: "15" %>
+
+              <div class="status-box">
+                <span><script>getStatus("<%= j.status %>");</script></span>
+                <%= image_tag "list-icon.png",width: "10", height: "15" %>
+              </div>
             </a>
           </li>
         <% end %>

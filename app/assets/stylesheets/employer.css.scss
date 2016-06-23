@@ -1,51 +1,11 @@
 /*
  * Overwritten by RailsBricks
+ *= require_self
  *= require employer/home
  *= require employer/jobs
  *= require employer/resumes
  *= require employer/users
- *= require_self
  */
- /* 变量区 开始 */
- $light-gray: #f4f4f4;
- $font-gray: #a5a5a5;
- $beauty-blue: #3a9da0;
- @mixin box-shadow($shadow) {
-   -webkit-box-shadow: $shadow;
-      -moz-box-shadow: $shadow;
-       -ms-box-shadow: $shadow;
-           box-shadow: $shadow;
- }
- @mixin link-colors($normal: #333, $hover: $normal, $visited: $normal) {
-     color: $normal;
-     &:hover,&:visited,&:link {
-         color: $hover;
-         text-decoration: none;
-     }
- }
- @mixin border($color) {
-   border-bottom:1px solid $color;
- }
- @mixin button() {
-     display: inline-block;
-     margin-left: 0.1rem;
-     border-radius: 0.1rem;
-     box-shadow: none;
-     border-right: 1px solid #fff;
-     border-bottom: 1px solid #fff;
-     width:4.32rem;
-     height: 1.73rem;
-     background-color: #fff;
-     color: #a1a1a1;
-     &:last-child {
-       margin-top: 0.37rem;
-     }
-     &:nth-of-child(5) {
-       margin-top: 0.37rem;
-     }
- }
-
- /* 变量区 结束 */
 
  /*通用样式开始*/
  * {

@@ -1,24 +1,46 @@
-// Place all the styles related to the employer/jobs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-
+ @import "mixin.css.scss";
 
 // 职位管理首页
 .jobs-index {
+  .top {
+    .right {
+      width: 0.75rem;
+    }
+  }
+
   #job_content {
     background: #fff;
     min-height: 35rem;
     .job-nav {
       width: 100%;
-      height: 1.5rem;
-      background: gray;
+      height: 2.17rem;
+      line-height: 2.17rem;
+      background: #f4f4f4;
+      span {
+        margin-left: 1rem;
+        padding: 0.27rem 0.5rem 0.27rem 0.5rem;
+        border: 1px solid #ffa200;
+        border-radius: 3px;
+        // line-height: 2rem;
+        color: #ffa200;
+
+        img {
+          width: 0.55rem;
+          margin-right: 0.5rem;
+        }
+      }
+      .refresh {
+        position: absolute;
+        margin-top: 0.5rem;
+        right: 1rem;
+        width: 1rem;
+      }
     }
     .job-status {
       width: 100%;
       display: none;
       position: relative;
+
       .after-mask {
         position: absolute;
         top: 0;
@@ -37,15 +59,69 @@
         top: 0;
         left: 0;
         z-index: 11;
+        font-size: 0.6rem;
+        li {
+          padding-left: 1.08rem;
+          height: 2rem;
+          line-height: 2rem;
+        }
       }
     }
     .job-sort {
-      .show-all {
+      .show-all,
+      .sort-content {
         width: 92%;
         margin: 0 auto;
         list-style: none;
         li {
-          background: #FFE4E1;
+          background: #fff;
+          border-bottom: 0.5px solid $font-gray2;
+
+          .name-box {
+            span {
+              margin-left: 0.7rem;
+              color: $font-gray2;
+              font-size: 0.7rem;
+            }
+            p {
+              margin-top: 0.88rem;
+              margin-bottom: 0.72rem;
+              color: $font-gray2;
+              font-size: 0.7rem;
+            }
+          }
+
+          .status-box {
+            position: absolute;
+            right: 1rem;
+            margin-top: -2.7rem;
+            span {
+            margin-right: 0.88rem;
+            font-size: 0.83rem;
+            color: $main-green;
+            }
+            img {
+              height: 0.55rem;
+              margin-top: -0.4rem;
+            }
+          }
+
+          h4 {
+            display: inline-block;
+            margin-top: 0.92rem;
+            margin-bottom: 0;
+            font-size: 0.9rem;
+          }
+        }
+
+        // 审核中,冻结中颜色置灰
+        .freeze,
+        .reviewing {
+          .status-box {
+            span {
+              color: $font-gray2;
+            }
+          }
         }
       }
       .sort-content {
@@ -54,7 +130,6 @@
         margin: 0 auto;
         list-style: none;
         li {
-          background: #FFE4E1;
           display: none;
         }
       }
