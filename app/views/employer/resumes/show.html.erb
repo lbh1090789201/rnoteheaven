@@ -1,14 +1,15 @@
-<script type="text/javascript">
-console.log(status);
-  // if()
-</script>
-<% if @user %>
+<%# provide :title, getTitle() %>
 <div class="resume-content">
+  <% if @user && @apply_record %>
   <div class="resume-avatar">
     <div class="show-img"></div>
     <div class="show-top">
-      <p><%= @user.username %><span>应聘：</span><span>儿科护士</span></p>
-      <p><%= @user.sex %><span>21岁</span><span><%= @user.start_work_at %>工作经验</span></p>
+      <p><%= @user.username %><span>应聘：</span><span><%= @apply_record.job_name %></span></p>
+      <p>
+        <%= @user.sex %>
+        <span><%= @apply_record.age %>岁</span>
+        <span><%= @user.start_work_at %>工作经验</span>
+      </p>
     </div>
   </div>
 <% end %>
@@ -16,17 +17,48 @@ console.log(status);
   <%= render "/webapp/resumes/preview_content" %>
 
   <!-- 按钮 -->
-  <% if params[:job_id] %>
+  <% if @apply_record && @apply_record.resume_status == "筛选" %>
     <ul id="btn_action">
       <li onClick="IsImproper(this)">不合适</li>
       <li onClick="IsInterview(this)">通知面试</li>
     </ul>
+    <% elsif @apply_record && @apply_record.resume_status == "不合适" %>
+      <ul id="btn_unright">
+        <li>不合适</li>
+      </ul>
+      <% elsif @apply_record && @apply_record.resume_status == "面试" %>
+        <ul id="btn_interview">
+          <li>已通知面试</li>
+        </ul>
   <% end %>
+</div>
+<!-- 不合适弹窗 -->
+<div id="hide_btn">
+  <ul>
+    <li>
+      <p>确认 不合适</p>
+      <p>是否确认 <%= @user.username %> 不合适此职位</p>
+    </li>
+    <li onclick="MakeSure(this)">确认</li>
+    <li onclick="CallOff(this)">取消</li>
+  </ul>
 </div>
 
 <script type="text/javascript">
-    // 不合适按钮
+    // 不合适弹窗按钮
+    var height = $('#hide_btn').height();
+    height  =height+ 60;
+    $('#hide_btn').height(height);
+
     function IsImproper(){
+      $('#hide_btn').css('display','block');
+    }
+    function CallOff(){
+      $('#hide_btn').css('display','none');
+    }
+
+    // 不合适按钮
+    function MakeSure(){
       $.ajax({
         url: "<%= api_employer_resumes_path %>",
         type: "PATCH",
@@ -34,12 +66,13 @@ console.log(status);
         dataType: "json",
         success: function(){
           $("#btn_action>li").eq(1).css('display','none')
-                                   .siblings().css({'width':'100%','background':'yellow'});
+                                   .siblings().css({'width':'100%','background':'gray'});
         },
         error: function(){
           alert("操作失败");
         }
       });
+      $('#hide_btn').css('display','none');
     }
 
     // 通知面试按钮
@@ -50,7 +83,7 @@ console.log(status);
         data: {apply_record_id: "<%=  @apply_record.id if @apply_record %>",resume_status: "面试"},
         success: function(){
           $("#btn_action>li").eq(0).css('display','none')
-                                   .siblings().css({'width':'100%','background':'yellow'});
+                                   .siblings().css({'width':'100%','background':'#3f9e9f'});
         },
         error: function(){
           alert("操作失败");
