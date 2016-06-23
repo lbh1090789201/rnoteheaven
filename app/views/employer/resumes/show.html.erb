@@ -23,7 +23,7 @@ function IsImproper(){
   $.ajax({
     url: "<%= api_employer_resumes_path %>",
     type: "PATCH",
-    data: {apply_record_id: "<%= params[:id] %>",resume_status: "不合适"},
+    data: {apply_record_id: "<%= @apply_record.id if @apply_record %>",resume_status: "不合适"},
     dataType: "json",
     success: function(){
       $("#btn_action>li").eq(1).css('display','none')
@@ -40,7 +40,7 @@ function IsInterview(){
   $.ajax({
     url: "<%= api_employer_resumes_path %>",
     type: "PATCH",
-    data: {apply_record_id: "<%= params[:id] %>",resume_status: "面试"},
+    data: {apply_record_id: "<%=  @apply_record.id if @apply_record %>",resume_status: "面试"},
     success: function(){
       $("#btn_action>li").eq(0).css('display','none')
                                .siblings().css({'width':'100%','background':'yellow'});

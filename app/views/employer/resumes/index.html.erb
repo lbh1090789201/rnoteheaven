@@ -20,7 +20,7 @@
        <span><%= a["age"] %>岁/<%= a["start_work_at"] %>年/<%= a["hightest"] %></span>
        <span><%= a["created_at"] %></span>
        <%= image_tag "list-icon.png", width: "10", height: "10" %>
-       <a href="/employer/resumes/<%= a["resume_id"]%>">跳转</a>
+       <a href="/employer/resumes/<%= a["resume_id"]%>?job_id=<%= a["job_id"] %>">跳转</a>
      </li>
      <% end %>
    </ul>

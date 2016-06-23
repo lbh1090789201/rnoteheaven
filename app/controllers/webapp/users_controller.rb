@@ -84,8 +84,7 @@ class Webapp::UsersController < ApplicationController
   def show
     @user = current_user
     @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
-    resume = Resume.find_by(user_id: @user.id)
-    @maturity = resume.nil? ?  0 : resume.maturity
+    @resume = Resume.where(user_id: current_user.id).first_or_create!
   end
 
 

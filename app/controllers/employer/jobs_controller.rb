@@ -18,6 +18,7 @@ class Employer::JobsController < ApplicationController
   def show
     @job = Job.find params[:id]
     @job_sate = {id: @job.id, status: @job.status}
+    @btn_txt = get_txt @job.status
     @hospital = Employer.get_hospital current_user.id
     @seeker_count = ApplyRecord.where(job_id: @job.id).length
     @time_left = Job.time_left @job.id
@@ -87,6 +88,26 @@ class Employer::JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:name, :job_type, :salary_range, :experience, :needed_number,
                                   :region, :location, :job_desc, :job_demand, :status, :release_at, :end_at)
+    end
+
+    # 按钮显示名称
+    def get_txt status
+      txt = {}
+      txt[:pause] = "暂停发布"
+
+      if status == "release"
+        txt[:release] = "已发布"
+      else
+        txt[:release] = "再发布"
+      end
+
+      if ["saved", "fail"].include?(status)
+        txt[:end] = "删除职位"
+      else
+        txt[:end] = "结束发布"
+      end
+
+      return txt
     end
 end
 

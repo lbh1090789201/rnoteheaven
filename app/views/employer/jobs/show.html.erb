@@ -39,15 +39,15 @@
 <!-- 待改写 -->
 <%# react_component 'PauseBtn', {job: @job_sate} %>
 <div class="pause-box">
-  <button type="button" id="postPause" class="<%= @job_sate[:status] %>" onclick="postPause(this)">暂停发布</button>
+  <button type="button" id="postPause" class="<%= @job_sate[:status] %>" onclick="postPause(this)"><%= @btn_txt[:pause] %></button>
 </div>
 
 <div class="release-box">
-  <button type="button" id="release" class="<%= @job_sate[:status] %>" onclick="release(this)">再发布</button>
+  <button type="button" id="release" class="<%= @job_sate[:status] %>" onclick="release(this)"><%= @btn_txt[:release] %></button>
 </div>
 
 <div class="end-box">
-  <button type="button" id="end" class="<%= @job_sate[:status] %>" onclick="end(this)">结束发布</button>
+  <button type="button" id="end" class="<%= @job_sate[:status] %>" onclick="end(this)"><%= @btn_txt[:end] %></button>
 </div>
 
 <!-- <script type="text/javascript">
@@ -61,14 +61,13 @@
 <script type="text/javascript">
 // 暂停按钮
   function postPause(obj) {
-    if($(obj).class == "release") {
+    if($(obj).attr("class") == "release") {
       $.ajax({
         url: '<%= api_employer_jobs_path %>',
         type: 'PATCH',
         data: {"job_id":"<%= @job[:id] %>", "status": "pause"},
         success: function() {
-          // $('#favorite_job > span').html('收藏职位');
-          $('#postPause').attr('class', 'pause');
+          set_class('pause');
           $('#postPause').off();
         },
         error: function() {
@@ -82,15 +81,14 @@
 
 // 再发布按钮
   function release(obj) {
-    if(["pause", "end"].indexOf($(obj).attr("class")) != -1 ) {
+    if(["pause", "end", "saved"].indexOf($(obj).attr("class")) != -1 ) {
       $.ajax({
         url: '<%= api_employer_jobs_path %>',
         type: 'PATCH',
         data: {"job_id":"<%= @job[:id] %>", "status": "release"},
         success: function() {
           $('#release').html('已发布');
-          $('#release').attr('class', 'release');
-          $('#postPause').attr('class', 'release');
+          set_class('release');
           $('#release').off();
         },
         error: function() {
@@ -111,9 +109,20 @@
           data: {"job_id":"<%= @job[:id] %>", "status": "end"},
           success: function() {
             $('#release').html('再发布');
-            $('#end').attr('class', 'end');
-            $('#release').attr('class', 'end');
+            set_class('end');
             $('#end').off();
+          },
+          error: function() {
+            alert('结束发布失败。')
+          }
+        });
+      } else if(["saved", "fail"].indexOf($(obj).attr("class")) != -1) {
+        $.ajax({
+          url: '<%= api_employer_jobs_path %>',
+          type: 'DELETE',
+          date: {id: "<%= @job[:id] %>"},
+          success: function() {
+            alert('结束发布成功！')
           },
           error: function() {
             alert('结束发布失败。')
@@ -123,4 +132,11 @@
         alert("当前无法结束");
       }
     };
+
+    // 同时设置三个按钮状态
+    function set_class(name) {
+        $('#end').attr('class', name);
+        $('#release').attr('class', name);
+        $('#postPause').attr('class', name);
+    }
 </script>
