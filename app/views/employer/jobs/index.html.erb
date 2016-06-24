@@ -3,7 +3,6 @@
     // status=="release";
     if(status=="release"){
       status = "发布中";
-
     };
     if(status=="reviewing"){
       status = "审核中";
@@ -36,12 +35,21 @@
 
   // 筛选不同的Jod状态
   function JobScreen(li_id,li_class){
+    var text = $('#'+li_id).text();
+    $('#'+li_id).css('color','#3f9d9f').siblings().css('color','#000');
+    $('span.nav-img>span').text(text);
     $('#'+li_id).parent().parent().css('display','none');
     $('.sort-content').css('display','block').siblings().css('display','none');
     $('.'+li_class).css('display','block');
     $('.sort-content li').not('.'+li_class).css('display','none');
   }
-
+  // 显示全部
+  function JobShowAll(obj){
+    var text = $(obj).text()
+    $(obj).css('color','#3f9d9f').siblings().css('color','#000');
+    $('span.nav-img>span').text(text);
+    $('ul.show-all').css('display','block').siblings('ul').css('display','none');
+  }
 
 </script>
 
@@ -51,13 +59,14 @@
 
 <div id="job_content">
   <div class="job-nav">
-    <span><%= image_tag "down2.png" %>全部</span><%= image_tag "refresh.png", class: "refresh" %>
+    <span class="nav-img"><%= image_tag "down2.png" %><span>全部</span></span><%= image_tag "refresh.png", class: "refresh" %>
   </div>
   <!-- 条件筛选 -->
   <div class="job-status">
     <!-- 蒙层 -->
     <div class="after-mask"></div>
     <ul>
+      <li onclick="JobShowAll(this)">全部</li>
       <li id="job_release" onclick="JobScreen('job_release','job-release')">发布中</li>
       <li id="job_end" onclick="JobScreen('job_end','job-end')">发布结束</li>
       <li id="job_pause" onclick="JobScreen('job_pause','job-pause')">暂停发布</li>

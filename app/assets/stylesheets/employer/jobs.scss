@@ -16,7 +16,7 @@
       height: 2.17rem;
       line-height: 2.17rem;
       background: #f4f4f4;
-      span {
+      span.nav-img {
         margin-left: 1rem;
         padding: 0.27rem 0.5rem 0.27rem 0.5rem;
         border: 1px solid #ffa200;
@@ -64,6 +64,9 @@
           padding-left: 1.08rem;
           height: 2rem;
           line-height: 2rem;
+        }
+        li:nth-child(1) {
+          color: #3f9d9f;
         }
       }
     }
@@ -208,7 +211,7 @@
                        width: 0.5rem;
                        height: 0.5rem;
                        margin-left:11.4rem;
-                   }      
+                   }
                }
            }
            .reflesh-job{
@@ -235,7 +238,7 @@
            h3{
                padding-top: 0.9rem;
                margin-left:1rem ;
-               
+
                span{
                    margin-left: 1rem;
                    color: #a0a0a0;
@@ -247,7 +250,7 @@
                margin-top: 0.7rem;
                margin-left: 1rem;
                font-size: 1rem;
-               
+
            }
            ul{
                margin-left: 1rem;
@@ -255,14 +258,14 @@
                li{
                    white-space: pre;
                    margin-bottom: 0.73rem;
-                  
+
                    .job-scale{
                        padding-left: 3.1rem;
                        padding-right: 1rem;
                    }
                    .job-number{
                        padding-left: 3.8rem;
-                       padding-right: 1rem; 
+                       padding-right: 1rem;
                    }
                    .job-exprience{
                        padding-left: 1rem;
@@ -278,7 +281,7 @@
         #job_btn button{width: 33.33%;height: 2.78rem;border: none;float: left;background-color:#3f9e9f;text-indent: 1.5rem;}
         #job_btn button:nth-of-type(2){text-indent: 1rem;}
         #job_btn img{width: 1.3rem;height: 1.3rem;position: absolute;bottom: 0.75rem;margin-left: 1rem;}
-//over        
+//over
   .pause-box {
     .pause {
      background: gray;
@@ -308,7 +311,7 @@
       }
       h3{
           font-size: 0.7rem;
-          font-weight: normal; 
+          font-weight: normal;
           padding-left: 1rem;
           margin-top: 18px;
       }
@@ -523,7 +526,7 @@
         -webkit-border-radius: 30px;
         border: 1px solid #959595;
         color: #959595;
-        font-size: 0.5rem; 
+        font-size: 0.5rem;
     }
 }
 #job_range{
@@ -593,7 +596,7 @@
         -webkit-border-radius: 30px;
         border: 1px solid #959595;
         color: #959595;
-        font-size: 0.5rem; 
+        font-size: 0.5rem;
     }
 }
 
@@ -605,7 +608,7 @@
 
 .btn-status{
     padding: 1.5rem 0 1.5rem 0;
-    
+
 }
 .btn-status button{
     width: 40%;
@@ -621,7 +624,7 @@
 .btn-status button:nth-child(2){
     border: none;
     background-color: #3f9e9f;
-    color:#fff ; 
+    color:#fff ;
 }
 .job-vip{
     position: relative;
@@ -647,4 +650,3 @@
       }
   }
 }
-
