@@ -625,12 +625,26 @@
 }
 .job-vip{
     position: relative;
+    input{
+        color: #fff;
+    }
    .job-slider{
-    width: 2rem;
-    height: 1rem;
+    width: 2.6rem;
+    height: 1.38rem;
     background: red;
     position: absolute;
-    right: 0;
+    right: 0.6rem;
+    top: 0.65rem;
+    background:#f4f4f4;
+    border-radius: 8px;
+      .job-slider-inner{
+          width:1.15rem;
+          height: 1.15rem;
+          background:#FFFFFF;
+          border-radius: 30%;
+          margin-top: 0.1rem;
+          margin-left: 0.1rem;
+      }
   }
 }
 

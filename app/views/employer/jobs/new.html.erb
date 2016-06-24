@@ -80,5 +80,19 @@
         hideProvinceInput: '#province'
     });
   cityPicker.init();
+  
+  //6.24 VIP置顶栏的滑动条 Huangwei
+  
+  $('.job-slider').on('click',function () {
+	if ($(this).css('background-color')=='rgb(244, 244, 244)') {//根据背景色判断，并移动和改变颜色样式
+		$('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
+	    $(this).css('background','#3f9e9f');
+	    $('.job-slider').css('margin-left','#fff');
+	} else{
+		$('.job-slider-inner').css('margin-left','0.1rem');
+	    $(this).css('background','#f4f4f4');
+	    $('.job-slider').css('margin-left','#fff');
+	}	
+  })
 
 </script>
