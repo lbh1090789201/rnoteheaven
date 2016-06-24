@@ -8,7 +8,20 @@
     $('.resumes-show>.wrap').hide();
     alert("您可查看的简历数已满，若想查看更多，请购买VIP");
   }
+  // 进入后传该医院已查看该简历 user_id
+  $.ajax({
+    url: "<%= api_employer_viewers_path %>",
+    type: "POST",
+    data: {user_id: "<%= @user.id %>"},
+    success: function(){
+      console.log('上传成功');
+    },
+    error: function(){
+      console.log('上传失败');
+    },
+  });
 </script>
+
 <div class="resume-content">
   <% if @user && @apply_record %>
   <div class="resume-avatar">

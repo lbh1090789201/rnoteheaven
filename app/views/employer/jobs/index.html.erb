@@ -50,7 +50,6 @@
     $('span.nav-img>span').text(text);
     $('ul.show-all').css('display','block').siblings('ul').css('display','none');
   }
-
 </script>
 
 <%= provide :title, "职位管理" %>
@@ -59,7 +58,8 @@
 
 <div id="job_content">
   <div class="job-nav">
-    <span class="nav-img"><%= image_tag "down2.png" %><span>全部</span></span><%= image_tag "refresh.png", class: "refresh" %>
+    <span class="nav-img"><%= image_tag "down2.png" %><span>全部</span></span>
+    <%= image_tag "refresh.png", class: "refresh" %>
   </div>
   <!-- 条件筛选 -->
   <div class="job-status">
@@ -232,3 +232,9 @@
   </div>
 </div>
 <%= render '/layouts/employer_footer' %>
+<script type="text/javascript">
+//刷新本页面
+$('.job-nav>img').bind('click',function(){
+  window.location.reload();
+})
+</script>
