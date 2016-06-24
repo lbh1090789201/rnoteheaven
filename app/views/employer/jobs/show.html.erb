@@ -10,9 +10,10 @@
       <h3><%= @job.name %><span><%= @seeker_count %>人投递过简历</span></h3>
       <p><%= @job.salary_range %>/月</p>
       <ul>
-        <li><span>医院</span><%= @hospital.name %></li>
-        <li><span>性质</span><%= @hospital.property %><span class="job-scale">规模</span><%= @hospital.scale %>人</li>
-        <li><span>地区</span><%= @job.region %><span class="job-number">人数</span><%= @job.needed_number %>人</li>
+        <li><span>医院     </span><%= @hospital.name %></li>
+        <li><span>性质     </span><%= @hospital.property %><span class="job-scale">规模</span><%= @hospital.scale %>人</li>
+        <li><span>地区     </span><%= @job.region %><span class="job-number">人数</span><%= @job.needed_number %>人</li>
+        <li><span>经验要求</span><span class="job-exprience"></span><%= @job.needed_number %>年</li>	
       </ul>
     </div>
     <div class="job-place"><a href="#"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
@@ -38,18 +39,22 @@
 
 <!-- 待改写 -->
 <%# react_component 'PauseBtn', {job: @job_sate} %>
+<div id="job_btn">
 <div class="pause-box">
+  <%= image_tag "icon_20.png" %>
   <button type="button" id="postPause" class="<%= @job_sate[:status] %>" onclick="postPause(this)"><%= @btn_txt[:pause] %></button>
 </div>
 
 <div class="release-box">
+  <%= image_tag "icon_21.png" %>
   <button type="button" id="release" class="<%= @job_sate[:status] %>" onclick="release(this)"><%= @btn_txt[:release] %></button>
 </div>
 
 <div class="end-box">
+  <%= image_tag "icon_22.png" %>
   <button type="button" id="end" class="<%= @job_sate[:status] %>" onclick="end(this)"><%= @btn_txt[:end] %></button>
 </div>
-
+</div>
 <!-- <script type="text/javascript">
   var left_refresh_time = "<%= @left_refresh_time %>";
   console.log(left_refresh_time);
