@@ -1,4 +1,14 @@
+
 <%# provide :title, getTitle() %>
+<script type="text/javascript">
+  // may_view 为false时
+  var may_view = "<%= @vip_status['may_view'] %>";
+  var id = "<%= params[:job_id]%>";
+  if(id == '' && may_view == 'false'){
+    $('.resumes-show>.wrap').hide();
+    alert("您可查看的简历数已满，若想查看更多，请购买VIP");
+  }
+</script>
 <div class="resume-content">
   <% if @user && @apply_record %>
   <div class="resume-avatar">
@@ -45,6 +55,8 @@
 </div>
 
 <script type="text/javascript">
+
+
     // 不合适弹窗按钮
     var height = $('#hide_btn').height();
     height  =height+ 60;

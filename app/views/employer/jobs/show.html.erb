@@ -13,7 +13,7 @@
         <li><span>医院     </span><%= @hospital.name %></li>
         <li><span>性质     </span><%= @hospital.property %><span class="job-scale">规模</span><%= @hospital.scale %>人</li>
         <li><span>地区     </span><%= @job.region %><span class="job-number">人数</span><%= @job.needed_number %>人</li>
-        <li><span>经验要求</span><span class="job-exprience"></span><%= @job.needed_number %>年</li>	
+        <li><span>经验要求</span><span class="job-exprience"></span><%= @job.needed_number %>年</li>
       </ul>
     </div>
     <div class="job-place"><a href="#"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
@@ -24,6 +24,21 @@
       <span>刷新职位</span>
     </div>
   </section>
+  <script type="text/javascript">
+    $('.reflesh-job').bind('click',function(){
+      $.ajax({
+        url: "<%= api_employer_jobs_path %>",
+        type: "PATCH",
+        data: {refresh_at: "<%= @job.refresh_at %>", is_top: "<%= @job.is_top %>", job_id: "<%= @job.id %>"},
+        success: function(){
+          console.log("222");
+        },
+        error: function(){
+          alert('刷新失败');
+        },
+      });
+    })
+  </script>
 
   <section class="job-right">
     <div class="job-descripte">
@@ -55,13 +70,12 @@
   <button type="button" id="end" class="<%= @job_sate[:status] %>" onclick="end(this)"><%= @btn_txt[:end] %></button>
 </div>
 </div>
-<!-- <script type="text/javascript">
-  var left_refresh_time = "<%= @left_refresh_time %>";
-  console.log(left_refresh_time);
-  if(left_refresh_time == -1) {
-    $('.reflesh-job').children().remove();
-  }
-</script> -->
+
+<!-- 当 may_release 为false且按钮文本为再发布时的弹窗 -->
+<!-- <div class="may-release" style="display:none;">
+  <p>您的可发布职位数已满，若想发布更多，请购买VIP</p>
+  <button>确定</button>
+</div> -->
 
 <script type="text/javascript">
 // 暂停按钮
@@ -86,6 +100,17 @@
 
 // 再发布按钮
   function release(obj) {
+    // 当值为再发布时点击判断may_release
+    var vip_status = "<%= @vip_status['may_release'] %>"
+    console.log(vip_status);
+    var button_text = $(obj).text();
+    console.log(button_text);
+    if(button_text == '再发布' && vip_status == 'false') {
+      // $('.may-release').css('display','block');　//显示提示弹窗
+      alert('您的可发布职位数已满，若想发布更多，请购买VIP');
+      return;
+    }
+    // 当值为再发布时点击判断may_release
     if(["pause", "end", "saved"].indexOf($(obj).attr("class")) != -1 ) {
       $.ajax({
         url: '<%= api_employer_jobs_path %>',
@@ -144,4 +169,9 @@
         $('#release').attr('class', name);
         $('#postPause').attr('class', name);
     }
+
+    //当 may_release 为false且按钮文本为再发布时的弹窗
+    // $('.may-release>button').on('click',function() {
+    //   $('.may-release').css('display','none');
+    // })
 </script>
