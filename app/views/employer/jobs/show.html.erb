@@ -173,16 +173,16 @@
         $.ajax({
           url: '<%= api_employer_jobs_path %>',
           type: 'DELETE',
-          date: {id: "<%= @job[:id] %>"},
+          date: {id: "<%= params[:id] %>"},
           success: function() {
-            alert('结束发布成功！')
+            alert('删除成功！')
           },
           error: function() {
-            alert('结束发布失败。')
+            alert('删除失败。')
           }
         });
       } else {
-        alert("当前无法结束");
+        alert("当前无法删除");
       }
     };
 
