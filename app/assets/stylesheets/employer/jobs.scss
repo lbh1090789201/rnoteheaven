@@ -318,3 +318,319 @@
       }
   }
 }
+
+
+
+
+//job的new页面
+
+.jobs-new {
+  // padding-bottom: 4.27rem !important;
+
+  .wrap {
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+    width: 100%;
+    font-size: 0.86rem;
+    background-color: $light-gray;
+  }
+
+  .form-group {
+    margin-top: 0.5rem;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 0.36rem;
+    margin-bottom: -2px;
+    label {
+      float: left;
+      padding-left: 1rem;
+      padding-right: 1.47rem;
+      line-height: 2.58rem;
+      font-weight: normal;
+      color: $font-gray;
+      white-space: pre;
+      abbr {
+        display: none;
+      }
+    }
+    input {
+      float: right;
+      padding: 0;
+      width: 13rem;
+      height: 2.58rem;
+      border: 0;
+      font-size: 0.86rem;
+      text-align: right;
+      padding-right: 1.78rem;
+    }
+    textarea {
+      border: 0;
+      padding-left: 1rem;
+      height: 100%;
+      font-size: 0.86rem;
+      // line-height: 1.95rem;
+      box-shadow: none;
+      overflow-y: visible;
+    }
+    textarea:focus, input:focus {
+      outline: none;
+      border-color: inherit;
+      -webkit-box-shadow: none;
+    }
+
+    .form-control[readonly] {
+      background-color: #fff;
+    }
+
+    label {
+      margin-bottom: 0;
+    }
+  }
+
+  .form-group::after {
+    content: "";
+    width: 0.41rem;
+    height: 0.66rem;
+    display: block;
+    position: absolute;
+    right: 1rem;
+    margin-top: 0.9rem;
+    background: url("../icon.png");
+    background-size: 0.41rem 0.66rem;
+  }
+
+  .form-group:nth-of-type(1)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(5)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(7)::after{
+    display: none;
+    text-align: left;
+  }
+
+  .form-group:nth-of-type(8)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(9)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(10)::after{
+    display: none;
+  }
+
+  .hospital_introduction {
+    height: 13.37rem;
+  }
+
+  #submit {
+    display: none;
+  }
+}
+
+
+
+//job的edit页面
+
+.jobs-edit {
+  // padding-bottom: 4.27rem !important;
+
+  .wrap {
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+    width: 100%;
+    font-size: 0.86rem;
+    background-color: $light-gray;
+  }
+
+  .form-group {
+    margin-top: 0.5rem;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 0.36rem;
+    margin-bottom: -2px;
+    label {
+      float: left;
+      padding-left: 1rem;
+      padding-right: 1.47rem;
+      line-height: 2.58rem;
+      font-weight: normal;
+      color: $font-gray;
+      white-space: pre;
+      abbr {
+        display: none;
+      }
+    }
+    input {
+      float: right;
+      padding: 0;
+      width: 13rem;
+      height: 2.58rem;
+      border: 0;
+      font-size: 0.86rem;
+      text-align: right;
+      padding-right: 1.78rem;
+    }
+    textarea {
+      border: 0;
+      padding-left: 1rem;
+      height: 100%;
+      font-size: 0.86rem;
+      // line-height: 1.95rem;
+      box-shadow: none;
+      overflow-y: visible;
+    }
+    textarea:focus, input:focus {
+      outline: none;
+      border-color: inherit;
+      -webkit-box-shadow: none;
+    }
+
+    .form-control[readonly] {
+      background-color: #fff;
+    }
+
+    label {
+      margin-bottom: 0;
+    }
+  }
+
+//Huangwei 6.24
+
+//.form-group input:nth-of-type(1){background-image: url("../icon_24.png");}
+.job-frist{
+    background:url("../icon_24.png") no-repeat;
+    background-size: 0.8rem 0.8rem;
+    background-position: 11.6rem 0.9rem;
+    }
+ .basic_info{
+    padding-left: 1.2rem;
+    font-size:0.7rem;
+    margin-top: 0.5rem;
+    span{
+        display: inline-block;
+        width: 2.2rem;
+        height: 0.85rem;
+        background: #FFFFFF;
+        margin-left: .5rem;
+        text-align: center;
+        padding: 0.01rem 0.2rem 0 0.2rem;
+        -webkit-border-radius: 30px;
+        border: 1px solid #959595;
+        color: #959595;
+        font-size: 0.5rem; 
+    }
+}
+#job_range{
+    color: #ff8b00;
+    }
+
+  .form-group::after {
+    content: "";
+    width: 0.41rem;
+    height: 0.66rem;
+    display: block;
+    position: absolute;
+    right: 1rem;
+    margin-top: 0.9rem;
+    background: url("../icon.png");
+    background-size: 0.41rem 0.66rem;
+  }
+
+  .form-group:nth-of-type(1)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(5)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(7)::after{
+    display: none;
+    text-align: left;
+  }
+  .form-group:nth-of-type(8)::after{
+    display: none;
+    text-align: left;
+  }
+
+  .form-group:nth-of-type(11)::after{
+    display: none;
+    text-align: left;
+  }
+
+  .form-group:nth-of-type(10)::after{
+    display: none;
+  }
+
+  .hospital_introduction {
+    height: 13.37rem;
+  }
+
+  #submit {
+    display: none;
+  }
+}
+
+//----Job-New---界面样式 6.24 Huangwei
+#job_basic .basic_infoo{
+    padding-left: 1.2rem;
+    font-size:0.7rem;
+    margin-top: 0.5rem;
+    span{
+        display: inline-block;
+        width: 2.2rem;
+        height: 0.85rem;
+        background: #FFFFFF;
+        margin-left: .5rem;
+        text-align: center;
+        padding: 0.01rem 0.2rem 0 0.2rem;
+        -webkit-border-radius: 30px;
+        border: 1px solid #959595;
+        color: #959595;
+        font-size: 0.5rem; 
+    }
+}
+
+.job-frist_new{
+    background:url("../icon_24.png") no-repeat;
+    background-size: 0.8rem 0.8rem;
+    background-position: 11.6rem 0.9rem;
+}
+
+.btn-status{
+    padding: 1.5rem 0 1.5rem 0;
+    
+}
+.btn-status button{
+    width: 40%;
+    padding: 0.4rem 0 0.4rem 0rem;
+    -webkit-border-radius: 7px;
+    margin-left: 1.3rem;
+}
+.btn-status button:nth-child(1){
+    border: 1px solid #959595;
+    background-color: #fff;
+    color: #3f9e9f;
+}
+.btn-status button:nth-child(2){
+    border: none;
+    background-color: #3f9e9f;
+    color:#fff ; 
+}
+.job-vip{
+    position: relative;
+   .job-slider{
+    width: 2rem;
+    height: 1rem;
+    background: red;
+    position: absolute;
+    right: 0;
+  }
+}
+
