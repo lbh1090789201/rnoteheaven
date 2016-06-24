@@ -42,6 +42,8 @@
       </script>
     <% end %>
   </section>
+
+
   <script type="text/javascript">
     $('.reflesh-job').bind('click',function(){
       $.ajax({
@@ -77,22 +79,30 @@
 
 <!-- 待改写 -->
 <%# react_component 'PauseBtn', {job: @job_sate} %>
-<div id="job_btn">
-<div class="pause-box">
-  <%= image_tag "icon_20.png" %>
-  <button type="button" id="postPause" class="<%= @job_sate[:status] %>" onclick="postPause(this)"><%= @btn_txt[:pause] %></button>
-</div>
+  <div class="btn-bottom-box">
+    <div class="pause-box btn-bottom">
+      <div id="postPause" class="<%= @job_sate[:status] %>" onclick="postPause(this)">
+        <%= image_tag "icon_20.png" %>
+        <%= @btn_txt[:pause] %>
+      </div>
+    </div>
 
-<div class="release-box">
-  <%= image_tag "icon_21.png" %>
-  <button type="button" id="release" class="<%= @job_sate[:status] %>" onclick="release(this)"><%= @btn_txt[:release] %></button>
-</div>
+    <div class="release-box btn-bottom">
+      <div id="release" class="<%= @job_sate[:status] %>" onclick="release(this)">
+        <%= image_tag "icon_21.png" %>
+        <%= @btn_txt[:release] %>
+      </div>
+    </div>
 
-<div class="end-box">
-  <%= image_tag "icon_22.png" %>
-  <button type="button" id="end" class="<%= @job_sate[:status] %>" onclick="end(this)"><%= @btn_txt[:end] %></button>
-</div>
-</div>
+    <div class="end-box btn-bottom">
+      <div id="end" class="<%= @job_sate[:status] %>" onclick="end(this)">
+        <%= image_tag "icon_22.png" %>
+        <%= @btn_txt[:end] %>
+      </div>
+    </div>
+  </div>
+
+
 
 <!-- 当 may_release 为false且按钮文本为再发布时的弹窗 -->
 <!-- <div class="may-release" style="display:none;">
@@ -121,7 +131,7 @@
     }
   };
 
-// 再发布按钮console.log("222");
+  // 再发布按钮
   function release(obj) {
     // 当值为再发布时点击判断may_release
     var vip_status = "<%= @vip_status['may_release'] %>"
@@ -193,8 +203,4 @@
         $('#postPause').attr('class', name);
     }
 
-    //当 may_release 为false且按钮文本为再发布时的弹窗
-    // $('.may-release>button').on('click',function() {
-    //   $('.may-release').css('display','none');
-    // })
 </script>
