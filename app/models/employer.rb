@@ -31,4 +31,32 @@ class Employer < ActiveRecord::Base
     end
   end
 
+  # 设置 VIP 等级
+  def self.set_vip uid, level
+    if level == 1
+      employer = Employer.find_by user_id: uid
+      employer.may_receive = 200
+      employer.may_release = 3
+      employer.may_set_top = 3
+      employer.may_view = 3
+
+      if employer.save
+        render: json: {
+          success: true,
+          info: "设置vip成功！"
+        }, status: 200
+      else
+        render: json: {
+          success: false,
+          info: "设置vip失败"
+        }, status: 403
+      end
+    else
+        render: json: {
+          success: false,
+          info: "无此vip等级"
+        }, status: 403
+    end
+  end
+
 end
