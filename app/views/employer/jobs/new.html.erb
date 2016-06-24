@@ -1,19 +1,29 @@
 <%= provide :title, "添加职位基本信息" %>
 <div id="job_basic">
     <%= simple_form_for :job, method: :post, remote: true, id: "submit_form", url: employer_jobs_path do |f| %>
-    <%= f.input :name, label: "职位名称", input_html: { class: ""} %>
+    <p class="basic_infoo">任职资格<span>必填</span></p>
+    <%= f.input :name, label: "职位名称", input_html: { class: "job-frist_new"} %>
     <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type"} %>
     <%= f.input :salary_range, label: '薪        资', input_html: { class: "job-range", id: "job_range"} %>
     <%= f.input :experience, label: '经验要求', input_html: { class: "job-experience", id: "job_experience"} %>
-    <%= f.input :needed_number, label: '招聘人数', input_html: { class: "", id: ""} %>
+    <%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist_new", id: ""} %>
     <%= f.input :region, label: '工作地区', input_html: { class: "", id: "job_region"} %>
     <!-- 城市插件需要用到 -->
     <input type="hidden" id="province" value="">
     <input type="hidden" id="city" value="">
-    <%= f.input :location, label: '详细地址', input_html: { class: "", id: ""} %>
-    <%= f.input :job_desc, label: '职位描述', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等"} %>
-    <%= f.input :job_demand, label: '任职资格', as: :text, input_html: { class: "", placeholder: "资格要求"} %>
+    <%= f.input :location, label: '详细地址', input_html: { class: "job-frist_new", id: ""} %>
+    <div class="job-vip">
+    <%= f.input :end_at, label: 'VIP置顶', input_html: { class: "", id: ""} %>
+    <div class="job-slider">
+    	<div class="job-slider-inner"></div>
+    </div>
+    </div>
     <%= f.input :end_at, label: '发布期限', input_html: { class: "", id: ""} %>
+    <p class="basic_infoo">职位描述<span>必填</span></p>
+    <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等"} %>
+    <p class="basic_infoo">任职资格<span>必填</span></p>
+    <%= f.input :job_demand, label: '', as: :text, input_html: { class: "", placeholder: "资格要求"} %>
+    
     <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status"} %>
     <%= f.submit id: "submit", class: ""%>
     <div class="btn-status">
