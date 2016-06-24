@@ -1,3 +1,7 @@
+<% if @job.status != 'release' %>
+<%= provide :content, '编辑' %>
+<%= provide :link, edit_employer_job_path(params[:id]) %>
+<% end %>
 <div id="job_show">
   <div class="job-time">
     发布日期:
@@ -19,19 +23,38 @@
     <div class="job-place"><a href="#"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
 
     <!-- 刷新简历 -->
-    <div class="reflesh-job" style="background:yellow;height:50px;">
-      <%= image_tag "icon_1.png" %>
-      <span>刷新职位</span>
-    </div>
+    <% if @job.status == "release" %>
+      <div class="reflesh-job" style="background:yellow;height:50px;">
+        <%= image_tag "icon_1.png" %>
+        <span>刷新职位</span>
+      </div>
+      <p class="reflesh-time" style="font-size:0.3rem;"><%= @left_refresh_time %>天后可再次刷新</p>
+      <script type="text/javascript">
+          //  reflesh_time 值不同显示不同
+          var reflesh_time = "<%= @left_refresh_time %>";
+          if(reflesh_time == -1) {
+            $('.reflesh-job').css('display','block').siblings('p.reflesh-time')
+                                                    .css('display','none');
+          }else{
+            $('.reflesh-time').css('display','block').siblings('div.reflesh-job')
+                                                     .css('display','none');
+          }
+      </script>
+    <% end %>
   </section>
   <script type="text/javascript">
     $('.reflesh-job').bind('click',function(){
       $.ajax({
         url: "<%= api_employer_jobs_path %>",
         type: "PATCH",
-        data: {refresh_at: "<%= @job.refresh_at %>", is_top: "<%= @job.is_top %>", job_id: "<%= @job.id %>"},
+        data: {refresh_at: "<%= @job.refresh_at %>",
+               is_top: "<%= @job.is_top %>",
+               job_id: "<%= @job.id %>"
+             },
         success: function(){
-          console.log("222");
+          //几天可刷新
+          $('.reflesh-time').css('display','block').siblings('div.reflesh-job')
+                                                   .css('display','none');
         },
         error: function(){
           alert('刷新失败');
@@ -98,7 +121,7 @@
     }
   };
 
-// 再发布按钮
+// 再发布按钮console.log("222");
   function release(obj) {
     // 当值为再发布时点击判断may_release
     var vip_status = "<%= @vip_status['may_release'] %>"

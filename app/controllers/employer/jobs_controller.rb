@@ -16,7 +16,7 @@ class Employer::JobsController < ApplicationController
   end
 
   def new
-    puts "------"+@vip_status.to_s
+
   end
 
   def show
@@ -26,7 +26,8 @@ class Employer::JobsController < ApplicationController
     @hospital = Employer.get_hospital current_user.id
     @seeker_count = ApplyRecord.where(job_id: @job.id).length
     @time_left = Job.time_left @job.id
-    @left_refresh_time = Job.left_refresh_time @job.id
+    @left_refresh_time = Job.left_refresh_time @job.refresh_at
+      puts "＋＋＋＋＋＋"+@left_refresh_time.to_s
   end
 
   def edit
