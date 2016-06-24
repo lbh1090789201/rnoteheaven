@@ -15,6 +15,10 @@ class Employer::JobsController < ApplicationController
     end
   end
 
+  def new
+    puts "------"+@vip_status.to_s
+  end
+
   def show
     @job = Job.find params[:id]
     @job_sate = {id: @job.id, status: @job.status}

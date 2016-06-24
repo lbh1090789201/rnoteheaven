@@ -17,16 +17,28 @@
     <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status"} %>
     <%= f.submit id: "submit", class: ""%>
     <div class="btn-status">
-      <button type="button" name="button" onclick="SubmitForm(this)">仅保存</button>
+      <button type="button" name="button">仅保存</button>
       <button type="button" name="button">保存并提交发布</button>
     </div>
     <% end %>
+
+    <!-- 当 may_release 为false时的弹窗 -->
+    <!-- <div class="may-release" style="display:none;">
+      <p>您的可发布职位数已满，若想发布更多，请购买VIP</p>
+      <button>确定</button>
+    </div> -->
 
 </div>
 <script type="text/javascript">
   // 按钮提交表单
   $(function(){
     $('.btn-status>button').bind('click',function(){
+      var vip_status = "<%= @vip_status['may_release'] %>"
+      if(vip_status == 'false') {
+        alert('您的可发布职位数已满，若想发布更多，请购买VIP');
+        // $('.may-release').css('display','block');
+        return;
+      }
       var index = $(this).index();
       if(index==0) {
         $('#job_status').attr('value','saved');
@@ -37,6 +49,11 @@
       }
     });
   })
+
+  //当 may_release 为false时的弹窗隐藏
+  // $('.may-release>button').on('click',function() {
+  //   $('.may-release').css('display','none');
+  // })
 
   // 职位类型
   $('.job-type').click(function() {
