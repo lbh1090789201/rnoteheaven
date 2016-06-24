@@ -26,7 +26,6 @@ class Employer::ResumesController < ApplicationController
     jobs.each do |f|
       @jobs_by_position.push Job.get_seekers(f.id)
     end
-    puts "---------"+@public_seekers.to_json.to_s
 
   end
 
@@ -36,8 +35,7 @@ class Employer::ResumesController < ApplicationController
 
     resume = Resume.find resume_id
     @seeker = Resume.info resume.user_id
-    @apply_record = ApplyRecord.select(:id, :job_name).find_by(job_id: job_id, user_id: resume.user_id)
-    puts "---------"+@apply_record.to_json.to_s
+    @apply_record = ApplyRecord.select(:id, :job_name, :resume_status, :age, :job_name).find_by(job_id: job_id, user_id: resume.user_id)
 
     # 简历预览
     @user = User.find resume.user_id

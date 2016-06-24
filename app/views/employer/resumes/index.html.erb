@@ -64,18 +64,18 @@
 <%= render '/layouts/employer_footer' %>
 
 <script>
-$(document).ready(function(){
-  $(".resume-content>ul>li").bind('click',function(){
-    var index = $(this).index();
-    $(".resume-content>section").eq(index).css('display','block').siblings('section').css('display','none');
-  })
-})
+    $(document).ready(function(){
+      $(".resume-content>ul>li").bind('click',function(){
+        var index = $(this).index();
+        $(".resume-content>section").eq(index).css('display','block').siblings('section').css('display','none');
+      })
+    })
 
-function OrderTime(){
-  var display = $(".resume-content>section").eq(1).css('display');
-  console.log(display);
-  if(display == 'block'){
-    $(".time-resume").toggle();
-  }
-}
+    function OrderTime(){
+      var display = $(".resume-content>section").eq(1).css('display');
+      console.log(display);
+      if(display == 'block'){
+        $(".time-resume").toggle();
+      }
+    }
 </script>
