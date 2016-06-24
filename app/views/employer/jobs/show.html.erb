@@ -29,9 +29,9 @@
       $.ajax({
         url: "<%= api_employer_jobs_path %>",
         type: "PATCH",
-        data: {refresh_at: "<%= @job.refresh_at %>",is_top: "<%= @job.is_top %>"},
+        data: {refresh_at: "<%= @job.refresh_at %>", is_top: "<%= @job.is_top %>", job_id: "<%= @job.id %>"},
         success: function(){
-          alert('刷新成功')；
+          console.log("222");
         },
         error: function(){
           alert('刷新失败');

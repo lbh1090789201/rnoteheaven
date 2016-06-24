@@ -41,21 +41,21 @@ class Employer < ActiveRecord::Base
       employer.may_view = 3
 
       if employer.save
-        render: json: {
+        return {json: {
           success: true,
           info: "设置vip成功！"
-        }, status: 200
+        }, status: 200}
       else
-        render: json: {
+        return {json: {
           success: false,
           info: "设置vip失败"
-        }, status: 403
+        }, status: 403}
       end
     else
-        render: json: {
+        return {json: {
           success: false,
           info: "无此vip等级"
-        }, status: 403
+        }, status: 403}
     end
   end
 
