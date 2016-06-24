@@ -33,10 +33,7 @@ class Api::EmployerJobsController < ApiController
     job = Job.find params[:id]
 
     if job.destroy
-      render json: {
-        success: true,
-        info: "工作删除成功！",
-      }, status: 200
+      render js: "location.href = document.referrer"
     else
       render json: {
         success: false,
