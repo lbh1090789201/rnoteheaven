@@ -9,6 +9,7 @@ class Employer::ResumesController < ApplicationController
   def index
     hospital = Employer.get_hospital current_user.id
     jobs = Job.where(hospital_id: hospital.id)
+    puts "------"+@vip_status.to_s
 
     # 三个月内简历
     @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",

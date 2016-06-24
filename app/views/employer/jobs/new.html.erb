@@ -3,7 +3,7 @@
     <%= simple_form_for :job, method: :post, remote: true, id: "submit_form", url: employer_jobs_path do |f| %>
     <%= f.input :name, label: "职位名称", input_html: { class: ""} %>
     <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type"} %>
-    <%= f.input :salary_range, label: '薪资', input_html: { class: "job-range", id: "job_range"} %>
+    <%= f.input :salary_range, label: '薪        资', input_html: { class: "job-range", id: "job_range"} %>
     <%= f.input :experience, label: '经验要求', input_html: { class: "job-experience", id: "job_experience"} %>
     <%= f.input :needed_number, label: '招聘人数', input_html: { class: "", id: ""} %>
     <%= f.input :region, label: '工作地区', input_html: { class: "", id: "job_region"} %>
