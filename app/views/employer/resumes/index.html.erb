@@ -12,32 +12,47 @@
 
    <!-- 按时间查看 -->
    <section class="order-time">
-   <ul class="sort-time-all">
-     <% @apply_records.each do |a| %>
-     <li>
-        <a href="/employer/resumes/<%= a["resume_id"]%>?job_id=<%= a["job_id"] %>">
-           <span><%= a["show_name"] %></span>
-           <span><%= a["sex"] %></span>
-           <span><%= a["age"] %>岁/<%= a["start_work_at"] %>/<%= a["hightest"] %></span>
-           <div class="sort-right">
-             <span><%= a["created_at"] %></span>
-             <%= image_tag "list-icon.png" %>
-           </div>
-        </a>
-     </li>
-     <% end %>
-   </ul>
-
-   <div class="time-resume">
-     <!-- 蒙板 -->
-     <div class="after-mask"></div>
-     <div class="time-date">
-       <p>今天简历</p>
-       <p>一周简历</p>
-       <p>近三月简历</p>
+     <div class="time-resume">
+       <!-- 蒙板 -->
+       <div class="after-mask"></div>
+       <div class="time-date">
+         <p onclick="TimeSort()">今天简历</p>
+         <p onclick="TimeSort()">一周简历</p>
+         <p onclick="TimeSort()">近三月简历</p>
+       </div>
      </div>
-   </div>
+     <ul class="sort-time-all">
+       <% @apply_records.each do |a| %>
+       <li>
+          <a href="/employer/resumes/<%= a["resume_id"]%>?job_id=<%= a["job_id"] %>">
+             <span><%= a["show_name"] %></span>
+             <span><%= a["sex"] %></span>
+             <span><%= a["age"] %>岁/<%= a["start_work_at"] %>/<%= a["hightest"] %></span>
+             <div class="sort-right">
+               <span><%= a["created_at"] %></span>
+               <%= image_tag "list-icon.png" %>
+             </div>
+          </a>
+       </li>
+
+       <!-- 筛选不同时间段简历 -->
+          <script type="text/javascript">
+          function TimeSort(){
+            var Mydate = new Date();
+            var to_year = Mydate.getFullYear();
+            var to_month = Mydate.getMonth()+1;
+            var to_day = Mydate.getDate();
+            var recieve_at = "<%= a['recieve_at'].ToString("yyyy-mm-dd") %>"
+            console.log(recieve_at);
+          }
+          </script>
+
+       <% end %>
+     </ul>
+
+
    </section>
+
 
    <!-- 按公开简历查看 -->
    <section class="order-resume">
@@ -73,7 +88,6 @@
 
     function OrderTime(){
       var display = $(".resume-content>section").eq(1).css('display');
-      console.log(display);
       if(display == 'block'){
         $(".time-resume").toggle();
       }
