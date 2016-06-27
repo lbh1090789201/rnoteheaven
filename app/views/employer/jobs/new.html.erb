@@ -4,21 +4,24 @@
     <p class="basic_infoo">任职资格<span>必填</span></p>
     <%= f.input :name, label: "职位名称", input_html: { class: "job-frist_new"} %>
     <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type"} %>
-    <%= f.input :salary_range, label: '薪        资', input_html: { class: "job-range", id: "job_range"} %>
-    <%= f.input :experience, label: '经验要求', input_html: { class: "job-experience", id: "job_experience"} %>
+    <%= f.input :salary_range, label: '薪        资', input_html: { readonly: 'readonly', class: "job-range", id: "job_range"} %>
+    <%= f.input :experience, label: '经验要求', input_html: { readonly: 'readonly', class: "job-experience", id: "job_experience"} %>
     <%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist_new", id: ""} %>
-    <%= f.input :region, label: '工作地区', input_html: { class: "", id: "job_region"} %>
+    <%= f.input :region, label: '工作地区', input_html: { readonly: 'readonly', class: "", id: "job_region"} %>
     <!-- 城市插件需要用到 -->
     <input type="hidden" id="province" value="">
     <input type="hidden" id="city" value="">
     <%= f.input :location, label: '详细地址', input_html: { class: "job-frist_new", id: ""} %>
     <div class="job-vip">
-    <%= f.input :end_at, label: 'VIP置顶', input_html: { class: "", id: ""} %>
-    <div class="job-slider">
-    	<div class="job-slider-inner"></div>
+      <%= f.input :is_top, label: 'VIP置顶', input_html: { value: 'false', class: "job-top", id: ""} %>
+      <div class="job-slider">
+      	<div class="job-slider-inner"></div>
+      </div>
     </div>
+    <div class="job-endtime">
+        <%= f.input :end_at, label: '发布期限', input_html: { readonly: 'readonly', class: 'job-date' } %>
+        <span class="job-end" id="job_end"></span>
     </div>
-    <%= f.input :end_at, label: '发布期限', input_html: { class: "", id: ""} %>
     <p class="basic_infoo">职位描述<span>必填</span></p>
     <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等"} %>
     <p class="basic_infoo">任职资格<span>必填</span></p>
@@ -40,6 +43,24 @@
 
 </div>
 <script type="text/javascript">
+
+  //6.24 VIP置顶栏的滑动条 Huangwei
+  $('.job-slider').on('click',function () {
+    if ($(this).css('background-color')=='rgb(244, 244, 244)') {//根据背景色判断，并移动和改变颜色样式
+      $('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
+        $(this).css('background','#3f9e9f');
+        $('.job-slider').css('margin-left','#fff');
+        // value值
+        $('.job-top').attr('value','true');
+    } else{
+        $('.job-slider-inner').css('margin-left','0.1rem');
+        $(this).css('background','#f4f4f4');
+        $('.job-slider').css('margin-left','#fff');
+        // value值
+        $('.job-top').attr('value','false');
+    }
+  })
+
   // 按钮提交表单
   $(function(){
     $('.btn-status>button').bind('click',function(){
@@ -88,6 +109,13 @@
     JobBasicNew(job_experience, ".job-experience", pclass);
   });
 
+  // 发布期限
+  $('.job-end').click(function() {
+    var job_end = ['１星期','２星期', '半个月', '１个月', '２个月', '３个月'];
+    var pclass = 'job_end';
+    JobBasicNew(job_end, ".job-end", pclass);
+  });
+
  // 城市插件
   var cityPicker = new IIInsomniaCityPicker({
         data: cityData,
@@ -98,18 +126,6 @@
     });
   cityPicker.init();
 
-  //6.24 VIP置顶栏的滑动条 Huangwei
 
-  $('.job-slider').on('click',function () {
-	if ($(this).css('background-color')=='rgb(244, 244, 244)') {//根据背景色判断，并移动和改变颜色样式
-		$('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
-	    $(this).css('background','#3f9e9f');
-	    $('.job-slider').css('margin-left','#fff');
-	} else{
-		$('.job-slider-inner').css('margin-left','0.1rem');
-	    $(this).css('background','#f4f4f4');
-	    $('.job-slider').css('margin-left','#fff');
-	}
-  })
 
 </script>

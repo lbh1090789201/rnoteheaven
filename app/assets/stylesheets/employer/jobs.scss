@@ -472,11 +472,11 @@
     display: none;
   }
 
-  .form-group:nth-of-type(9)::after{
+  .form-group:nth-of-type(10)::after{
     display: none;
   }
 
-  .form-group:nth-of-type(10)::after{
+  .form-group:nth-of-type(11)::after{
     display: none;
   }
 
@@ -486,6 +486,33 @@
 
   #submit {
     display: none;
+  }
+  .job-endtime {
+    position: relative;
+    .form-group::after {
+      content: "";
+      width: 0.41rem;
+      height: 0.66rem;
+      display: block;
+      position: absolute;
+      right: 1rem;
+      margin-top: 0.9rem;
+      background: url("../icon.png");
+      background-size: 0.41rem 0.66rem;
+    }
+    span {
+      display: block;
+      width: 8rem;
+      height: 1.6rem;
+      position: absolute;
+      top: 0.5rem;
+      right: 1.5rem;
+      background: #fff;
+      line-height: 1.6rem;
+      text-align: right;
+      font-size: 0.86rem;
+      padding-right: 0.44rem;
+    }
   }
 }
 
@@ -631,6 +658,41 @@
   #submit {
     display: none;
   }
+
+  .job-endtime {
+    position: relative;
+    .form-group::after {
+      content: "";
+      width: 0.41rem;
+      height: 0.66rem;
+      display: block;
+      position: absolute;
+      right: 1rem;
+      margin-top: 0.9rem;
+      background: url("../icon.png");
+      background-size: 0.41rem 0.66rem;
+    }
+    span {
+      display: block;
+      width: 8rem;
+      height: 1.6rem;
+      position: absolute;
+      top: 0.5rem;
+      right: 1.5rem;
+      background: #fff;
+      line-height: 1.6rem;
+      text-align: right;
+      font-size: 0.86rem;
+      padding-right: 0.44rem;
+    }
+  }
+  .btn-sright {
+    position: absolute;
+    top: 0;
+    right: 0.1rem;
+    width: 2.3rem;
+    height: 2.3rem;
+  }
 }
 
 //----Job-New---界面样式 6.24 Huangwei
@@ -693,6 +755,7 @@
     top: 0.65rem;
     background:#f4f4f4;
     border-radius: 8px;
+    z-index: 100;
       .job-slider-inner{
           width:1.15rem;
           height: 1.15rem;

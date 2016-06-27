@@ -27,11 +27,12 @@ class Employer::JobsController < ApplicationController
     @seeker_count = ApplyRecord.where(job_id: @job.id).length
     @time_left = Job.time_left @job.id
     @left_refresh_time = Job.left_refresh_time @job.refresh_at
-      puts "＋＋＋＋＋＋"+@left_refresh_time.to_s
   end
 
   def edit
     @job = Job.find params[:id]
+    @job_end_at = ((@job.end_at - Time.now)/1.days).to_i
+    @job.end_at = ((@job.end_at - Time.now)/1.days).to_i
   end
 
   def create
@@ -40,6 +41,7 @@ class Employer::JobsController < ApplicationController
     job.release_at = Time.now
     job.refresh_at = Time.now
     job.end_at = Time.now + job_params[:end_at].to_i.days
+    job.is_top = job_other_params[:is_top]
 
     if job.save
       Employer.vip_count current_user.id, "has_release"
@@ -55,8 +57,11 @@ class Employer::JobsController < ApplicationController
 
   def update
     job = Job.find params[:id]
+    job.end_at = Time.now + job_other_params[:end_at].to_i.days
+    job.refresh_at = Time.now
+    job.is_top = job_other_params[:is_top]
 
-    if  Job.update job_params && job.save
+    if  job.update_columns(job_params) && job.save
       # 通知用户，职位信息有更新
       res = FavoriteJob.set_new job.id
       render js: "location.href=document.referrer"
@@ -92,7 +97,11 @@ class Employer::JobsController < ApplicationController
 
     def job_params
       params.require(:job).permit(:name, :job_type, :salary_range, :experience, :needed_number,
-                                  :region, :location, :job_desc, :job_demand, :status, :release_at, :end_at)
+                                  :region, :location, :job_desc, :job_demand, :status, :release_at)
+    end
+
+    def job_other_params
+      params.require(:job).permit(:is_top, :end_at)
     end
 
     # 按钮显示名称
@@ -115,6 +124,7 @@ class Employer::JobsController < ApplicationController
       return txt
     end
 end
+
 
 
 # 接口说明

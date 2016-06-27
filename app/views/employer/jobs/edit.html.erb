@@ -2,7 +2,7 @@
 <%= provide :content, "保存" %>
 <div id="job_basic">
 	<p class="basic_info">职位基本信息<span>必填</span> </p>
-    <%= simple_form_for :job, method: :patch, remote: true, id: "submit_form", url: employer_jobs_path do |f| %>
+    <%= simple_form_for :job, method: :patch, remote: true, id: "submit_form", url: employer_job_path(params[:id]) do |f| %>
     <%= f.input :name, label: "职位名称", input_html: { class: "job-frist" ,id:""} %>
     <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type"} %>
     <%= f.input :salary_range, label: '薪资', input_html: { class: "job-range", id: "job_range"} %>
@@ -14,32 +14,63 @@
     <input type="hidden" id="city" value="">
     <%= f.input :location, label: '详细地址', input_html: { class: "job-frist", id: ""} %>
     <div class="job-vip">
-    <%= f.input :is_top, label: 'VIP置顶' %>
-    <div class="job-slider">
-    	<div class="job-slider-inner"></div>
+	    <%= f.input :is_top, label: 'VIP置顶', input_html: { class: "job-top", id: ""}%>
+	    <div class="job-slider">
+	    	<div class="job-slider-inner"></div>
+	    </div>
     </div>
+		<div class="job-endtime">
+        <%= f.input :end_at, label: '发布期限', input_html: { readonly: 'readonly', class: 'job-date' } %>
+        <span class="job-end" id="job_end">剩余<%= @job_end_at %>天</span>
     </div>
-    <%= f.input :end_at, label: '发布期限', input_html: { class: "", id: ""} %>
     <p class="basic_info">职位描述<span>必填</span> </p>
     <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等"} %>
     <p class="basic_info">任职资格<span>必填</span> </p>
     <%= f.input :job_demand, label: '', as: :text, input_html: { class: "", placeholder: "资格要求"} %>
-    
+
     <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status"} %>
     <%= f.submit id: "submit", class: ""%>
-    <!-- <div class="btn-status">
-      <button type="button" name="button" onclick="SubmitForm(this)">保存</button>
-    </div> -->
+    <div class="btn-sright"></div>
     <% end %>
 
 </div>
 <script type="text/javascript">
   // 按钮提交表单
-  // $(function(){
-  //   $('.btn-status>button').bind('click',function(){
-  //       $('#submit').trigger('click');
-  //   });
-  // })
+  $(function(){
+    $('.btn-sright').bind('click',function(){
+        $('#submit').trigger('click');
+    });
+  })
+
+	//6.24 VIP置顶栏的滑动条 Huangwei
+	$(function(){
+		var status = "<%= @job.is_top %>";
+		console.log(status);
+		if(!status){
+			$('.job-slider-inner').css('margin-left','0.1rem');
+			$('.job-slider').css('background','#f4f4f4');
+			$('.job-slider').css('margin-left','#fff');
+		}else{
+			$('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
+			$('.job-slider').css('background','#3f9e9f');
+			$('.job-slider').css('margin-left','#fff');
+			$('.job-top').attr('value',true);
+		}
+	})
+
+	$('.job-slider').on('click',function () {
+	if ($(this).css('background-color')=='rgb(244, 244, 244)') {//根据背景色判断，并移动和改变颜色样式
+		  $('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
+			$(this).css('background','#3f9e9f');
+			$('.job-slider').css('margin-left','#fff');
+			$('.job-top').attr('value',true);
+	} else{
+	  	$('.job-slider-inner').css('margin-left','0.1rem');
+			$(this).css('background','#f4f4f4');
+			$('.job-slider').css('margin-left','#fff');
+			$('.job-top').attr('value',false);
+	}
+	})
 
   // 职位类型
   $('.job-type').click(function() {
@@ -64,6 +95,13 @@
     JobBasicNew(job_experience, ".job-experience", pclass);
   });
 
+	// 发布期限
+  $('.job-end').click(function() {
+    var job_end = ['１星期','２星期', '半个月', '１个月', '２个月', '３个月'];
+    var pclass = 'job_end';
+    JobBasicNew(job_end, ".job-end", pclass);
+  });
+
  // 城市插件
   var cityPicker = new IIInsomniaCityPicker({
         data: cityData,
@@ -73,19 +111,7 @@
         hideProvinceInput: '#province'
     });
   cityPicker.init();
-  
-    //6.24 VIP置顶栏的滑动条 Huangwei
-  
-  $('.job-slider').on('click',function () {
-	if ($(this).css('background-color')=='rgb(244, 244, 244)') {//根据背景色判断，并移动和改变颜色样式
-		$('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
-	    $(this).css('background','#3f9e9f');
-	    $('.job-slider').css('margin-left','#fff');
-	} else{
-		$('.job-slider-inner').css('margin-left','0.1rem');
-	    $(this).css('background','#f4f4f4');
-	    $('.job-slider').css('margin-left','#fff');
-	}	
-  })
+
+
 
 </script>
