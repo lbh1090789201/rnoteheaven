@@ -5,7 +5,7 @@ User.create!(
     username: "test",
     show_name: "test",
     password: "123456",
-    email: "admin@example.com",
+    email: "test@example.com",
     cellphone: "13888888778",
     sex: "男"
 )
@@ -19,6 +19,16 @@ u = User.create!(
     sex: "女"
 )
 u.add_role :gold
+
+aa = User.create!(
+    username: "admin",
+    show_name: "admin",
+    password: "123456",
+    email: "admin@example.com",
+    cellphone: "13833332222",
+    sex: "女"
+)
+aa.add_role :admin
 
 hospital = Hospital.create!(
     name: "深圳第一医院",

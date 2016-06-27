@@ -97,6 +97,17 @@ Ryunkang::Application.routes.draw do
        end
        resources :resumes, :only => [:index, :show, :update]
      end
+
+    # Admin
+    namespace :admin do
+      resources :jobs, :only => [:index, :edit, :update] do
+        get 'check', on: :collection
+      end
+
+      resources :resumes, :only => [:index, :edit, :update]
+      resources :users, :only => [:index, :edit, :update]
+    end
+
    ########### yunkang end ###########
 
 end
