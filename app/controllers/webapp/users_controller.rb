@@ -69,7 +69,7 @@ class Webapp::UsersController < ApplicationController
       resume_maturity = Resume.get_maturity @user.id
 
       if user_params[:avatar]
-        redirect_to session.delete(:return_to)
+        redirect_to :back
       else
         render js: 'history.go(-1);'
       end
