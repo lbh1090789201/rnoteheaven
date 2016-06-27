@@ -1,5 +1,6 @@
 <% provide :title, "我的简历" %>
 <% provide :link, "#{current_user.id}/preview" %>
+<% provide :back,"/webapp/users/#{current_user.id}" %>
 <%= provide :content, "预览" %>
 <script type="text/javascript">
   $(refreshOnce()); //刷新一次页面
@@ -16,7 +17,7 @@
                     <div class="avatar-box avatar-border borDer" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
                         <!-- 已修改样式 bobo -->
                     </div>
-                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"},remote: true do |f| %>
+                     <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"} do |f| %>
                          <%= f.input :avatar, label: '头像', id:"user_avatar" %>
                          <%= f.button :submit, id: "avatar_submit" %>
                      <% end %>
@@ -211,10 +212,10 @@ $(document).on('ready page:load', function () {
 });
 
 
-$('#edit_user_1').bind('ajax:success', function(){
-  alert('ok');
-  history.go(0);
-});
+// $('#edit_user_1').bind('ajax:success', function(){
+//   alert('ok');
+//   history.go(0);
+// });
 
 // 刷新简历
 $('.refresh').click(function() {
@@ -240,10 +241,6 @@ $('.refresh').click(function() {
     $('.refresh').css('background-color', 'gray');
     $('.refresh').off();
   });
-
-
-
-
 <% end %>
 
 </script>

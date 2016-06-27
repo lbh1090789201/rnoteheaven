@@ -27,6 +27,7 @@ class Webapp::ResumesController < ApplicationController
   end
 
   def show
+    session[:return_to] ||= request.referer
     resume = Resume.where(user_id: current_user.id).first_or_create!
 
     @user = User.find_by_id(current_user.id)
@@ -45,10 +46,7 @@ class Webapp::ResumesController < ApplicationController
       resume.refresh_at = Time.now
 
       if resume.save
-        render json: {
-          success: true,
-          info: "简历刷新成功"
-        },status: 200
+        render js: 'location.href = document.referrer'
       else
         render json: {
                    success: false,
