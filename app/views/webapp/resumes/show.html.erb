@@ -17,7 +17,7 @@
                         <!-- 已修改样式 bobo -->
                     </div>
                      <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"},remote: true do |f| %>
-                         <%= f.input :avatar, label: '头像', input_html: {id:"avatar", onchange: "uploadAvatar()"} %>
+                         <%= f.input :avatar, label: '头像', id:"user_avatar" %>
                          <%= f.button :submit, id: "avatar_submit" %>
                      <% end %>
                     <span class="update-img">点击更换</span>
@@ -199,16 +199,20 @@ function expend_desc(obj) {
 };
 
 // 点击上传头像
-function uploadAvatar() {
-  $('#avatar_submit').click();
-};
+// function uploadAvatar() {
+//   $('#avatar_submit').click();
+// };
 
 $($('.avatar-box').click(function() {
-  $('#avatar').click();
+  $('#user_avatar').click();
 }),
 $('.pencil').click(function() {
-  $('#avatar').click();
-}));
+  $('#user_avatar').click();
+}),
+$('#user_avatar').change(function() {
+  $('#avatar_submit').click();
+})
+);
 
 
 $('#edit_user_1').bind('ajax:success', function(){
