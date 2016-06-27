@@ -1,5 +1,8 @@
 class Job < ActiveRecord::Base
 
+  # 默认按 VIP 优先排序
+  default_scope { order('is_top DESC') }
+
   # 按Hospital id
   scope :filter_hospital_id, -> (hid) {
     filter = "hospital_id = " + hid if hid.present?

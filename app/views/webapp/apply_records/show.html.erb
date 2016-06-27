@@ -4,7 +4,7 @@
   <% @applyrecord.each do |a|%>
   <section class="position-info apply-info">
     <a href="/webapp/jobs/<%= a[:id] %>">
-      <div class="position-detail record-job">
+      <div class="position-detail record-job record-hh">
         <h3><%= a[:job_name] %><span><%= a[:salary_range] %></span></h3>
 
         <p><%= a[:created_at].strftime("%Y-%m-%d") %>　|　<%= a[:location] %><span>&gt;</span></p>
