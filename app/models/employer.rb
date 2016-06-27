@@ -36,9 +36,9 @@ class Employer < ActiveRecord::Base
     if level == 1
       employer = Employer.find_by user_id: uid
       employer.may_receive = 200
-      employer.may_release = 3
-      employer.may_set_top = 3
-      employer.may_view = 3
+      employer.may_release = 10
+      employer.may_set_top = 10
+      employer.may_view = 10
 
       if employer.save
         return {json: {
