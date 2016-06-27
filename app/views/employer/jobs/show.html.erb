@@ -1,3 +1,5 @@
+<%= provide :title, @job.name %>
+
 <% if @job.status != 'release' %>
 <%= provide :content, '编辑' %>
 <%= provide :link, edit_employer_job_path(params[:id]) %>
