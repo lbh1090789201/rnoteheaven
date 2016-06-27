@@ -1,6 +1,5 @@
 <% provide :title, "我的简历" %>
 <% provide :link, "#{current_user.id}/preview" %>
-<% provide :back,"/webapp/users/#{current_user.id}" %>
 <%= provide :content, "预览" %>
 <script type="text/javascript">
   $(refreshOnce()); //刷新一次页面
