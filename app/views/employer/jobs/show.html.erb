@@ -1,3 +1,5 @@
+<%= provide :title, @job.name %>
+
 <% if @job.status != 'release' %>
 <%= provide :content, '编辑' %>
 <%= provide :link, edit_employer_job_path(params[:id]) %>
@@ -20,7 +22,7 @@
         <li><span>经验要求</span><span class="job-exprience"></span><%= @job.needed_number %>年</li>
       </ul>
     </div>
-    <div class="job-place"><a href="#"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
+    <div class="job-place"><a href="#"><span>工作地点</span><%= @job.location %><%= image_tag "jobright.png" %></a></div>
 
     <!-- 刷新简历 -->
     <% if @job.status == "release" %>
@@ -28,7 +30,7 @@
         <%= image_tag "icon_1.png" %>
         <span>刷新职位</span>
       </div>
-      <p class="reflesh-time" style="font-size:0.3rem;"><%= @left_refresh_time %>天后可再次刷新</p>
+      <p class="reflesh-time"><%= @left_refresh_time %>天后可再次刷新</p>
       <script type="text/javascript">
           //  reflesh_time 值不同显示不同
           var reflesh_time = "<%= @left_refresh_time %>";
