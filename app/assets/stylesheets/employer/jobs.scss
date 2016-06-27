@@ -448,11 +448,11 @@
     display: none;
   }
 
-  .form-group:nth-of-type(9)::after{
+  .form-group:nth-of-type(10)::after{
     display: none;
   }
 
-  .form-group:nth-of-type(10)::after{
+  .form-group:nth-of-type(11)::after{
     display: none;
   }
 
@@ -669,6 +669,7 @@
     top: 0.65rem;
     background:#f4f4f4;
     border-radius: 8px;
+    z-index: 100;
       .job-slider-inner{
           width:1.15rem;
           height: 1.15rem;

@@ -22,6 +22,7 @@ function JobBasicNew(obj,api,pclass) {
   console.log(span);
   var div = $(".top");
   div.prepend(span);
+  $(document).scrollTop('0');
 }
 
 function change_val(obj) {
