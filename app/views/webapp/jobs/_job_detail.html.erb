@@ -1,28 +1,24 @@
 <div id="job-detail">
   <section>
     <div class="job-introduce">
-      <h3>内科医生</h3>
-      <p style="color:#ff8b00;">7000-9000/月</p>
+      <h3><%= @job.name %></h3>
+      <p style="color:#ff8b00;"><%= @job.salary_range %>/月</p>
       <ul>
-        <li><span>医院</span>荔湾区花地街社区卫生服务中心</li>
-        <li><span>性质</span>社区医院<span class="job-scale">规模</span>5-10人</li>
-        <li><span>地区</span>广州<span class="job-number">人数</span>2人</li>
+        <li><span>医院</span><%= @hospital.name %></li>
+        <li><span>性质</span><%= @hospital.property %><span class="job-scale">规模</span><%= @hospital.scale %></li>
+        <li><span>地区</span><%= @job.region %><span class="job-number">人数</span><%= @job.needed_number %>人</li>
       </ul>
     </div>
-    <div class="job-place"><a href="#"><span>工作地点</span>广州市天河区黄村大道西华里2号<i><%= image_tag "jobright.png" %></i></a></div>
+    <div class="job-place"><a href="#"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
   </section>
 
   <section class="job-right">
     <div class="job-descripte">
       <h2>职位描述</h2>
       <h3>职责说明</h3>
-      <h4>负责本专业临床诊治/患者管理工作:</h4>
-      <p>负责病人的日常诊断/治疗和处理工作，并提供上门医院服务；</p>
-      <p>临床病例讨论，会诊/检查/修改医院诊断文件；</p>
-      <p>根据患者的身体情况及生活习惯，给出合理建议并制定健康管理方案；</p>
-      <p>遵守各项管理制度；保证医院安全；</p>
-      <p>完成其他突发事件处理和领导交办的工作</p>
+      <p><%= @job.job_desc %></p>
       <h3 class="job-post">任职资格</h3>
+      <p><%= @job.job_demand %></p>
     </div>
   </section>
 

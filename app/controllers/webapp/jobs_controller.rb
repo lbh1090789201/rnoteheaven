@@ -1,6 +1,6 @@
 class Webapp::JobsController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
-  
+
    def index
    end
 
@@ -11,6 +11,8 @@ class Webapp::JobsController < ApplicationController
      is_favor = FavoriteJob.is_favor(current_user.id, params[:id])
      @btn_apply = btn_info(is_applied, has_resume)
      @btn_favor = btn_favor(is_favor)
+     @hospital = Hospital.find_by(:id => @job.hospital_id)
+     @jobs = Job.where(:hospital_id => @hospital.id)
    end
 
    # private

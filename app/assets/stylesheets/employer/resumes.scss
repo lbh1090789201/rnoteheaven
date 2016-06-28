@@ -45,9 +45,7 @@ $light-gray: #f4f4f4;
           width: 100%;
           list-style: none;
           li.job-Arrang {
-            // position: relative;
             height: 3.1rem;
-            // height: 4rem;
             width: 100%;
             line-height: 2.88rem;
             border-bottom: 1px solid #cfcfcf;
@@ -74,6 +72,17 @@ $light-gray: #f4f4f4;
               .job-len {
                 font-size: 0.7rem;
                 margin-left: 0.32rem;
+                position: relative;
+                margin-top: 0.1rem;
+              }
+              .i-img {
+                position: absolute;
+                top: -1.4rem;
+                right: 0;
+                img {
+                  width: 0.28rem;
+                  height: auto;
+                }
               }
               .job-image{
                 margin: 0 0.32rem 0 0.6rem;
@@ -423,8 +432,6 @@ $light-gray: #f4f4f4;
         width: 3.72rem;
         height: 3.72rem;
         border-radius: 50%;
-        // border: 1px solid #707070;
-        background: url('../avator.png');
         background-size:  3.72rem 3.72rem;
         margin: 1.37rem 0.68rem 0 1.32rem;
         float: left;

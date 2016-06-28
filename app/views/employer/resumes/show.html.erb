@@ -21,13 +21,26 @@
     },
   });
 </script>
+<% if params[:job_id] %>
+<script type="text/javascript">
+   // 每次查看简历后都会更新apply_record的view_at
+  // $.ajax({
+  //  url: "<%= api_apply_record_path(@apply_record.id) %>",
+  //  type: "PATCH",
+  //  data: {user_id: "<%= @user.id %>", job_id: "<%= params[:job_id] %>"},
+  //  success: function(){
+  //    console.log("查看时间更改成功！");
+  //  },
+  // })
+</script>
+<% end %>
 
 <div class="resume-content">
   <% if @user && @apply_record %>
   <div class="resume-avatar">
-    <div class="show-img"></div>
+    <div class="show-img" style="background: url('<%= @avatar %>')"></div>
     <div class="show-top">
-      <p><%= @user.username %><span>应聘：</span><span><%= @apply_record.job_name %></span></p>
+      <p><%= @user.show_name %><span>应聘：</span><span><%= @apply_record.job_name %></span></p>
       <p>
         <%= @user.sex %>
         <span><%= @apply_record.age %>岁</span>

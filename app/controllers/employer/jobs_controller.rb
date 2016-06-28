@@ -40,7 +40,7 @@ class Employer::JobsController < ApplicationController
     job.hospital_id = Employer.get_hospital(current_user.id).id
     job.release_at = Time.now
     job.refresh_at = Time.now
-    job.end_at = Time.now + job_params[:end_at].to_i.days
+    job.end_at = Time.now + job_other_params[:end_at].to_i.days
     job.is_top = job_other_params[:is_top]
 
     if job.save
@@ -61,7 +61,7 @@ class Employer::JobsController < ApplicationController
     job.refresh_at = Time.now
     job.is_top = job_other_params[:is_top]
 
-    if  job.update_columns(job_params) && job.save
+    if job.save && job.update_columns(job_params)
       # 通知用户，职位信息有更新
       res = FavoriteJob.set_new job.id
       render js: "location.href=document.referrer"

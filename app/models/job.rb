@@ -58,7 +58,7 @@ class Job < ActiveRecord::Base
       return where("id = 0")
     end
   }
-
+  
   # 获得求职者信息
   def self.get_seekers jid
     job = Job.select(:id, :name, :hospital_id).find(jid).as_json
