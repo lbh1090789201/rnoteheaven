@@ -53,6 +53,23 @@ class Webapp::ResumesController < ApplicationController
                }, status: 403
       end
     end
+
+    if params[:resume_public]
+      resume = Resume.find params[:id]
+      resume.public = params[:resume_public]
+
+      if resume.save
+        render json: {
+          success: true,
+          info: "更改简历隐私成功！",
+        }, status: 200
+      else
+        render json: {
+          success: true,
+          info: "更改简历隐私失败",
+        }, status: 403
+      end
+    end
   end
 
 end
