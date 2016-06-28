@@ -20,17 +20,18 @@ class Resume < ActiveRecord::Base
   # 按 用户所在地 筛选
   # TODO 待测试
   def self.filter_by_city city
-    users = User.where(location: city)
-    resume_ids = []
-    users.each do |f|
-      resume_ids.push f.id
-    end
-    where(user_id: resume_ids)
+    # users = User.where(location: city)
+    # resume_ids = []
+    # users.each do |f|
+    #   resume_ids.push f.id
+    # end
+    # where(user_id: resume_ids)
+    includes(:user).where(location: city)
   end
 
   # 按 用户名 搜索
   def self.filter_show_name name
-    includes(:user)
+
   end
 
   def self.refresh_left(rid)

@@ -13,7 +13,8 @@ RSpec.describe Webapp::JobsController, type: :controller do
   # 页面测试开始
   describe 'get #index #show' do
     before :each do
-      @job = create :job
+      @hospital = create :hospital
+      @job = create :job, hospital_id: @hospital.id
     end
 
 

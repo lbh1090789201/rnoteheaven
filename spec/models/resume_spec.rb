@@ -49,6 +49,19 @@ RSpec.describe Resume, type: :model do
       expect(res.length).to eq(10)
     end
 
+    describe "test filter" do
+      before :each do
+        @user = create(:user, location: "武汉")
+        @resume = create(:resume, user_id: @user.id)
+      end
+
+      it "test filter_by_city" do
+        res = Resume.filter_by_city "武汉"
+        expect(res.length).to eq(1)
+      end
+    end
+
+    # 测试简历完整度
     describe 'test get_maturity' do
       before :each do
         @user = create(:user)

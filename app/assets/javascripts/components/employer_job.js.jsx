@@ -3,7 +3,7 @@
 //       alert("status");
 //     },
 //     render: function() {
-//         return <button className={this.props.job.status} onClick="postPause({this.props.job.status})">
+//         return <button className={this.props.job.status} onClick={postPause({this.props.job.status})}>
 //                 暂停发布
 //                </button>;
 //     }

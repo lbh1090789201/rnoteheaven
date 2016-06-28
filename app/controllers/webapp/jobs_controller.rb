@@ -5,7 +5,7 @@ class Webapp::JobsController < ApplicationController
    end
 
    def show
-     @job = Job.find_by_id(params[:id])
+     @job = Job.find params[:id]
      is_applied = ApplyRecord.is_applied(current_user.id , params[:id])
      has_resume = Resume.find_by_user_id current_user.id
      is_favor = FavoriteJob.is_favor(current_user.id, params[:id])
