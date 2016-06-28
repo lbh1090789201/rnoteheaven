@@ -37,7 +37,7 @@
 <div class="resume-content">
   <% if @user && @apply_record %>
   <div class="resume-avatar">
-    <div class="show-img" style="background: url('<%= @avatar %>');background-size:  3.72rem 3.72rem;"></div>
+    <div class="show-img" style="background: url('<%= @avatar %>');background-size:  3.72rem auto;"></div>
     <div class="show-top">
       <p><%= @user.show_name %><span>应聘：</span><span><%= @apply_record.job_name %></span></p>
       <p>
