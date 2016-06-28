@@ -100,8 +100,9 @@ Ryunkang::Application.routes.draw do
 
     # Admin
     namespace :admin do
-      resources :jobs, :only => [:index, :edit, :update] do
+      resources :jobs, :only => [:index, :edit] do
         get 'check', on: :collection
+        patch 'update', on: :collection
       end
 
       resources :resumes, :only => [:index, :edit, :update]
