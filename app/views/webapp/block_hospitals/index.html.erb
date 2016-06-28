@@ -3,7 +3,7 @@
   <section class="block-btn">
     <div class="block-middle">
       <p class="block-board">公开我的简历</p>
-      <div class="right">
+      <div class="right" onclick="addBlock(this)">
          <div class="swich"></div>
       </div>
    </div>
@@ -50,9 +50,36 @@
     }
   });
 
-  // AJAX上传
+  // AJAX上传简历是否公开
   function addBlock() {
-
+    var resume_public = '<%= @resume.public %>';
+    console.log(resume_public);
+    if( resume_public=='false' ) {
+      $.ajax({
+        url: "<%= webapp_resume_path(@resume.id) %>",
+        type: "PATCH",
+        data: {resume_public: true},
+        success: function(){
+          console.log('已公开简历');
+        },
+        error: function(){
+          alert('公开简历失败');
+        },
+      })
+    }else{
+      $.ajax({
+        url: "<%= webapp_resume_path(@resume.id) %>",
+        type: "PATCH",
+        data: {resume_public: false},
+        success: function(){
+          console.log('已隐藏简历');
+        },
+        error: function(){
+          alert('隐藏简历失败');
+        },
+      })
+    }
+    var timer = setTimeout(function(){window.location.reload()}; )
   }
 
 // 删除屏蔽机构

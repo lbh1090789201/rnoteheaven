@@ -4,6 +4,8 @@ class Webapp::BlockHospitalsController < ApplicationController
 
   def index
     @blockhospitals = BlockHospital.where user_id: current_user.id
+    @resume = Resume.find_by_user_id current_user.id
+    puts "=-----===="+ @resume.to_json.to_s
   end
 
   def new
