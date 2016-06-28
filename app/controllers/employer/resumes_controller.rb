@@ -37,7 +37,7 @@ class Employer::ResumesController < ApplicationController
     resume = Resume.find resume_id
     @seeker = Resume.info resume.user_id
     @apply_record = ApplyRecord.select(:id, :job_name, :resume_status, :age, :job_name).find_by(job_id: job_id, user_id: resume.user_id)
-
+    puts "-------"+ @apply_record.to_json.to_s
     # 简历预览
     @user = User.find resume.user_id
     @work_experiences = WorkExperience.where(:user_id => @user.id)

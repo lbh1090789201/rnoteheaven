@@ -29,6 +29,7 @@ RSpec.describe Employer::ResumesController, type: :controller do
       employer = create :employer, user_id: @user.id, hospital_id: hospital.id
       job = create(:job, hospital_id: hospital.id)
       expect_job = create(:expect_job, user_id: @user.id)
+      apply_record = create(:apply_record, job_id: job.id, resume_id: resume.id, user_id: @user.id, hospital_id: hospital.id)
 
       get :show, id: resume.id, job_id: job.id
       expect(response).to have_http_status(:success)
