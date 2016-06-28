@@ -15,7 +15,7 @@ class Admin::JobsController < ApplicationController
                  .filter_hospital_name(params[:hospital_name])
                  .filter_job_name(params[:job_name])
     else
-      @jobs = Job.filter_job_status('reviewing')
+      @jobs = Job.filter_job_status('reviewing').as_json
     end
   end
 

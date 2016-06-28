@@ -1,5 +1,2 @@
-<% @jobs.each do |f| %>
-  <tr>
-    <%= f.to_json.to_s %>
-  </tr>
-<% end %>
+
+<%= react_component 'AdminJob', {data: @jobs} %>
