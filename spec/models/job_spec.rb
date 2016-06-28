@@ -29,10 +29,10 @@ RSpec.describe Job, type: :model do
 
   describe 'test filters' do
     before :each do
-      job = create :job, :hospital_id => @hospital1.id
-      job2 = create :job2, :hospital_id => @hospital2.id, :status => "saved"
-      job3 = create :job3, :hospital_id => @hospital1.id, :status => "release"
-      job4 = create :job4, :hospital_id => @hospital2.id
+      job = create :job, :hospital_id => @hospital1.id, :release_at => Time.now - 5.days
+      job2 = create :job2, :hospital_id => @hospital2.id, :status => "saved" , :release_at => Time.now - 3.days
+      job3 = create :job3, :hospital_id => @hospital1.id, :status => "release", :release_at => Time.now - 1.days
+      job4 = create :job4, :hospital_id => @hospital2.id, :release_at => Time.now, :job_type => "全科"
     end
 
     it "test filter name" do
@@ -57,6 +57,18 @@ RSpec.describe Job, type: :model do
 
     it "test filter status" do
       expect(Job.filter_job_status("saved").size).to eq(2)
+    end
+
+    it "test filter_release_before" do
+      expect(Job.filter_release_before(Time.now - 2.days).size).to eq(2)
+    end
+
+    it "test filter_release_after" do
+      expect(Job.filter_release_after(Time.now - 4.days).size).to eq(3)
+    end
+
+    it "test filter_job_type" do
+      expect(Job.filter_job_type("全科").size).to eq(1)
     end
 
   end

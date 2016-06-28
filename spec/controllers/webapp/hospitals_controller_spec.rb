@@ -19,15 +19,18 @@ RSpec.describe Webapp::HospitalsController, type: :controller do
 
   # show 测试开始
   describe "GET #show" do
+    before :each do
+      @hospital = create(:hospital)
+      @job = create(:job, hospital_id: @hospital.id)
+    end
+
     it "assigns the requested hospital to @hospital" do
-      hospital = create(:hospital)
-      get :show, id: hospital.id
-      expect(assigns(:hospital))== hospital
+      get :show, id: @hospital.id
+      expect(assigns(:hospital))== @hospital
     end
 
     it "renders the :show template" do
-      hospital = create(:hospital)
-      get :show, id: hospital.id
+      get :show, id: @hospital.id
       expect(response).to render_template :show
     end
   end

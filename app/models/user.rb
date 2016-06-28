@@ -17,7 +17,7 @@ class User < ActiveRecord::Base #用户
 
   # for user_albumns
   has_many :user_albumns
-  has_many :resumes
+  has_one :resume
   has_many :favorite_jobs
   has_many :work_experiences
 

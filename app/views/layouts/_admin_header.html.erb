@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <!--<a class="navbar-brand" href="/admin/users/<%= current_user.id %>">-->
+  <a class="navbar-brand" href="/admin/jobs/check">
+        <%= image_tag 'vip.png', :class => 'logo' %>
+    </a>
+    <ul id="admin_nav" class="nav navbar-nav nav-console">
+        <li  class="<%='active' if params[:controller] == 'admin/jobs'%>" >
+          <a href="/admin/jobs/check">职位管理</a>
+        </li>
+        <li class="<%='active' if params[:controller] == 'admin/resumes'%>">
+            <a href="/admin/resumes">简历管理</a>
+        </li>
+        <li>
+            <a href="#">入驻机构</a>
+        </li>
+        <li>
+            <a href="#">医聘专场</a>
+        </li>
+        <li>
+            <a href="#">套餐管理</a>
+        </li>
+        <li class="<%='active' if params[:controller] == 'admin/users'%>">
+            <a href="/admin/users">帐号管理</a>
+        </li>
+    </ul>
+    <a href="/logout" class="btn btn-default sign_out"><%= t("web-app-theme.logout", :default => "Logout") %></a>
+</nav>

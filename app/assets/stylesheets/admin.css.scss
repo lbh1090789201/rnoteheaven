@@ -1,0 +1,38 @@
+
+/* 公共样式开始 */
+header {
+  .navbar {
+    margin-bottom: 0;
+    li a {
+      height: 65px;
+      line-height: 32px;
+    }
+
+    .sign_out {
+      float: right;
+      margin-top: 13px;
+    }
+  }
+  img {
+    height: 0.5rem;
+  }
+}
+
+#wrap {
+  margin-top: 1.5rem;
+  overflow: hidden;
+
+  .panel {
+    width: 3rem;
+    margin-left: 0.2rem;
+  }
+  .main {
+
+  }
+}
+
+footer {
+  text-align: center;
+}
+
+/* 公共样式结束 */

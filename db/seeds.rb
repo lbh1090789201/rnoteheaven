@@ -24,7 +24,7 @@ aa = User.create!(
     username: "admin",
     show_name: "admin",
     password: "123456",
-    email: "admin@example.com",
+    email: "admin2@example.com",
     cellphone: "13833332222",
     sex: "女"
 )
