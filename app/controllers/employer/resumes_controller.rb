@@ -14,7 +14,7 @@ class Employer::ResumesController < ApplicationController
     # 三个月内简历
     @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",
                                         hospital.id, Time.now - 90.days).order("apply_at DESC")
-puts "------"+@apply_records.to_json.to_s
+                                        
     # 公开简历
     public_resumes = Resume.where(public: true).filter_no_freeze.order("refresh_at DESC")
     @public_seekers = []

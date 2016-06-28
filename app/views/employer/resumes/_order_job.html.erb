@@ -6,7 +6,11 @@
     <span class="job-reg"><%= j["hospital_region"] %></span>
     <div class="job-right">
       <span class="job-img"><%= image_tag "man.png" %><span>
-      <span class="job-len"><%= j["seekers"].length %>人</span>
+      <span class="job-len"><%= j["seekers"].length %>人
+        <% if j["has_new"] %>
+          <i class="i-img" ><%= image_tag "red_point.png" %></i>
+        <% end %>
+      </span>
       <span class="job-image"><%= image_tag "list-icon.png" %><span>
     </div>
 

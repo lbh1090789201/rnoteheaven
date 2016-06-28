@@ -1,48 +1,22 @@
 <!--该页是医院的职位列表页-->
-<% provide :title, "广州XXXXXXXX人民医院" %>
+<% provide :title, @hospital.name %>
 <div class="jobs hospitaljob-list">
   <div class="jobs-list">
-    <a href="/webapp/jobs/1?hospital=<%= params[:id] %>">
+    <% @jobs.each do |h| %>
+    <a href="/webapp/jobs/<%= h.id %>?hospital=<%= params[:id] %>">
       <div class="job">
         <div class="title">
-          <div class="left">儿科护士</div>
-          <div class="right">4000-5000/月</div>
+          <div class="left"><%= h.name %></div>
+          <div class="right"><%= h.salary_range %>/月</div>
           <div style="clear:both"></div>
         </div>
         <div class="detail job-list-detail">
-          <div class="left">荔湾区人民医院</div>
-          <div class="right">广州市白云区</div>
+          <div class="left"><%= @hospital.name %></div>
+          <div class="right"><%= h.region %></div>
           <div style="clear:both"></div>
         </div>
       </div>
     </a>
-    <a href="/webapp/jobs/1?hospital=<%= params[:id] %>">
-      <div class="job">
-        <div class="title">
-          <div class="left">儿科护士</div>
-          <div class="right">4000-5000/月</div>
-          <div style="clear:both"></div>
-        </div>
-        <div class="detail job-list-detail">
-          <div class="left">荔湾区人民医院</div>
-          <div class="right">广州市白云区</div>
-          <div style="clear:both"></div>
-        </div>
-      </div>
-    </a>
-    <a href="/webapp/jobs/1?hospital=<%= params[:id] %>">
-      <div class="job">
-        <div class="title">
-          <div class="left">儿科护士</div>
-          <div class="right">4000-5000/月</div>
-          <div style="clear:both"></div>
-        </div>
-        <div class="detail job-list-detail">
-          <div class="left">荔湾区人民医院</div>
-          <div class="right">广州市白云区</div>
-          <div style="clear:both"></div>
-        </div>
-      </div>
-    </a>
+    <% end %>
   </div>
 </div>

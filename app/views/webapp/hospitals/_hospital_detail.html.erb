@@ -1,23 +1,18 @@
 <div class="content hospital-details" id="hospital_detail">
   <div class="hospital-introduce hospital-mainpage">
-    <div class="title">武汉市同济医院</div>
-    <p>医院 | 5000人以上 | 医疗/护理/卫生</p>
+    <div class="title"><%= @hospital.name %></div>
+    <p><%= @hospital.property %> | <%= @hospital.scale %> | <%= @hospital.industry %></p>
   </div>
   <div class="work-address">
-    <a href="#"><span>工作地点</span>  广州市天河区黄村大道西华里2号<%= image_tag "jobright.png",class:"right"%></a>
+    <a href="#"><span>工作地点</span><%= @hospital.location %><%= image_tag "jobright.png",class:"right"%></a>
   </div>
   <div class="job-bg"></div>
   <div class="jobs">
-    <a href="<%= webapp_hospital_path(:id) %>">查看所有职位 <span>3</span><%= image_tag "jobright.png",class:"right"%> </a>
+    <a href="<%= webapp_hospital_path(@hospital.id) %>">查看所有职位 <span><%= @jobs.length %></span><%= image_tag "jobright.png",class:"right"%> </a>
   </div>
   <div class="job-bg"></div>
   <div class="details">
     <div class="title">相关介绍</div>
-    <p>
-      7000多名职工中，中国科学院院士1名，231名教师曾或者博士导师资格，2015年同济医院1900年由德国医师埃里希·宝隆创建于上海，1955年迁至武汉，现附属于华中科技大学同济医学院，是同济（医）品牌和商标的所有者，是一所集医疗、教学、科研、培干为一体的现代化综合性三级甲等医院。
-    </p>
-    <p>
-      医院由主院区和光谷院区组成，主院区现有病床4000张，设52个临床和医科室，其中国家重点学科8个，国家临床重点专科30个，康复科是世界卫生组织制定的研究和培训中心
-    </p>
+    <p><%= @hospital.introduction %></p>
   </div>
 </div>
