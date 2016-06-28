@@ -41,7 +41,18 @@ RSpec.describe User, :type => :model do
 		expect(create(:user2)).to be_valid
 	end
 
+	describe "test filter" do
+		before :each do
+			@user = create(:user, created_at: Time.now - 3.days)
+			@user2 = create(:user2, created_at: Time.now - 1.days)
+		end
+		
+		it "test filter_create_after" do
+			res = User.filter_create_after Time.now - 2.days
+			expect(res.length).to eq(1)
+		end
 
+	end
 
 
 end

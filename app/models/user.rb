@@ -30,9 +30,6 @@ class User < ActiveRecord::Base #用户
     end
   end
 
-
-
-
   # Pagination
   paginates_per 100
 
@@ -41,32 +38,6 @@ class User < ActiveRecord::Base #用户
   validates :username, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /\A[a-zA-Z0-9]*\z/, on: :create, message: "can only contain letters and digits"
   validates :username, length: { in: 4..45 }
-  # :email
-  #validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-
-  # t.string :cellphone,         :null => false, :default => "" #电话
-  # t.string :avatar   #头像
-  # t.string :show_name,         :null => false #昵称
-  # t.string :user_number #用户ID
-  # t.string :wechat_openid #微信id
-  # t.string :vcode #验证码
-  # t.string :update_vcode_time #生成验证码的时间：
-  # t.string :encrypted_password, :null => false, :default => "" 加密密码
-
-  # t.string :main_video #视频
-  # t.integer :sex #性别  0:女　１：男
-
-  # t.string :transaction_password #交易密码
-
-  # t.float :balance #余额
-  # t.float :total_consumption #消费累计
-
-  # t.string :longitude #实时经度
-  # t.string :latitude #实时纬度
-
-  # t.string :user_type #用户类型  webapp/merchant/admin
-  # t.boolean :is_top, :null => false, :default => false #是否是置顶数据
-  # t.integer :merchant_id #用户是商家时对应的商家id
 
   def self.paged(page_number)
     #order(admin: :desc, username: :asc).page page_number
@@ -106,6 +77,14 @@ class User < ActiveRecord::Base #用户
     !User.find_by_id(user_id)[:highest_degree].nil?
   end
 
+  #按 创建时间 筛选 bobo
+  scope :filter_create_after, -> (time){
+    where('created_at > ?', time) if time.present? && !time.blank?
+  }
+
+  scope :filter_create_before, -> (time){
+    where('created_at < ?', time) if time.present? && !time.blank?
+  }
 
 
   def admin?
@@ -115,7 +94,6 @@ class User < ActiveRecord::Base #用户
   def employer?
     has_role? 'gold'
   end
-
 
   def email_required?
     false
