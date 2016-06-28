@@ -5,11 +5,9 @@ class Admin::UsersController < ApplicationController
   def index
     if params[:filter]
       @users = User.filter_user_status('reviewing')
-                 .filter_release_before(params[:time_before])
-                 .filter_release_before(params[:time_after])
-                 .filter_user_type(params[:user_type])
-                 .filter_hospital_name(params[:hospital_name])
-                 .filter_user_name(params[:user_name])
+                 .filter_create_before(params[:time_before])
+                 .filter_create_after(params[:time_after])
+      @users = User.find params[:user_id] if params[:user_id]
     else
       @users = User.all
     end

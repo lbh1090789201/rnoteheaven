@@ -24,7 +24,6 @@
   <!--  弹窗-->
   <div class="model" >
     <div class="model-p">
-
       <p >设置成功</p>
       <p>已投递简历的公司仍可看到哦</p>
     </div>
@@ -44,16 +43,17 @@
       })
 
     } else {
-
       $('.swich').animate({  marginLeft: "0px"}, 500);
       $(this).css({'background': '#3a9da0',});
       $('.model').fadeOut('fast', function() {
-
       });
     }
   });
 
-  fullScreen('.block-hospital');
+  // AJAX上传
+  function addBlock() {
+
+  }
 
 // 删除屏蔽机构
   function del(obj) {
@@ -70,5 +70,7 @@
       }
     });
   }
+
+  fullScreen('.block-hospital');
 
 </script>

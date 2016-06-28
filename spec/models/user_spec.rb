@@ -46,10 +46,15 @@ RSpec.describe User, :type => :model do
 			@user = create(:user, created_at: Time.now - 3.days)
 			@user2 = create(:user2, created_at: Time.now - 1.days)
 		end
-		
+
 		it "test filter_create_after" do
 			res = User.filter_create_after Time.now - 2.days
 			expect(res.length).to eq(1)
+		end
+
+		it "test filter_create_before" do
+			res = User.filter_create_before Time.now
+			expect(res.length).to eq(2)
 		end
 
 	end

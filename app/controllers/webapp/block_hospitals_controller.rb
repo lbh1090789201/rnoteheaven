@@ -17,7 +17,7 @@ class Webapp::BlockHospitalsController < ApplicationController
     if blockhospital.save
       render js: "history.go(-1)"
     else
-      redirect_to :back, alert: "证书添加失败"
+      redirect_to :back, alert: "屏蔽医院失败"
     end
   end
 
