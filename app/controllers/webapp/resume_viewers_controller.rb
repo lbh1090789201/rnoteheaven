@@ -5,7 +5,6 @@ class Webapp::ResumeViewersController < ApplicationController
   helper_method :apply_records_infos
   def index
     @resume_view = get_resume_viewers(current_user.id)
-     puts 'sssss' + @resume_view.to_json.to_s
   end
 
   def show

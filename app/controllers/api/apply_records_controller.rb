@@ -1,7 +1,7 @@
 class Api::ApplyRecordsController < ApiController
   before_action :authenticate_user!   # 登陆验证
 
-  protect_from_forgery :except => [:create]
+  protect_from_forgery :except => [:create, :update]
   #post to 应聘
   def create
     @apply_record = ApplyRecord.new apply_records_params
@@ -33,10 +33,28 @@ class Api::ApplyRecordsController < ApiController
     @apply_record.save
   end
 
+  def update
+    apply_record = ApplyRecord.find_by(user_id: params[:user_id], job_id: params[:job_id])
+    apply_record.view_at = Time.now
+
+    if apply_record.save
+      render json: {
+        success: true,
+        info: "更新查看时间成功！"
+      }, status: 200
+    else
+      render json: {
+        success: true,
+        info: "更新查看时间失败。"
+      }, status: 403
+    end
+
+  end
+
   private
 
     def apply_records_params
-      params.require(:apply_record).permit(:job_id)
+      params.require(:apply_record).permit(:job_id, :user_id)
     end
 
 end

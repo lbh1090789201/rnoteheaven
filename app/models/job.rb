@@ -26,6 +26,21 @@ class Job < ActiveRecord::Base
     where(status: "#{status}") if status.present?
   }
 
+  # 按发布时间
+  scope :filter_release_before, -> (time) {
+    where('release_at < ?', time) if time.present?
+  }
+
+  # 按发布时间
+  scope :filter_release_after, -> (time) {
+    where('release_at > ?', time)
+  }
+
+  # 按工作类型
+  scope :filter_job_type, -> (type){
+    where(job_type: "#{type}")
+  }
+
   # 按Hospital Name
   scope :filter_hospital_name, -> (name) {
     if name.present?
