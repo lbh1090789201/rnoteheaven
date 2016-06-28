@@ -17,23 +17,23 @@ class Resume < ActiveRecord::Base
   # 按 冻结 筛选
   scope :filter_is_freeze, -> { where(resume_freeze: true)  }
 
+  # 按 公开 筛选
+  scope :filter_is_public, -> (status){
+    # status ? val = true : val = false
+    where(public: status)
+  }
+
   # 按 用户所在地 筛选
-  # TODO 待测试
   def self.filter_by_city city
-    # users = User.where(location: city)
-    # resume_ids = []
-    # users.each do |f|
-    #   resume_ids.push f.id
-    # end
-    # where(user_id: resume_ids)
-    includes(:user).where(location: city)
+    includes(:user).where(users: {location: city})
   end
 
   # 按 用户名 搜索
   def self.filter_show_name name
-
+    includes(:user).where(users: {show_name: name})
   end
 
+  # 获取剩余刷新时间
   def self.refresh_left(rid)
     resume = Resume.find rid
 
@@ -44,6 +44,7 @@ class Resume < ActiveRecord::Base
     end
   end
 
+  # 获取简历拥有者个人信息
   def self.info(uid)
     resume = Resume.find_by user_id: uid
 
