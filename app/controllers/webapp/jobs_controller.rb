@@ -12,7 +12,7 @@ class Webapp::JobsController < ApplicationController
      @btn_apply = btn_info(is_applied, has_resume)
      @btn_favor = btn_favor(is_favor)
      @hospital = Hospital.find_by(:id => @job.hospital_id)
-     @jobs = Job.where(:hospital_id => @hospital.id)
+     @jobs = Job.where(:hospital_id => @hospital.id).length
    end
 
    # private

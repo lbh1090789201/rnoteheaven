@@ -24,14 +24,14 @@
 <% if params[:job_id] %>
 <script type="text/javascript">
    // 每次查看简历后都会更新apply_record的view_at
-  // $.ajax({
-  //  url: "<%= api_apply_record_path(@apply_record.id) %>",
-  //  type: "PATCH",
-  //  data: {user_id: "<%= @user.id %>", job_id: "<%= params[:job_id] %>"},
-  //  success: function(){
-  //    console.log("查看时间更改成功！");
-  //  },
-  // })
+  $.ajax({
+   url: "<%= api_apply_record_path(@apply_record.id) %>",
+   type: "PATCH",
+   data: {user_id: "<%= @user.id %>", job_id: "<%= params[:job_id] %>"},
+   success: function(){
+     console.log("查看时间更改成功！");
+   },
+  })
 </script>
 <% end %>
 <%= provide :title, @user.show_name %>
