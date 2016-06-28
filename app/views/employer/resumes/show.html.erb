@@ -1,5 +1,5 @@
 
-<%# provide :title, getTitle() %>
+
 <script type="text/javascript">
   // may_view 为false时
   var may_view = "<%= @vip_status['may_view'] %>";
@@ -34,7 +34,7 @@
   // })
 </script>
 <% end %>
-
+<%= provide :title, @user.show_name %>
 <div class="resume-content">
   <% if @user && @apply_record %>
   <div class="resume-avatar">
@@ -56,7 +56,7 @@
   <% if @apply_record && @apply_record.resume_status == "筛选" %>
     <ul id="btn_action">
       <li onClick="IsImproper(this)">不合适</li>
-      <li onClick="IsInterview(this)">通知面试</li>
+      <li onClick="IsInterview(this),CellPhone(this)">通知面试</li>
     </ul>
     <% elsif @apply_record && @apply_record.resume_status == "不合适" %>
       <ul id="btn_unright">
@@ -64,7 +64,7 @@
       </ul>
       <% elsif @apply_record && @apply_record.resume_status == "面试" %>
         <ul id="btn_interview">
-          <li>已通知面试</li>
+          <li onClick="CellPhone(this)">已通知面试</li>
         </ul>
   <% end %>
 </div>
@@ -80,8 +80,41 @@
   </ul>
 </div>
 
-<script type="text/javascript">
+<!-- 面试提示页面 -->
+<div id="job_interview">
+  <div class="inter-data">
+    <p>
+      <%= image_tag 'icon_25.png' %>
+      <span><%= @user.show_name %>的简历通过筛选</span>
+    </p>
+    <p>请及时安排求职者进行面试</p>
+  </div>
+  <div class="inter-phone">
+    <p><%= @user.show_name %></p>
+    <p><%= @user.cellphone %></p>
+    <%= image_tag 'icon_26.png' %>
+  </div>
+</div>
 
+<script type="text/javascript">
+    // 面试提示页面
+    function CellPhone() {
+      $('#job_interview').css('display','block');
+      $('.resumes-show .resume-content').css('display','none');
+      var div = $('<div></div>');//返回按钮
+      div.attr({class:'inter-return',onclick:'InterReturn(this)'});
+      $('.top').append(div);
+      head_title = $('.top>.title').text();
+      $('.top>.title').text('面试提示');
+    }
+
+    //返回按钮
+    function InterReturn(){
+      $('#job_interview').css('display','none');
+      $('.resumes-show .resume-content').css('display','block');
+      $('.top>.title').text(head_title);
+      $('.inter-return').remove();
+    }
 
     // 不合适弹窗按钮
     var height = $('#hide_btn').height();

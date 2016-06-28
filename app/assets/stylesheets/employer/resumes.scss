@@ -634,5 +634,53 @@ $light-gray: #f4f4f4;
       }
     }
   }
-
+  #job_interview {
+    width: 100%;
+    height: 100%;
+    display: none;
+    .inter-data {
+      background: #f3f3f3;
+      text-align: center;
+      height: 9.9rem;
+      p:nth-child(1) {
+        padding-top: 3.35rem;
+        color: #3f9d9f;
+        font-size:0.87rem;
+      }
+      p:nth-child(2) {
+        color: #666666;
+        font-size:0.7rem;
+        margin-top: 1rem;
+      }
+      img {
+        width: 1.4rem;
+        height: 1.1rem;
+        margin-right: 0.58rem;
+      }
+    }
+    .inter-phone {
+      text-align: center;
+      font-size: 0.77rem;
+      p {
+        margin: 0;
+      }
+      p:nth-child(1) {
+        padding-top: 2.03rem;
+        padding-bottom: 0.25rem;
+      }
+      img {
+        width: 3.3rem;
+        height: auto;
+        margin-top: 1.28rem;
+      }
+    }
+  }
+  //面试提示页面返回按钮
+  .inter-return {
+    width: 2.3rem;
+    height: 2.3rem;
+    position: relative;
+    top: -2.3rem;
+    left: -1rem;
+  }
 }
