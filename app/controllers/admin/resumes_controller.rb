@@ -4,11 +4,12 @@ class Admin::ResumesController < ApplicationController
 
   def index
     if params[:filter]
-      @resumes = Resume.joins(:user).filter_by_city(params[:filter][:city])
+      @resumes = Resume.filter_by_city(params[:filter][:city])
+                       .filter_show_name(params[:filter][:show_name])
                        .find_by(id: params[:filter][:resume_id])
 
-
       @resumes = @resumes.filter_is_freeze if params[:filter][:freeze]
+      
 
     else
       @resumes = Resume.all

@@ -27,6 +27,14 @@ RSpec.describe Resume, type: :model do
       expect(res2.length).to eq(1)
     end
 
+    it "test filter_is_public" do
+      @resume = create(:resume, public: false)
+      @resume2 = create(:resume)
+
+      res = Resume.filter_is_public "false"
+      expect(res[0].public).to eq(false)
+    end
+
     it "test refresh_left" do
       @resume = create(:resume, refresh_at: Time.now - 3.days)
       @resume2 = create(:resume, refresh_at: Time.now - 8.days)
@@ -51,12 +59,17 @@ RSpec.describe Resume, type: :model do
 
     describe "test filter" do
       before :each do
-        @user = create(:user, location: "武汉")
+        @user = create(:user, location: "武汉", show_name: "Ming")
         @resume = create(:resume, user_id: @user.id)
       end
 
       it "test filter_by_city" do
         res = Resume.filter_by_city "武汉"
+        expect(res.length).to eq(1)
+      end
+
+      it "test filter_show_name" do
+        res = Resume.filter_show_name "Ming"
         expect(res.length).to eq(1)
       end
     end
