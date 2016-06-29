@@ -19,6 +19,18 @@ class Employer < ActiveRecord::Base
     return vip_status.as_json
   end
 
+  # 校准 VIP 值
+  def self.check_vip uid
+    ee = Employer.find_by user_id: uid
+    ee[:has_receive] = ApplyRecord.where(hospital_id: ee.hospital_id).length
+    ee[:has_release] = Job.where(hospital_id: ee.hospital_id).where.not(status: ["saved", "fail"]).length
+    ee[:has_set_top] = Job.where(hospital_id: ee.hospital_id, is_top: [true, "true"]).where.not(status: ["saved", "fail"]).length
+    ee[:has_view] = ResumeViewer.where(hospital_id: ee.hospital_id).length
+
+    ee.save
+    return ee
+  end
+
   # 改变 VIP 状态
   def self.vip_count uid, prop
     ee = Employer.find_by user_id: uid

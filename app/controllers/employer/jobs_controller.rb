@@ -7,6 +7,7 @@ class Employer::JobsController < ApplicationController
   end
 
   def index
+    check_vip = Employer.check_vip current_user.id
     @hospital = Employer.get_hospital current_user.id
     @jobs = Job.where(hospital_id: @hospital.id)
     @jobs.each do |f|
@@ -44,14 +45,13 @@ class Employer::JobsController < ApplicationController
     job.is_top = job_other_params[:is_top]
 
     if job.save
-      Employer.vip_count current_user.id, "has_release"
-
-      render js: "location.href=document.referrer;"
+      render js: 'location.href = document.referrer'
     else
-      render json: {
-        success: false,
-        info: "工作发布失败"
-      }, status: 403
+      # render json: {
+      #   success: false,
+      #   info: "工作发布失败"
+      # }, status: 200
+      render js: 'alert("请检查信息是否填写完整")'
     end
   end
 
@@ -110,9 +110,13 @@ class Employer::JobsController < ApplicationController
       txt[:pause] = "暂停发布"
 
       if status == "release"
-        txt[:release] = "已发布"
+        txt[:release] = "已经发布"
+      elsif status == "pause"
+        txt[:release] = "继续发布"
+      elsif status == "end"
+        txt[:release] = "再次发布"
       else
-        txt[:release] = "再发布"
+        txt[:release] = "提交审核"
       end
 
       if ["saved", "fail"].include?(status)

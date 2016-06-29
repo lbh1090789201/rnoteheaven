@@ -1,4 +1,8 @@
 class Job < ActiveRecord::Base
+  # 限定字串非空
+  validates :name, presence: true, :on => :create
+  validates :job_type, presence: true, :on => :create
+  validates :region, presence: true, :on => :create
 
   # 默认按 VIP 优先排序
   default_scope { order('is_top DESC') }

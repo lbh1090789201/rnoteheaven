@@ -52,11 +52,10 @@
         url: "<%= api_employer_jobs_path %>",
         type: "PATCH",
         data: {refresh_at: "<%= @job.refresh_at %>",
-               is_top: "<%= @job.is_top %>",
                job_id: "<%= @job.id %>"
              },
         success: function(){
-          //几天可刷新
+          $('.reflesh-time').html('7天后可再次刷新')
           $('.reflesh-time').css('display','block').siblings('div.reflesh-job')
                                                    .css('display','none');
         },
@@ -79,8 +78,6 @@
 
 </div>
 
-<!-- 待改写 -->
-<%# react_component 'PauseBtn', {job: @job_sate} %>
   <div class="btn-bottom-box">
     <div class="pause-box btn-bottom">
       <div id="postPause" class="<%= @job_sate[:status] %>" onclick="postPause(this)">
@@ -92,7 +89,7 @@
     <div class="release-box btn-bottom">
       <div id="release" class="<%= @job_sate[:status] %>" onclick="release(this)">
         <%= image_tag "icon_21.png" %>
-        <%= @btn_txt[:release] %>
+        <span><%= @btn_txt[:release] %></span>
       </div>
     </div>
 
@@ -105,15 +102,8 @@
   </div>
 
 
-
-<!-- 当 may_release 为false且按钮文本为再发布时的弹窗 -->
-<!-- <div class="may-release" style="display:none;">
-  <p>您的可发布职位数已满，若想发布更多，请购买VIP</p>
-  <button>确定</button>
-</div> -->
-
 <script type="text/javascript">
-// 暂停按钮
+  // 暂停按钮
   function postPause(obj) {
     if($(obj).attr("class") == "release") {
       $.ajax({
@@ -122,6 +112,7 @@
         data: {"job_id":"<%= @job[:id] %>", "status": "pause"},
         success: function() {
           set_class('pause');
+          $('#release span').text("再次发布")
           $('#postPause').off();
         },
         error: function() {
@@ -133,35 +124,48 @@
     }
   };
 
-  // 再发布按钮
+  // 再次发布按钮
   function release(obj) {
-    // 当值为再发布时点击判断may_release
+    // 当值为再次发布时点击判断may_release
     var vip_status = "<%= @vip_status['may_release'] %>"
-    console.log(vip_status);
     var button_text = $(obj).text();
-    console.log(button_text);
-    if(button_text == '再发布' && vip_status == 'false') {
-      // $('.may-release').css('display','block');　//显示提示弹窗
+
+    if(button_text == '再次发布' && vip_status == 'false') {
       alert('您的可发布职位数已满，若想发布更多，请购买VIP');
       return;
     }
-    // 当值为再发布时点击判断may_release
-    if(["pause", "end", "saved"].indexOf($(obj).attr("class")) != -1 ) {
+
+    // 当值为再次发布时点击判断may_release
+    if(["pause", "end", "saved", "fail"].indexOf($(obj).attr("class")) != -1 ) {
+      var status = '',
+          btn_txt = '',
+          btn_class = ''
+
+      if($(obj).attr("class") == 'pause') {
+         status = 'release'
+         btn_txt = "已经发布"
+         btn_class = 'release'
+      } else {
+        status = 'reviewing'
+        btn_txt = "等待审核"
+        btn_class = 'reviewing'
+      }
+
       $.ajax({
         url: '<%= api_employer_jobs_path %>',
         type: 'PATCH',
-        data: {"job_id":"<%= @job[:id] %>", "status": "release"},
+        data: {"job_id":"<%= @job[:id] %>", "status": status},
         success: function() {
-          $('#release').html('已发布');
-          set_class('release');
+          $('#release span').text(btn_txt)
+          set_class(btn_class);
           $('#release').off();
         },
         error: function() {
-          alert('再次发布失败。')
+          alert('操作失败。')
         }
       });
     } else {
-      alert("当前无法发布");
+      alert("当前无法执行此操作");
     }
   };
 
@@ -173,7 +177,7 @@
           type: 'PATCH',
           data: {"job_id":"<%= @job[:id] %>", "status": "end"},
           success: function() {
-            $('#release').html('再发布');
+            $('#release span').text("再次发布")
             set_class('end');
             $('#end').off();
           },
@@ -194,7 +198,7 @@
           }
         });
       } else {
-        alert("当前无法删除");
+        alert("当前无法执行此操作");
       }
     };
 

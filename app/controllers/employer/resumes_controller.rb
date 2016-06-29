@@ -7,6 +7,7 @@ class Employer::ResumesController < ApplicationController
   end
 
   def index
+    check_vip = Employer.check_vip current_user.id
     hospital = Employer.get_hospital current_user.id
     jobs = Job.where(hospital_id: hospital.id)
 
