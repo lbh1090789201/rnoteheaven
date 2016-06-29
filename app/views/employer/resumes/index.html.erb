@@ -1,3 +1,6 @@
+<script type="text/javascript">
+
+</script>
 <%= provide :title, "简历管理" %>
 <div id="resume_content">
   <div class="resume-content">
@@ -16,41 +19,33 @@
        <!-- 蒙板 -->
        <div class="after-mask"></div>
        <div class="time-date">
-         <p onclick="TimeSort()">今天简历</p>
-         <p onclick="TimeSort()">一周简历</p>
-         <p onclick="TimeSort()">近三月简历</p>
+         <p onclick="TimeSort('today')">今天简历</p>
+         <p onclick="TimeSort('week')">一周简历</p>
+         <p onclick="TimeSort('month')">近三月简历</p>
        </div>
      </div>
      <ul class="sort-time-all">
-       <% @apply_records.each do |a| %>
-       <li>
-          <a href="/employer/resumes/<%= a["resume_id"]%>?job_id=<%= a["job_id"] %>">
-             <span><%= a["show_name"] %></span>
-             <span><%= a["sex"] %></span>
-             <span><%= a["age"] %>岁/<%= a["start_work_at"] %>/<%= a["hightest"] %></span>
-             <div class="sort-right">
-               <span><%= a["created_at"] %></span>
-               <%= image_tag "list-icon.png" %>
-             </div>
-          </a>
-       </li>
-
-       <!-- 筛选不同时间段简历 -->
-          <script type="text/javascript">
-          function TimeSort(){
-            var Mydate = new Date();
-            var to_year = Mydate.getFullYear();
-            var to_month = Mydate.getMonth()+1;
-            var to_day = Mydate.getDate();
-            var recieve_at = "<%= a['recieve_at'] %>"
-            console.log(recieve_at);
-          }
-          </script>
-
-       <% end %>
+       <%= render :partial => 'apply_records', :locals => {:apply_records => @apply_records} %>
      </ul>
 
+     <!-- 筛选不同时间段简历 -->
+     <script type="text/javascript">
+       function TimeSort(msg) {
+         $('.sort-time-all').children().remove();
+         if(msg == "today") {
+           $('.sort-time-all').append(
+             "<%= escape_javascript(render :partial => 'apply_records', :locals => {:apply_records => @apply_records.where('recieve_at > ?',Time.now.beginning_of_day)}) %>");
+         }else if(msg == 'week') {
+           $('.sort-time-all').append(
+             "<%= escape_javascript(render :partial => 'apply_records', :locals => {:apply_records => @apply_records.where('recieve_at > ?',Time.now.beginning_of_day-7.days)}) %>");
+         }else{
+           $('.sort-time-all').append(
+             "<%= escape_javascript(render :partial => 'apply_records', :locals => {:apply_records => @apply_records.where('recieve_at > ?',Time.now.beginning_of_day-90.days)}) %>");
+         };
+         $('.time-resume').hide();
+       }
 
+     </script>
    </section>
 
    <!-- 按公开简历查看 -->
@@ -65,13 +60,13 @@
              <span><%= p["age"] %>岁/<%= p["start_work_at"] %>/<%= p["hightest"] %></span>
              <%= image_tag "list-icon.png" %>
          </a>
+
        </li>
        <% end %>
      </ul>
    </section>
  </div>
 </div>
-
 <!-- 引入底部导航 -->
 <%= render '/layouts/employer_footer' %>
 
@@ -89,4 +84,12 @@
         $(".time-resume").toggle();
       }
     }
+
+
+    index_len = '<%= @apply_records.length %>';
+    for(var i=0;i<index_len;i++){
+      $('.sort-time-all>li').eq(i).attr('class','li_'+i);
+    }
+
+
 </script>

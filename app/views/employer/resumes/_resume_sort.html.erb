@@ -1,0 +1,13 @@
+<% resume_sorts.each do |s| %>
+  <li>
+    <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= job_id %>">
+      <span><%= s["show_name"] %></span>
+      <span><%= s["sex"] %></span>
+      <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
+      <div class="sort-right">
+        <span><%= s["created_at"] %></span>
+        <%= image_tag "list-icon.png" %>
+      </div>
+    </a>
+  </li>
+<% end %>
