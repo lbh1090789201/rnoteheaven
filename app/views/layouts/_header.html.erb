@@ -1,5 +1,6 @@
 <div class="top">
-  <a href="<%= content_for?(:back) ? content_for(:back) : 'javascript:history.back()' %>" class="left-img"><%= image_tag 'left2.png' %></a>
+  <a href="<%= content_for?(:back) ? content_for(:back) : 'javascript:history.back()' %>"
+     class="left-img"><%= image_tag content_for?(:img_left) ? content_for(:img_left) : 'left2.png' %></a>
   <div class="title"><%= yield :title %></div>
   <a href="<%= yield :link %>" class="right"><%= yield :content %></a>
 </div>
