@@ -84,18 +84,19 @@
 
       <div class="sort-resume-ct">
           <!-- 按年龄排序 -->
-          <!-- <ul class="job-pubilc job-age-page">
+          <ul class="job-pubilc job-age-page">
             <%= render :partial => 'resume_sort', :locals => {:resume_sorts => j["seekers"].sort_by{|s| -s['age']},:job_id => j["id"]} %>
-          </ul> -->
+          </ul>
 
           <!-- 按经验排序 -->
-          <!-- <ul class="job-pubilc job-experience-page">
-            <%= render :partial => 'resume_sort', :locals => {:resume_sorts => j["seekers"].sort_by{|s| -s['age']},:job_id => j["id"]} %>
-          </ul> -->
+          <ul class="job-pubilc job-experience-page">
+            <%= render :partial => 'resume_sort', :locals => {:resume_sorts => j["seekers"].sort_by{|s| -s['exp_num']},:job_id => j["id"]} %>
+          </ul>
+
           <!-- 按学历排序 -->
-          <!-- <ul class="job-pubilc job-degee-page">
-            <%= render :partial => 'resume_sort', :locals => {:resume_sorts => j["seekers"].sort_by{|s| -s['age']},:job_id => j["id"]} %>
-          </ul> -->
+          <ul class="job-pubilc job-degee-page">
+            <%= render :partial => 'resume_sort', :locals => {:resume_sorts => j["seekers"].sort_by{|s| -s['edu_num']},:job_id => j["id"]} %>
+          </ul>
       </div>
     </div>
   </li>
@@ -144,14 +145,14 @@
       ul.eq(y).show().siblings('ul').hide();
     }
 
-
+    //排序弹窗脚本
     $(".sort-resume>ul>li").bind('mouseover',function(){
       x = $(this).index();
       console.log(x);
     })
       function SortApply(obj) {
         $('.order-job-list>ul').css('display','none');
-        $('.sort-resume-ct>ul').eq(x).show();
+        $('.sort-resume-ct>ul').eq(x).show().siblings().hide();
         $(obj).hide();
       }
 
