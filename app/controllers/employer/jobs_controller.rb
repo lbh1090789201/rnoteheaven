@@ -110,9 +110,13 @@ class Employer::JobsController < ApplicationController
       txt[:pause] = "暂停发布"
 
       if status == "release"
-        txt[:release] = "已发布"
+        txt[:release] = "已经发布"
+      elsif status == "pause"
+        txt[:release] = "继续发布"
+      elsif status == "end"
+        txt[:release] = "再次发布"
       else
-        txt[:release] = "再发布"
+        txt[:release] = "提交审核"
       end
 
       if ["saved", "fail"].include?(status)
