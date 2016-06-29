@@ -90,4 +90,32 @@ RSpec.describe Job, type: :model do
     expect(res).to eq(2)
     expect(res2).to eq(-1)
   end
+
+  it "test get_edu_num" do
+    aa = "本科"
+    bb = nil
+    cc = "未知"
+
+    res1 = Job.get_edu_num aa
+    res2 = Job.get_edu_num bb
+    res3 = Job.get_edu_num cc
+
+    expect(res1).to eq(4)
+    expect(res2).to eq(0)
+    expect(res3).to eq(0)
+  end
+
+  it "test get_exp_num" do
+    aa = "在读学生"
+    bb = nil
+    cc = "10年以上"
+
+    res1 = Job.get_exp_num aa
+    res2 = Job.get_exp_num bb
+    res3 = Job.get_exp_num cc
+
+    expect(res1).to eq(0)
+    expect(res2).to eq(0)
+    expect(res3).to eq(14)
+  end
 end
