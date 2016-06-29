@@ -101,7 +101,7 @@ class Job < ActiveRecord::Base
 
   # 获得剩余更新时间
   def self.left_refresh_time t
-    if Time.now.to_i < (t + 7.days).to_i
+    if t && Time.now.to_i < (t + 7.days).to_i
       return ((t + 7.days + 1.hour - Time.now)/1.day).to_i
     else
       return -1
