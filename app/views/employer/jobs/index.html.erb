@@ -26,6 +26,7 @@
     document.write(status);
   }
 
+
   // 筛选弹框
   $(function(){
     $('.job-nav>span').bind('click',function(){
@@ -233,8 +234,12 @@
 </div>
 <%= render '/layouts/employer_footer' %>
 <script type="text/javascript">
+
 //刷新本页面
 $('.job-nav>img').bind('click',function(){
   window.location.reload();
 })
+
+ // 底部按钮样式
+ ReplayImg(1,'../assets/icon_03.png');
 </script>

@@ -75,3 +75,9 @@ function TitleOver(obj) {
   $('.before-mask').css("display","none");
 }
 /* new页面类型选择脚本 结束 */
+
+
+function ReplayImg(index,img_src){
+  $('#footer_btm_nav>li').eq(index).children('a').children('p').css('color','#3f9e9d');
+  $('#footer_btm_nav>li').eq(index).children('a').children('img').attr('src',img_src);
+}
