@@ -5,11 +5,21 @@ class Webapp::BlockHospitalsController < ApplicationController
   def index
     @blockhospitals = BlockHospital.where user_id: current_user.id
     @resume = Resume.find_by_user_id current_user.id
-    puts "=-----===="+ @resume.to_json.to_s
   end
 
   def new
     @blockhospital = BlockHospital.new
+
+    if blockhospital_params[:hospital_name] && !blockhospital_params[:hospital_name].blank?
+      name = blockhospital_params[:hospital_name]
+      hospitals = Hospital.where('name LIKE ?', "%#{name}%")
+      puts '------------' + hospitals.to_json.to_s
+      render json: {
+        success: true,
+        info: "查询医院成功",
+        hospitals: hospitals
+      }, status: 200
+    end
   end
 
   def create
@@ -41,6 +51,6 @@ class Webapp::BlockHospitalsController < ApplicationController
 
   private
   def blockhospital_params
-    params.require(:block_hospital).permit(:hospital_name)
+    params.permit(:hospital_name)
   end
 end
