@@ -36,9 +36,9 @@
             <!-- 按条件排序 -->
             <div class="sort-resume">
               <ul>
-                <li>按年龄排序</li>
-                <li>按经验排序</li>
-                <li>按学历排序</li>
+                <li onclick="SortApply('age')">按年龄排序</li>
+                <li onclick="SortApply('wxperience')">按经验排序</li>
+                <li onclick="SortApply('degree')">按学历排序</li>
               </ul>
             </div>
           </div>
@@ -84,55 +84,20 @@
 
       <div class="sort-resume-ct">
           <!-- 按年龄排序 -->
-          <ul class="job-pubilc">
-            <% j["seekers"].each do |s| %>
-              <li>
-                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
-                  <span><%= s["show_name"] %></span>
-                  <span><%= s["sex"] %></span>
-                  <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
-                  <div class="sort-right">
-                    <span><%= s["created_at"] %></span>
-                    <%= image_tag "list-icon.png" %>
-                  </div>
-                </a>
-              </li>
-            <% end %>
+          <ul class="job-pubilc job-age-page">
+            <%= render :partial => 'resume_sort', :locals => {:resume_sorts => j["seekers"].sort_by{|s| -s['age']},:job_id => j["id"]} %>
           </ul>
+
           <!-- 按经验排序 -->
-          <ul class="job-pubilc">
-            <% j["seekers"].each do |s| %>
-              <li>
-                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
-                  <span><%= s["show_name"] %></span>
-                  <span><%= s["sex"] %></span>
-                  <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
-                  <div class="sort-right">
-                    <span><%= s["created_at"] %></span>
-                    <%= image_tag "list-icon.png" %>
-                  </div>
-                </a>
-              </li>
-            <% end %>
+          <ul class="job-pubilc job-experience-page">
+            <%= render :partial => 'resume_sort', :locals => {:resume_sorts => j["seekers"].sort_by{|s| -s['exp_num']},:job_id => j["id"]} %>
           </ul>
+
           <!-- 按学历排序 -->
-          <ul class="job-pubilc">
-            <% j["seekers"].each do |s| %>
-              <li>
-                <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
-                  <span><%= s["show_name"] %></span>
-                  <span><%= s["sex"] %></span>
-                  <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
-                  <div class="sort-right">
-                    <span><%= s["created_at"] %></span>
-                    <%= image_tag "list-icon.png" %>
-                  </div>
-                </a>
-              </li>
-            <% end %>
+          <ul class="job-pubilc job-degee-page">
+            <%= render :partial => 'resume_sort', :locals => {:resume_sorts => j["seekers"].sort_by{|s| -s['edu_num']},:job_id => j["id"]} %>
           </ul>
       </div>
-
     </div>
   </li>
   <% end %>
@@ -179,5 +144,18 @@
       var ul = $(obj).parent().parent().parent().parent().siblings('ul');
       ul.eq(y).show().siblings('ul').hide();
     }
+
+    //排序弹窗脚本
+    $(".sort-resume>ul>li").bind('mouseover',function(){
+      x = $(this).index();
+      console.log(x);
+    })
+      function SortApply(obj) {
+        $('.order-job-list>ul').css('display','none');
+        $('.sort-resume-ct>ul').eq(x).show().siblings().hide();
+        $(obj).hide();
+      }
+
+
 
 </script>

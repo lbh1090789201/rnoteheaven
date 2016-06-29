@@ -164,16 +164,32 @@ $font-gray: #a5a5a5;
     position: absolute;
     right: 1rem;
     margin-top: 0.9rem;
-    background: url("../icon.png");
+    background: url("../icon.png") no-repeat;
     background-size: 0.41rem 0.66rem;
   }
 
   .form-group:nth-of-type(1)::after{
-    display: none;
+    content: "";
+    width: 0.93rem;
+    height: 0.93rem;
+    display: block;
+    position: absolute;
+    right: 0.8rem;
+    margin-top: 0.9rem;
+    background: url("../icon_24.png") no-repeat;
+    background-size: 0.93rem 0.93rem;
   }
 
   .form-group:nth-of-type(5)::after{
-    display: none;
+    content: "";
+    width: 0.93rem;
+    height: 0.93rem;
+    display: block;
+    position: absolute;
+    right: 0.8rem;
+    margin-top: 0.9rem;
+    background: url("../icon_24.png") no-repeat;
+    background-size: 0.93rem 0.93rem;
   }
 
   .form-group:nth-of-type(6)::after{

@@ -1,0 +1,13 @@
+<% apply_records.each do |a| %>
+<li>
+   <a href="/employer/resumes/<%= a["resume_id"]%>?job_id=<%= a["job_id"] %>">
+      <span><%= a["show_name"] %></span>
+      <span><%= a["sex"] %></span>
+      <span><%= a["age"] %>岁/<%= a["start_work_at"] %>/<%= a["hightest"] %></span>
+      <div class="sort-right">
+        <span><%= a["created_at"] %></span>
+        <%= image_tag "list-icon.png" %>
+      </div>
+   </a>
+</li>
+<% end %>

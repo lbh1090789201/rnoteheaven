@@ -3,9 +3,15 @@
   <section class="block-btn">
     <div class="block-middle">
       <p class="block-board">公开我的简历</p>
-      <div class="right" onclick="addBlock(this)">
+      <% if @resume.public %>
+        <div class="right" onclick="addBlock(this)">
+           <div class="swich"></div>
+        </div>
+      <% elsif %>
+      <div class="left" onclick="addBlock(this)">
          <div class="swich"></div>
       </div>
+      <% end %>
    </div>
   </section>
 
@@ -33,7 +39,6 @@
 
 <script type="text/javascript">
   $('.right').click(function() {
-    if($('.swich').css('margin-left') == '0px') {
       $('.swich').animate({  marginLeft: "1.7rem"}, 500);
       $(this).css({'background': '#a3a3a3',});
       $('.model').fadeIn('fast', function() {
@@ -41,19 +46,17 @@
           $('.model').fadeOut('slow');
         },2000);
       })
-
-    } else {
-      $('.swich').animate({  marginLeft: "0px"}, 500);
-      $(this).css({'background': '#3a9da0',});
-      $('.model').fadeOut('fast', function() {
-      });
-    }
+  });
+  $('.left').click(function() {
+    $('.swich').animate({  marginLeft: "0px"}, 500);
+    $(this).css({'background': '#3a9da0',});
+    $('.model').fadeOut('fast', function() {
+    });
   });
 
   // AJAX上传简历是否公开
   function addBlock() {
     var resume_public = '<%= @resume.public %>';
-    console.log(resume_public);
     if( resume_public=='false' ) {
       $.ajax({
         url: "<%= webapp_resume_path(@resume.id) %>",
@@ -79,7 +82,7 @@
         },
       })
     }
-    var timer = setTimeout(function(){window.location.reload()}; )
+    var timer = setTimeout(function(){window.location.reload()},500);
   }
 
 // 删除屏蔽机构
