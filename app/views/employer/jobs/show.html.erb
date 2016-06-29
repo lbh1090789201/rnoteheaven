@@ -52,11 +52,10 @@
         url: "<%= api_employer_jobs_path %>",
         type: "PATCH",
         data: {refresh_at: "<%= @job.refresh_at %>",
-               is_top: "<%= @job.is_top %>",
                job_id: "<%= @job.id %>"
              },
         success: function(){
-          //几天可刷新
+          $('.reflesh-time').html('7天后可再次刷新')
           $('.reflesh-time').css('display','block').siblings('div.reflesh-job')
                                                    .css('display','none');
         },
@@ -79,8 +78,6 @@
 
 </div>
 
-<!-- 待改写 -->
-<%# react_component 'PauseBtn', {job: @job_sate} %>
   <div class="btn-bottom-box">
     <div class="pause-box btn-bottom">
       <div id="postPause" class="<%= @job_sate[:status] %>" onclick="postPause(this)">

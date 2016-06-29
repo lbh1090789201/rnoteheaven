@@ -45,13 +45,13 @@ class Employer::JobsController < ApplicationController
     job.is_top = job_other_params[:is_top]
 
     if job.save
-      # Employer.vip_count current_user.id, "has_release"
-      # Employer.vip_count current_user.id, "has_set_top"
+      render js: 'location.href = document.referrer'
     else
-      render json: {
-        success: false,
-        info: "工作发布失败"
-      }, status: 403
+      # render json: {
+      #   success: false,
+      #   info: "工作发布失败"
+      # }, status: 200
+      render js: 'alert("请检查信息是否填写完整")'
     end
   end
 

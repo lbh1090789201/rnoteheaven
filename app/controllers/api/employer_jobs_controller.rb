@@ -11,7 +11,6 @@ class Api::EmployerJobsController < ApiController
 
     if params[:refresh_at]
       job.refresh_at = Time.now
-      Employer.vip_count current_user.id, "has_set_top"
     elsif params[:status]
       job.status = params[:status]
     end
