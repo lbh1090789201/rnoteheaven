@@ -7,6 +7,7 @@ class Employer::JobsController < ApplicationController
   end
 
   def index
+    check_vip = Employer.check_vip current_user.id
     @hospital = Employer.get_hospital current_user.id
     @jobs = Job.where(hospital_id: @hospital.id)
     @jobs.each do |f|
@@ -44,9 +45,8 @@ class Employer::JobsController < ApplicationController
     job.is_top = job_other_params[:is_top]
 
     if job.save
-      Employer.vip_count current_user.id, "has_release"
-
-      render js: "location.href=document.referrer;"
+      # Employer.vip_count current_user.id, "has_release"
+      # Employer.vip_count current_user.id, "has_set_top"
     else
       render json: {
         success: false,
