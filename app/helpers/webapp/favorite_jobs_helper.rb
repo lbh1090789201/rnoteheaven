@@ -9,6 +9,8 @@ module Webapp::FavoriteJobsHelper
 
       if job
       o = {
+          has_new: a.has_new,
+          id: a.id,
           job_id:job.id,
           job_name:job.name,
           salary_range:job.salary_range,

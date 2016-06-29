@@ -15,6 +15,7 @@ class Webapp::JobsController < ApplicationController
      @jobs = Job.where(:hospital_id => @hospital.id).length
    end
 
+
    # private
    # def job_params
    #   params.require(:job).permit(:name, :job_type, :salary_range, :location)

@@ -2,6 +2,7 @@ class Webapp::HomeController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
 
   def index
+    @has_new = FavoriteJob.where(:has_new => true)
     filter = params
 
     #只搜索城市
@@ -45,6 +46,8 @@ class Webapp::HomeController < ApplicationController
       end
 
     return @arjob
+
+
 
   end
 end

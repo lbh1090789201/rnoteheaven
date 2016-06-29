@@ -36,6 +36,12 @@
     </div>
     <% end %>
 
+    <!-- 当 may_release 为false时的弹窗 -->
+    <!-- <div class="may-release" style="display:none;">
+      <p>您的可发布职位数已满，若想发布更多，请购买VIP</p>
+      <button>确定</button>
+    </div> -->
+
 </div>
 <script type="text/javascript">
 
@@ -67,13 +73,19 @@
       } else {
         if(vip_status == 'false') {
           alert('您的可发布职位数已满，若想发布更多，请购买VIP');
+          // $('.may-release').css('display','block');
         } else {
-          $('#job_status').attr('value','reviewing');
+          $('#job_status').attr('value','release');
           $('#submit').trigger('click');
         }
       }
     });
   })
+
+  //当 may_release 为false时的弹窗隐藏
+  // $('.may-release>button').on('click',function() {
+  //   $('.may-release').css('display','none');
+  // })
 
   // 职位类型
   $('.job-type').click(function() {
@@ -114,5 +126,6 @@
         hideProvinceInput: '#province'
     });
   cityPicker.init();
+
 
 </script>
