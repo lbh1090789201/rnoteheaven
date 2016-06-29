@@ -14,7 +14,7 @@
     <input type="hidden" id="city" value="">
     <%= f.input :location, label: '详细地址', input_html: { class: "job-frist_new", id: ""} %>
     <div class="job-vip">
-      <%= f.input :is_top, label: 'VIP置顶', input_html: { value: 'false', class: "job-top", id: ""} %>
+      <%= f.input :is_top, label: 'VIP置顶', input_html: { value: false, class: "job-top", id: ""} %>
       <div class="job-slider">
       	<div class="job-slider-inner"></div>
       </div>
@@ -52,13 +52,13 @@
         $(this).css('background','#3f9e9f');
         $('.job-slider').css('margin-left','#fff');
         // value值
-        $('.job-top').attr('value','true');
+        $('.job-top').attr('value', true);
     } else{
         $('.job-slider-inner').css('margin-left','0.1rem');
         $(this).css('background','#f4f4f4');
         $('.job-slider').css('margin-left','#fff');
         // value值
-        $('.job-top').attr('value','false');
+        $('.job-top').attr('value', false);
     }
   })
 
