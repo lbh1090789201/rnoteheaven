@@ -40,7 +40,7 @@ class Employer::JobsController < ApplicationController
     job = Job.new job_params
     job.hospital_id = Employer.get_hospital(current_user.id).id
     job.release_at = Time.now
-    job.refresh_at = Time.now
+    # job.refresh_at = Time.now
     job.end_at = Time.now + job_other_params[:end_at].to_i.days
     job.is_top = job_other_params[:is_top]
 

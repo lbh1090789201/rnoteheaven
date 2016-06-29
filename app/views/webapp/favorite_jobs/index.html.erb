@@ -3,10 +3,14 @@
 <div class="jobs favorite-job job-favr">
   <div class="jobs-list">
     <% @favorite_jobs.each do |f| %>
-    <a href="/webapp/jobs/<%= f[:job_id] %>">
+    <a onclick="SendAjax(this)" href="/webapp/jobs/<%= f[:job_id] %>" index="<%= f[:id] %>" class="<%= f[:has_new] %>">
       <div class="job">
         <div class="title">
-          <div class="left"><%= f[:job_name] %></div>
+          <div class="left"><%= f[:job_name] %>
+            <% if @has_new != 0 %>
+            <%= image_tag "red_point.png", class: "red-img" %>
+            <% end %>
+          </div>
           <div class="right"><%= f[:salary_range] %></div>
           <div style="clear:both"></div>
         </div>
@@ -23,4 +27,23 @@
 
 <script type="text/javascript">
   refreshOnce(); //刷新一次页面
+
+  //ajax has_new
+  function SendAjax(obj){
+    var favor_id = $(obj).attr('index');
+    var has_new = $(obj).attr('class');
+    if( has_new == 'true' ){
+      $.ajax({
+        url: "/webapp/favorite_jobs/"+favor_id,
+        type: "PATCH",
+        data: {has_new: false, favor_id: favor_id},
+        success: function() {
+          console.log("修改成功");
+        },
+        error: function() {
+          console.log("修改失败");
+        },
+      });
+    };
+  }
 </script>
