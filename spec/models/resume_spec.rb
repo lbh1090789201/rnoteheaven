@@ -72,6 +72,16 @@ RSpec.describe Resume, type: :model do
         res = Resume.filter_show_name "Ming"
         expect(res.length).to eq(1)
       end
+
+      it "test filter_is_block" do
+        hospital = create(:hospital)
+        block_hospital = create(:block_hospital, user_id: @user.id, hospital_id: hospital.id)
+
+        res_all = Resume.all
+        res = Resume.filter_is_block hospital.id
+        expect(res_all.length).to eq(1)
+        expect(res.length).to eq(0)
+      end
     end
 
     # 测试简历完整度

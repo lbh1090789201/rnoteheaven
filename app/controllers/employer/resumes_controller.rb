@@ -13,11 +13,14 @@ class Employer::ResumesController < ApplicationController
 
 
     # 三个月内简历
-    @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",
-                                        hospital.id, Time.now - 90.days).order("apply_at DESC")
+    @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",hospital.id, Time.now - 90.days)
+                                .order("apply_at DESC")
 
     # 公开简历
-    public_resumes = Resume.where(public: true).filter_no_freeze.order("refresh_at DESC")
+    public_resumes = Resume.where(public: true)
+                           .filter_no_freeze
+                           .filter_is_block(hospital.id)
+                           .order("refresh_at DESC")
     @public_seekers = []
     public_resumes.each do |f|
       @public_seekers.push Resume.info(f.user_id)

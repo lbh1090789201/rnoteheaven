@@ -23,6 +23,17 @@ class Resume < ActiveRecord::Base
     where(public: status)
   }
 
+  # 按 是否被屏蔽筛选
+  scope :filter_is_block, -> (hid){
+    items = BlockHospital.where(hospital_id: hid)
+    user_ids = []
+    items.each do |f|
+      user_ids.push f.user_id
+    end
+
+    where.not(user_id: user_ids)
+  }
+
   # 按 用户所在地 筛选
   def self.filter_by_city city
     includes(:user).where(users: {location: city})
