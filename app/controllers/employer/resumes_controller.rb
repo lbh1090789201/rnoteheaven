@@ -37,7 +37,7 @@ class Employer::ResumesController < ApplicationController
     resume = Resume.find resume_id
     @seeker = Resume.info resume.user_id
     @apply_record = ApplyRecord.select(:id, :job_name, :resume_status, :age, :job_name).find_by(job_id: job_id, user_id: resume.user_id)
-  
+
     # 简历预览
     @user = User.find resume.user_id
     @work_experiences = WorkExperience.where(:user_id => @user.id)
@@ -67,6 +67,8 @@ end
 #     "expect_job": "solider",
 #     "age": 0,
 #     "resume_id ": 49
+#     "edu_num": 2,
+#     "exp_num": 4
 # },……]
 
 # @jobs_by_position 按职位查看 类型：json 数组
@@ -91,7 +93,9 @@ end
 #         "resume_id ": 49,
 #         "apply_record_id" :1,
 #         "from":"common",
-#         "apply_at": "2016-05-18T18:04:53.000Z"
+#         "apply_at": "2016-05-18T18:04:53.000Z",
+#         "edu_num": 2,
+#         "exp_num": 4
 #     }, {
 #         "id": 3337,
 #         "start_work_at": null,

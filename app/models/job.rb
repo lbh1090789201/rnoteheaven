@@ -58,7 +58,7 @@ class Job < ActiveRecord::Base
       return where("id = 0")
     end
   }
-  
+
   # 获得求职者信息
   def self.get_seekers jid
     job = Job.select(:id, :name, :hospital_id).find(jid).as_json
@@ -72,6 +72,8 @@ class Job < ActiveRecord::Base
       resume_info[:from] = f.from
       resume_info[:resume_status] = f.resume_status
       resume_info[:apply_record_id] = f.id
+      resume_info[:edu_num] = Job.get_edu_num f.highest_degree
+      resume_info[:exp_num] = Job.get_exp_num f.start_work_at
       seekers.push resume_info
     end
 
@@ -99,6 +101,50 @@ class Job < ActiveRecord::Base
       return ((t + 7.days + 1.hour - Time.now)/1.day).to_i
     else
       return -1
+    end
+  end
+
+  # 获得求职者 最高学历 数字代号
+  def self.get_edu_num edu
+    case edu
+    when "大专以下"
+      return 0
+    when "大专"
+      return 2
+    when "本科"
+      return 4
+    when "硕士"
+      return 6
+    when "博士"
+      return 8
+    when "博士后"
+      return 10
+    else
+      return 0
+    end
+  end
+
+  # 获得求职者 工作年限 数字代号
+  def self.get_exp_num exp
+    case exp
+    when "在读学生"
+      return 0
+    when "应届毕业生"
+      return 2
+    when "1年"
+      return 4
+    when "２年"
+      return 6
+    when "3-4年"
+      return 8
+    when "5-7年"
+      return 10
+    when "8-9年"
+      return 12
+    when "10年以上"
+      return 14
+    else
+      return 0
     end
   end
 

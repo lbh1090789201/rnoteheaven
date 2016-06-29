@@ -8,7 +8,7 @@ class Admin::JobsController < ApplicationController
   end
 
   def check
-    if params[:filter]
+    if params[:search]
       @jobs = Job.filter_job_status('reviewing')
                  .filter_release_before(params[:time_before])
                  .filter_release_before(params[:time_after])
@@ -17,6 +17,8 @@ class Admin::JobsController < ApplicationController
                  .filter_job_name(params[:job_name])
     else
       @jobs = Job.filter_job_status('reviewing').as_json
+      # @test = Job.filter_job_status('release').as_json
+      # puts '-----------' + @test.to_json.to_s
     end
   end
 

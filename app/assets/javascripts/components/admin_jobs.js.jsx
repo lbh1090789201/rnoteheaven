@@ -3,13 +3,6 @@ var AdminJob = React.createClass({
     return {
       jobs: this.props.data,
       checkValue: [],
-      search:{
-        time_after: '',
-        time_before: '',
-        job_type: '',
-        hospital_name: '',
-        job_name: '',
-      },
     }
   }
   ,handleCheck: function(e) {
@@ -65,7 +58,7 @@ var AdminJob = React.createClass({
 
     return (
       <div className="admin-jobs">
-        <ReviewJob search={this.state.search} />
+        <ReviewJob dad={this} />
 
         <button className="btn btn-info pull-right" onClick={this.handleClick} name="passBtn" value="release">审核通过</button>
         <button className="btn btn-danger pull-right" onClick={this.handleClick} name="refuseBtn" value="fail">审核拒绝</button>
