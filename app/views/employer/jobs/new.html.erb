@@ -1,3 +1,4 @@
+
 <%= provide :title, "添加职位基本信息" %>
 <div id="job_basic">
     <%= simple_form_for :job, method: :post, remote: true, id: "submit_form", url: employer_jobs_path do |f| %>
@@ -19,8 +20,8 @@
       </div>
     </div>
     <div class="job-endtime">
-        <%= f.input :end_at, label: '发布期限', input_html: { readonly: 'readonly', class: 'job-date' } %>
-        <span class="job-end" id="job_end"></span>
+        <%= f.input :end_at, label: '发布期限', input_html: { value: "15", readonly: 'readonly', class: 'job-date' } %>
+        <span class="job-end" id="job_end">半个月</span>
     </div>
     <p class="basic_infoo">职位描述<span>必填</span></p>
     <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等"} %>

@@ -89,6 +89,8 @@
    bottom: 0;
    left: 0;
    list-style: none;
+   background: #fff;
+   margin-bottom: 0;
    li {
      width: 33.33%;
      height: inherit;
@@ -99,7 +101,7 @@
    }
    li:nth-child(1) {
      a {
-       color: #3f9e9d;
+       color: #f4f4f4;
      }
      img {
        width: 1.3rem;
@@ -131,7 +133,6 @@
        }
      }
  }
-
 
  //选择脚本弹窗添加的返回按钮样式
  .title-over {
