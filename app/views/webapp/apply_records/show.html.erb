@@ -1,47 +1,45 @@
 <%= provide :back %>
 <%= provide :title, "我的应聘记录" %>
 <div id="apply-bg">
-  <% @applyrecord.each do |a|%>
   <section class="position-info apply-info">
-    <a href="/webapp/jobs/<%= a[:id] %>">
+    <a href="/webapp/jobs/<%= @apply_record.job_id %>">
       <div class="position-detail record-job record-hh">
-        <h3><%= a[:job_name] %><span><%= a[:salary_range] %></span></h3>
+        <h3><%=  @apply_record.job_name %><span><%=  @apply_record.salary_range %></span></h3>
 
-        <p><%= a[:created_at].strftime("%Y-%m-%d") %>　|　<%= a[:location] %><span>&gt;</span></p>
-        <p><%= a[:hospital_name] %></p>
+        <p><%= @apply_record.created_at.strftime("%Y-%m-%d") %>　|　<%= @apply_record.hospital_region %><span>&gt;</span></p>
+        <p><%= @hospital.name %></p>
       </div>
     </a>
   </section>
 
   <section class="apply-status">
-    <p>当前状态　<%= a[:resume_status] %></p>
+    <p>当前状态　<%= @apply_record.resume_status %></p>
   </section>
 
   <section class="resume-show apply-process resume-spply-style">
     <div class="wrap apply-time">
-      <% if a[:apply_at] %>
+      <% if @apply_record.apply_at %>
       <div class="box">
         <time>简历正在筛选中</time>
         <div class="time-line-box process-box">
-          <p class="process-time"><%= a[:apply_at].strftime("%Y-%m-%d") %></p>
+          <p class="process-time"><%= @apply_record.apply_at.strftime("%Y-%m-%d") %></p>
         </div>
     </div>
     <% end %>
-    <% if a[:view_at] %>
+    <% if @apply_record.view_at %>
     <div class="box read-resume box-margin">
       <time>查看了你的简历</time>
       <div class="time-line-box process-box" style="height: 8rem;">
-        <p class="process-time"><%= a[:view_at].strftime("%Y-%m-%d") %></p>
+        <p class="process-time"><%= @apply_record.view_at.strftime("%Y-%m-%d") %></p>
       </div>
     </div>　
     <% end %>
       <div class="box" style="margin-top: -2rem;">
         <time>已成功接收你的简历</time>
         <div class="time-line-box process-box" style="border: none;height: 3rem;">
-          <p class="process-time"><%= a[:recieve_at].strftime("%Y-%m-%d") %></p>
+          <p class="process-time"><%= @apply_record.recieve_at.strftime("%Y-%m-%d") %></p>
         </div>
       </div>
     </div>
-    <% end %>
   </section>
 </div>
