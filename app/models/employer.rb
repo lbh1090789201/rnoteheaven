@@ -24,7 +24,7 @@ class Employer < ActiveRecord::Base
     ee = Employer.find_by user_id: uid
     ee[:has_receive] = ApplyRecord.where(hospital_id: ee.hospital_id).length
     ee[:has_release] = Job.where(hospital_id: ee.hospital_id).where.not(status: ["saved", "fail"]).length
-    ee[:has_set_top] = Job.where(hospital_id: ee.hospital_id, is_top: [true, "true"]).where.not(status: ["saved", "fail"]).length
+    ee[:has_set_top] = Job.where(hospital_id: ee.hospital_id, is_top: true).where.not(status: ["saved", "fail"]).length
     ee[:has_view] = ResumeViewer.where(hospital_id: ee.hospital_id).length
 
     ee.save
