@@ -4,7 +4,23 @@ class Admin::JobsController < ApplicationController
   protect_from_forgery :except => [:update]
 
   def index
+    if params[:search]
+      @jobs = Job.where.not(status: 'reviewing')
+                 .filter_job_status(params[:status])
+                 .filter_release_before(params[:time_before])
+                 .filter_release_before(params[:time_after])
+                 .filter_job_type(params[:job_type])
+                 .filter_hospital_name(params[:hospital_name])
+                 .filter_job_name(params[:job_name])
 
+      render json: {
+        success: true,
+        info: '搜索成功',
+        jobs: @jobs
+      }, status: 200
+    else
+      @jobs = Job.where.not(status: 'reviewing').as_json
+    end
   end
 
   def check
@@ -39,7 +55,11 @@ class Admin::JobsController < ApplicationController
         j.save
       end
 
-      @jobs = Job.filter_job_status('reviewing').as_json
+      if btn_params[:status] == 'reviewing'
+        @jobs = Job.filter_job_status('reviewing').as_json
+      else
+        @jobs = Job.where.not(status: 'reviewing')
+      end
 
       render json: {
         success: true,
@@ -49,7 +69,6 @@ class Admin::JobsController < ApplicationController
     else
       render json: '审批失败，检查您是否勾选职位', status: 403
     end
-
   end
 
   def edit
@@ -62,6 +81,6 @@ class Admin::JobsController < ApplicationController
     end
 
     def search_params
-      params.permit(:search, :time_before, :time_after, :job_type, :hospital_name, :job_name)
+      params.permit(:search, :time_before, :time_after, :job_type, :hospital_name, :job_name, :status)
     end
 end
