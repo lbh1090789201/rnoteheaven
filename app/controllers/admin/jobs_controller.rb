@@ -15,6 +15,12 @@ class Admin::JobsController < ApplicationController
                  .filter_job_type(params[:job_type])
                  .filter_hospital_name(params[:hospital_name])
                  .filter_job_name(params[:job_name])
+
+      render json: {
+        success: true,
+        info: '搜索成功',
+        jobs: @jobs
+      }, status: 200
     else
       @jobs = Job.filter_job_status('reviewing').as_json
       # @test = Job.filter_job_status('release').as_json
@@ -52,5 +58,9 @@ class Admin::JobsController < ApplicationController
   private
     def btn_params
       params.permit(:ids, :status)
+    end
+
+    def search_params
+      params.permit(:search, :time_before, :time_after, :job_type, :hospital_name, :job_name)
     end
 end

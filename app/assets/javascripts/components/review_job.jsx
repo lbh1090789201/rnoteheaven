@@ -36,20 +36,21 @@ var ReviewJob = React.createClass({
       url: '/admin/jobs/check',
       type: 'GET',
       data: {
-        // 'search': true,
-        // 'time_before': {this.refs.time_before.value},
-        // 'time_after': {this.refs.time_after},
-        // 'job_type': {this.refs.job_type.value},
-        // 'hospital_name': {this.refs.hospital_name.value},
-        // 'job_name': {this.refs.job_name.value}
+        'search': true,
+        // 'time_before': this.refs.time_before.value,
+        // 'time_after': this.refs.time_after,
+        // 'job_type': this.refs.job_type.value,
+        // 'hospital_name': this.refs.hospital_name.value,
+        // 'job_name': this.refs.job_name.value
       },
       success: function(data) {
+        // this.props.dad.setState({jobs : data.jobs})
 
-        this.setState({jobs : data.jobs})
-      }.bind(this),
+      },
       error: function(data){
         alert(data.responseText)
       },
+
     })
   }
   ,render: function() {
