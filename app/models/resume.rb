@@ -6,6 +6,8 @@ class Resume < ActiveRecord::Base
   has_many :apply_records
   has_many :resume_views
 
+  default_scope { order('refresh_at DESC') }
+
   # 按 完整度 筛选
   scope :filter_maturity, -> (num){
      where("maturity > ?", num) if num.present?
