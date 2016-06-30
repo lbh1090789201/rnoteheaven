@@ -74,7 +74,6 @@ var BlockHospital = React.createClass({
 
             <li key={hospital.id} id={hospital.name} value={hospital.id}
                 className="hospital_li" onClick={this.handleClick}>{hospital.name} </li>
-
           )
         }
       </ul>

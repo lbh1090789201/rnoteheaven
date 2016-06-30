@@ -31,6 +31,11 @@ var ReviewJob = React.createClass({
   }
   ,handleSubmit: function(e){
     e.preventDefault()
+    let time_before = this.refs.time_before.value,
+        time_after = this.refs.time_after.value,
+        job_type = this.refs.job_type.value,
+        hospital_name = this.refs.hospital_name.value,
+        
 
     $.ajax({
       url: '/admin/jobs/check',

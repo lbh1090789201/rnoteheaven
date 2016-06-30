@@ -33,7 +33,6 @@ var AdminJob = React.createClass({
       type: 'PATCH',
       data: {'ids': ids, 'status': status},
       success: function(data) {
-
         this.setState({jobs : data.jobs})
       }.bind(this),
       error: function(data){
