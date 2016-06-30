@@ -18,11 +18,11 @@
 
   <section class="resume-show apply-process resume-spply-style">
     <div class="wrap apply-time">
-      <% if @apply_record.recieve_at %>
+      <% if @apply_record.resume_status == "不合适" || @apply_record.resume_status == "面试" %>
       <div class="box">
-        <time>简历正在筛选中</time>
+        <time>简历筛选已结束</time>
         <div class="time-line-box process-box">
-          <p class="process-time"><%= @apply_record.recieve_at.strftime("%Y-%m-%d") %></p>
+          <p class="process-time"><%= @apply_record.end_at.strftime("%Y-%m-%d") %></p>
         </div>
     </div>
     <% end %>
