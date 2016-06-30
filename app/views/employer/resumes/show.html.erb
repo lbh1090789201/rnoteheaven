@@ -24,14 +24,14 @@
 <% if params[:job_id] %>
 <script type="text/javascript">
    // 每次查看简历后都会更新apply_record的view_at
-  // $.ajax({
-  //  url: "<%= api_apply_record_path(@apply_record.id) %>",
-  //  type: "PATCH",
-  //  data: {user_id: "<%= @user.id %>", job_id: "<%= params[:job_id] %>"},
-  //  success: function(){
-  //    console.log("查看时间更改成功！");
-  //  },
-  // })
+  $.ajax({
+   url: "<%= api_apply_record_path(@apply_record.id) %>",
+   type: "PATCH",
+   data: {user_id: "<%= @user.id %>", job_id: "<%= params[:job_id] %>"},
+   success: function(){
+     console.log("查看时间更改成功！");
+   },
+  })
 </script>
 <% end %>
 <%= provide :title, @user.show_name %>
@@ -135,36 +135,36 @@
     }
 
     // 不合适按钮
-    // function MakeSure(){
-    //   $.ajax({
-    //     url: "<%= api_employer_resumes_path %>",
-    //     type: "PATCH",
-    //     data: {apply_record_id: "<%= @apply_record.id if @apply_record %>",resume_status: "不合适"},
-    //     dataType: "json",
-    //     success: function(){
-    //       $("#btn_action>li").eq(1).css('display','none')
-    //                                .siblings().css({'width':'100%','background':'gray'});
-    //     },
-    //     error: function(){
-    //       alert("操作失败");
-    //     }
-    //   });
-    //   $('#hide_btn').css('display','none');
-    // }
+    function MakeSure(){
+      $.ajax({
+        url: "<%= api_employer_resumes_path %>",
+        type: "PATCH",
+        data: {apply_record_id: "<%= @apply_record.id if @apply_record %>",resume_status: "不合适"},
+        dataType: "json",
+        success: function(){
+          $("#btn_action>li").eq(1).css('display','none')
+                                   .siblings().css({'width':'100%','background':'gray'});
+        },
+        error: function(){
+          alert("操作失败");
+        }
+      });
+      $('#hide_btn').css('display','none');
+    }
 
     // 通知面试按钮
-    // function IsInterview(){
-    //   $.ajax({
-    //     url: "<%= api_employer_resumes_path %>",
-    //     type: "PATCH",
-    //     data: {apply_record_id: "<%=  @apply_record.id if @apply_record %>",resume_status: "面试"},
-    //     success: function(){
-    //       $("#btn_action>li").eq(0).css('display','none')
-    //                                .siblings().css({'width':'100%','background':'#3f9e9f'});
-    //     },
-    //     error: function(){
-    //       alert("操作失败");
-    //     }
-    //   })
-    // }
+    function IsInterview(){
+      $.ajax({
+        url: "<%= api_employer_resumes_path %>",
+        type: "PATCH",
+        data: {apply_record_id: "<%=  @apply_record.id if @apply_record %>",resume_status: "面试"},
+        success: function(){
+          $("#btn_action>li").eq(0).css('display','none')
+                                   .siblings().css({'width':'100%','background':'#3f9e9f'});
+        },
+        error: function(){
+          alert("操作失败");
+        }
+      })
+    }
 </script>

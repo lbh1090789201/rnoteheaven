@@ -146,13 +146,22 @@
               <h2>持有证书
               </h2>
               <div class="box work-show box-certif borDer">
+                <% if !@certificates.blank? %>
                   <a href="/webapp/certificates" class="edit">
                       <%= image_tag "edit.png" %>
                   </a>
-
-                  <h3>持有证书</h3>
                   <% @certificates.each do |f| %>
                   <p><%= f.title %></p>
+                  <% end %>
+                  <% elsif %>
+                    <div class="edit-blank">
+                      <a href="/webapp/certificates">
+                        <p>
+                            <%= image_tag "ti"%>
+                            <span>添加持有证书</span>
+                       </p>
+                      </a>
+                    </div>
                   <% end %>
               </div>
           </section>
@@ -169,9 +178,11 @@
                         <%= image_tag "show.png" %>
                     </a>
                 </h3>
+                <% if @expect_job.job_type && @expect_job.location && @expect_job.expected_salary_range %>
                 <p>
                   <%= @expect_job.job_type %>/<%= @expect_job.location %>/<%= @expect_job.expected_salary_range %>
                 </p>
+                <% end %>
                 <p class="job-desc-show">
                   <%= @expect_job.job_desc[0, 60] + '……' if @expect_job.job_desc %>
                 </p>
