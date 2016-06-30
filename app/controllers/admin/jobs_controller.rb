@@ -23,8 +23,6 @@ class Admin::JobsController < ApplicationController
       }, status: 200
     else
       @jobs = Job.filter_job_status('reviewing').as_json
-      # @test = Job.filter_job_status('release').as_json
-      # puts '-----------' + @test.to_json.to_s
     end
   end
 
@@ -35,6 +33,8 @@ class Admin::JobsController < ApplicationController
 
       jobs.each do |j|
         j.status = btn_params[:status]
+        j.operate_at = Time.now
+        j.is_update = true
         j.save
       end
 
