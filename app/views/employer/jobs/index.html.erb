@@ -48,10 +48,11 @@
   }
   // 显示全部
   function JobShowAll(obj){
-    var text = $(obj).text()
+    var text = $(obj).text();
     $(obj).css('color','#3f9d9f').siblings().css('color','#000');
     $('span.nav-img>span').text(text);
     $('ul.show-all').css('display','block').siblings('ul').css('display','none');
+    $(obj).parent().parent().css('display','none');
   }
 </script>
 

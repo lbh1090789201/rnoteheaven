@@ -22,9 +22,9 @@
        <!-- 蒙板 -->
        <div class="after-mask"></div>
        <div class="time-date">
-         <p onclick="TimeSort('today')">今天简历</p>
-         <p onclick="TimeSort('week')">一周简历</p>
-         <p onclick="TimeSort('month')">近三月简历</p>
+         <p class="today" onclick="TimeSort('today')">今天简历</p>
+         <p class="week" onclick="TimeSort('week')">一周简历</p>
+         <p class="month" onclick="TimeSort('month')">近三月简历</p>
        </div>
      </div>
      <ul class="sort-time-all">
@@ -34,6 +34,9 @@
      <!-- 筛选不同时间段简历 -->
      <script type="text/javascript">
        function TimeSort(msg) {
+         $('.'+msg).css('color','#3d9ea0').siblings().css('color','#000');
+         var text = $('.'+msg).text();
+         $('.resume-nav>li:eq(1)').text(text);
          $('.sort-time-all').children().remove();
          if(msg == "today") {
            $('.sort-time-all').append(

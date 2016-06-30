@@ -36,9 +36,9 @@
             <!-- 按条件排序 -->
             <div class="sort-resume">
               <ul>
-                <li onclick="SortApply('age')">按年龄排序</li>
-                <li onclick="SortApply('wxperience')">按经验排序</li>
-                <li onclick="SortApply('degree')">按学历排序</li>
+                <li class="age" onclick="SortApply(this)">按年龄排序</li>
+                <li class="wxperience" onclick="SortApply(this)">按经验排序</li>
+                <li class="degree" onclick="SortApply(this)">按学历排序</li>
               </ul>
             </div>
           </div>
@@ -117,7 +117,10 @@
       var div = $('<div></div>');
       div.attr('onclick','HideList(this)');
       div.attr('class','add-return');
-      div.css({'width':'2.5rem','height':'2.3rem','position':'absolute','top':'0.2rem','left':'0.2rem'});
+      div.css({'width':'2.5rem','height':'2.3rem','position':'absolute',
+              'top':'0','left':'0.2rem',
+              'background':'#3b9da0 url("../assets/left2.png") no-repeat 30% 50% ',
+              'backgroundSize':'0.5rem'});
       $('header>div').append(div);
       $(obj).children('div.order-job-list').css('display','block');
 
@@ -148,12 +151,13 @@
     //排序弹窗脚本
     $(".sort-resume>ul>li").bind('mouseover',function(){
       x = $(this).index();
-      console.log(x);
     })
-      function SortApply(obj) {
+      function SortApply(sq) {
         $('.order-job-list>ul').css('display','none');
         $('.sort-resume-ct>ul').eq(x).show().siblings().hide();
-        $(obj).hide();
+        var text = $(sq).text();
+        $(sq).parent().parent().siblings('span').text(text);
+        $(sq).css('color','#3d9ea0').siblings().css('color','#000');
       }
 
 
