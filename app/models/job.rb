@@ -34,12 +34,12 @@ class Job < ActiveRecord::Base
 
   # 按发布时间
   scope :filter_release_before, -> (time) {
-    where('release_at < ?', time) if time.present?
+    where('operate_at < ?', time) if time.present?
   }
 
   # 按发布时间
   scope :filter_release_after, -> (time) {
-    where('release_at > ?', time) if time.present?
+    where('operate_at > ?', time) if time.present?
   }
 
   # 按工作类型

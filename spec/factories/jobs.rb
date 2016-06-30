@@ -10,7 +10,7 @@ FactoryGirl.define do
     job_type "MyString"
     status "saved"
     refresh_at Time.now - 3.days
-    release_at Time.now
+    submit_at Time.now
     end_at Time.now + 60.days
   end
 

@@ -29,10 +29,10 @@ RSpec.describe Job, type: :model do
 
   describe 'test filters' do
     before :each do
-      job = create :job, :hospital_id => @hospital1.id, :release_at => Time.now - 5.days
-      job2 = create :job2, :hospital_id => @hospital2.id, :status => "saved" , :release_at => Time.now - 3.days
-      job3 = create :job3, :hospital_id => @hospital1.id, :status => "release", :release_at => Time.now - 1.days
-      job4 = create :job4, :hospital_id => @hospital2.id, :release_at => Time.now, :job_type => "全科"
+      job = create :job, :hospital_id => @hospital1.id, :operate_at => Time.now - 5.days
+      job2 = create :job2, :hospital_id => @hospital2.id, :status => "saved" , :operate_at => Time.now - 3.days
+      job3 = create :job3, :hospital_id => @hospital1.id, :status => "release", :operate_at => Time.now - 1.days
+      job4 = create :job4, :hospital_id => @hospital2.id, :operate_at => Time.now, :job_type => "全科"
     end
 
     it "test filter name" do
