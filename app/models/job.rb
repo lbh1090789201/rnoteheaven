@@ -7,7 +7,7 @@ class Job < ActiveRecord::Base
   validates :region, presence: true, :on => :create
 
   # 默认按 VIP 优先排序
-  default_scope { order('is_top DESC') }
+  default_scope { order('is_top DESC').order('operate_at DESC').order('refresh_at DESC') }
 
   # 按Hospital id
   scope :filter_hospital_id, -> (hid) {
@@ -58,7 +58,6 @@ class Job < ActiveRecord::Base
         end
         s = hids[0..(hids.size-2)]
         filter = "hospital_id in (" + s + ")"
-        # puts where(filter).to_sql.to_s
         return where(filter)
       end
       return where("id = 0")
