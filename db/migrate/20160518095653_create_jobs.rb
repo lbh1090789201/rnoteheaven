@@ -17,6 +17,7 @@ class CreateJobs < ActiveRecord::Migration
       t.boolean :is_update, null: false, default: false #Admin 有更新
       t.boolean :is_top, null: false, default: false #是否置顶
 
+      t.datetime :review_at #提交审核时间
       t.datetime :release_at #发布时间
       t.datetime :refresh_at #刷新时间
       t.datetime :end_at #结束时间

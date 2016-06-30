@@ -7,7 +7,6 @@ class CreateApplyRecords < ActiveRecord::Migration
       t.references :hospital #医院id
 
       t.datetime :end_at #结束时间
-      t.datetime :apply_at #筛选时间
       t.datetime :view_at #查看时间
       t.datetime :recieve_at #接收时间
 

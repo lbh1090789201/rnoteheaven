@@ -1,4 +1,6 @@
 class Job < ActiveRecord::Base
+  belongs_to :hospital
+
   # 限定字串非空
   validates :name, presence: true, :on => :create
   validates :job_type, presence: true, :on => :create
@@ -37,12 +39,12 @@ class Job < ActiveRecord::Base
 
   # 按发布时间
   scope :filter_release_after, -> (time) {
-    where('release_at > ?', time)
+    where('release_at > ?', time) if time.present?
   }
 
   # 按工作类型
   scope :filter_job_type, -> (type){
-    where(job_type: "#{type}")
+    where('job_type LIKE ?', "%#{type}%") if type.present?
   }
 
   # 按Hospital Name

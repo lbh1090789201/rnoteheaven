@@ -3,7 +3,14 @@
 <div class="jobs hospitaljob-list">
   <div class="jobs-list">
     <% @jobs.each do |h| %>
-    <a href="/webapp/jobs/<%= h.id %>?hospital=<%= params[:id] %>">
+
+    <!-- 判断是否来自 resume_viewers -->
+    <% if params[:from] == "viewers" %>
+      <a href="/webapp/jobs/<%= h.id %>">
+    <% else %>
+      <a href="/webapp/jobs/<%= h.id %>?hospital=<%= params[:id] %>">
+    <% end %>
+    
       <div class="job">
         <div class="title">
           <div class="left"><%= h.name %></div>

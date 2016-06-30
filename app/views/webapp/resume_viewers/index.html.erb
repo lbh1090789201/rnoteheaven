@@ -2,7 +2,7 @@
 <div class="resume-views">
   <% @resume_view.each do |r| %>
   <div class="resume-views-list resume-byview">
-    <a href="/webapp/hospitals/<%= r[:hospital_id]  %>">
+    <a href="/webapp/hospitals/<%= r[:hospital_id]  %>?from=viewers">
     <div class="hospital-list">
         <div class="title"><%= r[:hospital_name] %></div>
         <div class="job">发布中的职位 <span class="view-count"> <%= r[:job_num] %>个</span> </div>

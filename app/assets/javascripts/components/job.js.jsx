@@ -7,7 +7,6 @@ var Job = React.createClass({
         <td>{this.props.data.job_type}</td>
         <td>行业</td>
         <td>发布机构</td>
-        <td>{this.props.data.created_at.slice(0,10)}</td>
         <td>{this.props.data.release_at.slice(0,10)}</td>
         <td>{this.props.data.status}</td>
         <td>查看</td>
