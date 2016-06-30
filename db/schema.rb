@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.integer  "job_id",          limit: 4
     t.integer  "hospital_id",     limit: 4
     t.datetime "end_at"
-    t.datetime "apply_at"
     t.datetime "view_at"
     t.datetime "recieve_at"
     t.string   "from",            limit: 191, default: "common", null: false
@@ -158,6 +157,7 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.string   "status",        limit: 191
     t.boolean  "is_update",                   default: false, null: false
     t.boolean  "is_top",                      default: false, null: false
+    t.datetime "review_at"
     t.datetime "release_at"
     t.datetime "refresh_at"
     t.datetime "end_at"

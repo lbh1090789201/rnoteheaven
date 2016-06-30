@@ -14,7 +14,7 @@ class Employer::ResumesController < ApplicationController
 
     # 三个月内简历
     @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",hospital.id, Time.now - 90.days)
-                                .order("apply_at DESC")
+                                .order("recieve_at DESC")
 
     # 公开简历
     public_resumes = Resume.where(public: true)
@@ -97,7 +97,7 @@ end
 #         "resume_id ": 49,
 #         "apply_record_id" :1,
 #         "from":"common",
-#         "apply_at": "2016-05-18T18:04:53.000Z",
+#         "recieve_at": "2016-05-18T18:04:53.000Z",
 #         "edu_num": 2,
 #         "exp_num": 4
 #     }, {
@@ -115,6 +115,6 @@ end
 #         "resume_id ": 50,
 #         "apply_record_id" :2,
 #         "from":"common",
-#         "apply_at": "2016-05-18T18:04:53.000Z"
+#         "recieve_at": "2016-05-18T18:04:53.000Z"
 #     }]
 # },……]

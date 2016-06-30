@@ -74,7 +74,7 @@ class Job < ActiveRecord::Base
 
     apply_records.each do |f|
       resume_info = Resume.info f.user_id
-      resume_info[:apply_at] = f.apply_at
+      resume_info[:recieve_at] = f.recieve_at
       resume_info[:from] = f.from
       resume_info[:resume_status] = f.resume_status
       resume_info[:apply_record_id] = f.id
