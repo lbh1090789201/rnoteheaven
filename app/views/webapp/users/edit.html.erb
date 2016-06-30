@@ -10,7 +10,7 @@
       <!-- 职称属性 -->
       <%= f.input :position, label: '职        称', input_html: { readonly: "readonly", class: "user-title user-input", id: "user_title"} %>
       <%= f.input :start_work_at, label: '工作年限', as: :string, input_html: { readonly: "readonly", class: "start-work user-input", id: "start_work"} %>
-      <%= f.input :birthday, label: '出生年月', as: :string, input_html: { class: "user-input", id: "birthday"} %>
+      <%= f.input :birthday, label: '出生年月', as: :string, input_html: { require: "true", class: "user-input", id: "birthday"} %>
       <%= f.input :cellphone, label: '手机号码', input_html: { class: "user-input"} %>
       <%= f.input :email, label: '邮        箱', input_html: { class: "user-input"} %>
       <%= f.input :location, label: '所在区域', input_html: { readonly: "readonly", class: "user-input", id: "locationChoice"} %>
@@ -70,17 +70,14 @@
     });
 
     // 城市插件
-        var cityPicker = new IIInsomniaCityPicker({
-              data: cityData,
-              target: '#locationChoice',
-              valType: 'k-v',
-              hideCityInput: '#city',
-              hideProvinceInput: '#province'
-          });
+    var cityPicker = new IIInsomniaCityPicker({
+          data: cityData,
+          target: '#locationChoice',
+          valType: 'k-v',
+          hideCityInput: '#city',
+          hideProvinceInput: '#province'
+      });
 
-          cityPicker.init();
-
-
-
+      cityPicker.init();
 
 </script>
