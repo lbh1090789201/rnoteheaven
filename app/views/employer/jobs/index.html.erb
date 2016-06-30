@@ -97,7 +97,11 @@
               </div>
 
               <div class="status-box">
-                <span><script>getStatus("<%= j.status %>");</script></span>
+                <% if j.status == "reviewing" %>
+                  <span class="reviewing-ban" style="color:#c2c2c2;"><script>getStatus("<%= j.status %>");</script></span>
+                <% elsif %>
+                  <span><script>getStatus("<%= j.status %>");</script></span>
+                <% end %>
                 <%= image_tag "list-icon.png" %>
               </div>
             </a>
@@ -128,7 +132,7 @@
 
         <!-- 审核中 -->
         <% if j.status == "reviewing" %>
-          <li class="job-reviewing">
+          <li class="job-reviewing ban-click">
             <a href="<%= employer_job_path(j.id) %>">
               <div class="name-box">
                 <h4><%= j.name %></h4>
@@ -137,7 +141,7 @@
               </div>
 
               <div class="status-box">
-                <span><script>getStatus("<%= j.status %>");</script></span>
+                <span style="color:#c2c2c2;"><script>getStatus("<%= j.status %>");</script></span>
                 <%= image_tag "list-icon.png",width: "10", height: "15" %>
               </div>
             </a>
@@ -244,6 +248,10 @@
 $('.job-nav>img').bind('click',function(){
   window.location.reload();
 })
+
+//禁止点击审核中的职位
+$('.reviewing-ban').parent().parent().attr('href','javascript:void(0);');
+$('.ban-click>a').attr('href','javascript:void(0);');
 
  // 底部按钮样式
  ReplayImg(1,'../assets/icon_03.png');

@@ -48,28 +48,26 @@
 		console.log(status);
 		if(!status){
 			$('.job-slider-inner').css('margin-left','0.1rem');
-			$('.job-slider').css('background','#f4f4f4');
-			$('.job-slider').css('margin-left','#fff');
+			$('.job-slider').css({'background':'#f4f4f4','margin-left':'#fff'});
 		}else{
 			$('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
-			$('.job-slider').css('background','#3f9e9f');
-			$('.job-slider').css('margin-left','#fff');
+			$('.job-slider').css({'background':'#3f9e9f','margin-left':'#fff'});
 			$('.job-top').attr('value',true);
 		}
 	})
 
 	$('.job-slider').on('click',function () {
-	if ($(this).css('background-color')=='rgb(244, 244, 244)') {//根据背景色判断，并移动和改变颜色样式
-		  $('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
-			$(this).css('background','#3f9e9f');
-			$('.job-slider').css('margin-left','#fff');
-			$('.job-top').attr('value',true);
-	} else{
-	  	$('.job-slider-inner').css('margin-left','0.1rem');
-			$(this).css('background','#f4f4f4');
-			$('.job-slider').css('margin-left','#fff');
-			$('.job-top').attr('value',false);
-	}
+	// if ($(this).css('background-color')=='rgb(244, 244, 244)') {//根据背景色判断，并移动和改变颜色样式
+	// 	  $('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
+	// 		$(this).css({'background':'#3f9e9f','margin-left':'#fff'});
+	// 		$('.job-top').attr('value',true);
+	// } else{
+	//   	$('.job-slider-inner').css('margin-left','0.1rem');
+	// 		$(this).css({'background':'#f4f4f4','margin-left':'#fff'});
+	// 		$('.job-top').attr('value',false);
+	// }
+		// 编辑页面不可编辑置顶
+		alert("置顶状态不可修改！");
 	})
 
   // 职位类型
@@ -111,7 +109,4 @@
         hideProvinceInput: '#province'
     });
   cityPicker.init();
-
-
-
 </script>

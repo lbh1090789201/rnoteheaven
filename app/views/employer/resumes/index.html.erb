@@ -60,10 +60,12 @@
        <% @public_seekers.each do |p| %>
        <li>
          <a href="/employer/resumes/<%= p["resume_id"]%> ">
-             <span><%= p["expect_job"] %></span>
-             <span><%= p["show_name"] %></span>
-             <span><%= p["sex"] %></span>
-             <span><%= p["age"] %>岁/<%= p["start_work_at"] %>/<%= p["hightest"] %></span>
+             <span class="expect-job"><%= p["expect_job"] %></span>
+             <div class="middle-info">
+               <span><%= p["show_name"] %></span>
+               <span><%= p["sex"] %></span>
+               <span><%= p["age"] %>岁/<%= p["start_work_at"] %>/<%= p["hightest"] %></span>
+             </div>
              <%= image_tag "list-icon.png" %>
          </a>
 

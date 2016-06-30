@@ -374,27 +374,35 @@ $light-gray: #f4f4f4;
             line-height: 2.88rem;
             width: 100%;
             border-bottom: 1px solid #cfcfcf;
+            position: relative;
             a {
               display: block;
               width: 100%;
               height: 100%;
-              span:nth-child(1) {
+              .expect-job {
                 font-size: 0.87rem;
+                display: inline-block;
+                max-width: 6.4rem;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
               }
-              span:nth-child(2) {
-                font-size: 0.87rem;
-                margin: 0 1.02rem 0 2.58rem;
-              }
-              span:nth-child(3) {
-                font-size: 0.7rem;
-                color: #9e9e9e;
-              }
-              span:nth-child(4) {
-                font-size: 0.7rem;
-                margin: 0 1.72rem 0 1.25rem;
-              }
-              span:nth-child(5) {
-                font-size: 0.7rem;
+              .middle-info {
+                position: absolute;
+                top: 0;
+                left: 4rem;
+                span:nth-child(1) {
+                  font-size: 0.87rem;
+                  margin: 0 1.02rem 0 2.58rem;
+                }
+                span:nth-child(2) {
+                  font-size: 0.7rem;
+                  color: #9e9e9e;
+                }
+                span:nth-child(3) {
+                  font-size: 0.7rem;
+                  margin: 0 1.72rem 0 1.25rem;
+                }
               }
               img {
                 width: 0.33rem;
