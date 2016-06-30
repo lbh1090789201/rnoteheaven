@@ -22,19 +22,17 @@ var AdminJob = React.createClass({
 
     return e
   }
-  ,handlClick: function(e) {
+  ,handleClick: function(e) {
     e.preventDefault();
     var name = e.target.name,
         ids = this.state.checkValue.toString(),
         status= e.target.value
 
-    console.log(ids)
     $.ajax({
       url: '/admin/jobs/update',
       type: 'PATCH',
       data: {'ids': ids, 'status': status},
       success: function(data) {
-
         this.setState({jobs : data.jobs})
       }.bind(this),
       error: function(data){
@@ -59,7 +57,6 @@ var AdminJob = React.createClass({
     return (
       <div className="admin-jobs">
         <ReviewJob dad={this} />
-
         <button className="btn btn-info pull-right" onClick={this.handleClick} name="passBtn" value="release">审核通过</button>
         <button className="btn btn-danger pull-right" onClick={this.handleClick} name="refuseBtn" value="fail">审核拒绝</button>
         <table className="table table-bordered">
