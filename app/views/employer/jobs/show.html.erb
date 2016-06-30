@@ -5,11 +5,14 @@
 <%= provide :link, edit_employer_job_path(params[:id]) %>
 <% end %>
 <div id="job_show">
-  <div class="job-time">
-    发布日期:
-    <span><%= @job.release_at.strftime("%Y-%m-%d") %></span>
-    (剩余<%= @time_left %>天到期)
-  </div>
+
+  <% if @job.operate_at && @job.status == 'release' %>
+    <div class="job-time">
+      发布日期:
+      <span><%= @job.operate_at.strftime("%Y-%m-%d") %></span>
+      (剩余<%= @time_left %>天到期)
+    </div>
+  <% end %>
 
   <section class="job-detail">
     <div class="job-introduce">

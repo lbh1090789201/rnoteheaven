@@ -39,18 +39,16 @@ class Employer::JobsController < ApplicationController
   def create
     job = Job.new job_params
     job.hospital_id = Employer.get_hospital(current_user.id).id
-    job.release_at = Time.now
-    # job.refresh_at = Time.now
     job.end_at = Time.now + job_other_params[:end_at].to_i.days
     job.is_top = job_other_params[:is_top]
+
+    if job_params[:status] == "reviewing"
+      job.submit_at = Time.now
+    end
 
     if job.save
       render js: 'location.href = document.referrer'
     else
-      # render json: {
-      #   success: false,
-      #   info: "工作发布失败"
-      # }, status: 200
       render js: 'alert("请检查信息是否填写完整")'
     end
   end
@@ -58,7 +56,7 @@ class Employer::JobsController < ApplicationController
   def update
     job = Job.find params[:id]
     job.end_at = Time.now + job_other_params[:end_at].to_i.days
-    job.refresh_at = Time.now
+    job.submit_at = Time.now
     job.is_top = job_other_params[:is_top]
 
     if job.save && job.update_columns(job_params)

@@ -34,12 +34,12 @@ class Job < ActiveRecord::Base
 
   # 按发布时间
   scope :filter_release_before, -> (time) {
-    where('release_at < ?', time) if time.present?
+    where('operate_at < ?', time) if time.present?
   }
 
   # 按发布时间
   scope :filter_release_after, -> (time) {
-    where('release_at > ?', time) if time.present?
+    where('operate_at > ?', time) if time.present?
   }
 
   # 按工作类型
@@ -74,7 +74,7 @@ class Job < ActiveRecord::Base
 
     apply_records.each do |f|
       resume_info = Resume.info f.user_id
-      resume_info[:apply_at] = f.apply_at
+      resume_info[:recieve_at] = f.recieve_at
       resume_info[:from] = f.from
       resume_info[:resume_status] = f.resume_status
       resume_info[:apply_record_id] = f.id

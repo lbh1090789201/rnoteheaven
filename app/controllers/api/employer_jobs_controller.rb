@@ -11,7 +11,10 @@ class Api::EmployerJobsController < ApiController
 
     if params[:refresh_at]
       job.refresh_at = Time.now
-    elsif params[:status]
+    elsif params[:status] == "reviewing"
+      job.submit_at = Time.now
+      job.status = params[:status]
+    elsif params[:status] && params[:status] != "reviewing"
       job.status = params[:status]
     end
 

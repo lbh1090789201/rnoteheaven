@@ -10,21 +10,6 @@ class Webapp::ApplyRecordsController < ApplicationController
 
   def show
     @apply_record = ApplyRecord.find params[:id]
-    # @job = Job.find_by @apply_record.job_id
     @hospital = Hospital.find_by @apply_record.hospital_id
-    # @applyrecord = []
-    # o = {
-    #   id: @apply_record.job_id,
-    #   job_name: @job.name,
-    #   salary_range: @job.salary_range,
-    #   created_at: @apply_record.created_at,
-    #   hospital_name: @hospital.name,
-    #   resume_status: @apply_record.resume_status,
-    #   apply_at: @apply_record.apply_at,
-    #   view_at: @apply_record.view_at,
-    #   recieve_at: @apply_record.recieve_at,
-    #   location: @job.location
-    # }
-    # @applyrecord.push(o)
   end
 end
