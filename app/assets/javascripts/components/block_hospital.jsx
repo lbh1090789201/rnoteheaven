@@ -7,28 +7,30 @@ var BlockHospital = React.createClass({
     }
   }
   ,handleChange: function(e) {
+      console.log(this.state.input_id)
     var hospital_name = e.target.value
 
     this.setState({
       input_value: hospital_name,
+      input_id: '',
     })
 
-    $.ajax({
-      url: '/webapp/block_hospitals/new',
-      type: 'GET',
-      data: {'hospital_name': hospital_name},
-      success: function(data) {
-        // console.log(data)
-        this.setState({
-          hospitals: data.hospitals
-        })
+    if(e.target.value) {
+      $.ajax({
+        url: '/webapp/block_hospitals/new',
+        type: 'GET',
+        data: {'hospital_name': hospital_name},
+        success: function(data) {
+          this.setState({
+            hospitals: data.hospitals
+          })
+        }.bind(this),
+        error: function(data){
+          alert(data.responseText)
+        },
+      })
 
-
-      }.bind(this),
-      error: function(data){
-        alert(data.responseText)
-      },
-    })
+    }
   }
   ,handleClick: function(e) {
     let hospital_name = e.target.id
@@ -41,17 +43,22 @@ var BlockHospital = React.createClass({
 
   }
   ,handleSubmit: function(e) {
-    $.ajax({
-      url: '/webapp/block_hospitals',
-      type: 'POST',
-      data: {'hospital_name': this.state.input_value},
-      success: function(data) {
-        console.log('ok')
-      }.bind(this),
-      error: function(data){
-        alert(data.responseText)
-      },
-    })
+    console.log(this.state.input_id)
+    if(this.state.input_id) {
+      $.ajax({
+        url: '/webapp/block_hospitals',
+        type: 'POST',
+        data: {'hospital_name': this.state.input_value, 'hospital_id': this.state.input_id,},
+        success: function(data) {
+          console.log('ok')
+        }.bind(this),
+        error: function(data){
+          alert(data.responseText)
+        },
+      })
+    } else {
+      alert('请点击搜索结果后，再保存')
+    }
   }
   ,render: function() {
     return (

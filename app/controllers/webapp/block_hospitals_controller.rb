@@ -13,7 +13,6 @@ class Webapp::BlockHospitalsController < ApplicationController
     if blockhospital_params[:hospital_name] && !blockhospital_params[:hospital_name].blank?
       name = blockhospital_params[:hospital_name]
       hospitals = Hospital.where('name LIKE ?', "%#{name}%")
-      puts '------------' + hospitals.to_json.to_s
       render json: {
         success: true,
         info: "查询医院成功",
@@ -23,13 +22,17 @@ class Webapp::BlockHospitalsController < ApplicationController
   end
 
   def create
-    blockhospital = BlockHospital.create blockhospital_params
-    blockhospital.user_id = current_user.id
-
-    if blockhospital.save
-      render js: "history.go(-1)"
+    block_item = BlockHospital.find_by(hospital_id: blockhospital_params[:hospital_id], user_id: current_user.id)
+    if block_item
+      render js: "alert('此医院已屏蔽，请勿重复提交。')"
     else
-      redirect_to :back, alert: "屏蔽医院失败"
+      blockhospital = BlockHospital.new blockhospital_params
+      blockhospital.user_id = current_user.id
+      if blockhospital.save
+        render js: "history.go(-1)"
+      else
+        redirect_to :back, alert: "屏蔽医院失败"
+      end
     end
   end
 
@@ -51,6 +54,6 @@ class Webapp::BlockHospitalsController < ApplicationController
 
   private
   def blockhospital_params
-    params.permit(:hospital_name)
+    params.permit(:hospital_name, :hospital_id)
   end
 end
