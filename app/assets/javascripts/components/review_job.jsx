@@ -8,27 +8,6 @@ var ReviewJob = React.createClass({
       job_name: '',
     }
   }
-  ,componentDidMount: function() {
-    // test: function(e) {
-    //   e.preventDefault()
-    //   console.log("")
-    //   this.props.dad.setState({
-    //     jobs: [1,2,3]
-    //   })
-    // }
-    // TODO 下一步提交表单
-
-      return( function valid() {
-        return (
-          this.refs.job_name.value &&
-          this.refs.hospital_name.value &&
-          this.refs.job_type.value &&
-          this.refs.time_after.value &&
-          this.refs.time_before.value
-        )
-      }
-    )
-  }
   ,handleSubmit: function(e){
     e.preventDefault()
     let time_before = this.refs.time_before.value,
@@ -49,9 +28,10 @@ var ReviewJob = React.createClass({
         'job_name': job_name
       },
       success: function(data) {
-        // this.props.dad.setState({jobs : data.jobs})
+        console.log(this)
+        this.props.dad.setState({jobs : data.jobs})
 
-      },
+      }.bind(this),
       error: function(data){
         alert(data.responseText)
       },
@@ -62,11 +42,11 @@ var ReviewJob = React.createClass({
     return (
       <form className='form-inline' onSubmit={this.handleSubmit}>
         <div className='form-group col-sm-4'>
-            <input type="text" className="form-control" placeholder='开始时间' name='time_after'
+            <input type="date" className="form-control" placeholder='开始时间' name='time_after'
                    defaultValue={this.state.time_after} ref="time_after" />
           </div>
           <div className='form-group col-sm-4'>
-            <input type="text" className="form-control" placeholder='结束时间' name='time_before'
+            <input type="date" className="form-control" placeholder='结束时间' name='time_before'
                    defaultValue={this.state.time_before} ref="time_before" />
           </div>
           <div className='form-group col-sm-4'>
@@ -81,7 +61,7 @@ var ReviewJob = React.createClass({
             <input type="text" className="form-control" placeholder='职位名称' name='job_name'
                    defaultValue={this.state.job_name} ref="job_name" />
           </div>
-          <button type='submit' className='btn btn-primary' disabled={this.valid}>查询</button>
+          <button type='submit' className='btn btn-primary'>查询</button>
      </form>
     )
   }

@@ -105,6 +105,7 @@
 <script type="text/javascript">
   // 暂停按钮
   function postPause(obj) {
+    confirm('确定暂停？')
     if($(obj).attr("class") == "release") {
       $.ajax({
         url: '<%= api_employer_jobs_path %>',
@@ -134,7 +135,7 @@
       alert('您的可发布职位数已满，若想发布更多，请购买VIP');
       return;
     }
-
+    confirm('确定提交？')
     // 当值为再次发布时点击判断may_release
     if(["pause", "end", "saved", "fail"].indexOf($(obj).attr("class")) != -1 ) {
       var status = '',
@@ -171,6 +172,8 @@
 
   // 结束发布按钮
     function end(obj) {
+      confirm('确定结束发布此职位？')
+
       if(["release", "pause"].indexOf($(obj).attr("class")) != -1 ) {
         $.ajax({
           url: '<%= api_employer_jobs_path %>',

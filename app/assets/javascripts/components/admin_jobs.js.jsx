@@ -68,7 +68,6 @@ var AdminJob = React.createClass({
               <th>行业</th>
               <th>发布机构</th>
               <th>提交时间</th>
-              <th>审核时间</th>
               <th>状态</th>
               <th>详情</th>
               <th>选择</th>

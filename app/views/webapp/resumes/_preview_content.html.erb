@@ -25,7 +25,7 @@
       </tr>
       <tr>
         <td>出生年限：</td>
-        <td><%= @user.birthday.strftime('%Y-%m-%d') %></td>
+        <td><%= @user.birthday.strftime('%Y-%m-%d') if @user.birthday %></td>
       </tr>
       <tr>
         <td>所在城市：</td>

@@ -3,11 +3,11 @@ class Api::EmployerResumesController < ApiController
   before_action :authenticate_user!   # 登陆验证
   protect_from_forgery :except => [:update]
 
-  # 需要传入 apply_record_id， resume_status #简历状态 1.筛选 2.面试 3.不合适
+  # 需要传入 apply_record_id， resume_status #简历状态 1.不合适 2.面试
   def update
     apply_record = ApplyRecord.find params[:apply_record_id]
 
-    if apply_record.update_columns(resume_status: params[:resume_status])
+    if apply_record.update_columns(resume_status: params[:resume_status], end_at: Time.now)
       render json: {
         success: true,
         info: "简历状态更新成功！",
