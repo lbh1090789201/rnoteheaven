@@ -46,7 +46,7 @@
 	$(function(){
 		var status = "<%= @job.is_top %>";
 		console.log(status);
-		if(status == "false"){
+		if(!status){
 			$('.job-slider-inner').css('margin-left','0.1rem');
 			$('.job-slider').css({'background':'#f4f4f4','margin-left':'#fff'});
 		}else{
