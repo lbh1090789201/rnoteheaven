@@ -25,7 +25,7 @@
         <li><span>经验要求</span><span class="job-exprience"></span><%= @job.needed_number %>年</li>
       </ul>
     </div>
-    <div class="job-place"><a href="http://api.map.baidu.com/marker?location=<%= @hospital.lat %>,<%= @hospital.lng %>&title=<%= @hospital.name %>&content=<%= @job.location %>&output=html"><span>工作地点</span><%= @job.location %><%= image_tag "jobright.png" %></a></div>
+    <div class="job-place"><a href="http://api.map.baidu.com/marker?location=<%= @hospital.lat %>,<%= @hospital.lng %>&title=<%= @hospital.name %>&content=<%= @job.location %>&output=html"><span>工作地点：</span><%= @job.location %><%= image_tag "jobright.png" %></a></div>
 
     <!-- 刷新简历 -->
     <% if @job.status == "release" %>

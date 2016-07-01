@@ -52,7 +52,10 @@ Ryunkang::Application.routes.draw do
       resources :favorite_jobs
       resource :employer_resumes, :only => [:update]
       resource :employer_viewers, :only => [:create]
-      resource :employer_jobs, :only => [:update, :destroy]
+
+      resource :employer_jobs, :only => [:update, :destroy] do
+        patch :view_update, on: :collection
+      end
     end
   end
 

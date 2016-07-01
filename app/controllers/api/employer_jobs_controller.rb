@@ -1,7 +1,7 @@
 class Api::EmployerJobsController < ApiController
   # before_action :require_employer!   # 登陆验证
   before_action :authenticate_user!   # 登陆验证
-  protect_from_forgery :except => [:update, :destroy]
+  protect_from_forgery :except => [:update, :destroy, :view_update]
 
   # 必传入 job_id，
   # 按需传入 refresh_at  刷新职位
@@ -32,6 +32,24 @@ class Api::EmployerJobsController < ApiController
       render json: {
         success: false,
         info: "工作更新失败。",
+      }, status: 403
+    end
+  end
+
+  # 医院端查看了 Admin 的更新
+  def view_update
+    job = Job.find params[:job_id]
+    job.is_update = false
+
+    if job.save
+      render json: {
+        success: true,
+        info: "查看更新成功！",
+      }, status: 200
+    else
+      render json: {
+        success: false,
+        info: "查看更新失败。",
       }, status: 403
     end
   end

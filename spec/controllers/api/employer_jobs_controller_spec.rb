@@ -20,5 +20,11 @@ RSpec.describe Api::EmployerJobsController, type: :controller do
       patch :update, format: :json, refresh_at: Time.now, job_id: @job.id
       expect(response.status).to eq(200)
     end
+
+    it "test view_update" do
+      patch :view_update, format: :json, job_id: @job.id, is_update: "false"
+      expect(response.status).to eq(200)
+    end
   end
+
 end
