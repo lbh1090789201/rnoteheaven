@@ -52,6 +52,7 @@
      }
      a img {
            height: 0.79rem;
+           width: auto;
        }
        .left-img {
          display: block;
@@ -90,7 +91,7 @@
    bottom: 0;
    left: 0;
    list-style: none;
-   background: #fff;
+   background: #f8f8f8;
    margin-bottom: 0;
    li {
      width: 33.33%;

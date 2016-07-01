@@ -2,6 +2,7 @@ $light-gray: #f4f4f4;
 $font-gray: #a5a5a5;
 
 .users-index {
+  background: #fff;
   .top-box {
     box-sizing: border-box;
     padding-top: 2.4rem;
@@ -9,7 +10,6 @@ $font-gray: #a5a5a5;
     text-align: center;
     background-size: 100% 100%;
     color: #fff;
-
     #avatar_box {
       width: 3.75rem;
       height: 3.75rem;
@@ -38,7 +38,7 @@ $font-gray: #a5a5a5;
       height: 3.03rem;
       line-height: 3.03rem;
       list-style: none;
-      border-bottom: 0.5px solid #c4c4c4;
+      border-bottom: 1px solid #c4c4c4;
       a {
         display: block;
         width: 100%;
