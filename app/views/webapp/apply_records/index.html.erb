@@ -21,7 +21,7 @@
               <div class="content active">
                 <% @data.each do |d| %>
                   <% if d[:resume_status] %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" onclick="EditNew(this)" class="record-status" index="<%= d[:id] %>">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" onclick="EditNew('<%= d[:has_new] %>',this)" class="record-status" index="<%= d[:id] %>">
                     <li class="job-li">
                       <div class="left">
                         <h3 class="job-name">
@@ -66,7 +66,7 @@
               <div class="content">
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="面试" %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status" index="<%= d[:id] %>">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" onclick="EditNew('<%= d[:has_new] %>',this)" class="record-status" index="<%= d[:id] %>">
                     <li class="job-li">
                       <div class="left">
                         <h3 class="job-name">
@@ -91,7 +91,7 @@
               <div class="content">
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="不合适" %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status" index="<%= d[:id] %>">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" onclick="EditNew('<%= d[:has_new] %>',this)" class="record-status" index="<%= d[:id] %>">
                     <li class="job-li">
                       <div class="left">
                         <h3 class="job-name">
@@ -118,26 +118,24 @@
     </div>
 </div>
 <script type="text/javascript">
-//医生查看更改has_new
-function EditNew(obj) {
-  var len = $(obj).children('.job-li').children('.left').children('.job-name').children('img');
-  var apply_id = $(obj).attr('index');
-console.log(len);
-  if(len) {
-    $.ajax ({
-      url: "/api/v1/employer_resumes",
-      type: "PATCH",
-      data: {has_new: "false", apply_record_id: apply_id},
-      success: function(){
-        console.log("刷新has_new成功");
-      },
-      error: function(){
-        console.log("刷新has_new失败");
-      },
-    })
-  }
-}
-
+    // //医生查看更改has_new
+    function EditNew(obj,eve) {
+      var has_new = obj;
+      var apply_id = $(eve).attr('index');
+      if( has_new == 'true' ) {
+        $.ajax ({
+          url: "/api/v1/employer_resumes",
+          type: "PATCH",
+          data: {has_new: "false", apply_record_id: apply_id},
+          success: function(){
+            console.log("刷新has_new成功");
+          },
+          error: function(){
+            console.log("刷新has_new失败");
+          },
+        })
+      }
+    }
 
   $('.apply_records li').click(function(event) {
     $(this).addClass('active show');
