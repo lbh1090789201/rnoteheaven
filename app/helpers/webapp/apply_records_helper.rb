@@ -15,7 +15,7 @@ module Webapp::ApplyRecordsHelper
         resume_status: ar.resume_status,
         recieve_at: ar.recieve_at,
         hospital_name: hospital.name,
-        resume_status: ar.resume_status
+        has_new: ar.has_new
       }
       apply_records.push(a)
     end
