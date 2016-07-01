@@ -12,6 +12,7 @@ class CreateJobs < ActiveRecord::Migration
       t.string :location #上班地址
       t.text :job_desc #职位描述
       t.text :job_demand #任职资格
+      t.integer :duration #发布时间长 /天
 
       t.string :status #职位状态 1.saved 2.reviewing 3.release 4.pause 5.end 6.freeze 7.fail
       t.boolean :is_update, null: false, default: false #Admin 有更新

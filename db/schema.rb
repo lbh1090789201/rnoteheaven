@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.datetime "recieve_at"
     t.string   "from",            limit: 191, default: "common", null: false
     t.string   "resume_status",   limit: 191
+    t.boolean  "has_new",                     default: false,    null: false
     t.string   "job_name",        limit: 191
     t.string   "job_type",        limit: 191
     t.string   "job_location",    limit: 191
@@ -154,6 +155,7 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.string   "location",      limit: 191
     t.text     "job_desc",      limit: 65535
     t.text     "job_demand",    limit: 65535
+    t.integer  "duration",      limit: 4
     t.string   "status",        limit: 191
     t.boolean  "is_update",                   default: false, null: false
     t.boolean  "is_top",                      default: false, null: false
