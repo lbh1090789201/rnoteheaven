@@ -21,7 +21,7 @@ class Webapp::FavoriteJobsController < ApplicationController
       }, status: 200
     else
       render json: {
-        success: true,
+        success: false,
         info: "更改失败",
       }, status: 403
     end
