@@ -9,7 +9,7 @@
         <li><span>地区</span><%= @job.region %><span class="job-number">人数</span><%= @job.needed_number %>人</li>
       </ul>
     </div>
-    <div class="job-place"><a href="#"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
+    <div class="job-place"><a href="http://api.map.baidu.com/marker?location=<%= @hospital.lat %>,<%= @hospital.lng %>&title=医院位置&content=<%= @hospital.name %>&output=html"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
   </section>
 
   <section class="job-right">
