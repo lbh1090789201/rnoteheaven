@@ -18,6 +18,7 @@ class User < ActiveRecord::Base #用户
   # for user_albumns
   has_many :user_albumns
   has_one :resume
+  has_one :role
   has_many :favorite_jobs
   has_many :work_experiences
 
@@ -84,6 +85,11 @@ class User < ActiveRecord::Base #用户
 
   scope :filter_create_before, -> (time){
     where('created_at < ?', time) if time.present? && !time.blank?
+  }
+
+  #按 角色 role 筛选
+  scope :filter_by_role, -> (role){
+    includes(:roles).where('roles.name' => role).references(:roles)
   }
 
 

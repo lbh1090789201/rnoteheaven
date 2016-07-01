@@ -57,6 +57,15 @@ RSpec.describe User, :type => :model do
 			expect(res.length).to eq(2)
 		end
 
+		it "test filter_by_role" do
+			@user.add_role :admin
+			@user2.add_role :admin
+
+			res = User.filter_by_role "admin"
+			# puts '----------' + res.to_json.to_s
+			expect(res.length).to eq(2)
+		end
+
 	end
 
 

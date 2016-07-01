@@ -1,13 +1,5 @@
 var AdminUser = React.createClass({
-  getInitialState: function() {
-    return {
-
-    }
-  }
-  ,handleSubmit: function() {
-
-  }
-  ,render: function() {
+  render: function() {
     return (
       <div className="main">
         <AdminUserForm dad={this} />
@@ -34,7 +26,24 @@ var AdminUserForm = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
-    console.log(this.props.dad)
+    $.ajax({
+      url: '',
+      type: 'GET',
+      data: {
+        search: true,
+        role: this.state.role,
+        time_from: this.refs.time_from,
+        time_to: this.refs.time_to,
+        show_name: this.refs.show_name,
+      },
+      success: function(data){
+        this.props.dad.setState({users: data.users})
+      }.bind(this),
+      error: function(data){
+        alert(data.responseText)
+      },
+    })
+
   }
   ,render: function() {
     return (
@@ -74,6 +83,7 @@ var AdminUserRadio = React.createClass({
   }
 });
 
+
 var AdminUserTable = React.createClass({
   render: function() {
     return (
@@ -84,6 +94,7 @@ var AdminUserTable = React.createClass({
     )
   }
 })
+
 
 var AdminUserTableHead = React.createClass({
   render: function() {
@@ -101,6 +112,7 @@ var AdminUserTableHead = React.createClass({
   }
 })
 
+
 var AdminUserTableContent = React.createClass({
   render: function() {
       return(
@@ -116,6 +128,7 @@ var AdminUserTableContent = React.createClass({
       )
   }
 })
+
 
 var AdminUserItem = React.createClass({
   render: function() {
