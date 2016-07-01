@@ -89,7 +89,7 @@
     <ul class="show-all">
         <% @jobs.each do |j| %>
           <li class="job-release">
-            <a href="<%= employer_job_path(j.id) %>">
+            <a href="<%= employer_job_path(j.id) %>" onclick= "EditUpdate('<%= j.is_update %>',this)" index="<%= j.id %>">
               <div class="name-box">
                 <h4><%= j.name %></h4>
                 <span><%= j.region %></span>
@@ -100,7 +100,12 @@
                 <% if j.status == "reviewing" %>
                   <span class="reviewing-ban" style="color:#c2c2c2;"><script>getStatus("<%= j.status %>");</script></span>
                 <% elsif %>
-                  <span><script>getStatus("<%= j.status %>");</script></span>
+                  <span>
+                    <script>getStatus("<%= j.status %>");</script>
+                    <% if j.status == "release" && j.is_update %>
+                    <%= image_tag "red_point.png" %>
+                    <% end %>
+                  </span>
                 <% end %>
                 <%= image_tag "list-icon.png" %>
               </div>
@@ -115,15 +120,22 @@
           <!-- 发布中 -->
         <% if j['status'] == "release" %>
           <li class="job-release">
-            <a href="<%= employer_job_path(j.id) %>">
+            <a href="<%= employer_job_path(j.id) %>" onclick= "EditUpdate('<%= j.is_update %>',this)" index="<%= j.id %>">
               <div class="name-box">
-                <h4><%= j.name %></h4>
+                <h4>
+                  <%= j.name %>
+                </h4>
                 <span><%= j.region %></span>
                 <p><%= j.created_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at ? j.end_at.strftime("%Y-%m-%d") : '----' %></p>
               </div>
 
               <div class="status-box">
-                <span><script>getStatus("<%= j.status %>");</script></span>
+                <span>
+                  <script>getStatus("<%= j.status %>");</script>
+                  <% if j.status == "release" && j.is_update %>
+                  <%= image_tag "red_point.png" %>
+                  <% end %>
+                </span>
                 <%= image_tag "list-icon.png",width: "10", height: "15" %>
               </div>
             </a>
@@ -159,7 +171,7 @@
               </div>
 
               <div class="status-box">
-                <span><script>getStatus("<%= j.status %>");</script></span>
+                <span style="color:#c2c2c2;"><script>getStatus("<%= j.status %>");</script></span>
                 <%= image_tag "list-icon.png",width: "10", height: "15" %>
               </div>
             </a>
@@ -242,17 +254,38 @@
   </div>
 </div>
 <%= render '/layouts/employer_footer' %>
-<script type="text/javascript">
+<script>
+  //医院查看更改is_update
+  function EditUpdate(obj,eve) {
+    event.preventDefault();
+    var is_update = obj;
+    var job_id = $(eve).attr('index');
+    console.log(is_update);
+    console.log(job_id);
+    if( is_update == 'true' ) {
+      $.ajax ({
+        url: "/api/v1/jobs/"+job_id,
+        type: "PATCH",
+        data: {is_update: 'false', job_id: job_id},
+        success: function(){
+          console.log("刷新is_update成功");
+        },
+        error: function(){
+          console.log("刷新is_update失败");
+        },
+      });
+    };
+  }
 
-//刷新本页面
-$('.job-nav>img').bind('click',function(){
-  window.location.reload();
-})
+  //刷新本页面
+  $('.job-nav>img').bind('click',function(){
+    window.location.reload();
+  })
 
-//禁止点击审核中的职位
-$('.reviewing-ban').parent().parent().attr('href','javascript:void(0);');
-$('.ban-click>a').attr('href','javascript:void(0);');
+  //禁止点击审核中的职位
+  $('.reviewing-ban').parent().parent().attr('href','javascript:void(0);');
+  $('.ban-click>a').attr('href','javascript:void(0);');
 
- // 底部按钮样式
- ReplayImg(1,'../assets/icon_03.png');
+   // 底部按钮样式
+   ReplayImg(1,'../assets/icon_03.png');
 </script>
