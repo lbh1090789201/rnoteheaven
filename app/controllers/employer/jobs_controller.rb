@@ -9,7 +9,7 @@ class Employer::JobsController < ApplicationController
   def index
     check_vip = Employer.check_vip current_user.id
     @hospital = Employer.get_hospital current_user.id
-    @jobs = Job.where(hospital_id: @hospital.id)
+    @jobs = Job.where(hospital_id: @hospital.id).where.not(status: 'delete')
     @jobs.each do |f|
       f.status = "end" if Time.new > f.end_at
       f.save
@@ -70,8 +70,8 @@ class Employer::JobsController < ApplicationController
 
   def destroy
     job = Job.find params[:id]
-
-    if job.destroy
+    job.status = 'delete'
+    if job.save
       render json: {
         success: true,
         info: "删除成功"
