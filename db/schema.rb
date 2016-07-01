@@ -131,8 +131,10 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.string   "location",     limit: 191
     t.text     "introduction", limit: 65535
     t.string   "image",        limit: 191
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.float    "lat",          limit: 24,    default: 30.5984
+    t.float    "lng",          limit: 24,    default: 114.312
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   create_table "job_fairs", force: :cascade do |t|

@@ -17,7 +17,7 @@ class Api::EmployerJobsController < ApiController
       job.status = params[:status]
     elsif params[:status] == "release_again"
       job.operate_at = Time.now
-      job.end_at = Time.now + (params[:duration]).days
+      job.end_at = Time.now + (params[:duration]).to_i.days
       job.status = "release"
     else
       job.status = params[:status]

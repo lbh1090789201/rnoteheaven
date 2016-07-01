@@ -55,7 +55,7 @@ class Admin::JobsController < ApplicationController
         j.save
       end
 
-      if btn_params[:status] == 'reviewing'
+      if btn_params[:status] == 'release'
         @jobs = Job.filter_job_status('reviewing').as_json
       else
         @jobs = Job.where.not(status: 'reviewing')
