@@ -52,9 +52,9 @@
             <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
               <span><%= s["show_name"] %></span>
               <span><%= s["sex"] %></span>
-              <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
+              <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["highest_degree"] %></span>
               <div class="sort-right">
-                <span><%= s["created_at"] %></span>
+                <span><%= s["recieve_at"][5,5] %></span>
                 <%= image_tag "list-icon.png" %>
               </div>
             </a>
@@ -71,9 +71,9 @@
             <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
               <span><%= s["show_name"] %></span>
               <span><%= s["sex"] %></span>
-              <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["hightest"] %></span>
+              <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["highest_degree"] %></span>
               <div class="sort-right">
-                <span><%= s["created_at"] %></span>
+                <span><%= s["recieve_at"][5,5] %></span>
                 <%= image_tag "list-icon.png" %>
               </div>
             </a>

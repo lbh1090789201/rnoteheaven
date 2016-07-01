@@ -19,7 +19,7 @@ $light-gray: #f4f4f4;
         line-height: 1.93rem;
         list-style: none;
         margin: 0;
-        border-bottom: 0.5px solid #cfcfcf;
+        border-bottom: 1px solid #cfcfcf;
         li {
           float: left;
           cursor: pointer;
@@ -51,7 +51,7 @@ $light-gray: #f4f4f4;
             height: 3.1rem;
             width: 100%;
             line-height: 2.88rem;
-            border-bottom: 0.5px solid #cfcfcf;
+            border-bottom: 1px solid #cfcfcf;
             .job-h {
               font-size: 0.87rem;
               float: left;
@@ -68,8 +68,8 @@ $light-gray: #f4f4f4;
               height: 2.88rem;
               .job-img {
                 img {
-                  width: 0.6rem;
-                  height: 0.5rem;
+                  width: 0.95rem;
+                  height: 0.67rem;
                 }
               }
               .job-len {
@@ -83,7 +83,7 @@ $light-gray: #f4f4f4;
                 top: -1.4rem;
                 right: 0;
                 img {
-                  width: 0.28rem;
+                  width: 0.25rem;
                   height: auto;
                 }
               }
@@ -110,7 +110,7 @@ $light-gray: #f4f4f4;
                 background: #f3f3f3;
                 line-height: 1.93rem;
                 position: relative;
-                border-bottom: 0.5px solid #cfcfcf;
+                border-bottom: 1px solid #cfcfcf;
                 .job-unhandle {
                   width: 30%;
                   height: inherit;
@@ -231,7 +231,7 @@ $light-gray: #f4f4f4;
                   width: 100%;
                   height: 2.88rem;
                   line-height: 2.88rem;
-                  border-bottom: 0.5px solid #cfcfcf;
+                  border-bottom: 1px solid #cfcfcf;
                 }
                 a {
                   display: block;
@@ -295,7 +295,7 @@ $light-gray: #f4f4f4;
           li {
             height: 2.88rem;
             line-height: 2.88rem;
-            border-bottom: 0.5px solid #cfcfcf;
+            border-bottom: 1px solid #cfcfcf;
             a {
               display: block;
               width: 100%;
@@ -377,7 +377,7 @@ $light-gray: #f4f4f4;
             height: 2.88rem;
             line-height: 2.88rem;
             width: 100%;
-            border-bottom: 0.5px solid #cfcfcf;
+            border-bottom: 1px solid #cfcfcf;
             position: relative;
             a {
               display: block;
@@ -433,8 +433,8 @@ $light-gray: #f4f4f4;
   .resume-content {
     width: 100%;
     background: #f4f4f4;
-    // position: relative;
     .resume-avatar {
+      background: #fff;
       height: 6.67rem;
       width: 92.11%;
       border: 1px solid #c3c3c3;
@@ -485,6 +485,7 @@ $light-gray: #f4f4f4;
         margin: 0.6rem auto 0 auto;
         padding-left: 0.87rem;
         padding-top: 1.17rem;
+        background: #fff;
         .resumes-base {
           font-size: 0.8rem;
           margin-bottom: 1.48rem;
@@ -535,6 +536,7 @@ $light-gray: #f4f4f4;
         padding-top: 0.6rem;
       }
       #preview-expect {
+        background: #fff;
         width: 92.11%;
         border: 1px solid #c3c3c3;
         border-radius: 0.3rem;
