@@ -257,14 +257,13 @@
 <script>
   //医院查看更改is_update
   function EditUpdate(obj,eve) {
-    event.preventDefault();
     var is_update = obj;
     var job_id = $(eve).attr('index');
     console.log(is_update);
     console.log(job_id);
     if( is_update == 'true' ) {
       $.ajax ({
-        url: "/api/v1/jobs/"+job_id,
+        url: "<%= view_update_api_employer_jobs_path %>",
         type: "PATCH",
         data: {is_update: 'false', job_id: job_id},
         success: function(){
