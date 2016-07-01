@@ -33,14 +33,12 @@ class Employer::JobsController < ApplicationController
   def edit
     @job = Job.find params[:id]
     @job_end_at = ((@job.end_at - Time.now)/1.days).to_i
-    @job.end_at = ((@job.end_at - Time.now)/1.days).to_i
+    # @job.end_at = ((@job.end_at - Time.now)/1.days).to_i
   end
 
   def create
     job = Job.new job_params
     job.hospital_id = Employer.get_hospital(current_user.id).id
-    job.end_at = Time.now + job_other_params[:end_at].to_i.days
-    job.is_top = job_other_params[:is_top]
 
     if job_params[:status] == "reviewing"
       job.submit_at = Time.now
@@ -55,9 +53,8 @@ class Employer::JobsController < ApplicationController
 
   def update
     job = Job.find params[:id]
-    job.end_at = Time.now + job_other_params[:end_at].to_i.days
+    # job.end_at = Time.now + job_params[:duration].to_i.days
     job.submit_at = Time.now
-    job.is_top = job_other_params[:is_top]
 
     if job.save && job.update_columns(job_params)
       # 通知用户，职位信息有更新
@@ -94,12 +91,8 @@ class Employer::JobsController < ApplicationController
   private
 
     def job_params
-      params.require(:job).permit(:name, :job_type, :salary_range, :experience, :needed_number,
-                                  :region, :location, :job_desc, :job_demand, :status, :release_at)
-    end
-
-    def job_other_params
-      params.require(:job).permit(:is_top, :end_at)
+      params.require(:job).permit(:name, :job_type, :salary_range, :experience, :needed_number,:is_top,
+                              :duration, :region, :location, :job_desc, :job_demand, :status, :release_at)
     end
 
     # 按钮显示名称

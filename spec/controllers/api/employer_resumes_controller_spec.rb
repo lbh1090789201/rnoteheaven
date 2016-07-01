@@ -17,8 +17,13 @@ RSpec.describe Api::EmployerResumesController, type: :controller do
       @apply_record = create(:apply_record)
     end
 
-    it 'returns http success' do
+    it 'returns http success for update status' do
       patch :update, format: :json, :apply_record_id => @apply_record.id, :resume_status => "不合适"
+      expect(response.status).to eq(200)
+    end
+
+    it 'returns http success for has_new' do
+      patch :update, format: :json, :apply_record_id => @apply_record.id, :has_new => false
       expect(response.status).to eq(200)
     end
 
