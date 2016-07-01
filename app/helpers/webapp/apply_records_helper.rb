@@ -14,7 +14,8 @@ module Webapp::ApplyRecordsHelper
         location: job.location,
         resume_status: ar.resume_status,
         recieve_at: ar.recieve_at,
-        hospital_name: hospital.name
+        hospital_name: hospital.name,
+        resume_status: ar.resume_status
       }
       apply_records.push(a)
     end
