@@ -995,6 +995,10 @@ a:hover {
         }
         .job-name {
           font-size: 0.83rem;
+          // img {
+          //   height: 0.58rem;
+          //   width: auto;
+          // }
         }
         .job-time {
           font-size: 0.7rem;
@@ -2511,6 +2515,7 @@ a:hover {
 #preview-expect .work-time{padding: 0.8rem}
 #resumes-preview{padding-bottom: 3rem;}
 .wrap .borDer{border: 1px solid #c3c3c3;min-height: 3rem;}
+.wrap .borDer>p.certi-p{padding-top: 0.5rem;}
 .wrap .box-minheight {min-height: 3rem;}
 .newContainer{background: #f3f3f3;}
 .workindex-page{padding-bottom: 1rem;padding-top: 1rem;}

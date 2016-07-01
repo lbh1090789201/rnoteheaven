@@ -81,3 +81,17 @@ function ReplayImg(index,img_src){
   $('#footer_btm_nav>li').eq(index).children('a').children('p').css('color','#3f9e9d');
   $('#footer_btm_nav>li').eq(index).children('a').children('img').attr('src',img_src);
 }
+
+
+/* 单次刷新 开始 bobo
+* 调用方法,页面引入 $(refreshOnce());
+*/
+function refreshOnce() {
+ if(getCookie('refresh') != null) {
+   delCookie('refresh');
+ } else {
+   setCookie('refresh','true');
+   window.location.replace(window.location.href);
+   // history.go(-1);
+ }
+};

@@ -1,5 +1,5 @@
-<script type="text/javascript">
-  refreshOnce()
+<script>
+ $(refreshOnce());
 </script>
 <%= provide :title, "简历管理" %>
 <%= provide :img_left, "home.png" %>
@@ -83,6 +83,7 @@
       $(".resume-content>ul>li").bind('click',function(){
         var index = $(this).index();
         $(".resume-content>section").eq(index).css('display','block').siblings('section').css('display','none');
+        $('.resume-nav>li').eq(index).css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'}).siblings().css({'color':'#9f9f9f','border-bottom':'none'});
       })
     })
 
