@@ -11,8 +11,11 @@ class Employer::JobsController < ApplicationController
     @hospital = Employer.get_hospital current_user.id
     @jobs = Job.where(hospital_id: @hospital.id)
     @jobs.each do |f|
-      f.status = "end" if Time.new > f.end_at
-      f.save
+      if f.status == ['release', 'pause']
+        puts f.to_json.to_s
+        f.status = "end" if (Time.now > f.end_at)
+        f.save
+      end
     end
   end
 

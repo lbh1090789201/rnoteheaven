@@ -2,7 +2,10 @@ class Webapp::HomeController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
 
   def index
-    @has_new = FavoriteJob.where(:has_new => true)
+    @fhas_new = FavoriteJob.where(:has_new => true)
+    @ahas_new = ApplyRecord.where(:has_new => true)
+    @has_new_length = @fhas_new.length + @ahas_new.length
+
     filter = params
 
     #只搜索城市

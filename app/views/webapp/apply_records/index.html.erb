@@ -21,12 +21,14 @@
               <div class="content active">
                 <% @data.each do |d| %>
                   <% if d[:resume_status] %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" onclick="EditNew(this)" class="record-status" index="<%= d[:id] %>">
                     <li class="job-li">
                       <div class="left">
                         <h3 class="job-name">
                           <%= d[:job_name] %>
-                          <%# image_tag "red_point.png"%>
+                          <% if d[:has_new] %>
+                          <%= image_tag "red_point.png"%>
+                          <% end %>
                         </h3>
                         <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
                         <p class="job-hsname"><%= d[:hospital_name] %></p>
@@ -64,10 +66,15 @@
               <div class="content">
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="面试" %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status" index="<%= d[:id] %>">
                     <li class="job-li">
                       <div class="left">
-                        <h3 class="job-name"><%= d[:job_name] %></h3>
+                        <h3 class="job-name">
+                          <%= d[:job_name] %>
+                          <% if d[:has_new] %>
+                          <%= image_tag "red_point.png"%>
+                          <% end %>
+                        </h3>
                         <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
                         <p class="job-hsname"><%= d[:hospital_name] %></p>
                       </div>
@@ -84,10 +91,15 @@
               <div class="content">
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="不合适" %>
-                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status">
+                  <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status" index="<%= d[:id] %>">
                     <li class="job-li">
                       <div class="left">
-                        <h3 class="job-name"><%= d[:job_name] %></h3>
+                        <h3 class="job-name">
+                          <span><%= d[:job_name] %><span>
+                          <% if d[:has_new] %>
+                          <%= image_tag "red_point.png"%>
+                          <% end %>
+                        </h3>
                         <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
                         <p class="job-hsname"><%= d[:hospital_name] %></p>
                       </div>
@@ -106,6 +118,25 @@
     </div>
 </div>
 <script type="text/javascript">
+//医生查看更改has_new
+function EditNew(obj) {
+  var len = $(obj).children('.job-li').children('.left').children('.job-name').children('img');
+  var apply_id = $(obj).attr('index');
+console.log(len);
+  if(len) {
+    $.ajax ({
+      url: "/api/v1/employer_resumes",
+      type: "PATCH",
+      data: {has_new: "false", apply_record_id: apply_id},
+      success: function(){
+        console.log("刷新has_new成功");
+      },
+      error: function(){
+        console.log("刷新has_new失败");
+      },
+    })
+  }
+}
 
 
   $('.apply_records li').click(function(event) {

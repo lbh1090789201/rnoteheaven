@@ -11,7 +11,6 @@
       <input class="left" type="text" name="city" id="cityChoice" placeholder="深圳市" onchange="show();" >
       <input type="hidden" id="province" value="">
       <input type="hidden" id="city" value="">
-      <!--<input class="left" type="text" name="city" placeholder="城市"  onkeydown="show();" />-->
       <input id="search" class="right" type="text" name="search" placeholder="搜索职位/医院" onkeydown="show();" />
       <%= image_tag "search.png"%>
       <input id="submit" class="btn btn-success btn-order" type="submit" value="搜索" style="display:none"/>
@@ -63,9 +62,9 @@
     <div id="show-me">
       <a href="<%= webapp_user_path(current_user.id) %>">
         <%= image_tag "showme.png", class: "img-size" %>
-        <% if @has_new != [''] && @has_new.length != 0 %>
+        <% if @has_new_length != 0 %>
         <div class="img-red">
-          <%= @has_new.length %>
+          <%= @has_new_length %>
         </div>
         <% end %>
       </a>

@@ -995,10 +995,12 @@ a:hover {
         }
         .job-name {
           font-size: 0.83rem;
-          // img {
-          //   height: 0.58rem;
-          //   width: auto;
-          // }
+          img {
+            height: 0.25rem;
+            width: auto;
+            position: relative;
+            top: -0.46rem;
+          }
         }
         .job-time {
           font-size: 0.7rem;
