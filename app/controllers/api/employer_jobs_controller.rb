@@ -6,6 +6,7 @@ class Api::EmployerJobsController < ApiController
   # 必传入 job_id，
   # 按需传入 refresh_at  刷新职位
   # 按需传入 status 职位状态 1.saved 2.reviewing 3.release 4.pause 5.end 6.freeze 7.fail
+  # 再次发布需传入 status: "release_again", duration: 14 (数字)
   def update
     job = Job.find params[:job_id]
 
@@ -14,7 +15,11 @@ class Api::EmployerJobsController < ApiController
     elsif params[:status] == "reviewing"
       job.submit_at = Time.now
       job.status = params[:status]
-    elsif params[:status] && params[:status] != "reviewing"
+    elsif params[:status] == "release_again"
+      job.operate_at = Time.now
+      job.end_at = Time.now + (params[:duration]).days
+      job.status = "release"
+    else
       job.status = params[:status]
     end
 

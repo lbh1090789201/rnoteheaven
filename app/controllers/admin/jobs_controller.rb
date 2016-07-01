@@ -50,7 +50,7 @@ class Admin::JobsController < ApplicationController
       jobs.each do |j|
         j.status = btn_params[:status]
         j.operate_at = Time.now
-        j.end_at += Time.now - j.submit_at
+        j.end_at = Time.now + (j.duration).days
         j.is_update = true
         j.save
       end
