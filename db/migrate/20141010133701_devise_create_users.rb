@@ -59,17 +59,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
       t.string :sex #性别
-
-      t.string :user_number #用户ID
+      t.integer :user_number #用户APP端 ID
+      t.string :user_type #用户类型  webapp/employer/admin
 
       t.string :longitude #实时经度
       t.string :latitude #实时纬度
 
-
-
-      t.string :user_type #用户类型  webapp/employer/admin
       t.boolean :is_top, :null => false, :default => false #是否是置顶数据
-
       t.timestamps null: false
     end
 

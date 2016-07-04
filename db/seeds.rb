@@ -7,7 +7,9 @@ User.create!(
     password: "123456",
     email: "test@example.com",
     cellphone: "13888888778",
-    sex: "男"
+    sex: "男",
+    user_type: "copper",
+    user_number: 289
 )
 
 u = User.create!(
@@ -16,7 +18,9 @@ u = User.create!(
     password: "123456",
     email: "employer@example.com",
     cellphone: "13811112222",
-    sex: "女"
+    sex: "女",
+    user_type: "gold",
+    user_number: 1
 )
 u.add_role :gold
 
@@ -26,6 +30,7 @@ aa = User.create!(
     password: "123456",
     email: "admin2@example.com",
     cellphone: "13833332222",
+    user_type: "admin",
     sex: "女"
 )
 aa.add_role :admin

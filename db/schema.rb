@@ -233,10 +233,10 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email",      limit: 191
     t.string   "sex",                    limit: 191
-    t.string   "user_number",            limit: 191
+    t.integer  "user_number",            limit: 4
+    t.string   "user_type",              limit: 191
     t.string   "longitude",              limit: 191
     t.string   "latitude",               limit: 191
-    t.string   "user_type",              limit: 191
     t.boolean  "is_top",                               default: false,   null: false
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false

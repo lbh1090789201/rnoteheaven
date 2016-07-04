@@ -1,9 +1,14 @@
 var AdminUser = React.createClass({
-  render: function() {
+  getInitialState: function() {
+    return {
+      users: this.props.users
+    }
+  }
+  ,render: function() {
     return (
       <div className="main">
         <AdminUserForm dad={this} />
-        <AdminUserTable users={this.props.users} />
+        <AdminUserTable users={this.state.users} />
       </div>
     )
   }
@@ -27,16 +32,18 @@ var AdminUserForm = React.createClass({
   ,handleSubmit: function(e) {
     e.preventDefault()
     $.ajax({
-      url: '',
+      url: '/admin/users',
       type: 'GET',
       data: {
         search: true,
         role: this.state.role,
-        time_from: this.refs.time_from,
-        time_to: this.refs.time_to,
-        show_name: this.refs.show_name,
+        time_from: this.refs.time_from.value,
+        time_to: this.refs.time_to.value,
+        show_name: this.refs.show_name.value,
       },
       success: function(data){
+                // console.log(data.users)
+                console.log(this.props.dad)
         this.props.dad.setState({users: data.users})
       }.bind(this),
       error: function(data){
@@ -75,8 +82,8 @@ var AdminUserRadio = React.createClass({
     return (
       <span>
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="" />全部
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="copper" />医生
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="silver" />医院
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="silver" />医生
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="gold" />医院
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="admin" />管理员
       </span>
     )

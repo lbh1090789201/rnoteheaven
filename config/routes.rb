@@ -52,6 +52,7 @@ Ryunkang::Application.routes.draw do
       resources :favorite_jobs
       resource :employer_resumes, :only => [:update]
       resource :employer_viewers, :only => [:create]
+      post 'connect_app/login_app', to:'connect_app#login_app'
 
       resource :employer_jobs, :only => [:update, :destroy] do
         patch :view_update, on: :collection
