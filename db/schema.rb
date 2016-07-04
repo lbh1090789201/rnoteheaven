@@ -212,7 +212,7 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.string   "cellphone",              limit: 191,   default: "",      null: false
     t.string   "avatar",                 limit: 191
     t.string   "show_name",              limit: 191,                     null: false
-    t.string   "provider",               limit: 191,   default: "email", null: false
+    t.string   "provider",               limit: 191,   default: "email"
     t.string   "uid",                    limit: 191,   default: "",      null: false
     t.text     "tokens",                 limit: 65535
     t.string   "username",               limit: 191,   default: "",      null: false

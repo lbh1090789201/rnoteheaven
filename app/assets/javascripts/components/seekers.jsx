@@ -16,6 +16,7 @@ var Seeker = React.createClass({
       },
       success: function(data) {
         console.log(data)
+        window.location = data["url"]
         // this.setState({res: data.res + data.user_info})
       }.bind(this),
       error: function(data) {
@@ -35,7 +36,6 @@ var Seeker = React.createClass({
         <button onClick={this.handleClick} className="btn btn-primary">链接到 App_API</button>
         <textarea value={this.state.res} onChange={this.bandleChange} className="form-control"></textarea>
       </div>
-
     )
   }
 })
