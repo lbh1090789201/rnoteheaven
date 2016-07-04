@@ -36,8 +36,12 @@ target: recruit
 FqEddRtEw==", "user"=>{"username"=>"boss", "password"=>"[FILTERED]"}, "commit"=>"登陆"}
 
 
-
+## 需求
+用户邮箱
+医院邮箱
+医院 经纬度，我们新建时提供
 
 ## 笔记
 root_url 获取当前主机地址和端口
 require 'rest-client' # 模拟客户端gem
+SecureRandom.uuid 随机不重复

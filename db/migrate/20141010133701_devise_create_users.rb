@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :show_name,         :null => false #姓名
 
       ## token authenticatable
-      t.string :provider, :null => false, :default => "email" #
+      t.string :provider, :default => "email" #
       t.string :uid, :null => false, :default => "" #
       t.text :tokens #token
 
