@@ -72,16 +72,19 @@ $light-gray: #f4f4f4;
               display: inline-block;
               height: 2.88rem;
               .job-img {
+                display: inline-block;
+                padding-top: 0.1rem;
                 img {
                   width: 0.95rem;
                   height: 0.67rem;
+                  margin-top: -0.3rem;
                 }
               }
               .job-len {
                 font-size: 0.7rem;
                 margin-left: 0.32rem;
                 position: relative;
-                margin-top: 0.1rem;
+                margin-top: 0.2rem;
               }
               .i-img {
                 position: absolute;
@@ -97,6 +100,7 @@ $light-gray: #f4f4f4;
                 img {
                   width: 0.33rem;
                   height: 0.48rem;
+                  margin-top: -0.1rem;
                 }
               }
             }
@@ -514,17 +518,17 @@ $light-gray: #f4f4f4;
         background: #fff;
         .resumes-base {
           font-size: 0.8rem;
-          margin-bottom: 1.48rem;
+          margin-bottom: 1.1rem;
         }
         tr {
           display: block;
           span {
-            margin-right: 1.68rem;
+            margin-right: 1.59rem;
           }
         }
         tr+tr {
           display: block;
-          margin-top: 0.95rem;
+          margin-top: 0.7rem;
         }
         td+td {
           padding-left: 1.35rem;
@@ -542,24 +546,34 @@ $light-gray: #f4f4f4;
       .box {
         border-left: 1px solid #3f9e9f;
         padding-left: 0.7rem;
+        position: relative;
         time {
           font-size: 0.7rem;
         }
         h3 {
           font-size: 0.8rem;
-          margin-top: 0.6rem;
-          margin-bottom: 0.6rem;
+          margin-top: 0.45rem;
+          margin-bottom: 0.47rem;
         }
         p {
           font-size: 0.7rem;
           color: #696969;
           line-height: 1.1rem;
-          padding-bottom: 0.6rem;
+          padding-bottom: 0.35rem;
+        }
+      }
+      .expect-employer {
+        border-left: none;
+        .expect-preview {
+          padding-bottom: 0;
         }
       }
       .employer-style {
         padding-top: 0.6rem;
-        min-height: 2rem;
+        min-height: 3rem;
+        .cer-employer {
+          border-left: none;
+        }
       }
       #preview-expect {
         background: #fff;
@@ -568,8 +582,11 @@ $light-gray: #f4f4f4;
         border-radius: 0.3rem;
         margin: 0.6rem auto 0 auto;
         padding-left: 0.87rem;
-        padding-top: 0.8rem;
+        padding-top: 0.6rem;
       }
+    }
+    .employer-job {
+      padding-bottom: 3rem;
     }
     #btn_action {
       margin-top: 10.35rem;
