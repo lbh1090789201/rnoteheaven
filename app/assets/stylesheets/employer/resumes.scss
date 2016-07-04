@@ -10,22 +10,24 @@ $light-gray: #f4f4f4;
     width: 100%;
     min-height: 35rem;
     background: #fff;
-    padding-bottom: 2.78rem;
+    padding-bottom: 2.88rem;
     .resume-content {
       width: 100%;
       .resume-nav {
         width: 100%;
         height: 1.93rem;
-        line-height: 1.93rem;
         list-style: none;
         margin: 0;
         border-bottom: 1px solid #cfcfcf;
+
         li {
           float: left;
           cursor: pointer;
           display: inline-block;
           cursor: pointer;
           font-size: 0.7rem;
+          height: 1.91rem;
+          line-height: 1.91rem;
           color: #9f9f9f;
         }
         li:nth-child(1) {
@@ -35,11 +37,14 @@ $light-gray: #f4f4f4;
         }
         li:nth-child(2) {
           margin-left: 3.55rem;
+          min-width: 4.3rem;
+          text-align: center;
         }
         li:nth-child(3) {
           margin-left: 3.33rem;
         }
       }
+
       .order-job {
         width: 89.53%;
         margin: 0 auto;
@@ -146,11 +151,15 @@ $light-gray: #f4f4f4;
                       list-style: none;
                       li {
                         width: 100%;
-                        height: 1.93rem;
-                        line-height: 1.93rem;
+                        font-size: 0.77rem;
+                        line-height: 0.9rem;
+                        padding-top: 0.72rem;
                       }
                       li:nth-child(1) {
                         color: #3d9ea0;
+                      }
+                      li:nth-child(2) {
+                        padding-bottom: 0.72rem;
                       }
                     }
                   }
@@ -213,11 +222,15 @@ $light-gray: #f4f4f4;
                       list-style: none;
                       li {
                         width: 100%;
-                        height: 1.93rem;
-                        line-height: 1.93rem;
+                        line-height: 0.9rem;
+                        font-size: 0.77rem;
+                        padding-top: 0.72rem;
                       }
                       li:nth-child(1) {
                         color: #3d9ea0;
+                      }
+                      li:nth-child(3) {
+                        padding-bottom: 0.72rem;
                       }
                     }
                   }
@@ -357,11 +370,12 @@ $light-gray: #f4f4f4;
             p {
               width: 89.53%;
               margin: 0 auto;
-              height: 1.93rem;
-              line-height: 1.93rem;
+              font-size: 0.7rem;
+              padding-top: 0.72rem;
             }
             p:nth-child(3) {
               color: #3d9ea0;
+              padding-bottom: 0.72rem;
             }
           }
         }

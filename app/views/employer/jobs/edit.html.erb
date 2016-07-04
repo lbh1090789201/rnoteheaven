@@ -2,17 +2,26 @@
 <%= provide :content, "保存" %>
 <div id="job_basic">
 	<p class="basic_info">职位基本信息<span>必填</span> </p>
-    <%= simple_form_for :job, method: :patch, remote: true, id: "submit_form", url: employer_job_path(params[:id]) do |f| %>
-    <%= f.input :name, label: "职位名称", input_html: { class: "job-frist" ,id:""} %>
+    <%= simple_form_for :job, method: :patch, remote: true, id: "submzit_form", url: employer_job_path(params[:id]) do |f| %>
+		<div class="job-pubilc">
+			<%= f.input :name, label: "职位名称", input_html: { class: "job-frist" ,id:"job_frist"} %>
+			<span class="empty-cont" onclick="EmptyCont('job_frist')"></span>
+		</div>
     <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type"} %>
     <%= f.input :salary_range, label: '薪资', input_html: { class: "job-range", id: "job_range"} %>
     <%= f.input :experience, label: '经验要求', input_html: { class: "job-experience", id: "job_experience"} %>
-    <%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist", id: ""} %>
+		<div class="job-pubilc">
+			<%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist", id: "job_number"} %>
+			<span class="empty-cont" onclick="EmptyCont('job_number')"></span>
+		</div>
     <%= f.input :region, label: '工作地区', input_html: { class: "", id: "job_region"} %>
     <!-- 城市插件需要用到 -->
     <input type="hidden" id="province" value="">
     <input type="hidden" id="city" value="">
-    <%= f.input :location, label: '详细地址', input_html: { class: "job-frist", id: ""} %>
+		<div class="job-pubilc">
+			<%= f.input :location, label: '详细地址', input_html: { class: "job-frist", id: "job_location"} %>
+			<span class="empty-cont" onclick="EmptyCont('job_location')"></span>
+		</div>
     <div class="job-vip">
 	    <%= f.input :is_top, label: 'VIP置顶', input_html: { class: "job-top", id: ""}%>
 	    <div class="job-slider">
@@ -27,7 +36,6 @@
     <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等"} %>
     <p class="basic_info">任职资格<span>必填</span> </p>
     <%= f.input :job_demand, label: '', as: :text, input_html: { class: "", placeholder: "资格要求"} %>
-
     <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status"} %>
     <%= f.submit id: "submit", class: ""%>
     <div class="btn-sright"></div>
@@ -35,12 +43,28 @@
 
 </div>
 <script type="text/javascript">
-  // 按钮提交表单
-  $(function(){
-    $('.btn-sright').bind('click',function(){
-        $('#submit').trigger('click');
-    });
-  })
+	// reviewing pause 两种状态下更改名称和描述都要重新审核
+	$(function(){
+		var job_name_1 = "<%= @job.name %>";
+		var job_desc_1 = "<%= @job.job_desc %>";
+		var job_demand_1 = "<%= @job.job_demand %>";
+		var job_satus = "<%= @job.status %>";
+		$('.btn-sright').bind('click',function(){
+			if(job_satus == 'reviewing' || job_satus == 'pause'){
+				var job_name_2 = $('.form-group:eq(0)').children('input').val();
+				var job_desc_2 = $('.form-group:eq(9)').children('textarea').val();
+				var job_demand_2 = $('.form-group:eq(10)').children('textarea').val();
+				if(job_name_1==job_name_2 && job_desc_1==job_desc_2 && job_demand_1==job_demand_2) {
+					$('#submit').trigger('click');
+				}else{
+					$('#job_status').attr('value','reviewing');
+					$('#submit').trigger('click');
+				};
+			}else{
+				$('#submit').trigger('click');
+			};
+		});
+	});
 
 	//6.24 VIP置顶栏的滑动条 Huangwei
 	$(function(){
@@ -94,12 +118,12 @@
     JobBasicNew(job_experience, ".job-experience", pclass);
   });
 
-	// 发布期限
-  $('.job-end').click(function() {
-    var job_end = ['１星期','２星期', '半个月', '１个月', '２个月', '３个月'];
-    var pclass = 'job_end';
-    JobBasicNew(job_end, ".job-end", pclass);
-  });
+	// // 发布期限
+  // $('.job-end').click(function() {
+  //   var job_end = ['１星期','２星期', '半个月', '１个月', '２个月', '３个月'];
+  //   var pclass = 'job_end';
+  //   JobBasicNew(job_end, ".job-end", pclass);
+  // });
 
  // 城市插件
   var cityPicker = new IIInsomniaCityPicker({
