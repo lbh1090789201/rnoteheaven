@@ -62,7 +62,7 @@ class Employer::JobsController < ApplicationController
     if job.save && job.update_columns(job_params)
       # 通知用户，职位信息有更新
       res = FavoriteJob.set_new job.id
-      render js: "history.go(-1);"
+      render js: "history.go(-2);"
     else
       render json: {
         success: false,

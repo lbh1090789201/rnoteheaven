@@ -5,13 +5,17 @@
   <%= f.input :property, label: '类型', input_html: { readonly: "readonly", class: "user-prop", id: "user_prop"} %>
   <%= f.input :scale, label: '规模', input_html: { readonly: "readonly", class: "user-scale", id: "user_scale"} %>
   <%= f.input :industry, label: '行业', input_html: { readonly: "readonly", class: "user-industry", id: "user_industry"} %>
-  <%= f.input :location, label: '地址', input_html: { class: "", id: ""} %>
+  <div class="job-pubilc">
+    <%= f.input :location, label: '地址', input_html: { class: "", id: "hos_location"} %>
+    <span class="empty-cont" onclick="EmptyCont('hos_location')"></span>
+  </div>
   <%= f.input :introduction, label: '相关介绍', as: :text, input_html: { class: "", id: "", placeholder: "最多输入1000字"} %>
   <div class="submit-box"><%= f.submit '保存',id: "submit"%></div>
   <% end %>
 </div>
 
 <script type="text/javascript">
+
   // 医院类型
   $('.user-prop').click(function() {
     var user_prop = ['综合医院','专科医院', '民营', '公立诊所', '民营诊所'];

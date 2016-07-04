@@ -67,9 +67,9 @@ function change_val(obj) {
 };
 
 function TitleOver(obj) {
+  console.log("1111");
   $(".title-over").hide();
   $('.title').text(edit_title);
-  // $('.right').text('保存');
   $('.before-mask').animate({
     top: '1500px',
   },300);
@@ -81,4 +81,9 @@ function TitleOver(obj) {
 function ReplayImg(index,img_src){
   $('#footer_btm_nav>li').eq(index).children('a').children('p').css('color','#3f9e9d');
   $('#footer_btm_nav>li').eq(index).children('a').children('img').attr('src',img_src);
+}
+
+//清空input内容
+function EmptyCont(input_id) {
+	$("#"+input_id).val('');
 }
