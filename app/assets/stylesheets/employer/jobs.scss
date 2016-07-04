@@ -296,6 +296,7 @@
         }
       }
       .reflesh-time {
+        margin: 0;
         width: 4.2rem;
         height: 1.3rem;
         line-height: 1.3rem;
@@ -758,12 +759,13 @@
         display: inline-block;
         width: 2.2rem;
         height: 0.85rem;
+        line-height: 0.85rem;
         background: #FFFFFF;
         margin-left: .5rem;
         text-align: center;
         padding: 0.01rem 0.2rem 0 0.2rem;
-        -webkit-border-radius: 30px;
-        border: 1px solid #959595;
+        -webkit-border-radius: 6px;
+        border: 1px solid #c1c1c1;
         color: #959595;
         font-size: 0.5rem;
     }
@@ -786,9 +788,10 @@
     margin-left: 1.3rem;
 }
 .btn-status button:nth-child(1){
-    border: 1px solid #959595;
+    border: 1px solid #f8f8f8;
     background-color: #fff;
     color: #3f9e9f;
+    box-shadow: none;
 }
 .btn-status button:nth-child(2){
     border: none;
