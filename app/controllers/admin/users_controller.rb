@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
       @users = User.filter_create_before(params[:time_to])
                    .filter_create_after(params[:time_from])
                    .where('show_name LIKE ?', "%#{params[:show_name]}%")
-                   .where(user_type: params[:role])
+                   .filter_by_role(params[:role])
       puts '---------------' + @users.to_json.to_s
       render json: {
         success: true,

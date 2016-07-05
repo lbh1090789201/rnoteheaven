@@ -34,6 +34,4 @@
 ## APP
 1. http://yk.yundaioa.com/api/v1/connect_app?userId=1&token=dsafafasfasfs
 
-2. 
-
-get /api/v1/connect_app
+2. get /api/v1/connect_app
