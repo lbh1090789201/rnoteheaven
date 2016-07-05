@@ -14,6 +14,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :cellphone,         :null => false, :default => "" #电话
       t.string :avatar   #头像
       t.string :show_name,         :null => false #姓名
+      t.string :user_email #用户邮箱
 
       ## token authenticatable
       t.string :provider, :default => "email" #
