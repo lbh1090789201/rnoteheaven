@@ -83,22 +83,19 @@
   <div class="btn-bottom-box">
     <div class="pause-box btn-bottom">
       <div id="postPause" class="<%= @job_sate[:status] %>" onclick="postPause(this)">
-        <%= image_tag "icon_20.png" %>
-        <%= @btn_txt[:pause] %>
+        <span><%= @btn_txt[:pause] %></span>
       </div>
     </div>
 
     <div class="release-box btn-bottom">
       <div id="release" class="<%= @job_sate[:status] %>" onclick="release(this)">
-        <%= image_tag "icon_21.png" %>
         <span><%= @btn_txt[:release] %></span>
       </div>
     </div>
 
     <div class="end-box btn-bottom">
       <div id="end" class="<%= @job_sate[:status] %>" onclick="end(this)">
-        <%= image_tag "icon_22.png" %>
-        <%= @btn_txt[:end] %>
+        <span><%= @btn_txt[:end] %></span>
       </div>
     </div>
   </div>

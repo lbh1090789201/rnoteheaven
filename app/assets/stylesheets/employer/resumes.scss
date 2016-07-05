@@ -141,6 +141,7 @@ $light-gray: #f4f4f4;
                   height: inherit;
                   float: left;
                   text-align: center;
+                  line-height: 1.97rem;
                   span {
                     font-size: 0.77rem;
                   }
@@ -192,8 +193,7 @@ $light-gray: #f4f4f4;
                   background: url("../icon_3.png") no-repeat center;
                   background-size: 0.9rem auto;
                   position: relative;
-                  top: 0.1rem;
-                  // left: -0.28rem;
+                  top: 0.05rem;
                 }
                 .job-array::before {
                   content: "";
@@ -203,8 +203,7 @@ $light-gray: #f4f4f4;
                   background: url("../icon_3.png") no-repeat center;
                   background-size: 0.9rem auto;
                   position: relative;
-                  top: 0.1rem;
-                  // left: -0.28rem;
+                  top: 0.05rem;
                 }
                 .job-array {
                   width: 30%;
@@ -212,6 +211,7 @@ $light-gray: #f4f4f4;
                   float: left;
                   text-align: center;
                   margin-left: 0.5rem;
+                  line-height: 1.97rem;
                   span {
                     font-size: 0.77rem;
                   }
@@ -555,7 +555,7 @@ $light-gray: #f4f4f4;
             font-size: 1.07rem;
             position: absolute;
             top: -0.08rem;
-            right: -0.6rem;
+            right: 1.2rem;
           }
         }
         p:nth-child(2) {
@@ -579,7 +579,7 @@ $light-gray: #f4f4f4;
         border-radius: 0.3rem;
         margin: 0.6rem auto 0 auto;
         padding-left: 0.87rem;
-        padding-top: 1.17rem;
+        padding-top: 1.15rem;
         background: #fff;
         .resumes-base {
           font-size: 0.8rem;
@@ -596,7 +596,7 @@ $light-gray: #f4f4f4;
           margin-top: 0.7rem;
         }
         td+td {
-          padding-left: 1.35rem;
+          padding-left: 1rem;
         }
       }
     }
@@ -609,7 +609,7 @@ $light-gray: #f4f4f4;
         padding-left: 0.75rem;
       }
       .box {
-        border-left: 1px solid #e3e3e3;
+        border-left: 1px solid #3f9e9f;
         padding-left: 0.7rem;
         position: relative;
         .green-point {
@@ -643,7 +643,7 @@ $light-gray: #f4f4f4;
         }
       }
       .employer-style {
-        padding-top: 0.6rem;
+        padding-top: 1.15rem;
         min-height: 3rem;
         .cer-employer {
           border-left: none;
@@ -660,10 +660,9 @@ $light-gray: #f4f4f4;
       }
     }
     .employer-job {
-      padding-bottom: 3rem;
+      padding-bottom: 1rem;
     }
     #btn_action {
-      margin-top: 10.35rem;
       height: 2.45rem;
       width: 100%;
       list-style: none;
@@ -686,7 +685,7 @@ $light-gray: #f4f4f4;
       }
     }
     #btn_unright {
-      margin-top: 10.35rem;
+      margin-top: 1.5rem;
       height: 2.45rem;
       width: 100%;
       list-style: none;
@@ -694,10 +693,11 @@ $light-gray: #f4f4f4;
       line-height: 2.45rem;
       margin-bottom: 0;
       font-size: 0.87rem;
-      background: gray;
+      background: #a1a1a1;
+      color: #dadada;
     }
     #btn_interview {
-      margin-top: 10.35rem;
+      margin-top: 1.5rem;
       height: 2.45rem;
       width: 100%;
       list-style: none;
@@ -705,8 +705,8 @@ $light-gray: #f4f4f4;
       line-height: 2.45rem;
       margin-bottom: 0;
       font-size: 0.87rem;
-      background: #3f9e9f;
-      color: #fff;
+      background: #a1a1a1;
+      color: #dadada;
     }
 
   }
