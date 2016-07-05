@@ -45,7 +45,7 @@
       </div>
 
       <!-- 按待处理排序 -->
-      <ul class="job-pubilc">
+      <ul class="job-pubilc job-wait">
         <% j["seekers"].each do |s| %>
         <% if s["resume_status"]=='筛选' %>
           <li>
@@ -129,12 +129,15 @@
       $(obj).remove();
       $("header>div>div").text(header_title);
       $('div.order-job-list').css('display','none');
+      $('.sort-resume-ct>ul').hide();
+      $('.order-job-list>ul.job-wait').show();
+      $('.sort-nav>div').css('backgroundColor','#f3f3f3');
     }
 
     //职位查看二级页面筛选or排序
     function HandleResume(obj){
-      $(obj).children().not('span').toggle();
-      $(obj).siblings().children().not('span').hide();
+      $(obj).css('backgroundColor','#fff').children().not('span').toggle();
+      $(obj).siblings().css('backgroundColor','#f3f3f3').children().not('span').hide();
     }
 
     //展示不同的类型
@@ -147,6 +150,7 @@
       $(obj).css('color','#3f9d9f').siblings().css('color','#000');
       var ul = $(obj).parent().parent().parent().parent().siblings('ul');
       ul.eq(y).show().siblings('ul').hide();
+      $('.sort-resume-ct>ul').hide();
     }
 
     //排序弹窗脚本
@@ -155,7 +159,13 @@
     })
       function SortApply(sq) {
         $('.order-job-list>ul').css('display','none');
-        $('.sort-resume-ct>ul').eq(x).show().siblings().hide();
+        if(x==0){
+          $('.sort-resume-ct>ul.job-age-page').show().siblings().hide();
+        }else if(x==1){
+          $('.sort-resume-ct>ul.job-experience-page').show().siblings().hide();
+        }else{
+          $('.sort-resume-ct>ul.job-degee-page').show().siblings().hide();
+        };
         var text = $(sq).text();
         $(sq).parent().parent().siblings('span').text(text);
         $(sq).css('color','#3d9ea0').siblings().css('color','#000');
