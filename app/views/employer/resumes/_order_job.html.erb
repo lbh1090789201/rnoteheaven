@@ -134,6 +134,7 @@
     //职位查看二级页面筛选or排序
     function HandleResume(obj){
       $(obj).children().not('span').toggle();
+      $(obj).siblings().children().not('span').hide();
     }
 
     //展示不同的类型

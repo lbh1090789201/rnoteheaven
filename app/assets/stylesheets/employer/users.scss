@@ -39,7 +39,9 @@ $font-gray: #a5a5a5;
       height: 3.03rem;
       line-height: 3.03rem;
       list-style: none;
-      border-bottom: 1px solid #c4c4c4;
+      border-bottom: 1px solid #e3e3e3;
+      font-size: 0.8rem;
+      color: #000;
       a {
         display: block;
         width: 100%;
@@ -56,13 +58,18 @@ $font-gray: #a5a5a5;
       width: 1.08rem;
     }
     .img-vip {
-      margin-left: 0.9rem;
+      margin-left: 0.6rem;
       width: 2.58rem;
     }
     .img-fair {
       margin-left: -0.08rem;
       margin-right: 0.48rem;
       width: 1.37rem;
+    }
+    .join-in {
+      color: #adadad;
+      font-size: 0.7rem;
+      margin-left: 0.7rem;
     }
   }
 }
@@ -81,7 +88,7 @@ $font-gray: #a5a5a5;
       height: 3.12rem;
       line-height: 3.12rem;
       list-style: none;
-      border-bottom: 1px solid #dfdfdf;
+      border-bottom: 1px solid #e3e3e3;
 
       span {
         position: absolute;

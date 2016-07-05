@@ -80,7 +80,7 @@
         list-style: none;
         li {
           background: #fff;
-          border-bottom: 1px solid $font-gray2;
+          border-bottom: 1px solid #e3e3e3;
 
           .name-box {
             span {
@@ -170,7 +170,7 @@
     line-height: 2.53rem;
     font-size: 0.8rem;
     margin: 0 auto;
-    border-bottom: 1px solid #c4c4c4;
+    border-bottom: 1px solid #e3e3e3;
     text-indent: 4px;
     cursor: pointer;
   }
@@ -203,7 +203,7 @@
       width: 100%;
       background: #fff;
       margin-top: 0.7rem;
-      border-top: 1px solid #cfcfcf;
+      border-top: 1px solid #e3e3e3;
       position: relative;
       .job-introduce {
         padding: 0.92rem 1.07rem 0.75rem 1.02rem;
@@ -257,8 +257,8 @@
         position: relative;
         height: 1.8rem;
         line-height: 1.8rem;
-        border-bottom: 1px solid #cfcfcf;
-        border-top: 1px solid #cfcfcf;
+        border-bottom: 1px solid #e3e3e3;
+        border-top: 1px solid #e3e3e3;
         a {
           display: block;
           width: 100%;
@@ -312,7 +312,7 @@
     }
     .job-right {
       background: #fff;
-      border-top: 1px solid #cfcfcf;
+      border-top: 1px solid #e3e3e3;
       margin-top: 1.05rem;
       .job-descripte {
         padding: 1.07em 1.07rem 3rem 1.02rem;
@@ -647,7 +647,7 @@
         text-align: center;
         padding: 0.01rem 0.2rem 0 0.2rem;
         -webkit-border-radius: 30px;
-        border: 1px solid #959595;
+        border: 1px solid #e3e3e3;
         color: #959595;
         font-size: 0.5rem;
     }
@@ -765,7 +765,7 @@
         text-align: center;
         padding: 0.01rem 0.2rem 0 0.2rem;
         -webkit-border-radius: 6px;
-        border: 1px solid #c1c1c1;
+        border: 1px solid #e3e3e3;
         color: #959595;
         font-size: 0.5rem;
     }
