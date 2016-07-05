@@ -131,7 +131,7 @@ a:hover {
       width: 4.58rem;
       height: 1.62rem;
       float: left;
-      border: 1px solid #E3E3E3;
+      border: 1px solid #e3e3e3;
       line-height: 1.62rem;
       background: white;
       border-radius: 0.2rem;
@@ -145,7 +145,7 @@ a:hover {
       line-height: 1.62rem;
       width: 14.72rem;
       border-radius: 0.2rem;
-      border: 1px solid #E3E3E3;
+      border: 1px solid #e3e3e3;
       color: rgb(193,193,193);
       padding-left: 1.92rem;
     }
@@ -607,7 +607,15 @@ a:hover {
     width: 20.8rem;
     background: url(resumes_bg.png);
     background-size: 20.8rem 12.83rem;
-
+    .user-mask {
+      display: block;
+      width: 34%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
     .user-hidden {
       display: block;
       top: 10px;
@@ -748,7 +756,7 @@ a:hover {
         display: block;
         height: 2.8rem;
         line-height: 2.8rem;
-        border-bottom: 1px solid rgb(196,196,196);
+        border-bottom: 1px solid #e3e3e3;
         font-size: 0.8rem;
         img {
           display: inline-block;
@@ -895,7 +903,7 @@ a:hover {
   background-color: #FFFFFF;
 
   .nav-bar{
-    border-bottom: 1px solid $color;
+    border-bottom: 1px solid #e3e3e3;
     margin-top: -5px;
   }
   ul.apply_records {
@@ -939,7 +947,7 @@ a:hover {
     .tab {
       clear: both;
       background: #FFFFFF;
-      border-bottom:1px solid $color;
+      border-bottom:1px solid #e3e3e3;
       .tab-all {
           padding: 0 1.3rem 0 1.3rem;
         .content {
@@ -960,7 +968,7 @@ a:hover {
 
         li {
           height: 6rem;
-          border-bottom: 1px solid $color;
+          border-bottom: 1px solid #e3e3e3;
           list-style: none;
 
           .left {
@@ -1168,7 +1176,7 @@ a:hover {
         @include link-colors;
         .hospital-list {
           position: relative;
-          border-bottom: 1px solid rgb(194,194,194);
+          border-bottom: 1px solid #e3e3e3;
           height: 6.17rem;
           padding-top: 1.33rem;
           .title {
@@ -1282,7 +1290,7 @@ a:hover {
     padding-left: 1rem;
     line-height: 2.7rem;
     font-size: 0.87rem;
-    border-top: 1px solid #cfcfcf;
+    border-top: 1px solid #e3e3e3;
     @include border(#cfcfcf);
     a {
       display: block;
@@ -1308,7 +1316,7 @@ a:hover {
     }
   }
   .details{
-    border-top: 1px solid #cfcfcf;
+    border-top: 1px solid #e3e3e3;
     .title {
       line-height: 2.17rem;
       color: #9b9b9b;
@@ -1389,7 +1397,7 @@ a:hover {
 .resumes-preview-bg {
   min-height: 2.5rem;
   border-radius: 0.3rem;
-  border: 1px solid #dedede;
+  border: 1px solid #e3e3e3;
   padding-bottom: 0.15rem;
   width: 18.93rem;
   margin: 0.57rem auto 0 auto;
@@ -1425,7 +1433,7 @@ a:hover {
 
 #preview-expect {
   border-radius: 0.3rem;
-  border: 1px solid #dedede;
+  border: 1px solid #e3e3e3;
   margin-top: 0.57rem;
   margin-bottom: 5rem;
 }
@@ -1549,8 +1557,8 @@ a:hover {
     .job-place {
       margin-top: 2rem;
       line-height: 2.32rem;
-      border-top: 1px solid #dcdcdc;
-      border-bottom: 1px solid #cfcfcf;
+      border-top: 1px solid #e3e3e3;
+      border-bottom: 1px solid #e3e3e3;
       text-indent: 1.02rem;
       font-size: 0.7rem;
       a {
@@ -1574,7 +1582,7 @@ a:hover {
 
   .job-right {
     margin-top: 0.62rem;
-    border-top: 1px solid #cfcfcf;
+    border-top: 1px solid #e3e3e3;
   }
   .job-descripte {
     width: 18.67rem;
@@ -1672,7 +1680,7 @@ a:hover {
     width: 16.3rem;
     height: 1.62rem;
     float: left;
-    border: 1px solid rgb(198,198,198);
+    border: 1px solid #e3e3e3;
     line-height: 1.62rem;
     background: white;
     border-radius: 0.2rem;
@@ -1687,7 +1695,7 @@ a:hover {
     line-height: 1.62rem;
     width: 3.88rem;
     border-radius: 0.3rem;
-    border: 1px solid rgb(198,198,198);
+    border: 1px solid #e3e3e3;
     color: rgb(193,193,193);
     text-align: center;
 
@@ -1701,14 +1709,14 @@ a:hover {
   background-color: $light-gray;
 
   .search-conditions{
-    border-top: 1px solid #939393;
+    border-top: 1px solid #e3e3e3;
     @include border(#636363);
     font-size: 0.77rem;
     .dropdown {
     position: relative;
     display: inline-block;
     margin: 0;
-    border-right: 1px solid #636363;
+    border-right: 1px solid #e3e3e3;
     width: 32%;
     line-height: 2.1rem;
     text-align: center;
@@ -1874,7 +1882,7 @@ a:hover {
     height: 5.81rem;
     width: 100%;
     background: #fff;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #e3e3e3;
     .block-middle {
       width: 9rem;
       margin: 0 auto 0 auto;
@@ -1928,7 +1936,7 @@ a:hover {
   .block-selet {
     width: 100%;
     background: #fff;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #e3e3e3;
       ul {
         width: 94.4%;
         margin: 0 auto;
@@ -1936,7 +1944,7 @@ a:hover {
           height: 2.88rem;
           line-height:  2.88rem;
           font-size: 0.8rem;
-          border-bottom: 1px solid #c4c4c4;
+          border-bottom: 1px solid #e3e3e3;
           span {
             float: left;
           }
@@ -1995,7 +2003,7 @@ a:hover {
     margin: 0.42rem auto 0 auto;
     height: 2.57rem;
     width: 96.62%;
-    border: 1px solid #dcdcdc;
+    border: 1px solid #e3e3e3;
     border-radius: 0.3rem;
     text-indent: 0.8rem;
     color: #767676;
@@ -2025,7 +2033,7 @@ a:hover {
     height: 2.88rem;
     line-height:  2.88rem;
     font-size: 0.8rem;
-    border-bottom: 1px solid #c4c4c4;
+    border-bottom: 1px solid #e3e3e3;
     position: relative;
     span {
       position: absolute;
@@ -2041,7 +2049,7 @@ a:hover {
   li:last-child {
     color: #3d9f9d;
     border: none;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #e3e3e3;
   }
 }
 
@@ -2131,7 +2139,7 @@ a:hover {
     line-height: 2.53rem;
     font-size: 0.8rem;
     margin: 0 auto;
-    border-bottom: 1px solid #c4c4c4;
+    border-bottom: 1px solid #e3e3e3;
     text-indent: 4px;
     cursor: pointer;
   }
@@ -2198,7 +2206,7 @@ a:hover {
   margin-top: 0.1rem;
   width: 100%;
   height: 6.83rem;
-  border: 1px solid #f3f3f3 ;
+  border: 1px solid #e3e3e3 ;
   background: #fff;
   border-radius: 0.2rem;
   a {
@@ -2379,7 +2387,7 @@ a:hover {
     left: 6rem;
   }
   #search:focus {
-    border: 1px solid #87CEFA;
+    border: 1px solid #e3e3e3;
   }
 }
 
@@ -2410,7 +2418,7 @@ a:hover {
   margin: 0;
 }
 .workindex-page {
-  border: 1px solid #dfdfdf;
+  border: 1px solid #e3e3e3;
   padding-top: 0.6rem;
   padding-bottom: 0.3rem;
   margin-bottom: 0.58rem;
@@ -2516,7 +2524,7 @@ a:hover {
 #preview-expect{padding: 0;}
 #preview-expect .work-time{padding: 0.8rem}
 #resumes-preview{padding-bottom: 3rem;}
-.wrap .borDer{border: 1px solid #c3c3c3;min-height: 3rem;}
+.wrap .borDer{border: 1px solid #e3e3e3;min-height: 3rem;}
 .wrap .borDer>p.certi-p{padding-top: 0.5rem;}
 .wrap .box-minheight {min-height: 3rem;}
 .newContainer{background: #f3f3f3;}
@@ -2543,5 +2551,5 @@ a:hover {
   font-size: 0.8rem;
   height: 2.88rem;
   line-height: 2.88rem;
-  border-bottom: 1px solid #c4c4c4;
+  border-bottom: 1px solid #e3e3e3;
 }

@@ -8,9 +8,9 @@
 <div id="resume_content">
   <div class="resume-content">
     <ul class="resume-nav">
-      <li>按职位查看</li>
-      <li onclick="OrderTime(this)">近三个月简历</li>
-      <li>公开简历</li>
+      <li><span>按职位查看</span></li>
+      <li onclick="OrderTime(this)"><span class="month-resume"><span>近三个月简历</span><%= image_tag "icon_30.png" %></span></li>
+      <li><span>公开简历</span></li>
     </ul>
 
     <!-- 按职位查看 -->
@@ -36,7 +36,7 @@
        function TimeSort(msg) {
          $('.'+msg).css('color','#3d9ea0').siblings().css('color','#000');
          var text = $('.'+msg).text();
-         $('.resume-nav>li:eq(1)').text(text);
+         $('.resume-nav>li:eq(1) .month-resume span').text(text);
          $('.sort-time-all').children().remove();
          if(msg == "today") {
            $('.sort-time-all').append(
@@ -83,8 +83,16 @@
       $(".resume-content>ul>li").bind('click',function(){
         var index = $(this).index();
         $(".resume-content>section").eq(index).css('display','block').siblings('section').css('display','none');
-        $('.resume-nav>li').eq(index).css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'}).siblings().css({'color':'#9f9f9f','border-bottom':'none'});
-      })
+
+        if(index != 1) {
+          $('.resume-nav>li').eq(index).children().css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'})
+          $('.resume-nav>li').eq(index).siblings().children().css({'color':'#9f9f9f','border-bottom':'none'});
+          $('.resume-nav>li .month-resume').css({'color':'#9f9f9f','border-bottom':'none'}).children('img').attr('src', '../assets/icon_30.png');
+        }else{
+          $('.resume-nav>li .month-resume').css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'}).children('img').attr('src', '../assets/icon_31.png');
+          $('.resume-nav>li:eq(1)').siblings().children().css({'color':'#9f9f9f','border-bottom':'none'});
+        };
+      });
     })
 
     function OrderTime(){
