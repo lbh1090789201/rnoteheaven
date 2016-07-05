@@ -104,6 +104,7 @@
      float: left;
      text-align: center;
      font-size: 0.43rem;
+     position: relative;
    }
    li:nth-child(1) {
      a {
@@ -113,7 +114,13 @@
        width: 1.3rem;
        height: 0.95rem;
        margin-top: 0.58rem;
-       margin-bottom: 0.25rem;
+      //  margin-bottom: 0.25rem;
+     }
+     p {
+       position: absolute;
+       bottom: -0.11rem;
+       left: 50%;
+       margin-left: -0.4rem;
      }
    }
    li:nth-child(2) {
@@ -124,7 +131,13 @@
        width: 0.92rem;
        height: 1.23rem;
        margin-top: 0.33rem;
-       margin-bottom: 0.23rem;
+      //  margin-bottom: 0.23rem;
+     }
+     p {
+       position: absolute;
+       bottom: -0.11rem;
+       left: 50%;
+       margin-left: -0.4rem;
      }
    }
      li:nth-child(3) {
@@ -135,7 +148,13 @@
          width: 1.28rem;
          height: 1.27rem;
          margin-top: 0.4rem;
-         margin-bottom: 0.13rem;
+        //  margin-bottom: 0.13rem;
+       }
+       p {
+         position: absolute;
+         bottom: -0.11rem;
+         left: 50%;
+         margin-left: -0.4rem;
        }
      }
  }

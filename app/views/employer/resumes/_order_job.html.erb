@@ -50,7 +50,7 @@
         <% if s["resume_status"]=='筛选' %>
           <li>
             <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
-              <span><%= s["show_name"] %></span>
+              <span class="show-name"><%= s["show_name"] %></span>
               <span><%= s["sex"] %></span>
               <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["highest_degree"] %></span>
               <div class="sort-right">
@@ -69,7 +69,7 @@
         <% if s["resume_status"]=='不合适'|| s["resume_status"]=="面试"%>
           <li>
             <a href="/employer/resumes/<%= s["resume_id"]%>?job_id=<%= j["id"] %>">
-              <span><%= s["show_name"] %></span>
+              <span class="show-name"><%= s["show_name"] %></span>
               <span><%= s["sex"] %></span>
               <span><%= s["age"] %>岁/<%= s["start_work_at"] %>/<%= s["highest_degree"] %></span>
               <div class="sort-right">

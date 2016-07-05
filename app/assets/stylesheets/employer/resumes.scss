@@ -27,7 +27,7 @@ $light-gray: #f4f4f4;
           cursor: pointer;
           font-size: 0.7rem;
           height: 1.91rem;
-          line-height: 1.91rem;
+          line-height: 1.99rem;
           color: #9f9f9f;
         }
         li:nth-child(1) {
@@ -39,6 +39,15 @@ $light-gray: #f4f4f4;
           margin-left: 3.55rem;
           min-width: 4.3rem;
           text-align: center;
+          span.month-resume {
+            display: inline-block;
+            height: 100%;
+          }
+          img {
+            width: 0.49rem;
+            height: auto;
+            margin-left: 0.2rem;
+          }
         }
         li:nth-child(3) {
           margin-left: 3.33rem;
@@ -249,21 +258,37 @@ $light-gray: #f4f4f4;
                   height: 2.88rem;
                   line-height: 2.88rem;
                   border-bottom: 1px solid #cfcfcf;
+                  position: relative;
                 }
                 a {
                   display: block;
                   width: 100%;
                   height: 100%;
-                  span:nth-child(1) {
+                  .show-name {
                     font-size: 0.87rem;
+                    display: inline-block;
+                    text-align: left;
+                    width: 3.8rem;
                   }
                   span:nth-child(2) {
                     font-size: 0.7rem;
                     color: #9e9e9e;
-                    margin: 0 1rem 0 0.88rem;
+                    // margin: 0 1rem 0 0.88rem;
+                    display: inline-block;
+                    text-align: left;
+                    width: 1.8rem;
                   }
                   span:nth-child(3) {
                     font-size: 0.7rem;
+                    display: inline-block;
+                    text-align: left;
+                    width: 5.9rem;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    position: absolute;
+                    top: 0;
+                    left: 5.5rem;
                   }
                   .sort-right {
                     display: inline-block;
@@ -313,20 +338,35 @@ $light-gray: #f4f4f4;
             height: 2.88rem;
             line-height: 2.88rem;
             border-bottom: 1px solid #cfcfcf;
+            position: relative;
             a {
               display: block;
               width: 100%;
               height: 100%;
-              span:nth-child(1) {
+              span.show-name {
                 font-size: 0.87rem;
+                display: inline-block;
+                text-align: left;
+                width: 3.8rem;
               }
               span:nth-child(2) {
                 font-size: 0.7rem;
                 color: #9e9e9e;
-                margin: 0 1rem 0 0.88rem;
+                display: inline-block;
+                text-align: left;
+                width: 1.8rem;
               }
               span:nth-child(3) {
                 font-size: 0.7rem;
+                display: inline-block;
+                text-align: left;
+                width: 5.9rem;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                left: 5.5rem;
               }
               .sort-right {
                 display: inline-block;
@@ -337,7 +377,6 @@ $light-gray: #f4f4f4;
                 img {
                   width: 0.33rem;
                   height: 0.48rem;
-                  // margin-top: 1.2rem;
                   margin-right: 0.6rem;
                   margin-left: 0.75rem;
                 }
@@ -404,7 +443,7 @@ $light-gray: #f4f4f4;
               .expect-job {
                 font-size: 0.87rem;
                 display: inline-block;
-                max-width: 6.4rem;
+                width: 6.4rem;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
@@ -414,16 +453,29 @@ $light-gray: #f4f4f4;
                 top: 0;
                 left: 4rem;
                 span:nth-child(1) {
+                  display: inline-block;
                   font-size: 0.87rem;
-                  margin: 0 1.02rem 0 1rem;
+                  text-align: right;
+                  width: 3.8rem;
                 }
                 span:nth-child(2) {
+                  display: inline-block;
+                  text-align: right;
+                  width: 1.6rem;
                   font-size: 0.7rem;
                   color: #9e9e9e;
                 }
                 span:nth-child(3) {
                   font-size: 0.7rem;
-                  margin: 0 1.72rem 0 1.25rem;
+                  display: inline-block;
+                  text-align: right;
+                  width: 5.9rem;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  position: absolute;
+                  top: 0;
+                  right: -6.1rem;
                 }
               }
               img {
@@ -463,7 +515,7 @@ $light-gray: #f4f4f4;
         width: 3.72rem;
         height: 3.72rem;
         border-radius: 50%;
-        background-size:  3.72rem auto;
+        // background-size:  3.68rem auto;
         margin: 1.37rem 0.68rem 0 1.32rem;
         float: left;
         // border: 1px solid #000;
