@@ -15,28 +15,17 @@ class Api::ConnectAppController < ApiController
                                seq: login_params[:seq]
                              }
                            }.to_json, :content_type => :json, :accept => :json
-
-    if JSON.parse(@res)["responseCode"] == "200"
+    @res = JSON.parse(@res)
+    if @res["responseCode"] == "200"
       @user_info = RestClient.post "http://119.97.224.253:9014/HealthComm/modelToken/accreditLogin",
                                     {
                                       token: @res["token"]
                                     }.to_json, :content_type => :json, :accept => :json
-      if JSON.parse(@user_info)["responseCode"] == "200"
-        auto_login @user_info["data"]
-      #调试时使用 TODO 待删除
+      @user_info = JSON.parse(@user_info)
+      if @user_info["responseCode"] == "200"
+        auto_login @user_info["userInfo"]
       else
-        user_info = {
-          entid: 2,
-          entname: "东莞市莞城人民医院",
-          entaddress: "广东省东莞市塘厦镇环市西路35号"
-          # app 已注册医生
-          # uaid: 289,
-          # gender: "男",
-          # realName: "严锐",
-          # telephone: "15072417588"
-        }.to_json
-
-        auto_login user_info
+        # 会自动 rander jbuilder
       end
     end
   end
@@ -48,8 +37,6 @@ class Api::ConnectAppController < ApiController
     end
 
     def auto_login user_info
-      user_info = JSON.parse(user_info)
-
       if user_info["uaid"].present?
         user = User.find_by user_number: user_info["uaid"]
         if user
@@ -127,6 +114,7 @@ class Api::ConnectAppController < ApiController
         hospital_id: hospital.id
       }
       employer = Employer.create! new_employer
+      set_vip = Employer.set_vip user.id, 1
 
       sign_in(user)
       render json: {
