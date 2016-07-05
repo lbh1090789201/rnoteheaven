@@ -30,3 +30,10 @@
     # 用获得的 userid 与 本地数据库 User.user_number 比较
     # 相同则 获取用户并登陆，不同交由 sign_up_copper 或sign_up_gold注册新用户
     ```
+
+## APP
+1. http://yk.yundaioa.com/api/v1/connect_app?userId=1&token=dsafafasfasfs
+
+2. 
+
+get /api/v1/connect_app
