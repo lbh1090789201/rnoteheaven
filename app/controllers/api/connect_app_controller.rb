@@ -26,15 +26,14 @@ class Api::ConnectAppController < ApiController
       #调试时使用 TODO 待删除
       else
         user_info = {
-          # entid: 2,
-          # entname: "东莞市莞城人民医院",
-          # entaddress: "广东省东莞市塘厦镇环市西路35号"
+          entid: 2,
+          entname: "东莞市莞城人民医院",
+          entaddress: "广东省东莞市塘厦镇环市西路35号"
           # app 已注册医生
           # uaid: 289,
-          uaid: 289,
-          gender: "男",
-          realName: "严锐",
-          telephone: "15072417588"
+          # gender: "男",
+          # realName: "严锐",
+          # telephone: "15072417588"
         }.to_json
 
         auto_login user_info

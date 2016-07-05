@@ -45,3 +45,4 @@ FqEddRtEw==", "user"=>{"username"=>"boss", "password"=>"[FILTERED]"}, "commit"=>
 root_url 获取当前主机地址和端口
 require 'rest-client' # 模拟客户端gem
 SecureRandom.uuid 随机不重复
+JSON.parse(@res)["responseCode"]
