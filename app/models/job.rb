@@ -93,7 +93,7 @@ class Job < ActiveRecord::Base
   def self.time_left jid
     job = Job.find jid
 
-    if job.end_at > Time.now
+    if job.end_at && job.end_at > Time.now
       return ((job.end_at + 1.hour - Time.now)/1.day).to_i
     else
       return 0

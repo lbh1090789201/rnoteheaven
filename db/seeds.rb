@@ -1,28 +1,28 @@
 # Generated with RailsBricks
 # Initial seed file to use with Devise User Model
 #
-User.create!(
-    username: "test",
-    show_name: "test",
-    password: "123456",
-    email: "test@example.com",
-    cellphone: "13888888778",
-    sex: "男",
-    user_type: "copper",
-    user_number: 289
-)
-
-u = User.create!(
-    username: "boss",
-    show_name: "boss",
-    password: "123456",
-    email: "employer@example.com",
-    cellphone: "13811112222",
-    sex: "女",
-    user_type: "gold",
-    user_number: 1
-)
-u.add_role :gold
+# User.create!(
+#     username: "test",
+#     show_name: "test",
+#     password: "123456",
+#     email: "test@example.com",
+#     cellphone: "13888888778",
+#     sex: "男",
+#     user_type: "copper",
+#     user_number: 289
+# )
+#
+# u = User.create!(
+#     username: "boss",
+#     show_name: "boss",
+#     password: "123456",
+#     email: "employer@example.com",
+#     cellphone: "13811112222",
+#     sex: "女",
+#     user_type: "gold",
+#     user_number: 1
+# )
+# u.add_role :gold
 
 aa = User.create!(
     username: "admin",
@@ -35,20 +35,20 @@ aa = User.create!(
 )
 aa.add_role :admin
 
-hospital = Hospital.create!(
-    name: "深圳第一医院",
-    scale: "10~20人",
-    property: "社区医院",
-    industry:"医疗",
-    location: "广东省深圳市宝安区第二人民医院",
-    introduction:"我是医院介绍",
-    region:"广东省"
-)
-
-Employer.create!({
-  user_id: u.id,
-  hospital_id: hospital.id
-})
+# hospital = Hospital.create!(
+#     name: "深圳第一医院",
+#     scale: "10~20人",
+#     property: "社区医院",
+#     industry:"医疗",
+#     location: "广东省深圳市宝安区第二人民医院",
+#     introduction:"我是医院介绍",
+#     region:"广东省"
+# )
+#
+# Employer.create!({
+#   user_id: u.id,
+#   hospital_id: hospital.id
+# })
 
 
 # Test ApplyRecord :tw
