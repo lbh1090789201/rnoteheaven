@@ -38,7 +38,7 @@
 <div class="resume-content">
   <% if @user %>
   <div class="resume-avatar">
-    <div class="show-img" style="background: url('<%= @avatar %>') no-repeat center;background-size:  3.72rem auto;"></div>
+    <div class="show-img" style="background: url('<%= asset_path(@avatar) %>') no-repeat center;background-size:  3.7rem auto;"></div>
     <div class="show-top">
       <p><%= @user.show_name %>
         <% if @apply_record %>

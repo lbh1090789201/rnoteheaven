@@ -16,6 +16,7 @@ $font-gray: #a5a5a5;
       display: inline-block;
       border-radius: 50%;
       background-size: 3.75rem 3.75rem !important;
+      border: 1px solid #fff;
     }
     p:nth-of-type(1) {
       margin-top: 1.3rem;
@@ -80,7 +81,7 @@ $font-gray: #a5a5a5;
       height: 3.12rem;
       line-height: 3.12rem;
       list-style: none;
-      border-bottom: 0.5px solid #dfdfdf;
+      border-bottom: 1px solid #dfdfdf;
 
       span {
         position: absolute;
@@ -178,7 +179,8 @@ $font-gray: #a5a5a5;
     display: block;
     position: absolute;
     right: 0.8rem;
-    margin-top: 0.9rem;
+    margin-top: 0.8rem;
+    z-index: 100;
     background: url("../icon_24.png") no-repeat;
     background-size: 0.93rem 0.93rem;
   }
@@ -190,7 +192,8 @@ $font-gray: #a5a5a5;
     display: block;
     position: absolute;
     right: 0.8rem;
-    margin-top: 0.9rem;
+    z-index: 100;
+    margin-top: 0.8rem;
     background: url("../icon_24.png") no-repeat;
     background-size: 0.93rem 0.93rem;
   }
