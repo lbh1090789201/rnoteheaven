@@ -61,9 +61,11 @@ var Seeker = React.createClass({
   }
   ,render: function() {
     return (
-      <div>
-        <button onClick={this.handleClick} className="btn btn-primary" value="candidate" style={{"position": "relative"}}>医生API</button>
-        <button onClick={this.handleClick} className="btn btn-info" value="recruit" style={{"position": "relative"}}>医院API</button>
+      <div style={{"marginTop": "3rem"}}>
+        <button onClick={this.handleClick} className="btn btn-primary"
+                value="candidate" style={{"position": "relative"}}>医生API</button>
+        <button onClick={this.handleClick} className="btn btn-info"
+                value="recruit" style={{"position": "relative"}}>医院API</button>
         {/*<textarea value={this.state.res} onChange={this.bandleChange} className="form-control"></textarea>*/}
       </div>
     )

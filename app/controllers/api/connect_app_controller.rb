@@ -16,12 +16,14 @@ class Api::ConnectAppController < ApiController
                              }
                            }.to_json, :content_type => :json, :accept => :json
     @res = JSON.parse(@res)
+
     if @res["responseCode"] == "200"
       @user_info = RestClient.post "http://119.97.224.253:9014/HealthComm/modelToken/accreditLogin",
                                     {
                                       token: @res["token"]
                                     }.to_json, :content_type => :json, :accept => :json
       @user_info = JSON.parse(@user_info)
+
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
       else
@@ -49,6 +51,7 @@ class Api::ConnectAppController < ApiController
         else
           sign_up_copper user_info
         end
+
       elsif user_info["entid"].present?
         user = User.find_by user_number: user_info["entid"]
         if user
@@ -61,6 +64,7 @@ class Api::ConnectAppController < ApiController
         else
           sign_up_gold user_info
         end
+
       else
         render json: '服务器参数错误', status: 500
       end
@@ -75,7 +79,7 @@ class Api::ConnectAppController < ApiController
         password: "123456",
         show_name: user_info["realName"],
         cellphone: user_info["telephone"],
-        email: "copper" + user_info["uaid"].to_s + "@yunkang.com"
+        email: "copper" + user_info["uaid"].to_s + "@example.com"
       }
 
       user = User.create! new_copper
@@ -96,8 +100,7 @@ class Api::ConnectAppController < ApiController
         username: "gold" + user_info["entid"].to_s,
         password: "123456",
         show_name: user_info["entname"],
-        # TODO 邮箱问题
-        email: "copper" + user_info["uaid"].to_s + "@yunkang.com"
+        email: "copper" + user_info["uaid"].to_s + "@example.com"
       }
       user = User.create! new_gold
       user.add_role :gold

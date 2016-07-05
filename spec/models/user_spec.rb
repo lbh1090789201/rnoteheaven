@@ -16,8 +16,8 @@ RSpec.describe User, :type => :model do
 		expect(user2).to_not be_valid
 	end
 
-	it "valid without email" do
-		#expect(build(:user, email: nil)).to be_valid
+	it "not valid without email" do
+		expect(build(:user, email: nil)).to_not be_valid
 	end
 
 	#don't know how to create a user without cellphone

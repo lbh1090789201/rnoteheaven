@@ -69,7 +69,7 @@ class User < ActiveRecord::Base #用户
 
   #获取User基本信息 bobo
   def self.get_user_main(user_id)
-    user = User.select(:id, :show_name, :sex, :highest_degree, :start_work_at, :birthday,
+    user = User.select(:id, :show_name, :sex, :highest_degree, :start_work_at, :birthday, :user_email,
                                 :location, :cellphone, :email,  :seeking_job, :position).find_by_id(user_id)
   end
 
