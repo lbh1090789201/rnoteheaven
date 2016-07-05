@@ -18,17 +18,22 @@ class Api::ConnectAppController < ApiController
     @res = JSON.parse(@res)
 
     if @res["responseCode"] == "200"
-      @user_info = RestClient.post "http://119.97.224.253:9014/HealthComm/modelToken/accreditLogin",
-                                    {
-                                      token: @res["token"]
-                                    }.to_json, :content_type => :json, :accept => :json
-      @user_info = JSON.parse(@user_info)
+      new_user @res["token"]
+    end
+  end
 
-      if @user_info["responseCode"] == "200"
-        auto_login @user_info["userInfo"]
-      else
-        # 会自动 rander jbuilder
+  def index
+    user = User.find_by user_number: params[:userId]
+
+    if user
+      sign_in(user)
+      if user.user_type == "copper"
+        redirect_to webapp_home_path
+      elsif user.user_type == "gold"
+        redirect_to employer_resumes_path
       end
+    else
+      new_user params[:token]
     end
   end
 
@@ -36,6 +41,20 @@ class Api::ConnectAppController < ApiController
   private
     def login_params
       params.permit(:userId, :target, :session, :seq)
+    end
+
+    def new_user token
+      @user_info = RestClient.post "http://119.97.224.253:9014/HealthComm/modelToken/accreditLogin",
+                                    {
+                                      token: token
+                                    }.to_json, :content_type => :json, :accept => :json
+      @user_info = JSON.parse(@user_info)
+
+      if @user_info["responseCode"] == "200"
+        auto_login @user_info["userInfo"]
+      else
+        render json: @user_info, status: 500
+      end
     end
 
     def auto_login user_info
@@ -48,6 +67,7 @@ class Api::ConnectAppController < ApiController
               info: '自动登陆成功',
               url: root_url + "/webapp/home"
             }, status: 200
+          # redirect_to webapp_home_path
         else
           sign_up_copper user_info
         end
@@ -61,6 +81,7 @@ class Api::ConnectAppController < ApiController
               info: '自动登陆成功',
               url: root_url + "/employer/resumes"
             }, status: 200
+          # redirect_to employer_resumes_path
         else
           sign_up_gold user_info
         end
