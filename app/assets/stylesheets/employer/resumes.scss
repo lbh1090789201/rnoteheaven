@@ -660,7 +660,7 @@ $light-gray: #f4f4f4;
       }
     }
     .employer-job {
-      padding-bottom: 3rem;
+      padding-bottom: 1rem;
     }
     #btn_action {
       height: 2.45rem;
@@ -685,7 +685,7 @@ $light-gray: #f4f4f4;
       }
     }
     #btn_unright {
-      margin-top: 10.35rem;
+      margin-top: 1.5rem;
       height: 2.45rem;
       width: 100%;
       list-style: none;
@@ -693,10 +693,11 @@ $light-gray: #f4f4f4;
       line-height: 2.45rem;
       margin-bottom: 0;
       font-size: 0.87rem;
-      background: gray;
+      background: #a1a1a1;
+      color: #dadada;
     }
     #btn_interview {
-      margin-top: 10.35rem;
+      margin-top: 1.5rem;
       height: 2.45rem;
       width: 100%;
       list-style: none;
@@ -704,8 +705,8 @@ $light-gray: #f4f4f4;
       line-height: 2.45rem;
       margin-bottom: 0;
       font-size: 0.87rem;
-      background: #3f9e9f;
-      color: #fff;
+      background: #a1a1a1;
+      color: #dadada;
     }
 
   }
