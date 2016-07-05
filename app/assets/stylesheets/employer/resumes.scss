@@ -173,22 +173,22 @@ $light-gray: #f4f4f4;
                   display: inline-block;
                   width: 0.93rem;
                   height: 0.8rem;
-                  background: url("../icon_3.png");
-                  background-size: 0.93rem 0.8rem;
+                  background: url("../icon_3.png") no-repeat center;
+                  background-size: 0.9rem auto;
                   position: relative;
                   top: 0.1rem;
-                  left: -0.28rem;
+                  // left: -0.28rem;
                 }
                 .job-array::before {
                   content: "";
                   display: inline-block;
                   width: 0.93rem;
                   height: 0.8rem;
-                  background: url("../icon_3.png");
-                  background-size: 0.93rem 0.8rem;
+                  background: url("../icon_3.png") no-repeat center;
+                  background-size: 0.9rem auto;
                   position: relative;
                   top: 0.1rem;
-                  left: -0.28rem;
+                  // left: -0.28rem;
                 }
                 .job-array {
                   width: 30%;
@@ -466,6 +466,7 @@ $light-gray: #f4f4f4;
         background-size:  3.72rem auto;
         margin: 1.37rem 0.68rem 0 1.32rem;
         float: left;
+        // border: 1px solid #000;
       }
       .show-top {
         width: 67%;
@@ -547,6 +548,15 @@ $light-gray: #f4f4f4;
         border-left: 1px solid #3f9e9f;
         padding-left: 0.7rem;
         position: relative;
+        .green-point {
+          width: 0.5rem;
+          height: 0.5rem;
+          border-radius: 50%;
+          background: #3f9e9f;
+          position: absolute;
+          top: -0.46rem;
+          left: -0.275rem;
+        }
         time {
           font-size: 0.7rem;
         }

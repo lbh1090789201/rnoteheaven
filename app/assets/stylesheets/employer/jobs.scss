@@ -19,7 +19,7 @@
       background: #f4f4f4;
       span.nav-img {
         margin-left: 1rem;
-        padding: 0.27rem 0.5rem 0.27rem 0.5rem;
+        padding: 0.17rem 0.5rem 0.17rem 0.5rem;
         border: 1px solid #ffa200;
         border-radius: 0.26rem;
         color: #ffa200;
@@ -32,7 +32,7 @@
       .refresh {
         position: absolute;
         margin-top: 0.5rem;
-        right: 1rem;
+        right: 0.9rem;
         width: 1rem;
       }
     }
@@ -89,8 +89,8 @@
               font-size: 0.7rem;
             }
             p {
-              margin-top: 0.88rem;
-              margin-bottom: 0.72rem;
+              margin-top: 0.4rem;
+              margin-bottom: 0.22rem;
               color: $font-gray2;
               font-size: 0.7rem;
             }
@@ -99,7 +99,7 @@
           .status-box {
             position: absolute;
             right: 1rem;
-            margin-top: -2.7rem;
+            margin-top: -2.4rem;
             span {
               margin-right: 0.4rem;
               font-size: 0.83rem;
@@ -115,7 +115,7 @@
             img {
               height: 0.55rem;
               width: auto;
-              margin-top: -0.4rem;
+              margin-top: -0.29rem;
             }
           }
 
