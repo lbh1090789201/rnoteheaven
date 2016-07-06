@@ -34,6 +34,7 @@ header {
       color: $light-green;
     }
   }
+
   // 覆盖样式
   .nav>li {
     float: left;
@@ -83,6 +84,7 @@ header {
     }
   }
 }
+
 // 覆盖样式开始
 .nav-pills>li>a {
   border-radius: 0;
@@ -110,6 +112,7 @@ header {
     padding-top: 50px;
     margin-left: 16.9%;
   }
+}
 }
 
 footer {
