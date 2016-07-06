@@ -34,6 +34,24 @@ class ApiController < ActionController::Base
     }
   end
 
+  # Only permits admin users
+  helper_method :require_admin!
+  def require_admin!
+    authenticate_user!
+    if current_user && !current_user.admin?
+      redirect_to root_path
+    end
+  end
+
+  # Only permits employer
+  helper_method :require_employer!
+  def require_employer!
+    authenticate_user!
+    if current_user && !current_user.employer?
+      redirect_to root_path
+    end
+  end
+
   # 格式化时间
   def format_datetime(aDatetime)
     aDatetime.strftime('%Y-%m-%d %H:%M:%S') if aDatetime

@@ -1,12 +1,12 @@
 class Api::AdminRolesController < ApiController
-  before_action :authenticate_user!   # 登陆验证
+  before_action :require_admin! # 登陆验证
 
   def update
     user = User.find role_params[:id]
     user.show_name = params[:show_name]
 
     role = ":" + params[:role]
-    # user.add_role role
+    user.add_role role
 
     if user.save
       render json: {

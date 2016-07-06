@@ -50,7 +50,7 @@ var Seeker = React.createClass({
   ,render: function() {
     return (
       <div style={{"marginTop": "3rem"}}>
-        <a href="/api/v1/connect_app?userId=288&token=dsafafasfasfs">
+        <a href="/api/v1/connect_app?userId=289&token=dsafafasfasfs">
           <button className="btn btn-primary" style={{"position": "relative"}}>医生API</button>
         </a>
         <a href="/api/v1/connect_app?userId=289&token=dsafafasfasfs">
