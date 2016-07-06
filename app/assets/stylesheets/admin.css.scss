@@ -1,32 +1,107 @@
+@import "mixin.scss";
+
 /* 公共样式开始 */
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  padding-top: 65px;
+}
+
 header {
   .navbar {
     margin-bottom: 0;
+    a {
+      font-size: 15px;
+    }
+    .navbar-brand {
+      height: 35px;
+      margin-top: 8px;
+      margin-right: 60px;
+    }
     li a {
       height: 65px;
-      line-height: 32px;
+      line-height: 35px;
     }
 
-    .sign_out {
-      float: right;
-      margin-top: 13px;
+    .log-out {
+      float: right !important;
+      margin-right: 3%;
+      line-height: 65px;
+      color: $light-green;
     }
   }
+  // 覆盖样式
+  .nav>li {
+    float: left;
+  }
+  .navbar-inverse {
+    background-color: $main-green;
+  }
+  .navbar-inverse .navbar-brand {
+    color:  $light-green;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    font-style: italic;
+  }
+  .navbar-inverse .navbar-nav>li>a {
+    color:  $light-green;
+  }
+  .navbar-inverse .navbar-nav>.active>a,
+  .navbar-inverse .navbar-nav>.active>a:hover,
+  .navbar-inverse .navbar-nav>.active>a:focus {
+    background-color: $main-green;
+  }
+  // 覆盖样式结束
   img {
     height: 0.5rem;
   }
 }
 
+.sidebar {
+  position: fixed;
+  height: 100%;
+  padding: 0;
+  background-color:  $light-gray3;
+  li {
+    line-height: 70px;
+    a {
+      opacity: 0.3;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-right: 0;
+      padding-left: 30px;
+      img {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+// 覆盖样式开始
+.nav-pills>li>a {
+  border-radius: 0;
+}
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:hover,
+.nav-pills>li.active>a:focus {
+  opacity: 1;
+  background-color: #fff;
+  color: black;
+}
+
 #wrap {
-  margin-top: 1.5rem;
+  // margin-top: 1.5rem;
   overflow: hidden;
   position: relative;
+  height: 100%;
   .panel {
-    // width: 3rem;
-    // margin-left: 0.2rem;
+    position: static;
   }
-  .main {
-
+  .admin_main {
+    position: static;
+    padding-top: 50px;
+    margin-left: 16.9%;
   }
 }
 
