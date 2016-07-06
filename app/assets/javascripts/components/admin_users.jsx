@@ -251,7 +251,7 @@ function transType(e)  {
    ,render: function() {
      return (
        <div className="mask-user" style={{"display": this.props.user_info.edit_diaplay}}>
-         <div>
+         <div className="user-box">
            <form onSubmit={this.handleSubmit}>
              <input onChange={this.handleChange} value={this.props.user_info.uid} name="id" ref="id" style={{"display": "none"}} />
              <div className="form-group">
@@ -267,7 +267,7 @@ function transType(e)  {
                   <option value="admin">管理员</option>
                 </select>
              </div>
-             <button type="button" className="btn btn-default" onClick={this.handleClick}>取消</button>
+             <button type="button" className="btn btn-secondary" onClick={this.handleClick}>取消</button>
              <button type="submit" className="btn btn-success">提交</button>
            </form>
          </div>
