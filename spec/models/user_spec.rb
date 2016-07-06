@@ -43,8 +43,8 @@ RSpec.describe User, :type => :model do
 
 	describe "test filter" do
 		before :each do
-			@user = create(:user, created_at: Time.now - 3.days)
-			@user2 = create(:user2, created_at: Time.now - 1.days)
+			@user = create(:user, created_at: Time.now - 3.days, user_type: "gold")
+			@user2 = create(:user2, created_at: Time.now - 1.days, user_type: "gold")
 		end
 
 		it "test filter_create_after" do
@@ -58,11 +58,7 @@ RSpec.describe User, :type => :model do
 		end
 
 		it "test filter_by_role" do
-			@user.add_role :admin
-			@user2.add_role :admin
-
-			res = User.filter_by_role "admin"
-			# puts '----------' + res.to_json.to_s
+			res = User.filter_by_role "gold"
 			expect(res.length).to eq(2)
 		end
 

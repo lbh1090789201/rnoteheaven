@@ -89,7 +89,8 @@ class User < ActiveRecord::Base #用户
 
   #按 角色 role 筛选
   scope :filter_by_role, -> (role){
-    includes(:roles).select("roles.*").where('roles.name' => role).references(:roles)
+    # includes(:roles).select("roles.*").where('roles.name' => role).references(:roles)
+    where(user_type: role) if role.present?
   }
 
 
