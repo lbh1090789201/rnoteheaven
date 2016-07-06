@@ -17,7 +17,7 @@ class Employer::ResumesController < ApplicationController
                                 .order("recieve_at DESC")
 
     # 公开简历
-    public_resumes = Resume.where(public: true)
+    public_resumes = Resume.where( "public = ? && maturity >= ?", true, 70)
                            .filter_no_freeze
                            .filter_is_block(hospital.id)
                            .order("refresh_at DESC")

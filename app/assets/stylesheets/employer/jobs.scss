@@ -290,17 +290,18 @@
         img {
           height: auto;
           width: 0.63rem;
-          margin-left: 0.4rem;
-          margin-right: 0.2rem;
+          margin-left: 0.3rem;
+          margin-right: 0.1rem;
           margin-top: -0.1rem;
         }
       }
       .reflesh-time {
+        text-align: center;
         margin: 0;
-        width: 4.2rem;
+        width: 4.7rem;
         height: 1.3rem;
-        line-height: 1.3rem;
-        border-radius: 0.57rem;
+        line-height: 1.4rem;
+        border-radius: 0.5rem;
         color: #dbdbdb;
         font-size: 0.57rem;
         position: absolute;
@@ -689,14 +690,15 @@
         display: inline-block;
         width: 2.2rem;
         height: 0.85rem;
+        line-height: 0.85rem;
         background: #FFFFFF;
-        margin-left: .5rem;
+        margin-left: 0.5rem;
         text-align: center;
         padding: 0.01rem 0.2rem 0 0.2rem;
         -webkit-border-radius: 30px;
         border: 1px solid #e3e3e3;
         color: #959595;
-        font-size: 0.5rem;
+        font-size: 0.45rem;
     }
 }
 #job_range{
@@ -798,6 +800,9 @@
 }
 
 //----Job-New---界面样式 6.24 Huangwei
+#job_basic {
+  padding-bottom: 2rem;
+}
 #job_basic .basic_infoo{
     padding-left: 1.2rem;
     font-size:0.7rem;
