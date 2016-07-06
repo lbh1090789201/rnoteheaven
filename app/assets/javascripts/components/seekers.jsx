@@ -31,18 +31,6 @@ var Seeker = React.createClass({
       url: '/api/v1/connect_app/login_app',
       type: 'POST',
       data: upload_data,
-      /*{
-        session: "28920160606162521",
-        seq: 0,
-        userId: 289,
-        target: 'candidate'
-      },
-      data: {
-        session: "28820160629153437",
-        seq: 0,
-        userId: 288,
-        target: 'recruit'
-      },*/
       success: function(data) {
         console.log(data)
         window.location = data["url"]
@@ -62,11 +50,20 @@ var Seeker = React.createClass({
   ,render: function() {
     return (
       <div style={{"marginTop": "3rem"}}>
-        <button onClick={this.handleClick} className="btn btn-primary"
-                value="candidate" style={{"position": "relative"}}>医生API</button>
-        <button onClick={this.handleClick} className="btn btn-info"
-                value="recruit" style={{"position": "relative"}}>医院API</button>
-        {/*<textarea value={this.state.res} onChange={this.bandleChange} className="form-control"></textarea>*/}
+        <a href="/api/v1/connect_app?userId=288&token=dsafafasfasfs">
+          <button className="btn btn-primary" style={{"position": "relative"}}>医生API</button>
+        </a>
+        <a href="/api/v1/connect_app?userId=289&token=dsafafasfasfs">
+          <button className="btn btn-info" style={{"position": "relative"}}>医生API</button>
+        </a>
+
+        {/*
+          <button onClick={this.handleClick} className="btn btn-primary"
+                  value="candidate" style={{"position": "relative"}}>医生API</button>
+          <button onClick={this.handleClick} className="btn btn-info"
+                  value="recruit" style={{"position": "relative"}}>医院API</button>
+          <textarea value={this.state.res} onChange={this.bandleChange} className="form-control"></textarea>
+          */}
       </div>
     )
   }

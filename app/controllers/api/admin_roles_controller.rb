@@ -6,7 +6,9 @@ class Api::AdminRolesController < ApiController
     user.show_name = params[:show_name]
 
     role = ":" + params[:role]
-    if user.save && user.add_role role
+    # user.add_role role
+
+    if user.save
       render json: {
         success: true,
         info: '用户权限修改成功！',
