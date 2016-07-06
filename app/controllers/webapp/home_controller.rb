@@ -4,8 +4,8 @@ class Webapp::HomeController < ApplicationController
 
 
   def index
-    @fhas_new = FavoriteJob.where(:has_new => true)
-    @ahas_new = ApplyRecord.where(:has_new => true)
+    @fhas_new = FavoriteJob.where(:has_new => true, :user_id => current_user.id)
+    @ahas_new = ApplyRecord.where(:has_new => true, :user_id => current_user.id)
     @has_new_length = @fhas_new.length + @ahas_new.length
 
     filter = params

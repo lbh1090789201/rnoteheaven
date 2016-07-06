@@ -7,7 +7,7 @@ class Webapp::FavoriteJobsController < ApplicationController
 
   def index
     @favorite_jobs = get_favorite_jobs current_user.id
-    @has_new = FavoriteJob.where(:has_new => true).length
+    @has_new = FavoriteJob.where(:has_new => true, :user_id => current_user.id).length
   end
 
   def update
