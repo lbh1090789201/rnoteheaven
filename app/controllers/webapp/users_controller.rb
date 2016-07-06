@@ -18,36 +18,36 @@ class Webapp::UsersController < ApplicationController
     # logger.error '------current_user.id---------:' + current_user.id
     logger.error '------id---------:' + params[:id]
 
-    if path != '/webapp/users/' + params[:id] + '/edit'
-      session[:user_previous_url] = path
-      if path == '/webapp/orders/new'
-        str = ''
-        if params[:order_type] != nil
-          str = str + '&order_type=' + params[:order_type]
-        end
-        if params[:invited_id] != nil
-          str = str + '&invited_id=' + params[:invited_id]
-        end
-        if params[:food_package_id] != nil
-          str = str + '&food_package_id=' + params[:food_package_id]
-        end
-        if params[:restaurant_id] != nil
-          str = str + '&restaurant_id=' + params[:restaurant_id]
-        end
-        if params[:detail] != nil
-          str = str + 'detail=' + params[:detail]
-        end
-        if str.length > 0
-          session[:user_previous_url] = path + '?' + str[1..-1]
-        else
-          session[:user_previous_url] = path
-        end
-
-        logger.error '------session[:user_previous_url]---------:' + session[:user_previous_url]
-      end
-    else
-
-    end
+    # if path != '/webapp/users/' + params[:id] + '/edit'
+    #   session[:user_previous_url] = path
+    #   if path == '/webapp/orders/new'
+    #     str = ''
+    #     if params[:order_type] != nil
+    #       str = str + '&order_type=' + params[:order_type]
+    #     end
+    #     if params[:invited_id] != nil
+    #       str = str + '&invited_id=' + params[:invited_id]
+    #     end
+    #     if params[:food_package_id] != nil
+    #       str = str + '&food_package_id=' + params[:food_package_id]
+    #     end
+    #     if params[:restaurant_id] != nil
+    #       str = str + '&restaurant_id=' + params[:restaurant_id]
+    #     end
+    #     if params[:detail] != nil
+    #       str = str + 'detail=' + params[:detail]
+    #     end
+    #     if str.length > 0
+    #       session[:user_previous_url] = path + '?' + str[1..-1]
+    #     else
+    #       session[:user_previous_url] = path
+    #     end
+    #
+    #     logger.error '------session[:user_previous_url]---------:' + session[:user_previous_url]
+    #   end
+    # else
+    #
+    # end
   end
 
   # 页面代码开始
@@ -69,7 +69,7 @@ class Webapp::UsersController < ApplicationController
       resume_maturity = Resume.get_maturity @user.id
 
       if user_params[:avatar]
-        
+
       else
         render js: 'history.go(-1);'
       end
@@ -84,6 +84,8 @@ class Webapp::UsersController < ApplicationController
     @user = current_user
     @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
     @resume = Resume.where(user_id: current_user.id).first_or_create!
+    @fhas_new = FavoriteJob.where(has_new: true, user_id: @user.id).length
+    @ahas_new = ApplyRecord.where(has_new: true, user_id: @user.id).length
   end
 
 
