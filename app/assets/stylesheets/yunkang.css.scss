@@ -71,6 +71,10 @@ body,
     width: auto !important;
     opacity: 0;
   }
+  a:hover {
+    text-decoration: none;
+    color: inherit;
+  }
 
 }
 header {
@@ -93,7 +97,10 @@ header {
         margin-top: 0.4rem;
         -webkit-margin: 0;
         -webkit-padding: 0;
-        margin-left: -0.8rem;
+        position: absolute;
+        top: 0;
+        left: 0.2rem;
+        padding: 0.2rem 0 0 0;
       }
     .top {
           margin: 0 auto;
@@ -103,11 +110,15 @@ header {
       display: inline-block;
       font-size: 0.87rem;
       line-height: 2.32rem;
+      margin: 0 auto;
     }
     .right {
-      float: right;
-      color: white;
-     font-size: 0.87rem;
+       color: white;
+       font-size: 0.77rem;
+       position: absolute;
+       top: 0.1rem;
+       right: 1.1rem;
+       color: white;
   }
   .right:hover {
     color: #fff;
@@ -168,7 +179,6 @@ a:hover {
         float: left;
         font-size: 0.88rem;
         margin-top: 0.263rem;
-        margin-bottom: 0.3rem;
       }
       .right {
         float: right;
@@ -190,7 +200,8 @@ a:hover {
       }
       .detail {
         color: rgb(195,195,195);
-        line-height: 1.07rem;
+        line-height: 0.8rem;
+        height: 1.1rem;
       }
     }
   }
@@ -227,13 +238,14 @@ a:hover {
     position: absolute;
     top: 0.1rem;
     right: 0.1rem;
-    width: 0.7rem;
-    height: 0.7rem;
+    width: 0.6rem;
+    height: 0.6rem;
     background: #fe0100;
     border-radius: 50%;
     font-size: 0.42rem;
     text-align: center;
     line-height: 0.7rem;
+    color: #fff;
   }
 }
 /*搜索首页结束*/
@@ -801,6 +813,12 @@ a:hover {
     .user-content {
       a:nth-of-type(4) {
         border-bottom: none;
+      }
+      .resume img {
+        height: 0.25rem;
+        width: auto;
+        position: relative;
+        top: -0.46rem;
       }
       .user-complete {
         font-size: 0.63rem;
@@ -1486,7 +1504,7 @@ a:hover {
   div {
     width: 9.64rem;
     position: absolute;
-    top: 0;
+    top: -0.05rem;
     left: -4.82rem;
     font-size: 0.87rem;
     text-align: center;
@@ -1494,6 +1512,7 @@ a:hover {
       display: block;
       width: 4.72rem;
       height: 1.4rem;
+      line-height: 1.4rem;
       background: #fff;
       color: #3f9e9f;
       border: 1px solid #fff;
@@ -1505,6 +1524,7 @@ a:hover {
       display: block;
       width: 4.72rem;
       height: 1.4rem;
+      line-height: 1.4rem;
       background: #3f9e9f;
       color: #fff;
       border: 1px solid #fff;
@@ -1527,34 +1547,42 @@ a:hover {
       h3 {
         margin: 0;
         font-size: 0.87rem;
+        font-weight: bold;
       }
       p {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         color: #ff8b00;
         padding-top: 0.5rem;
+        margin-bottom: 0.37rem;
       }
       ul {
         list-style: none;
+        margin-bottom: 0;
         li {
           height: 1.52rem;
           line-height: 1.52rem;
           color: #424242;
           font-size: 0.7rem;
+          position: relative;
           span {
             color: #9b9b9b;
             margin-right: 0.75rem;
           }
-          .job-scale {
-            margin-left: 2.85rem;
+          span:nth-child(2) {
+            position: absolute;
+            top: 0;
+            left: 8rem;
           }
-          .job-number {
-            margin-left: 4.3rem;
+          span:nth-child(3) {
+            position: absolute;
+            top: 0;
+            left: 10rem;
           }
         }
       }
     }
     .job-place {
-      margin-top: 2rem;
+      margin-top: 1.1rem;
       line-height: 2.32rem;
       border-top: 1px solid #e3e3e3;
       border-bottom: 1px solid #e3e3e3;

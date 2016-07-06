@@ -40,7 +40,12 @@
       </a>
       <a class="resumes-list" href="<%= webapp_apply_records_path %>">
           <%= image_tag "apply_records.png",class:"icon2"%>
-          <span class="resume">我的应聘记录</span>
+          <span class="resume">
+            我的应聘记录
+            <% if @ahas_new != 0 %>
+            <%= image_tag "red_point.png"%>
+            <% end %>
+          </span>
       </a>
       <a class="resumes-list" href="<%= webapp_resume_viewers_path %>">
           <%= image_tag "resume_views.png",class:"icon3"%>
@@ -48,7 +53,12 @@
       </a>
       <a class="resumes-list" href="/webapp/favorite_jobs">
           <%= image_tag "star_black.png",class:"icon4"%>
-          <span class="resume">我收藏的职位</span>
+          <span class="resume">
+            我收藏的职位
+            <% if @fhas_new != 0 %>
+            <%= image_tag "red_point.png"%>
+            <% end %>
+          </span>
       </a>
       <!-- <div class="mask">
       </div> -->

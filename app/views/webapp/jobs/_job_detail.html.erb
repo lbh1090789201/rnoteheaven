@@ -5,8 +5,8 @@
       <p style="color:#ff8b00;"><%= @job.salary_range %>/月</p>
       <ul>
         <li><span>医院</span><%= @hospital.name %></li>
-        <li><span>性质</span><%= @hospital.property %><span class="job-scale">规模</span><%= @hospital.scale %></li>
-        <li><span>地区</span><%= @job.region %><span class="job-number">人数</span><%= @job.needed_number %>人</li>
+        <li><span>性质</span><%= @hospital.property %><span class="job-scale">规模</span><span><%= @hospital.scale %></span></li>
+        <li><span>地区</span><%= @job.region %><span class="job-number">人数</span><span><%= @job.needed_number %>人</span></li>
       </ul>
     </div>
     <div class="job-place"><a href="http://api.map.baidu.com/marker?location=<%= @hospital.lat %>,<%= @hospital.lng %>&title=<%= @hospital.name %>&content=<%= @job.location %>&output=html"><span>工作地点：</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
