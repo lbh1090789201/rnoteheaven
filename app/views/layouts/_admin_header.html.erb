@@ -1,8 +1,9 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <!--<a class="navbar-brand" href="/admin/users/<%= current_user.id %>">-->
   <a class="navbar-brand" href="/admin/jobs/check">
-        <%= image_tag 'vip.png', :class => 'logo' %>
-    </a>
+        <!-- <%# image_tag 'vip.png', :class => 'logo' %> -->
+        <h4>云康控制台</h4>
+  </a>
     <ul id="admin_nav" class="nav navbar-nav nav-console">
         <li  class="<%='active' if params[:controller] == 'admin/jobs'%>" >
           <a href="/admin/jobs/check">职位管理</a>
@@ -23,5 +24,5 @@
             <a href="/admin/users">帐号管理</a>
         </li>
     </ul>
-    <a href="/logout" class="btn btn-default sign_out"><%= t("web-app-theme.logout", :default => "Logout") %></a>
+    <%= link_to("退出登陆",destroy_user_session_path, :method => :delete, class: "btn btn-default sign_out" ) %>
 </nav>
