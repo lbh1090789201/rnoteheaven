@@ -175,7 +175,7 @@ $font-gray: #a5a5a5;
     position: absolute;
     right: 1rem;
     margin-top: 0.9rem;
-    background: url("../icon.png") no-repeat;
+    background: url(image_path("icon.png")) no-repeat;
     background-size: 0.41rem 0.66rem;
   }
 
@@ -188,7 +188,7 @@ $font-gray: #a5a5a5;
     right: 0.7rem;
     margin-top: 0.8rem;
     z-index: 100;
-    background: url("../icon_24.png") no-repeat;
+    background: url(image_path("icon_24.png")) no-repeat;
     background-size: 0.9rem 0.9rem;
   }
 
@@ -201,7 +201,7 @@ $font-gray: #a5a5a5;
     right: 0.4rem!important;
     z-index: 100;
     margin-top: 0.8rem;
-    background: url("../icon_24.png") no-repeat;
+    background: url(image_path("icon_24.png")) no-repeat;
     background-size: 0.9rem 0.9rem;
   }
 

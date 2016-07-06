@@ -372,7 +372,7 @@
   }
 
   #postPause {
-    background-image: url("../icon_20.png");
+    background-image: url(image_path("icon_20.png"));
     background-repeat: no-repeat;
     background-position: 19% 46%;
     background-size: 0.72rem auto;
@@ -382,7 +382,7 @@
   }
 
   #release {
-    background-image: url("../icon_35.png");
+    background-image: url(image_path("icon_35.png"));
     background-repeat: no-repeat;
     background-position: 18% 44%;
     background-size: 1.1rem auto;
@@ -392,7 +392,7 @@
   }
 
   #end {
-    background-image: url("../icon_22.png");
+    background-image: url(image_path("icon_22.png"));
     background-repeat: no-repeat;
     background-position: 18% 46%;
     background-size: 0.82rem auto;
@@ -408,7 +408,7 @@
     .fail,
     .fleeze,
     .end {
-      background-image: url("../icon_32.png")!important;
+      background-image: url(image_path("icon_32.png"))!important;
       background-repeat: no-repeat!important;
       background-position: 19% 46%!important;
       background-size: 0.72rem auto!important;
@@ -422,7 +422,7 @@
     color: #fff;
     .release,
     .reviewing {
-      background-image: url("../icon_34.png")!important;
+      background-image: url(image_path("icon_34.png"))!important;
       background-repeat: no-repeat!important;
       background-position: 18% 44%!important;
       background-size: 1.1rem auto!important;
@@ -435,7 +435,7 @@
     color: #000;
     .end,
     .reviewing {
-      background-image: url("../icon_33.png")!important;
+      background-image: url(image_path("icon_33.png"))!important;
       background-repeat: no-repeat!important;
       background-position: 18% 46%!important;
       background-size: 0.82rem auto!important;
@@ -524,7 +524,7 @@
     position: absolute;
     right: 1rem;
     margin-top: 0.9rem;
-    background: url("../icon.png");
+    background: url(image_path("icon.png"));
     background-size: 0.41rem 0.66rem;
   }
 
@@ -584,7 +584,7 @@
       position: absolute;
       right: 1rem;
       margin-top: 0.9rem;
-      background: url("../icon.png");
+      background: url(image_path("icon.png"));
       background-size: 0.41rem 0.66rem;
     }
     span {
@@ -677,7 +677,7 @@
 
 //.form-group input:nth-of-type(1){background-image: url("../icon_24.png");}
 .job-frist{
-    background:url("../icon_24.png") no-repeat;
+    background:url(image_path("icon_24.png")) no-repeat;
     background-size: 0.8rem 0.8rem;
     background-position: 11.6rem 0.9rem;
     }
@@ -711,7 +711,7 @@
     position: absolute;
     right: 1rem;
     margin-top: 0.9rem;
-    background: url("../icon.png");
+    background: url(image_path("icon.png"));
     background-size: 0.41rem 0.66rem;
   }
 
@@ -771,7 +771,7 @@
       position: absolute;
       right: 1rem;
       margin-top: 0.9rem;
-      background: url("../icon.png");
+      background: url(image_path("icon.png"));
       background-size: 0.41rem 0.66rem;
     }
     span {
@@ -819,7 +819,7 @@
 }
 
 .job-frist_new{
-    background:url("../icon_24.png") no-repeat;
+    background:url(image_path("icon_24.png")) no-repeat;
     background-size: 0.8rem 0.8rem;
     background-position: 11.6rem 0.9rem;
 }

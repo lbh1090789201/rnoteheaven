@@ -81,7 +81,7 @@
        top: 0;
        right: 0.1rem;
        color: white;
-       font-size: 0.72rem;
+       font-size: 0.87rem;
    }
  }
  /*通用样式结束*/
@@ -106,6 +106,19 @@
      font-size: 0.43rem;
      position: relative;
    }
+   a {
+     display: inline-block;
+     width: 1.2rem;
+     height: inherit;
+     margin: 0 auto;
+     position: relative;
+   }
+   span {
+     position: absolute;
+     bottom: 0.3rem;
+     left: 0;
+     display: block;
+   }
    li:nth-child(1) {
      a {
        color: #949494;
@@ -114,13 +127,6 @@
        width: 1.3rem;
        height: 0.95rem;
        margin-top: 0.58rem;
-      //  margin-bottom: 0.25rem;
-     }
-     p {
-       position: absolute;
-       bottom: -0.11rem;
-       left: 50%;
-       margin-left: -0.4rem;
      }
    }
    li:nth-child(2) {
@@ -131,13 +137,6 @@
        width: 0.92rem;
        height: 1.23rem;
        margin-top: 0.33rem;
-      //  margin-bottom: 0.23rem;
-     }
-     p {
-       position: absolute;
-       bottom: -0.11rem;
-       left: 50%;
-       margin-left: -0.4rem;
      }
    }
      li:nth-child(3) {
@@ -148,13 +147,6 @@
          width: 1.28rem;
          height: 1.27rem;
          margin-top: 0.4rem;
-        //  margin-bottom: 0.13rem;
-       }
-       p {
-         position: absolute;
-         bottom: -0.11rem;
-         left: 50%;
-         margin-left: -0.4rem;
        }
      }
  }

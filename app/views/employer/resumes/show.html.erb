@@ -40,11 +40,10 @@
   <div class="resume-avatar">
     <div class="show-img" style="background: url('<%= asset_path(@avatar) %>') no-repeat center;background-size:  3.68rem auto;"></div>
     <div class="show-top">
-      <p><%= @user.show_name %>
-        <% if @apply_record %>
-          <span>应聘:</span><span><%= @apply_record.job_name %></span>
-        <% end %>
-      </p>
+      <p><%= @user.show_name %></p>
+      <% if @apply_record %>
+        <div><span>应聘:</span><span><%= @apply_record.job_name %></span></div>
+      <% end %>
       <p>
         <%= @user.sex %>
         <% if @apply_record %>
@@ -143,7 +142,7 @@
         dataType: "json",
         success: function(){
           $("#btn_action>li").eq(1).css('display','none')
-                                   .siblings().css({'width':'100%','background':'gray'});
+                                   .siblings().css({'width':'100%','background':'#a1a1a1','color':'#dadada'});
         },
         error: function(){
           alert("操作失败");
@@ -160,7 +159,7 @@
         data: {apply_record_id: "<%=  @apply_record.id if @apply_record %>",resume_status: "面试"},
         success: function(){
           $("#btn_action>li").eq(0).css('display','none')
-                                   .siblings().css({'width':'100%','background':'#3f9e9f'});
+                                   .siblings().css({'width':'100%','background':'#a1a1a1','color':'#dadada'});
         },
         error: function(){
           alert("操作失败");
