@@ -9,7 +9,7 @@
         <li><span>地区</span><%= @job.region %><span class="job-number">人数</span><span><%= @job.needed_number %>人</span></li>
       </ul>
     </div>
-    <div class="job-place"><a href="http://api.map.baidu.com/marker?location=<%= @hospital.lat %>,<%= @hospital.lng %>&title=<%= @hospital.name %>&content=<%= @job.location %>&output=html"><span>工作地点：</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
+    <div class="job-place"><a href="http://api.map.baidu.com/marker?location=<%= @hospital.lat %>,<%= @hospital.lng %>&title=<%= @hospital.name %>&content=<%= @job.location %>&output=html"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
   </section>
 
   <section class="job-right">
@@ -28,7 +28,7 @@
   <div class="job-list">
     <ul>
       <li id="msg"><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
-      <li><a class="<%= @btn_apply[:css] %>" id="apply_job"> <%= image_tag "apply_records.png" %>
+      <li><a class="<%= @btn_apply[:css] %>" id="apply_job"> <%= image_tag @btn_apply[:img_url] %>
                                                   <span><%= @btn_apply[:text] %></span></a></li>
       <li><a class="<%= @btn_favor[:css] %>" id="favorite_job" onclick=favor(this)><%= image_tag @btn_favor[:img_url] %>
                                                   <span><%= @btn_favor[:text] %></span></a></li>
@@ -48,6 +48,8 @@ $('#btn_apply').bind('click', function(){
     $('#apply_box').attr('class', 'hidden');
     $('#apply_job > span').html('已应聘');
     $('#apply_job').attr('class', 'is_applied');
+    $('#apply_job').children('img').remove();
+    $('#apply_job').prepend('<%= image_tag "icon_34.png" %>');
   }).fail(function() {
     alert('failed');
   });
