@@ -1,8 +1,8 @@
-    <ul class="list-group">
-      <li class="list-group-item">
-        <%= link_to "职位发布审核", check_admin_jobs_path %>
+    <ul class="nav nav-pills nav-stacked">
+      <li class="">
+        <a href="<%= check_admin_jobs_path %>"><%= image_tag 'admin_check.png' %> 职位发布审核</a>
       </li>
-      <li class="list-group-item">
-        <%= link_to "职位管理", '/admin/jobs' %>
+      <li class="active">
+        <a href="/admin/jobs"><%= image_tag 'admin_index.png' %> 职位管理</a>
       </li>
     </ul>
