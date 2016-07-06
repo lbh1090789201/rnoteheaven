@@ -35,8 +35,12 @@ class Employer::JobsController < ApplicationController
 
   def edit
     @job = Job.find params[:id]
-    @job_end_at = ((@job.end_at - Time.now)/1.days).to_i
-    # @job.end_at = ((@job.end_at - Time.now)/1.days).to_i
+
+    if @job.end_at
+      @job_end_at = ((@job.end_at - Time.now)/1.days).to_i
+    else
+      @job_end_at = @job.duration
+    end
   end
 
   def create
