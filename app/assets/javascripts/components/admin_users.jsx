@@ -5,18 +5,20 @@ var AdminUser = React.createClass({
       user_info: {
         uid: '',
         show_name: '',
-        role: 'copper',
-        edit_diaplay: "none",
+        role: '',
+        edit_diaplay: false,
         index: 0,
       }
     }
   }
   ,render: function() {
+    var edit = this.state.user_info.edit_diaplay ? <AdminUserEdit user_info={this.state.user_info} dad={this}/> : ''
+
     return (
       <div className="main">
         <AdminUserForm dad={this} />
         <AdminUserTable users={this.state.users} dad={this}/>
-        <AdminUserEdit user_info={this.state.user_info} dad={this}/>
+        {edit}
       </div>
     )
   }
@@ -147,14 +149,13 @@ var AdminUserTableContent = React.createClass({
 
 var AdminUserItem = React.createClass({
   handleClick: function() {
-    // console.log(this.props.dad)
     this.props.dad.setState({
       user_info: {
         show_name: this.props.data.show_name,
         role: this.props.data.user_type,
         uid: this.props.data.id,
         index: this.props.index - 1,
-        edit_diaplay: "block",
+        edit_diaplay: true,
       }
     })
   }
@@ -188,9 +189,9 @@ function transType(e)  {
  var AdminUserEdit = React.createClass({
    getInitialState: function() {
      return {
-       show_name: this.props.user_info.show_name,
-       role: this.props.user_info.role,
-       edit_diaplay: this.props.user_info.edit_diaplay,
+       show_name: this.props.dad.state.user_info.show_name,
+       role: this.props.dad.state.user_info.role,
+       edit_diaplay: this.props.dad.state.user_info.edit_diaplay,
      }
    }
    ,handleChange: function(e) {
@@ -206,12 +207,10 @@ function transType(e)  {
        [name]: e.target.value
      })
    }
-   ,handleClick: function(e) {
-     e.preventDefault()
-     
+   ,handleClick: function() {
      this.props.dad.setState({
        user_info: {
-         edit_diaplay: "none",
+         edit_diaplay: false,
        }
      })
    }
@@ -222,13 +221,12 @@ function transType(e)  {
        url: '/api/v1/admin_roles',
        type: 'PATCH',
        data: {
-         show_name: this.state.show_name,
-         role: this.state.role,
+         show_name: this.props.user_info.show_name,
+         role: this.props.user_info.role,
          id: this.refs.id.value
        },
        success: function(data){
          let index = this.props.dad.state.user_info.index,
-             user = "users[" + index + "]",
              users = this.props.dad.state.users
 
          users[index] = data.user
@@ -236,7 +234,7 @@ function transType(e)  {
          this.props.dad.setState({
             users: users,
             user_info: {
-              edit_diaplay: "none",
+              edit_diaplay: false,
             }
          })
        }.bind(this),
@@ -244,7 +242,7 @@ function transType(e)  {
          alert(data.responseText)
          this.props.dad.setState({
            user_info: {
-             edit_diaplay: "none",
+             edit_diaplay: false,
            }
          })
        },
@@ -255,11 +253,11 @@ function transType(e)  {
        <div className="mask-user" style={{"display": this.props.user_info.edit_diaplay}}>
          <div>
            <form onSubmit={this.handleSubmit}>
-             <input value={this.props.user_info.uid} name="id" ref="id" />
+             <input onChange={this.handleChange} value={this.props.user_info.uid} name="id" ref="id" style={{"display": "none"}} />
              <div className="form-group">
                 <label>用户名称</label>
-                <input className="form-control" placeholder="用户名" name="show_name"
-                                    value={this.props.user_info.show_name} onChange={this.handleChange} />
+                  <input className="form-control" placeholder="用户名" name="show_name"
+                                      value={this.props.user_info.show_name} onChange={this.handleChange} />
              </div>
              <div className="form-group">
                 <label>配置角色</label>
