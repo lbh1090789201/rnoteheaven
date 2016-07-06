@@ -5,8 +5,9 @@ var AdminUser = React.createClass({
       user_info: {
         uid: '',
         show_name: '',
-        role: 'admin',
-        edit_diaplay: false,
+        role: 'copper',
+        edit_diaplay: "none",
+        index: 0,
       }
     }
   }
@@ -15,7 +16,7 @@ var AdminUser = React.createClass({
       <div className="main">
         <AdminUserForm dad={this} />
         <AdminUserTable users={this.state.users} dad={this}/>
-        <AdminUserEdit user_info={this.state.user_info}/>
+        <AdminUserEdit user_info={this.state.user_info} dad={this}/>
       </div>
     )
   }
@@ -146,12 +147,14 @@ var AdminUserTableContent = React.createClass({
 
 var AdminUserItem = React.createClass({
   handleClick: function() {
-    console.log(this.props.dad)
+    // console.log(this.props.dad)
     this.props.dad.setState({
       user_info: {
         show_name: this.props.data.show_name,
         role: this.props.data.user_type,
-        uid: this.props.data.id
+        uid: this.props.data.id,
+        index: this.props.index - 1,
+        edit_diaplay: "block",
       }
     })
   }
@@ -192,6 +195,7 @@ function transType(e)  {
    }
    ,handleChange: function(e) {
      let name = e.target.name
+
      if(name == "show_name") {
        this.props.user_info.show_name = e.target.value
      } else if(name = "role") {
@@ -202,17 +206,56 @@ function transType(e)  {
        [name]: e.target.value
      })
    }
-   ,handleSubmit: function(e) {
+   ,handleClick: function(e) {
      e.preventDefault()
      
+     this.props.dad.setState({
+       user_info: {
+         edit_diaplay: "none",
+       }
+     })
+   }
+   ,handleSubmit: function(e) {
+     e.preventDefault()
+
+     $.ajax({
+       url: '/api/v1/admin_roles',
+       type: 'PATCH',
+       data: {
+         show_name: this.state.show_name,
+         role: this.state.role,
+         id: this.refs.id.value
+       },
+       success: function(data){
+         let index = this.props.dad.state.user_info.index,
+             user = "users[" + index + "]",
+             users = this.props.dad.state.users
+
+         users[index] = data.user
+
+         this.props.dad.setState({
+            users: users,
+            user_info: {
+              edit_diaplay: "none",
+            }
+         })
+       }.bind(this),
+       error: function(data){
+         alert(data.responseText)
+         this.props.dad.setState({
+           user_info: {
+             edit_diaplay: "none",
+           }
+         })
+       },
+     })
    }
    ,render: function() {
-     console.log(this.props.user_info)
      return (
-       <div className="mask-user">
+       <div className="mask-user" style={{"display": this.props.user_info.edit_diaplay}}>
          <div>
            <form onSubmit={this.handleSubmit}>
-             <input value={this.props.user_info.uid} name="id" />
+             <input value={this.props.user_info.uid} name="id" ref="id" />
              <div className="form-group">
                 <label>用户名称</label>
                 <input className="form-control" placeholder="用户名" name="show_name"
@@ -226,7 +269,7 @@ function transType(e)  {
                   <option value="admin">管理员</option>
                 </select>
              </div>
-             <button type="button" className="btn btn-default">取消</button>
+             <button type="button" className="btn btn-default" onClick={this.handleClick}>取消</button>
              <button type="submit" className="btn btn-success">提交</button>
            </form>
          </div>

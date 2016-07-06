@@ -1,9 +1,11 @@
-class Api::AdminRolesController < ApiController
+class Api::AdminRolesController < ApplicationController
   before_action :require_admin! # 登陆验证
+  protect_from_forgery :except => [:update]
 
   def update
     user = User.find role_params[:id]
     user.show_name = params[:show_name]
+    user.user_type = params[:role]
 
     role = ":" + params[:role]
     user.add_role role
@@ -12,7 +14,7 @@ class Api::AdminRolesController < ApiController
       render json: {
         success: true,
         info: '用户权限修改成功！',
-        user: user.to_json
+        user: user
       }, status: 200
     else
       render json: {
