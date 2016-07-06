@@ -63,9 +63,12 @@ header {
   position: fixed;
   height: 100%;
   padding: 0;
+  border-right: 1px solid #e0e0e0;
   background-color:  $light-gray3;
   li {
+    width: 100% + 1;
     line-height: 70px;
+    border-bottom: 1px solid #e0e0e0;
     a {
       opacity: 0.3;
       padding-top: 0;
@@ -88,6 +91,7 @@ header {
   opacity: 1;
   background-color: #fff;
   color: black;
+  border-right: 1px solid #fff;
 }
 
 #wrap {

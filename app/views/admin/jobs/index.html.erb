@@ -1,3 +1,5 @@
-
+<% content_for :sidebar do %>
+  <%= render 'sidebar' %>
+<% end %>
 
 <%= react_component 'AdminJobAll', {data: @jobs} %>

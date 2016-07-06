@@ -20,6 +20,6 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def edit
+  def record
   end
 end

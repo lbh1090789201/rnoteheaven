@@ -31,11 +31,6 @@ Ryunkang::Application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  namespace :admin do
-    # root "base#index"
-    resources :users
-  end
-
   resources :users, :only => [:show, :edit, :delete, :create] do
     resources :user_albumns
   end
@@ -112,7 +107,9 @@ Ryunkang::Application.routes.draw do
       end
 
       resources :resumes, :only => [:index, :edit, :update]
-      resources :users, :only => [:index, :edit, :update]
+      resources :users, :only => [:index] do
+        get 'record', on: :collection
+      end
     end
 
    ########### yunkang end ###########
