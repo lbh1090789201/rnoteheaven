@@ -103,21 +103,22 @@
      height: inherit;
      float: left;
      text-align: center;
-     font-size: 0.43rem;
      position: relative;
    }
    a {
      display: inline-block;
-     width: 1.2rem;
+     min-width: 1.4rem;
      height: inherit;
      margin: 0 auto;
      position: relative;
+     text-align: center;
    }
    span {
      position: absolute;
      bottom: 0.3rem;
      left: 0;
      display: block;
+     font-size: 0.43rem;
    }
    li:nth-child(1) {
      a {

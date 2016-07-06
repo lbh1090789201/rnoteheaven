@@ -19,7 +19,7 @@
       <p class="job-range"><%= @job.salary_range %>/月</p>
       <ul>
         <li><span>医院     </span><%= @hospital.name %></li>
-        <li><span>性质     </span><%= @hospital.property %><p><span class="job-scale">规模</span><%= @hospital.scale %>人</p></li>
+        <li><span>性质     </span><%= @hospital.property %><p><span class="job-scale">规模</span><%= @hospital.scale %></p></li>
         <li><span>地区     </span><%= @job.region %><p><span class="job-number">人数</span><%= @job.needed_number %>人</p></li>
         <li><span>经验要求</span>   <%= @job.experience %></li>
       </ul>
@@ -57,7 +57,7 @@
                job_id: "<%= @job.id %>"
              },
         success: function(){
-          $('.reflesh-time').html('7天后可再次刷新')
+          $('.reflesh-time').html('7天后再次刷新')
           $('.reflesh-time').css('display','block').siblings('div.reflesh-job')
                                                    .css('display','none');
         },
