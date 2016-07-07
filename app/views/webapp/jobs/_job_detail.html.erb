@@ -25,7 +25,7 @@
   <%= render '/webapp/jobs/mask' %>
 
   <!-- 底部栏 -->
-  <div class="job-list">
+  <div class="job-list" id="job_list">
     <ul>
       <li id="msg"><a href="#"><%= image_tag "resume_open.png" %><span>私信Ta</span></a></li>
       <li><a class="<%= @btn_apply[:css] %>" id="apply_job"> <%= image_tag @btn_apply[:img_url] %>
@@ -41,7 +41,7 @@
 
 <script type="text/javascript">
 // 应聘职位
-$('#btn_apply').bind('click', function(){
+$('#btn_apply').bind('click', function(event){
   $.post("/api/v1/apply_records", {
     apply_record: {job_id: <%= params[:id] %>}
   }).done(function() {
@@ -50,6 +50,7 @@ $('#btn_apply').bind('click', function(){
     $('#apply_job').attr('class', 'is_applied');
     $('#apply_job').children('img').remove();
     $('#apply_job').prepend('<%= image_tag "icon_34.png" %>');
+    $('#job_list>ul>li:eq(1)').unbind();
   }).fail(function() {
     alert('failed');
   });

@@ -163,7 +163,7 @@ a:hover {
 .jobs {
   .jobs-list {
     width: 19.08rem;
-    margin: -.6rem auto 0 auto;
+    margin: -0.7rem auto 0 auto;
     font-size: 0.63rem;
     a {
       display: block;
@@ -203,6 +203,9 @@ a:hover {
         height: 1.1rem;
       }
     }
+  }
+  .hosp-show {
+    margin-top: -0.9rem;
   }
 }
 .flex-control-nav {
@@ -689,7 +692,7 @@ a:hover {
           border-radius: 50%;
         }
         border-radius: 50%;
-        border: 1px solid $color;
+        // border: 1px solid $color;
         width: 3.85rem;
         height: 3.85rem;
         margin: 0 auto;
@@ -1019,6 +1022,7 @@ a:hover {
       border-bottom:1px solid #e3e3e3;
       .tab-all {
           padding: 0 1.3rem 0 1.3rem;
+          margin-bottom: 0;
         .content {
           display: none;
         }
@@ -1414,7 +1418,7 @@ a:hover {
     }
   }
   .hospital-desc {
-    min-height: 16rem;
+    min-height: 11rem;
     .title {
       line-height: 2rem;
     }
@@ -1520,6 +1524,36 @@ a:hover {
   }
 }
 
+
+#preview_resume {
+  .work-try {
+    padding-top: 0.8rem;
+    padding-bottom: 0.2rem;
+    .blue-left {
+      border-left: 1px solid $beauty-blue;
+      position: absolute;
+      top: 0;
+      left: 0.75rem;
+      width: 3rem;
+      height: 100%;
+      z-index: 100;
+      .blue-point {
+        position: absolute;
+        top: 0;
+        left: -0.25rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: $beauty-blue;
+        z-index: 10;
+      }
+      .time-line-box {
+        padding-bottom: 0.1rem;
+      }
+    }
+  }
+}
+
 #preview-expect {
   border-radius: 0.3rem;
   border: 1px solid #e3e3e3;
@@ -1618,7 +1652,7 @@ a:hover {
       padding: 0.92rem 0 0 1.02rem;
       h3 {
         margin: 0;
-        font-size: 0.87rem;
+        font-size: 0.93rem;
       }
       p {
         font-size: 0.8rem;
@@ -2316,6 +2350,7 @@ a:hover {
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.6);
+    z-index: 1000;
     .mask-apply {
       position: fixed;
       left: 50%;
@@ -2323,7 +2358,7 @@ a:hover {
       margin-top: -4.2rem;
       margin-left: -6.75rem;
       width: 13.5rem;
-      height: 8.4rem;
+      height: 8.3rem;
       background: #fff;
       font-size: 0.8rem;
       border-radius: 0.23rem;
@@ -2354,9 +2389,9 @@ a:hover {
       color: #3f9e9f;
       float: left;
       text-align: center;
-      border-radius: 0.23rem 0 0.23rem 0;
-      background: #a1a1a1;
+      border-radius: 0 0 0.23rem 0;
       border: none;
+      background-color: #fff;
       font-size: 0.8rem;
     }
   }
@@ -2742,7 +2777,7 @@ a:hover {
 #preview-expect{padding: 0;}
 #preview-expect .work-time{padding: 0.8rem}
 #resumes-preview{padding-bottom: 3rem;}
-.wrap .borDer{border: 1px solid #e3e3e3;min-height: 3rem;}
+.wrap .borDer{min-height: 3rem;}
 .wrap .borDer>p.certi-p{padding-top: 0.7rem;}
 #wrap .wrap .box-minheight {min-height: 3rem;}
 #wrap .wrap #user_pect {padding-top: 0.3rem;}
@@ -2756,6 +2791,7 @@ a:hover {
 .position-info {padding: 1rem 1rem 0 1rem;}
 .record-job h3 span{display: block;}
 
+#jobs_home_list {margin-top: -0.9rem;}
 #jobs_home_list .left {font-size:0.7rem;}
 #jobs_home_list .right {font-size:0.7rem;}
 #jobs_home_list .job-name {font-size:0.93rem;}
@@ -2804,7 +2840,6 @@ a:hover {
       position: absolute;
       right: 0.5rem!important;
       margin-top: 1rem;
-      z-index: 100;
       background: url(image_path("icon_24.png")) no-repeat;
       background-size: 0.9rem 0.9rem;
     }
@@ -2830,6 +2865,15 @@ a:hover {
     }
   }
 
+}
+
+#job_list {
+  #msg {
+    background-color: #f6f6f6;
+  }
+  li:nth-child(3) {
+    background-color: #f6f6f6;
+  }
 }
 
 
