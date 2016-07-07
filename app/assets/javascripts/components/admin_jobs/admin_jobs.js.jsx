@@ -49,7 +49,7 @@ var AdminJob = React.createClass({
     this.state.jobs.forEach(
       function(job, index) {
         jobs_all.push(
-          <Job key={index} data={job} handleCheck={this.handleCheck} />
+          <Job key={index} data={job} handleCheck={this.handleCheck} index={index} />
         )
       }.bind(this)
     )
