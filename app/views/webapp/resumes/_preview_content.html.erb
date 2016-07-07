@@ -49,12 +49,15 @@
 <% end %>
 
 
-<section class="resume-show resumes-preview-public preview-show">
+<section class="resume-show resumes-preview-public preview-show" id="preview_resume">
   <h1>工作经历</h1>
-  <div class="wrap resumes-preview-bg public-preview-style">
+  <div class="wrap resumes-preview-bg public-preview-style work-try">
     <% if @work_experiences %>
     <% @work_experiences.each do |w| %>
     <div class="box" style="padding-bottom:0;">
+      <div class="blue-left">
+        <div class="blue-point"></div>
+      </div>
       <div class="green-point"></div>
       <time><%= w.started_at.strftime("%Y-%m-%d") if w.started_at %>-<%= w.left_time.strftime("%Y-%m-%d") if w.left_time %></time>
       <div class="time-line-box work-time">
@@ -72,12 +75,15 @@
 </section>
 
 
-<section class="resume-show resumes-preview-public">
+<section class="resume-show resumes-preview-public" id="preview_resume">
   <h1>教育经历</h1>
-  <div class="wrap resumes-preview-bg public-preview-style">
+  <div class="wrap resumes-preview-bg public-preview-style work-try">
     <% if @education_experiences %>
     <% @education_experiences.each do |e| %>
     <div class="box" style="padding-bottom:0;">
+      <div class="blue-left">
+        <div class="blue-point"></div>
+      </div>
       <div class="green-point"></div>
       <time><%= e.graduated_at.strftime("%Y") if e.graduated_at %>年毕业</time>
       <div class="time-line-box work-time">

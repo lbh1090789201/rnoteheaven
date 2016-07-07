@@ -46,9 +46,7 @@
       <% end %>
       <p>
         <%= @user.sex %>
-        <% if @apply_record %>
-          <span><%= @apply_record.age %>岁</span>
-        <% end %>
+        <span><%= @user_age %>岁</span>
         <span><%= @user.start_work_at %>工作经验</span>
       </p>
     </div>

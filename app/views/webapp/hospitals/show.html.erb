@@ -1,7 +1,7 @@
 <!--该页是医院的职位列表页-->
 <% provide :title, @hospital.name %>
 <div class="jobs hospitaljob-list">
-  <div class="jobs-list">
+  <div class="jobs-list hosp-show">
     <% @jobs.each do |h| %>
 
     <!-- 判断是否来自 resume_viewers -->
@@ -10,7 +10,7 @@
     <% else %>
       <a href="/webapp/jobs/<%= h.id %>?hospital=<%= params[:id] %>">
     <% end %>
-    
+
       <div class="job">
         <div class="title">
           <div class="left"><%= h.name %></div>
