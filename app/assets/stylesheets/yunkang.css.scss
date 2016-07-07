@@ -336,6 +336,10 @@ a:hover {
                 height: 1.1rem;
               }
             }
+            .educate-edit {
+              top: -0.25rem;
+              right: -0.1rem;
+            }
 
             .expend-show {
               position: absolute;
@@ -470,14 +474,15 @@ a:hover {
   background-color: $light-gray;
 
   .form-group {
-    height: 2.58rem;
-    line-height: 2.58rem;
+    min-height: 2.58rem;
+    // line-height: 2.58rem;
     margin-top: 0.5rem;
     overflow: hidden;
     background-color: #fff;
     border-radius: 0.36rem;
     margin-bottom: -2px;
     label {
+      margin-top: 0.2rem;
       float: left;
       padding-left: 1rem;
       padding-right: 1.47rem;
@@ -490,6 +495,7 @@ a:hover {
       }
     }
     input {
+      margin-top: 0.2rem;
       float: right;
       padding: 0;
       width: 13rem;
@@ -518,8 +524,8 @@ a:hover {
     display: block;
     position: absolute;
     right: 1rem;
-    margin-top: 0.9rem;
-    background: url("icon.png");
+    margin-top: 1.1rem;
+    background: url("icon.png") no-repeat;
     background-size: 0.41rem 0.66rem;
   }
   .form-group:nth-of-type(1)::after{
@@ -575,6 +581,9 @@ a:hover {
     height: 8rem!important;
     padding-left: 1rem;
     resize: none;
+    margin-top: -1rem;
+    padding-top: 0;
+    display: block;
     @include  box-shadow(inset 0 0 #fff);
   }
   .btn {
@@ -950,8 +959,15 @@ a:hover {
   margin: 0 auto;
   width: 100%;
   background-color: #FFFFFF;
+  position: relative;
 
   .nav-bar{
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    z-index: 0;
+    width: 100%;
+    height: 2.05rem;
     border-bottom: 1px solid #e3e3e3;
     margin-top: -5px;
   }
@@ -961,17 +977,20 @@ a:hover {
     height: 2rem;
     color: $color-font !important;
     display: block;
+    margin-top: -0.25rem;
+    position: relative;
+    z-index: 10;
    li {
     list-style: none;
     float: left;
     width: 2.6rem;
     margin-right: 2.17rem;
     text-align: center;
-    margin-top: -0.25rem;
+
     color: $color-font;
     display: block;
     height: 2rem;
-    line-height: 2rem;
+    line-height: 2.19rem;
     a {
       color: $color-font;
       font-size: 0.65rem;
@@ -1075,6 +1094,16 @@ a:hover {
         .job-status {
           font-size: 0.7rem;
           margin-top: 0.47rem;
+        }
+        .apply-li {
+          height: 5.2rem;
+          .job-name {
+            margin-top: 0.66rem;
+          }
+          .job-range {
+            margin-top: 0.6rem;
+            margin-bottom: 0;
+          }
         }
       }
     }
@@ -1237,9 +1266,9 @@ a:hover {
             span {
               display: inline-block;
               margin-left: 0.33rem;
-              width: 1.63rem;
-              height: 0.78rem;
-              line-height: 0.89rem;
+              width: 1.55rem;
+              height: 0.75rem;
+              line-height: 0.75rem;
               text-align: center;
               color: #3f9e9d;
               border: 1px solid #3f9e9d;
@@ -1896,7 +1925,7 @@ a:hover {
 
 /*我的应聘记录　开始－冰华*/
 #apply-bg {
-  background: #d9d9d9;
+  background: #f3f3f3;
   .position-info {
     width: 100%;
     background: #fff;
@@ -1939,9 +1968,9 @@ a:hover {
   .apply-status {
     width: 100%;
     margin: 0.7rem auto 0.7rem auto;
-    height: 3.5rem;
-    line-height: 3.5rem;
-    font-size: 0.93rem;
+    height: 2.6rem;
+    line-height: 2.6rem;
+    font-size: 0.87rem;
     font-weight: 550;
     text-indent: 0.4rem;
     color: #141414;
@@ -1964,6 +1993,115 @@ a:hover {
     }
   }
 }
+// 重构状态展示列表
+.apply-content {
+  width: 100%;
+  min-height: 10rem;
+  background: #fff;
+  padding-top: 1.92rem;
+  .apply-stat {
+    width: 17.5rem;
+    margin: 0 auto;
+    // height: 10rem;
+    .apply-end {
+      width: 100%;
+      height: 4.5rem;
+      color: #9e9e9e;
+      border-left: 1px solid #9e9e9e;
+      padding-left: 1.42rem;
+      position: relative;
+      time {
+        font-size: 0.87rem;
+      }
+      div {
+        margin-top: 0.25rem;
+        p {
+          font-size: 0.45rem;
+        }
+      }
+    }
+
+    .apply-view {
+      width: 100%;
+      height: 4.5rem;
+      color: #9e9e9e;
+      border-left: 1px solid #9e9e9e;
+      margin-bottom: -1.2rem;
+      padding-left: 1.42rem;
+      position: relative;
+      time {
+        font-size: 0.6rem;
+      }
+      div {
+        margin-top: 0.25rem;
+        p {
+          font-size: 0.45rem;
+        }
+      }
+    }
+    .apply-recieve {
+      width: 100%;
+      height: 4.5rem;
+      color: #9e9e9e;
+      padding-left: 1.42rem;
+      position: relative;
+      time {
+        font-size: 0.6rem;
+      }
+      div {
+        margin-top: 0.25rem;
+        p {
+          font-size: 0.45rem;
+        }
+      }
+    }
+
+    .blue-point {
+      width: 0.9rem;
+      height: 0.9rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      left: -0.46rem;
+      background: #9e9e9e;
+      margin: 0!important;
+    }
+  }
+  #apply_recieve {
+    .apply-recieve {
+      .blue-point {
+        background: #3d9f9f;
+      }
+      time {
+        font-size: 0.87rem;
+        color: #3d9f9f;
+      }
+    }
+  }
+  #apply_view {
+    .apply-view {
+      .blue-point {
+        background: #3d9f9f;
+      }
+      time {
+        font-size: 0.87rem;
+        color: #3d9f9f;
+      }
+    }
+  }
+  #apply_end {
+    .apply-end {
+      .blue-point {
+        background: #3d9f9f;
+      }
+      time {
+        font-size: 0.87rem;
+        color: #3d9f9f;
+      }
+    }
+  }
+}
+
 /*我的应聘记录　结束－冰华*/
 
 // 公开简历　开始－李冰华
@@ -2253,8 +2391,8 @@ a:hover {
     display: block;
     position: absolute;
     right: 1rem;
-    margin-top: 0.9rem;
-    background: url("icon.png");
+    margin-top: 1.1rem;
+    background: url("icon.png") no-repeat;
     background-size: 0.41rem 0.66rem;
   }
 }
@@ -2487,8 +2625,8 @@ a:hover {
     display: block;
     position: absolute;
     right: 1rem;
-    margin-top: 0.9rem;
-    background: url("icon.png");
+    margin-top: 1.1rem;
+    background: url("icon.png") no-repeat;
     background-size: 0.41rem 0.66rem;
   }
 }
@@ -2626,17 +2764,18 @@ a:hover {
 #myform #search{-webkit-appearance: none;}
 #apply-bg .position-info a .record-hh h3 span {margin-left:0;float: right;margin-right:2.3rem;}
 #apply-bg .apply-info a .record-hh p span {margin-left:0;float: right;margin-right:2.3rem;}
+#apply-bg .apply-info a .record-hh p span img {width: 0.38rem; height: auto;}
 
 .edit-expectjob {
-  .form-group:nth-of-type(1) {
+  .form-group:nth-of-type(1)::after {
     content: "";
     width: 0.41rem;
     height: 0.66rem;
     display: block;
     position: absolute;
     right: 1rem;
-    margin-top: 0.9rem;
-    background: url("icon.png");
+    margin-top: 1.1rem;
+    background: url("icon.png") no-repeat;
     background-size: 0.41rem 0.66rem;
   }
   .form-group:nth-of-type(5) {
@@ -2664,7 +2803,7 @@ a:hover {
       display: block;
       position: absolute;
       right: 0.5rem!important;
-      margin-top: 0.8rem;
+      margin-top: 1rem;
       z-index: 100;
       background: url(image_path("icon_24.png")) no-repeat;
       background-size: 0.9rem 0.9rem;
@@ -2680,6 +2819,18 @@ a:hover {
   }
 }
 
+#wrap .container #work_eidt {
+  .form-group:nth-of-type(5) {
+    position: relative;
+    overflow: visible;
+    textarea {
+      position: absolute;
+      top: 3.5rem;
+      left: 0;
+    }
+  }
+
+}
 
 
 // 屏蔽医院

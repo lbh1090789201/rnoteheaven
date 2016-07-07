@@ -22,7 +22,7 @@
                 <% @data.each do |d| %>
                   <% if d[:resume_status] %>
                   <a href="/webapp/apply_records/<%= d[:id] %>" onclick="EditNew('<%= d[:has_new] %>',this)" class="record-status" index="<%= d[:id] %>">
-                    <li class="job-li">
+                    <li class="job-li apply-li">
                       <div class="left">
                         <h3 class="job-name">
                           <%= d[:job_name] %>
@@ -47,7 +47,7 @@
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="筛选" %>
                   <a href="/webapp/apply_records/<%= d[:id] %>" class="record-status">
-                    <li class="job-li">
+                    <li class="job-li apply-li">
                       <div class="left">
                         <h3 class="job-name"><%= d[:job_name] %></h3>
                         <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
@@ -67,7 +67,7 @@
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="面试" %>
                   <a href="/webapp/apply_records/<%= d[:id] %>" onclick="EditNew('<%= d[:has_new] %>',this)" class="record-status" index="<%= d[:id] %>">
-                    <li class="job-li">
+                    <li class="job-li apply-li">
                       <div class="left">
                         <h3 class="job-name">
                           <%= d[:job_name] %>
@@ -92,7 +92,7 @@
                 <% @data.each do |d| %>
                   <% if d[:resume_status]=="不合适" %>
                   <a href="/webapp/apply_records/<%= d[:id] %>" onclick="EditNew('<%= d[:has_new] %>',this)" class="record-status" index="<%= d[:id] %>">
-                    <li class="job-li">
+                    <li class="job-li apply-li">
                       <div class="left">
                         <h3 class="job-name">
                           <span><%= d[:job_name] %><span>

@@ -1,6 +1,6 @@
 <% provide :title, "编辑工作经历" %>
 
-<div class="edit_basic edit-work-experiences work-edit-page">
+<div class="edit_basic edit-work-experiences work-edit-page" id="work_eidt">
     <%= simple_form_for @work_experience, :method => :patch, remote: true, url: webapp_work_experience_path(params[:id]), class: "form-btn-submit" do |f| %>
       <div class="job-pubilc">
         <%= f.input :company, label: "医        院", input_html: { class: "user-input", id: "user_hospital"} %>
@@ -9,7 +9,7 @@
       <%= f.input :position, label: '职        位', input_html: { readonly: "readonly", class: "work-position user-input", id: "work_position"} %>
       <%= f.input :started_at, label: '入职时间', as: :string, input_html: { class: "user-input", id: "beginTime"} %>
       <%= f.input :left_time, label: '离职时间', as: :string, input_html: { class: "user-input", id: "endTime"} %>
-      <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
+      <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", id: "text_area", placeholder: "最多一千字"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
       <div class="btm-nav">
         <p class="btm-delete" onclick="ClickShowHide(this)">删除此经历</p>
