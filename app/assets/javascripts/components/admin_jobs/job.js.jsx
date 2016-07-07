@@ -2,7 +2,7 @@ var Job = React.createClass({
   render: function() {
     return (
       <tr>
-        <td>{this.props.data.id}</td>
+        <td>{this.props.index + 1}</td>
         <td>{this.props.data.name}</td>
         <td>{this.props.data.job_type}</td>
         <td>行业</td>

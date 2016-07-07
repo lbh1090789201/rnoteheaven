@@ -67,8 +67,8 @@ var AdminJobAll = React.createClass({
           </thead>
           <tbody>
             {this.state.jobs.map(
-                function(job) {
-                return(<Job key={job.id} data={job} handleCheck={this.handleCheck} />)
+                function(job, index) {
+                return(<Job key={job.id} data={job} handleCheck={this.handleCheck} index={index} />)
               }.bind(this)
             )}
           </tbody>
