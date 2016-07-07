@@ -73,7 +73,7 @@ var ReviewJobAll = React.createClass({
             <input type="text" className="form-control" placeholder='职位名称' name='job_name'
                    defaultValue={this.state.job_name} ref="job_name" />
           </div>
-          <button type='submit' className='btn btn-primary'>查询</button>
+          <button type='submit' className='btn btn-primary search'>查询</button>
      </form>
     )
   }
@@ -84,11 +84,25 @@ var RadioButtons = React.createClass({
   render: function() {
     return (
       <span>
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="" />全部职位
+        <label className="checkbox-inline">
+          <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="" />全部职位
+        </label>
+
+        <label className="checkbox-inline">
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="release" />发布中职位
+        </label>
+
+        <label className="checkbox-inline">
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="end" />已结束职位
+        </label>
+
+        <label className="checkbox-inline">
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="fail" />审核失败职位
+        </label>
+
+        <label className="checkbox-inline">
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="freeze" />冻结中职位
+        </label>
       </span>
     )
   }

@@ -61,7 +61,7 @@ var ReviewJob = React.createClass({
             <input type="text" className="form-control" placeholder='职位名称' name='job_name'
                    defaultValue={this.state.job_name} ref="job_name" />
           </div>
-          <button type='submit' className='btn btn-primary'>查询</button>
+          <button type='submit' className='btn btn-primary search'>查询</button>
      </form>
     )
   }

@@ -57,8 +57,10 @@ var AdminJob = React.createClass({
     return (
       <div className="admin-jobs">
         <ReviewJob dad={this} />
+        <div className="handle-button">
         <button className="btn btn-info pull-right" onClick={this.handleClick} name="passBtn" value="release">审核通过</button>
         <button className="btn btn-danger pull-right" onClick={this.handleClick} name="refuseBtn" value="fail">审核拒绝</button>
+        </div>
         <table className="table table-bordered">
           <thead>
             <tr>
