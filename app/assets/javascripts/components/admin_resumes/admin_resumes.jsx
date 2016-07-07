@@ -7,7 +7,7 @@ var AdminResume = React.createClass({
   ,render: function() {
     return (
       <div>
-        <AdminResumeForm />
+        <AdminResumeForm dad={this}/>
         <AdminResumeTable resumes={this.state.resumes}/>
       </div>
     )
@@ -21,13 +21,49 @@ var AdminResumeForm = React.createClass({
       rid: '',
       show_name: '',
       location: '',
+      public: '',
+      resume_freeze: '',
     }
+  }
+  ,handleSubmit: function(e) {
+    e.preventDefault()
+
+    $.ajax({
+      url: '/admin/resumes',
+      type: 'GET',
+      data: {
+        'search': true,
+        'rid': this.refs.rid.value,
+        'show_name': this.refs.show_name.value,
+        'location': this.refs.location.value,
+        'public' : this.state.public,
+        'resume_freeze': this.state.resume_freeze
+      },
+      success: function(res) {
+        console.log(res)
+        console.log(this)
+        this.props.dad.setState({resumes : res.resumes})
+      }.bind(this),
+      error: function(res){
+        alert(res.responseText)
+      },
+    })
+  }
+  ,handleCheck: function(e) {
+    let name = e.target.name,
+        val = e.target.checked
+
+      if(val) {
+        this.setState({[name] : 1})
+      } else {
+        this.setState({[name] : ''})
+      }
   }
   ,render: function() {
     return (
       <form className='form-inline' onSubmit={this.handleSubmit}>
         <div className='form-group col-sm-12'>
-
+          <AdminResumeCheckbox handleCheck={this.handleCheck}/>
         </div>
           <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='简历编号' name='rid'
@@ -43,6 +79,22 @@ var AdminResumeForm = React.createClass({
           </div>
           <button type='submit' className='btn btn-primary'>查询</button>
       </form>
+    )
+  }
+})
+
+var AdminResumeCheckbox = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <label className="checkbox-inline">
+          <input type="checkbox" name="public" onChange={this.props.handleCheck} /> 公开简历
+        </label>
+
+        <label className="checkbox-inline">
+          <input type="checkbox" name="resume_freeze" onChange={this.props.handleCheck} /> 冻结简历
+        </label>
+      </div>
     )
   }
 })
@@ -109,13 +161,13 @@ var AdminResumeItem = React.createClass({
       <tr>
         <td>{this.props.index + 1}</td>
         <td>{resume.id}</td>
-        <td>用户姓名</td>
-        <td>所在省市</td>
-        <td>{resume.public}</td>
-        <td>{resume.resume_freeze}</td>
-        <td>投递数</td>
-        <td>被查看数</td>
-        <td>操作</td>
+        <td>{resume.show_name}</td>
+        <td>{resume.location}</td>
+        <td>{resume.public ? "公开" : "隐私"}</td>
+        <td>{resume.resume_freeze ? "冻结" : "正常"}</td>
+        <td>{resume.apply_count}</td>
+        <td>{resume.viewed_count}</td>
+        <td>查看</td>
         <td><input type="checkBox" /></td>
       </tr>
     )

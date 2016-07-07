@@ -84,6 +84,18 @@ RSpec.describe Resume, type: :model do
       end
     end
 
+    # 测试 Admin 获取简历相关信息
+    it "test Resume get_info resume" do
+      @user = create(:user, location: "武汉", show_name: "Ming")
+      @resume = create(:resume, user_id: @user.id)
+      @apply_record = create(:apply_record, user_id: @user.id)
+      @apply_record = create(:apply_record, user_id: @user.id, job_id: 22)
+      @resume_viewer = create(:resume_viewer, user_id: @user.id)
+
+      res = Resume.get_info @resume
+      expect(res["apply_count"]).to eq(2)
+    end
+
     # 测试简历完整度
     describe 'test get_maturity' do
       before :each do

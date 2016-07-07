@@ -21,8 +21,7 @@ class Resume < ActiveRecord::Base
 
   # 按 公开 筛选
   scope :filter_is_public, -> (status){
-    # status ? val = true : val = false
-    where(public: status)
+    where(public: status) if status.present?
   }
 
   # 按 是否被屏蔽筛选
@@ -37,14 +36,14 @@ class Resume < ActiveRecord::Base
   }
 
   # 按 用户所在地 筛选
-  def self.filter_by_city city
-    includes(:user).where(users: {location: city})
-  end
+  scope :filter_by_city, -> (city){
+    includes(:user).where(users: {location: city}) if city.present?
+   }
 
   # 按 用户名 搜索
-  def self.filter_show_name name
-    includes(:user).where(users: {show_name: name})
-  end
+  scope :filter_show_name, -> (name){
+    includes(:user).where('users.show_name LIKE ?', "%#{name}%").references(:user) if name.present?
+   }
 
   # 获取剩余刷新时间
   def self.refresh_left(rid)
@@ -68,6 +67,21 @@ class Resume < ActiveRecord::Base
     info[:resume_id] = resume.id
 
     return info.as_json
+  end
+
+  # Admin 获取简历相关信息
+  def self.get_info resume
+    res = resume.as_json
+    user = User.find resume.user_id
+    apply_count = ApplyRecord.where(user_id: user.id).length
+    viewed_count = ResumeViewer.where(user_id: user.id).length
+
+    res["show_name"] = user.show_name
+    res["location"] = user.location
+    res["apply_count"] = apply_count
+    res["viewed_count"] = viewed_count
+
+    return res
   end
 
   # 获得完整度
