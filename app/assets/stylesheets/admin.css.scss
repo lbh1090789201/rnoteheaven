@@ -1,4 +1,6 @@
 @import "mixin.scss";
+@import "admin/jobs.scss";
+@import "admin/users.scss";
 
 /* 公共样式开始 */
 html {
@@ -106,11 +108,9 @@ header {
   }
 }
 
-footer {
-  text-align: center;
+  footer {
+    text-align: center;
+  }
 }
 
 /* 公共样式结束 */
-
-@import "admin/jobs.scss";
-@import "admin/users.scss";

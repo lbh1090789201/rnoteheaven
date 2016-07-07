@@ -93,7 +93,7 @@ class Webapp::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:show_name, :sex, :work_time, :highest_degree, :start_work_at, :seeking_job,
-                                 :cellphone, :email, :location, :job_status, :avatar, :position, :birthday)
+                                 :cellphone, :user_email, :location, :job_status, :avatar, :position, :birthday)
   end
 
 end

@@ -28,7 +28,7 @@
         <%# @user.each do |u| %>
         <section class="show-style">
             <h2>基本信息</h2>
-            <div class="box box-table borDer">
+            <div class="box box-table borDer" id="box_table">
                 <table>
                     <tr>
                         <td><span>姓</span>名：</td>
@@ -80,24 +80,27 @@
         <section class="show-style">
             <h2>工作经历</h2>
             <% if !@work_experiences.blank? %>
-            <div class="box work-show borDer">
+            <div class="box work-show borDer work-try">
                 <a href="<%= webapp_work_experiences_path %>" class="edit">
                     <%= image_tag "edit.png" %>
                 </a>
                <% @work_experiences.each do |w| %>
-                <time><%= w.started_at.strftime("%Y-%m-%d") if w.started_at %>-<%= w.left_time.strftime("%Y-%m-%d") if w.left_time %></time>
-                <div class="time-line-box">
-                    <h3><%= w.company %><a class="expend expend-show" onclick="expend_desc(this)">
-                            <%= image_tag "show.png" %>
-                        </a>
-                    </h3>
-                    <p class="job-desc-show">
-                      <%= w.job_desc[0, 60] + '……' %>
-                    </p>
-                     <p class="job-desc-hide" style="display:none;">
-                       <%= w.job_desc %>
+               <div class="blue-left">
+                 <div class="blue-point"></div>
+                 <time><%= w.started_at.strftime("%Y-%m-%d") if w.started_at %>-<%= w.left_time.strftime("%Y-%m-%d") if w.left_time %></time>
+                 <div class="time-line-box">
+                     <h3><%= w.company %><a class="expend expend-show" onclick="expend_desc(this)">
+                             <%= image_tag "show.png" %>
+                         </a>
+                     </h3>
+                     <p class="job-desc-show">
+                       <%= w.job_desc[0, 60] + '……' %>
                      </p>
-                </div>
+                      <p class="job-desc-hide" style="display:none;">
+                        <%= w.job_desc %>
+                      </p>
+                 </div>
+               </div>
               <% end %>
             </div>
             <% else %>
@@ -117,16 +120,19 @@
             <h2>教育经历<span><%= image_tag "must.png" %></span>
             </h2>
             <% if !@education_experiences.blank? %>
-            <div class="box work-show box-education borDer">
+            <div class="box work-show box-education borDer work-try">
                 <% @education_experiences.each do |e| %>
-                <time><%= e.entry_at.strftime("%Y-%m-%d") if e.entry_at %>－<%= e.graduated_at.strftime("%Y-%m-%d") if e.graduated_at %></time>
-                <div class="time-line-box">
-                  <a href="<%= webapp_education_experiences_path %>" class="edit">
-                      <%= image_tag "edit.png" %>
-                  </a>
-                    <h3><%= e.college %>
-                    </h3>
-                  <p><%= e.major %></p>
+                <div class="blue-left">
+                  <div class="blue-point"></div>
+                  <time><%= e.entry_at.strftime("%Y-%m-%d") if e.entry_at %>－<%= e.graduated_at.strftime("%Y-%m-%d") if e.graduated_at %></time>
+                  <div class="time-line-box">
+                    <a href="<%= webapp_education_experiences_path %>" class="edit">
+                        <%= image_tag "edit.png" %>
+                    </a>
+                      <h3><%= e.college %>
+                      </h3>
+                    <p><%= e.major %></p>
+                  </div>
                 </div>
               <% end %>
             </div>
@@ -154,7 +160,7 @@
                   <p class="certi-p"><%= f.title %></p>
                   <% end %>
                   <% elsif %>
-                    <div class="edit-blank">
+                    <div class="edit-blank edit-certi">
                       <a href="/webapp/certificates">
                         <p>
                             <%= image_tag "ti"%>
@@ -170,7 +176,7 @@
             <h2>期望工作<span><%= image_tag "must.png" %></span>
             </h2>
             <% if @expect_job %>
-            <div class="box work-show box-certif borDer box-minheight">
+            <div class="box work-show box-certif borDer box-minheight" id="user_pect">
                 <a href="<%= edit_webapp_expect_job_path(@expect_job.id) %>" class="edit">
                     <%= image_tag "edit.png" %>
                 </a>

@@ -102,12 +102,11 @@
      width: 33.33%;
      height: inherit;
      float: left;
-     text-align: center;
      position: relative;
    }
    a {
-     display: inline-block;
-     min-width: 1.4rem;
+     display: block;
+     width: 2rem;
      height: inherit;
      margin: 0 auto;
      position: relative;
@@ -115,10 +114,12 @@
    }
    span {
      position: absolute;
-     bottom: 0.3rem;
+     bottom: 0.25rem;
      left: 0;
      display: block;
+     width: 100%;
      font-size: 0.43rem;
+     padding-top: 0.2rem;
    }
    li:nth-child(1) {
      a {

@@ -177,3 +177,8 @@ function ClickDeleteBtn(obj){
     $('#job_page').attr('class', 'hospital-page');
     $('#hospital_page').attr('class', 'job-page');
   }
+
+  //清空input内容
+  function EmptyCont(input_id) {
+  	$("#"+input_id).val('');
+  }

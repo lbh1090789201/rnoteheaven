@@ -4,7 +4,10 @@
 
 <div class="edit_basic edit-work-experiences edit-education">
     <%= simple_form_for :education_experience, url: webapp_education_experiences_path,remote: true, :method => :post  do |f| %>
-      <%= f.input :college, label: "学       校", input_html: { class: "user-input"} %>
+      <div class="job-pubilc">
+        <%= f.input :college, label: "学        校", input_html: { class: "user-input", id: "user_school"} %>
+        <span class="empty-cont" onclick="EmptyCont('user_school')"></span>
+      </div>
       <%= f.input :major, label: '专       业', input_html: { class: "user-input"} %>
       <%= f.input :education_degree, label: '学        历', input_html: { readonly: "readonly",class: "education-degree user-input", id: "education_degree"} %>
       <%= f.input :entry_at, label: '开始时间', as: :string, input_html: { class: "user-input", id: "beginTime"} %>

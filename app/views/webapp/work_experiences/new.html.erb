@@ -3,8 +3,10 @@
 
 <div class="edit_basic edit-work-experiences work-edit-page">
     <%= simple_form_for :work_experience, as: :post,remote: true, url: webapp_work_experiences_path do |f| %>
-    <%= f.input :company, label: "医        院", input_html: { class: "user-input"} %>
-    <%= f.input :position, label: '职        位', input_html: { readonly: "readonly", class: "work-position user-input", id: "work_position"} %>
+    <div class="job-pubilc">
+      <%= f.input :company, label: "医        院", input_html: { class: "user-input", id: "user_hospital"} %>
+      <span class="empty-cont" onclick="EmptyCont('user_hospital')"></span>
+    </div>    <%= f.input :position, label: '职        位', input_html: { readonly: "readonly", class: "work-position user-input", id: "work_position"} %>
     <%= f.input :started_at, label: '入职时间', input_html: { class: "user-input", id: "beginTime"} %>
     <%= f.input :left_time, label: '离职时间', input_html: { class: "user-input", id: "endTime"} %>
     <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>

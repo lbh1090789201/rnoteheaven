@@ -313,7 +313,7 @@ a:hover {
             background-color: #fff;
             font-size: 0.77rem;
             overflow: hidden;
-          position: relative;
+            position: relative;
             table {
               tr {
                 line-height: 1.6rem;
@@ -353,7 +353,7 @@ a:hover {
               img {
                 width: 2rem;
                 height: 0.55rem;
-                margin-top: 0.3rem;
+                margin-top: 0.1rem;
               }
             }
             time {
@@ -361,28 +361,53 @@ a:hover {
               margin-bottom: 0;
               display:block;
             }
-            time::before {
-              content: "";
-              display: block;
-              position: absolute;
-              margin-left: -1.05rem;
-              margin-top: 0.25rem;
-              width: 0.6rem;
-              height: 0.6rem;
-              border-radius: 0.3rem;
-              background-color: $beauty-blue;
-
-            }
+            // time::before {
+            //   content: "";
+            //   display: block;
+            //   position: absolute;
+            //   margin-left: -1.05rem;
+            //   margin-top: 0.25rem;
+            //   width: 0.6rem;
+            //   height: 0.6rem;
+            //   border-radius: 0.3rem;
+            //   background-color: $beauty-blue;
+            //
+            // }
             .time-line-box {
               margin-top: -0.4rem;
               padding-top: 0.5rem;
-              border-left: 1px solid $beauty-blue;
+              // border-left: 1px solid $beauty-blue;
               padding-left: 0.77rem;
               padding-bottom: 0.3rem;
               h3 {
                 margin: 0.3rem 0 0.5rem 0;
               }
             }
+        }
+        .work-try {
+          padding-top: 0.8rem;
+          padding-bottom: 0.2rem;
+          .blue-left {
+            border-left: 1px solid $beauty-blue;
+            position: relative;
+            .blue-point {
+              position: absolute;
+              top: 0;
+              left: -0.25rem;
+              width: 0.5rem;
+              height: 0.5rem;
+              border-radius: 50%;
+              background-color: $beauty-blue;
+              z-index: 10;
+            }
+            .time-line-box {
+              padding-bottom: 0.1rem;
+            }
+          }
+        }
+        #box_table {
+          padding-top: 0.55rem;
+          padding-bottom: 0.4rem;
         }
 
         .box-avatar {
@@ -403,10 +428,9 @@ a:hover {
             .avatar-img {
               height: 3.95rem;
               margin-bottom: 0.3rem;
-
-              .avatar-box {
-                margin-top: -1rem;
-              }
+            }
+            .avatar-box {
+              margin-bottom: 0.3rem;
             }
           }
         }
@@ -446,6 +470,8 @@ a:hover {
   background-color: $light-gray;
 
   .form-group {
+    height: 2.58rem;
+    line-height: 2.58rem;
     margin-top: 0.5rem;
     overflow: hidden;
     background-color: #fff;
@@ -472,6 +498,12 @@ a:hover {
       font-size: 0.86rem;
       text-align: right;
       padding-right: 1.78rem;
+      box-shadow: none;
+      -webkit-shadow: none;
+    }
+    textarea {
+      box-shadow: none;
+      -webkit-shadow: none;
     }
     textarea:focus, input:focus {
       outline: none;
@@ -668,10 +700,11 @@ a:hover {
       .info-usermajor {
         font-size: 0.7rem;
         margin-top: 0.73rem;
+        margin-bottom: 0.1rem;
       }
       .info-userposition {
         font-size: 0.7rem;
-        margin-top: 0.2rem;
+        // margin-top: 0.2rem;
       }
     }
     .user-status {
@@ -693,9 +726,9 @@ a:hover {
       }
       img {
         display: inline-block;
-        width: 0.5rem;
-        height: 0.5rem;
-        margin-left: 0.3rem;
+        width: 0.3rem;
+        height: auto;
+        margin-left: 0.7rem;
         margin-top: 0.5rem;
         float: left;
       }
@@ -925,11 +958,9 @@ a:hover {
   ul.apply_records {
     margin: 0 auto;
     width: 17rem;
-    height: 1.93rem;
-    line-height: 1.93rem;
+    height: 2rem;
     color: $color-font !important;
     display: block;
-    margin-top: 0.42rem;
    li {
     list-style: none;
     float: left;
@@ -938,6 +969,9 @@ a:hover {
     text-align: center;
     margin-top: -0.25rem;
     color: $color-font;
+    display: block;
+    height: 2rem;
+    line-height: 2rem;
     a {
       color: $color-font;
       font-size: 0.65rem;
@@ -2212,9 +2246,6 @@ a:hover {
 
 //resumes show页面
 .edit-education {
-  .form-group:nth-of-type(2)::after {
-    display: none;
-  }
   .form-group:nth-of-type(5)::after {
     content: "";
     width: 0.41rem;
@@ -2228,33 +2259,19 @@ a:hover {
   }
 }
 
-.edit-expectjob {
-  .form-group:nth-of-type(1)::after {
-    content: "";
-    width: 0.41rem;
-    height: 0.66rem;
-    display: block;
-    position: absolute;
-    right: 1rem;
-    margin-top: 0.9rem;
-    background: url("icon.png");
-    background-size: 0.41rem 0.66rem;
-  }
-  .form-group:nth-of-type(5) {
-      margin-bottom: 5.7rem;
-  }
-}
+
 
 
 //resumes show页面
 .show-style {
-  padding-top: 0.7rem;
+  // padding-top: 0.7rem;
   h2 {
     margin-bottom: 0.5rem;
+    margin-top: 0.7rem;
   }
   .work-show {
     time {
-      padding-top: 1.11rem;
+      // padding-top: 0.8rem;
     }
 
   }
@@ -2435,6 +2452,7 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1000;
 }
 
 //home
@@ -2473,9 +2491,6 @@ a:hover {
     background: url("icon.png");
     background-size: 0.41rem 0.66rem;
   }
-  .form-group:nth-of-type(8)::after {
-    display: none;
-  }
 }
 
 // 工作经历首页　bh
@@ -2511,7 +2526,7 @@ a:hover {
     }
     h3 {
       font-size: 0.87rem;
-      margin: 0.7rem 0 0.89rem 0;
+      margin: 0.5rem 0 0.7rem 0;
     }
     p {
       font-size: 0.77rem;
@@ -2590,10 +2605,14 @@ a:hover {
 #preview-expect .work-time{padding: 0.8rem}
 #resumes-preview{padding-bottom: 3rem;}
 .wrap .borDer{border: 1px solid #e3e3e3;min-height: 3rem;}
-.wrap .borDer>p.certi-p{padding-top: 0.5rem;}
-.wrap .box-minheight {min-height: 3rem;}
+.wrap .borDer>p.certi-p{padding-top: 0.7rem;}
+#wrap .wrap .box-minheight {min-height: 3rem;}
+#wrap .wrap #user_pect {padding-top: 0.3rem;}
+#wrap .wrap .edit-certi {border: 0;}
+#wrap .wrap .edit-certi a {margin-top: 0;}
+#wrap .wrap .edit-certi a p {padding-top: 3rem;}
 .newContainer{background: #f3f3f3;}
-.workindex-page{padding-bottom: 1rem;padding-top: 1rem;}
+.workindex-page{padding-bottom: 0;padding-top: 1rem;}
 .box-table .edit{margin-top: -6px;}
 #noBorber{border: none;}
 .position-info {padding: 1rem 1rem 0 1rem;}
@@ -2607,6 +2626,60 @@ a:hover {
 #myform #search{-webkit-appearance: none;}
 #apply-bg .position-info a .record-hh h3 span {margin-left:0;float: right;margin-right:2.3rem;}
 #apply-bg .apply-info a .record-hh p span {margin-left:0;float: right;margin-right:2.3rem;}
+
+.edit-expectjob {
+  .form-group:nth-of-type(1) {
+    content: "";
+    width: 0.41rem;
+    height: 0.66rem;
+    display: block;
+    position: absolute;
+    right: 1rem;
+    margin-top: 0.9rem;
+    background: url("icon.png");
+    background-size: 0.41rem 0.66rem;
+  }
+  .form-group:nth-of-type(5) {
+      margin-bottom: 5.7rem;
+  }
+}
+#wrap {
+  .job-pubilc {
+    position: relative;
+    .empty-cont {
+      display: inline-block;
+      width: 1.3rem;
+      height: 1.3rem;
+      position: absolute;
+      top: 0.65rem;
+      right: 0.1rem;
+      z-index: 1000;
+    }
+  }
+  .job-pubilc {
+    .form-group::after {
+      content: "";
+      width: 0.93rem;
+      height: 0.93rem;
+      display: block;
+      position: absolute;
+      right: 0.5rem!important;
+      margin-top: 0.8rem;
+      z-index: 100;
+      background: url(image_path("icon_24.png")) no-repeat;
+      background-size: 0.9rem 0.9rem;
+    }
+  }
+
+  .edit-work-experiences {
+    .job-pubilc {
+    .form-group::after {
+      right: 0.7rem;
+    }
+   }
+  }
+}
+
 
 
 // 屏蔽医院
