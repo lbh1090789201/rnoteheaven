@@ -50,6 +50,8 @@ Employer.create!({
   hospital_id: hospital.id
 })
 
+set_vip = Employer.set_vip u.id, 1
+
 
 # Test ApplyRecord :tw
 
