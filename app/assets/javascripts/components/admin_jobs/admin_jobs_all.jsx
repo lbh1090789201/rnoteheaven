@@ -47,8 +47,10 @@ var AdminJobAll = React.createClass({
     return (
       <div className="admin-jobs">
         <ReviewJobAll dad={this} />
-        <button className="btn btn-info pull-right" onClick={this.handleClick} name="passBtn" value="saved">解冻职位</button>
-        <button className="btn btn-default pull-right" onClick={this.handleClick} name="passBtn" value="freeze">冻结职位</button>
+        <div className="handle-button">
+          <button className="btn btn-info pull-right" onClick={this.handleClick} name="passBtn" value="saved">解冻职位</button>
+          <button className="btn btn-default pull-right" onClick={this.handleClick} name="passBtn" value="freeze">冻结职位</button>
+        </div>
         <table className="table table-bordered">
           <thead>
             <tr>
@@ -65,8 +67,8 @@ var AdminJobAll = React.createClass({
           </thead>
           <tbody>
             {this.state.jobs.map(
-                function(job) {
-                return(<Job key={job.id} data={job} handleCheck={this.handleCheck} />)
+                function(job, index) {
+                return(<Job key={job.id} data={job} handleCheck={this.handleCheck} index={index} />)
               }.bind(this)
             )}
           </tbody>

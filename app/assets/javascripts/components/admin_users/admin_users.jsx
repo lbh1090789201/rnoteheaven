@@ -91,10 +91,21 @@ var AdminUserRadio = React.createClass({
   render: function() {
     return (
       <span>
+        <label className="checkbox-inline">
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="" />全部
+        </label>
+
+        <label className="checkbox-inline">
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="copper" />医生
+        </label>
+
+        <label className="checkbox-inline">
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="gold" />医院
+        </label>
+
+        <label className="checkbox-inline">
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="admin" />管理员
+        </label>
       </span>
     )
   }
@@ -166,7 +177,7 @@ var AdminUserItem = React.createClass({
         <td>{this.props.data.show_name}</td>
         <td>{transType(this.props.data.user_type)}</td>
         <td>{this.props.data.created_at.slice(0, 10)}</td>
-        <td><button onClick={this.handleClick} className="btn btn-default">修改</button></td>
+        <td><button onClick={this.handleClick} className="btn btn-default btn-form">修改</button></td>
       </tr>
     )
   }

@@ -111,6 +111,20 @@ header {
     padding-top: 50px;
     margin-left: 16.9%;
   }
+
+  // 用于表格内的按钮
+  .btn-form {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  table {
+    th {
+      text-align: center;
+    }
+    td {
+      text-align: center;
+    }
+  }
 }
 
 footer {

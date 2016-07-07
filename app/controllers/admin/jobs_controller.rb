@@ -5,7 +5,7 @@ class Admin::JobsController < ApplicationController
 
   def index
     if params[:search]
-      @jobs = Job.where.not(status: 'reviewing')
+      @jobs = Job.where.not(status: ['reviewing', 'saved'])
                  .filter_job_status(params[:status])
                  .filter_release_before(params[:time_before])
                  .filter_release_before(params[:time_after])
@@ -19,7 +19,7 @@ class Admin::JobsController < ApplicationController
         jobs: @jobs
       }, status: 200
     else
-      @jobs = Job.where.not(status: 'reviewing').as_json
+      @jobs = Job.where.not(status: ['reviewing', 'saved']).as_json
     end
   end
 
