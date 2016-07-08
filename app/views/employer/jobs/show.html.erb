@@ -103,47 +103,43 @@
 
 <script type="text/javascript">
 
-// $(".btn-bottom-boxv>div").on('click',function(){
-//   btn_index = $(this).index();
-//   if(){}
-//   popup(li_text, btn_index)
-// });
+  var popup = function(li_text, call_fun){
+    var len = $("body>div#popup").length;
+    if(len == 0) {
+      $('body').append('<div id="popup"><ul><li id="li_1">'+li_text+
+                   '</li><li id="li_2" onclick="'+call_fun+'">确定</li><li id="li_3" onclick="Clickfail(this)">取消</li></ul></div>');
+    };
+  };
 
-
-
-
-
-
-
-
-
-
-
-
+  function Clickfail(){
+    $("#popup").remove();
+  }
 
   // 暂停按钮
   function postPause(obj) {
-
       if($(obj).attr("class") == "release") {
-        if (confirm('确定暂停？')) {
-          $.ajax({
-            url: '<%= api_employer_jobs_path %>',
-            type: 'PATCH',
-            data: {"job_id":"<%= @job[:id] %>", "status": "pause"},
-            success: function() {
-              set_class('pause');
-              $('#release span').text("再次发布")
-              $('#postPause').off();
-            },
-            error: function() {
-              alert('暂停失败。')
-            }
-          })
-        }
-
+        popup('确定暂停发布此职位？', "pause_job()");
       } else {
         console.log("当前无法暂停");
       }
+  }
+
+  // 暂停发布职位
+  function pause_job() {
+    $("#popup").remove();
+    $.ajax({
+      url: '<%= api_employer_jobs_path %>',
+      type: 'PATCH',
+      data: {"job_id":"<%= @job[:id] %>", "status": "pause"},
+      success: function() {
+        set_class('pause');
+        $('#release span').text("再次发布");
+        $('#postPause').off();
+      },
+      error: function() {
+        alert('暂停失败。');
+      },
+    });
   }
 
   // 再次发布按钮
@@ -158,93 +154,99 @@
     }
       // 当值为再次发布时点击判断may_release
       if(["pause", "end", "saved", "fail"].indexOf($(obj).attr("class")) != -1 ) {
-        var status = '',
-            btn_txt = '',
-            btn_class = '',
-            duration = ''
-
-        if(confirm('确定提交？')) {
-          if($(obj).attr("class") == 'pause') {
-             status = 'release'
-             btn_txt = "已经发布"
-             btn_class = 'release'
-          } else if($(obj).attr("class") == 'end') {
-            status = 'release_again'
-            btn_txt = "已经发布"
-            btn_class = 'release'
-            duration = "<%= @job[:duration] %>"
-          } else {
-            status = 'reviewing'
-            btn_txt = "等待审核"
-            btn_class = 'reviewing'
-          }
-
-          $.ajax({
-            url: '<%= api_employer_jobs_path %>',
-            type: 'PATCH',
-            data: {"job_id":"<%= @job[:id] %>", "status": status, "duration": duration},
-            success: function() {
-              $('#release span').text(btn_txt)
-              set_class(btn_class);
-              $('#release').off();
-            },
-            error: function() {
-              alert('操作失败。')
-            }
-          })
-        }
-
+        popup('确定发布此职位？', "again_release()");
       } else {
         console.log("当前无法执行此操作");
       }
   }
 
+  // 再次发布
+  function again_release() {
+    var status = '',
+        btn_txt = '',
+        btn_class = '',
+        duration = ''
+    $("#popup").remove();
+    if($("#release").attr("class") == 'pause') {
+       status = 'release'
+       btn_txt = "已经发布"
+       btn_class = 'release'
+    } else if($("#release").attr("class") == 'end') {
+      status = 'release_again'
+      btn_txt = "已经发布"
+      btn_class = 'release'
+      duration = "<%= @job[:duration] %>"
+    } else {
+      status = 'reviewing'
+      btn_txt = "等待审核"
+      btn_class = 'reviewing'
+    }
+
+    $.ajax({
+      url: '<%= api_employer_jobs_path %>',
+      type: 'PATCH',
+      data: {"job_id":"<%= @job[:id] %>", "status": status, "duration": duration},
+      success: function() {
+        $('#release span').text(btn_txt);
+        set_class(btn_class);
+        $('#release').off();
+      },
+      error: function() {
+        alert('操作失败。');
+      },
+    });
+  }
 
   // 结束发布按钮
-    function end(obj) {
-        if(["release", "pause"].indexOf($(obj).attr("class")) != -1 ) {
-          if(confirm('确定结束发布此职位？')) {
-            $.ajax({
-              url: '<%= api_employer_jobs_path %>',
-              type: 'PATCH',
-              data: {"job_id":"<%= @job[:id] %>", "status": "end"},
-              success: function() {
-                $('#release span').text("再次发布")
-                set_class('end');
-                $('#end').off();
-              },
-              error: function() {
-                alert('结束发布失败。')
-              }
-            })
-          }
+  function end(obj) {
+      if(["release", "pause"].indexOf($(obj).attr("class")) != -1 ) {
+        popup('确定结束发布此职位？', "end_true()");
+      } else if(["saved", "fail"].indexOf($(obj).attr("class")) != -1) {
+        popup('确定删除此职位？', "delete_job()");
+      } else {
+        console.log("当前无法执行此操作");
+      }
+  }
 
-        } else if(["saved", "fail"].indexOf($(obj).attr("class")) != -1) {
-          if(confirm('确定结束发布此职位？')) {
-            $.ajax({
-              url: '<%= api_employer_jobs_path %>',
-              type: 'DELETE',
-              data: {id: "<%= @job[:id] %>"},
-              success: function() {
-                console.log('删除成功！');
-              },
-              error: function() {
-                alert('删除失败。')
-              }
-            })
-          }
+  // 判断为　true 后结束发布
+  function end_true() {
+    $("#popup").remove();
+    $.ajax({
+      url: '<%= api_employer_jobs_path %>',
+      type: 'PATCH',
+      data: {"job_id":"<%= @job[:id] %>", "status": "end"},
+      success: function() {
+        $('#release span').text("再次发布")
+        set_class('end');
+        $('#end').off();
+      },
+      error: function() {
+        alert('结束发布失败。')
+      },
+    });
+  }
 
-        } else {
-          console.log("当前无法执行此操作");
-        }
+  //删除　发布职位
+  function delete_job() {
+    $("#popup").remove();
+    $.ajax({
+      url: '<%= api_employer_jobs_path %>',
+      type: 'DELETE',
+      data: {id: "<%= @job[:id] %>"},
+      success: function() {
+        console.log('删除成功！');
+      },
+      error: function() {
+        alert('删除失败。')
+      },
+    });
+  }
 
-    }
-
-    // 同时设置三个按钮状态
-    function set_class(name) {
-        $('#end').attr('class', name);
-        $('#release').attr('class', name);
-        $('#postPause').attr('class', name);
-    }
+  // 同时设置三个按钮状态
+  function set_class(name) {
+      $('#end').attr('class', name);
+      $('#release').attr('class', name);
+      $('#postPause').attr('class', name);
+  }
 
 </script>

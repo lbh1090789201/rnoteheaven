@@ -102,28 +102,31 @@ function EmptyCont(input_id) {
 // });
 
 // 需要变量　第一个弹窗li的文本　li_text　和　按钮的下标　btn_index
-// function popup(li_text, btn_index){
+// function popup(li_text){
 //   var len = $("body>div#popup").length;
 //   console.log(len);
 //   if(len == 0) {
 //     $('body').append('<div id="popup"><ul><li id="li_1">'+li_text+
-//                  '</li><li id="li_2" onclick="Clicksure(btn_index)">确定</li><li id="li_3" onclick="Clickfail(this)">取消</li></ul></div>');
+//                  '</li><li id="li_2" onclick="Clicksure(this)">确定</li><li id="li_3" onclick="Clickfail(this)">取消</li></ul></div>');
 //   };
 // };
-//
+
 // function Clicksure(obj){
-//   console.log("000000");
+//   // console.log("000000");
+//   // $("#popup").remove();
+//   // switch (btn_index) {
+//   //     case 0:
+//   //       Ajaxsure_1();
+//   //       break;
+//   //     case 1:
+//   //       Ajaxsure_2();
+//   //       break;
+//   //     default:
+//   //       Ajaxsure_3();
+//   //   };
+//   text_btn = $("#li_2").text();
 //   $("#popup").remove();
-//   switch (btn_index) {
-//       case 0:
-//         Ajaxsure_1();
-//         break;
-//       case 1:
-//         Ajaxsure_2();
-//         break;
-//       default:
-//         Ajaxsure_3();
-//     };
+//   console.log(text_btn);
 // }
 // function Clickfail(){
 //   console.log("000000");

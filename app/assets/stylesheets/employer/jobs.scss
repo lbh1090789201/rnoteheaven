@@ -684,21 +684,15 @@
     }
  .basic_info{
     padding-left: 1.2rem;
-    font-size:0.7rem;
-    margin-top: 0.5rem;
-    span{
-        display: inline-block;
-        width: 2.2rem;
-        height: 0.85rem;
-        line-height: 0.85rem;
-        background: #FFFFFF;
-        margin-left: 0.5rem;
-        text-align: center;
-        padding: 0.01rem 0.2rem 0 0.2rem;
-        -webkit-border-radius: 30px;
-        border: 1px solid #e3e3e3;
-        color: #959595;
-        font-size: 0.45rem;
+    font-size: 0.7rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0;
+    img {
+      position: relative;
+      top: -0.05rem;
+      width: 1.7rem;
+      height: auto;
+      margin-left: 0.5rem;
     }
 }
 #job_range{
@@ -801,25 +795,19 @@
 
 //----Job-New---界面样式 6.24 Huangwei
 #job_basic {
-  padding-bottom: 2rem;
+  // padding-bottom: 2rem;
 }
 #job_basic .basic_infoo{
     padding-left: 1.2rem;
     font-size:0.7rem;
-    margin-top: 0.5rem;
-    span{
-        display: inline-block;
-        width: 2.2rem;
-        height: 0.85rem;
-        line-height: 0.85rem;
-        background: #FFFFFF;
-        margin-left: .5rem;
-        text-align: center;
-        padding: 0.01rem 0.2rem 0 0.2rem;
-        -webkit-border-radius: 6px;
-        border: 1px solid #e3e3e3;
-        color: #959595;
-        font-size: 0.5rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0;
+    img {
+      position: relative;
+      top: -0.05rem;
+      width: 1.7rem;
+      height: auto;
+      margin-left: 0.5rem;
     }
 }
 
