@@ -29,10 +29,13 @@
     <!-- 刷新简历 -->
     <% if @job.status == "release" %>
       <button class="reflesh-job">
-        <%= image_tag "icon_1.png" %>
-        <span>刷新职位</span>
+        <div class="">
+          <%= image_tag "icon_1.png" %>
+          <span>刷新职位</span>
+        </div>
+
       </button>
-      <p class="reflesh-time"><%= @left_refresh_time %>天后再次刷新</p>
+      <button class="reflesh-job reflesh-time"><%= @left_refresh_time %>天后再次刷新</button>
       <script type="text/javascript">
           //  reflesh_time 值不同显示不同
           var reflesh_time = "<%= @left_refresh_time %>";

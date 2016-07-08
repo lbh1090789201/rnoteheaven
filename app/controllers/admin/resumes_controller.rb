@@ -1,6 +1,6 @@
 class Admin::ResumesController < ApplicationController
   before_action :require_admin!
-  protect_from_forgery :except => [:index]
+  protect_from_forgery :except => [:index, :update]
   layout 'admin'
 
   def index
@@ -8,8 +8,7 @@ class Admin::ResumesController < ApplicationController
       resumes = Resume.filter_is_public(params[:public])
                       .filter_by_city(params[:location])
                       .filter_show_name(params[:show_name])
-      p resumes
-      p '--------------------'
+
       resumes = resumes.where(id: params[:rid]) if params[:rid].present?
 
       resumes = resumes.filter_is_freeze if params[:resume_freeze].present?
@@ -26,13 +25,33 @@ class Admin::ResumesController < ApplicationController
       resumes = Resume.all
       @resumes = get_info resumes
     end
-  end
+ end
+
+ def update
+    if params[:ids] && !params[:ids].blank?
+      ids = params[:ids].split(',')
+      resumes = Resume.where(id: ids)
+
+      resumes.each do |f|
+        f.resume_freeze = params[:status]
+        f.save
+      end
+
+       @resumes = get_info resumes
+
+      render json: {
+        success: true,
+        info: '简历操作成功',
+        resumes: @resumes
+      }, status: 200
+    else
+      render json: '简历操作成功，检查您是否勾选简历', status: 403
+    end
+ end
 
 
   private
     def get_info resumes
-      p '==============='
-      p resumes
       @resumes = []
       resumes.each do |f|
         resume = Resume.get_info f

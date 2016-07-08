@@ -277,36 +277,28 @@
         }
       }
       .reflesh-job {
-        width: 4.2rem;
-        height: 1.3rem;
-        border-radius: 0.57rem;
-        border: 1px solid #3d9f9f;
-        color: #3d9f9f;
-        font-size: 0.57rem!important;
         position: absolute;
         top: 2.05rem;
         right: 1.1rem;
+        width: 4.2rem;
+        height: 1.2rem;
+        line-height: 1.2rem;
+        border-radius: 0.57rem;
+        border: 1px solid #3d9f9f;
+        color: #3d9f9f;
+        font-size: 0.6rem !important;
+
         background-color: #fff;
         img {
-          height: auto;
-          width: 0.63rem;
+          height: 0.6rem;
           margin-top: -0.1rem;
         }
       }
       .reflesh-time {
-        text-align: center;
-        margin: 0;
-        width: 4.7rem;
-        height: 1.3rem;
-        line-height: 1.4rem;
-        border-radius: 0.5rem;
+        border: 0;
         color: #dbdbdb;
-        font-size: 0.57rem!important;
-        position: absolute;
-        top: 2.05rem;
-        right: 1.1rem;
+        line-height: 1.3rem;
         background: #a1a1a1;
-        text-indent: 1.8px;
       }
     }
     .job-right {

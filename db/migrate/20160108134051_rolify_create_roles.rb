@@ -16,12 +16,18 @@ class RolifyCreateRoles < ActiveRecord::Migration
     add_index(:roles, [ :name, :resource_type, :resource_id ])
     add_index(:users_roles, [ :user_id, :role_id ])
 
-    ['admin', #   admin, 系统管理员
+    ['admin', # admin, 系统管理员
+     'platinum', # 部门经理/版主
      'gold', # 客户管理员
      'silver', # 客户经理
      'copper', # 普通客户
      'pending', # new people that are not yet confirmed in a role - default role assignment
-
+     'jobs_manager',
+     'resumes_manager',
+     'hospitals_manager',
+     'fairs_manager',
+     'vips_manager',
+     'acounts_manager'
     ].each do |role_name|
       Role.create! name: role_name
     end
