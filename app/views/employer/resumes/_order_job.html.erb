@@ -104,28 +104,39 @@
 </ul>
 </section>
 <script type="text/javascript">
-    // 职位查看二级页面展示
-    header_title = $("header>div>div").text();
-    function JobListShow(obj){
-      headertitle = $("header>div>div").text();
-      var jobname = $(obj).children("span:eq(0)").text();
-      if(headertitle != '简历管理'){
-        $("header>div>div").text(jobname);
-        $('.add-return').remove();
-      }
-      $("header>div>div").text(jobname);
-      var div = $('<div></div>');
-      div.attr('onclick','HideList(this)');
-      div.attr('class','add-return');
-      div.css({'width':'2.5rem','height':'2.3rem','position':'absolute',
-              'top':'0','left':'-1rem',
-              'background':'#3b9da0 url("../assets/left2.png") no-repeat 30% 50% ',
-              'backgroundSize':'0.5rem'});
-      $('header>div').append(div);
-      $(obj).children('div.order-job-list').css('display','block');
+   var header_title = $("header>div>div").text();
+   var resume_url = window.location.href;
+  　//判断链接中是否存在index属性，以此判断是否需打开相应二级页面
+   <% if params[:index] %>
+   var second_index = "<%= params[:index] %>";
+   $('li.job-Arrang').eq(second_index).children('div.order-job-list').css('display','block');
+   headertitle = $("header>div>div").text();
+   var jobname = $('li.job-Arrang').eq(second_index).children("span:eq(0)").text();
+   if(headertitle != '简历管理'){
+     $("header>div>div").text(jobname);
+     $('.add-return').remove();
+   }
+   $("header>div>div").text(jobname);
+   var div = $('<div></div>');
+   div.attr('onclick','HideList(this)');
+   div.attr('class','add-return');
+   div.css({'width':'2.5rem','height':'2.3rem','position':'absolute',
+           'top':'0','left':'-1rem',
+           'background':'#3b9da0 url("../assets/left2.png") no-repeat 30% 50% ',
+           'backgroundSize':'0.5rem'});
+   $('header>div').append(div);
+   <% end %>
 
+
+
+    // 职位查看二级页面展示
+    function JobListShow(obj){
+      var index = $('.order-job-show>li').index($(obj));　//获取当前点击的li下标
+      window.location.href = "?index="+index; //为链接添加index属性
     }
+
     function HideList(obj){
+      window.location.href = '<%= employer_resumes_path %>';
       $(obj).remove();
       $("header>div>div").text(header_title);
       $('div.order-job-list').css('display','none');

@@ -40,88 +40,88 @@
 
 
 <script type="text/javascript">
-// 应聘职位
-$('#btn_apply').bind('click', function(event){
-  $.post("/api/v1/apply_records", {
-    apply_record: {job_id: <%= params[:id] %>}
-  }).done(function() {
-    $('#apply_box').attr('class', 'hidden');
-    $('#apply_job > span').html('已应聘');
-    $('#apply_job').attr('class', 'is_applied');
-    $('#apply_job').children('img').remove();
-    $('#apply_job').prepend('<%= image_tag "icon_34.png" %>');
-    $('#job_list>ul>li:eq(1)').unbind();
-  }).fail(function() {
-    alert('failed');
+  // 应聘职位
+  $('#btn_apply').bind('click', function(event){
+    $.post("/api/v1/apply_records", {
+      apply_record: {job_id: <%= params[:id] %>}
+    }).done(function() {
+      $('#apply_box').attr('class', 'hidden');
+      $('#apply_job > span').html('已应聘');
+      $('#apply_job').attr('class', 'is_applied');
+      $('#apply_job').children('img').remove();
+      $('#apply_job').prepend('<%= image_tag "icon_34.png" %>');
+      $('.is_applied').unbind('click');
+    }).fail(function() {
+      alert('failed');
+    });
   });
-});
 
-$('#btn_cancel').bind('click', function() {
-  $('#apply_box').attr('class', 'hidden');
-});
+  $('#btn_cancel').bind('click', function() {
+    $('#apply_box').attr('class', 'hidden');
+  });
 
-$('.no_applied').bind('click', function() {
-  $('#apply_box').toggleClass('hidden', 'show');
-});
+  $('.no_applied').bind('click', function() {
+    $('#apply_box').toggleClass('hidden', 'show');
+  });
 
-$('.no_resume').bind('click', function() {
-  alert('请先完善简历！');
-});
+  $('.no_resume').bind('click', function() {
+    alert('请先完善简历！');
+  });
 
-// 收藏按钮
-function favor(obj) {
-console.log(obj);
-if($(obj).attr('class') == 'no_favor') {
-  is_favor();
-} else if ($(obj).attr('class') == 'is_favor') {
-  no_favor();
-} else {
-  alert('failed');
-}
+  // 收藏按钮
+  function favor(obj) {
+  console.log(obj);
+  if($(obj).attr('class') == 'no_favor') {
+    is_favor();
+  } else if ($(obj).attr('class') == 'is_favor') {
+    no_favor();
+  } else {
+    alert('failed');
+  }
 
-}
-// 收藏职位
-function is_favor() {
-$.post("/api/v1/favorite_jobs", {
-favorite_job: {job_id: <%= params[:id] %>}
-}).done(function() {
-    $('#favorite_job > span').html('已收藏');
-    $('#favorite_job > img').remove();
-    $('#favorite_job').prepend( '<%= image_tag "star_yellow.png" %>');
-    $('#favorite_job').attr('class', 'is_favor');
-    $('#favorite_job').off();
-}).fail(function() {
-  alert('收藏失败');
-});
-}
+  }
+  // 收藏职位
+  function is_favor() {
+  $.post("/api/v1/favorite_jobs", {
+  favorite_job: {job_id: <%= params[:id] %>}
+  }).done(function() {
+      $('#favorite_job > span').html('已收藏');
+      $('#favorite_job > img').remove();
+      $('#favorite_job').prepend( '<%= image_tag "star_yellow.png" %>');
+      $('#favorite_job').attr('class', 'is_favor');
+      $('#favorite_job').off();
+  }).fail(function() {
+    alert('收藏失败');
+  });
+  }
 
-// 取消收藏
-function no_favor() {
- $.ajax({
-   url: '<%= api_favorite_job_path(params[:id]) %>',
-   type: 'DELETE',
-   success: function() {
-     $('#favorite_job > span').html('收藏职位');
-     $('#favorite_job > img').remove();
-     $('#favorite_job').prepend( '<%= image_tag "star_black.png" %>');
-     $('#favorite_job').attr('class', 'no_favor');
-     $('#favorite_job').off();
-   },
-   error: function() {
-     alert('删除失败。')
-   }
- });
-}
+  // 取消收藏
+  function no_favor() {
+   $.ajax({
+     url: '<%= api_favorite_job_path(params[:id]) %>',
+     type: 'DELETE',
+     success: function() {
+       $('#favorite_job > span').html('收藏职位');
+       $('#favorite_job > img').remove();
+       $('#favorite_job').prepend( '<%= image_tag "star_black.png" %>');
+       $('#favorite_job').attr('class', 'no_favor');
+       $('#favorite_job').off();
+     },
+     error: function() {
+       alert('删除失败。')
+     }
+   });
+  }
 
-// 私信Ta
-$('#msg').bind('click', function() {
-  alert("功能正在开发中");
-});
+  // 私信Ta
+  $('#msg').bind('click', function() {
+    alert("功能正在开发中");
+  });
 
-// onchange
-function changecontent(obj){
-  console.log("1111");
-  window.opener.location.reload();
-}
+  // onchange
+  function changecontent(obj){
+    console.log("1111");
+    window.opener.location.reload();
+  }
 
 </script>
