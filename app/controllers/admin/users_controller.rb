@@ -22,4 +22,11 @@ class Admin::UsersController < ApplicationController
 
   def record
   end
+
+  def  create
+
+  end
+
+  def update
+  end
 end
