@@ -15,13 +15,14 @@ var AdminUser = React.createClass({
   ,handleClick: function() {
     this.setState({
       user_info: {
-        edit_diaplay: true
+        new_display: true
       }
     })
+    console.log(1111)
   }
   ,render: function() {
     var edit = this.state.user_info.edit_diaplay ? <AdminUserEdit user_info={this.state.user_info} dad={this}/> : '',
-        new_user = this.state.user_info.new_display ? <AdminUserNew users={this.state.users} dad={this} /> : ''
+        new_user = this.state.user_info.new_display ? <AdminUserNew dad={this} /> : ''
 
     return (
       <div className="main">
@@ -108,15 +109,27 @@ var AdminUserRadio = React.createClass({
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="copper" />医生
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="copper" />职位
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="gold" />医院
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="gold" />简历
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="admin" />管理员
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="admin" />机构
+        </label>
+
+        <label className="checkbox-inline">
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="copper" />专场
+        </label>
+
+        <label className="checkbox-inline">
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="gold" />套餐
+        </label>
+
+        <label className="checkbox-inline">
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="admin" />帐号
         </label>
       </span>
     )
@@ -199,9 +212,9 @@ var AdminUserItem = React.createClass({
 // 转译用户类型
 function transType(e)  {
    if(e == "admin") {
+     return "超级管理员"
+   } else if (e == "platinum") {
      return "管理员"
-   } else if (e == "gold") {
-     return "医院"
    } else if (e == "copper") {
      return "求职者"
    } else {

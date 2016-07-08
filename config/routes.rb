@@ -109,9 +109,9 @@ Ryunkang::Application.routes.draw do
       resources :resumes, :only => [:index, :edit] do
         patch 'update', on: :collection
       end
-      
-      resources :users, :only => [:index] do
-        get 'record', on: :collection
+
+      resource :users, :only => [:create, :update] do
+        get '/', to: 'users#index'
       end
     end
 
