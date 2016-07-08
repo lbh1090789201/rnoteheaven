@@ -15,10 +15,13 @@ RSpec.describe Role, type: :model do
     end
 
     it "is test resumes_manager" do
-      user = Role.set_platinum @user, 'resumes_manager'
+      Role.set_platinum @user, 'resumes_manager'
+      Role.set_platinum @user, 'hospitals_manager'
 
       res = @user.has_role? :platinum, Resume.first
+      res2 = @user.has_role? :platinum, Job.first
       expect(res).to eq(true)
+      expect(res2).to eq(true)
     end
 
     it "is test hospitals_manager" do

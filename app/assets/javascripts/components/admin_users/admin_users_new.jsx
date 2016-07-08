@@ -44,17 +44,15 @@
      let show_name = this.refs.show_name.value,
          password = this.refs.password.value,
          password2 = this.refs.password2.value,
-         scopes = this.state.scopes
+         scopes = this.state.scopes.toString()
+
+         console.log(scopes.toString())
 
      if(password != password2) {
        alert('两次输入密码不一致')
      } else if (scopes.length = 0) {
        alert('至少需要设置一项权限')
      } else {
-       create_manager()
-     }
-
-     function create_manager() {
        $.ajax({
          url: '/admin/users',
          type: 'POST',
@@ -65,29 +63,27 @@
          },
          success: function(data){
            console.log(data)
-          //  let index = this.props.dad.state.user_info.index,
-          //      users = this.props.dad.state.users
-           //
-          //  users[index] = data.user
-           //
-          //  this.props.dad.setState({
-          //     users: users,
-          //     user_info: {
-          //       edit_diaplay: false,
-          //     }
-          //  })
+           let  users = this.props.dad.state.users
+
+           new_users = users.push(data.user)
+
+           this.props.dad.setState({
+              users: users,
+              user_info: {
+                new_display: false,
+              }
+           })
          }.bind(this),
          error: function(data){
            alert(data.responseText)
            this.props.dad.setState({
              user_info: {
-               edit_diaplay: false,
+               new_diaplay: false,
              }
            })
          },
        })
      }
-
    }
    ,render: function() {
      return (
@@ -109,7 +105,7 @@
              <div className="form-group">
                 <label>重复密码</label>
                   <input type="password" className="form-control" placeholder="修改密码才需填写" name="password2"
-                            pattern=".{6,}" required title="密码最少6个字符" defaultValue={this.state.pwd2} res="password2" />
+                            pattern=".{6,}" required title="密码最少6个字符" defaultValue={this.state.pwd2} ref="password2" />
              </div>
 
              <div className="form-group">
