@@ -108,6 +108,7 @@
    var resume_url = window.location.href;
   　//判断链接中是否存在index属性，以此判断是否需打开相应二级页面
    <% if params[:index] %>
+   $('.job-Arrang').attr('onclick','javascript:void(0);');
    var second_index = "<%= params[:index] %>";
    $('li.job-Arrang').eq(second_index).children('div.order-job-list').css('display','block');
    headertitle = $("header>div>div").text();
@@ -131,6 +132,7 @@
 
     // 职位查看二级页面展示
     function JobListShow(obj){
+      var ul_class = $(obj).parent().attr('class');
       var index = $('.order-job-show>li').index($(obj));　//获取当前点击的li下标
       window.location.href = "?index="+index; //为链接添加index属性
     }
