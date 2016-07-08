@@ -24,9 +24,23 @@ class Admin::UsersController < ApplicationController
   end
 
   def  create
+    id = User.last.id + 1
 
+    new_platinum = {
+      user_type: "platinum",
+      username: "platinum" + id.to_s,
+      password: password[:password],
+      show_name: params[:show_name],
+      email: "platinum" + id.to_s + "@example.com"
+    }
+
+    @user = User.create! new_platinum
+    params[:scopes].each do |f|
+      Role.set_platinum @user, f
+    end
   end
 
   def update
   end
+
 end

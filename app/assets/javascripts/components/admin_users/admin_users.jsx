@@ -15,13 +15,14 @@ var AdminUser = React.createClass({
   ,handleClick: function() {
     this.setState({
       user_info: {
-        edit_diaplay: true
+        new_display: true
       }
     })
+    console.log(1111)
   }
   ,render: function() {
     var edit = this.state.user_info.edit_diaplay ? <AdminUserEdit user_info={this.state.user_info} dad={this}/> : '',
-        new_user = this.state.user_info.new_display ? <AdminUserNew users={this.state.users} dad={this} /> : ''
+        new_user = this.state.user_info.new_display ? <AdminUserNew dad={this} /> : ''
 
     return (
       <div className="main">
