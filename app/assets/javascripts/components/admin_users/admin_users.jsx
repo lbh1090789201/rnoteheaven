@@ -43,7 +43,7 @@ var AdminUser = React.createClass({
 var AdminUserForm = React.createClass({
   getInitialState: function() {
     return {
-      role: '',
+      manager: '',
       time_from: '',
       time_to: '',
       show_name: '',
@@ -51,7 +51,7 @@ var AdminUserForm = React.createClass({
   }
   ,handleRadio: function(e) {
     this.setState({
-      role: e.target.value,
+      manager: e.target.value,
     })
   }
   ,handleSubmit: function(e) {
@@ -61,7 +61,7 @@ var AdminUserForm = React.createClass({
       type: 'GET',
       data: {
         search: true,
-        role: this.state.role,
+        manager: this.state.manager,
         time_from: this.refs.time_from.value,
         time_to: this.refs.time_to.value,
         show_name: this.refs.show_name.value,
@@ -89,7 +89,7 @@ var AdminUserForm = React.createClass({
             <input type="date" className="form-control" placeholder='结束时间' name='time_to'
                    defaultValue={this.state.time_to} ref="time_to" />
           </div>
-          <div className='form-group col-sm-4'>
+          <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='用户名' name='show_name'
                    defaultValue={this.state.show_name} ref="show_name" />
           </div>
@@ -109,27 +109,27 @@ var AdminUserRadio = React.createClass({
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="copper" />职位
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="jobs_manager" />职位
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="gold" />简历
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="resumes_manager" />简历
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="admin" />机构
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="hospitals_manager" />机构
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="copper" />专场
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="fairs_manager" />专场
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="gold" />套餐
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="vips_manager" />套餐
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="admin" />帐号
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="acounts_manager" />帐号
         </label>
       </span>
     )
@@ -209,14 +209,12 @@ var AdminUserItem = React.createClass({
   }
 })
 
-// 转译用户类型
+/*********** 转译用户类型 ***********/
 function transType(e)  {
    if(e == "admin") {
      return "超级管理员"
    } else if (e == "platinum") {
      return "管理员"
-   } else if (e == "copper") {
-     return "求职者"
    } else {
      return "未知"
    }

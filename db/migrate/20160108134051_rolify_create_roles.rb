@@ -21,7 +21,13 @@ class RolifyCreateRoles < ActiveRecord::Migration
      'gold', # 客户管理员
      'silver', # 客户经理
      'copper', # 普通客户
-     'pending' # new people that are not yet confirmed in a role - default role assignment
+     'pending', # new people that are not yet confirmed in a role - default role assignment
+     'jobs_manager',
+     'resumes_manager',
+     'hospitals_manager',
+     'fairs_manager',
+     'vips_manager',
+     'acounts_manager'
     ].each do |role_name|
       Role.create! name: role_name
     end

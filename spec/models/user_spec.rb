@@ -62,6 +62,13 @@ RSpec.describe User, :type => :model do
 			expect(res.length).to eq(2)
 		end
 
+		it "test filter_by_manager" do
+			@user.add_role :jobs_manager
+
+			res = User.filter_by_manager 'jobs_manager'
+			expect(res[0]).to eq(@user)
+		end
+
 	end
 
 end
