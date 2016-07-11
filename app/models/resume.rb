@@ -84,6 +84,34 @@ class Resume < ActiveRecord::Base
     return res
   end
 
+  # admin 获取某个简历的详细信息
+  def self.get_resume_info resume_id
+    resume = Resume.find resume_id
+    user = User.where(id: resume.user_id)
+    education_experiences = EducationExperience.where(user_id: user[0].id)
+    work_experiences = WorkExperience.where(user_id: user[0].id)
+    certificates = Certificate.where(user_id: user[0].id)
+    expect_job = ExpectJob.find_by user_id: user[0].id
+    apply_count = ApplyRecord.where(user_id: user[0].id).length
+    viewed_count = ResumeViewer.where(user_id: user[0].id).length
+
+    @resume = {
+      id: resume.id,
+      apply_count: apply_count,
+      viewed_count: viewed_count,
+      users: user,
+      name: expect_job.name,
+      job_type: expect_job.job_type,
+      location: expect_job.location,
+      expected_salary_range: expect_job.expected_salary_range,
+      job_desc: expect_job.job_desc,
+      education_experiences: education_experiences,
+      work_experiences: work_experiences,
+      certificates: certificates,
+    }
+    return @resume
+  end
+
   # 获得完整度
   def self.get_maturity uid
     resume = Resume.find_by user_id: uid

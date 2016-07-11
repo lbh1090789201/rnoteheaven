@@ -40,6 +40,19 @@ class Admin::JobsController < ApplicationController
     else
       @jobs = Job.filter_job_status('reviewing').as_json
     end
+
+  end
+
+  def show
+
+    @job = Job.find params[:id]
+
+    render json: {
+      success: true,
+      info: '获取job成功',
+      job: @job,
+    }, status: 200
+
   end
 
   def update
@@ -71,9 +84,6 @@ class Admin::JobsController < ApplicationController
     end
   end
 
-  def edit
-
-  end
 
   private
     def btn_params
