@@ -1,14 +1,19 @@
 var AdminResume = React.createClass({
   getInitialState: function() {
     return {
-      resumes: this.props.data
+      resumes: this.props.data,
+      view_display: false,
+      resume_id: '',
     }
+
   }
   ,render: function() {
+    var see_resume = this.state.view_display ? <AdminResumeView dad={this} /> : ''
     return (
       <div>
         <AdminResumeForm dad={this}/>
         <AdminResumeTable dad={this} resumes={this.state.resumes}/>
+        {see_resume}
       </div>
     )
   }
@@ -195,7 +200,7 @@ var AdminResumeTableContent = React.createClass({
         {
           this.props.users.map(
             function(resume, index) {
-              return(<AdminResumeItem key={resume.id} resume={resume} index={index} handleCheck={this.props.handleCheck} />)
+              return(<AdminResumeItem key={resume.id} resume={resume} index={index} handleCheck={this.props.handleCheck} dad={this.props.dad} />)
             }.bind(this)
           )
         }
@@ -205,7 +210,13 @@ var AdminResumeTableContent = React.createClass({
 })
 
 var AdminResumeItem = React.createClass({
-  render: function() {
+  handleClick: function(e) {
+    this.props.dad.setState({
+      view_display: true,
+      resume_id: e.target.id,
+    })
+  }
+  ,render: function() {
     let resume = this.props.resume
     return (
       <tr>
@@ -217,9 +228,254 @@ var AdminResumeItem = React.createClass({
         <td>{resume.resume_freeze ? "冻结" : "正常"}</td>
         <td>{resume.apply_count}</td>
         <td>{resume.viewed_count}</td>
-        <td>查看</td>
+        <td><button onClick={this.handleClick} className="btn btn-default btn-form" id={resume.id}>查看</button></td>
         <td><input type="checkBox" value={resume.id} onChange={this.props.handleCheck} /></td>
       </tr>
+    )
+  }
+})
+
+
+/*************查看简历详情组件****************/
+var AdminResumeView = React.createClass({
+  getInitialState: function() {
+    return {
+      resume_id: this.props.dad.state.resume_id,
+      resume: '',
+      re_display: false,
+    }
+  }
+  ,componentWillMount: function() {
+    $.ajax({
+      url: "/admin/resumes",
+      type: 'GET',
+      data: {resume_id: this.state.resume_id},
+      success: function(data) {
+        this.setState({
+          resume: data.resume,
+          re_display: true
+        })
+      }.bind(this)
+    })
+  }
+  ,handleClick: function() {
+    this.props.dad.setState({
+      view_display: false,
+    })
+  }
+  ,render: function() {
+    let resume = this.state.resume,
+        resume_content = this.state.re_display ? <ResumeContent resume={resume} /> : ''
+
+    return (
+      <div className="mask-user">
+        <div className="user-box">
+          <img src="../assets/close.png" />
+          <div className="close-tab" onClick={this.handleClick}>关闭</div>
+          {resume_content}
+        </div>
+      </div>
+    )
+  }
+})
+
+/******************简历详细信息***********************/
+var ResumeContent = React.createClass({
+  render: function() {
+    let resume = this.props.resume
+    return (
+      <div className="resume-content">
+        <ul>
+          <li>简历编号:{resume.id}</li>
+          <li>投递职位数:{resume.apply_count}</li>
+          <li>查看次数:{resume.viewed_count}</li>
+        </ul>
+        <div className="resume-content">
+          <div className="show-img"></div>
+          <span>姓名</span>
+        </div>
+
+        <section className="resumes-preview-public">
+          <h1>基本信息</h1>
+          <div className="resumes-preview-bg  resumes-preview-base">
+            <table className="resumes-base">
+                {
+                  resume.users.map(
+                    function(user) {
+                      return(<UserInfo key={user.id} user={user} />)
+                    }
+                  )
+                }
+            </table>
+          </div>
+        </section>
+
+
+        <section className="resume-show resumes-preview-public preview-show" id="preview_resume">
+          <h1>工作经历</h1>
+          <div className="wrap resumes-preview-bg public-preview-style work-try">
+            {
+              resume.work_experiences.map(function(work_experience) {
+                return (<WorkExperience key={work_experience.id} info={work_experience} />)
+              })
+            }
+          </div>
+        </section>
+
+
+        <section className="resume-show resumes-preview-public" id="preview_resume">
+          <h1>教育经历</h1>
+          <div className="wrap resumes-preview-bg public-preview-style work-try">
+            {
+              resume.education_experiences.map(
+                function(education_experience) {
+                  return (
+                    <EducationExperience key={education_experience.id} info={education_experience} />
+                  )
+                }
+              )
+            }
+          </div>
+        </section>
+
+        <section className="resume-show resumes-preview-public">
+            <h1>持有证书
+            </h1>
+            <div className="wrap resumes-preview-bg public-preview-style employer-style">
+              {
+                resume.certificates.map(
+                  function(certificate) {
+                    return (
+                      <Certificate key={certificate.id} info={certificate} />
+                    )
+                  }
+                )
+              }
+            </div>
+        </section>
+
+
+        <section className="resume-show resumes-preview-public employer-job">
+          <h1>期望工作</h1>
+          <div id="preview-expect" className="wrap expect-preview-style">
+            <div className="box work-time expect-employer">
+              <h3>{resume.name}</h3>
+              <p className="expect-preview">
+                {resume.job_type}/{resume.location}/{resume.expected_salary_range}
+              </p>
+              <p>{resume.job_desc}</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    )
+  }
+})
+
+/******************用户的信息展示组件***********************/
+var UserInfo = React.createClass({
+  render: function() {
+    let user = this.props.user
+    return (
+      <tbody>
+        <tr>
+          <td><span>姓</span>名：</td>
+          <td>{user.show_name}</td>
+        </tr>
+        <tr>
+          <td><span>性</span>别：</td>
+          <td>{user.sex}</td>
+        </tr>
+        <tr>
+          <td>最高学历：</td>
+          <td>{user.highest_degree}</td>
+        </tr>
+        <tr>
+            <td><span>职</span>称：</td>
+            <td>{user.position}</td>
+        </tr>
+        <tr>
+          <td>工作年限：</td>
+          <td>{user.start_work_at}</td>
+        </tr>
+        <tr>
+          <td>出生年限：</td>
+          <td>{user.birthday}</td>
+        </tr>
+        <tr>
+          <td>所在城市：</td>
+          <td>{user.location}</td>
+        </tr>
+        <tr>
+          <td>联系电话：</td>
+          <td>{user.cellphone}</td>
+        </tr>
+        <tr>
+          <td>联系邮箱：</td>
+          <td>{user.user_email}</td>
+        </tr>
+        <tr>
+          <td>当前状态：</td>
+          <td>{user.seeking_job}</td>
+        </tr>
+      </tbody>
+    )
+  }
+})
+
+/*************工作经历展示组件******************/
+var WorkExperience = React.createClass({
+  render: function(){
+    let resume = this.props.info
+    return (
+      <div className="box">
+        <div className="green-point"></div>
+        <time>{resume.started_at}-{resume.left_time}</time>
+        <div className="time-line-box work-time">
+          <h3>{resume.company}
+          </h3>
+          <p>
+            {resume.job_desc}
+          </p>
+        </div>
+      </div>
+    )
+  }
+})
+
+/**********教育经历展示组件*****************/
+var EducationExperience = React.createClass({
+  render: function() {
+    let resume = this.props.info
+    return (
+      <div className="box">
+        <div className="blue-left">
+          <div className="blue-point"></div>
+        </div>
+        <div className="green-point"></div>
+        <time>{resume.graduated_at}年毕业</time>
+        <div className="time-line-box work-time">
+          <h3>{resume.college}
+          </h3>
+          <p>
+            <span>{resume.education_degree}</span>，<span>{resume.major}</span>
+          </p>
+        </div>
+      </div>
+    )
+  }
+})
+
+/********持有证书展示组件**********/
+
+var Certificate = React.createClass({
+  render: function() {
+    let resume = this.props.info
+    return (
+      <div className="box cer-employer">
+          <p>{resume.title}</p>
+      </div>
     )
   }
 })

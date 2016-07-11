@@ -25,6 +25,18 @@ class Admin::ResumesController < ApplicationController
       resumes = Resume.all
       @resumes = get_info resumes
     end
+
+    if params[:resume_id]
+      @resume = Resume.get_resume_info params[:resume_id]
+      # @resume = Resume.find params[:resume_id]
+      puts "--------" + @resume.to_json.to_s
+
+      render json: {
+        success: true,
+        info: "获取resume成功",
+        resume: @resume,
+      }, status: 200
+    end
  end
 
  def update
