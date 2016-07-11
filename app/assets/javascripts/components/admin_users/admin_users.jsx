@@ -29,7 +29,6 @@ var AdminUser = React.createClass({
         <AdminUserForm dad={this} />
         <div className="handle-button">
           <button className="btn btn-info pull-right" onClick={this.handleClick} name="new_display" >新建</button>
-          <button className="btn btn-danger pull-right" onClick={this.handleDel} name="del_user" >删除</button>
         </div>
         <AdminUserTable users={this.state.users} dad={this}/>
         {edit}
@@ -160,6 +159,7 @@ var AdminUserTableHead = React.createClass({
           <th>用户类型</th>
           <th>创建时间</th>
           <th>操作</th>
+          <th>操作</th>
         </tr>
       </thead>
     )
@@ -196,6 +196,31 @@ var AdminUserItem = React.createClass({
       }
     })
   }
+  ,handleDel: function() {
+    if(confirm('确定要删除用户' + this.props.data.show_name + '?')) {
+      let uid = this.props.data.id,
+          index = this.props.index - 1,
+          users = this.props.dad.state.users
+
+      $.ajax({
+        url: '/admin/users',
+        type: 'DELETE',
+        data: {
+          id: uid
+        },
+        success: function(data){
+          users.splice(index, 1)
+
+          this.props.dad.setState({
+             users: users
+          })
+        }.bind(this),
+        error: function(data){
+          alert('删除用户失败。')
+        }
+      })
+    }
+  }
   ,render: function() {
     return (
       <tr>
@@ -204,6 +229,7 @@ var AdminUserItem = React.createClass({
         <td>{transType(this.props.data.user_type)}</td>
         <td>{this.props.data.created_at.slice(0, 10)}</td>
         <td><button onClick={this.handleClick} className="btn btn-default btn-form">修改</button></td>
+        <td><button onClick={this.handleDel} className="btn btn-danger btn-form">删除</button></td>
       </tr>
     )
   }

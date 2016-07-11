@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :require_admin!
   layout 'admin'
-  protect_from_forgery :except => [:create, :update]
+  protect_from_forgery :except => [:create, :update, :destroy]
   def index
     if params[:search]
       @users = User.filter_create_before(params[:time_to])
@@ -79,6 +79,19 @@ class Admin::UsersController < ApplicationController
       info: "更新管理员信息成功！",
       user: user
     }, status: 200
+  end
+
+  def destroy
+    user = User.find params[:id]
+
+    if user.destroy
+      render json: {
+        success: true,
+        info: '删除用户成功!'
+      }, status: 200
+    else
+      render json: '删除用户失败。', status: 403
+    end
   end
 
 end

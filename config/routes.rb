@@ -110,7 +110,7 @@ Ryunkang::Application.routes.draw do
         patch 'update', on: :collection
       end
 
-      resource :users, :only => [:create, :update, :edit] do
+      resource :users, :only => [:create, :update, :edit, :destroy] do
         get '/', to: 'users#index'
       end
     end
