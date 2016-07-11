@@ -93,6 +93,11 @@ class User < ActiveRecord::Base #用户
     where(user_type: role) if role.present?
   }
 
+  #按 role scoped 筛选
+  scope :filter_by_manager, -> (manager){
+    manager = manager.to_sym
+    with_role manager if manager.present?
+  }
 
   def admin?
     has_role? 'admin'

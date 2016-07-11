@@ -5,6 +5,8 @@
        role: '',
        edit_diaplay: '',
        scopes: [],
+       checkValues: {"jobs_manager": false, "resumes_manager": false, "hospitals_manager": false,
+                  "fairs_manager": false, "vips_manager": false, "acounts_manager": false},
      }
    }
    ,handleChange: function(e) {
@@ -110,7 +112,7 @@
 
              <div className="form-group">
                 <label>设置权限</label>
-                <AdminRoleCheckbox handleCheck={this.handleCheck}/>
+                <AdminRoleCheckbox handleCheck={this.handleCheck} checkValues={this.state.checkValues}/>
              </div>
              <button type="button" className="btn btn-secondary" onClick={this.handleClick}>取消</button>
              <button type="submit" className="btn btn-success">提交</button>
@@ -126,27 +128,33 @@
      return (
        <div>
          <label className="checkbox-inline">
-           <input type="checkbox" value="jobs_manager" onChange={this.props.handleCheck} /> 职位管理
+           <input type="checkbox" defaultValue="jobs_manager" onChange={this.props.handleCheck}
+                  defaultChecked={this.props.checkValues["jobs_manager"]} /> 职位管理
          </label>
 
          <label className="checkbox-inline">
-           <input type="checkbox" value="resumes_manager" onChange={this.props.handleCheck} /> 简历管理
+           <input type="checkbox" defaultValue="resumes_manager" onChange={this.props.handleCheck}
+                  defaultChecked={this.props.checkValues["resumes_manager"]} /> 简历管理
          </label>
 
          <label className="checkbox-inline">
-           <input type="checkbox" value="hospitals_manager" onChange={this.props.handleCheck} /> 机构管理
+           <input type="checkbox" defaultValue="hospitals_manager" onChange={this.props.handleCheck}
+                  defaultChecked={this.props.checkValues["hospitals_manager"]} /> 机构管理
          </label>
 
          <label className="checkbox-inline">
-           <input type="checkbox" value="fairs_manager" onChange={this.props.handleCheck} /> 专场管理
+           <input type="checkbox" defaultValue="fairs_manager" onChange={this.props.handleCheck}
+                  defaultChecked={this.props.checkValues["fairs_manager"]} /> 专场管理
          </label>
 
          <label className="checkbox-inline">
-           <input type="checkbox" value="vips_manager" onChange={this.props.handleCheck} /> 套餐管理
+           <input type="checkbox" defaultValue="vips_manager" onChange={this.props.handleCheck}
+                  defaultChecked={this.props.checkValues["vips_manager"]} /> 套餐管理
          </label>
 
          <label className="checkbox-inline">
-           <input type="checkbox" value="acounts_manager" onChange={this.props.handleCheck} /> 帐号管理
+           <input type="checkbox" defaultValue="acounts_manager" onChange={this.props.handleCheck}
+                  defaultChecked={this.props.checkValues.acounts_manager} /> 帐号管理
          </label>
        </div>
      )

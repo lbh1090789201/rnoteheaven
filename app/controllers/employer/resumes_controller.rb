@@ -9,7 +9,7 @@ class Employer::ResumesController < ApplicationController
   def index
     check_vip = Employer.check_vip current_user.id
     hospital = Employer.get_hospital current_user.id
-    jobs = Job.where(hospital_id: hospital.id)
+    jobs = Job.where(hospital_id: hospital.id).where.not(status: [:saved, :fail])
 
 
     # 三个月内简历
