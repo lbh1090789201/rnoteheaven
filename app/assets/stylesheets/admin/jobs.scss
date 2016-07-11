@@ -33,13 +33,22 @@
       padding: 0.5rem 0 1rem 0;
       border-radius: 5px;
       background-color: #fff;
-      overflow: hidden;
+      // overflow: hidden;
+    }
+    img.img-close {
+      width: 24px;
+      height: auto;
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      z-index: 1000;
     }
     .job-content {
       width: 90%;
       margin: 0 auto;
       p {
         position: relative;
+        margin: 0 0 10px 0;
       }
       span {
         position: absolute;
@@ -48,7 +57,13 @@
       }
       .job-range {
         position: static;
-        margin-left: 0.35rem;
+        margin-left: 28px;
+      }
+      .job-desc {
+        text-indent: 29px;
+      }
+      .job-demand {
+        text-indent: 29px;
       }
     }
 }
