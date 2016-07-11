@@ -33,17 +33,16 @@
           <%= image_tag "icon_1.png" %>
           <span>刷新职位</span>
         </div>
-
       </button>
       <button class="reflesh-job reflesh-time"><%= @left_refresh_time %>天后再次刷新</button>
       <script type="text/javascript">
           //  reflesh_time 值不同显示不同
           var reflesh_time = "<%= @left_refresh_time %>";
           if(reflesh_time == -1) {
-            $('.reflesh-job').css('display','block').siblings('p.reflesh-time')
+            $('.reflesh-job').css('display','block').siblings('.reflesh-time')
                                                     .css('display','none');
           }else{
-            $('.reflesh-time').css('display','block').siblings('div.reflesh-job')
+            $('.reflesh-time').css('display','block').siblings('.reflesh-job')
                                                      .css('display','none');
           }
       </script>
