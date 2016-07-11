@@ -99,7 +99,7 @@ class Api::ConnectAppController < ApiController
         sex: user_info["gender"],
         username: "copper" + user_info["uaid"].to_s,
         password: "123456",
-        show_name: user_info["realName"],
+        show_name: user_info["realName"].present? ? user_info["realName"] : '',
         cellphone: user_info["telephone"],
         email: "copper" + user_info["uaid"].to_s + "@example.com"
       }
