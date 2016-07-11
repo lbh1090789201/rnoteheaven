@@ -155,6 +155,7 @@ var AdminUserTableHead = React.createClass({
       <thead>
         <tr>
           <th>序号</th>
+          <th>登录名</th>
           <th>用户名称</th>
           <th>用户类型</th>
           <th>创建时间</th>
@@ -225,6 +226,7 @@ var AdminUserItem = React.createClass({
     return (
       <tr>
         <td>{this.props.index}</td>
+        <td>{this.props.data.username}</td>
         <td>{this.props.data.show_name}</td>
         <td>{transType(this.props.data.user_type)}</td>
         <td>{this.props.data.created_at.slice(0, 10)}</td>

@@ -49,7 +49,8 @@ class Api::ConnectAppController < ApiController
                                       token: token
                                     }.to_json, :content_type => :json, :accept => :json
       @user_info = JSON.parse(@user_info)
-
+      p @user_info
+      p '-------------------'
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
       else
@@ -62,12 +63,12 @@ class Api::ConnectAppController < ApiController
         user = User.find_by user_number: user_info["uaid"]
         if user
           sign_in(user)
-          render json: {
-              success: true,
-              info: '自动登陆成功',
-              url: root_url + "/webapp/home"
-            }, status: 200
-          # redirect_to webapp_home_path
+          # render json: {
+          #     success: true,
+          #     info: '自动登陆成功',
+          #     url: root_url + "/webapp/home"
+          #   }, status: 200
+          redirect_to webapp_home_path
         else
           sign_up_copper user_info
         end
@@ -76,12 +77,12 @@ class Api::ConnectAppController < ApiController
         user = User.find_by user_number: user_info["entid"]
         if user
           sign_in(user)
-          render json: {
-              success: true,
-              info: '自动登陆成功',
-              url: root_url + "/employer/resumes"
-            }, status: 200
-          # redirect_to employer_resumes_path
+          # render json: {
+          #     success: true,
+          #     info: '自动登陆成功',
+          #     url: root_url + "/employer/resumes"
+          #   }, status: 200
+          redirect_to employer_resumes_path
         else
           sign_up_gold user_info
         end
@@ -98,7 +99,7 @@ class Api::ConnectAppController < ApiController
         sex: user_info["gender"],
         username: "copper" + user_info["uaid"].to_s,
         password: "123456",
-        show_name: user_info["realName"],
+        show_name: user_info["realName"].present? ? user_info["realName"] : '',
         cellphone: user_info["telephone"],
         email: "copper" + user_info["uaid"].to_s + "@example.com"
       }
@@ -107,11 +108,13 @@ class Api::ConnectAppController < ApiController
       user.add_role :copper
 
       sign_in(user)
-      render json: {
-          success: true,
-          info: '注册并登陆成功',
-          url: root_url + "/webapp/home"
-        }, status: 200
+      # render json: {
+      #     success: true,
+      #     info: '注册并登陆成功',
+      #     url: root_url + "/webapp/home"
+      #   }, status: 200
+
+      redirect_to webapp_home_path
     end
 
     def sign_up_gold user_info
@@ -141,11 +144,12 @@ class Api::ConnectAppController < ApiController
       set_vip = Employer.set_vip user.id, 1
 
       sign_in(user)
-      render json: {
-          success: true,
-          info: '注册并登陆成功',
-          url: root_url + "/employer/resumes"
-        }, status: 200
+      # render json: {
+      #     success: true,
+      #     info: '注册并登陆成功',
+      #     url: root_url + "/employer/resumes"
+      #   }, status: 200
+      redirect_to employer_resumes_path
     end
 
 end

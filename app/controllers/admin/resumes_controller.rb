@@ -1,5 +1,5 @@
-class Admin::ResumesController < ApplicationController
-  before_action :require_admin!
+class Admin::ResumesController < AdminController
+  before_action :require_resumes_manager!
   protect_from_forgery :except => [:index, :update]
   layout 'admin'
 

@@ -75,8 +75,10 @@ class Devise::SessionsController < DeviseController
   def after_sign_in_path_for(resource)
     # puts "-----=======:"+resource.to_json.to_s
     return "" unless resource
-    return "/admin/jobs/check" if resource.admin?
     return "/employer/home" if resource.has_role? :gold
+    return "/admin/jobs/check" if (resource.admin? || resource.jobs_manager?)
+    return "/admin/resumes/" if resource.resumes_manager?
+    return "/admin/users/" if resource.acounts_manager?
     return "/"
   end
 

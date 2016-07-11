@@ -107,6 +107,30 @@ class User < ActiveRecord::Base #用户
     has_role? 'gold'
   end
 
+  def jobs_manager?
+    has_role? 'jobs_manager'
+  end
+
+  def resumes_manager?
+    has_role? 'resumes_manager'
+  end
+
+  def hospitals_manager?
+    has_role? 'hospitals_manager'
+  end
+
+  def fairs_manager?
+    has_role? 'fairs_manager'
+  end
+
+  def vips_manager?
+    has_role? 'vips_manager'
+  end
+
+  def acounts_manager?
+    has_role? 'acounts_manager'
+  end
+
   def email_required?
     false
   end
