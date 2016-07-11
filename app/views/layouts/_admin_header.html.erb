@@ -1,23 +1,22 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <!--<a class="navbar-brand" href="/admin/users/<%= current_user.id %>">-->
   <a class="navbar-brand" href="/admin/jobs/check">云康控制台</a>
     <ul id="admin_nav" class="nav navbar-nav nav-console">
-        <li  class="<%='active' if params[:controller] == 'admin/jobs'%>" >
+        <li  class="<%='active' if params[:controller] == 'admin/jobs'%> <%= 'hidden' if !@show_tabs[0] %>" >
           <a href="/admin/jobs/check">职位管理</a>
         </li>
-        <li class="<%='active' if params[:controller] == 'admin/resumes'%>">
+        <li class="<%='active' if params[:controller] == 'admin/resumes'%> <%= 'hidden' if !@show_tabs[1] %>">
             <a href="/admin/resumes">简历管理</a>
         </li>
-        <li>
+        <li class="<%= 'hidden' if !@show_tabs[2] %>">
             <a href="#">入驻机构</a>
         </li>
-        <li>
+        <li class="<%= 'hidden' if !@show_tabs[3] %>">
             <a href="#">医聘专场</a>
         </li>
-        <li>
+        <li class="<%= 'hidden' if !@show_tabs[4] %>">
             <a href="#">套餐管理</a>
         </li>
-        <li class="<%='active' if params[:controller] == 'admin/users'%>">
+        <li class="<%='active' if params[:controller] == 'admin/users'%> <%= 'hidden' if !@show_tabs[5] %>">
             <a href="/admin/users">帐号管理</a>
         </li>
     </ul>

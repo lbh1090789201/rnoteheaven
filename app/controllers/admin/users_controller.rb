@@ -1,5 +1,5 @@
-class Admin::UsersController < ApplicationController
-  before_action :require_admin!
+class Admin::UsersController < AdminController
+  before_action :require_acounts_manager!
   layout 'admin'
   protect_from_forgery :except => [:create, :update, :destroy]
   def index
@@ -28,7 +28,7 @@ class Admin::UsersController < ApplicationController
 
     new_platinum = {
       user_type: "platinum",
-      username: "platinum" + id.to_s,
+      username: "admin" + id.to_s,
       password: params[:password],
       show_name: params[:show_name],
       email: "platinum" + id.to_s + "@example.com"
