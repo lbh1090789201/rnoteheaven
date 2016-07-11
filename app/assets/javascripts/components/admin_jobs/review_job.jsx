@@ -1,4 +1,6 @@
+// 搜索组件
 var ReviewJob = React.createClass({
+  //初始化搜索数据
   getInitialState: function() {
     return {
       time_after: '',
@@ -8,8 +10,10 @@ var ReviewJob = React.createClass({
       job_name: '',
     }
   }
+  //点击搜索提交按钮事件
   ,handleSubmit: function(e){
     e.preventDefault()
+    // 获取真实dom节点
     let time_before = this.refs.time_before.value,
         time_after = this.refs.time_after.value,
         job_type = this.refs.job_type.value,

@@ -1,4 +1,5 @@
 var AdminJob = React.createClass({
+  //初始化
   getInitialState: function() {
     return {
       jobs: this.props.data,
@@ -9,7 +10,7 @@ var AdminJob = React.createClass({
     var checkValues = this.state.checkValue.slice(),
         newVal = e.target.value,
         index = checkValues.indexOf(newVal)
-
+    //判断checkValues是否存在 newVal
     if(index == -1) {
       checkValues.push(newVal)
     } else {
@@ -22,6 +23,7 @@ var AdminJob = React.createClass({
 
     return e
   }
+  // 点击审核通过或者审核失败发生的事件
   ,handleClick: function(e) {
     e.preventDefault();
     var name = e.target.name,
@@ -43,6 +45,7 @@ var AdminJob = React.createClass({
   ,bandleSubmit: function(){
     console.log(this)
   }
+  // 输出组件
   ,render: function() {
     var jobs_all = []
 
