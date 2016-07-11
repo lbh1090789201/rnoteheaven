@@ -6,7 +6,7 @@ var Job = React.createClass({
     })
   }
   ,render: function() {
-    console.log(this.props.dad.state.jid)
+    // console.log(this.props.dad.state.jid)
     return (
       <tr>
         <td>{this.props.index + 1}</td>

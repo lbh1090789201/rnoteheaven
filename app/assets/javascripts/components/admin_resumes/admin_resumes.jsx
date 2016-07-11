@@ -4,6 +4,7 @@ var AdminResume = React.createClass({
       resumes: this.props.data,
       view_display: false,
       resume_id: '',
+      close: this.props.close,
     }
 
   }
@@ -243,6 +244,7 @@ var AdminResumeView = React.createClass({
       resume_id: this.props.dad.state.resume_id,
       resume: '',
       re_display: false,
+      close: this.props.dad.state.close,
     }
   }
   ,componentWillMount: function() {
@@ -270,9 +272,10 @@ var AdminResumeView = React.createClass({
     return (
       <div className="mask-user">
         <div className="user-box">
-          <img src="../assets/close.png" />
-          <div className="close-tab" onClick={this.handleClick}>关闭</div>
-          {resume_content}
+          <img src={this.state.close} onClick={this.handleClick} className="img-close" />
+          <div className="user-info">
+            {resume_content}
+          </div>
         </div>
       </div>
     )

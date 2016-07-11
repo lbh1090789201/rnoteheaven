@@ -4,6 +4,9 @@ var AdminJob = React.createClass({
     return {
       jobs: this.props.data,
       checkValue: [],
+      view_display: false,
+      jid: '',
+      close: this.props.close,
     }
   }
   ,handleCheck: function(e) {
@@ -47,12 +50,13 @@ var AdminJob = React.createClass({
   }
   // 输出组件
   ,render: function() {
-    var jobs_all = []
+    var jobs_all = [],
+        job_view = this.state.view_display ? <AdminJobSee dad={this} /> : ''
 
     this.state.jobs.forEach(
       function(job, index) {
         jobs_all.push(
-          <Job key={index} data={job} handleCheck={this.handleCheck} index={index} />
+          <Job key={index} data={job} handleCheck={this.handleCheck} index={index} dad={this} />
         )
       }.bind(this)
     )
@@ -84,6 +88,7 @@ var AdminJob = React.createClass({
             }
           </tbody>
         </table>
+        {job_view}
       </div>
     )
   }
