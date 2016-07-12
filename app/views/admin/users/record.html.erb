@@ -2,7 +2,6 @@
   <%= render 'sidebar' %>
 <% end %>
 
-<h1>这里是操作记录</h1>
 <table class="table table-bordered">
   <thead>
     <th>操作者ID</th>
@@ -11,15 +10,19 @@
     <th>数据ID</th>
     <th>操作对象</th>
     <th>操作</th>
-    <th>日期</th>
+    <th>操作时间</th>
   </thead>
+  <tbody>
   <% @log.each do |f| %>
-    <tr>user_id</tr>
-    <tr>show_name</tr>
-    <tr>table</tr>
-    <tr>obj_id</tr>
-    <tr>object_name</tr>
-    <tr>action</tr>
-    <tr>created_at</tr>
+    <tr>
+    </tr>
+    <td> <%= f.user_id %></td>
+    <td><%= f.show_name %></td>
+    <td><%= f.table %></td>
+    <td><%= f.obj_id %></td>
+    <td><%= f.object_name %></td>
+    <td><%= f.action %></td>
+    <td><%= (f.created_at + 8.hours).strftime("%Y-%m-%d %H:%M:%S") %></td>
   <% end %>
+</tbody>
 </table>
