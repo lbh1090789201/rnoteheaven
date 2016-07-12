@@ -607,6 +607,7 @@ $light-gray: #f4f4f4;
         padding-left: 0.87rem;
         padding-top: 1.15rem;
         background: #fff;
+        min-height: 3rem;
         .resumes-base {
           font-size: 0.8rem;
           margin-bottom: 1.1rem;
@@ -622,7 +623,7 @@ $light-gray: #f4f4f4;
           margin-top: 0.7rem;
         }
         td+td {
-          padding-left: 1rem;
+          padding-left: 0.7rem;
         }
       }
     }
@@ -683,6 +684,7 @@ $light-gray: #f4f4f4;
         margin: 0.6rem auto 0 auto;
         padding-left: 0.87rem;
         padding-top: 0.6rem;
+        min-height: 3rem;
       }
     }
     .employer-job {
