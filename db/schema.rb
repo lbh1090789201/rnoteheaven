@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617063440) do
+ActiveRecord::Schema.define(version: 20160711123822) do
 
   create_table "apply_records", force: :cascade do |t|
     t.integer  "resume_id",       limit: 4
@@ -80,6 +80,17 @@ ActiveRecord::Schema.define(version: 20160617063440) do
     t.integer  "has_view",    limit: 4, default: 0, null: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+  end
+
+  create_table "event_logs", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.string   "show_name",   limit: 191
+    t.string   "table",       limit: 191
+    t.integer  "obj_id",      limit: 4
+    t.string   "object_name", limit: 191
+    t.string   "action",      limit: 191
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "expect_jobs", force: :cascade do |t|
