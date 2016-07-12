@@ -1,5 +1,7 @@
 <% content_for :sidebar do %>
-  <%= render 'sidebar' %>
+  <li class="<%='active' if params[:action] == 'index'%>">
+    <a href="/admin/vips/level"><%= image_tag 'admin_vips_level.png' %>套餐管理</a>
+  </li>
 <% end %>
 
 <h1>我是套餐管理</h1>

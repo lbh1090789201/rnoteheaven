@@ -110,9 +110,7 @@ Ryunkang::Application.routes.draw do
         get '/history', to: 'fairs#history', on: :collection
       end
 
-      resources :vips, :only => [:index] do
-        get '/level', to: 'vips#level', on: :collection
-      end
+      resources :vips, :except => [:show]
 
       resources :hospitals, :only => [:index]
     end

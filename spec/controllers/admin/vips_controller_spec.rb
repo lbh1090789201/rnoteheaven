@@ -16,10 +16,6 @@ RSpec.describe Admin::VipsController, type: :controller do
       get :index
       expect(response).to have_http_status(:success)
     end
-    it "GET#level returns http success" do
-      get :level
-      expect(response).to have_http_status(:success)
-    end
   end
 
 end
