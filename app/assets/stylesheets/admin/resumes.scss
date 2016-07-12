@@ -40,6 +40,7 @@
     top: -12px;
     right: -12px;
     z-index: 1000;
+    cursor: pointer;
   }
   .resume-content {
     width: 90%;
@@ -78,10 +79,10 @@
     .show-img {
       width: 100%;
       height: 80px;
-      background-color: #dadada;
       border-radius: 10px;
       margin-top: 10px;
       position: relative;
+      border: 1px solid #a1a1a1;
       .avatar {
         width: 56px;
         height: 56px;
@@ -89,8 +90,8 @@
         margin-top: 13px;
         margin-left: 20px;
         img {
-          width: 56px;
-          height: auto;
+          width: auto;
+          height: 56px;
         }
       }
       span {
@@ -110,12 +111,12 @@
       }
       .resumes-preview-bg {
         width: 92.11%;
-        border: 1px solid #e3e3e3;
+        border: 1px solid #a1a1a1;
         border-radius: 10px;
         margin: 0 auto 0 auto;
         padding-left: 14px;
         padding-top: 10px;
-        background: #dadada;
+        min-height: 60px;
         .resumes-base {
           font-size: 14px;
           margin-bottom: 4px;
@@ -183,7 +184,7 @@
       .employer-style {
         padding-top: 0;
         padding-left: 0;
-        min-height: 30px;
+        min-height: 60px;
         .cer-employer {
           border-left: none;
           p {
@@ -195,9 +196,8 @@
         }
       }
       #preview-expect {
-        background: #dadada;
         width: 92.11%;
-        border: 1px solid #e3e3e3;
+        border: 1px solid #a1a1a1;
         border-radius: 10px;
         margin: 10px auto 0 auto;
         // padding-left: 16px;
