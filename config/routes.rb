@@ -1,14 +1,5 @@
 Ryunkang::Application.routes.draw do
 
-  # This line mounts Refinery's routes at the root of your application.
-  # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.
-  # If you would like to change where this extension is mounted, simply change the
-  # configuration option `mounted_path` to something different in config/initializers/refinery/core.rb
-  #
-  # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
-  # mount Refinery::Core::Engine, at: Refinery::Core.mounted_path
-  # mount Refinery::Core::Engine, at: '/site'
-
   devise_for :users
   # devise_for :admin_users, ActiveAdmin::Devise.config
 
@@ -110,10 +101,20 @@ Ryunkang::Application.routes.draw do
         patch 'update', on: :collection
       end
 
-      resource :users, :only => [:create, :update, :destroy] do
+      resource :users, :only => [:create, :update, :destroy, :edit] do
         get '/', to: 'users#index'
         get '/record', to: 'users#record'
       end
+
+      resources :fairs, :except => [:destroy] do
+        get '/history', to: 'fairs#history', on: :collection
+      end
+
+      resources :vips, :only => [:index] do
+        get '/level', to: 'vips#level', on: :collection
+      end
+
+      resources :hospitals, :only => [:index]
     end
 
    ########### yunkang end ###########

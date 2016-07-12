@@ -6,7 +6,7 @@ class AdminController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :show_tabs
-
+  layout 'admin'
 
   # Devise permitted params
   def configure_permitted_parameters
@@ -92,7 +92,6 @@ class AdminController < ActionController::Base
 
   helper_method :show_tabs
   def show_tabs
-    
     if current_user.admin?
       @show_tabs = [true, true, true, true, true, true]
     else

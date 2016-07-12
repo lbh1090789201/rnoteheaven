@@ -1,7 +1,7 @@
 class Admin::UsersController < AdminController
   before_action :require_acounts_manager!
-  layout 'admin'
   protect_from_forgery :except => [:create, :update, :destroy]
+  
   def index
     if params[:search]
       @users = User.filter_create_before(params[:time_to])
