@@ -47,6 +47,8 @@ class Admin::ResumesController < AdminController
       resumes.each do |f|
         f.resume_freeze = params[:status]
         f.save
+
+        EventLog.create_log current_user.id, current_user.show_name, 'Resume', f.id, "简历", params[:status]
       end
 
        @resumes = get_info resumes

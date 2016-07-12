@@ -21,6 +21,7 @@ class Admin::UsersController < AdminController
   end
 
   def record
+    @log = EventLog.all.order('created_at DESC')
   end
 
   def  create
@@ -40,6 +41,7 @@ class Admin::UsersController < AdminController
       Role.set_platinum @user, f
     end
 
+    EventLog.create_log current_user.id, current_user.show_name, 'User', @user.id, "管理员", "增加"
     render json: {
       success: true,
       info: '创建管理员成功',
@@ -74,6 +76,7 @@ class Admin::UsersController < AdminController
       Role.set_platinum user, f
     end
 
+    EventLog.create_log current_user.id, current_user.show_name, 'User', user.id, "管理员", "修改"
     render json: {
       success: true,
       info: "更新管理员信息成功！",
@@ -84,6 +87,7 @@ class Admin::UsersController < AdminController
   def destroy
     user = User.find params[:id]
 
+    EventLog.create_log current_user.id, current_user.show_name, 'User', user.id, "管理员", "删除"
     if user.destroy
       render json: {
         success: true,
