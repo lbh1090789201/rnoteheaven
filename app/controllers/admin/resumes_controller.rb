@@ -7,12 +7,12 @@ class Admin::ResumesController < AdminController
       resumes = Resume.filter_is_public(params[:public])
                       .filter_by_city(params[:location])
                       .filter_show_name(params[:show_name])
+                      .filter_maturity(70)
 
       resumes = resumes.where(id: params[:rid]) if params[:rid].present?
 
       resumes = resumes.filter_is_freeze if params[:resume_freeze].present?
       @resumes = get_info resumes
-
 
       render json: {
         success: true,
@@ -21,7 +21,7 @@ class Admin::ResumesController < AdminController
       }, status: 200
 
     else
-      resumes = Resume.all
+      resumes = Resume..filter_maturity(70)
       @resumes = get_info resumes
     end
 
