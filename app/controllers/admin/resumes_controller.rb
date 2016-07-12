@@ -28,8 +28,6 @@ class Admin::ResumesController < AdminController
 
     if params[:resume_id]
       @resume = Resume.get_resume_info params[:resume_id]
-      # @resume = Resume.find params[:resume_id]
-      puts "--------" + @resume.to_json.to_s
 
       render json: {
         success: true,

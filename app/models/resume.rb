@@ -87,19 +87,20 @@ class Resume < ActiveRecord::Base
   # admin 获取某个简历的详细信息
   def self.get_resume_info resume_id
     resume = Resume.find resume_id
-    user = User.where(id: resume.user_id)
-    education_experiences = EducationExperience.where(user_id: user[0].id)
-    work_experiences = WorkExperience.where(user_id: user[0].id)
-    certificates = Certificate.where(user_id: user[0].id)
-    expect_job = ExpectJob.find_by user_id: user[0].id
-    apply_count = ApplyRecord.where(user_id: user[0].id).length
-    viewed_count = ResumeViewer.where(user_id: user[0].id).length
+    user = User.find resume.user_id
+    education_experiences = EducationExperience.where(user_id: user.id)
+    work_experiences = WorkExperience.where(user_id: user.id)
+    certificates = Certificate.where(user_id: user.id)
+    expect_job = ExpectJob.find_by user_id: user.id
+    apply_count = ApplyRecord.where(user_id: user.id).length
+    viewed_count = ResumeViewer.where(user_id: user.id).length
+    user.avatar_url.blank? ? avatar = "avator.png" : avatar = user.avatar_url
 
     @resume = {
       id: resume.id,
       apply_count: apply_count,
       viewed_count: viewed_count,
-      users: user,
+      user: user,
       name: expect_job.name,
       job_type: expect_job.job_type,
       location: expect_job.location,
@@ -108,6 +109,7 @@ class Resume < ActiveRecord::Base
       education_experiences: education_experiences,
       work_experiences: work_experiences,
       certificates: certificates,
+      avatar: avatar,
     }
     return @resume
   end

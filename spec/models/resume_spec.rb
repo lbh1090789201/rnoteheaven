@@ -96,6 +96,27 @@ RSpec.describe Resume, type: :model do
       expect(res["apply_count"]).to eq(2)
     end
 
+    #测试admin resume 构造数据
+    describe 'test get_resume_info' do
+      before :each do
+        @user = create(:user)
+        @resume = create(:resume, user_id: @user.id)
+        @hospital = create(:hospital)
+        @job = create(:job)
+        @education_experience = create(:education_experience, user_id: @user.id)
+        @work_experience = create(:work_experience, user_id: @user.id)
+        @expect_job = create(:expect_job, user_id: @user.id)
+        @apply_record = create(:apply_record, user_id: @user.id, job_id: @job.id)
+        @resume_viewer = create(:resume_viewer, user_id: @user.id, hospital_id: @hospital.id)
+      end
+
+      it 'test get_resume_info resume_id' do
+        res = Resume.get_resume_info @resume.id
+        expect(res[:id]).to eq(@resume.id)
+        expect(res[:user]).to eq(@user)
+      end
+    end
+
     # 测试简历完整度
     describe 'test get_maturity' do
       before :each do

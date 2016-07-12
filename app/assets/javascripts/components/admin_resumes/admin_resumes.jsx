@@ -5,6 +5,7 @@ var AdminResume = React.createClass({
       view_display: false,
       resume_id: '',
       close: this.props.close,
+      avatar: this.props.avatar,
     }
 
   }
@@ -245,6 +246,7 @@ var AdminResumeView = React.createClass({
       resume: '',
       re_display: false,
       close: this.props.dad.state.close,
+      avatar: this.props.dad.state.avatar,
     }
   }
   ,componentWillMount: function() {
@@ -267,7 +269,7 @@ var AdminResumeView = React.createClass({
   }
   ,render: function() {
     let resume = this.state.resume,
-        resume_content = this.state.re_display ? <ResumeContent resume={resume} /> : ''
+        resume_content = this.state.re_display ? <ResumeContent resume={resume} avatar={this.state.avatar} /> : ''
 
     return (
       <div className="mask-user">
@@ -285,7 +287,8 @@ var AdminResumeView = React.createClass({
 /******************简历详细信息***********************/
 var ResumeContent = React.createClass({
   render: function() {
-    let resume = this.props.resume
+    let resume = this.props.resume,
+        avatar = resume.avatar == 'avator.png' ? this.props.avatar : resume.avatar
     return (
       <div className="resume-content">
         <ul>
@@ -294,21 +297,19 @@ var ResumeContent = React.createClass({
           <li>查看次数:{resume.viewed_count}</li>
         </ul>
         <div className="resume-content">
-          <div className="show-img"></div>
-          <span>姓名</span>
+          <div className="show-img">
+            <div className="avatar">
+              <img src={avatar} />
+            </div>
+            <span>{resume.user.show_name}</span>
+          </div>
         </div>
 
         <section className="resumes-preview-public">
           <h1>基本信息</h1>
           <div className="resumes-preview-bg  resumes-preview-base">
             <table className="resumes-base">
-                {
-                  resume.users.map(
-                    function(user) {
-                      return(<UserInfo key={user.id} user={user} />)
-                    }
-                  )
-                }
+              <UserInfo key={resume.user.id} user={resume.user} />
             </table>
           </div>
         </section>

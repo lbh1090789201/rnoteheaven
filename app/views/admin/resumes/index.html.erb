@@ -2,4 +2,5 @@
   <%= render 'sidebar' %>
 <% end %>
 
-<%= react_component 'AdminResume', {data: @resumes, close: image_path('close.png')} %>
+
+<%= react_component 'AdminResume', {data: @resumes, close: image_path('close.png'), avatar: image_path('avator.png')} %>
