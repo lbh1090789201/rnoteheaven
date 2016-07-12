@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <a class="navbar-brand" href="/admin/jobs/check">云康控制台</a>
     <ul id="admin_nav" class="nav navbar-nav nav-console">
-        <li  class="<%='active' if params[:controller] == 'admin/jobs'%> <%= 'hidden' if !@show_tabs[0] %>" >
+        <li  class="<%='active' if params[:controller] == 'admin/jobs'%> <%= 'hidden' if !@show_tabs[0]  %>" >
           <a href="/admin/jobs/check">职位管理</a>
         </li>
         <li class="<%='active' if params[:controller] == 'admin/resumes'%> <%= 'hidden' if !@show_tabs[1] %>">

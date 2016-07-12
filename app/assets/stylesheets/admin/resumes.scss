@@ -77,7 +77,110 @@
     }
 
 
-    
+    .resumes-preview-public {
+      h1 {
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 0;
+        padding-left: 10px;
+      }
+      .resumes-preview-bg {
+        width: 92.11%;
+        border: 1px solid #e3e3e3;
+        border-radius: 10px;
+        margin: 0 auto 0 auto;
+        padding-left: 14px;
+        padding-top: 10px;
+        // background: #fff;
+        background: green;
+        .resumes-base {
+          font-size: 14px;
+          margin-bottom: 4px;
+        }
+        tr {
+          display: block;
+          span {
+            margin-right: 28px;
+          }
+        }
+        tr+tr {
+          display: block;
+          margin-top: 6px;
+        }
+        td+td {
+          padding-left: 15px;
+        }
+      }
+    }
+    .resume-show {
+      h1 {
+        display: block;
+        font-size: 16px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+      }
+      .box {
+        border-left: 1px solid #3f9e9f;
+        padding-left: 10px;
+        position: relative;
+        .green-point {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #3f9e9f;
+          position: absolute;
+          // top: -8px;
+          left: -5px;
+        }
+        time {
+          font-size: 14px;
+        }
+        h3 {
+          font-size: 15px;
+          margin-top: 8px;
+          margin-bottom: 5px;
+        }
+        p {
+          font-size: 14px;
+          color: #696969;
+          line-height: 18px;
+          padding-bottom: 7px;
+        }
+      }
+      .box+.box {
+        margin-top: -9.5px;
+      }
+      .expect-employer {
+        border-left: none;
+        .expect-preview {
+          padding-bottom: 0;
+        }
+      }
+      .employer-style {
+        padding-top: 0;
+        padding-left: 0;
+        min-height: 30px;
+        .cer-employer {
+          border-left: none;
+          p {
+            padding-bottom: 0;
+          }
+        }
+      }
+      #preview-expect {
+        background: #fff;
+        width: 92.11%;
+        border: 1px solid #e3e3e3;
+        border-radius: 5px;
+        margin: 10px auto 0 auto;
+        // padding-left: 16px;
+        // padding-top: 10px;
+      }
+    }
+    .employer-job {
+      padding-bottom: 18px;
+    }
 
 
 
