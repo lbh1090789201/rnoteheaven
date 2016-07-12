@@ -92,6 +92,7 @@ class AdminController < ActionController::Base
 
   helper_method :show_tabs
   def show_tabs
+    
     if current_user.admin?
       @show_tabs = [true, true, true, true, true, true]
     else
