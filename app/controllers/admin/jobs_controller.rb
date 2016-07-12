@@ -1,6 +1,5 @@
 class Admin::JobsController < AdminController
   before_action :require_jobs_manager!
-  layout 'admin'
   protect_from_forgery :except => [:update]
 
   def index

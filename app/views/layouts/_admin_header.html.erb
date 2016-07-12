@@ -7,14 +7,14 @@
         <li class="<%='active' if params[:controller] == 'admin/resumes'%> <%= 'hidden' if !@show_tabs[1] %>">
             <a href="/admin/resumes">简历管理</a>
         </li>
-        <li class="<%= 'hidden' if !@show_tabs[2] %>">
-            <a href="#">入驻机构</a>
+        <li class="<%='active' if params[:controller] == 'admin/hospitals'%> <%= 'hidden' if !@show_tabs[2] %>">
+            <a href="/admin/hospitals">入驻机构</a>
         </li>
-        <li class="<%= 'hidden' if !@show_tabs[3] %>">
-            <a href="#">医聘专场</a>
+        <li class="<%='active' if params[:controller] == 'admin/fairs'%> <%= 'hidden' if !@show_tabs[3] %>">
+            <a href="/admin/fairs">医聘专场</a>
         </li>
-        <li class="<%= 'hidden' if !@show_tabs[4] %>">
-            <a href="#">套餐管理</a>
+        <li class="<%='active' if params[:controller] == 'admin/vips'%> <%= 'hidden' if !@show_tabs[4] %>">
+            <a href="/admin/vips">套餐管理</a>
         </li>
         <li class="<%='active' if params[:controller] == 'admin/users'%> <%= 'hidden' if !@show_tabs[5] %>">
             <a href="/admin/users">帐号管理</a>

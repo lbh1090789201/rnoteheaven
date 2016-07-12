@@ -6,7 +6,7 @@ class AdminController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :show_tabs
-
+  layout 'admin'
 
   # Devise permitted params
   def configure_permitted_parameters
