@@ -120,7 +120,11 @@
     <div class="box work-time expect-employer">
       <h3><%= @expect_job.name %></h3>
       <p class="expect-preview">
-        <%= @expect_job.job_type %>/<%= @expect_job.location %>/<%= @expect_job.expected_salary_range %>
+        <%= @expect_job.job_type %>
+        <%= @expect_job.job_type.present? ? '/' : '' %>
+        <%= @expect_job.location %>
+        <%= @expect_job.location.present? ? '/' : '' %>
+        <%= @expect_job.expected_salary_range %>
       </p>
       <p><%= @expect_job.job_desc %></p>
     </div>
