@@ -108,6 +108,7 @@ Ryunkang::Application.routes.draw do
 
       resources :fairs, :except => [:destroy, :edit] do
         get '/history', to: 'fairs#history', on: :collection
+        resources :hospitals, :only => [:index, :create, :update]
       end
 
       resources :vips, :except => [:show]

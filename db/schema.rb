@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712091753) do
+ActiveRecord::Schema.define(version: 20160713082534) do
 
   create_table "apply_records", force: :cascade do |t|
     t.integer  "resume_id",       limit: 4
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160712091753) do
   create_table "employers", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.integer  "hospital_id", limit: 4
+    t.integer  "plan_id",     limit: 4
     t.integer  "vip_level",   limit: 4, default: 1, null: false
     t.integer  "may_receive", limit: 4, default: 0, null: false
     t.integer  "may_release", limit: 4, default: 0, null: false
@@ -106,16 +107,32 @@ ActiveRecord::Schema.define(version: 20160712091753) do
     t.datetime "updated_at",                        null: false
   end
 
+  create_table "fair_hospitals", force: :cascade do |t|
+    t.integer  "hospital_id",    limit: 4
+    t.integer  "fair_id",        limit: 4
+    t.string   "contact_person", limit: 191
+    t.string   "contact_number", limit: 191
+    t.string   "intro",          limit: 191
+    t.string   "banner",         limit: 191
+    t.string   "status",         limit: 191
+    t.string   "operator",       limit: 191
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "fairs", force: :cascade do |t|
-    t.string   "name",       limit: 191
-    t.string   "creator",    limit: 191
-    t.string   "banner",     limit: 191
-    t.text     "intro",      limit: 65535
-    t.string   "status",     limit: 191
+    t.string   "name",            limit: 191
+    t.string   "creator",         limit: 191
+    t.string   "banner",          limit: 191
+    t.text     "intro",           limit: 65535
+    t.string   "status",          limit: 191
     t.datetime "begain_at"
     t.datetime "end_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "hospitals_count", limit: 4
+    t.integer  "jobs_count",      limit: 4
+    t.integer  "resumes_count",   limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "favorite_jobs", force: :cascade do |t|
