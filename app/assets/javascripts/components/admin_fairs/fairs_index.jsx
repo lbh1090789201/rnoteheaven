@@ -18,7 +18,7 @@ var FairNow = React.createClass({
 
     return (
       <div className="main">
-        <FairForm />
+        <FairForm dad={this}/>
         <FairBtn handleClick={this.handleClick}/>
         <FairTable fairs={this.state.fairs} dad={this} />
         {fair_new}
@@ -51,6 +51,29 @@ var FairForm = React.createClass({
       status: e.target.value
     })
   }
+  ,handleSubmit: function(e) {
+    e.preventDefault()
+
+    $.ajax({
+      url: '/admin/fairs',
+      type: 'GET',
+      data: {
+        search: true,
+        status: this.state.status,
+        time_from: this.refs.time_from.value,
+        time_to: this.refs.time_to.value,
+        name: this.refs.name.value,
+      },
+      success: function(data) {
+        this.props.dad.setState({
+          fairs: data.fairs
+        })
+      }.bind(this),
+      error: function(data) {
+        alert('查询失败。')
+      }
+    })
+  }
   ,render: function() {
     return (
       <form className='form-inline' onSubmit={this.handleSubmit}>
@@ -67,7 +90,7 @@ var FairForm = React.createClass({
           </div>
           <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='专场名' name='name'
-                   defaultValue={this.state.show_name} ref="show_name" />
+                   defaultValue={this.state.show_name} ref="name" />
           </div>
           <button type='submit' className='btn btn-primary'>查询</button>
      </form>
@@ -80,11 +103,15 @@ var FairRadio = React.createClass({
     return (
       <span>
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="processing" />当前专场
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="" />全部
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="pause" />暂停专场
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="processing" />进行中
+        </label>
+
+        <label className="checkbox-inline">
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="pause" />暂停中
         </label>
       </span>
     )
@@ -154,7 +181,7 @@ var FairItem = React.createClass({
       <tr>
         <td>{index}</td>
         <td>{fair.name}</td>
-        <td>{fair.begin_at.slice(0, 10)}</td>
+        <td>{fair.begain_at.slice(0, 10)}</td>
         <td>{fair.end_at.slice(0, 10)}</td>
         <td>参加机构数</td>
         <td>发布职位数</td>

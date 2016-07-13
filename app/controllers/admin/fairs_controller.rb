@@ -3,9 +3,20 @@ class Admin::FairsController < AdminController
   protect_from_forgery :except => [:create]
 
   def index
-    @fairs = Fair.where(status: 'processing')
-    p @fairs
-    p '--------------'
+    if params[:search]
+      @fairs = Fair.filter_by_status(params[:status])
+                   .filter_begain_at(params[:time_from])
+                   .filter_end_at(params[:time_to])
+                   .filter_by_name(params[:name])
+
+      render json: {
+        success: true,
+        info: '搜索专场成功！',
+        fairs: @fairs
+      }, status: 200
+    else
+      @fairs = Fair.where(status: ['processing', 'pause'])
+    end
   end
 
   def create
@@ -28,6 +39,6 @@ class Admin::FairsController < AdminController
 
   private
     def fair_params
-      params.permit(:name, :begin_at, :end_at, :creator, :intro, :status, :banner)
+      params.permit(:name, :begain_at, :end_at, :creator, :intro, :status, :banner)
     end
 end

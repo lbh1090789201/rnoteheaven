@@ -74,8 +74,8 @@ var FairNew = React.createClass({
             </div>
             <div className="form-group col-sm-6">
                <label>开始时间</label>
-               <input type="date" className="form-control" name="begin_at"
-                               pattern=".{1,}" required title="开始时间不能为空" ref="begin_at" />
+               <input type="date" className="form-control" name="begain_at"
+                               pattern=".{1,}" required title="开始时间不能为空" ref="begain_at" />
             </div>
 
             <div className="form-group col-sm-6">
