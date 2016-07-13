@@ -154,8 +154,7 @@ var FairTableHead = React.createClass({
           <th>发布职位数</th>
           <th>收到简历数</th>
           <th>状态</th>
-          <th>机构列表</th>
-          <th>添加机构</th>
+          <th>参与机构</th>
           <th>修改专场</th>
         </tr>
       </thead>
@@ -201,8 +200,7 @@ var FairItem = React.createClass({
         <td>发布职位数</td>
         <td>收到简历数</td>
         <td>{trans_fair(fair.status)}</td>
-        <td><button onClick={this.handleDel} className="btn btn-primary btn-form">查看</button></td>
-        <td><button onClick={this.handleClick} className="btn btn-info btn-form">添加</button></td>
+        <td><a href={"/admin/fairs/" + fair.id + "/fair_hospitals"} className="btn btn-primary btn-form">管理</a></td>
         <td><button onClick={this.clickEdit} className="btn btn-default btn-form">修改</button></td>
       </tr>
     )
