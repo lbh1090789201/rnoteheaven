@@ -4,7 +4,7 @@ var AdminVipNew = React.createClass({
       status: '',
       show_name: '',
       role: '',
-      edit_diaplay: '',
+      edit_display: '',
       vip_info: this.props.dad.state.vip_info,
     }
   }
@@ -16,7 +16,7 @@ var AdminVipNew = React.createClass({
   ,handleClick: function() {
     this.props.dad.setState({
       vip_info: {
-        new_diaplay: false,
+        new_display: false,
       }
     })
   }
@@ -58,7 +58,7 @@ var AdminVipNew = React.createClass({
           alert(data.responseText)
           this.props.dad.setState({
             vip_info: {
-              new_diaplay: false,
+              new_display: false,
             }
 
           })

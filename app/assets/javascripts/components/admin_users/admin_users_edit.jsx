@@ -2,7 +2,7 @@
    getInitialState: function() {
      return {
        show_name: this.props.dad.state.user_info.show_name,
-       edit_diaplay: this.props.dad.state.user_info.edit_diaplay,
+       edit_display: this.props.dad.state.user_info.edit_display,
        check_display: false,
        id: this.props.user_info.uid,
        scopes: [],
@@ -43,7 +43,7 @@
    ,handleClick: function() {
      this.props.dad.setState({
        user_info: {
-         edit_diaplay: false,
+         edit_display: false,
        }
      })
    }
@@ -92,7 +92,7 @@
            this.props.dad.setState({
               users: users,
               user_info: {
-                edit_diaplay: false,
+                edit_display: false,
               }
            })
          }.bind(this),
@@ -100,7 +100,7 @@
            alert(data.responseText)
            this.props.dad.setState({
              user_info: {
-               edit_diaplay: false,
+               edit_display: false,
              }
            })
          }
@@ -111,7 +111,7 @@
      let check_box = this.state.check_display ? <AdminRoleCheckbox handleCheck={this.handleCheck} checkValues={this.state.checkValues}/> : ''
 
      return (
-       <div className="mask-user" style={{"display": this.props.user_info.edit_diaplay}}>
+       <div className="mask-user" style={{"display": this.props.user_info.edit_display}}>
          <div className="user-box">
            <form onSubmit={this.handleSubmit}>
              <input onChange={this.handleChange} value={this.props.user_info.uid} name="id" ref="id" style={{"display": "none"}} />

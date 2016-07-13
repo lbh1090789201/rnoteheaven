@@ -106,7 +106,7 @@ Ryunkang::Application.routes.draw do
         get '/record', to: 'users#record'
       end
 
-      resources :fairs, :except => [:destroy] do
+      resources :fairs, :except => [:destroy, :edit] do
         get '/history', to: 'fairs#history', on: :collection
       end
 

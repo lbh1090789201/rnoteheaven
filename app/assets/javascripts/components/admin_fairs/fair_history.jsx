@@ -1,11 +1,10 @@
-var FairNow = React.createClass({
+var FairHistroy = React.createClass({
   getInitialState: function() {
     return {
       new_display: false,
       edit_display: false,
       fairs: this.props.fairs,
       fair: '',
-      index: 0,
     }
   }
   ,handleClick: function(e) {
@@ -22,9 +21,8 @@ var FairNow = React.createClass({
 
     return (
       <div className="main">
-        <FairForm dad={this}/>
-        <FairBtn handleClick={this.handleClick}/>
-        <FairTable fairs={this.state.fairs} dad={this} />
+        <FairHistroyForm dad={this}/>
+        <FairHistroyTable fairs={this.state.fairs} dad={this} />
         {fair_new}
         {fair_edit}
       </div>
@@ -32,19 +30,9 @@ var FairNow = React.createClass({
   }
 })
 
-/*********** 发布按钮 ************/
-var FairBtn = React.createClass({
-  render: function() {
-    return (
-      <div className="handle-button">
-        <button className="btn btn-info pull-right" onClick={this.props.handleClick} name="new_display" value="true" >发布专场</button>
-      </div>
-    )
-  }
-})
 
 /*********** 搜索表格 ************/
-var FairForm = React.createClass({
+var FairHistroyForm = React.createClass({
   getInitialState: function() {
     return {
       status: '',
@@ -82,9 +70,6 @@ var FairForm = React.createClass({
   ,render: function() {
     return (
       <form className='form-inline' onSubmit={this.handleSubmit}>
-        <div className='form-group col-sm-12'>
-          <FairRadio handleRadio={this.handleRadio} />
-        </div>
           <div className='form-group col-sm-3'>
             <input type="date" className="form-control" placeholder='开始时间' name='time_from'
                    defaultValue={this.state.time_from} ref="time_from" />
@@ -103,29 +88,9 @@ var FairForm = React.createClass({
   }
 })
 
-var FairRadio = React.createClass({
-  render: function() {
-    return (
-      <span>
-        <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="" />全部
-        </label>
-
-        <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="processing" />进行中
-        </label>
-
-        <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="pause" />暂停中
-        </label>
-      </span>
-    )
-  }
-});
-
 
 /*********** 专场列表 ***********/
-var FairTable = React.createClass({
+var FairHistroyTable = React.createClass({
   getInitialState: function() {
     return {
 
@@ -134,14 +99,14 @@ var FairTable = React.createClass({
   ,render: function() {
     return (
       <table className="table table-bordered">
-        <FairTableHead />
-        <FairTableContent fairs={this.props.fairs} dad={this.props.dad} />
+        <FairHistroyTableHead />
+        <FairHistroyTableContent fairs={this.props.fairs} dad={this.props.dad} />
       </table>
     )
   }
 })
 
-var FairTableHead = React.createClass({
+var FairHistroyTableHead = React.createClass({
   render: function() {
     return (
       <thead>
@@ -154,23 +119,21 @@ var FairTableHead = React.createClass({
           <th>发布职位数</th>
           <th>收到简历数</th>
           <th>状态</th>
-          <th>机构列表</th>
-          <th>添加机构</th>
-          <th>修改专场</th>
+          <th>查看</th>
         </tr>
       </thead>
     )
   }
 })
 
-var FairTableContent = React.createClass({
+var FairHistroyTableContent = React.createClass({
   render: function() {
     return (
       <tbody>
         {
           this.props.fairs.map(
             function(fair, index) {
-              return (<FairItem key={fair.id} fair={fair} index={index} dad={this.props.dad} />)
+              return (<FairHistroyItem key={fair.id} fair={fair} index={index} dad={this.props.dad} />)
             }.bind(this)
           )
         }
@@ -179,13 +142,9 @@ var FairTableContent = React.createClass({
   }
 })
 
-var FairItem = React.createClass({
-  clickEdit: function() {
-    this.props.dad.setState({
-      fair: this.props.fair,
-      index: this.props.index,
-      edit_display: true
-    })
+var FairHistroyItem = React.createClass({
+  handleClick: function() {
+
   }
   ,render: function() {
     let fair = this.props.fair,
@@ -201,24 +160,23 @@ var FairItem = React.createClass({
         <td>发布职位数</td>
         <td>收到简历数</td>
         <td>{trans_fair(fair.status)}</td>
-        <td><button onClick={this.handleDel} className="btn btn-primary btn-form">查看</button></td>
-        <td><button onClick={this.handleClick} className="btn btn-info btn-form">添加</button></td>
-        <td><button onClick={this.clickEdit} className="btn btn-default btn-form">修改</button></td>
+        <td><button onClick={this.handleClick} className="btn btn-default btn-form">查看</button></td>
       </tr>
     )
   }
 })
 
 /********** 转译专场状态 ************/
-function trans_fair(status) {
-  switch (status) {
-    case 'processing':
-      return '进行中'
-      break
-    case 'pause':
-      return '已暂停'
-      break
-    default:
-      return '未知'
-  }
-}
+// function trans_fair(status) {
+//   switch (status) {
+//     case 'processing':
+//       return '进行中'
+//       break
+//     case 'pause':
+//       return '已暂停'
+//       break
+//
+//     default:
+//       return '未知'
+//   }
+// }

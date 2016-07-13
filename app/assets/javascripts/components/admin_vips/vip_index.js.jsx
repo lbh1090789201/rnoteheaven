@@ -174,7 +174,7 @@ var AdminVipItem = React.createClass({
         // show_name: this.props.data.show_name,
         // role: this.props.data.user_type,
         vip_id: this.props.data.id,
-        edit_diaplay: true,
+        edit_display: true,
       }
     })
   }
@@ -182,7 +182,7 @@ var AdminVipItem = React.createClass({
     this.props.dad.setState({
       vip_info: {
         vip_id: this.props.data.id,
-        view_diaplay: true,
+        view_display: true,
       }
     })
   }

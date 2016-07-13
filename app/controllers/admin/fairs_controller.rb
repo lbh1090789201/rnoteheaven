@@ -1,6 +1,6 @@
 class Admin::FairsController < AdminController
   before_action :require_fairs_manager!
-  protect_from_forgery :except => [:create]
+  protect_from_forgery :except => [:create, :update]
 
   def index
     if params[:search]
@@ -34,7 +34,19 @@ class Admin::FairsController < AdminController
     end
   end
 
+  def update
+    fair = Fair.find params[:id]
+    fair.update! fair_params
+
+    render json: {
+      success: true,
+      info: '更新专场成功',
+      fair: fair
+    }, status: 200
+  end
+
   def history
+    @fairs = Fair.filter_by_status 'end'
   end
 
   private
