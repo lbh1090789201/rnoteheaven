@@ -6,7 +6,6 @@ class Admin::VipsController < AdminController
   def index
     @vips = Plan.all
 
-
     if params[:search]
       @vvs = Plan.filter_by_status(params[:status]).filter_by_name(params[:vip_name])
 

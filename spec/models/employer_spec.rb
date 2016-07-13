@@ -5,6 +5,7 @@ RSpec.describe Employer, type: :model do
     @user = create(:user)
     @hospital = create(:hospital)
     @employer = create(:employer, user_id: @user.id, hospital_id: @hospital.id)
+    @plan = create(:plan)
   end
 
   it "test employer get_hospital" do
