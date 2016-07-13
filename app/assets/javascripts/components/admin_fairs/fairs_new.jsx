@@ -36,22 +36,16 @@ var FairNew = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    let banner_file = this.refs.banner.files[0],
+        formData = new FormData(e.target)
 
-    let name = this.refs.name.value,
-        begin_at = this.refs.begin_at.value,
-        end_at = this.refs.end_at.value,
-        creator = this.refs.creator.value,
-        intro = this.refs.intro.value,
-        status = 'processing',
-        banner_file = this.refs.banner.files[0]
-
-    console.log(formData)
     $.ajax({
       url: '/admin/fairs',
       type: 'POST',
       data: formData,
+      contentType: false,
+      processData: false,
       success: function(data){
-        console.log(data)
         let  fairs = this.props.dad.state.fairs
 
         fairs.push(data.fair)
@@ -72,7 +66,7 @@ var FairNew = React.createClass({
     return (
       <div className="mask-user">
         <div className="user-box">
-          <form method="post" action="/admin/fairs" encType="multipart/form-data" data-remote="true">
+          <form method="post" action="/admin/fairs" encType="multipart/form-data" onSubmit={this.handleSubmit}>
             <div className="form-group">
                <label>用户名称</label>
                <input className="form-control" placeholder="专场名称" name="name"

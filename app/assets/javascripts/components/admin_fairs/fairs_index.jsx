@@ -154,14 +154,13 @@ var FairItem = React.createClass({
       <tr>
         <td>{index}</td>
         <td>{fair.name}</td>
-        <td>{fair.begin_at}</td>
-        <td>{fair.end_at}</td>
+        <td>{fair.begin_at.slice(0, 10)}</td>
+        <td>{fair.end_at.slice(0, 10)}</td>
         <td>参加机构数</td>
         <td>发布职位数</td>
         <td>收到简历数</td>
         <td>{trans_fair(fair.status)}</td>
         <td>详情</td>
-        <td><img src={fair.banner.url} /></td>
       </tr>
     )
   }

@@ -12,12 +12,12 @@ class Admin::FairsController < AdminController
     fair = Fair.new(fair_params)
 
     if fair.save
-      render js: 'window.location.replace(window.location.href);', status: 200
-      # render json: {
-      #   success: true,
-      #   info: '新建专场成功！',
-      #   fair: fair
-      # }, status: 200
+      # render js: 'window.location.replace(window.location.href);', status: 200
+      render json: {
+        success: true,
+        info: '新建专场成功！',
+        fair: fair
+      }, status: 200
     else
       render json: '新建专场失败。', status: 403
     end
