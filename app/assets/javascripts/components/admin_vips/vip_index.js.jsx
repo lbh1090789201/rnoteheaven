@@ -3,12 +3,10 @@ var AdminVip = React.createClass({
     return {
       vips: this.props.vips,
       vip_info: {
-        vip_id: '',
         vip_name: '',
-        role: '',
+        vip: '',
         edit_display: false,
         new_display: false,
-        view_display: false,
         index: 0,
       }
     }
@@ -22,9 +20,8 @@ var AdminVip = React.createClass({
   }
   ,render: function() {
 
-    var edit_vip = this.state.vip_info.edit_display ? <AdminVipEdit dad={this} /> : '',
-        new_vip = this.state.vip_info.new_display ? <AdminVipNew dad={this} /> : '',
-        view_vip = this.state.vip_info.view_display ? <AdminVipView dad={this} /> : ''
+    var edit_vip = this.state.vip_info.edit_display ? <AdminVipEdit dad={this} data={this.state.vip_info} /> : '',
+        new_vip = this.state.vip_info.new_display ? <AdminVipNew dad={this} /> : ''
 
     return (
       <div className="main">
@@ -34,7 +31,6 @@ var AdminVip = React.createClass({
         </div>
         <AdminVipTable vips={this.state.vips} dad={this}/>
         {edit_vip}
-        {view_vip}
         {new_vip}
       </div>
     )
@@ -45,14 +41,26 @@ var AdminVip = React.createClass({
 var AdminVipForm = React.createClass({
   getInitialState: function() {
     return {
-      manager: '',
+      status: '',
       vip_name: '',
     }
   }
   ,handleRadio: function(e) {
-    this.setState({
-      manager: e.target.value,
-    })
+    let val = e.target.value
+    if(val == 'true') {
+      this.setState({
+        status: 1,
+      })
+    }else if(val == 'false') {
+      this.setState({
+        status: 0,
+      })
+    }else{
+      this.setState({
+        status: '',
+      })
+    }
+
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
@@ -60,11 +68,14 @@ var AdminVipForm = React.createClass({
       url: '/admin/vips',
       type: 'GET',
       data: {
-        manager: this.state.manager,
+        status: this.state.status,
         vip_name: this.refs.vip_name.value,
+        search: this.refs.hide_search.value,
       },
       success: function(data){
-        this.props.dad.setState({vips: data.vips})
+        this.props.dad.setState({
+          vips: data.vip
+        })
       }.bind(this),
       error: function(data){
         alert(data.responseText)
@@ -78,7 +89,7 @@ var AdminVipForm = React.createClass({
         <div className='form-group vip-status'>
           <label>
             <span>状态:</span>
-            <AdminUserRadio handleRadio={this.handleRadio} />
+            <AdminVipRadio handleRadio={this.handleRadio} />
           </label>
         </div>
 
@@ -86,6 +97,8 @@ var AdminVipForm = React.createClass({
           <input type="text" className="form-control" placeholder='套餐名称' name='vip_name'
                  defaultValue={this.state.vip_name} ref="vip_name" id="vip_name" />
         </div>
+
+        <input type="hidden" ref="hide_search" value="search"/>
         <button type='submit' className='btn btn-primary'>查询</button>
      </form>
     )
@@ -93,7 +106,7 @@ var AdminVipForm = React.createClass({
 })
 
 /************单选框组件*************/
-var AdminUserRadio = React.createClass({
+var AdminVipRadio = React.createClass({
   render: function() {
     return (
       <span>
@@ -102,11 +115,11 @@ var AdminUserRadio = React.createClass({
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value={true} />已启用
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value={true} />启用
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value={false} />已禁止
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value={false} />禁止
         </label>
       </span>
     )
@@ -157,7 +170,7 @@ var AdminVipTableContent = React.createClass({
           {
             this.props.vips.map(
               function(vip, index) {
-              return(<AdminVipItem key={vip.id} data={vip} index={index + 1} dad={this.props.dad}/>)
+              return(<AdminVipItem key={vip.id} data={vip} index={index} dad={this.props.dad}/>)
             }.bind(this)
           )
         }
@@ -171,29 +184,20 @@ var AdminVipItem = React.createClass({
   handleClick: function() {
     this.props.dad.setState({
       vip_info: {
-        // show_name: this.props.data.show_name,
-        // role: this.props.data.user_type,
-        vip_id: this.props.data.id,
-        edit_diaplay: true,
-      }
-    })
-  }
-  ,handleView: function() {
-    this.props.dad.setState({
-      vip_info: {
-        vip_id: this.props.data.id,
-        view_diaplay: true,
+        index: this.props.index,
+        vip: this.props.data,
+        edit_display: true,
       }
     })
   }
   ,handleDel: function() {
-    if(confirm('确定要删除用户' + this.props.data.show_name + '?')) {
-      let uid = this.props.data.id,
-          index = this.props.index - 1,
+    if(confirm('确定要删除用户' + this.props.data.name + '?')) {
+      let vip_id = this.props.data.id,
+          index = this.props.index,
           vips = this.props.dad.state.vips
 
       $.ajax({
-        url: '/admin/vips',
+        url: '/admin/vips/' + vip_id,
         type: 'DELETE',
         data: {
           id: vip_id
@@ -212,18 +216,27 @@ var AdminVipItem = React.createClass({
     }
   }
   ,render: function() {
+    var Status = this.props.data.status
+
+      vip_status = function() {
+      if(Status == true) {
+        return '启用'
+      }else{
+        return '禁止'
+      }
+    }
     return (
       <tr>
-        <td>{this.props.index}</td>
+        <td>{this.props.index + 1}</td>
         <td>{this.props.data.name}</td>
         <td>{this.props.data.may_release}</td>
         <td>{this.props.data.may_set_top}</td>
         <td>{this.props.data.may_receive}</td>
         <td>{this.props.data.may_view}</td>
         <td>{this.props.data.may_join_fairs}</td>
+        <td>{vip_status()}</td>
         <td>
-          <button onClick={this.handleClick} className="btn btn-default btn-form">修改</button>
-          <button onClick={this.handleView} className="btn btn-default btn-form">查看</button>
+          <button onClick={this.handleClick} className="btn btn-default btn-form btn-view">修改</button>
           <button onClick={this.handleDel} className="btn btn-danger btn-form">删除</button>
         </td>
       </tr>

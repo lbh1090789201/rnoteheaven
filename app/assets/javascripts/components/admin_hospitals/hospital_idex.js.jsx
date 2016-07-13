@@ -1,0 +1,184 @@
+var AdminHospital = React.createClass({
+  getInitialState: function() {
+    return {
+      hospitals: this.props.data,
+      hos_info: {
+        index: 0,
+        hospital: '',
+        edit_display: false,
+      },
+    }
+  }
+  ,render: function() {
+    var edit_hospital = this.state.hos_info.edit_display ? <AdminEditHospital data={this.state.hos_info.hospital} dad={this} /> : ''
+
+    return (
+      <div className="main">
+        <AdminHospitalForm dad={this} />
+        <AdminHospitalTable hospitals={this.state.hospitals} dad={this}/>
+        {edit_hospital}
+      </div>
+    )
+  }
+})
+
+
+/********** form begin ************/
+var AdminHospitalForm = React.createClass({
+  getInitialState: function() {
+    return {
+      hos_name: '',
+    }
+  }
+  ,handleSubmit: function(e) {
+    e.preventDefault()
+    var formData = new FormData(e.target)
+    $.ajax({
+      url: "/admin/hospitals",
+      type: "GET",
+      data: formData,
+      processData: false,
+      contentType: false,
+      seccess: function(data) {
+        // console.log(data.hospital)
+        this.props.dad.setState({
+          hospitals: data.hospital,
+        })
+      }.bind(this),
+      error: function(data) {
+        // console.log(data.responseText)
+      },
+    })
+  }
+  ,render: function() {
+    return (
+      <form className='form-inline' onSubmit={this.handleSubmit}>
+        <div className='form-group col-sm-12'>
+          <AdminHospitalRadio />
+        </div>
+
+        <div className='form-group col-sm-3'>
+          <input type="text" className="form-control" placeholder='医院名称' name='hospital_name'
+                  ref="show_name" />
+        </div>
+
+        <div className='form-group col-sm-3'>
+          <input type="text" className="form-control" placeholder='套餐级别' name='vip_name'
+                  ref="vip_name" />
+        </div>
+
+        <div className='form-group col-sm-3'>
+          <input type="date" className="form-control" placeholder='开始时间' name='time_before'
+                 ref="time_before" />
+        </div>
+
+        <div className='form-group col-sm-3'>
+          <input type="date" className="form-control" placeholder='结束时间' name='time_after'
+                 ref="time_after" />
+        </div>
+
+        <input type="hidden" ref="hide_search" value="search"/>
+        <button type='submit' className='btn btn-primary'>查询</button>
+     </form>
+    )
+  }
+})
+
+
+/************单选框组件*************/
+var AdminHospitalRadio = React.createClass({
+  render: function() {
+    return (
+      <span>
+
+        <label className="checkbox-inline">
+        <input name="property" type="radio" value="综合医院" />综合医院
+        </label>
+
+        <label className="checkbox-inline">
+        <input name="property" type="radio" value="专科医院" />专科医院
+        </label>
+
+        <label className="checkbox-inline">
+        <input name="property" type="radio" value="民营医院" />民营医院
+        </label>
+
+        <label className="checkbox-inline">
+        <input name="property" type="radio" value="公立诊所" />公立诊所
+        </label>
+
+        <label className="checkbox-inline">
+        <input name="property" type="radio" value="民营诊所" />民营诊所
+        </label>
+
+      </span>
+    )
+  }
+});
+
+/*************Table组件*****************/
+var AdminHospitalTable = React.createClass({
+  getInitialState: function() {
+    return {
+      hospitals: this.props.hospitals,
+    }
+  }
+  ,render: function() {
+    console.log(this.state.hospitals)
+    return (
+      <table className="table table-bordered">
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>账号</th>
+            <th>医院名称</th>
+            <th>可发布职位数</th>
+            <th>可置顶职位数</th>
+            <th>可接收简历数</th>
+            <th>可查看简历数</th>
+            <th>级别</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <AdminHospitalTableCt data={this.state.hospitals} dad={this.props.dad} />
+      </table>
+    )
+  }
+})
+
+
+var AdminHospitalTableCt = React.createClass({
+  render: function() {
+    return (
+      <tbody>
+        {
+          this.props.data.map(
+            function(hospital, index) {
+              return <AdminHospitalItem key={hospital.id} index={index} data={hospital} dad={this.props.dad} />
+            }.bind(this)
+          )
+        }
+      </tbody>
+    )
+  }
+})
+
+var AdminHospitalItem =React.createClass({
+  render: function() {
+    return (
+      <tr>
+        <td>{this.props.index + 1}</td>
+        <td>{this.props.data.id}</td>
+        <td>{this.props.data.name}</td>
+        <td>{this.props.data.name}</td>
+        <td>{this.props.data.name}</td>
+        <td>{this.props.data.name}</td>
+        <td>{this.props.data.name}</td>
+        <td>{this.props.data.name}</td>
+        <td>
+          <button onClick={this.handleClick} className="btn btn-default btn-form" >修改</button>
+        </td>
+      </tr>
+    )
+  }
+})
