@@ -48,6 +48,8 @@
     height: 100px;
     cursor: pointer;
     background-repeat: no-repeat;
-    background-size: 100% 120px;
+    background-size: auto 120px;
+    background-position:center;
+    background-color: #eee;
   }
 }
