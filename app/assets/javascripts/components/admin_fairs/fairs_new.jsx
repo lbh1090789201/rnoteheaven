@@ -72,13 +72,13 @@ var FairNew = React.createClass({
                <input className="form-control" placeholder="专场名称" name="name"
                              pattern=".{1,}" required title="专场名称不能为空" ref="name" />
             </div>
-            <div className="form-group">
+            <div className="form-group col-sm-6">
                <label>开始时间</label>
                <input type="date" className="form-control" name="begin_at"
                                pattern=".{1,}" required title="开始时间不能为空" ref="begin_at" />
             </div>
 
-            <div className="form-group">
+            <div className="form-group col-sm-6">
                <label>结束时间</label>
                <input type="date" className="form-control" name="end_at"
                                pattern=".{1,}" required title="结束时间不能为空" ref="end_at" />
