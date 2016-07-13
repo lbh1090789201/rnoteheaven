@@ -3,6 +3,7 @@ class CreateEmployers < ActiveRecord::Migration
     create_table :employers do |t|
       t.references :user
       t.references :hospital
+      t.references :plan
 
       # vip 信息
       t.integer :vip_level, null:false, default: 1 # vip 等级

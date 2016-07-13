@@ -3,7 +3,7 @@
      return {
        show_name: '',
        role: '',
-       edit_diaplay: '',
+       edit_display: '',
        scopes: [],
        checkValues: {"jobs_manager": false, "resumes_manager": false, "hospitals_manager": false,
                   "fairs_manager": false, "vips_manager": false, "acounts_manager": false},
@@ -25,7 +25,7 @@
    ,handleClick: function() {
      this.props.dad.setState({
        user_info: {
-         edit_diaplay: false,
+         edit_display: false,
        }
      })
    }
@@ -80,7 +80,7 @@
            alert(data.responseText)
            this.props.dad.setState({
              user_info: {
-               new_diaplay: false,
+               new_display: false,
              }
            })
          },

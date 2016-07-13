@@ -6,7 +6,7 @@ var AdminUser = React.createClass({
         uid: '',
         show_name: '',
         role: '',
-        edit_diaplay: false,
+        edit_display: false,
         new_display: false,
         index: 0,
       }
@@ -20,7 +20,7 @@ var AdminUser = React.createClass({
     })
   }
   ,render: function() {
-    var edit = this.state.user_info.edit_diaplay ? <AdminUserEdit user_info={this.state.user_info} dad={this}/> : '',
+    var edit = this.state.user_info.edit_display ? <AdminUserEdit user_info={this.state.user_info} dad={this}/> : '',
         new_user = this.state.user_info.new_display ? <AdminUserNew dad={this} /> : ''
 
     return (
@@ -192,7 +192,7 @@ var AdminUserItem = React.createClass({
         role: this.props.data.user_type,
         uid: this.props.data.id,
         index: this.props.index - 1,
-        edit_diaplay: true,
+        edit_display: true,
       }
     })
   }

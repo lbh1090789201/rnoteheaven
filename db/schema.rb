@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712091753) do
+ActiveRecord::Schema.define(version: 20160713082534) do
 
   create_table "apply_records", force: :cascade do |t|
     t.integer  "resume_id",       limit: 4
@@ -104,6 +104,19 @@ ActiveRecord::Schema.define(version: 20160712091753) do
     t.datetime "is_top_at"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+  end
+
+  create_table "fair_hospitals", force: :cascade do |t|
+    t.integer  "hospital_id",    limit: 4
+    t.integer  "fair_id",        limit: 4
+    t.string   "contact_person", limit: 191
+    t.string   "contact_number", limit: 191
+    t.string   "intro",          limit: 191
+    t.string   "banner",         limit: 191
+    t.string   "status",         limit: 191
+    t.string   "operator",       limit: 191
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "fairs", force: :cascade do |t|

@@ -10,6 +10,9 @@ var AdminHospital = React.createClass({
     }
   }
   ,render: function() {
+
+    console.log(this.state.hos_info.index)
+    console.log(this.state.hos_info.hospital)
     var edit_hospital = this.state.hos_info.edit_display ? <AdminEditHospital data={this.state.hos_info.hospital} dad={this} /> : ''
 
     return (
@@ -124,7 +127,6 @@ var AdminHospitalTable = React.createClass({
     }
   }
   ,render: function() {
-    console.log(this.state.hospitals)
     return (
       <table className="table table-bordered">
         <thead>
@@ -164,7 +166,21 @@ var AdminHospitalTableCt = React.createClass({
 })
 
 var AdminHospitalItem =React.createClass({
-  render: function() {
+  getInitialState: function() {
+    return {
+
+    }
+  }
+  ,handleClick: function(e) {
+    this.props.dad.setState({
+      hos_info: {
+        index: this.props.index,
+        hospital: this.props.data,
+        edit_display: true,
+      }
+    })
+  }
+  ,render: function() {
     return (
       <tr>
         <td>{this.props.index + 1}</td>

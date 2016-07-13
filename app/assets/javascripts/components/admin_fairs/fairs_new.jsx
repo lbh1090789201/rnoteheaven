@@ -1,38 +1,19 @@
 var FairNew = React.createClass({
   getInitialState: function() {
     return {
-      show_name: '',
-      role: '',
-      edit_diaplay: '',
-      scopes: [],
-      checkValues: {"jobs_manager": false, "resumes_manager": false, "hospitals_manager": false,
-                 "fairs_manager": false, "vips_manager": false, "acounts_manager": false},
+      divStyle: {
+        backgroundImage: '',
+      }
     }
   }
   ,handleChange: function(e) {
-    let name = e.target.name
-
-    if(name == "show_name") {
-      this.props.user_info.show_name = e.target.value
-    } else if(name = "role") {
-      this.props.user_info.role = e.target.value
-    }
+    let url = URL.createObjectURL(e.target.files[0])
 
     this.setState({
-      [name]: e.target.value
+      divStyle: {
+        backgroundImage: 'url(' + url + ')',
+      }
     })
-  }
-  ,handleCheck: function(e) {
-    let scopes = this.state.scopes,
-        index = scopes.indexOf(e.target.value)
-
-    if(index == -1) {
-      scopes.push(e.target.value)
-    } else {
-      scopes.splice(index, 1)
-    }
-
-    this.setState({scopes: scopes})
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
@@ -67,27 +48,28 @@ var FairNew = React.createClass({
       <div className="mask-user">
         <div className="user-box">
           <form method="post" action="/admin/fairs" encType="multipart/form-data" onSubmit={this.handleSubmit}>
-            <div className="form-group">
+            <div className="form-group col-sm-6">
                <label>用户名称</label>
                <input className="form-control" placeholder="专场名称" name="name"
                              pattern=".{1,}" required title="专场名称不能为空" ref="name" />
             </div>
-            <div className="form-group">
-               <label>开始时间</label>
-               <input type="date" className="form-control" name="begin_at"
-                               pattern=".{1,}" required title="开始时间不能为空" ref="begin_at" />
-            </div>
 
-            <div className="form-group">
-               <label>结束时间</label>
-               <input type="date" className="form-control" name="end_at"
-                               pattern=".{1,}" required title="结束时间不能为空" ref="end_at" />
-            </div>
-
-            <div className="form-group">
+            <div className="form-group col-sm-6">
                <label>发布人</label>
                <input type="text" className="form-control" name="creator"
                            pattern=".{1,}" required title="发布人不能为空" ref="creator" />
+            </div>
+
+            <div className="form-group col-sm-6">
+               <label>开始时间</label>
+               <input type="date" className="form-control" name="begain_at"
+                               pattern=".{1,}" required title="开始时间不能为空" ref="begain_at" />
+            </div>
+
+            <div className="form-group col-sm-6">
+               <label>结束时间</label>
+               <input type="date" className="form-control" name="end_at"
+                               pattern=".{1,}" required title="结束时间不能为空" ref="end_at" />
             </div>
 
             <div className="form-group">
@@ -98,7 +80,8 @@ var FairNew = React.createClass({
 
             <div className="form-group">
                <label>上传图片</label>
-               <input type="file" className="form-control" name="banner" ref="banner" />
+               <input type="file" className="form-control preview-img" onChange={this.handleChange}
+                      style={this.state.divStyle} name="banner" ref="banner" />
             </div>
 
             <input className="hidden" name="status" defaultValue="processing" />
