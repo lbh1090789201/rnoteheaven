@@ -15,4 +15,19 @@ class Hospital < ActiveRecord::Base
     filter = "name like '%" + name + "%'" if name.present?
     where(filter) if name.present?
   }
+
+  #按医院类别查找
+  scope :filter_by_property, ->(property) {
+    where("property like '%" + property + "%'") if property.present?
+  }
+
+  # 按医院创建时间
+  scope :filter_create_before, ->(created_at) {
+    where("created_at >= ?", created_at) if created_at.present?
+  }
+
+  # 按医院创建时间
+  scope :filter_create_after, ->(created_at) {
+    where("created_at <= ?", created_at) if created_at.present?
+  }
 end

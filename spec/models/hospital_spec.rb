@@ -31,6 +31,18 @@ RSpec.describe Hospital, type: :model do
       expect(Hospital.filter_location('成都').filter_hospital_name('第五').size).to eq 1
     end
 
+    it "test filter_by_property" do
+      expect(Hospital.filter_by_property('社').size).to eq(1)
+    end
+
+    it "test filter_create_before" do
+      expect(Hospital.filter_create_before('2014-11-10 11:11:11').size).to eq(6)
+    end
+
+    it "test filter_create_after" do
+      expect(Hospital.filter_create_after('2016-11-10 11:11:11').size).to eq(6)
+    end
+
   end
 
 
