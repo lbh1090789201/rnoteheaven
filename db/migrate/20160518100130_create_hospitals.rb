@@ -13,6 +13,8 @@ class CreateHospitals < ActiveRecord::Migration
       t.string :image   #医院预览图
       t.float :lat, default: 30.598428 #纬度
       t.float :lng, default: 114.311831 #经度
+      t.string :contact_person #负责人
+      t.string :contact_number #手机号码
 
       t.timestamps null: false
     end
