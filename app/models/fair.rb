@@ -65,7 +65,7 @@ class Fair < ActiveRecord::Base
     res = []
 
     fairs.each do |f|
-      if f.end_at > Time.now
+      if f.end_at < Time.now
         f = Fair.set_end f
       else
         res.push f
