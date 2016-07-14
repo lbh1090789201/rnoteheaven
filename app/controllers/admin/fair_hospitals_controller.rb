@@ -8,7 +8,6 @@ class Admin::FairHospitalsController < AdminController
                       .filter_contact_person(params[:contact_person])
       golds = golds.where(id: params[:id]) if params[:id].present?
 
-      golds = FairHospital.get_info golds
       render json: {
         success: true,
         info: '动态搜索成功！',

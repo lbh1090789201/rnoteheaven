@@ -216,6 +216,9 @@ function trans_fair(status) {
     case 'pause':
       return '已暂停'
       break
+    case 'end':
+      return '已结束'
+      break
     default:
       return '未知'
   }

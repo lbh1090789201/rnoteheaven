@@ -132,6 +132,16 @@ header {
   }
 }
 
+// 红色关闭按钮
+.close-red {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  margin-top: -0.5rem;
+  width: 30px;
+  cursor: pointer;
+}
+
 footer {
   text-align: center;
 }

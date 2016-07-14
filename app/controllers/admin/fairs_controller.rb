@@ -9,7 +9,7 @@ class Admin::FairsController < AdminController
                    .filter_end_at(params[:time_to])
                    .filter_by_name(params[:name])
 
-      @fairs = Fair.get_info fairs          
+      @fairs = Fair.get_info fairs
       render json: {
         success: true,
         info: '搜索专场成功！',
@@ -17,6 +17,7 @@ class Admin::FairsController < AdminController
       }, status: 200
     else
       fairs = Fair.where(status: ['processing', 'pause'])
+      fairs = Fair.is_end fairs
       @fairs = Fair.get_info fairs
     end
   end
@@ -25,7 +26,6 @@ class Admin::FairsController < AdminController
     fair = Fair.new(fair_params)
 
     if fair.save
-      # render js: 'window.location.replace(window.location.href);', status: 200
       render json: {
         success: true,
         info: '新建专场成功！',
@@ -40,6 +40,11 @@ class Admin::FairsController < AdminController
     fair = Fair.find params[:id]
     fair.update! fair_params
 
+    if fair.status == "end"
+      fair = Fair.set_end fair
+    end
+
+    fair = Fair.fair_statistic fair
     render json: {
       success: true,
       info: '更新专场成功',

@@ -9,6 +9,7 @@ var FairHospital = React.createClass({
       new_display: false,
       edit_display: false,
       search_display: false,
+      close: this.props.close,
     }
   }
   ,handleClick: function(e) {
@@ -152,7 +153,7 @@ var FairHospitalItem = React.createClass({
     return (
       <tr>
         <td>{index}</td>
-        <td>{fair_hospital.hospital_id}</td>
+        <td>{fair_hospital.hospital_name}</td>
         <td style={this.state.tdStyle}>{fair_hospital.intro}</td>
         <td>{fair_hospital.created_at.slice(0, 10)}</td>
         <td>{fair_hospital.jobs_count}</td>
