@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" id="viewport">
-  <title><%= @title || "云康医聘" %></title>
+  <title><%= content_for?(:title) ? content_for(:title) : '云康' %></title>
   <%= favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
   <!--<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>-->
   <%= stylesheet_link_tag "bootstrap.min" %>
@@ -30,7 +30,7 @@
 <body>
   <div id="wrap">
     <header>
-        <%= render 'layouts/header' %>
+        <%# render 'layouts/header' %>
     </header>
 
     <div class="container">
