@@ -33,4 +33,23 @@ RSpec.describe Fair, type: :model do
       expect(res.length).to eq(2)
     end
   end
+
+  it "test Fair.get_info fairs" do
+    @hospital = create(:hospital)
+    @hospital2 = create(:hospital)
+    @job = create(:job, hospital_id: @hospital.id)
+    @job2 = create(:job, hospital_id: @hospital2.id)
+    @job3 = create(:job, hospital_id: @hospital2.id)
+    @fair = create(:fair)
+    @fair_hospital = create(:fair_hospital, fair_id: @fair.id, hospital_id: @hospital.id)
+    @fair_hospital2 = create(:fair_hospital, fair_id: @fair.id, hospital_id: @hospital2.id)
+    @apply_record = create(:apply_record, from: @fair.id)
+    @apply_record2 = create(:apply_record, from: @fair.id)
+
+    res = Fair.fair_statistic @fair
+    expect(res["hospitals_count"]).to eq(2)
+    expect(res["jobs_count"]).to eq(3)
+    expect(res["resumes_count"]).to eq(2)
+  end
+
 end

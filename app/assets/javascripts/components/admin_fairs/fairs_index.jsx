@@ -196,9 +196,9 @@ var FairItem = React.createClass({
         <td>{fair.name}</td>
         <td>{fair.begain_at.slice(0, 10)}</td>
         <td>{fair.end_at.slice(0, 10)}</td>
-        <td>参加机构数</td>
-        <td>发布职位数</td>
-        <td>收到简历数</td>
+        <td>{fair.hospitals_count}</td>
+        <td>{fair.jobs_count}</td>
+        <td>{fair.resumes_count}</td>
         <td>{trans_fair(fair.status)}</td>
         <td><a href={"/admin/fairs/" + fair.id + "/fair_hospitals"} className="btn btn-primary btn-form">管理</a></td>
         <td><button onClick={this.clickEdit} className="btn btn-default btn-form">修改</button></td>
