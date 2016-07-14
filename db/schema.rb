@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 20160713082534) do
   create_table "fair_hospitals", force: :cascade do |t|
     t.integer  "hospital_id",    limit: 4
     t.integer  "fair_id",        limit: 4
+    t.integer  "user_id",        limit: 4
     t.string   "contact_person", limit: 191
     t.string   "contact_number", limit: 191
     t.string   "intro",          limit: 191

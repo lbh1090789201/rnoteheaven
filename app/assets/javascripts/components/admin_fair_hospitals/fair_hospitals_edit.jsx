@@ -1,10 +1,11 @@
-var FairHospitalNew = React.createClass({
+var FairHospitalEdit = React.createClass({
   getInitialState: function() {
     return {
       divStyle: {
-        backgroundImage: '',
+        backgroundImage:'url(' + this.props.dad.state.fair_hospital.banner.url + ')',
       },
-      gold: this.props.dad.state.gold
+      gold: this.props.dad.state.gold,
+      fair_hospital: this.props.dad.state.fair_hospital,
     }
   }
   ,handleChange: function(e) {
@@ -45,7 +46,8 @@ var FairHospitalNew = React.createClass({
     })
   }
   ,render: function() {
-    let gold = this.state.gold
+    let gold = this.state.gold,
+        fair_hospital = this.state.fair_hospital
 
     return (
       <div className="mask-user">
@@ -59,19 +61,19 @@ var FairHospitalNew = React.createClass({
 
             <div className="form-group col-sm-6">
                <label>专场联系人</label>
-               <input type="text" className="form-control" name="contact_person"
-                      pattern=".{1,}" required title="专场联系人不能为空" ref="contact_person" />
+               <input type="text" className="form-control" name="contact_person" required title="专场联系人不能为空"
+                      defaultValue={fair_hospital.contact_person} pattern=".{1,}" ref="contact_person" />
             </div>
 
             <div className="form-group col-sm-6">
                <label>手机号码</label>
-               <input type="tel" className="form-control" name="contact_number"
+               <input type="tel" className="form-control" name="contact_number" defaultValue={fair_hospital.contact_number}
                       pattern=".{1,}" required title="手机号码不能为空" ref="contact_number" />
             </div>
 
             <div className="form-group col-sm-12">
                <label>专场介绍</label>
-               <textarea className="form-control" name="intro" rows="5"
+               <textarea className="form-control" name="intro" rows="5" defaultValue={fair_hospital.intro}
                                pattern=".{6,}" required title="最少6个字符" ref="intro" />
             </div>
 
@@ -85,7 +87,7 @@ var FairHospitalNew = React.createClass({
             <input className="hidden" name="hospital_id" defaultValue={gold.id} />
 
             <button type="button" className="btn btn-bottom btn-secondary"
-                    onClick={this.props.dad.handleClick} name="new_display" value="false" >取消</button>
+                    onClick={this.props.dad.handleClick} name="edit_display" value="false" >取消</button>
 
             <button type="submit" className="btn btn-bottom btn-success">提交</button>
           </form>

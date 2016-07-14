@@ -16,6 +16,7 @@
   left: 0;
   background: rgba(0, 0, 0, 0.67);
 }
+
 .user-box {
   position: relative;
   width: 60%;
@@ -43,6 +44,10 @@
     }
 
   }
+}
+
+.search-box {
+  padding-bottom: 1rem;
 }
 
 .gold-info {

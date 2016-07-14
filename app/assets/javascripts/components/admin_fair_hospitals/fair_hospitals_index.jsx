@@ -2,6 +2,7 @@ var FairHospital = React.createClass({
   getInitialState: function() {
     return {
       fair_hospitals: this.props.fair_hospitals,
+      fair_hospital: '',
       fair: this.props.fair,
       gold: '',
       new_display: false,
@@ -18,7 +19,6 @@ var FairHospital = React.createClass({
     })
   }
   ,render: function() {
-    console.log(this.state.new_display)
       let fair_hospital_new = this.state.new_display ? <FairHospitalNew dad={this} /> : '',
           fair_hospital_edit = this.state.edit_display ? <FairHospitalEdit dad={this} /> : '',
           fair_hospital_search = this.state.search_display ? <FairHospitalSearch dad={this} /> : ''
@@ -93,7 +93,7 @@ var FairHospitalTableContent = React.createClass({
         {
           this.props.fair_hospitals.map(
             function(fair_hospital, index) {
-              return (<FairHospitalItem key={fair_hospital.id} fair={fair_hospital} index={index} dad={this.props.dad} />)
+              return (<FairHospitalItem key={fair_hospital.id} fair_hospital={fair_hospital} index={index} dad={this.props.dad} />)
             }.bind(this)
           )
         }
@@ -103,7 +103,17 @@ var FairHospitalTableContent = React.createClass({
 })
 
 var FairHospitalItem = React.createClass({
-  clickEdit: function() {
+  getInitialState: function() {
+    return {
+      tdStyle: {
+        maxWidth: '160px',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+      }
+    }
+  }
+  ,clickEdit: function() {
     this.props.dad.setState({
       fair_hospital: this.props.fair_hospital,
       index: this.props.index,
@@ -117,16 +127,36 @@ var FairHospitalItem = React.createClass({
     return (
       <tr>
         <td>{index}</td>
-        <td>{fair_hospital.name}</td>
-        <td>{fair_hospital.create_at.slice(0, 10)}</td>
-        <td>{fair_hospital.end_at.slice(0, 10)}</td>
-        <td>参加机构数</td>
+        <td>{fair_hospital.hospital_id}</td>
+        <td style={this.state.tdStyle}>{fair_hospital.intro}</td>
+        <td>{fair_hospital.created_at.slice(0, 10)}</td>
         <td>发布职位数</td>
         <td>收到简历数</td>
-        <td>{trans_fair(fair_hospital.status)}</td>
-        <td><a href={"/admin/fairs/" + fair.id + "/fair_hospitals"} className="btn btn-primary btn-form">管理</a></td>
+        <td>{fair_hospital.banner == null  ? '未上传' : '已上传'}</td>
+        <td>{trans_fair_hospital(fair_hospital.status)}</td>
+        <td>
+          <button className="btn btn-primary btn-form">暂停</button>
+          <button className="btn btn-danger btn-form">退出</button>
+          </td>
         <td><button onClick={this.clickEdit} className="btn btn-default btn-form">修改</button></td>
       </tr>
     )
   }
 })
+
+/********** 转译机构状态 ************/
+function trans_fair_hospital(status) {
+  switch (status) {
+    case 'on':
+      return '参与中'
+      break
+    case 'pause':
+      return '暂停参与'
+      break
+    case 'quit':
+      return '退出'
+      break
+    default:
+      return '未知'
+  }
+}

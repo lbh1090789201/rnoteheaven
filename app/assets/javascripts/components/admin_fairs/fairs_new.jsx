@@ -72,13 +72,13 @@ var FairNew = React.createClass({
                                pattern=".{1,}" required title="结束时间不能为空" ref="end_at" />
             </div>
 
-            <div className="form-group">
+            <div className="form-group col-sm-12">
                <label>专场介绍</label>
-               <textarea className="form-control" name="intro" rows="5"
+               <textarea className="form-control col-sm-12" name="intro" rows="5"
                                pattern=".{6,}" required title="最少6个字符" ref="intro" />
             </div>
 
-            <div className="form-group">
+            <div className="form-group col-sm-12">
                <label>上传图片</label>
                <input type="file" className="form-control preview-img" onChange={this.handleChange}
                       style={this.state.divStyle} name="banner" ref="banner" />

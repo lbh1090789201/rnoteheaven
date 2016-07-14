@@ -24,4 +24,5 @@
     </ul>
 
       <%= link_to("退出",destroy_user_session_path, :method => :delete, class: "log-out" ) %>
+      <span class="pull-right log-out">欢迎，<%= current_user.show_name %></span>
 </nav>

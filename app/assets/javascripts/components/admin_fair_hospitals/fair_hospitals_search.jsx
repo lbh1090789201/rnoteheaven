@@ -45,7 +45,7 @@ var FairHospitalSearch = React.createClass({
   ,render: function() {
     return (
       <div className={"mask-user"}>
-        <div className="user-box">
+        <div className="user-box search-box">
           <SearchForm dad={this.props.dad} search={this}/>
           <SearchTable golds={this.state.golds} dad={this.props.dad} />
         </div>

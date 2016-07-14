@@ -7,8 +7,6 @@ class Admin::FairHospitalsController < AdminController
       golds = Hospital.filter_hospital_name(params[:name])
                       .filter_contact_person(params[:contact_person])
       golds = golds.where(id: params[:id]) if params[:id].present?
-      p '---------------'
-      p golds
 
       render json: {
         success: true,
@@ -18,6 +16,9 @@ class Admin::FairHospitalsController < AdminController
     else
       @fair = Fair.find params[:fair_id]
       @fair_hospitals = FairHospital.where fair_id: @fair.id
+
+      p '---------------'
+      p   @fair_hospitals
     end
   end
 
