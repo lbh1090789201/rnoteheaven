@@ -5,6 +5,7 @@ var FairHistroy = React.createClass({
       edit_display: false,
       fairs: this.props.fairs,
       fair: '',
+      view_display: false,
     }
   }
   ,handleClick: function(e) {
@@ -17,7 +18,8 @@ var FairHistroy = React.createClass({
   }
   ,render: function() {
     let fair_new = this.state.new_display ? <FairNew dad={this} /> : '',
-        fair_edit = this.state.edit_display ? <FairEdit dad={this} /> : ''
+        fair_edit = this.state.edit_display ? <FairEdit dad={this} /> : '',
+        fair_view = this.state.view_display ? <FairHistroyView dad={this} /> : ''
 
     return (
       <div className="main">
@@ -25,6 +27,7 @@ var FairHistroy = React.createClass({
         <FairHistroyTable fairs={this.state.fairs} dad={this} />
         {fair_new}
         {fair_edit}
+        {fair_view}
       </div>
     )
   }
@@ -144,7 +147,10 @@ var FairHistroyTableContent = React.createClass({
 
 var FairHistroyItem = React.createClass({
   handleClick: function() {
-
+    this.props.dad.setState({
+      view_display: true,
+      fair: this.props.fair,
+    })
   }
   ,render: function() {
     let fair = this.props.fair,

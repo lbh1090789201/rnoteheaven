@@ -102,12 +102,12 @@ var AdminHospitalForm = React.createClass({
           </select>
         </div>
 
-        <div className='form-group col-sm-2'>
+        <div className='form-group col-sm-3'>
           <input type="date" className="form-control" placeholder='开始时间' name='time_before'
                  ref="time_before" />
         </div>
 
-        <div className='form-group col-sm-2'>
+        <div className='form-group col-sm-3'>
           <input type="date" className="form-control" placeholder='结束时间' name='time_after'
                  ref="time_after" />
         </div>
