@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" id="viewport">
-  <title><%= @title || "云康医才" %></title>
+  <title><%= content_for?(:title) ? content_for(:title) : '云康医才' %></title>
   <%= favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
   <%= stylesheet_link_tag "application", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "employer", "data-turbolinks-track" => true %>
@@ -16,7 +16,7 @@
 <body class="<%= params[:controller][9,99] + '-' + params[:action] %>" >
 
     <header>
-        <%= render 'layouts/header' %>
+        <%# render 'layouts/header' %>
     </header>
 
     <div class="wrap">
