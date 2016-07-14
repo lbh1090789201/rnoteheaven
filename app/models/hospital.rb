@@ -55,12 +55,15 @@ class Hospital < ActiveRecord::Base
         region: h.region,
         location: h.location,
         introduction: h.introduction,
+        contact_person: h.contact_person,
+        contact_number: h.contact_number,
         vip_name: plan.name,
         may_release: plan.may_release,
         may_set_top: plan.may_set_top,
         may_receive: plan.may_receive,
         may_view: plan.may_receive,
         may_join_fairs: plan.may_join_fairs,
+        vip_id: plan.id
       }
       @hospitals.push(o)
     end

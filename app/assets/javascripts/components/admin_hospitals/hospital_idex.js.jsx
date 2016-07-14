@@ -11,8 +11,7 @@ var AdminHospital = React.createClass({
     }
   }
   ,render: function() {
-
-    var edit_hospital = this.state.hos_info.edit_display ? <AdminEditHospital data={this.state.hos_info.hospital} dad={this} /> : ''
+    var edit_hospital = this.state.hos_info.edit_display ? <AdminEditHospital plans={this.state.plans} data={this.state.hos_info.hospital} dad={this} /> : ''
 
     return (
       <div className="main">
@@ -34,15 +33,25 @@ var AdminHospitalForm = React.createClass({
       vip_id: '',
     }
   }
+  ,handleChange: function(e) {
+    this.setState({
+      property: e.target.value,
+    })
+  }
+  ,handleSelect: function(e) {
+    this.setState({
+      vip_id: e.target.value,
+    })
+  }
   ,handleSubmit: function(e) {
     e.preventDefault()
+
     let hospital_name = this.refs.hospital_name.value,
         time_before = this.refs.time_before.value,
         time_after = this.refs.time_after.value,
         property = this.state.property,
-        vip_id = this.state.vip_id
-
-        console.log(property)
+        vip_id = this.state.vip_id,
+        hide_search = this.refs.hide_search.value
 
     $.ajax({
       url: "/admin/hospitals",
@@ -53,33 +62,32 @@ var AdminHospitalForm = React.createClass({
         time_after: time_after,
         property: property,
         vip_id: vip_id,
+        hide_search: hide_search
       },
-      seccess: function(data) {
-        // console.log(data.hospital)
+      success: function(data) {
         this.props.dad.setState({
           hospitals: data.hospital,
         })
       }.bind(this),
       error: function(data) {
-        // console.log(data.responseText)
+        console.log(data.responseText)
       },
     })
   }
   ,render: function() {
     var plans = this.props.data,
-        vip_plan = {id: '', name: '全部'}
-        plans.unshift(vip_plan)
         select_vip = plans.map(
           function(plan, index) {
-            return <AdminPlanItem key={plan.id} data={plan} dad={this} />
+            return (
+              <AdminHosPlanItem key={plan.id} data={plan} dad={this} />
+            )
           }.bind(this)
         )
-
 
     return (
       <form className='form-inline' encType="multipart/form-data" onSubmit={this.handleSubmit}>
         <div className='form-group col-sm-12'>
-          <AdminHospitalRadio dad={this} />
+          <AdminHospitalRadio handleChange={this.handleChange} />
         </div>
 
         <div className='form-group col-sm-3'>
@@ -88,18 +96,18 @@ var AdminHospitalForm = React.createClass({
         </div>
 
         <div className='form-group col-sm-2'>
-          <lebel>套餐级别</lebel>
-          <select>
+          <select onChange={this.handleSelect} className="form-control">
+            <option value=''>套餐级别</option>
             {select_vip}
           </select>
         </div>
 
-        <div className='form-group col-sm-3'>
+        <div className='form-group col-sm-2'>
           <input type="date" className="form-control" placeholder='开始时间' name='time_before'
                  ref="time_before" />
         </div>
 
-        <div className='form-group col-sm-3'>
+        <div className='form-group col-sm-2'>
           <input type="date" className="form-control" placeholder='结束时间' name='time_after'
                  ref="time_after" />
         </div>
@@ -114,33 +122,28 @@ var AdminHospitalForm = React.createClass({
 
 /************单选框组件*************/
 var AdminHospitalRadio = React.createClass({
-  hanleChange: function(e) {
-    this.props.dad.setState({
-      property: e.target.value,
-    })
-  }
-  ,render: function() {
+  render: function() {
     return (
       <span>
 
         <label className="checkbox-inline">
-        <input onChange={this.handleChange} name="property" type="radio" value="综合医院" />综合医院
+        <input onChange={this.props.handleChange} name="goodRadio" type="radio" value="综合医院" />综合医院
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.handleChange} name="property" type="radio" value="专科医院" />专科医院
+        <input onChange={this.props.handleChange} name="goodRadio" type="radio" value="专科医院" />专科医院
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.handleChange} name="property" type="radio" value="民营医院" />民营医院
+        <input onChange={this.props.handleChange} name="goodRadio" type="radio" value="民营医院" />民营医院
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.handleChange} name="property" type="radio" value="公立诊所" />公立诊所
+        <input onChange={this.props.handleChange} name="goodRadio" type="radio" value="公立诊所" />公立诊所
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.handleChange} name="property" type="radio" value="民营诊所" />民营诊所
+        <input onChange={this.props.handleChange} name="goodRadio" type="radio" value="民营诊所" />民营诊所
         </label>
 
       </span>
@@ -149,15 +152,16 @@ var AdminHospitalRadio = React.createClass({
 });
 
 /*************下拉框组件***************/
-var AdminPlanItem = React.createClass({
-  hanleChange: function(e) {
+var AdminHosPlanItem = React.createClass({
+  handleChange: function(e) {
     this.props.dad.setState({
       vip_id: e.target.value,
     })
+    console.log(333333)
   }
   ,render: function() {
     return (
-      <option onChange={this.handleChange} value={this.props.data.id} name="vip_id" ref="vip_id">{this.props.data.name}</option>
+      <option value={this.props.data.id} name="vip_id" ref="vip_id">{this.props.data.name}</option>
     )
   }
 })
@@ -165,12 +169,7 @@ var AdminPlanItem = React.createClass({
 
 /*************Table组件*****************/
 var AdminHospitalTable = React.createClass({
-  getInitialState: function() {
-    return {
-      hospitals: this.props.hospitals,
-    }
-  }
-  ,render: function() {
+  render: function() {
     return (
       <table className="table table-bordered">
         <thead>
@@ -186,7 +185,7 @@ var AdminHospitalTable = React.createClass({
             <th>操作</th>
           </tr>
         </thead>
-        <AdminHospitalTableCt data={this.state.hospitals} dad={this.props.dad} />
+        <AdminHospitalTableCt data={this.props.dad.state.hospitals} dad={this.props.dad} />
       </table>
     )
   }
