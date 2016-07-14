@@ -162,11 +162,10 @@ var SearchTableContent = React.createClass({
 })
 
 var SearchItem = React.createClass({
-
   clickNew: function() {
-    console.log(this.props.dad.state)
     this.props.dad.setState({
       new_display: true,
+      gold: this.props.gold,
     })
   }
   ,render: function() {

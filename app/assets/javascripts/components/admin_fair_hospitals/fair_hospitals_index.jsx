@@ -3,6 +3,7 @@ var FairHospital = React.createClass({
     return {
       fair_hospitals: this.props.fair_hospitals,
       fair: this.props.fair,
+      gold: '',
       new_display: false,
       edit_display: false,
       search_display: false,
