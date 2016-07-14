@@ -57,9 +57,9 @@ var FairHospitalEdit = React.createClass({
         <div className="user-box">
           <form method="post" action="/admin/fairs" encType="multipart/form-data" onSubmit={this.handleSubmit}>
             <div className="gold-info">
-            <span className="col-sm-4"><label>机构名称：</label>{gold.name}</span>
-            <span className="col-sm-4"><label>机构帐号：</label>{gold.id}</span>
-            <span className="col-sm-4"><label>负责人：</label>{gold.contact_person}</span>
+            <span className="col-sm-4"><label>机构名称：</label>{fair_hospital.hospital_name}</span>
+            <span className="col-sm-4"><label>机构帐号：</label>{fair_hospital.hospital_contact_number}</span>
+            <span className="col-sm-4"><label>负责人：</label>{fair_hospital.hospital_contact_person}</span>
             </div>
 
             <div className="gold-info">

@@ -17,10 +17,15 @@ class FairHospital < ActiveRecord::Base
   def self.statistic f
     jobs = Job.where hospital_id: f.hospital_id
     resumes = ApplyRecord.where from: f.fair_id, hospital_id: f.hospital_id
+    p f
+    hospital = Hospital.find f.hospital_id
 
     fair_hospital = f.as_json
     fair_hospital["jobs_count"] = jobs.length
     fair_hospital["resumes_count"] = resumes.length
+    fair_hospital["hospital_name"] = hospital.name
+    fair_hospital["hospital_contact_number"] = hospital.contact_number
+    fair_hospital["hospital_contact_person"] = hospital.contact_person
 
     return fair_hospital
   end

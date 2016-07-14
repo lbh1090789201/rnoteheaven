@@ -52,7 +52,7 @@ var FairHistroyForm = React.createClass({
       type: 'GET',
       data: {
         search: true,
-        status: this.state.status,
+        status: 'end',
         time_from: this.refs.time_from.value,
         time_to: this.refs.time_to.value,
         name: this.refs.name.value,
@@ -156,27 +156,12 @@ var FairHistroyItem = React.createClass({
         <td>{fair.name}</td>
         <td>{fair.begain_at.slice(0, 10)}</td>
         <td>{fair.end_at.slice(0, 10)}</td>
-        <td>参加机构数</td>
-        <td>发布职位数</td>
-        <td>收到简历数</td>
+        <td>{fair.hospitals_count}</td>
+        <td>{fair.jobs_count}</td>
+        <td>{fair.resumes_count}</td>
         <td>{trans_fair(fair.status)}</td>
         <td><button onClick={this.handleClick} className="btn btn-default btn-form">查看</button></td>
       </tr>
     )
   }
 })
-
-/********** 转译专场状态 ************/
-// function trans_fair(status) {
-//   switch (status) {
-//     case 'processing':
-//       return '进行中'
-//       break
-//     case 'pause':
-//       return '已暂停'
-//       break
-//
-//     default:
-//       return '未知'
-//   }
-// }

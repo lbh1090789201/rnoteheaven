@@ -45,4 +45,34 @@ class Fair < ActiveRecord::Base
     return fair
   end
 
+  # 专场结束后设定 参加机构，发布职位数，收到简历数
+  # TODO 待写测试
+  def self.set_end fair
+    # fair = Fair.find fair.id
+    fair_info = Fair.fair_statistic fair
+    fair.hospitals_count = fair_info["hospitals_count"]
+    fair.jobs_count = fair_info["jobs_count"]
+    fair.resumes_count = fair_info["resumes_count"]
+    fair.status = 'end'
+
+    fair.save
+    return fair
+  end
+
+  # 检验专场是否过期 fairs
+  # TODO 待写测试
+  def self.is_end fairs
+    res = []
+
+    fairs.each do |f|
+      if f.end_at > Time.now
+        f = Fair.set_end f
+      else
+        res.push f
+      end
+    end
+
+    return res
+  end
+
 end

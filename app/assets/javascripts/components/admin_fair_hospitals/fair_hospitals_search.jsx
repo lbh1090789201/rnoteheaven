@@ -60,12 +60,18 @@ var SearchForm = React.createClass({
   getInitialState: function() {
     return {
       status: '',
-      fair_id: this.props.dad.state.fair.id.toString()
+      fair_id: this.props.dad.state.fair.id.toString(),
+      close: this.props.dad.state.close,
     }
   }
   ,handleRadio: function(e) {
     this.setState({
       status: e.target.value
+    })
+  }
+  ,handleClick: function(e) {
+    this.props.dad.setState({
+      search_display: false,
     })
   }
   ,handleSubmit: function(e) {
@@ -106,6 +112,7 @@ var SearchForm = React.createClass({
                     ref="contact_person" />
           </div>
           <button type='submit' className='btn btn-primary'>查询</button>
+          <img src={this.state.close} className="close-red" onClick={this.handleClick} />
      </form>
     )
   }
@@ -175,7 +182,7 @@ var SearchItem = React.createClass({
     return (
       <tr>
         <td>{index}</td>
-        <td>{gold.id}</td>
+        <td>{gold.contact_number}</td>
         <td>{gold.name}</td>
         <td>{gold.contact_person}</td>
         <td><button onClick={this.clickNew} className="btn btn-default btn-form">添加</button></td>

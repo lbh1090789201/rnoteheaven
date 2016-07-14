@@ -45,7 +45,7 @@ var FairHospitalNew = React.createClass({
     })
   }
   ,render: function() {
-    let gold = this.state.gold
+    let gold = this.props.dad.state.gold
 
     return (
       <div className="mask-user">
@@ -53,7 +53,7 @@ var FairHospitalNew = React.createClass({
           <form method="post" action="/admin/fairs" encType="multipart/form-data" onSubmit={this.handleSubmit}>
             <div className="gold-info">
             <span className="col-sm-4"><label>机构名称：</label>{gold.name}</span>
-            <span className="col-sm-4"><label>机构帐号：</label>{gold.id}</span>
+            <span className="col-sm-4"><label>机构帐号：</label>{gold.contact_number}</span>
             <span className="col-sm-4"><label>负责人：</label>{gold.contact_person}</span>
             </div>
 
