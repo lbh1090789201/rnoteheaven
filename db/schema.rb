@@ -162,19 +162,21 @@ ActiveRecord::Schema.define(version: 20160713082534) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "hospitals", force: :cascade do |t|
-    t.integer  "job_fair_id",  limit: 4
-    t.string   "name",         limit: 191
-    t.string   "property",     limit: 191
-    t.string   "scale",        limit: 191
-    t.string   "industry",     limit: 191
-    t.string   "region",       limit: 191
-    t.string   "location",     limit: 191
-    t.text     "introduction", limit: 65535
-    t.string   "image",        limit: 191
-    t.float    "lat",          limit: 24,    default: 30.5984
-    t.float    "lng",          limit: 24,    default: 114.312
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.integer  "job_fair_id",    limit: 4
+    t.string   "name",           limit: 191
+    t.string   "property",       limit: 191
+    t.string   "scale",          limit: 191
+    t.string   "industry",       limit: 191
+    t.string   "region",         limit: 191
+    t.string   "location",       limit: 191
+    t.text     "introduction",   limit: 65535
+    t.string   "image",          limit: 191
+    t.float    "lat",            limit: 24,    default: 30.5984
+    t.float    "lng",            limit: 24,    default: 114.312
+    t.string   "contact_person", limit: 191
+    t.string   "contact_number", limit: 191
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "jobs", force: :cascade do |t|
