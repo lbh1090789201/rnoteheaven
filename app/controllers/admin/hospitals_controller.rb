@@ -50,7 +50,6 @@ class Admin::HospitalsController < AdminController
     if hospital.update(hospital_params) && employer.update(employer_params)
       hospital = Hospital.where(id: params[:id])
       @hospital_infos = hospital.get_info hospital
-      puts "-----------"+ @hospital_infos.to_json.to_s
 
       render json: {
         success: true,
