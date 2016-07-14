@@ -18,7 +18,6 @@ class Hospital < ActiveRecord::Base
   }
 
   #按负责人
-  #TODO 待写测试
   scope :filter_contact_person, -> (name) {
     filter = "contact_person LIKE '%" + name + "%'" if name.present?
     where(filter) if name.present?
@@ -39,7 +38,7 @@ class Hospital < ActiveRecord::Base
     where("created_at <= ?", created_at) if created_at.present?
   }
 
-  #admin hospital　待写测试
+  #admin hospital　
   def self.get_info hospitals
     @hospitals = []
     hospitals.each do |h|

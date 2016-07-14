@@ -5,7 +5,7 @@ class Admin::HospitalsController < AdminController
   def index
     hospitals = Hospital.all
     @hospitals = Hospital.get_info hospitals
-    @vip_levels = Plan.all
+    @vip_levels = Plan.where(status: true)
 
     if params[:hide_search]
       if params[:vip_id].blank?
@@ -44,13 +44,11 @@ class Admin::HospitalsController < AdminController
 
   def update
     hospital = Hospital.find params[:id]
-    # puts "-----------"+ hospital.to_json.to_s
     employer = Employer.find_by hospital_id: hospital.id
 
     if hospital.update(hospital_params) && employer.update(employer_params)
       hospital = Hospital.where(id: params[:id])
       @hospital_infos = hospital.get_info hospital
-      puts "-----------"+ @hospital_infos.to_json.to_s
 
       render json: {
         success: true,
