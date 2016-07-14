@@ -4,11 +4,12 @@ class Admin::FairHospitalsController < AdminController
 
   def index
     if params[:search]
-      golds = Hospital.filter_hospital_name params[:name]
-                      .filter_contact_person params[:contact_person]
-
-      golds = golds.where(id: params[:id]) if params[:id]
-
+      golds = Hospital.filter_hospital_name(params[:name])
+                      .filter_contact_person(params[:contact_person])
+      golds = golds.where(id: params[:id]) if params[:id].present?
+      p '---------------'
+      p golds
+      
       render json: {
         success: true,
         info: '动态搜索成功！',

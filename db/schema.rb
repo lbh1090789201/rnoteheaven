@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160713082534) do
   create_table "employers", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
     t.integer  "hospital_id", limit: 4
+    t.integer  "plan_id",     limit: 4
     t.integer  "vip_level",   limit: 4, default: 1, null: false
     t.integer  "may_receive", limit: 4, default: 0, null: false
     t.integer  "may_release", limit: 4, default: 0, null: false
@@ -120,15 +121,18 @@ ActiveRecord::Schema.define(version: 20160713082534) do
   end
 
   create_table "fairs", force: :cascade do |t|
-    t.string   "name",       limit: 191
-    t.string   "creator",    limit: 191
-    t.string   "banner",     limit: 191
-    t.text     "intro",      limit: 65535
-    t.string   "status",     limit: 191
-    t.datetime "begin_at"
+    t.string   "name",            limit: 191
+    t.string   "creator",         limit: 191
+    t.string   "banner",          limit: 191
+    t.text     "intro",           limit: 65535
+    t.string   "status",          limit: 191
+    t.datetime "begain_at"
     t.datetime "end_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "hospitals_count", limit: 4
+    t.integer  "jobs_count",      limit: 4
+    t.integer  "resumes_count",   limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "favorite_jobs", force: :cascade do |t|
@@ -158,28 +162,21 @@ ActiveRecord::Schema.define(version: 20160713082534) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "hospitals", force: :cascade do |t|
-    t.integer  "job_fair_id",  limit: 4
-    t.string   "name",         limit: 191
-    t.string   "property",     limit: 191
-    t.string   "scale",        limit: 191
-    t.string   "industry",     limit: 191
-    t.string   "region",       limit: 191
-    t.string   "location",     limit: 191
-    t.text     "introduction", limit: 65535
-    t.string   "image",        limit: 191
-    t.float    "lat",          limit: 24,    default: 30.5984
-    t.float    "lng",          limit: 24,    default: 114.312
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-  end
-
-  create_table "job_fairs", force: :cascade do |t|
-    t.string   "name",       limit: 191
-    t.datetime "timeout"
-    t.string   "tips",       limit: 191
-    t.integer  "entry_num",  limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "job_fair_id",    limit: 4
+    t.string   "name",           limit: 191
+    t.string   "property",       limit: 191
+    t.string   "scale",          limit: 191
+    t.string   "industry",       limit: 191
+    t.string   "region",         limit: 191
+    t.string   "location",       limit: 191
+    t.text     "introduction",   limit: 65535
+    t.string   "image",          limit: 191
+    t.float    "lat",            limit: 24,    default: 30.5984
+    t.float    "lng",            limit: 24,    default: 114.312
+    t.string   "contact_person", limit: 191
+    t.string   "contact_number", limit: 191
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "jobs", force: :cascade do |t|

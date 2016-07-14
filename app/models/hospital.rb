@@ -12,14 +12,14 @@ class Hospital < ActiveRecord::Base
 
   #按医院
   scope :filter_hospital_name, -> (name) {
-    filter = "name like '%" + name + "%'" if name.present?
+    filter = "name LIKE '%" + name + "%'" if name.present?
     where(filter) if name.present?
   }
 
   #按负责人
   #TODO 待写测试
   scope :filter_contact_person, -> (name) {
-    filter = "contact_person like '%" + name + "%'" if name.present?
+    filter = "contact_person LIKE '%" + name + "%'" if name.present?
     where(filter) if name.present?
   }
 

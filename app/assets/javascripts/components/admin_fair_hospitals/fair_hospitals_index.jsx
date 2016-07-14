@@ -6,7 +6,6 @@ var FairHospital = React.createClass({
       new_display: false,
       edit_display: false,
       search_display: false,
-      search_show: 'show',
     }
   }
   ,handleClick: function(e) {
@@ -18,6 +17,7 @@ var FairHospital = React.createClass({
     })
   }
   ,render: function() {
+    console.log(this.state.new_display)
       let fair_hospital_new = this.state.new_display ? <FairHospitalNew dad={this} /> : '',
           fair_hospital_edit = this.state.edit_display ? <FairHospitalEdit dad={this} /> : '',
           fair_hospital_search = this.state.search_display ? <FairHospitalSearch dad={this} /> : ''
@@ -26,9 +26,9 @@ var FairHospital = React.createClass({
         <div className="main">
           <FairHospitalBtn handleClick={this.handleClick}/>
           <FairHospitalTable fair_hospitals={this.state.fair_hospitals} dad={this} />
+          {fair_hospital_search}
           {fair_hospital_new}
           {fair_hospital_edit}
-          {fair_hospital_search}
         </div>
       )
     }
