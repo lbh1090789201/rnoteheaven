@@ -16,9 +16,6 @@ class Admin::FairHospitalsController < AdminController
     else
       @fair = Fair.find params[:fair_id]
       @fair_hospitals = FairHospital.where fair_id: @fair.id
-
-      p '---------------'
-      p   @fair_hospitals
     end
   end
 
@@ -38,10 +35,24 @@ class Admin::FairHospitalsController < AdminController
     end
   end
 
+  def update
+    fair_hospital = FairHospital.find params[:id]
+    fair_hospital.update! fair_hospitals_params
+
+    render json: {
+      success: true,
+      info: '添加机构成功！',
+      fair_hospital: fair_hospital
+    }, status: 200
+  end
+
   private
     def fair_hospitals_params
       params.permit(:hospital_id, :fair_id, :contact_person, :contact_number,
                     :intro, :banner, :status, :operator)
     end
 
+    def other_params
+      params.permit(:id)
+    end
 end

@@ -6,6 +6,7 @@ var FairHospitalEdit = React.createClass({
       },
       gold: this.props.dad.state.gold,
       fair_hospital: this.props.dad.state.fair_hospital,
+      index: this.props.dad.state.index,
     }
   }
   ,handleChange: function(e) {
@@ -20,27 +21,29 @@ var FairHospitalEdit = React.createClass({
   ,handleSubmit: function(e) {
     e.preventDefault()
     let formData = new FormData(e.target),
-        fair_id = this.props.dad.state.fair.id
+        fair_id = this.props.dad.state.fair.id,
+        fair_hospital_id = this.state.fair_hospital.id,
+        index = this.state.index
 
     $.ajax({
-      url: '/admin/fairs/' + fair_id + '/fair_hospitals',
-      type: 'POST',
+      url: '/admin/fairs/' + fair_id + '/fair_hospitals/' + fair_hospital_id,
+      type: 'PATCH',
       data: formData,
       contentType: false,
       processData: false,
       success: function(data){
         let  fair_hospitals = this.props.dad.state.fair_hospitals
 
-        fair_hospitals.push(data.fair_hospital)
+        fair_hospitals[index] = data.fair_hospital
         this.props.dad.setState({
            fair_hospitals: fair_hospitals,
-           new_display: false
+           edit_display: false
         })
       }.bind(this),
       error: function(data){
         alert(data.responseText)
         this.props.dad.setState({
-            new_display: false,
+            edit_display: false,
         })
       }
     })
@@ -57,6 +60,11 @@ var FairHospitalEdit = React.createClass({
             <span className="col-sm-4"><label>机构名称：</label>{gold.name}</span>
             <span className="col-sm-4"><label>机构帐号：</label>{gold.id}</span>
             <span className="col-sm-4"><label>负责人：</label>{gold.contact_person}</span>
+            </div>
+
+            <div className="gold-info">
+              <span className="col-sm-4"><label>操作人：</label>{fair_hospital.operator}</span>
+              <span className="col-sm-4"><label>入驻时间：</label>{fair_hospital.created_at.slice(0, 10)}</span>
             </div>
 
             <div className="form-group col-sm-6">

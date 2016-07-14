@@ -3,6 +3,7 @@ var FairHospital = React.createClass({
     return {
       fair_hospitals: this.props.fair_hospitals,
       fair_hospital: '',
+      index: '',
       fair: this.props.fair,
       gold: '',
       new_display: false,
@@ -106,7 +107,7 @@ var FairHospitalItem = React.createClass({
   getInitialState: function() {
     return {
       tdStyle: {
-        maxWidth: '160px',
+        maxWidth: '120px',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis',
@@ -118,6 +119,30 @@ var FairHospitalItem = React.createClass({
       fair_hospital: this.props.fair_hospital,
       index: this.props.index,
       edit_display: true
+    })
+  }
+  ,ChangeStatus: function(e) {
+    let fair_id = this.props.dad.state.fair.id,
+        fair_hospital_id = this.props.fair_hospital.id,
+        index = this.props.index
+
+    $.ajax({
+      url: '/admin/fairs/' + fair_id + '/fair_hospitals/' + fair_hospital_id,
+      type: 'PATCH',
+      data: {
+        status: e.target.value,
+      },
+      success: function(data){
+        let  fair_hospitals = this.props.dad.state.fair_hospitals
+
+        fair_hospitals[index] = data.fair_hospital
+        this.props.dad.setState({
+           fair_hospitals: fair_hospitals
+        })
+      }.bind(this),
+      error: function(data){
+        alert('修改状态失败。')
+      }
     })
   }
   ,render: function() {
@@ -135,8 +160,10 @@ var FairHospitalItem = React.createClass({
         <td>{fair_hospital.banner == null  ? '未上传' : '已上传'}</td>
         <td>{trans_fair_hospital(fair_hospital.status)}</td>
         <td>
-          <button className="btn btn-primary btn-form">暂停</button>
-          <button className="btn btn-danger btn-form">退出</button>
+          <button className="btn btn-primary btn-form" value={fair_hospital.status == "pause" ? 'on' : 'pause'}
+                  onClick={this.ChangeStatus}>{fair_hospital.status == "on" ? '暂停' : '参与'}</button>
+                <button className="btn btn-danger btn-form" value="quit"
+                  onClick={this.ChangeStatus}>退出</button>
           </td>
         <td><button onClick={this.clickEdit} className="btn btn-default btn-form">修改</button></td>
       </tr>
@@ -148,10 +175,10 @@ var FairHospitalItem = React.createClass({
 function trans_fair_hospital(status) {
   switch (status) {
     case 'on':
-      return '参与中'
+      return '参与'
       break
     case 'pause':
-      return '暂停参与'
+      return '暂停'
       break
     case 'quit':
       return '退出'
