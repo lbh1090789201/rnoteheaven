@@ -4,18 +4,20 @@ class Admin::FairsController < AdminController
 
   def index
     if params[:search]
-      @fairs = Fair.filter_by_status(params[:status])
+      fairs = Fair.filter_by_status(params[:status])
                    .filter_begain_at(params[:time_from])
                    .filter_end_at(params[:time_to])
                    .filter_by_name(params[:name])
 
+      @fairs = Fair.get_info fairs          
       render json: {
         success: true,
         info: '搜索专场成功！',
         fairs: @fairs
       }, status: 200
     else
-      @fairs = Fair.where(status: ['processing', 'pause'])
+      fairs = Fair.where(status: ['processing', 'pause'])
+      @fairs = Fair.get_info fairs
     end
   end
 

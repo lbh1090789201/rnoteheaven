@@ -10,7 +10,7 @@ class CreateApplyRecords < ActiveRecord::Migration
       t.datetime :view_at #查看时间
       t.datetime :recieve_at #接收时间
 
-      t.string :from, null: false, default: "common" #投递方式 1.common 2.faris
+      t.string :from, null: false, default: "common" #投递方式 1.common 2.fari_id
       t.string :resume_status #应聘状态 1.筛选 2.面试 3.不合适
       t.boolean :has_new, null: false, default: false #Employer 更新应聘状态
 

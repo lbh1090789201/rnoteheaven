@@ -155,8 +155,8 @@ var FairHospitalItem = React.createClass({
         <td>{fair_hospital.hospital_id}</td>
         <td style={this.state.tdStyle}>{fair_hospital.intro}</td>
         <td>{fair_hospital.created_at.slice(0, 10)}</td>
-        <td>发布职位数</td>
-        <td>收到简历数</td>
+        <td>{fair_hospital.jobs_count}</td>
+        <td>{fair_hospital.resumes_count}</td>
         <td>{fair_hospital.banner == null  ? '未上传' : '已上传'}</td>
         <td>{trans_fair_hospital(fair_hospital.status)}</td>
         <td>

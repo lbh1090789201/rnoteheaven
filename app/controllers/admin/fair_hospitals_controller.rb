@@ -8,6 +8,7 @@ class Admin::FairHospitalsController < AdminController
                       .filter_contact_person(params[:contact_person])
       golds = golds.where(id: params[:id]) if params[:id].present?
 
+      golds = FairHospital.get_info golds
       render json: {
         success: true,
         info: '动态搜索成功！',
@@ -15,7 +16,8 @@ class Admin::FairHospitalsController < AdminController
       }, status: 200
     else
       @fair = Fair.find params[:fair_id]
-      @fair_hospitals = FairHospital.where fair_id: @fair.id
+      fair_hospitals = FairHospital.where fair_id: @fair.id
+      @fair_hospitals = FairHospital.get_info fair_hospitals
     end
   end
 
