@@ -44,10 +44,10 @@ var FairHospitalSearch = React.createClass({
   }
   ,render: function() {
     return (
-      <div className="mask-user">
+      <div className={"mask-user"}>
         <div className="user-box">
-          <SearchForm dad={this}/>
-          <SearchTable golds={this.state.golds} dad={this} />
+          <SearchForm dad={this.props.dad} search={this}/>
+          <SearchTable golds={this.state.golds} dad={this.props.dad} />
         </div>
       </div>
     )
@@ -60,7 +60,7 @@ var SearchForm = React.createClass({
   getInitialState: function() {
     return {
       status: '',
-      fair_id: this.props.dad.state.fair.id
+      fair_id: this.props.dad.state.fair.id.toString()
     }
   }
   ,handleRadio: function(e) {
@@ -71,16 +71,18 @@ var SearchForm = React.createClass({
   ,handleSubmit: function(e) {
     e.preventDefault()
 
-    let formData = new FormData(e.target)
-
-    formData.append('search', true)
     $.ajax({
-      url: '/admin/fairs/' + fair_id + '/fair_hospitals',
+      url: '/admin/fairs/' + this.state.fair_id + '/fair_hospitals',
       type: 'GET',
-      data: formData,
+      data: {
+        search: true,
+        id: this.refs.id.value,
+        name: this.refs.name.value,
+        contact_person: this.refs.contact_person.value,
+      },
       success: function(data) {
-        this.props.dad.setState({
-          fairs: data.golds
+        this.props.search.setState({
+          golds: data.golds
         })
       }.bind(this),
       error: function(data) {
@@ -90,18 +92,18 @@ var SearchForm = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' onSubmit={this.handleSubmit} ref="search">
           <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='机构帐号' name='id'
-                   onChange={this.handleSubmit} ref="id" />
+                    ref="id" />
           </div>
           <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='机构名称' name='name'
-                   onChange={this.handleSubmit} ref="name" />
+                    ref="name" />
           </div>
           <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='负责人' name='contact_person'
-                   onChange={this.handleSubmit} ref="contact_person" />
+                    ref="contact_person" />
           </div>
           <button type='submit' className='btn btn-primary'>查询</button>
      </form>
@@ -160,11 +162,11 @@ var SearchTableContent = React.createClass({
 })
 
 var SearchItem = React.createClass({
-  clickEdit: function() {
+
+  clickNew: function() {
+    console.log(this.props.dad.state)
     this.props.dad.setState({
-      gold: this.props.gold,
-      index: this.props.index,
-      edit_display: true
+      new_display: true,
     })
   }
   ,render: function() {
@@ -177,7 +179,7 @@ var SearchItem = React.createClass({
         <td>{gold.id}</td>
         <td>{gold.name}</td>
         <td>{gold.contact_person}</td>
-        <td><button onClick={this.clickEdit} className="btn btn-default btn-form">添加</button></td>
+        <td><button onClick={this.clickNew} className="btn btn-default btn-form">添加</button></td>
       </tr>
     )
   }
