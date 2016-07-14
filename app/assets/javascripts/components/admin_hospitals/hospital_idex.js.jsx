@@ -2,6 +2,7 @@ var AdminHospital = React.createClass({
   getInitialState: function() {
     return {
       hospitals: this.props.data,
+      plans: this.props.plan,
       hos_info: {
         index: 0,
         hospital: '',
@@ -11,13 +12,13 @@ var AdminHospital = React.createClass({
   }
   ,render: function() {
 
-    console.log(this.state.hos_info.index)
-    console.log(this.state.hos_info.hospital)
+    // console.log(this.state.hos_info.index)
+    console.log(this.state.hospitals)
     var edit_hospital = this.state.hos_info.edit_display ? <AdminEditHospital data={this.state.hos_info.hospital} dad={this} /> : ''
 
     return (
       <div className="main">
-        <AdminHospitalForm dad={this} />
+        <AdminHospitalForm data={this.state.plans} dad={this} />
         <AdminHospitalTable hospitals={this.state.hospitals} dad={this}/>
         {edit_hospital}
       </div>
@@ -61,11 +62,11 @@ var AdminHospitalForm = React.createClass({
         </div>
 
         <div className='form-group col-sm-3'>
-          <input type="text" className="form-control" placeholder='医院名称' name='hospital_name'
+          <input type="text" className="form-control" placeholder='机构名称' name='hospital_name'
                   ref="show_name" />
         </div>
 
-        <div className='form-group col-sm-3'>
+        <div className='form-group col-sm-2'>
           <input type="text" className="form-control" placeholder='套餐级别' name='vip_name'
                   ref="vip_name" />
         </div>
@@ -133,7 +134,7 @@ var AdminHospitalTable = React.createClass({
           <tr>
             <th>序号</th>
             <th>账号</th>
-            <th>医院名称</th>
+            <th>机构名称</th>
             <th>可发布职位数</th>
             <th>可置顶职位数</th>
             <th>可接收简历数</th>
@@ -166,12 +167,7 @@ var AdminHospitalTableCt = React.createClass({
 })
 
 var AdminHospitalItem =React.createClass({
-  getInitialState: function() {
-    return {
-
-    }
-  }
-  ,handleClick: function(e) {
+  handleClick: function(e) {
     this.props.dad.setState({
       hos_info: {
         index: this.props.index,
@@ -185,12 +181,12 @@ var AdminHospitalItem =React.createClass({
       <tr>
         <td>{this.props.index + 1}</td>
         <td>{this.props.data.id}</td>
-        <td>{this.props.data.name}</td>
-        <td>{this.props.data.name}</td>
-        <td>{this.props.data.name}</td>
-        <td>{this.props.data.name}</td>
-        <td>{this.props.data.name}</td>
-        <td>{this.props.data.name}</td>
+        <td>{this.props.data.hospital_name}</td>
+        <td>{this.props.data.may_release}</td>
+        <td>{this.props.data.may_set_top}</td>
+        <td>{this.props.data.may_receive}</td>
+        <td>{this.props.data.may_view}</td>
+        <td>{this.props.data.vip_name}</td>
         <td>
           <button onClick={this.handleClick} className="btn btn-default btn-form" >修改</button>
         </td>

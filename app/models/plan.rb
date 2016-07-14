@@ -1,4 +1,5 @@
 class Plan < ActiveRecord::Base
+  belongs_to :employer
 
   #按套餐名称查找
   scope :filter_by_name, ->(name) {

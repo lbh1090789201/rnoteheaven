@@ -5,6 +5,9 @@ class Employer < ActiveRecord::Base
     Hospital.find hid
   }
 
+  has_one :hospital
+  has_one :plan
+
   # 获得 VIP 状态
   def self.get_status uid
     ee = Employer.find_by user_id: uid
@@ -70,5 +73,10 @@ class Employer < ActiveRecord::Base
         }, status: 403}
     end
   end
+
+  # 按 hospital 医院名
+  scope :filter_hospital_name, ->(name) {
+    includes(:hospital).where{(name =~  "%#{name}%")} if name.present?
+  }
 
 end
