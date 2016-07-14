@@ -67,6 +67,12 @@ RSpec.describe Hospital, type: :model do
       hospital_info = Hospital.get_info hospitals
       expect(hospital_info[0][:hospital_name]).to eq(@hospital.name)
     end
+
+    it "test vip_id" do
+      hospitals = Hospital.where(id: @hospital.id)
+      hospital_info = Hospital.get_info hospitals
+      expect(hospital_info[0][:vip_id]).to eq(@plan.id)
+    end
   end
 
 

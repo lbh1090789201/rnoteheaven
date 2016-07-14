@@ -1,7 +1,8 @@
 var AdminEditHospital = React.createClass({
   getInitialState: function() {
     return {
-      vip_id: this.props.data.vip_id,
+      vip_id: 1,
+      vip_name: this.props.data.vip_name,
       plan: '',
       index: this.props.dad.state.hos_info.index,
     }
@@ -9,9 +10,7 @@ var AdminEditHospital = React.createClass({
   ,handleSelect: function(e) {
     this.setState({
       vip_id: e.target.value,
-      plan: e.target.name,
     })
-    // console.log(e.target.name)
   }
   ,handleClick: function() {
     this.props.dad.setState({
@@ -24,6 +23,7 @@ var AdminEditHospital = React.createClass({
     e.preventDefault()
     var formData = new FormData(e.target)
     formData.append('plan_id',this.state.vip_id);
+    console.log(this.state.vip_id)
 
     $.ajax({
       url: "/admin/hospitals/" + this.props.data.id,
@@ -63,8 +63,6 @@ var AdminEditHospital = React.createClass({
             )
           }.bind(this)
         )
-
-    // console.log(this.state.plan)
 
     return (
       <div className="mask-user">
@@ -131,8 +129,8 @@ var AdminEditHospital = React.createClass({
             </div>
 
             <div className="form-group">
-               <label>级别配置</label>
-               <select onChange={this.handleSelect} className="form-control">
+               <label>级别配置(当前级别：{this.props.data.vip_name})</label>
+               <select onChange={this.handleSelect} className="form-control" >
                  {select_plan}
                </select>
             </div>
@@ -161,16 +159,13 @@ var AdminEditHospital = React.createClass({
 var AdminHosEditPlanItem = React.createClass({
   handleClick: function(e) {
     e.preventDefault()
-    // console.log(22222)
     this.props.dad.setState({
       plan: this.props.data,
     })
   }
   ,render: function() {
-    var plan = this.props.data
-    // console.log(plan)
     return (
-      <option onMouseOver={this.handleClick} value={this.props.data.id} name="plan_id" ref="plan_info">{this.props.data.name}</option>
+      <option onMouseOver={this.handleClick} value={this.props.data.id} name="vip_name" ref="plan_info">{this.props.data.name}</option>
     )
   }
 })
