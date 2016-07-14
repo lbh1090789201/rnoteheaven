@@ -113,7 +113,7 @@ Ryunkang::Application.routes.draw do
 
       resources :vips, :except => [:show]
 
-      resources :hospitals, :only => [:index]
+      resources :hospitals, :only => [:index, :update]
     end
 
    ########### yunkang end ###########
