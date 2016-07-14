@@ -66,7 +66,9 @@ hospital = Hospital.create!(
     industry:"医疗",
     location: "广东省深圳市宝安区第二人民医院",
     introduction:"我是医院介绍",
-    region:"广东省"
+    region:"广东省",
+    contact_person: "严锐",
+    contact_number: "18322246466"
 )
 
 hospital = Hospital.create!(
@@ -76,7 +78,9 @@ hospital = Hospital.create!(
     industry:"医疗",
     location: "广东省成都市第二人民医院",
     introduction:"我是医院介绍",
-    region:"广东省"
+    region:"广东省",
+    contact_person: "欧阳锋分",
+    contact_number: "18322246466"
 )
 
 hospital = Hospital.create!(
@@ -86,7 +90,9 @@ hospital = Hospital.create!(
     industry:"医疗",
     location: "北京市第二人民医院",
     introduction:"我是医院介绍",
-    region:"北京市"
+    region:"北京市",
+    contact_person: "流浪者",
+    contact_number: "18322246466"
 )
 
 vip = Plan.create!(
