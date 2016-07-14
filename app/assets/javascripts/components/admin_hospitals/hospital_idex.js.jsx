@@ -12,8 +12,6 @@ var AdminHospital = React.createClass({
   }
   ,render: function() {
 
-    // console.log(this.state.hos_info.index)
-    console.log(this.state.hospitals)
     var edit_hospital = this.state.hos_info.edit_display ? <AdminEditHospital data={this.state.hos_info.hospital} dad={this} /> : ''
 
     return (
@@ -32,17 +30,30 @@ var AdminHospitalForm = React.createClass({
   getInitialState: function() {
     return {
       hos_name: '',
+      property: '',
+      vip_id: '',
     }
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
-    var formData = new FormData(e.target)
+    let hospital_name = this.refs.hospital_name.value,
+        time_before = this.refs.time_before.value,
+        time_after = this.refs.time_after.value,
+        property = this.state.property,
+        vip_id = this.state.vip_id
+
+        console.log(property)
+
     $.ajax({
       url: "/admin/hospitals",
       type: "GET",
-      data: formData,
-      processData: false,
-      contentType: false,
+      data: {
+        hospital_name: hospital_name,
+        time_before: time_before,
+        time_after: time_after,
+        property: property,
+        vip_id: vip_id,
+      },
       seccess: function(data) {
         // console.log(data.hospital)
         this.props.dad.setState({
@@ -55,20 +66,32 @@ var AdminHospitalForm = React.createClass({
     })
   }
   ,render: function() {
+    var plans = this.props.data,
+        vip_plan = {id: '', name: '全部'}
+        plans.unshift(vip_plan)
+        select_vip = plans.map(
+          function(plan, index) {
+            return <AdminPlanItem key={plan.id} data={plan} dad={this} />
+          }.bind(this)
+        )
+
+
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' encType="multipart/form-data" onSubmit={this.handleSubmit}>
         <div className='form-group col-sm-12'>
-          <AdminHospitalRadio />
+          <AdminHospitalRadio dad={this} />
         </div>
 
         <div className='form-group col-sm-3'>
           <input type="text" className="form-control" placeholder='机构名称' name='hospital_name'
-                  ref="show_name" />
+                  ref="hospital_name" />
         </div>
 
         <div className='form-group col-sm-2'>
-          <input type="text" className="form-control" placeholder='套餐级别' name='vip_name'
-                  ref="vip_name" />
+          <lebel>套餐级别</lebel>
+          <select>
+            {select_vip}
+          </select>
         </div>
 
         <div className='form-group col-sm-3'>
@@ -91,34 +114,54 @@ var AdminHospitalForm = React.createClass({
 
 /************单选框组件*************/
 var AdminHospitalRadio = React.createClass({
-  render: function() {
+  hanleChange: function(e) {
+    this.props.dad.setState({
+      property: e.target.value,
+    })
+  }
+  ,render: function() {
     return (
       <span>
 
         <label className="checkbox-inline">
-        <input name="property" type="radio" value="综合医院" />综合医院
+        <input onChange={this.handleChange} name="property" type="radio" value="综合医院" />综合医院
         </label>
 
         <label className="checkbox-inline">
-        <input name="property" type="radio" value="专科医院" />专科医院
+        <input onChange={this.handleChange} name="property" type="radio" value="专科医院" />专科医院
         </label>
 
         <label className="checkbox-inline">
-        <input name="property" type="radio" value="民营医院" />民营医院
+        <input onChange={this.handleChange} name="property" type="radio" value="民营医院" />民营医院
         </label>
 
         <label className="checkbox-inline">
-        <input name="property" type="radio" value="公立诊所" />公立诊所
+        <input onChange={this.handleChange} name="property" type="radio" value="公立诊所" />公立诊所
         </label>
 
         <label className="checkbox-inline">
-        <input name="property" type="radio" value="民营诊所" />民营诊所
+        <input onChange={this.handleChange} name="property" type="radio" value="民营诊所" />民营诊所
         </label>
 
       </span>
     )
   }
 });
+
+/*************下拉框组件***************/
+var AdminPlanItem = React.createClass({
+  hanleChange: function(e) {
+    this.props.dad.setState({
+      vip_id: e.target.value,
+    })
+  }
+  ,render: function() {
+    return (
+      <option onChange={this.handleChange} value={this.props.data.id} name="vip_id" ref="vip_id">{this.props.data.name}</option>
+    )
+  }
+})
+
 
 /*************Table组件*****************/
 var AdminHospitalTable = React.createClass({

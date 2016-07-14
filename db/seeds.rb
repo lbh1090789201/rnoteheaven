@@ -35,6 +35,30 @@ u = User.create!(
 )
 u.add_role :gold
 
+u = User.create!(
+    username: "boss2",
+    show_name: "boss2",
+    password: "123456",
+    email: "employer2@example.com",
+    cellphone: "138111122222",
+    sex: "女",
+    user_type: "gold",
+    user_number: 1
+)
+u.add_role :gold
+
+u = User.create!(
+    username: "boss3",
+    show_name: "boss3",
+    password: "123456",
+    email: "employer3@example.com",
+    cellphone: "138111122223",
+    sex: "女",
+    user_type: "gold",
+    user_number: 1
+)
+u.add_role :gold
+
 hospital = Hospital.create!(
     name: "深圳第一医院",
     scale: "10~20人",
@@ -42,15 +66,69 @@ hospital = Hospital.create!(
     industry:"医疗",
     location: "广东省深圳市宝安区第二人民医院",
     introduction:"我是医院介绍",
-    region:"广东省"
+    region:"广东省",
+    contact_person: "严锐",
+    contact_number: "18322246466"
 )
 
+hospital = Hospital.create!(
+    name: "成都第一医院",
+    scale: "10~20人",
+    property: "社区医院",
+    industry:"医疗",
+    location: "广东省成都市第二人民医院",
+    introduction:"我是医院介绍",
+    region:"广东省",
+    contact_person: "欧阳锋分",
+    contact_number: "18322246466"
+)
+
+hospital = Hospital.create!(
+    name: "北京第一医院",
+    scale: "10~20人",
+    property: "社区医院",
+    industry:"医疗",
+    location: "北京市第二人民医院",
+    introduction:"我是医院介绍",
+    region:"北京市",
+    contact_person: "流浪者",
+    contact_number: "18322246466"
+)
+
+vip = Plan.create!(
+    name: "vip0",
+    may_release: 5,
+    may_set_top: 5,
+    may_receive: 5,
+    may_view: 5,
+    may_join_fairs: 5,
+    status: true
+)
+
+# Employer.create!({
+#   user_id: u.id,
+#   hospital_id: hospital.id,
+#   plan_id: vip.id
+# })
 Employer.create!({
-  user_id: u.id,
-  hospital_id: hospital.id
+  user_id: 1,
+  hospital_id: 1,
+  plan_id: vip.id
 })
 
-set_vip = Employer.set_vip u.id, 1
+Employer.create!({
+  user_id: 2,
+  hospital_id: 2,
+  plan_id: vip.id
+})
+
+Employer.create!({
+  user_id: 3,
+  hospital_id: 3,
+  plan_id: vip.id
+})
+
+# set_vip = Employer.set_vip u.id, 1
 
 
 # Test ApplyRecord :tw
