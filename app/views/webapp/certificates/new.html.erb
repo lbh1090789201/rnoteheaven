@@ -4,6 +4,6 @@
 <div class="block-form">
 <%= simple_form_for @Certificate, url: webapp_certificates_path, class: 'block-shield block-form', remote: true do |f| %>
   <%= f.input :title, placeholder: "请输入证书名称", input_html: {class: "edit-text"} %>
-  <%= f.submit "保存", id: "submit", class: "btn-certificate" %>
+  <%= f.submit "保存", id: "submit", class: "btn btn-info btn-right" %>
 <% end %>
 </div>

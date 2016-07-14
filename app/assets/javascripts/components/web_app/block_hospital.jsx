@@ -77,7 +77,7 @@ var BlockHospital = React.createClass({
           )
         }
       </ul>
-      <button id="btn_sub" onClick={this.handleSubmit} style={{display: 'none'}}>点击提交</button>
+      <button id="btn_sub" onClick={this.handleSubmit} className="btn btn-info btn-right">点击提交</button>
       </div>
     )
   }

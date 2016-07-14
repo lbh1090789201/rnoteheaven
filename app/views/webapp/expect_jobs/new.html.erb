@@ -9,14 +9,13 @@
      <%= f.input :location, label: '期望城市', input_html: { class: "job-fair", value: "武汉"} %>
      <%= f.input :expected_salary_range, label: '期望薪水', input_html: { class: "expect-range job-fair", value: "5K~6K", id: "expect_range"} %>
      <%= f.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "最多一千字"} %>
-      <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
+     <%= f.submit "保存", id: "submit", class: "btn btn-info btn-right"%>
     <% end %>
 </div>
 
 
 <script type="text/javascript">
   fullScreen('.edit_basic');
-  clickRignt('#submit');
 
   //职能
   $('.expect-name').click(function() {

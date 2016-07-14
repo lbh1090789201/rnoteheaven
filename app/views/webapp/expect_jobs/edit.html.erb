@@ -11,7 +11,7 @@
       <input type="hidden" id="city" value="">
       <%= e.input :expected_salary_range, label: '期望薪水', input_html: { readonly: "readonly", class: "expect-range job-fair", id: "expect_range"} %>
       <%= e.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "请输入最多1000字"} %>
-      <%= e.submit id: "submit", class: "btn btn-info btn-right"%>
+      <%= e.submit "保存", id: "submit", class: "btn btn-info btn-right"%>
 <% end %>
 </div>
 
