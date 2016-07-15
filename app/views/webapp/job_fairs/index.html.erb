@@ -1,27 +1,30 @@
 <%= provide :title, "医才双选会" %>
-
-<div id="hospital-home">
-  <%= image_tag "hs-1.jpg" %>
+<% @fairs.each do |f| %>
+<div id="hospital_home">
+  <div class="fair-image" style="background: url(<%= asset_path(f.banner) %>) no-repeat;background-size: cover"></div>
   <div class="home-bg"></div>
   <div class="home-note">
-    <p>广州三甲医院 沟通专场</p>
+    <p><%= f.name %> 沟通专场</p>
   </div>
 </div>
 <div id="hospital-data">
   <div class="hospital-number">
-    <p>本期入驻专家</p>
-    <p><span>10</span>家</p>
+    <p>本期入驻机构</p>
+    <p><span><%= @fairs_length %></span>家</p>
   </div>
   <span></span>
   <div class="hospital-time">
     <p>距专场结束</p>
-    <p>120:60:60</p>
+    <p><%= f.end_at.strftime("%Y-%m-%d") %></p>
   </div>
 </div>
-<div id="hospital-rule">
+<div id="hospital_rule">
   <h2>专场细则</h2>
-  <p>专场细则专场细则专场细则专场细则专场专场细则专场细则专场细则专场细则细则专场细则专场细则专场细则</p>
+  <p><%= f.intro %></p>
 </div>
 <p class="button">
-  <%= link_to "进入专场", 'job_fairs/show' %>
+  <a href="/webapp/job_fairs/<%= f.id %>">
+    进入专场
+  </a>
 </p>
+<% end %>
