@@ -42,8 +42,14 @@
 <script type="text/javascript">
   // 应聘职位
   $('#btn_apply').bind('click', function(event){
+    var formDate; //上传数据
+    if(<%= params[:fair_id] %>) {
+      formDate = {job_id: <%= params[:id] %>, from: <%= params[:fair_id] %>}
+    }else {
+      {job_id: <%= params[:id] %>}
+    }
     $.post("/api/v1/apply_records", {
-      apply_record: {job_id: <%= params[:id] %>}
+      apply_record: formDate
     }).done(function() {
       $('#apply_box').attr('class', 'hidden');
       $('#apply_job > span').html('已应聘');

@@ -7,6 +7,8 @@
     <!-- 判断是否来自 resume_viewers -->
     <% if params[:from] == "viewers" %>
       <a href="/webapp/jobs/<%= h.id %>">
+    <% elsif params[:fair_id] %>
+      <a href="/webapp/jobs/<%= h.id %>?hospital=<%= params[:id] %>&fair_id=<%= params[:fair_id] %>">
     <% else %>
       <a href="/webapp/jobs/<%= h.id %>?hospital=<%= params[:id] %>">
     <% end %>

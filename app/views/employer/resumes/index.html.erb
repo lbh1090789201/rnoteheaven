@@ -48,6 +48,16 @@
          $('.time-resume').hide();
        }
 
+       var resume_time_li = $(".resume-time-color"),
+           length = resume_time_li.length
+
+       for(var i=0;i<length;i++) {
+         var view_at = resume_time_li.eq(i).children("a").attr("index");
+         if(view_at) {
+           $(".resume-time-color").eq(i).children("a").attr('class','font-color');
+         }
+       }
+
      </script>
    </section>
 

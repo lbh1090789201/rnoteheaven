@@ -884,10 +884,6 @@ a:hover {
   height: 6.9rem;
   overflow: hidden;
   position: relative;
-  img {
-    width: inherit;
-    height: inherit;
-  }
   .hospital-bg {
     width: inherit;
     height: 1.87rem;
@@ -1133,12 +1129,12 @@ a:hover {
 /* 我的应聘记录 结束-汤伟*/
 
 /* 双选会列表页 开始-冰华*/
-#hospital-home {
+#hospital_home {
   position: relative;
   width: 100%;
   height: 11.75rem;
   overflow: hidden;
-  img {
+  .fair-image {
     width: 100%;
     height: 11.75rem;
   }
@@ -1213,7 +1209,7 @@ a:hover {
   background: #bdbdbd;
   margin-top: 0.4rem;
 }
-#hospital-rule {
+#hospital_rule {
   width: 78%;
   margin: 3.87rem auto 0 auto;
   h2 {
@@ -2400,12 +2396,13 @@ a:hover {
 
 //筛选列表样式
 .before-mask {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   background: #F4F4F4;
+  z-index: 1000;
   p {
     width: 19.05rem;
     height: 2.53rem;
@@ -2888,3 +2885,28 @@ a:hover {
   line-height: 2.88rem;
   border-bottom: 1px solid #e3e3e3;
 }
+
+// 双选会医院列表
+.fair-list {
+  .hospital-img {
+    width: 100%;
+    height: 6.9rem;
+  }
+}
+
+
+// 添加按钮
+  #new_edit_btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 46px;
+    text-align: center;
+    line-height: 46px;
+    background-color: $beauty-blue;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.87rem;
+  }
