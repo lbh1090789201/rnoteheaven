@@ -5,7 +5,6 @@ RSpec.describe Employer, type: :model do
     @user = create(:user)
     @hospital = create(:hospital)
     @employer = create(:employer, user_id: @user.id, hospital_id: @hospital.id)
-    @plan = create(:plan)
   end
 
   it "test employer get_hospital" do
@@ -45,6 +44,18 @@ RSpec.describe Employer, type: :model do
     res = Employer.vip_count @user.id, "has_view"
 
     expect(res).to eq(true)
+  end
+
+  it "test set_plan uid, plan_id with no plan" do
+    employer = Employer.set_plan @user.id, 999
+    expect(employer.may_set_top).to eq(1)
+  end
+
+  it "test set_plan uid, plan_id" do
+    @plan = create(:plan)
+
+    employer = Employer.set_plan @user.id, @plan.id
+    expect(employer.may_release).to eq(@plan.may_release)
   end
 
 end

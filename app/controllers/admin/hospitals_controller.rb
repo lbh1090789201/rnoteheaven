@@ -45,8 +45,9 @@ class Admin::HospitalsController < AdminController
   def update
     hospital = Hospital.find params[:id]
     employer = Employer.find_by hospital_id: hospital.id
+    employer = Employer.set_plan employer.user_id, params[:plan_id]
 
-    if hospital.update(hospital_params) && employer.update(employer_params)
+    if hospital.update(hospital_params) && employer.present?
       hospital = Hospital.where(id: params[:id])
       @hospital_infos = hospital.get_info hospital
 
