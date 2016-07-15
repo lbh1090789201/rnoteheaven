@@ -28,7 +28,8 @@ class Api::ConnectAppController < ApiController
     if user
       sign_in(user)
       if user.user_type == "copper"
-        redirect_to webapp_home_path
+        to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
+        redirect_to to_url
       elsif user.user_type == "gold"
         redirect_to employer_resumes_path
       end
@@ -66,7 +67,8 @@ class Api::ConnectAppController < ApiController
           #     info: '自动登陆成功',
           #     url: root_url + "/webapp/home"
           #   }, status: 200
-          redirect_to webapp_home_path
+          to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
+          redirect_to to_url
         else
           sign_up_copper user_info
         end

@@ -110,8 +110,7 @@ function refreshOnce() {
     delCookie('refresh');
   } else {
     setCookie('refresh','true');
-    window.location.replace(window.location.href);
-    // history.go(-1);
+    refresh_cli()
   }
 };
 
@@ -206,4 +205,19 @@ function ClickDeleteBtn(obj){
     if(isAndroid){
       	window.js2MobInterface.setBackUrl(androidUrl);
   	}
+  }
+
+  // IOS 或 安卓刷新一下页面
+  function refresh_cli() {
+    var u = navigator.userAgent;
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+    if(isiOS) {
+      location.reload(true)
+    } else if(isAndroid) {
+      mWebView.reload()
+    } else {
+      window.location.replace(window.location.href);
+    }
   }
