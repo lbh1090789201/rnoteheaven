@@ -40,6 +40,7 @@ Ryunkang::Application.routes.draw do
       resource :admin_roles, :only => [:update]
       resource :employer_viewers, :only => [:create]
       post 'connect_app/login_app', to:'connect_app#login_app'
+      post 'connect_app/get_hospital', to: 'connect_app#get_hospital'
       get 'connect_app', to:'connect_app#index'
 
       resource :employer_jobs, :only => [:update, :destroy] do
