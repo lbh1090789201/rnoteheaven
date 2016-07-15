@@ -26,6 +26,8 @@ class Admin::FairHospitalsController < AdminController
     fair_hospital.operator = current_user.show_name
 
     if fair_hospital.save
+      fair_hospital = FairHospital.statistic fair_hospital
+
       render json: {
         success: true,
         info: '添加机构成功！',
@@ -40,9 +42,10 @@ class Admin::FairHospitalsController < AdminController
     fair_hospital = FairHospital.find params[:id]
     fair_hospital.update! fair_hospitals_params
 
+    fair_hospital = FairHospital.statistic fair_hospital
     render json: {
       success: true,
-      info: '添加机构成功！',
+      info: '更新机构成功！',
       fair_hospital: fair_hospital
     }, status: 200
   end
