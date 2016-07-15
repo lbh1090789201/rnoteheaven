@@ -37,4 +37,9 @@
 <script type="text/javascript">
 // 底部按钮样式
 ReplayImg(2,'../assets/icon_11.png');
+
+// 设定返回按钮，默认返回 home，set_back('my_url') 返回 my_url
+<% if Rails.env.production? %>
+set_back()
+<% end %>
 </script>

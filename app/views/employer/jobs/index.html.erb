@@ -68,6 +68,7 @@
   <div class="job-nav">
     <span class="nav-img"><%= image_tag "icon_28.png" %><span>全部</span></span>
     <%= image_tag "refresh.png", class: "refresh" %>
+    <%= link_to image_tag('add-blue.png'), "/employer/jobs/new", class: "new-job" %>
   </div>
   <!-- 条件筛选 -->
   <div class="job-status">
@@ -289,4 +290,9 @@
 
    // 底部按钮样式
    ReplayImg(1,'../assets/icon_03.png');
+
+   // 设定返回按钮，默认返回 home，set_back('my_url') 返回 my_url
+   <% if Rails.env.production? %>
+   set_back()
+   <% end %>
 </script>

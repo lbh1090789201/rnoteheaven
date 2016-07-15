@@ -67,20 +67,22 @@ ActiveRecord::Schema.define(version: 20160713082534) do
   end
 
   create_table "employers", force: :cascade do |t|
-    t.integer  "user_id",     limit: 4
-    t.integer  "hospital_id", limit: 4
-    t.integer  "plan_id",     limit: 4
-    t.integer  "vip_level",   limit: 4, default: 1, null: false
-    t.integer  "may_receive", limit: 4, default: 0, null: false
-    t.integer  "may_release", limit: 4, default: 0, null: false
-    t.integer  "may_set_top", limit: 4, default: 0, null: false
-    t.integer  "may_view",    limit: 4, default: 0, null: false
-    t.integer  "has_receive", limit: 4, default: 0, null: false
-    t.integer  "has_release", limit: 4, default: 0, null: false
-    t.integer  "has_set_top", limit: 4, default: 0, null: false
-    t.integer  "has_view",    limit: 4, default: 0, null: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.integer  "user_id",        limit: 4
+    t.integer  "hospital_id",    limit: 4
+    t.integer  "plan_id",        limit: 4
+    t.integer  "vip_level",      limit: 4, default: 1, null: false
+    t.integer  "may_receive",    limit: 4, default: 0, null: false
+    t.integer  "may_release",    limit: 4, default: 0, null: false
+    t.integer  "may_set_top",    limit: 4, default: 0, null: false
+    t.integer  "may_view",       limit: 4, default: 0, null: false
+    t.integer  "may_join_fairs", limit: 4, default: 0, null: false
+    t.integer  "has_receive",    limit: 4, default: 0, null: false
+    t.integer  "has_release",    limit: 4, default: 0, null: false
+    t.integer  "has_set_top",    limit: 4, default: 0, null: false
+    t.integer  "has_view",       limit: 4, default: 0, null: false
+    t.integer  "has_join_fairs", limit: 4, default: 0, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "event_logs", force: :cascade do |t|
@@ -205,14 +207,14 @@ ActiveRecord::Schema.define(version: 20160713082534) do
 
   create_table "plans", force: :cascade do |t|
     t.string   "name",           limit: 191
-    t.integer  "may_receive",    limit: 4,   default: 0,     null: false
-    t.integer  "may_release",    limit: 4,   default: 0,     null: false
-    t.integer  "may_set_top",    limit: 4,   default: 0,     null: false
-    t.integer  "may_view",       limit: 4,   default: 0,     null: false
-    t.integer  "may_join_fairs", limit: 4,   default: 0,     null: false
-    t.boolean  "status",                     default: false, null: false
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.integer  "may_receive",    limit: 4,   default: 0,    null: false
+    t.integer  "may_release",    limit: 4,   default: 0,    null: false
+    t.integer  "may_set_top",    limit: 4,   default: 0,    null: false
+    t.integer  "may_view",       limit: 4,   default: 0,    null: false
+    t.integer  "may_join_fairs", limit: 4,   default: 0,    null: false
+    t.boolean  "status",                     default: true, null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "resume_viewers", force: :cascade do |t|
