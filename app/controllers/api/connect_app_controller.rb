@@ -3,7 +3,7 @@ require 'rest-client'
 class Api::ConnectAppController < ApiController
   # before_action :require_employer!   # 登陆验证
   # before_action :authenticate_user!   # 登陆验证
-  protect_from_forgery :except => [:login_app]
+  protect_from_forgery :except => [:login_app, :get_hospital]
 
   def login_app
     @res = RestClient.post "http://119.97.224.253:9014/HealthComm/modelToken/getToken",
@@ -28,12 +28,32 @@ class Api::ConnectAppController < ApiController
     if user
       sign_in(user)
       if user.user_type == "copper"
-        redirect_to webapp_home_path
+        to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
+        redirect_to to_url
       elsif user.user_type == "gold"
         redirect_to employer_resumes_path
       end
     else
       new_user params[:token]
+    end
+  end
+
+  def get_hospital
+    hospital = Hospital.select(:id, :name, :location, :contact_person)
+                       .find_by contact_number: params[:telephone]
+
+    if hospital.nil?
+      render json: {
+        success: false,
+        info: '非医院负责人。'
+      }, status: 403
+    else
+      hospital_info = hospital
+      render json: {
+        success: true,
+        info: '获取医院信息成功！',
+        hospital: hospital_info
+      }, status: 200
     end
   end
 
@@ -61,12 +81,9 @@ class Api::ConnectAppController < ApiController
         user = User.find_by user_number: user_info["uaid"]
         if user
           sign_in(user)
-          # render json: {
-          #     success: true,
-          #     info: '自动登陆成功',
-          #     url: root_url + "/webapp/home"
-          #   }, status: 200
-          redirect_to webapp_home_path
+
+          to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
+          redirect_to to_url
         else
           sign_up_copper user_info
         end
@@ -75,11 +92,7 @@ class Api::ConnectAppController < ApiController
         user = User.find_by user_number: user_info["entid"]
         if user
           sign_in(user)
-          # render json: {
-          #     success: true,
-          #     info: '自动登陆成功',
-          #     url: root_url + "/employer/resumes"
-          #   }, status: 200
+
           redirect_to employer_resumes_path
         else
           sign_up_gold user_info
@@ -106,11 +119,6 @@ class Api::ConnectAppController < ApiController
       user.add_role :copper
 
       sign_in(user)
-      # render json: {
-      #     success: true,
-      #     info: '注册并登陆成功',
-      #     url: root_url + "/webapp/home"
-      #   }, status: 200
 
       redirect_to webapp_home_path
     end
@@ -127,27 +135,16 @@ class Api::ConnectAppController < ApiController
       user = User.create! new_gold
       user.add_role :gold
 
-      new_hospital = {
-        name: user_info["entname"],
-        location: user_info["entaddress"],
-        introduction: user_info["entname"] + "的医院介绍"
-      }
-      hospital = Hospital.create! new_hospital
+      hospital = Hospital.find_by contact_number: user_info["telephone"]
 
       new_employer = {
         user_id: user.id,
         hospital_id: hospital.id
       }
       employer = Employer.create! new_employer
-      # set_vip = Employer.set_vip user.id, 1
       set_plan = Employer.set_plan user.id, 0
 
       sign_in(user)
-      # render json: {
-      #     success: true,
-      #     info: '注册并登陆成功',
-      #     url: root_url + "/employer/resumes"
-      #   }, status: 200
       redirect_to employer_resumes_path
     end
 
