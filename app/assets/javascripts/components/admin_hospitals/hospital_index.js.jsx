@@ -3,6 +3,7 @@ var AdminHospital = React.createClass({
     return {
       hospitals: this.props.data,
       plans: this.props.plan,
+      new_display: false,
       hos_info: {
         index: 0,
         hospital: '',
@@ -10,14 +11,24 @@ var AdminHospital = React.createClass({
       },
     }
   }
+  ,handleClick: function() {
+    this.setState({
+      new_display: true
+    })
+  }
   ,render: function() {
-    var edit_hospital = this.state.hos_info.edit_display ? <AdminEditHospital plans={this.state.plans} data={this.state.hos_info.hospital} dad={this} /> : ''
+    var edit_hospital = this.state.hos_info.edit_display ? <AdminEditHospital plans={this.state.plans} data={this.state.hos_info.hospital} dad={this} /> : '',
+        new_hospital = this.state.new_display ? <AdminHospitalNew plans={this.state.plans} dad={this} /> : ''
 
     return (
       <div className="main">
         <AdminHospitalForm data={this.state.plans} dad={this} />
+        <div className="handle-button">
+          <button className="btn btn-info pull-right" onClick={this.handleClick} name="new_display" >新建</button>
+        </div>
         <AdminHospitalTable hospitals={this.state.hospitals} dad={this}/>
         {edit_hospital}
+        {new_hospital}
       </div>
     )
   }

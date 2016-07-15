@@ -1,6 +1,6 @@
 class Admin::HospitalsController < AdminController
   before_action :require_hospitals_manager!
-  protect_from_forgery :except => [:index, :update]
+  protect_from_forgery :except => [:index, :update, :create]
 
   def index
     hospitals = Hospital.all
@@ -60,6 +60,27 @@ class Admin::HospitalsController < AdminController
       render json: {
         success: false,
         info: "更新失败"
+      }, status: 403
+    end
+  end
+
+  def create
+    hospital = hospital.create! hospital_params
+    employer = Employer.find_by hospital_id: hospital.id
+    employer = Employer.set_plan employer.user_id, params[:plan_id]
+
+    if hospital && employer.present?
+      @hospital_infos = hospital.get_info hospital
+
+      render json: {
+        success: true,
+        info: "新建成功",
+        hospital: @hospital_infos
+      }, status: 200
+    else
+      render json: {
+        success: false,
+        info: "新建失败"
       }, status: 403
     end
   end
