@@ -15,6 +15,7 @@ class Employer::ResumesController < ApplicationController
     # 三个月内简历
     @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",hospital.id, Time.now - 90.days)
                                 .order("recieve_at DESC")
+                            puts "------------" + @apply_records.to_json.to_s
 
     # 公开简历
     public_resumes = Resume.where( "public = ? && maturity >= ?", true, 70)
@@ -31,7 +32,6 @@ class Employer::ResumesController < ApplicationController
     jobs.each do |f|
       @jobs_by_position.push Job.get_seekers(f.id)
     end
-
   end
 
   def show
@@ -40,7 +40,7 @@ class Employer::ResumesController < ApplicationController
 
     resume = Resume.find resume_id
     @seeker = Resume.info resume.user_id
-    @apply_record = ApplyRecord.select(:id, :job_name, :resume_status, :age, :job_name).find_by(job_id: job_id, user_id: resume.user_id)
+    @apply_record = ApplyRecord.select(:id, :job_name, :resume_status, :age, :job_name, :from).find_by(job_id: job_id, user_id: resume.user_id)
     # 简历预览
     @user = User.find resume.user_id
     @user_age = @user.birthday.nil? ? "保密" : ((Time.now - @user.birthday)/1.year).to_i

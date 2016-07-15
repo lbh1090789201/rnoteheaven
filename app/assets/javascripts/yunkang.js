@@ -32,51 +32,77 @@ function wordLimit(dom, word) {
 /* 超过一定字体变成省略号 结束 */
 
 /* 蒙版 开始 */
+
+// 进入页面即生成蒙版div
+
+// function generate_mask() {
+//   var parentdiv = $('<div></div>');
+//   parentdiv.attr('class','before-mask div-hidden');;
+//   for (var i = 0; i < obj.length; i++) {
+//     var childBtn = $('<p>'+obj[i]+'</p>');
+//     childBtn.attr('value',obj[i]);
+//     childBtn.attr('onclick', 'change_val(this)');
+//     childBtn.attr('class', pclass)
+//     parentdiv.append(childBtn);
+//   }
+// }
+
 function workExperience(obj,api,pclass) {
+  // var now_url = window.location.href;
+  // now_url+= "?index=1"
+  // window.location.href = now_url
   var parentdiv = $('<div></div>');
   parentdiv.attr('class','before-mask div-hidden');;
   for (var i = 0; i < obj.length; i++) {
     var childBtn = $('<p>'+obj[i]+'</p>');
     childBtn.attr('value',obj[i]);
     childBtn.attr('onclick', 'change_val(this)');
-    childBtn.attr('class', pclass)
+    childBtn.attr('class', pclass);
     parentdiv.append(childBtn);
   }
   var workExperienceDiv = $('.edit_basic');
   parentdiv.appendTo(workExperienceDiv);
-  edit_title =  $(".title").text();
-  var h1 = $(api).siblings().text();
-  $(".title").text(h1);
-  $('.right').text('');
+  var delete_mask = $('<p></p>');
+  delete_mask.text('返回');
+  delete_mask.attr('onClick','delete_mask()');
+  parentdiv.append(delete_mask);
+  // edit_title =  $(".title").text();
+  // var h1 = $(api).siblings().text();
+  // $(".title").text(h1);
+  // $('.right').text('');
   //生成返回按钮
-  var span = document.createElement("span");
-  span.setAttribute('class','title-over');
-  span.setAttribute('onclick','TitleOver(this)');
-  console.log(span);
-  var div = $(".top");
-  div.prepend(span);
-  $(document).scrollTop('0');
+  // var span = document.createElement("span");
+  // span.setAttribute('class','title-over');
+  // span.setAttribute('onclick','TitleOver(this)');
+  // console.log(span);
+  // var div = $(".top");
+  // div.prepend(span);
+  // $(document).scrollTop('0');
 }
 
 function change_val(obj) {
   $("#" + $(obj).attr("class")).attr('value', obj.value);
-  $('.title').text(edit_title)
-  $('.right').text('保存');
+  // $('.title').text(edit_title)
+  // $('.right').text('保存');
   $('.before-mask').animate({
     top: '1500px',
   },300);
   $('.before-mask').css("display","none");
 };
 
-function TitleOver(obj) {
-  $(".title-over").hide();
-  $('.title').text(edit_title);
-  $('.right').text('保存');
-  $('.before-mask').animate({
-    top: '1500px',
-  },300);
-  $('.before-mask').css("display","none");
+function delete_mask() {
+  $('.before-mask').remove();
 }
+
+// function TitleOver(obj) {
+//   $(".title-over").hide();
+//   $('.title').text(edit_title);
+//   $('.right').text('保存');
+//   $('.before-mask').animate({
+//     top: '1500px',
+//   },300);
+//   $('.before-mask').css("display","none");
+// }
 /* 蒙版 结束 */
 
 

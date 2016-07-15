@@ -54,7 +54,7 @@ class Api::ApplyRecordsController < ApiController
   private
 
     def apply_records_params
-      params.require(:apply_record).permit(:job_id, :user_id)
+      params.require(:apply_record).permit(:job_id, :user_id, :from)
     end
 
 end

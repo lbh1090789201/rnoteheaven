@@ -12,17 +12,10 @@ function JobBasicNew(obj,api,pclass) {
   }
   var workExperienceDiv = $('#job_basic');
   parentdiv.appendTo(workExperienceDiv);
-  edit_title =  $(".title").text();
-  var h1 = $(api).siblings().text();
-  $(".title").text(h1);
-  // $('.right').text('');
-  //生成返回按钮
-  var span = document.createElement("span");
-  span.setAttribute('class','title-over');
-  span.setAttribute('onclick','TitleOver(this)');
-  var div = $(".top");
-  div.prepend(span);
-  $(document).scrollTop('0');
+  var delete_mask = $('<p></p>');
+  delete_mask.text('返回');
+  delete_mask.attr('onClick','delete_mask()');
+  parentdiv.append(delete_mask);
 }
 
 function change_val(obj) {
@@ -59,22 +52,16 @@ function change_val(obj) {
   }else {
     input.attr('value', obj.value);
   }
-  $('.title').text(edit_title);
   $('.before-mask').animate({
     top: '1500px',
   },300);
   $('.before-mask').css("display","none");
 };
 
-function TitleOver(obj) {
-  console.log("1111");
-  $(".title-over").hide();
-  $('.title').text(edit_title);
-  $('.before-mask').animate({
-    top: '1500px',
-  },300);
-  $('.before-mask').css("display","none");
+function delete_mask() {
+  $('.before-mask').remove();
 }
+
 /* new页面类型选择脚本 结束 */
 
 
