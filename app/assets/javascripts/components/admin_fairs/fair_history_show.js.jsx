@@ -6,7 +6,6 @@ var FairHistroyView = React.createClass({
   }
   ,render: function() {
     let fair = this.state.fair
-    console.log(fair.banner.url)
 
     return (
       <div className="mask-user">
