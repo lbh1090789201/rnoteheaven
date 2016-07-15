@@ -17,7 +17,6 @@ class FairHospital < ActiveRecord::Base
   def self.statistic f
     jobs = Job.where hospital_id: f.hospital_id
     resumes = ApplyRecord.where from: f.fair_id, hospital_id: f.hospital_id
-    p f
     hospital = Hospital.find f.hospital_id
 
     fair_hospital = f.as_json
