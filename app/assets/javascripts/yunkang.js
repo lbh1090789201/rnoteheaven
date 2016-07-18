@@ -226,6 +226,7 @@ function ClickDeleteBtn(obj){
           	iosUrl.type="1";
           	var backUrl={};
           	backUrl.from_index = my_url == null ? "/pageJump/toDetectionReady.do" : my_url;
+            console.log(backUrl)
           	iosUrl.parameter=backUrl;
 
 
