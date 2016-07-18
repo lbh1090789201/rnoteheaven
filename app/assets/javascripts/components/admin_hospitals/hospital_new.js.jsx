@@ -112,6 +112,25 @@ var AdminHospitalNew = React.createClass({
                </select>
             </div>
 
+            <div className="form-group col-sm-4">
+              <label>拾取坐标</label>
+              <a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">
+                点击拾取
+              </a>
+            </div>
+
+            <div className="form-group col-sm-4">
+               <label>经度</label>
+                 <input type="text" className="form-control" placeholder="经度" name="lng"
+                           required ref="lng" />
+            </div>
+
+            <div className="form-group col-sm-4">
+               <label>纬度</label>
+                 <input type="text" className="form-control" placeholder="纬度" name="lat"
+                           required ref="lat" />
+            </div>
+
             <div className="form-group col-sm-12">
                <label>机构地址</label>
                  <input type="text" className="form-control" placeholder="机构地址" name="location"
