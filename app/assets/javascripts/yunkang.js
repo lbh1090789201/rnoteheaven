@@ -1,5 +1,5 @@
-// /*返回顶部*/
-// $(document).scrollTop('0');
+/*返回顶部*/
+$(document).scrollTop('0');
 
 /*屏幕自适应开始*/
 screenWidth = window.screen.width;

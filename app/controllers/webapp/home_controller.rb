@@ -43,7 +43,7 @@ class Webapp::HomeController < ApplicationController
           id: r.id,
           job_name: r.name,
           salary_range: r.salary_range,
-          location: r.location,
+          region: r.region,
           hospital_name: hospital.name,
           city: filter[:city]
         }
