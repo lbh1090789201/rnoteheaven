@@ -115,13 +115,13 @@ var AdminHospitalNew = React.createClass({
             <div className="row">
 
               <div className="form-group col-sm-4">
-                 <label>经度</label>
+                 <label>经度</label>(73~135)
                    <input type="text" className="form-control" placeholder="经度" name="lng"
                              required ref="lng" />
               </div>
 
               <div className="form-group col-sm-4">
-                 <label>纬度</label>
+                 <label>纬度</label>(4~54)
                    <input type="text" className="form-control" placeholder="纬度" name="lat"
                              required ref="lat" />
               </div>
