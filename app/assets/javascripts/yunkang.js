@@ -238,34 +238,6 @@ function ClickDeleteBtn(obj){
             	}
         }
 
-        //设定返回链接，用在页面头部
-        function my_back(my_url){
-              var u = navigator.userAgent;
-            	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-            	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-
-                       //安卓设置返回的链接中的独有包含字段
-            	var androidUrl = my_url == null ? "toDetectionReady" : my_url;
-
-
-                    //IOS设置返回的链接中的独有包含字段
-                	var iosUrl={};
-                	iosUrl.faction="setBackUrl";
-                	iosUrl.type="1";
-                	var backUrl={};
-                	backUrl.setBackUrl = my_url == null ? "/pageJump/toDetectionReady.do" : my_url;
-                  console.log(backUrl)
-                	iosUrl.parameter=backUrl;
-
-
-                	if(isiOS){
-                  	  window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
-                    }
-                    if(isAndroid){
-                      	window.js2MobInterface.setBackUrl(androidUrl);
-                  	}
-              }
-
   function go_home(){
 		var u = navigator.userAgent;
 		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
