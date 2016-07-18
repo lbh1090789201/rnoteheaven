@@ -8,7 +8,7 @@ FactoryGirl.define do
     industry "医疗"
     location "广东省深圳市宝安区第二人民医院"
     introduction "我是医院介绍"
-    region "广东省"
+    region "深圳市"
     contact_person "李某某"
     contact_number "13349241423"
   end
@@ -19,7 +19,7 @@ FactoryGirl.define do
     property "MyString"
     location "深圳"
     introduction "MyString"
-    region "MyString"
+    region "深圳市"
     contact_person "王某某"
     contact_number "13349243333"
   end
@@ -30,7 +30,7 @@ FactoryGirl.define do
     property "MyString"
     location "深圳"
     introduction "MyString"
-    region "MyString"
+    region "深圳市"
     contact_person "李某某"
     contact_number "13349242223"
   end
@@ -41,7 +41,7 @@ FactoryGirl.define do
     property "MyString"
     location "成都"
     introduction "MyString"
-    region "MyString"
+    region "深圳市"
     contact_person "啊某某"
     contact_number "13349111423"
   end
@@ -52,7 +52,7 @@ FactoryGirl.define do
     property "MyString"
     location "成都"
     introduction "MyString"
-    region "MyString"
+    region "成都市"
     contact_person "入某某"
     contact_number "13349221423"
   end
@@ -63,7 +63,7 @@ FactoryGirl.define do
     property "MyString"
     location "成都"
     introduction "MyString"
-    region "MyString"
+    region "成都市"
     contact_person "发某某"
     contact_number "13333241423"
   end

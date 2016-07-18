@@ -127,7 +127,6 @@ var AdminVipEdit = React.createClass({
 
 var AdminVipRadiobox = React.createClass({
   render: function() {
-    console.log(111)
     var status = this.props.data,
          check_true = status ? "checked" : '',
          check_false = status ? '' : 'checked'

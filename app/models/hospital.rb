@@ -6,9 +6,9 @@ class Hospital < ActiveRecord::Base
   validates :introduction, length: { in: 4..800 }
 
   # 按城市搜索
-  scope :filter_location, -> (location) {
-    filter = "location like '%" + location + "%'" if location.present?
-    where(filter) if location.present?
+  scope :filter_location, -> (region) {
+    filter = "region like '%" + region + "%'" if region.present?
+    where(filter) if region.present?
   }
 
   #按医院

@@ -63,7 +63,7 @@ var AdminHospitalNew = React.createClass({
               <div className="form-group col-sm-4">
                  <label>账号(手机号)</label>
                    <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
-                          pattern=""  required ref="contact_number"/>
+                            required ref="contact_number"/>
               </div>
 
               <div className="form-group col-sm-4">
@@ -115,13 +115,13 @@ var AdminHospitalNew = React.createClass({
             <div className="row">
 
               <div className="form-group col-sm-4">
-                 <label>经度</label>(73~135)
+                 <label>经度</label>
                    <input type="text" className="form-control" placeholder="经度" name="lng"
                              required ref="lng" />
               </div>
 
               <div className="form-group col-sm-4">
-                 <label>纬度</label>(4~54)
+                 <label>纬度</label>
                    <input type="text" className="form-control" placeholder="纬度" name="lat"
                              required ref="lat" />
               </div>

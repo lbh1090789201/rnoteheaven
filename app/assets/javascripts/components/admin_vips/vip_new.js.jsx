@@ -22,7 +22,6 @@ var AdminVipNew = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
-    console.log(this.refs.may_release.value)
     let vip_name = this.refs.vip_name.value,
         may_release = this.refs.may_release.value,
         may_set_top = this.refs.may_set_top.value,
@@ -43,10 +42,9 @@ var AdminVipNew = React.createClass({
           status: JSON.parse(this.state.status),
         },
         success: function(data){
-          console.log(data.vip)
           let vips = this.props.dad.state.vips
           vips.push(data.vip)
-          
+
           this.props.dad.setState({
              vips: vips,
              vip_info: {

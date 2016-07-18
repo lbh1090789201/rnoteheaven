@@ -49,10 +49,7 @@ class Webapp::HomeController < ApplicationController
         }
         @arjob.push(o)
       end
-
     return @arjob
-
-
 
   end
 end
