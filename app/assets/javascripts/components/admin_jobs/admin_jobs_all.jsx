@@ -3,6 +3,7 @@ var AdminJobAll = React.createClass({
     return {
       jobs: this.props.data,
       checkValue: [],
+      close: this.props.close,
     }
   }
   ,handleCheck: function(e) {
@@ -44,6 +45,7 @@ var AdminJobAll = React.createClass({
     console.log(this)
   }
   ,render: function() {
+    var job_view = this.state.view_display ? <AdminJobSee dad={this} /> : ''
     return (
       <div className="admin-jobs">
         <ReviewJobAll dad={this} />
@@ -68,11 +70,12 @@ var AdminJobAll = React.createClass({
           <tbody>
             {this.state.jobs.map(
                 function(job, index) {
-                return(<Job key={job.id} data={job} handleCheck={this.handleCheck} index={index} />)
+                return(<Job key={job.id} data={job} handleCheck={this.handleCheck} index={index} dad={this} />)
               }.bind(this)
             )}
           </tbody>
         </table>
+        {job_view}
       </div>
     )
   }
