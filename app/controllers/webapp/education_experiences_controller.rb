@@ -17,8 +17,7 @@ class Webapp::EducationExperiencesController < ApplicationController
       # 更新简历完整度
       resume_maturity = Resume.get_maturity current_user.id
 
-      flash.now[:notice] = "创建成功！"
-      render js: ' history.go(-1);'
+      render js: 'location.href = document.referrer'
     else
       redirect_to :back, alert: "添加失败"
       return
