@@ -71,7 +71,7 @@ class Webapp::UsersController < ApplicationController
       if user_params[:avatar]
 
       else
-        render js: 'history.go(-1);'
+        render js: 'location.href = document.referrer'
       end
 
     else
