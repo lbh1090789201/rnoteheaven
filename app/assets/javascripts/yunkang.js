@@ -209,13 +209,13 @@ function ClickDeleteBtn(obj){
   }
 
   //设定返回链接，用在页面头部
-  function set_back(){
+  function set_back(my_url){
     var u = navigator.userAgent;
   	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
   	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
     //安卓设置返回的链接中的独有包含字段
-  	var androidUrl = "toDetectionReady";
+  	var androidUrl = my_url == null? "setBackUrl" : my_url ;
     console.log(androidUrl)
     //IOS设置返回的链接中的独有包含字段
   	var iosUrl={};
@@ -232,6 +232,32 @@ function ClickDeleteBtn(obj){
       	window.js2MobInterface.setBackUrl(androidUrl);
   	}
   }
+
+  function go_home(){
+		var u = navigator.userAgent;
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		//var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+		//ios首页返回app
+		var iosUrl={};
+		iosUrl.faction="setBackUrl";
+		iosUrl.type="1";
+		var backUrl={};
+		backUrl.setBackUrl="backHome";
+		iosUrl.parameter=backUrl;
+
+	    //固定接头体属性设定
+	    //console.log(JSON.stringify(iosTitle));
+		console.log(JSON.stringify(iosUrl));
+
+		if(isiOS){
+	    	 window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
+	    }
+	  if(isAndroid){
+		 	//在首页，退出web
+			window.js2MobInterface.closeWeb();
+		}
+	}
 
   // IOS 或 安卓刷新一下页面
   function refresh_cli() {
