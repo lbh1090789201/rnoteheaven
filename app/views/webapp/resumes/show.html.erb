@@ -2,7 +2,23 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script type="text/javascript">
-  $(refreshOnce()); //刷新一次页面
+  if(Q.ua.IOS){
+    Q.$(window).on("pagehide",function(){
+        var $body = $(document.body);
+        $body.children().remove(); // wait for this callback to finish executing and then...
+        setTimeout(function() {
+            $body.append("<script type='text/javascript'>window.location.reload(true);<\/script>");
+        });
+    });
+  }
+  //for android qq browser
+  Q.$(window).on('pageshow', function(evt){
+    setTimeout(function(){
+        if(evt.persisted){
+            location.reload(true);
+        }
+    });
+  });
 </script>
 
 <div class="container resume-show " style="background: f3f3f3;">
