@@ -3,7 +3,7 @@ class Hospital < ActiveRecord::Base
   has_many :resume_views
   has_many :jobs
 
-  validates :introduction, length: { in: 4..45 }
+  validates :introduction, length: { in: 4..800 }
 
   # 按城市搜索
   scope :filter_location, -> (location) {
