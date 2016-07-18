@@ -1,3 +1,7 @@
+<script>
+  $(set_back())
+</script>
+
 <%= provide :title, "医院信息设置" %>
 <div id="job_basic">
   <%= simple_form_for @hospital, method: :patch, remote: true, url: employer_user_path(params[:id]) do |f| %>
