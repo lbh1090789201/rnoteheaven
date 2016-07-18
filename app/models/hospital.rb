@@ -43,28 +43,33 @@ class Hospital < ActiveRecord::Base
     @hospitals = []
     hospitals.each do |h|
       employer = Employer.find_by(hospital_id: h.id)
-      plan = Plan.find employer.plan_id
+      if employer.present?
+        plan = Plan.find employer.plan_id
 
-      o = {
-        id: h.id,
-        hospital_name: h.name,
-        property: h.property,
-        scale: h.scale,
-        industry: h.industry,
-        region: h.region,
-        location: h.location,
-        introduction: h.introduction,
-        contact_person: h.contact_person,
-        contact_number: h.contact_number,
-        vip_name: plan.name,
-        may_release: plan.may_release,
-        may_set_top: plan.may_set_top,
-        may_receive: plan.may_receive,
-        may_view: plan.may_receive,
-        may_join_fairs: plan.may_join_fairs,
-        vip_id: plan.id
-      }
-      @hospitals.push(o)
+        o = {
+          id: h.id,
+          name: h.name,
+          property: h.property,
+          scale: h.scale,
+          industry: h.industry,
+          region: h.region,
+          location: h.location,
+          introduction: h.introduction,
+          contact_person: h.contact_person,
+          contact_number: h.contact_number,
+          vip_name: plan.name,
+          may_release: plan.may_release,
+          may_set_top: plan.may_set_top,
+          may_receive: plan.may_receive,
+          may_view: plan.may_receive,
+          may_join_fairs: plan.may_join_fairs,
+          vip_id: plan.id
+        }
+        @hospitals.push(o)
+      else
+        @hospitals.push(h)
+      end
+
     end
     return @hospitals
   end

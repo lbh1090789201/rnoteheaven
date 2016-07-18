@@ -1,8 +1,6 @@
-var AdminEditHospital = React.createClass({
+var AdminHospitalNew = React.createClass({
   getInitialState: function() {
     return {
-      vip_id: this.props.data.vip_id,
-      vip_name: this.props.data.vip_name,
       plan: '',
       index: this.props.dad.state.hos_info.index,
     }
@@ -26,30 +24,25 @@ var AdminEditHospital = React.createClass({
     console.log(this.state.vip_id)
 
     $.ajax({
-      url: "/admin/hospitals/" + this.props.data.id,
-      type: "PATCH",
+      url: "/admin/hospitals",
+      type: "POST",
       data: formData,
       processData: false,
       contentType: false,
       success: function(data) {
-        let hospitals = this.props.dad.state.hospitals,
-            index = this.state.index
+        let hospitals = this.props.dad.state.hospitals
 
-        hospitals[index] = data.hospital[0]
+        hospitals.push(data.hospital)
 
         this.props.dad.setState({
           hospitals: hospitals,
-          hos_info: {
-            eidt_display: false,
-          }
+          new_display: false,
         })
       }.bind(this),
       error: function(data) {
         console.log(data.responseText)
         this.props.dad.setState({
-          hos_info: {
-            eidt_display: false,
-          }
+        new_display: false,
         })
       }.bind(this),
     })
@@ -69,72 +62,86 @@ var AdminEditHospital = React.createClass({
         <div className="user-box">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group col-sm-4">
-               <label>账号</label>
-                 <input type="text" className="form-control" placeholder="账号" name="hospital_id"
-                        disabled  required ref="id" defaultValue={this.props.data.contact_number} />
+               <label>账号(手机号)</label>
+                 <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
+                          required ref="contact_number"/>
             </div>
 
             <div className="form-group col-sm-4">
                <label>机构名称</label>
                  <input className="form-control" type="text" placeholder="机构名称"
-                    name="name" required ref="name" defaultValue={this.props.data.name} />
+                    name="name" required ref="hospital_name" />
             </div>
 
             <div className="form-group col-sm-4">
                <label>负责人</label>
                  <input type="text" className="form-control" placeholder="姓名" name="contact_person"
-                          required ref="contact_person" defaultValue={this.props.data.contact_person} />
+                          required ref="contact_person"/>
             </div>
 
-            <div className="form-group col-sm-4">
-               <label>联系电话</label>
-                 <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
-                          required ref="contact_number" defaultValue={this.props.data.contact_number} />
-            </div>
+
 
             <div className="form-group col-sm-4">
                <label>行业</label>
                  <input type="text" className="form-control" placeholder="行业" name="industry"
-                               required ref="industry" defaultValue={this.props.data.industry} />
+                               required ref="industry" />
             </div>
 
             <div className="form-group col-sm-4">
                <label>性质</label>
                  <input type="text" className="form-control" placeholder="性质" name="property"
-                               required ref="property" defaultValue={this.props.data.property} />
+                               required ref="property" />
             </div>
 
             <div className="form-group col-sm-4">
                <label>规模</label>
                  <input type="text" className="form-control" placeholder="规模" name="scale"
-                            required ref="scale" defaultValue={this.props.data.scale} />
+                            required ref="scale" />
             </div>
 
             <div className="form-group col-sm-4">
                <label>地区</label>
                  <input type="text" className="form-control" placeholder="地区" name="region"
-                           required ref="region" defaultValue={this.props.data.region} />
+                           required ref="region" />
             </div>
 
             <div className="form-group col-sm-4">
-               <label>级别配置</label>(原：{this.props.data.vip_name})
-               <select onChange={this.handleSelect} name="vip_name" defaultValue={this.props.data.vip_id} className="form-control" >
+               <label>级别配置</label>
+               <select onChange={this.handleSelect} name="vip_name" className="form-control" >
                  {select_plan}
                </select>
+            </div>
+
+            <div className="form-group col-sm-4">
+              <label>拾取坐标</label>
+              <a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">
+                点击拾取
+              </a>
+            </div>
+
+            <div className="form-group col-sm-4">
+               <label>经度</label>
+                 <input type="text" className="form-control" placeholder="经度" name="lng"
+                           required ref="lng" />
+            </div>
+
+            <div className="form-group col-sm-4">
+               <label>纬度</label>
+                 <input type="text" className="form-control" placeholder="纬度" name="lat"
+                           required ref="lat" />
             </div>
 
             <div className="form-group col-sm-12">
                <label>机构地址</label>
                  <input type="text" className="form-control" placeholder="机构地址" name="location"
-                           required ref="location" defaultValue={this.props.data.location} />
+                           required ref="location" />
             </div>
 
             <div className="form-group col-sm-12">
                <label>机构介绍</label>
                  <textarea type="text" className="form-control" placeholder="机构介绍" name="introduction" rows="5"
-                          pattern=".{6,}" required title="最少6个字符" ref="introduction" defaultValue={this.props.data.introduction} />
+                          pattern=".{6,}" required title="最少6个字符" ref="introduction" />
             </div>
-
 
             {
               // <div className="form-group">
