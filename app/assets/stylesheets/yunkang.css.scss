@@ -1,7 +1,7 @@
 
 @import "cityPicker.css";
 @import "common.css";
-
+@import "mixin.scss";
 
 /* 变量区 开始 */
 $light-gray: #f4f4f4;
@@ -1601,38 +1601,35 @@ a:hover {
 
 /* 职位详情 开始-冰华*/
 .job-head {
-  // position: absolute;
-  top: 0.5rem;
-  left: 50%;
+  height: 2.35rem;
   div {
-    width: 9.64rem;
-    position: absolute;
     top: -0.05rem;
     left: -4.82rem;
     font-size: 0.87rem;
     text-align: center;
+
     .job-page {
       display: block;
-      width: 4.72rem;
-      height: 1.4rem;
-      line-height: 1.4rem;
+      width: 50%;
+      height: 100%;
+      line-height: 2.35rem;
       background: #fff;
-      color: #3f9e9f;
-      border: 1px solid #fff;
+      color: #000;
+      border-bottom: 2px solid #3f9e9f;
       float: left;
       text-decoration: none;
       text-align: center;
     }
     .hospital-page {
       display: block;
-      width: 4.72rem;
-      height: 1.4rem;
-      line-height: 1.4rem;
-      background: #3f9e9f;
-      color: #fff;
-      border: 1px solid #fff;
+      width: 50%;
+      height: 100%;
+      line-height: 2.35rem;
+      background: #fff;
+      border-bottom: 2px solid #fff;
       float: left;
       cursor: pointer;
+      color: $black-gray;
       text-decoration: none;
       text-align: center;
     }
