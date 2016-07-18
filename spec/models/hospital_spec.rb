@@ -24,7 +24,7 @@ RSpec.describe Hospital, type: :model do
     end
 
     it 'test filter location' do
-      expect(Hospital.filter_location("成").size).to eq 3
+      expect(Hospital.filter_location("成").size).to eq 2
     end
 
     it 'test filter hospital' do

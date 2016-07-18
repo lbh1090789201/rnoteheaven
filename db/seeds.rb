@@ -112,7 +112,7 @@ aa.add_role :admin
 # })
 # Employer.create!({
 #   user_id: 1,
-#   hospital_id: 1,
+#   hospital_id: 2,
 #   plan_id: vip.id
 # })
 #

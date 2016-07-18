@@ -16,9 +16,9 @@ class Job < ActiveRecord::Base
   }
 
   # 按城市搜索
-  scope :filter_location, -> (location) {
-    filter = "region like '%" + location + "%'" if location.present?
-    where(filter) if location.present?
+  scope :filter_location, -> (region) {
+    filter = "region like '%" + region + "%'" if region.present?
+    where(filter) if region.present?
   }
 
   # 按职位
