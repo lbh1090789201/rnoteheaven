@@ -292,7 +292,5 @@
    ReplayImg(1,'../assets/icon_03.png');
 
    // 设定返回按钮，默认返回 home，set_back('my_url') 返回 my_url
-   <% if Rails.env.production? %>
-   set_back()
-   <% end %>
+   $(set_back())
 </script>
