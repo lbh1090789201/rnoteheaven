@@ -69,6 +69,7 @@ class Api::ConnectAppController < ApiController
                                       token: token
                                     }.to_json, :content_type => :json, :accept => :json
       p @user_info
+      p '-----------------------------'
       @user_info = JSON.parse(@user_info)
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
@@ -78,29 +79,12 @@ class Api::ConnectAppController < ApiController
     end
 
     def auto_login user_info
-      if user_info["uaid"].present?
-        user = User.find_by user_number: user_info["uaid"]
-        if user
-          sign_in(user)
+      hospital = Hospital.find_by contact_number: user_info["telephone"]
 
-          to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
-          redirect_to to_url
-        else
-          sign_up_copper user_info
-        end
-
-      elsif user_info["entid"].present?
-        user = User.find_by user_number: user_info["entid"]
-        if user
-          sign_in(user)
-
-          redirect_to employer_resumes_path
-        else
-          sign_up_gold user_info
-        end
-
+      if hospital.present?
+        sign_up_gold user_info, hospital
       else
-        render json: '服务器参数错误', status: 500
+        sign_up_copper user_info
       end
     end
 
@@ -124,19 +108,18 @@ class Api::ConnectAppController < ApiController
       redirect_to webapp_home_path
     end
 
-    def sign_up_gold user_info
+    def sign_up_gold user_info, hospital
       new_gold = {
-        user_number: user_info["entid"],
+        user_number: user_info["uaid"],
         user_type: "gold",
-        username: "gold" + user_info["entid"].to_s,
+        username: "gold" + user_info["uaid"].to_s,
         password: "123456",
-        show_name: user_info["entname"],
+        show_name: user_info["realName"].present? ? user_info["realName"] : '',
+        cellphone: user_info["telephone"],
         email: "copper" + user_info["uaid"].to_s + "@example.com"
       }
       user = User.create! new_gold
       user.add_role :gold
-
-      hospital = Hospital.find_by contact_number: user_info["telephone"]
 
       new_employer = {
         user_id: user.id,
