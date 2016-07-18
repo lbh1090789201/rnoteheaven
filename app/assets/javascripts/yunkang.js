@@ -209,29 +209,32 @@ function ClickDeleteBtn(obj){
   }
 
   //设定返回链接，用在页面头部
-  function set_back(my_url){
-    var u = navigator.userAgent;
-  	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-  	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+  function set_back(){
+        var u = navigator.userAgent;
+      	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+      	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
-    //安卓设置返回的链接中的独有包含字段
-  	var androidUrl = my_url == null? "setBackUrl" : my_url ;
-    console.log(androidUrl)
-    //IOS设置返回的链接中的独有包含字段
-  	var iosUrl={};
-  	iosUrl.faction="setBackUrl";
-  	iosUrl.type="1";
-  	var backUrl={};
-  	backUrl.from_index = "/pageJump/toDetectionReady.do";
-  	iosUrl.parameter=backUrl;
+                 //安卓设置返回的链接中的独有包含字段
+      	var androidUrl = "toDetectionReady";
 
-  	if(isiOS){
-    	  window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
-      }
-    if(isAndroid){
-      	window.js2MobInterface.setBackUrl(androidUrl);
-  	}
-  }
+
+              //IOS设置返回的链接中的独有包含字段
+          	var iosUrl={};
+          	iosUrl.faction="setBackUrl";
+          	iosUrl.type="1";
+          	var backUrl={};
+          	backUrl.from_index = "/pageJump/toDetectionReady.do";
+          	iosUrl.parameter=backUrl;
+
+
+          	if(isiOS){
+            	  window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
+              }
+              if(isAndroid){
+                	console.log(isAndroid);
+                	window.js2MobInterface.setBackUrl(androidUrl);
+            	}
+        }
 
   function go_home(){
 		var u = navigator.userAgent;
