@@ -241,7 +241,7 @@ function ClickDeleteBtn(obj){
   function go_home(){
 		var u = navigator.userAgent;
 		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-		//var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
 		//ios首页返回app
 		var iosUrl={};
