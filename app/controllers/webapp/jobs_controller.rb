@@ -11,7 +11,7 @@ class Webapp::JobsController < ApplicationController
      maturity = resume.maturity - 74 if resume.present?
      is_favor = FavoriteJob.is_favor(current_user.id, params[:id])
 
-     @btn_apply = btn_info(is_applied, has_resume)
+     @btn_apply = btn_info(is_applied, maturity)
      @btn_favor = btn_favor(is_favor)
      @hospital = Hospital.find_by(:id => @job.hospital_id)
      @jobs = Job.where(:hospital_id => @hospital.id).length
