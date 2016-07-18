@@ -1,5 +1,8 @@
-
 <% provide :title, "持有证书" %>
+
+<script>
+  set_back("/webapp/resumes/<%= @resume_id %>")
+</script>
 
 <ul class="certificate-show">
   <% @certificates.each do |f| %>
