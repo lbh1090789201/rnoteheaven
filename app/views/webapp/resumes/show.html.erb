@@ -3,6 +3,10 @@
 <%= provide :content, "预览" %>
 <script>
   set_back("/webapp/users/<%= current_user.id %>")
+  <% if params[:refresh] %>
+    var url = getWholeUrl()
+    location.href = url
+  <% end %>
 </script>
 
 
