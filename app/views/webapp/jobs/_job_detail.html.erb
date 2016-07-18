@@ -49,6 +49,7 @@
     }else {
       formDate = {job_id: <%= params[:id] %>}
     }
+    
     $.post("/api/v1/apply_records", {
       apply_record: formDate
     }).done(function() {
