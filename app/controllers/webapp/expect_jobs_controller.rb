@@ -19,7 +19,7 @@ class Webapp::ExpectJobsController < ApplicationController
       # 更新简历完整度
       resume_maturity = Resume.get_maturity current_user.id
 
-      render js: 'history.go(-1);'
+      render js: 'location.href = document.referrer'
     else
       redirect_to :back, alert("修改失败")
     end

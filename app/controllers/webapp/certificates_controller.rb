@@ -4,6 +4,7 @@ class Webapp::CertificatesController < ApplicationController
 
   def index
     @certificates = Certificate.where user_id: current_user.id
+    @resume_id = Resume.find_by(user_id: current_user.id).id
   end
 
   def new
@@ -15,7 +16,7 @@ class Webapp::CertificatesController < ApplicationController
     certificate.user_id = current_user.id
 
     if certificate.save
-      render js: "history.go(-1)"
+      render js: 'location.href = document.referrer'
     else
       redirect_to :back, alert: "证书添加失败"
     end

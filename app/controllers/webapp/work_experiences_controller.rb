@@ -15,7 +15,7 @@ class Webapp::WorkExperiencesController < ApplicationController
     work_experiences = user.work_experiences.build(work_experience_params)
 
     if work_experiences.save
-      render js: ' history.go(-1);', notice: '创建成功！'
+      render js: 'location.href = document.referrer'
     else
       redirect_to :back, alert: "添加失败"
       return
