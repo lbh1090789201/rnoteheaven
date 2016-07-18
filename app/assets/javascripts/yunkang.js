@@ -241,8 +241,10 @@ function ClickDeleteBtn(obj){
 
     if(isiOS) {
       location.reload(true)
+      console.log('ios refresh ok')
     } else if(isAndroid) {
       mWebView.reload()
+      console.log('Android refresh ok')
     } else {
       window.location.replace(window.location.href);
     }
