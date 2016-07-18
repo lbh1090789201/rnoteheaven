@@ -16,7 +16,6 @@ class User < ActiveRecord::Base #用户
 
 
   # for user_albumns
-  has_many :user_albumns, :dependent => :destroy
   has_one :resume, :dependent => :destroy
   has_one :role, :dependent => :destroy
   has_many :favorite_jobs, :dependent => :destroy
