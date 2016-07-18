@@ -2,4 +2,4 @@
   <%= render 'sidebar' %>
 <% end %>
 
-<%= react_component 'AdminJobAll', {data: @jobs} %>
+<%= react_component 'AdminJobAll', {data: @jobs, close: image_path('close_red.png')} %>

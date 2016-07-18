@@ -31,17 +31,47 @@ var AdminJobSee = React.createClass({
         <div className="user-box">
           <img src={this.state.close}  onClick={this.handleClick} className="img-close" />
           <div className="job-content">
-            <p>职位名称: <span>{this.state.job.name}</span></p>
-            <p>职位类型: <span>{this.state.job.job_type}</span></p>
-            <p>薪<span className="job-range">资</span>: <span>{this.state.job.salary_range}/月</span></p>
-            <p>经验要求: <span>{this.state.job.experience}</span></p>
-            <p>招聘人数: <span>{this.state.job.needed_number}人</span></p>
-            <p>详细地址: <span>{this.state.job.location}</span></p>
-            <p>发布期限: <span>{this.state.job.duration}天</span></p>
-            <p>职位描述: </p>
-            <p className="job-desc">{this.state.job.job_desc}</p>
-            <p>任职资格:</p>
-            <p className="job-demand">{this.state.job.job_demand}</p>
+            <table className="job-table">
+              <tbody>
+                <tr>
+                  <td>职位名称:</td>
+                  <td>{this.state.job.name}</td>
+                </tr>
+                <tr>
+                  <td>职位类型:</td>
+                  <td>{this.state.job.job_type}</td>
+                </tr>
+                <tr>
+                  <td>薪<span className="job-range">资</span>:</td>
+                  <td>{this.state.job.salary_range}</td>
+                </tr>
+                <tr>
+                  <td>经验要求:</td>
+                  <td>{this.state.job.experience}</td>
+                </tr>
+                <tr>
+                  <td>招聘人数:</td>
+                  <td>{this.state.job.needed_number}</td>
+                </tr>
+                <tr>
+                  <td>详细地址:</td>
+                  <td>{this.state.job.location}</td>
+                </tr>
+                <tr>
+                  <td>发布期限:</td>
+                  <td>{this.state.job.duration}</td>
+                </tr>
+                <tr>
+                  <td>职位描述:</td>
+                  <td>{this.state.job.job_desc}</td>
+                </tr>
+                <tr>
+                  <td>任职资格:</td>
+                  <td>{this.state.job.job_demand}</td>
+                </tr>
+              </tbody>
+            </table>
+
           </div>
         </div>
       </div>
