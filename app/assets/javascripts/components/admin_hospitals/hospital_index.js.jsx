@@ -113,12 +113,12 @@ var AdminHospitalForm = React.createClass({
           </select>
         </div>
 
-        <div className='form-group col-sm-3'>
+        <div className='form-group col-sm-2'>
           <input type="date" className="form-control" placeholder='开始时间' name='time_before'
                  ref="time_before" />
         </div>
 
-        <div className='form-group col-sm-3'>
+        <div className='form-group col-sm-2'>
           <input type="date" className="form-control" placeholder='结束时间' name='time_after'
                  ref="time_after" />
         </div>
@@ -136,6 +136,9 @@ var AdminHospitalRadio = React.createClass({
   render: function() {
     return (
       <span>
+        <label className="checkbox-inline">
+        <input onChange={this.props.handleChange} name="goodRadio" type="radio" value="" />全部
+        </label>
 
         <label className="checkbox-inline">
         <input onChange={this.props.handleChange} name="goodRadio" type="radio" value="综合医院" />综合医院
@@ -234,7 +237,7 @@ var AdminHospitalItem =React.createClass({
       <tr>
         <td>{this.props.index + 1}</td>
         <td>{this.props.data.id}</td>
-        <td>{this.props.data.hospital_name}</td>
+        <td>{this.props.data.name}</td>
         <td>{this.props.data.may_release}</td>
         <td>{this.props.data.may_set_top}</td>
         <td>{this.props.data.may_receive}</td>

@@ -65,17 +65,13 @@ class Admin::HospitalsController < AdminController
   end
 
   def create
-    hospital = hospital.create! hospital_params
-    employer = Employer.find_by hospital_id: hospital.id
-    employer = Employer.set_plan employer.user_id, params[:plan_id]
+    hospital = Hospital.create! hospital_params
 
-    if hospital && employer.present?
-      @hospital_infos = hospital.get_info hospital
-
+    if hospital
       render json: {
         success: true,
         info: "新建成功",
-        hospital: @hospital_infos
+        hospital: hospital
       }, status: 200
     else
       render json: {
@@ -89,7 +85,7 @@ class Admin::HospitalsController < AdminController
 
   def hospital_params
     params.permit(:name, :industry, :property, :scale, :region, :contact_number,
-                                        :location, :introducion, :contact_person)
+                                        :location, :introduction, :contact_person)
   end
 
   def employer_params

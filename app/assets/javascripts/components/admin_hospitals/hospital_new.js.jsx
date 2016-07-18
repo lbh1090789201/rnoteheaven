@@ -32,7 +32,7 @@ var AdminHospitalNew = React.createClass({
       success: function(data) {
         let hospitals = this.props.dad.state.hospitals
 
-        hospitals.push(data.hospital[0])
+        hospitals.push(data.hospital)
 
         this.props.dad.setState({
           hospitals: hospitals,
@@ -63,8 +63,8 @@ var AdminHospitalNew = React.createClass({
           <form onSubmit={this.handleSubmit}>
             <div className="form-group col-sm-4">
                <label>账号(手机号)</label>
-                 <input type="text" className="form-control" placeholder="账号" name="hospital_id"
-                        required ref="id"/>
+                 <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
+                          required ref="contact_number"/>
             </div>
 
             <div className="form-group col-sm-4">
@@ -79,11 +79,7 @@ var AdminHospitalNew = React.createClass({
                           required ref="contact_person"/>
             </div>
 
-            <div className="form-group col-sm-4">
-               <label>联系电话</label>
-                 <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
-                          required ref="contact_number"/>
-            </div>
+
 
             <div className="form-group col-sm-4">
                <label>行业</label>

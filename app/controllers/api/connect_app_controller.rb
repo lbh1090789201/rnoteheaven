@@ -46,7 +46,7 @@ class Api::ConnectAppController < ApiController
       render json: {
         success: false,
         info: '非医院负责人。'
-      }, status: 403
+      }, status: 200
     else
       hospital_info = hospital
       render json: {

@@ -77,7 +77,7 @@ var AdminEditHospital = React.createClass({
             <div className="form-group col-sm-4">
                <label>机构名称</label>
                  <input className="form-control" type="text" placeholder="机构名称"
-                    name="name" required ref="hospital_name" defaultValue={this.props.data.hospital_name} />
+                    name="name" required ref="name" defaultValue={this.props.data.name} />
             </div>
 
             <div className="form-group col-sm-4">
