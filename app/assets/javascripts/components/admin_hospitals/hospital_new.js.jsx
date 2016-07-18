@@ -12,9 +12,7 @@ var AdminHospitalNew = React.createClass({
   }
   ,handleClick: function() {
     this.props.dad.setState({
-      hos_info: {
-        eidt_display: false,
-      }
+      new_display: false,
     })
   }
   ,handleSubmit: function(e) {
@@ -61,74 +59,82 @@ var AdminHospitalNew = React.createClass({
       <div className="mask-user">
         <div className="user-box">
           <form onSubmit={this.handleSubmit}>
-            <div className="form-group col-sm-4">
-               <label>账号(手机号)</label>
-                 <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
-                          required ref="contact_number"/>
+            <div className="row">
+              <div className="form-group col-sm-4">
+                 <label>账号(手机号)</label>
+                   <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
+                            required ref="contact_number"/>
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>机构名称</label>
+                   <input className="form-control" type="text" placeholder="机构名称"
+                      name="name" required ref="hospital_name" />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>负责人</label>
+                   <input type="text" className="form-control" placeholder="姓名" name="contact_person"
+                            required ref="contact_person"/>
+              </div>
+
+
+
+              <div className="form-group col-sm-4">
+                 <label>行业</label>
+                   <input type="text" className="form-control" placeholder="行业" name="industry"
+                                 required ref="industry" />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>性质</label>
+                   <input type="text" className="form-control" placeholder="性质" name="property"
+                                 required ref="property" />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>规模</label>
+                   <input type="text" className="form-control" placeholder="规模" name="scale"
+                              required ref="scale" />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>地区</label>
+                   <input type="text" className="form-control" placeholder="地区" name="region"
+                             required ref="region" />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>级别配置</label>
+                 <select onChange={this.handleSelect} name="vip_name" className="form-control" >
+                   {select_plan}
+                 </select>
+              </div>
             </div>
 
-            <div className="form-group col-sm-4">
-               <label>机构名称</label>
-                 <input className="form-control" type="text" placeholder="机构名称"
-                    name="name" required ref="hospital_name" />
-            </div>
+            <div className="row">
 
-            <div className="form-group col-sm-4">
-               <label>负责人</label>
-                 <input type="text" className="form-control" placeholder="姓名" name="contact_person"
-                          required ref="contact_person"/>
-            </div>
+              <div className="form-group col-sm-4">
+                 <label>经度</label>
+                   <input type="text" className="form-control" placeholder="经度" name="lng"
+                             required ref="lng" />
+              </div>
 
+              <div className="form-group col-sm-4">
+                 <label>纬度</label>
+                   <input type="text" className="form-control" placeholder="纬度" name="lat"
+                             required ref="lat" />
+              </div>
 
+              <div className="form-group col-sm-4">
+                <label>拾取坐标</label>
+                <button className="btn btn-default btn-map">
+                  <a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">
+                    点击拾取
+                  </a>
+                </button>
+              </div>
 
-            <div className="form-group col-sm-4">
-               <label>行业</label>
-                 <input type="text" className="form-control" placeholder="行业" name="industry"
-                               required ref="industry" />
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>性质</label>
-                 <input type="text" className="form-control" placeholder="性质" name="property"
-                               required ref="property" />
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>规模</label>
-                 <input type="text" className="form-control" placeholder="规模" name="scale"
-                            required ref="scale" />
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>地区</label>
-                 <input type="text" className="form-control" placeholder="地区" name="region"
-                           required ref="region" />
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>级别配置</label>
-               <select onChange={this.handleSelect} name="vip_name" className="form-control" >
-                 {select_plan}
-               </select>
-            </div>
-
-            <div className="form-group col-sm-4">
-              <label>拾取坐标</label>
-              <a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">
-                点击拾取
-              </a>
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>经度</label>
-                 <input type="text" className="form-control" placeholder="经度" name="lng"
-                           required ref="lng" />
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>纬度</label>
-                 <input type="text" className="form-control" placeholder="纬度" name="lat"
-                           required ref="lat" />
             </div>
 
             <div className="form-group col-sm-12">
