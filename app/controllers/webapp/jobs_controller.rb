@@ -25,7 +25,7 @@ class Webapp::JobsController < ApplicationController
    # end
    private
    #根据情况回传按钮状态
-   def btn_info(is_applied, maturity)
+   def btn_info(is_applied, maturity, is_freeze)
      if is_applied
        return {css: 'is_applied', img_url: "icon_34.png", text: '已应聘'}
      else
