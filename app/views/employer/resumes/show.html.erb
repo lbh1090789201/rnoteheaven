@@ -44,7 +44,7 @@
     <% if @apply_record && @apply_record.from != "common" %>
       <div class="from-fair">医才专场</div>
     <% end %>
-    <div class="show-img" style="background: url('<%= asset_path(@avatar) %>') no-repeat center;background-size:  3.68rem auto;"></div>
+    <div class="show-img" style="background: url('<%= asset_path(@avatar) %>') no-repeat center;background-size: cover"></div>
     <div class="show-top">
       <p><%= @user.show_name %></p>
       <% if @apply_record %>
