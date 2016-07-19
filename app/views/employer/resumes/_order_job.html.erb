@@ -18,12 +18,13 @@
     <div class="order-job-list">
       <div class="sort-nav">
           <div class="job-unhandle" href="javascript:void(0);" onclick="HandleResume(this)">
-            <span>待处理</span>
+            <span>全部</span>
             <!-- 蒙层 -->
             <div class="after-mask"></div>
             <!-- 待处理下选框 -->
             <div class="handle-resume">
               <ul>
+                <li onclick="sortResume(this)">全部</li>
                 <li onclick="sortResume(this)">待处理</li>
                 <li onclick="sortResume(this)">已处理</li>
               </ul>
@@ -157,14 +158,19 @@
 
     //展示不同的类型
     $(".handle-resume>ul>li").bind('mouseover',function(){
-      y = $(this).index();
+      y = $(this).index() - 1;
     })
     function sortResume(obj){
+      $('.job-array>span').text('按年龄排序');
       var text = $(obj).text();
       $(obj).parent().parent().siblings('span').text(text);
       $(obj).css('color','#3f9d9f').siblings().css('color','#000');
       var ul = $(obj).parent().parent().parent().parent().siblings('ul');
-      ul.eq(y).show().siblings('ul').hide();
+      if(y == -1) {
+        ul.css('display','block');
+      }else{
+        ul.eq(y).css('display','block').siblings('ul').css('display','none');
+      }
       $('.sort-resume-ct>ul').hide();
     }
 
@@ -174,6 +180,7 @@
     })
       function SortApply(sq) {
         $('.order-job-list>ul').css('display','none');
+        $('.job-unhandle>span').text('全部');
         if(x==0){
           $('.sort-resume-ct>ul.job-age-page').show().siblings().hide();
         }else if(x==1){
