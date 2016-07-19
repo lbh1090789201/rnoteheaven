@@ -82,7 +82,7 @@ class Job < ActiveRecord::Base
       seekers.push resume_info
     end
 
-    job[:hospital_region] = Hospital.find_by(job[:hospital_id]).region
+    job[:hospital_region] = Hospital.find(job["hospital_id"]).region
     job[:has_new] = has_new
     job[:seekers] = seekers
 

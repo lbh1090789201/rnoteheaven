@@ -3,9 +3,6 @@ class Admin::HospitalsController < AdminController
   protect_from_forgery :except => [:index, :update, :create]
 
   def index
-    hospitals = Hospital.all
-    @hospitals = Hospital.get_info hospitals
-    @vip_levels = Plan.where(status: true)
 
     if params[:hide_search]
       if params[:vip_id].blank?
@@ -22,9 +19,7 @@ class Admin::HospitalsController < AdminController
           ids.push f.hospital_id
         end
 
-        hospitals = Hospital.where id: ids
-
-        hospital_infos = hospitals.filter_by_property(params[:property])
+        hospital_infos = Hospital.where(id: ids).filter_by_property(params[:property])
                   .filter_hospital_name(params[:hospital_name])
                   .filter_create_before(params[:time_before])
                   .filter_create_after(params[:time_after])
@@ -37,6 +32,10 @@ class Admin::HospitalsController < AdminController
         info: "搜索成功",
         hospital: @hospital_infos
       }, status: 200
+    else
+      hospitals = Hospital.all
+      @hospitals = Hospital.get_info hospitals
+      @vip_levels = Plan.where(status: true)
     end
 
 
