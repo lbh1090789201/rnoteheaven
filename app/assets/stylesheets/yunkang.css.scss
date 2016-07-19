@@ -444,12 +444,22 @@ a:hover {
         .refresh {
           display: block;
           width: 15.15rem;
-          margin: 1.6rem auto 1.6rem auto;
+          margin: 1.6rem auto 0.7rem auto;
           border: 0;
           border-radius: 0.36rem;
           height: 2.4rem;
           color: #fff;
           background-color: $beauty-blue;
+        }
+        .preview {
+          display: block;
+          width: 15.15rem;
+          margin: 0 auto 1.6rem auto;
+          border: 1px solid #3f9e9d;
+          border-radius: 0.36rem;
+          height: 2.4rem;
+          color: #3f9e9d;
+          background-color: #fff;
         }
     }
 
@@ -590,7 +600,7 @@ a:hover {
     @include  box-shadow(inset 0 0 #fff);
   }
   .btn {
-    position: absolute;
+    position: fixed;
     height: 3.67rem;
     width: 50%;
     left: 0;
@@ -606,6 +616,9 @@ a:hover {
   .btn-save {
     right: 0;
     background-color: $beauty-blue;
+  }
+  .class-display {
+    display: none;
   }
 
   // job_fairs
@@ -1603,12 +1616,14 @@ a:hover {
 /* 职位详情 开始-冰华*/
 .job-head {
   height: 2.35rem;
+  background: #fff;
   div {
-    top: -0.05rem;
-    left: -4.82rem;
-    font-size: 0.87rem;
+    margin: 0 auto;
+    height: inherit;
+    width: 91%;
+    font-size: 0.7rem;
     text-align: center;
-
+    border-bottom: 1px solid #e3e3e3;
     .job-page {
       display: block;
       width: 50%;
@@ -2494,11 +2509,11 @@ a:hover {
   display: none;
 }
 .btm-nav {
-  position: absolute;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 3.05rem;
-  bottom: -0.7rem;
-  left: 0;
   background: #FFF;
   .btm-delete {
     display: block;
@@ -2926,14 +2941,30 @@ a:hover {
   position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: -4.2rem;
+  margin-top: -2.8rem;
   margin-left: -6.75rem;
   width: 13.5rem;
-  height: 8.3rem;
+  height: 5.6rem;
   line-height: 8.3rem;
   text-align: center;
   font-size: 0.9rem;
   background: rgba(0,0,0,0.5);
   color: #fff;
   border-radius: 0.5rem;
+}
+
+// 页面浮动小脚本
+.float-color {
+  display: block;
+  position: fixed;
+  bottom: 3rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 3rem;
+  font-size: 0.7rem;
+  background: #3d9e9f;
+  color: #fff;
 }

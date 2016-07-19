@@ -13,6 +13,15 @@ function FailMask(div_class,text) {
   },1000);
 }
 
+//页面小浮动脚本
+// function Float_icon(div_class,text,url){
+//   var a = $('<a class="float-color"></a>');
+//   a.text(text);
+//   a.attr('href',url)
+//   var parent_div = $(div_class);
+//   parent_div.append(a);
+// }
+
 /*返回顶部*/
 $(document).scrollTop('0');
 
