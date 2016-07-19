@@ -14,7 +14,7 @@
       <%= f.input :education_degree, label: '学        历', input_html: { readonly: "readonly", class: "education-degree user-input", id: "education_degree"} %>
       <%= f.input :entry_at, label: '开始时间', as: :string, input_html: { class: "user-input", id: "beginTime"} %>
       <%= f.input :graduated_at, label: '结束时间', as: :string, input_html: { class: "user-input", id: "endTime"} %>
-      <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
+      <%= f.submit id: "submit", class: "btn btn-info btn-right class-display"%>
       <div class="btm-nav">
         <p class="btm-delete" onclick="ClickShowHide(this)">删除此经历</p>
         <p class="btm-save">保存</p>

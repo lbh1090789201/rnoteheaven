@@ -10,7 +10,7 @@
       <%= f.input :started_at, label: '入职时间', as: :string, input_html: { class: "user-input", id: "beginTime"} %>
       <%= f.input :left_time, label: '离职时间', as: :string, input_html: { class: "user-input", id: "endTime"} %>
       <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", id: "text_area", placeholder: "最多一千字"} %>
-      <%= f.submit id: "submit", class: "btn btn-info btn-right"%>
+      <%= f.submit id: "submit", class: "btn btn-info btn-right class-display"%>
       <div class="btm-nav">
         <p class="btm-delete" onclick="ClickShowHide(this)">删除此经历</p>
         <p class="btm-save">保存</p>
