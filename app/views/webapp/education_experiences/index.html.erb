@@ -2,7 +2,7 @@
 <% provide :title, "教育经历" %>
 <% provide :content, "添加" %>
 <script type="text/javascript">
-  $(refreshOnce()); //刷新一次页面
+  set_back("/webapp/resumes/<%= @resume_id %>")
 </script>
 
 <div class="resume-show work-experience">
