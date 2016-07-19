@@ -9,13 +9,12 @@ class Employer::ResumesController < ApplicationController
   def index
     check_vip = Employer.check_vip current_user.id
     hospital = Employer.get_hospital current_user.id
-    jobs = Job.where(hospital_id: hospital.id)
+    jobs = Job.where(hospital_id: hospital.id).where.not(status: ['saved', 'fail', 'delete'])
 
 
     # 三个月内简历
     @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",hospital.id, Time.now - 90.days)
                                 .order("recieve_at DESC")
-                            puts "------------" + @apply_records.to_json.to_s
 
     # 公开简历
     public_resumes = Resume.where( "public = ? && maturity >= ?", true, 70)
