@@ -23,7 +23,19 @@ var AdminEditHospital = React.createClass({
     e.preventDefault()
     var formData = new FormData(e.target)
     formData.append('plan_id',this.state.vip_id);
-    console.log(this.state.vip_id)
+    // console.log(formData)
+    // var plan_id = this.state.vip_id,
+    //     contact_number = this.refs.contact_number.value,
+    //     name = this.refs.name.value,
+    //     contact_person = this.refs.contact_person.value,
+    //     contact_number = this.refs.contact_number.value,
+    //     industry = this.refs.industry.value,
+    //     property = this.refs.property.value,
+    //     scale = this.refs.scale.value,
+    //     location = this.refs.location.value,
+    //     region = this.refs.region.value,
+    //     introduction = this.refs.introduction.value
+
 
     $.ajax({
       url: "/admin/hospitals/" + this.props.data.id,
@@ -55,8 +67,9 @@ var AdminEditHospital = React.createClass({
     })
   }
   ,render: function() {
-    var plans = this.props.plans,
-        select_plan = plans.map(
+    var plans = this.props.plans
+
+    var select_plan = plans.map(
           function(plan, index) {
             return (
               <option key={plan.id} value={plan.id}>{plan.name}</option>
@@ -70,8 +83,8 @@ var AdminEditHospital = React.createClass({
           <form onSubmit={this.handleSubmit}>
             <div className="form-group col-sm-4">
                <label>账号</label>
-                 <input type="text" className="form-control" placeholder="账号" name="hospital_id"
-                        disabled  required ref="id" defaultValue={this.props.data.contact_number} />
+                 <input type="text" className="form-control" placeholder="账号" name="contact_number"
+                        disabled  required ref="contact_number" defaultValue={this.props.data.contact_number} />
             </div>
 
             <div className="form-group col-sm-4">
@@ -118,7 +131,7 @@ var AdminEditHospital = React.createClass({
 
             <div className="form-group col-sm-4">
                <label>级别配置</label>(原：{this.props.data.vip_name})
-               <select onChange={this.handleSelect} name="vip_name" defaultValue={this.props.data.vip_id} className="form-control" >
+               <select onChange={this.handleSelect} defaultValue={this.props.data.vip_id} className="form-control" >
                  {select_plan}
                </select>
             </div>
