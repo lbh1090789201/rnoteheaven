@@ -17,6 +17,7 @@ class Admin::FairHospitalsController < AdminController
       @fair = Fair.find params[:fair_id]
       fair_hospitals = FairHospital.where fair_id: @fair.id
       @fair_hospitals = FairHospital.get_info fair_hospitals
+
     end
   end
 
