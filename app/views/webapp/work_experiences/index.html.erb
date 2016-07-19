@@ -2,7 +2,7 @@
 <% provide :title, "工作经历" %>
 <% provide :content, "添加" %>
 <script>
-$(refreshOnce()); //刷新一次页面
+  set_back('/')
 </script>
 <div class="resume-show work-experience">
   <div class="wrap" id="work_edit_wrap">
@@ -37,7 +37,5 @@ $(refreshOnce()); //刷新一次页面
       }
     }
 
-　　
-    fullScreen('.resume-show');
-
+  fullScreen('.resume-show');
 </script>
