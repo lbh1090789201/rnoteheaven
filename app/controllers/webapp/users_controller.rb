@@ -68,12 +68,6 @@ class Webapp::UsersController < ApplicationController
       # 更新简历完整度
       resume_maturity = Resume.get_maturity @user.id
 
-      if user_params[:avatar]
-
-      else
-        render js: 'location.href=document.referrer'
-      end
-
     else
       redirect_to :back, alert: "修改失败"
       return
