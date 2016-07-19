@@ -10,7 +10,7 @@ function FailMask(div_class,text) {
   parent_div.append(div);
   var timer = setTimeout(function(){
     div.remove();
-  },1500);
+  },1000);
 }
 
 /*返回顶部*/
