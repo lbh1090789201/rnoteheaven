@@ -3,6 +3,7 @@ class Webapp::EducationExperiencesController < ApplicationController
 
   def index
     @education_experiences = EducationExperience.where(:user_id => current_user.id)
+    @resume = Resume.find_by user_id: current_user.id
   end
 
   def new
