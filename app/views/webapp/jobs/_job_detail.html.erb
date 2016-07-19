@@ -49,7 +49,7 @@
     }else {
       formDate = {job_id: <%= params[:id] %>}
     }
-    
+
     $.post("/api/v1/apply_records", {
       apply_record: formDate
     }).done(function() {
@@ -60,7 +60,7 @@
       $('#apply_job').prepend('<%= image_tag "icon_34.png" %>');
       $('.is_applied').unbind('click');
     }).fail(function() {
-      alert('failed');
+      FailMask('.container','应聘失败');
     });
   });
 
@@ -73,7 +73,7 @@
   });
 
   $('.no_resume').bind('click', function() {
-    alert('请先完善简历！');
+    FailMask('.container','请先完善简历！');
   });
 
   // 收藏按钮
@@ -84,7 +84,7 @@
   } else if ($(obj).attr('class') == 'is_favor') {
     no_favor();
   } else {
-    alert('failed');
+    FailMask('.container','failed');
   }
 
   }
@@ -99,7 +99,7 @@
       $('#favorite_job').attr('class', 'is_favor');
       $('#favorite_job').off();
   }).fail(function() {
-    alert('收藏失败');
+    FailMask('.container','收藏失败');
   });
   }
 
@@ -116,14 +116,14 @@
        $('#favorite_job').off();
      },
      error: function() {
-       alert('删除失败。')
+       FailMask('.container','删除失败。');
      }
    });
   }
 
   // 私信Ta
   $('#msg').bind('click', function() {
-    alert("功能正在开发中");
+    FailMask('.container','功能正在开发中');
   });
 
   // onchange
