@@ -26,7 +26,7 @@ var BlockHospital = React.createClass({
           })
         }.bind(this),
         error: function(data){
-          alert(data.responseText)
+          console.log(data.responseText)
         },
       })
 
@@ -53,11 +53,11 @@ var BlockHospital = React.createClass({
           console.log('ok')
         }.bind(this),
         error: function(data){
-          alert(data.responseText)
+          console.log(data.responseText)
         },
       })
     } else {
-      alert('请点击搜索结果后，再保存')
+      FailMask('.container','请点击搜索结果后，再保存')
     }
   }
   ,render: function() {

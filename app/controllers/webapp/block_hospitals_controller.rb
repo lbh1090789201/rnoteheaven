@@ -24,7 +24,7 @@ class Webapp::BlockHospitalsController < ApplicationController
   def create
     block_item = BlockHospital.find_by(hospital_id: blockhospital_params[:hospital_id], user_id: current_user.id)
     if block_item
-      render js: "alert('此医院已屏蔽，请勿重复提交。')"
+      render js: "FailMask('.container','此医院已屏蔽，请勿重复提交。')"
     else
       blockhospital = BlockHospital.new blockhospital_params
       blockhospital.user_id = current_user.id

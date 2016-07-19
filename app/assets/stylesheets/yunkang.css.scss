@@ -68,6 +68,7 @@ body,
     width: 100%;
     height: 46px;
     background-color: $beauty-blue;
+    border: 1px solid $beauty-blue;
   }
   a:hover {
     text-decoration: none;
@@ -2907,3 +2908,29 @@ a:hover {
     color: #fff;
     font-size: 0.87rem;
   }
+
+
+// 失败弹窗，３秒后自动消失
+.mask-fail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.mask-middle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -4.2rem;
+  margin-left: -6.75rem;
+  width: 13.5rem;
+  height: 8.3rem;
+  line-height: 8.3rem;
+  text-align: center;
+  font-size: 0.9rem;
+  background: #fff;
+  color: #000;
+  border-radius: 0.5rem;
+}
