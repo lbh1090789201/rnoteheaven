@@ -2434,6 +2434,15 @@ a:hover {
     cursor: pointer;
   }
 }
+#work_eidt {
+  .float-style {
+    p {
+      float: left;
+      width: 50%;
+      text-indent: 1.4rem;
+    }
+  }
+}
 
 //resumes show页面
 .edit-education {
