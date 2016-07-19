@@ -29,7 +29,7 @@ class Webapp::BlockHospitalsController < ApplicationController
       blockhospital = BlockHospital.new blockhospital_params
       blockhospital.user_id = current_user.id
       if blockhospital.save
-        render js: "history.go(-1)"
+        render js: "location.href=document.referrer"
       else
         redirect_to :back, alert: "屏蔽医院失败"
       end
