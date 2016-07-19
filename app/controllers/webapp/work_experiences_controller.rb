@@ -35,7 +35,7 @@ class Webapp::WorkExperiencesController < ApplicationController
   def update
     @work_experience = WorkExperience.find params[:id]
     if @work_experience.update(work_experience_params)
-      render js: ' history.go(-1);', notice: '修改成功！'
+      render js: 'location.href=document.referrer'
     else
       redirect_to :back, alert: "修改失败"
       return
@@ -45,7 +45,7 @@ class Webapp::WorkExperiencesController < ApplicationController
   def destroy
     @work_experience = WorkExperience.find(params[:id])
     if @work_experience.destroy
-      render js: ' history.go(-1);', notice: '删除工作经历成功！'
+      render js: 'location.href=document.referrer'
     else
       redirect_to :back, alert:"删除失败，请重新操作！"
     end
