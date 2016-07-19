@@ -9,9 +9,10 @@ class Webapp::JobsController < ApplicationController
      is_applied = ApplyRecord.is_applied(current_user.id , params[:id])
      resume = Resume.find_by_user_id current_user.id
      maturity = resume.maturity - 74 if resume.present?
+     is_freeze = resume.resume_freeze
      is_favor = FavoriteJob.is_favor(current_user.id, params[:id])
 
-     @btn_apply = btn_info(is_applied, maturity)
+     @btn_apply = btn_info(is_applied, maturity, is_freeze)
      @btn_favor = btn_favor(is_favor)
      @hospital = Hospital.find_by(:id => @job.hospital_id)
      @jobs = Job.where(:hospital_id => @hospital.id).length
@@ -30,6 +31,8 @@ class Webapp::JobsController < ApplicationController
      else
        if maturity.nil? || maturity < 0
          return {css: 'no_resume', img_url: "icon_35.png", text: '应聘职位'}
+       elsif is_freeze
+         return {css: 'is_freeze', img_url: "icon_35.png", text: '应聘职位'}
        else
          return {css: 'no_applied', img_url: "icon_35.png", text: '应聘职位'}
        end

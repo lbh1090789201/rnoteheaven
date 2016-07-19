@@ -120,18 +120,6 @@ function delete_mask() {
   $('.before-mask').remove();
 }
 
-// function TitleOver(obj) {
-//   $(".title-over").hide();
-//   $('.title').text(edit_title);
-//   $('.right').text('保存');
-//   $('.before-mask').animate({
-//     top: '1500px',
-//   },300);
-//   $('.before-mask').css("display","none");
-// }
-/* 蒙版 结束 */
-
-
 /* 模拟点击右上按钮 开始 bobo */
 function clickRignt(ojb) {
   $('#btn-submit-btn').bind('click', function() {
@@ -158,44 +146,8 @@ setTimeout(function() {
  * 调用方法,页面引入 $(refreshOnce());
  */
 function refreshOnce() {
-  if(getCookie('refresh') != null) {
-    delCookie('refresh');
-  } else {
-    setCookie('refresh','true');
-    refresh_cli()
-  }
+  console.log('no refresh')
 };
-
-// 设置cookie
-function setCookie(name,value)
-{
-    var Days = 30;
-    var exp = new Date();
-    exp.setTime(exp.getTime() + Days*24*60*60*1000);
-    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
-}
-
-// 读取cookie
-function getCookie(name)
-{
-    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-
-    if(arr=document.cookie.match(reg))
-
-        return unescape(arr[2]);
-    else
-        return null;
-}
-
-// 删除cookie
-function delCookie(name)
-{
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cval=getCookie(name);
-    if(cval!=null)
-        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
-}
 /* 单次刷新 结束 bobo */
 
 // 编辑　删除弹窗

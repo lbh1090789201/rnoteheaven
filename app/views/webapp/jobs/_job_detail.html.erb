@@ -76,18 +76,21 @@
     FailMask('.container','请先完善简历！');
   });
 
+  $('.is_freeze').bind('click', function() {
+    FailMask('.container','您的简历已被冻结，请联系管理员！');
+  });
+
   // 收藏按钮
   function favor(obj) {
-  console.log(obj);
-  if($(obj).attr('class') == 'no_favor') {
-    is_favor();
-  } else if ($(obj).attr('class') == 'is_favor') {
-    no_favor();
-  } else {
-    FailMask('.container','failed');
+    if($(obj).attr('class') == 'no_favor') {
+      is_favor();
+    } else if ($(obj).attr('class') == 'is_favor') {
+      no_favor();
+    } else {
+      FailMask('.container','failed');
+    }
   }
 
-  }
   // 收藏职位
   function is_favor() {
   $.post("/api/v1/favorite_jobs", {

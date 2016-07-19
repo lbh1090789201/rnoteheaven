@@ -4,6 +4,7 @@ class Webapp::WorkExperiencesController < ApplicationController
 
   def index
     @work_experiences = WorkExperience.where(:user_id => current_user.id)
+    @resume = Resume.find_by user_id: current_user.id
   end
 
   def new
