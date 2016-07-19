@@ -29,8 +29,7 @@ class Api::ConnectAppController < ApiController
       sign_in(user)
       if user.user_type == "copper"
         to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
-        # redirect_to to_url
-        redirect_to 'http://3g.163.com/touch/news/subchannel/all?version=v_standard&nav=2'
+        redirect_to to_url
       elsif user.user_type == "gold"
         redirect_to employer_resumes_path
       end
