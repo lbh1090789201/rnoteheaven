@@ -71,7 +71,7 @@ class Webapp::UsersController < ApplicationController
       if user_params[:avatar]
 
       else
-        render js: 'location.href=loacation.referrer'
+        render js: 'location.href=document.referrer'
       end
 
     else
