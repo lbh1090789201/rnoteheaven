@@ -28,10 +28,10 @@ class Webapp::JobsController < ApplicationController
      if is_applied
        return {css: 'is_applied', img_url: "icon_34.png", text: '已应聘'}
      else
-       if maturity > 0
-         return {css: 'no_applied', img_url: "icon_35.png", text: '应聘职位'}
-       else
+       if maturity.nil? || maturity < 0
          return {css: 'no_resume', img_url: "icon_35.png", text: '应聘职位'}
+       else
+         return {css: 'no_applied', img_url: "icon_35.png", text: '应聘职位'}
        end
      end
    end

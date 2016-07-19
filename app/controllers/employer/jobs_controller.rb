@@ -12,7 +12,6 @@ class Employer::JobsController < ApplicationController
     @jobs = Job.where(hospital_id: @hospital.id).where.not(status: 'delete')
     @jobs.each do |f|
       if f.status == ['release', 'pause']
-        puts f.to_json.to_s
         f.status = "end" if (Time.now > f.end_at)
         f.save
       end
