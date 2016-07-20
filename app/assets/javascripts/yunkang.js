@@ -30,7 +30,8 @@ screenWidth = window.screen.width;
 if (screenWidth == 414){
     $('html').css('font-size','20px');
 }else{
-    $('html').css('font-size',"'" + screenWidth/414*20+"px'");
+    // $('html').css('font-size',"'" + screenWidth/414*20+"px'");
+    $('html').css('font-size','20px');
     console.log("'" + screenWidth/414*20+"px'")
 };
 /*屏幕自适应结束*/
