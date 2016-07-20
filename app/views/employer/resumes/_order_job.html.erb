@@ -3,7 +3,7 @@
   <% @jobs_by_position.each do |j| %>
   <li class="job-Arrang" onclick="JobListShow(this)">
     <span class="job-h"><%= j["name"] %></span>
-    <span class="job-reg"><%= j["hospital_region"] %></span>
+    <span class="job-reg"><%= j["region"] %></span>
     <div class="job-right">
       <span class="job-img"><%= image_tag "man.png" %><span>
       <span class="job-len"><%= j["seekers"].length %>人

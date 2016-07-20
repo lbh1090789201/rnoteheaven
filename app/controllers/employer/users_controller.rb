@@ -10,6 +10,8 @@ class Employer::UsersController < ApplicationController
   def index
     @user = current_user
     @user.avatar_url.blank? ? @avatar = "icon_29.png" : @avatar = @user.avatar_url
+    fair_hospital = FairHospital.find_by hospital_id: @hospital.id
+    @fair_info = fair_info fair_hospital
   end
 
   def show
@@ -35,5 +37,20 @@ class Employer::UsersController < ApplicationController
   private
     def hospital_params
       params.require(:hospital).permit(:name, :property, :scale, :industry, :region, :location, :introduction)
+    end
+
+    def fair_info fair_hospital
+      if fair_hospital.present?
+        fair = Fair.find fair_hospital.fair_id
+        info = {
+          name: fair.name,
+          text: '参加中'
+        }
+      else
+        info = {
+          name: '未参与专场',
+          text: ''
+        }
+      end
     end
 end

@@ -21,6 +21,8 @@ class Admin::VipsController < AdminController
     vips = Plan.new vip_params
 
     if vips.save
+      EventLog.create_log current_user.id, current_user.show_name, 'Plan', vips.id, "套餐", '新建'
+
       render json: {
         success: true,
         info: "创建vip成功!",
@@ -39,6 +41,8 @@ class Admin::VipsController < AdminController
     vip = Plan.find params[:id]
 
     if vip.update vip_params
+      EventLog.create_log current_user.id, current_user.show_name, 'Plan', vip.id, "套餐", '更新'
+      
       render json: {
         success: true,
         info: "更新成功",
@@ -56,6 +60,8 @@ class Admin::VipsController < AdminController
       vip = Plan.find params[:id]
 
       if vip.destroy
+        EventLog.create_log current_user.id, current_user.show_name, 'Plan', vip.id, "套餐", '删除'
+
         render json: {
           success: true,
           info: "删除成功！"
