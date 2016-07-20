@@ -110,11 +110,7 @@
     function CellPhone() {
       $('#job_interview').css('display','block');
       $('.resumes-show .resume-content').css('display','none');
-      var div = $('<div></div>');//返回按钮
-      div.attr({class:'inter-return',onclick:'InterReturn(this)'});
-      $('.top').append(div);
-      head_title = $('.top>.title').text();
-      $('.top>.title').text('面试提示');
+      $(document).scrollTop('0');
     }
 
     //返回按钮
