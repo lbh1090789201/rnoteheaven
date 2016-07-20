@@ -13,8 +13,7 @@
         var nowdate = new Date();
         var indexY=1,indexM=1,indexD=1;
         var indexH=1,indexI=1,indexS=0;
-        // var initY=parseInt((nowdate.getYear()+"").substr(1,2));
-        var initY = parseInt(nowdate.getFullYear()) - 1949
+        var initY=parseInt((nowdate.getYear()+"").substr(1,2));
         var initM=parseInt(nowdate.getMonth()+"")+1;
         var initD=parseInt(nowdate.getDate()+"");
         var initH=parseInt(nowdate.getHours());
@@ -33,7 +32,7 @@
             endhour:12,
             beginminute:00,
             endminute:59,
-            curdate:true,                   //打开日期是否定位到当前日期
+            curdate:false,                   //打开日期是否定位到当前日期
             theme:"date",                    //控件样式（1：日期，2：日期+时间）
             mode:null,                       //操作模式（滑动模式）
             event:"click",                    //打开日期插件默认方式为点击后后弹出日期
@@ -66,7 +65,7 @@
             dayScroll.refresh();
 
             resetInitDete();
-            yearScroll.scrollTo(0, initY*40, 100, true); //以选中框的高度的像素为滚动倍数
+            yearScroll.scrollTo(0, initY*40, 100, true);
             monthScroll.scrollTo(0, initM*40-40, 100, true);
             dayScroll.scrollTo(0, initD*40-40, 100, true);
         }
@@ -91,7 +90,6 @@
             if(opts.curdate){return false;}
             else if(that.val()===""){return false;}
             initY = parseInt(that.val().substr(2,2));
-            console.log(initY)
             initM = parseInt(that.val().substr(5,2));
             initD = parseInt(that.val().substr(8,2));
         }
