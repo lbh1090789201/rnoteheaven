@@ -30,7 +30,9 @@ screenWidth = window.screen.width;
 if (screenWidth == 414){
     $('html').css('font-size','20px');
 }else{
-    $('html').css('font-size',screenWidth/414*20+'px');
+    // $('html').css('font-size',"'" + screenWidth/414*20+"px'");
+    $('html').css('font-size','20px');
+    console.log("'" + screenWidth/414*20+"px'")
 };
 /*屏幕自适应结束*/
 
@@ -108,8 +110,6 @@ function workExperience(obj,api,pclass) {
 
 function change_val(obj) {
   $("#" + $(obj).attr("class")).attr('value', obj.value);
-  // $('.title').text(edit_title)
-  // $('.right').text('保存');
   $('.before-mask').animate({
     top: '1500px',
   },300);
@@ -119,16 +119,6 @@ function change_val(obj) {
 function delete_mask() {
   $('.before-mask').remove();
 }
-
-// function TitleOver(obj) {
-//   $(".title-over").hide();
-//   $('.title').text(edit_title);
-//   $('.right').text('保存');
-//   $('.before-mask').animate({
-//     top: '1500px',
-//   },300);
-//   $('.before-mask').css("display","none");
-// }
 /* 蒙版 结束 */
 
 
@@ -282,26 +272,9 @@ function ClickDeleteBtn(obj){
 	    }
 	  if(isAndroid){
 		 	//在首页，退出web
-			window.js2MobInterface.closeWeb();
+			// window.js2MobInterface.closeWeb();
 		}
 	}
-
-  // IOS 或 安卓刷新一下页面
-  function refresh_cli() {
-    var u = navigator.userAgent;
-    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-
-    if(isiOS) {
-      location.reload(true)
-      console.log('ios refresh ok')
-    } else if(isAndroid) {
-      mWebView.reload()
-      console.log('Android refresh ok')
-    } else {
-      window.location.replace(window.location.href);
-    }
-  }
 
 // 获取相对路径
   function GetUrlRelativePath()
