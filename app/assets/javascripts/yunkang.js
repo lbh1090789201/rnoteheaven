@@ -276,10 +276,6 @@ function ClickDeleteBtn(obj){
 		backUrl.setBackUrl="backHome";
 		iosUrl.parameter=backUrl;
 
-	    //固定接头体属性设定
-	    //console.log(JSON.stringify(iosTitle));
-		console.log(JSON.stringify(iosUrl));
-
 		if(isiOS){
 	    	 window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
 	    }
@@ -289,9 +285,8 @@ function ClickDeleteBtn(obj){
 		}
 	}
 
-// 获取相对路径
-  function GetUrlRelativePath()
-　　{
+  // 获取相对路径
+  function GetUrlRelativePath() {
 　　　　var url = document.location.toString();
 　　　　var arrUrl = url.split("//");
 
