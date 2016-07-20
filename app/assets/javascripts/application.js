@@ -18,6 +18,7 @@
 //= require bootstrap/alert
 //= require cityData
 //= require cityPicker
+//= require cityPickerEdit
 //= require yunkang
 //= require react
 //= require react_ujs
