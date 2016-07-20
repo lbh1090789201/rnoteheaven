@@ -91,11 +91,13 @@ class AdminController < ActionController::Base
 
   helper_method :show_tabs
   def show_tabs
-    if current_user.admin?
+    if current_user && current_user.admin?
       @show_tabs = [true, true, true, true, true, true]
-    else
+    elsif current_user
     @show_tabs = [current_user.jobs_manager?, current_user.resumes_manager?, current_user.hospitals_manager?,
                   current_user.fairs_manager?, current_user.vips_manager?, current_user.acounts_manager?]
+    else
+      
     end
   end
 

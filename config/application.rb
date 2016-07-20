@@ -47,7 +47,8 @@ module Ryunkang
 
     # autoload lib path
 
-
+  # 设置404页面
+  config.exceptions_app = self.routes
 
 
 
@@ -57,42 +58,7 @@ module Ryunkang
     config.weixin_token = 'weixin'
     ENV["APPID"]="wx3e615f91a151f3e1" #'wxf775b6608a7ffa94' # "wx3e615f91a151f3e1"
     ENV["APPSECRET"]="faaa64b9fa3cfa57ab5a802ce42b44b9"   #'d5c1c6c10097c7dc47a10c7b436a0f50'  #"faaa64b9fa3cfa57ab5a802ce42b44b9"
-  #   $client ||= WeixinAuthorize::Client.new(ENV["APPID"], ENV["APPSECRET"])
-  #       config.assets.initialize_on_precompile = false
-  #       config.assets.precompile += %w( yunkang.css )
-  #       config.assets.precompile += %w( foundation.css )
-  #       config.assets.precompile += %w( foundation.min.css )
-  #       config.assets.precompile += %w( foundation-flex.css )
-  #       config.assets.precompile += %w( foundation-rtl.css )
-  #       config.assets.precompile += %w( flickerplate.css )
-  #       config.assets.precompile += %w( home.min.css )
-  #       config.assets.precompile += %w( bootstrap.min.css )
-  #       config.assets.precompile += %w( bootstrap-theme.min.css )
-  #       config.assets.precompile += %w( font-awesome.min.css )
-  #       config.assets.precompile += %w( webuploader.css )
-  #       config.assets.precompile += %w( slider.css )
-  #       config.assets.precompile += %w( demo.css )
-  #       config.assets.precompile += %w( console.css.scss )
-  #       config.assets.precompile += %w( bootstrap-datetimepicker.min.css )
-  #       config.assets.precompile += %w( fileinput.css )
-  #       config.assets.precompile += %w( jquery-1.8.3.min.js )
-  #       config.assets.precompile += %w( foundation.min.js )
-  #       config.assets.precompile += %w( yunkang.js )
-  #       config.assets.precompile += %w( modernizr-custom-v2.7.1.min.js )
-  #       config.assets.precompile += %w( jquery-finger-v0.1.0.min.js )
-  #       config.assets.precompile += %w( flickerplate.min.js )
-  #       config.assets.precompile += %w( addjs.min.js )
-  #       config.assets.precompile += %w( bootstrap.min.js )
-  #       config.assets.precompile += %w( global.js )
-  #       config.assets.precompile += %w( h.js )
-  #       config.assets.precompile += %w( jquery.form.js )
-  #       config.assets.precompile += %w( slider.js )
-  #       config.assets.precompile += %w( JQuery.md5.js )
-  #       config.assets.precompile += %w( bootstrap-datetimepicker.min.js )
-  #       config.assets.precompile += %w( bootstrap-datetimepicker.zh-CN.js )
-  #       config.assets.precompile += %w( console.js )
-  #       config.assets.precompile += %w( fileinput.min.js )
-  #       config.assets.precompile += %w( fileinput_locale_zh.js )
+
   end
 
 end
