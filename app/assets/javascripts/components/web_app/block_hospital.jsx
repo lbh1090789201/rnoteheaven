@@ -57,7 +57,8 @@ var BlockHospital = React.createClass({
         },
       })
     } else {
-      FailMask('.container','请点击搜索结果后，再保存')
+      // FailMask('.container','请点击搜索结果后，再提交')
+      FailMask('.container','无此机构')
     }
   }
   ,render: function() {
