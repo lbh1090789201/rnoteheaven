@@ -26,7 +26,9 @@ function FailMask(div_class,text) {
 $(document).scrollTop('0');
 
 /*屏幕自适应开始*/
-screenWidth = window.screen.width;
+// var screenWidth = window.screen.width;
+var screenWidth = (ionic.Platform.isIOS()) ? window.screen.width : window.innerWidth * window.devicePixelRatio;
+
 if (screenWidth == 414){
     $('html').css('font-size','20px');
 }else{
