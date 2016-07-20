@@ -68,8 +68,6 @@ class Api::ConnectAppController < ApiController
                                     {
                                       token: token
                                     }.to_json, :content_type => :json, :accept => :json
-      p @user_info
-      p '-----------------------------'
       @user_info = JSON.parse(@user_info)
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
