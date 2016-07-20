@@ -46,8 +46,8 @@ var AdminHospitalNew = React.createClass({
     })
   }
   ,render: function() {
-    var plans = this.props.plans,
-        select_plan = plans.map(
+    var plans = this.props.plans
+    var select_plan = plans.map(
           function(plan, index) {
             return (
               <option key={plan.id} value={plan.id}>{plan.name}</option>
@@ -89,7 +89,7 @@ var AdminHospitalNew = React.createClass({
               <div className="form-group col-sm-4">
                  <label>性质</label>
                    <input type="text" className="form-control" placeholder="性质" name="property"
-                                 required ref="property" />
+                                  required ref="property" />
               </div>
 
               <div className="form-group col-sm-4">

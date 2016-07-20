@@ -165,37 +165,21 @@
   }
 }
 
-
-// 职位类型，工作经验等选择弹框的脚本样式
-.before-mask {
-  position: absolute;
-  width: 100%;
-  min-height: 50rem;
-  top: 2.32rem;
-  left: 0;
-  background: #F4F4F4;
-  z-index: 1000;
-  font-size: 0.7rem;
-  p {
-    width: 19.05rem;
-    height: 2.53rem;
-    line-height: 2.53rem;
-    font-size: 0.8rem;
-    margin: 0 auto;
-    border-bottom: 1px solid #e3e3e3;
-    text-indent: 4px;
-    cursor: pointer;
-  }
-}
-
-
 // show 页面 bobo
 .jobs-show {
     width: 100%;
     background: #f3f3f3;
-//     .wrap {
-//       padding-bottom: 3.5rem;
-//     }
+    .float-image {
+      position: fixed;
+      bottom: 4rem;
+      right: 0.7rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      img {
+        width: 2.5rem;
+        height: auto;
+      }
+    }
   #job_show {
     .job-time {
       height: 1.72rem;

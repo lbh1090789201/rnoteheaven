@@ -5,8 +5,9 @@
 <%= provide :title, @job.name %>
 
 <% if @job.status != 'release' && @job.status != 'end' %>
-<%= provide :content, '编辑' %>
-<%= provide :link, edit_employer_job_path(params[:id]) %>
+  <div class="float-image">
+    <a href="<%= edit_employer_job_path(params[:id]) %>"><%= image_tag "icon_37.png" %></a>
+  </div>
 <% end %>
 <div id="job_show">
   <% if @job.operate_at && (@job.status == 'release' || @job.status == 'pause') %>
@@ -55,6 +56,7 @@
 
 
   <script type="text/javascript">
+
     $('.reflesh-job').bind('click',function(){
       $.ajax({
         url: "<%= api_employer_jobs_path %>",
