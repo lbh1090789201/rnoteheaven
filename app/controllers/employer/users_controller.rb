@@ -52,7 +52,8 @@ class Employer::UsersController < ApplicationController
           text: ''
         }
       end
-
-      return info.to_json
+      puts '------------'
+      puts info.class
+      return info
     end
 end
