@@ -216,23 +216,27 @@ function expend_desc(obj) {
     $(obj).parent().siblings('.job-desc-show').slideToggle(300);
 };
 
-$(document).on('ready page:load', function () {
-  $('.avatar-box').click(function() {
-    $('#user_avatar').click();
-  }),
-  $('.pencil').click(function() {
-    $('#user_avatar').click();
-  }),
-  $('#user_avatar').change(function() {
-    $('#avatar_submit').click();
-  })
-});
-
-
-// $('#edit_user_1').bind('ajax:success', function(){
-//   alert('ok');
-//   history.go(0);
+// $(document).on('ready page:load', function () {
+//   $('.avatar-box').click(function() {
+//     $('#user_avatar').click();
+//   }),
+//   $('.pencil').click(function() {
+//     $('#user_avatar').click();
+//   }),
+//   $('#user_avatar').change(function() {
+//     $('#avatar_submit').click();
+//   })
 // });
+
+$('.avatar-box').click(function() {
+  $('#user_avatar').click();
+}),
+$('.pencil').click(function() {
+  $('#user_avatar').click();
+}),
+$('#user_avatar').change(function() {
+  $('#avatar_submit').click();
+})
 
 // 刷新简历
 $('.refresh').click(function() {
