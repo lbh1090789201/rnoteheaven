@@ -15,7 +15,9 @@ class Webapp::JobsController < ApplicationController
      @btn_apply = btn_info(is_applied, maturity, is_freeze)
      @btn_favor = btn_favor(is_favor)
      @hospital = Hospital.find_by(:id => @job.hospital_id)
-     @jobs = Job.where(:hospital_id => @hospital.id).length
+     @jobs = Job.filter_job_status("release")
+                .where(:hospital_id => @hospital.id)
+                .length
    end
 
 

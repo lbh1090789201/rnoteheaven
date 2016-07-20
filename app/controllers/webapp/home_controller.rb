@@ -19,7 +19,9 @@ class Webapp::HomeController < ApplicationController
 
     #搜索城市和医院
     if filter[:city] && filter[:search] && !filter[:search].blank?
-      job_careers = Job.filter_location(filter[:city]).filter_job_name(filter[:search]).filter_job_status("release")
+      job_careers = Job.filter_location(filter[:city])
+                       .filter_job_name(filter[:search])
+                       .filter_job_status("release")
       hospitals = Hospital.filter_location(filter[:city]).filter_hospital_name(filter[:search])
       @jobs = []
       if !job_careers.blank?
@@ -28,7 +30,8 @@ class Webapp::HomeController < ApplicationController
         end
       else
         hospitals.each do |h|
-          job_all = Job.where(:hospital_id => h.id)
+          job_all = Job.filter_job_status("release")
+                       .where(:hospital_id => h.id)
           job_all.each do |j|
             @jobs.push(j)
           end

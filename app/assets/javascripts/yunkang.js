@@ -26,27 +26,6 @@ function FailMask(div_class,text) {
 $(document).scrollTop('0');
 
 /*屏幕自适应开始*/
-// var screenWidth = window.screen.width;
-// var screenRatio;
-// var width = screen.height;
-// var height = screen.width;
-// var realWidth;
-// var realHeight;
-//
-// if(isNaN(screenRatio)){
-// if(window.innerHeight>window.innerWidth){
-//   realWidth=window.innerHeight;
-//   realHeight= window.innerWidth ;
-//   screenRatio = (window.innerWidth/window.innerHeight);
-// } else {
-//   realWidth=window.innerWidth;
-//   realHeight= window.innerHeight;
-//   screenRatio = (window.innerHeight/window.innerWidth);
-// }
-// }
-
-
-
 function getWidth()
   {
     xWidth = null;
@@ -64,15 +43,12 @@ function getWidth()
 
 var realWidth = getWidth()
 
-
 if (realWidth == 414){
     $('html').css('font-size','20px');
 }else{
   var font_size = Math.round(realWidth/414*20) + 'px';
   $('html').css('fontSize', font_size);
-  console.log(font_size)
 };
-
 /*屏幕自适应结束*/
 
 /* 取得屏幕高度并减去 head 开始 */
@@ -300,10 +276,6 @@ function ClickDeleteBtn(obj){
 		backUrl.setBackUrl="backHome";
 		iosUrl.parameter=backUrl;
 
-	    //固定接头体属性设定
-	    //console.log(JSON.stringify(iosTitle));
-		console.log(JSON.stringify(iosUrl));
-
 		if(isiOS){
 	    	 window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
 	    }
@@ -313,9 +285,8 @@ function ClickDeleteBtn(obj){
 		}
 	}
 
-// 获取相对路径
-  function GetUrlRelativePath()
-　　{
+  // 获取相对路径
+  function GetUrlRelativePath() {
 　　　　var url = document.location.toString();
 　　　　var arrUrl = url.split("//");
 
