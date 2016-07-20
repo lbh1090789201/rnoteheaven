@@ -276,12 +276,18 @@ function ClickDeleteBtn(obj){
 		backUrl.setBackUrl="backHome";
 		iosUrl.parameter=backUrl;
 
+    //android 首页返回 app
+    var androidUrl={
+      "faction": "setBackToIndex",
+      "parameter": "",
+      "callback": "function()"
+    }
+
 		if(isiOS){
-	    	 window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
+	    window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
 	    }
 	  if(isAndroid){
-		 	//在首页，退出web
-			// window.js2MobInterface.closeWeb();
+			Window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
 		}
 	}
 
