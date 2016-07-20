@@ -238,7 +238,7 @@ var AdminHospitalItem =React.createClass({
     return (
       <tr>
         <td>{this.props.index + 1}</td>
-        <td>{this.props.data.id}</td>
+        <td>{this.props.data.contact_number}</td>
         <td>{this.props.data.name}</td>
         <td>{this.props.data.may_release}</td>
         <td>{this.props.data.may_set_top}</td>

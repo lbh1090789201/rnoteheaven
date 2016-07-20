@@ -14,7 +14,7 @@
             <div class="box box-avatar borDer">
                 <div class="avatar">
                     <%= image_tag "pencil2.png", class: "pencil" %>
-                    <div class="avatar-box avatar-border borDer" style="background:url('<%= asset_path(@avatar) %>') no-repeat;" id="avatar_box">
+                    <div class="avatar-box avatar-border borDer" style="background:url('<%= asset_path(@avatar) %>') no-repeat;background-size: cover;" id="avatar_box">
                         <!-- 已修改样式 bobo -->
                     </div>
                      <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"} do |f| %>
