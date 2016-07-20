@@ -17,6 +17,25 @@ var AdminHospitalNew = React.createClass({
       property: e.target.value,
     })
   }
+  ,handlefocus: function() {
+    var input_id = this.refs.region.id,
+        province = this.refs.region_2.id,
+        city = this.refs.region_3.id
+
+     var city_left = $(".user-box").css('margin-left');
+      var cityPicker = new IIInsomniaCityPickerEdit({
+            data: cityData,
+            target: '#'+input_id,
+            valType: 'k-v',
+            hideCityInput: '#'+city,
+            hideProvinceInput: '#'+province,
+            city_left: city_left,
+            callback: function(){
+              $(".IIInsomnia-city-picker").remove();
+            }
+        });
+        cityPicker.init();
+  }
   ,handleClick: function() {
     this.props.dad.setState({
       new_display: false,
@@ -85,12 +104,22 @@ var AdminHospitalNew = React.createClass({
                             required ref="contact_person"/>
               </div>
 
-
-
               <div className="form-group col-sm-4">
-                 <label>行业</label>
-                   <input type="text" className="form-control" placeholder="行业" name="industry"
-                                 required ref="industry" />
+                <select name="industry" className="form-control form-magrin-top" defaultValue="行业">
+                  <option value="">行业</option>
+                  <option value="医疗">医疗</option>
+                  <option value="医院">医院</option>
+                  <option value="美容">美容</option>
+                  <option value="卫生">卫生</option>
+                  <option value="医药">医药</option>
+                  <option value="医疗器械">医疗器械</option>
+                  <option value="整形">整形</option>
+                  <option value="口腔">口腔</option>
+                  <option value="门诊">门诊</option>
+                  <option value="诊所">诊所</option>
+                  <option value="药店">药店</option>
+                  <option value="保健">保健</option>
+                </select>
               </div>
 
               <div className="form-group col-sm-4">
@@ -112,8 +141,10 @@ var AdminHospitalNew = React.createClass({
 
               <div className="form-group col-sm-4">
                  <label>地区</label>
-                   <input type="text" className="form-control" placeholder="地区" name="region"
-                             required ref="region" />
+                   <input type="text" className="form-control" id="cityChoice" placeholder="地区" name="region"
+                             onFocus={this.handlefocus} required ref="region" />
+                  <input type="hidden" id="province" value="" ref="region_2" />
+                   <input type="hidden" id="city" value="" ref="region_3" />
               </div>
 
               <div className="form-group col-sm-4">

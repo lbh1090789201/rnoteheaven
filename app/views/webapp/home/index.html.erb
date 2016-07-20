@@ -83,7 +83,7 @@
     $('.flexslider').flexslider();
     $('.flexslider').flexslider({slideshow: true});
 
-// 城市插件
+    // 城市插件
     var cityPicker = new IIInsomniaCityPicker({
           data: cityData,
           target: '#cityChoice',
@@ -97,18 +97,18 @@
       });
       cityPicker.init();
 
-<% if params[:city] %>
-$(function() {
-    console.log('<%= params[:city] %>');
-    $('#cityChoice').val( '<%= params[:city] %>' );
-});
-<% end %>
+    <% if params[:city] %>
+    $(function() {
+        console.log('<%= params[:city] %>');
+        $('#cityChoice').val( '<%= params[:city] %>' );
+    });
+    <% end %>
 
- //软键盘弹出定位
-  $("#myform>input:eq(3)").bind('focus',function(){
-    $("#show-me").css('display','none');
-  }).bind('blur',function(){
-    $("#show-me").css('display','block');
-  })
+     //软键盘弹出定位
+      $("#myform>input:eq(3)").bind('focus',function(){
+        $("#show-me").css('display','none');
+      }).bind('blur',function(){
+        $("#show-me").css('display','block');
+      })
 
 </script>
