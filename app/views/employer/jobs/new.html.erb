@@ -56,6 +56,11 @@
 
 </div>
 <script type="text/javascript">
+  // 返回顶部
+  $("#job_region").bind('click',function(){
+    var height = $('body').height();
+    var timer = setTimeout(function(){$('body').scrollTop(height)},1)
+  })
 
   //6.24 VIP置顶栏的滑动条 Huangwei
   $('.job-slider').on('click',function () {
