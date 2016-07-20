@@ -43,9 +43,10 @@ $(document).scrollTop('0');
 //   realHeight= window.innerHeight;
 //   screenRatio = (window.innerHeight/window.innerWidth);
 // }
+// }
+
 var realWidth = $('body').width()
 
-}
 if (realWidth == 414){
     $('html').css('font-size','20px');
 }else{
