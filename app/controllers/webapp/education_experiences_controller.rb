@@ -2,7 +2,7 @@ class Webapp::EducationExperiencesController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
 
   def index
-    @education_experiences = EducationExperience.where(:user_id => current_user.id)
+    @education_experiences = EducationExperience.where(:user_id => current_user.id).order('graduated_at DESC')
     @resume = Resume.find_by user_id: current_user.id
   end
 

@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
   def require_admin!
     authenticate_user!
     if current_user && !current_user.admin?
-      redirect_to root_path
+      redirect_to '/users/sign_in'
     end
   end
 
@@ -76,5 +76,7 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-  
+
+
+
 end
