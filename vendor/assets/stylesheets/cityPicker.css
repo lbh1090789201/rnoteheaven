@@ -51,7 +51,8 @@
 	margin-bottom: 10px;
 }
 .IIInsomnia-city-picker .line{
-	width: 340px;
+	/*width: 340px;*/
+	width: 100%;
 	margin: 0 auto;
 	margin-top: 4px;
 	border-bottom: 1px solid #d8d8d8;
@@ -64,7 +65,7 @@
 	padding: 9px;
 }
 .IIInsomnia-city-picker .IIInsomnia-hot-wrap ul li{
-	width: 50px;
+	width: 70px;
 	height: 30px;
 	text-align: center;
 	line-height: 30px;
@@ -84,7 +85,7 @@
 }
 .IIInsomnia-city-picker .IIInsomnia-province-name{
 	display: inline-block;
-	width: 50px;
+	width: 70px;
 	height: 30px;
 	text-align: center;
 	line-height: 30px;

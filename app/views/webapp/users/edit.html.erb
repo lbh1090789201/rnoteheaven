@@ -39,6 +39,12 @@
   fullScreen('.edit_basic');
   // clickRignt('#submit');
 
+  // 返回顶部
+  $("#locationChoice").bind('click',function(){
+    var height = $('body').height();
+    var timer = setTimeout(function(){$('body').scrollTop(height)},1)
+  })
+
   // 时间插件
   $(function(){
 	$('#birthday').date();
