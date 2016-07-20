@@ -23,19 +23,6 @@ var AdminEditHospital = React.createClass({
     e.preventDefault()
     var formData = new FormData(e.target)
     formData.append('plan_id',this.state.vip_id);
-    // console.log(formData)
-    // var plan_id = this.state.vip_id,
-    //     contact_number = this.refs.contact_number.value,
-    //     name = this.refs.name.value,
-    //     contact_person = this.refs.contact_person.value,
-    //     contact_number = this.refs.contact_number.value,
-    //     industry = this.refs.industry.value,
-    //     property = this.refs.property.value,
-    //     scale = this.refs.scale.value,
-    //     location = this.refs.location.value,
-    //     region = this.refs.region.value,
-    //     introduction = this.refs.introduction.value
-
 
     $.ajax({
       url: "/admin/hospitals/" + this.props.data.id,
@@ -112,9 +99,14 @@ var AdminEditHospital = React.createClass({
             </div>
 
             <div className="form-group col-sm-4">
-               <label>性质</label>
-                 <input type="text" className="form-control" placeholder="性质" name="property"
-                               required ref="property" defaultValue={this.props.data.property} />
+              <select name="property" className="form-control form-magrin-top" defaultValue={this.props.data.property}>
+                <option value="">性质</option>
+                <option value="综合医院">综合医院</option>
+                <option value="专科医院">专科医院</option>
+                <option value="民营医院">民营医院</option>
+                <option value="公立诊所">公立诊所</option>
+                <option value="民营诊所">民营诊所</option>
+              </select>
             </div>
 
             <div className="form-group col-sm-4">

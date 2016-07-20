@@ -3,11 +3,18 @@ var AdminHospitalNew = React.createClass({
     return {
       plan: '',
       index: this.props.dad.state.hos_info.index,
+      vip_id: '',
+      property: '',
     }
   }
   ,handleSelect: function(e) {
     this.setState({
       vip_id: e.target.value,
+    })
+  }
+  ,SelectValue: function(e) {
+    this.setState({
+      property: e.target.value,
     })
   }
   ,handleClick: function() {
@@ -19,7 +26,7 @@ var AdminHospitalNew = React.createClass({
     e.preventDefault()
     var formData = new FormData(e.target)
     formData.append('plan_id',this.state.vip_id);
-    console.log(this.state.vip_id)
+    formData.append('property',this.state.property);
 
     $.ajax({
       url: "/admin/hospitals",
@@ -87,9 +94,14 @@ var AdminHospitalNew = React.createClass({
               </div>
 
               <div className="form-group col-sm-4">
-                 <label>性质</label>
-                   <input type="text" className="form-control" placeholder="性质" name="property"
-                                  required ref="property" />
+                <select name="property" className="form-control form-magrin-top" onChange={this.SelectValue}>
+                  <option value="">性质</option>
+                  <option value="综合医院">综合医院</option>
+                  <option value="专科医院">专科医院</option>
+                  <option value="民营医院">民营医院</option>
+                  <option value="公立诊所">公立诊所</option>
+                  <option value="民营诊所">民营诊所</option>
+                </select>
               </div>
 
               <div className="form-group col-sm-4">
