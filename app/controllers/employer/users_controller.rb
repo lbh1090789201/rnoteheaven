@@ -52,8 +52,6 @@ class Employer::UsersController < ApplicationController
           text: ''
         }
       end
-      puts '------------'
-      puts info.class
       return info
     end
 end
