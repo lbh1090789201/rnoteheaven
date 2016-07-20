@@ -489,7 +489,6 @@ a:hover {
 
   .form-group {
     min-height: 2.58rem;
-    // line-height: 2.58rem;
     margin-top: 0.5rem;
     overflow: hidden;
     background-color: #fff;
@@ -2551,19 +2550,45 @@ a:hover {
 
 
 .sessions {
-  .btn-save {
-    position: relative;
+  margin-left: 30%;
+  margin-top: 15%;
+  width: 40%;
+
+  .btn-blue {
     margin-top: 3em;
     line-height: 1em;
     height: 46px;
     text-align: center!important;
+    background-color: #3b9d9f;
+    border-color: #b4d7d6;
   }
-  .new_user input {
-    text-align: left;
+
+  .btn-blue:hover {
+    background-color: #3b9d9f;
+    border-color: #b4d7d6;
+    opacity: 0.9;
   }
-  .form-group:nth-of-type(2)::after {
-    display: none;
+
+  label {
+    // margin-top: 0.2rem;
+    position: absolute;
+    // float: left;
+    padding-left: 1em;
+    // padding-right: 1.47rem;
+    line-height: 38px;
+    font-weight: normal;
+    color: $font-gray;
+    white-space: pre;
+
+    abbr {
+      display: none;
+    }
   }
+
+  .form-control {
+    padding-left: 5.5em;
+  }
+
 }
 
 // 二级脚本页面
