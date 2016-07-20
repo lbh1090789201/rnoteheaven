@@ -48,6 +48,7 @@ var AdminResumeForm = React.createClass({
       },
       success: function(res) {
         this.props.dad.setState({resumes : res.resumes})
+        $('input:checkbox').removeAttr('checked');
       }.bind(this),
       error: function(res){
         alert(res.responseText)
