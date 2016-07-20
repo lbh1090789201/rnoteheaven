@@ -3,7 +3,7 @@ class Webapp::WorkExperiencesController < ApplicationController
   protect_from_forgery except: :destroy
 
   def index
-    @work_experiences = WorkExperience.where(:user_id => current_user.id)
+    @work_experiences = WorkExperience.where(:user_id => current_user.id).order('started_at DESC')
     @resume = Resume.find_by user_id: current_user.id
   end
 
