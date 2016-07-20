@@ -16,6 +16,7 @@ function JobBasicNew(obj,api,pclass) {
   delete_mask.text('返回');
   delete_mask.attr('onClick','delete_mask()');
   parentdiv.append(delete_mask);
+  $(document).scrollTop('0');
 }
 
 function change_val(obj) {
