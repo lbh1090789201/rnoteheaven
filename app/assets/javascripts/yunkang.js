@@ -31,7 +31,7 @@ if (screenWidth == 414){
     $('html').css('font-size','20px');
 }else{
     var font_size = Math.round(screenWidth/414*20) + 'px';
-    $('html').css('font-size', font_size);
+    $('html').css('font-size', font_size.toString());
     console.log(font_size)
 };
 /*屏幕自适应结束*/
