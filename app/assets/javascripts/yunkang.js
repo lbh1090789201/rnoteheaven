@@ -45,15 +45,34 @@ $(document).scrollTop('0');
 // }
 // }
 
-var realWidth = $('body').width()
+
+
+function getWidth()
+  {
+    xWidth = null;
+    if(window.screen != null)
+      xWidth = window.screen.availWidth;
+
+    if(window.innerWidth != null)
+      xWidth = window.innerWidth;
+
+    if(document.body != null)
+      xWidth = document.body.clientWidth;
+
+    return xWidth;
+  }
+
+var realWidth = getWidth()
+
 
 if (realWidth == 414){
     $('html').css('font-size','20px');
 }else{
-    var font_size = Math.round(realWidth/414*20) + 'px';
-    $('html').css('fontSize', font_size);
-    console.log(font_size)
+  var font_size = Math.round(realWidth/414*20) + 'px';
+  $('html').css('fontSize', font_size);
+  console.log(font_size)
 };
+
 /*屏幕自适应结束*/
 
 /* 取得屏幕高度并减去 head 开始 */
@@ -258,9 +277,7 @@ function ClickDeleteBtn(obj){
       	iosUrl.type="1";
       	var backUrl={};
       	backUrl.from_index = my_url == null ? "/pageJump/toDetectionReady.do" : my_url;
-        console.log(backUrl)
       	iosUrl.parameter=backUrl;
-
 
       	if(isiOS){
         	  window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
