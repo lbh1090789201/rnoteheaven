@@ -459,8 +459,10 @@ a:hover {
           border: 1px solid #3f9e9d;
           border-radius: 0.36rem;
           height: 2.4rem;
-          color: #3f9e9d;
           background-color: #fff;
+          a {
+            color: #3f9e9d;
+          }
         }
     }
 

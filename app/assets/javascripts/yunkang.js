@@ -239,6 +239,9 @@ function ClickDeleteBtn(obj){
   	$("#"+input_id).val('');
   }
 
+
+
+/*********** 与APP交互 ***********/
   //设定返回链接，用在页面头部
   function set_back(my_url){
         var u = navigator.userAgent;
@@ -263,6 +266,7 @@ function ClickDeleteBtn(obj){
         }
   }
 
+  //返回APP首页
   function go_home(){
 		var u = navigator.userAgent;
 		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
@@ -276,33 +280,34 @@ function ClickDeleteBtn(obj){
 		backUrl.setBackUrl="backHome";
 		iosUrl.parameter=backUrl;
 
+    //android 首页返回 app
+    var androidUrl={
+      "faction": "setBackCloseWeb",
+      "parameter": "",
+      "callback": ""
+    }
+
 		if(isiOS){
-	    	 window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
+	    window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
 	    }
 	  if(isAndroid){
-		 	//在首页，退出web
-			// window.js2MobInterface.closeWeb();
+			Window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
 		}
 	}
 
-  // 获取相对路径
-  function GetUrlRelativePath() {
-　　　　var url = document.location.toString();
-　　　　var arrUrl = url.split("//");
+  //Android 刷新页面
+  function android_reload() {
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
-　　　　var start = arrUrl[1].indexOf("/");
-　　　　var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+    //android 刷新页面 app
+    var messageBody={
+      "faction": "reload",
+      "parameter": "",
+      "callback": ""
+    }
 
-　　　　if(relUrl.indexOf("?") != -1){
-　　　　　　relUrl = relUrl.split("?")[0];
-　　　　}
-　　　　return relUrl;
-　　}
-
-  function getWholeUrl() {
-    var url = document.location.toString();
-    if(url.indexOf("?") != -1){
-    　　　　　　relUrl = relUrl.split("?")[0];
-    　　　　}
-    return relUrl;
+    if(isAndroid) {
+      Window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+    }
   }

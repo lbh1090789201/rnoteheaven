@@ -35,6 +35,7 @@ var AdminJobAll = React.createClass({
       data: {'ids': ids, 'status': status},
       success: function(data) {
         this.setState({jobs : data.jobs})
+        $('input:checkbox').removeAttr('checked');
       }.bind(this),
       error: function(data){
         alert(data.responseText)

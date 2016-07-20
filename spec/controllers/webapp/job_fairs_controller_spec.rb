@@ -8,6 +8,8 @@ RSpec.describe Webapp::JobFairsController, type: :controller do
     @user = create(:user)
     login_with @user
     request.env['devise.mapping'] = Devise.mappings[:user]
+
+    @fair = create(:fair)
   end
 
   # 测试
@@ -15,10 +17,10 @@ RSpec.describe Webapp::JobFairsController, type: :controller do
     get :index, format: :html
     expect(response.status).to eq(200)
   end
-  
+
   describe 'GET #show' do
     it 'returns hettp success' do
-      get :show, id: @user.id
+      get :show, id: @fair.id
       expect(response.status).to eq(200)
     end
   end
