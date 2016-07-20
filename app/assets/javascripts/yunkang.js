@@ -46,7 +46,7 @@ var realWidth = getWidth()
 if (realWidth == 414){
     $('html').css('font-size','20px');
 }else{
-  var font_size = Math.round(realWidth/414*20) + 'px';
+  var font_size = (realWidth/414*20).toFixed(2) + 'px';
   $('html').css('fontSize', font_size);
 };
 /*屏幕自适应结束*/
