@@ -27,17 +27,23 @@ $(document).scrollTop('0');
 
 /*屏幕自适应开始*/
 // var screenWidth = window.screen.width;
-var screenRatio;
-var width = screen.height;
-var height = screen.width;
-var realWidth;
-var realHeight;
-
-if(isNaN(screenRatio)){
-if(window.innerHeight>window.innerWidth)
-{realWidth=window.innerHeight; realHeight= window.innerWidth ;screenRatio = (window.innerWidth/window.innerHeight);}
- else
- {realWidth=window.innerWidth; realHeight= window.innerHeight;screenRatio = (window.innerHeight/window.innerWidth);}
+// var screenRatio;
+// var width = screen.height;
+// var height = screen.width;
+// var realWidth;
+// var realHeight;
+//
+// if(isNaN(screenRatio)){
+// if(window.innerHeight>window.innerWidth){
+//   realWidth=window.innerHeight;
+//   realHeight= window.innerWidth ;
+//   screenRatio = (window.innerWidth/window.innerHeight);
+// } else {
+//   realWidth=window.innerWidth;
+//   realHeight= window.innerHeight;
+//   screenRatio = (window.innerHeight/window.innerWidth);
+// }
+var realWidth = $('body').width()
 
 }
 if (realWidth == 414){
