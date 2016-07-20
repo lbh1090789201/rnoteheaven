@@ -52,5 +52,7 @@ class Employer::UsersController < ApplicationController
           text: ''
         }
       end
+
+      return info.to_json
     end
 end
