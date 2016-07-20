@@ -7,6 +7,8 @@ RSpec.describe Webapp::WorkExperiencesController, type: :controller do
     @user = create(:user)
     login_with @user
     request.env['devise.mapping'] = Devise.mappings[:user]
+
+    @resume = create(:resume, user_id: @user.id)
   end
   # 页面测试开始
   before :each do

@@ -9,7 +9,7 @@ class Webapp::JobsController < ApplicationController
      is_applied = ApplyRecord.is_applied(current_user.id , params[:id])
      resume = Resume.find_by_user_id current_user.id
      maturity = resume.maturity - 74 if resume.present?
-     is_freeze = resume.resume_freeze
+     is_freeze = resume.resume_freeze if resume.present?
      is_favor = FavoriteJob.is_favor(current_user.id, params[:id])
 
      @btn_apply = btn_info(is_applied, maturity, is_freeze)

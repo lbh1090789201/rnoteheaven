@@ -11,6 +11,7 @@ RSpec.describe Webapp::CertificatesController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
+      resume = create(:resume, user_id: @user.id)
       get :index
       expect(response).to have_http_status(:success)
     end
