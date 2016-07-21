@@ -266,7 +266,7 @@ function ClickDeleteBtn(obj){
           var messageBody={
             "faction": "setBackToUrl",
             "parameter": { "url": '/' },
-            "callback": "FailMask('#wrap','弹窗')"
+            "callback": "function(){window.location.reload()}"
           }
           window.js2MobInterface.setBackUrl(androidUrl);
           // 进入这里没问题，刷新没效果
