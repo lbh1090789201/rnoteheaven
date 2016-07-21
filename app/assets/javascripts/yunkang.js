@@ -274,13 +274,13 @@ function ClickDeleteBtn(obj){
   }
 
 function my_refresh() {
-  FailMask('#wrap','text')
   var messageBody={
     "faction": "setBackToUrl",
     "parameter": '',
-    "callback": ""
+    "callback": "no_refresh()"
   }
   window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+  FailMask('#wrap','text')
   window.location.href=window.location.href
 }
   //返回APP首页
@@ -302,6 +302,10 @@ function my_refresh() {
       "faction": "setBackCloseWeb",
       "parameter": "",
       "callback": ""
+    }
+
+    function no_refresh() {
+      console.log('ok')
     }
 
 		if(isiOS){
