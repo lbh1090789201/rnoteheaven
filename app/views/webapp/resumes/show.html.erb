@@ -2,7 +2,7 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
-  android_reload();
+  onLoad();
   set_back("/webapp/users/<%= current_user.id %>");
 </script>
 
