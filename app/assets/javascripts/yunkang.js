@@ -302,7 +302,7 @@ function ClickDeleteBtn(obj){
 
     //android 刷新页面 app
     var messageBody={
-      "faction": "reload",
+      "faction": "setBackToIndex",
       "parameter": "",
       "callback": ""
     }
