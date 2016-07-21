@@ -265,7 +265,7 @@ function ClickDeleteBtn(obj){
           //android 刷新页面 app
           var messageBody={
             "faction": "setBackToUrl",
-            "parameter": { "url": my_url },
+            "parameter": { "url": '/' },
             "callback": "FailMask('#wrap','弹窗')"
           }
           window.js2MobInterface.setBackUrl(androidUrl);
