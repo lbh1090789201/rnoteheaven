@@ -2,17 +2,19 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
+function onLoad(){
 	var u = navigator.userAgent;
 	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-  var messageBody = {
-    "faction": "reload",
-    "parameter": "",
-    "callback": ""
-  }
+    var messageBody = {
+      "faction": "reload",
+      "parameter": "",
+      "callback": ""
+    }
 
-  if(isAndroid){
-  	window.js2MobInterface.postMessage(JSON.stringify(messageBody));
-  }
+    if(isAndroid){
+    	window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+    }
+}
   // android_reload();
   set_back("/webapp/users/<%= current_user.id %>");
 </script>
@@ -20,7 +22,9 @@
 
 <div class="container resume-show " style="background: f3f3f3;">
     <div class="wrap">
-
+        <button onClick="onLoad()">
+          这是刷新按钮
+        </button>
         <section class="show-style">
             <h2>设置头像</h2>
             <div class="box box-avatar borDer">
