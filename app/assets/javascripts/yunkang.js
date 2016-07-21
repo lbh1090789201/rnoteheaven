@@ -312,3 +312,7 @@ function ClickDeleteBtn(obj){
       Window.js2MobInterface.postMessage(JSON.stringify(messageBody));
     }
   }
+
+  function SetTime(){
+    alert("1111111");
+  }
