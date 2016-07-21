@@ -2,6 +2,7 @@
 <% provide :title, "工作经历" %>
 <% provide :content, "添加" %>
 <script>
+  onLoad();
   set_back("/webapp/resumes/<%= @resume.id %>")
 </script>
 <div class="resume-show work-experience">

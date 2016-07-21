@@ -262,7 +262,16 @@ function ClickDeleteBtn(obj){
         	  window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
           }
         if(isAndroid){
-            	window.js2MobInterface.setBackUrl(androidUrl);
+          //android 刷新页面 app
+          var messageBody={
+            "faction": "reload",
+            "parameter": "",
+            "callback": ""
+          }
+          window.js2MobInterface.setBackUrl(androidUrl);
+            // 进入这里没问题，刷新没效果
+            window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+
         }
   }
 
