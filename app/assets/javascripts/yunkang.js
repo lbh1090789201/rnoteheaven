@@ -306,9 +306,8 @@ function ClickDeleteBtn(obj){
       "parameter": "",
       "callback": ""
     }
-
     if(isAndroid) {
-      FailMask('.container','刷新');
+      FailMask('.container',messageBody.faction);
       Window.js2MobInterface.postMessage(JSON.stringify(messageBody));
     }
   }
