@@ -319,7 +319,7 @@ function my_refresh() {
     var messageBody={
       "faction": "reload",
       "parameter": "",
-      "callback": "my_refresh()"
+      "callback": "FailMask('#wrap','text')"
     }
 
     if(isAndroid) {
