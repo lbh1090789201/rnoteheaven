@@ -308,8 +308,8 @@ function ClickDeleteBtn(obj){
     }
 
     if(isAndroid) {
-      Window.js2MobInterface.postMessage(JSON.stringify(messageBody));
       FailMask('.container','刷新');
+      Window.js2MobInterface.postMessage(JSON.stringify(messageBody));
     }
   }
 
