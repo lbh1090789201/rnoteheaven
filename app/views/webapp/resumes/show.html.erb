@@ -2,9 +2,6 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
-function Reflesh(){
-	window.location.href = window.location.href
-}
   android_reload();
   set_back("/webapp/users/<%= current_user.id %>");
 </script>
@@ -14,9 +11,6 @@ function Reflesh(){
     <div class="wrap">
         <button onClick="onLoad()" style="margin-top: 15px">
           这是刷新按钮1
-        </button>
-				<button onClick="Reflesh()" style="margin-top: 15px;margin-left: 20px;">
-          这是刷新按钮2
         </button>
 				<button style="margin-top: 15px;margin-left: 20px;">
           <%= link_to "demo", webapp_resumes_path, class: "btn btn-default" %>
