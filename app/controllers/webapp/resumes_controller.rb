@@ -1,6 +1,7 @@
 class Webapp::ResumesController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
   protect_from_forgery except: :update
+  layout false, only: [:index]
 
   def index
   end

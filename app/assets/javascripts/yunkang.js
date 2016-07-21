@@ -263,6 +263,7 @@ function ClickDeleteBtn(obj){
           }
         if(isAndroid){
             	window.js2MobInterface.setBackUrl(androidUrl);
+              window.location.reload();
         }
   }
 
