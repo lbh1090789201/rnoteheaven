@@ -235,6 +235,8 @@ var AdminHospitalItem =React.createClass({
     })
   }
   ,render: function() {
+    let is_new
+    this.props.data.may_release == undefined ? is_new = 'disabled' : is_new = ''
     return (
       <tr>
         <td>{this.props.index + 1}</td>
@@ -246,7 +248,7 @@ var AdminHospitalItem =React.createClass({
         <td>{this.props.data.may_view}</td>
         <td>{this.props.data.vip_name}</td>
         <td>
-          <button onClick={this.handleClick} className="btn btn-default btn-form" >修改</button>
+          <button onClick={this.handleClick} className={"btn btn-default btn-form " + is_new} >修改</button>
         </td>
       </tr>
     )
