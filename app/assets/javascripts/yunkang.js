@@ -309,7 +309,7 @@ function ClickDeleteBtn(obj){
 
     if(isAndroid) {
       // 进入这里没问题，刷新没效果
-      Window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+      window.js2MobInterface.postMessage(JSON.stringify(messageBody));
     }
   }
 
