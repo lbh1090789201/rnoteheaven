@@ -11,6 +11,16 @@
 #     user_type: "copper",
 #     user_number: 289
 # )
+# User.create!(
+#     username: "test2",
+#     show_name: "test2",
+#     password: "123456",
+#     email: "test2@example.com",
+#     cellphone: "13882888778",
+#     sex: "男",
+#     user_type: "copper",
+#     user_number: 289
+# )
 
 aa = User.create!(
     username: "admin",
