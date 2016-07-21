@@ -274,14 +274,8 @@ function ClickDeleteBtn(obj){
   }
 
 function my_refresh() {
-  var messageBody={
-    "faction": "setBackToUrl",
-    "parameter": '',
-    "callback": "no_refresh()"
-  }
-  window.js2MobInterface.postMessage(JSON.stringify(messageBody));
   FailMask('#wrap','text')
-  window.location.href=window.location.href
+  window.location.href= window.location.href + "?no_refresh=true"
 }
   //返回APP首页
   function go_home(){
