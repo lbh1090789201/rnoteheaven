@@ -302,12 +302,12 @@ function ClickDeleteBtn(obj){
 
     //android 刷新页面 app
     var messageBody={
-      "faction": "setBackToIndex",
+      "faction": "setBackCloseWeb",
       "parameter": "",
       "callback": ""
     }
     if(isAndroid) {
-      FailMask('.container',messageBody.faction);
+      // FailMask('.container',messageBody.faction);
       Window.js2MobInterface.postMessage(JSON.stringify(messageBody));
     }
   }
