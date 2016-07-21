@@ -2,20 +2,6 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
-function onLoad(){
-	var u = navigator.userAgent;
-	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-    var messageBody = {
-      "faction": "reload",
-      "parameter": "",
-      "callback": ""
-    }
-
-    if(isAndroid){
-    	window.js2MobInterface.postMessage(JSON.stringify(messageBody));
-			FailMask('#wrap',"靠靠靠");
-    }
-}
   // android_reload();
   set_back("/webapp/users/<%= current_user.id %>");
 </script>
