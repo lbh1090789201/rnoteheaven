@@ -241,13 +241,14 @@ function expend_desc(obj) {
 $(document).ready(function(){
   $('#avatar_box').on('click',function(){
     $('#user_avatar').trigger('click');
+    FailMask('.container',"更换头像");
   });
-  $('.pencil').on('click',function(){
-    $('#user_avatar').trigger('click');
-  });
-  $('#user_avatar').on('change',function(){
-    $('#avatar_submit').trigger('click');
-  });
+  // $('.pencil').on('click',function(){
+  //   $('#user_avatar').trigger('click');
+  // });
+  // $('#user_avatar').on('change',function(){
+  //   $('#avatar_submit').trigger('click');
+  // });
 })
 
 // 刷新简历
