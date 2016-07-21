@@ -275,14 +275,13 @@ function ClickDeleteBtn(obj){
 
 function my_refresh() {
   FailMask('#wrap','text')
-  window.location.href=window.location.href
   var messageBody={
     "faction": "setBackToUrl",
     "parameter": '',
     "callback": ""
   }
-
   window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+  window.location.href=window.location.href
 }
   //返回APP首页
   function go_home(){
