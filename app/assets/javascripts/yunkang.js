@@ -266,7 +266,7 @@ function ClickDeleteBtn(obj){
           //   "parameter": { "url": my_url },
           //   "callback": "my_refresh()"
           // }
-          window.js2MobInterface.setBackUrl(androidUrl);
+          // window.js2MobInterface.setBackUrl(androidUrl);
           // 进入这里没问题，刷新没效果
           // window.js2MobInterface.postMessage(JSON.stringify(messageBody));
 
@@ -317,8 +317,8 @@ function my_refresh() {
 
     //android 刷新页面 app
     var messageBody={
-      "faction": "setBackToUrl",
-      "parameter": { "url": my_url },
+      "faction": "reload",
+      "parameter": "",
       "callback": "my_refresh()"
     }
 
