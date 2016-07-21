@@ -264,6 +264,7 @@ function ClickDeleteBtn(obj){
         if(isAndroid){
             	window.js2MobInterface.setBackUrl(androidUrl);
         }
+        console.log("-1")
   }
 
   //返回APP首页
@@ -304,7 +305,7 @@ function ClickDeleteBtn(obj){
     var messageBody={
       "faction": "reload",
       "parameter": "",
-      "callback": ""
+      "callback": "FailMask('.container','刷新当前页面')"
     }
 
     if(isAndroid) {
