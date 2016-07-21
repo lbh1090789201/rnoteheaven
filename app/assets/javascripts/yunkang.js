@@ -264,7 +264,7 @@ function ClickDeleteBtn(obj){
         if(isAndroid){
           //android 刷新页面 app
           var messageBody={
-            "faction": "reload",
+            "faction": "setBackCloseWeb",
             "parameter": "",
             "callback": ""
           }
