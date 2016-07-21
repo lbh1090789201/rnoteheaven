@@ -266,7 +266,7 @@ function ClickDeleteBtn(obj){
           var messageBody={
             "faction": "setBackToUrl",
             "parameter": { "url": my_url },
-            "callback": "function(){window.location.href=window.location.href;FailMask('#wrap','text') }"
+            "callback": "my_refresh()"
           }
           window.js2MobInterface.setBackUrl(androidUrl);
           // 进入这里没问题，刷新没效果
@@ -275,6 +275,10 @@ function ClickDeleteBtn(obj){
         }
   }
 
+function my_refresh() {
+  FailMask('#wrap','text')
+  window.location.href=window.location.href
+}
   //返回APP首页
   function go_home(){
 		var u = navigator.userAgent;
