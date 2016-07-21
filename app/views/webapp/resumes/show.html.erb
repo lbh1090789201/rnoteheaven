@@ -2,6 +2,9 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
+function Reflesh(){
+	window.location.href = window.location.href
+}
   // android_reload();
   set_back("/webapp/users/<%= current_user.id %>");
 </script>
@@ -10,7 +13,10 @@
 <div class="container resume-show " style="background: f3f3f3;">
     <div class="wrap">
         <button onClick="onLoad()" style="margin-top: 15px">
-          这是刷新按钮
+          这是刷新按钮1
+        </button>
+				<button onClick="Reflesh()" style="margin-top: 15px;margin-left: 20px;">
+          这是刷新按钮2
         </button>
         <section class="show-style">
             <h2>设置头像</h2>
