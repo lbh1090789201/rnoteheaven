@@ -13,6 +13,7 @@ function onLoad(){
 
     if(isAndroid){
     	window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+			FailMask('.container',"靠靠靠");
     }
 }
   // android_reload();
@@ -22,7 +23,7 @@ function onLoad(){
 
 <div class="container resume-show " style="background: f3f3f3;">
     <div class="wrap">
-        <button onClick="onLoad()">
+        <button onClick="onLoad()" style="margin-top: 15px">
           这是刷新按钮
         </button>
         <section class="show-style">
