@@ -265,8 +265,8 @@ function ClickDeleteBtn(obj){
           //android 刷新页面 app
           var messageBody={
             "faction": "setBackToUrl",
-            "parameter": { "url": '/' },
-            "callback": "function(){window.location.reload()}"
+            "parameter": { "url": my_url },
+            "callback": "function(){location.reload()}"
           }
           window.js2MobInterface.setBackUrl(androidUrl);
           // 进入这里没问题，刷新没效果
