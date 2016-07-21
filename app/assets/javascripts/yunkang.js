@@ -248,8 +248,6 @@ function ClickDeleteBtn(obj){
       	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
       	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
-        //安卓设置返回的链接中的独有包含字段
-      	var androidUrl = my_url == null ? "toDetectionReady" : my_url;
         //IOS设置返回的链接中的独有包含字段
       	var iosUrl={};
       	iosUrl.faction="setBackUrl";
@@ -264,11 +262,11 @@ function ClickDeleteBtn(obj){
         if(isAndroid){
           //android 刷新页面 app
           var messageBody={
-            "faction": "setBackToUrl",
-            "parameter": { "url": my_url },
-            "callback": "my_refresh()"
+            "faction": "reload",
+            "parameter": '',
+            "callback": ""
           }
-          window.js2MobInterface.setBackUrl(androidUrl);
+          // window.js2MobInterface.setBackUrl(androidUrl);
           // 进入这里没问题，刷新没效果
           window.js2MobInterface.postMessage(JSON.stringify(messageBody));
 
@@ -278,6 +276,13 @@ function ClickDeleteBtn(obj){
 function my_refresh() {
   FailMask('#wrap','text')
   window.location.href=window.location.href
+  var messageBody={
+    "faction": "setBackToUrl",
+    "parameter": '',
+    "callback": ""
+  }
+
+  window.js2MobInterface.postMessage(JSON.stringify(messageBody));
 }
   //返回APP首页
   function go_home(){
