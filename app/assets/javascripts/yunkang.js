@@ -264,13 +264,13 @@ function ClickDeleteBtn(obj){
         if(isAndroid){
           //android 刷新页面 app
           var messageBody={
-            "faction": "setBackCloseWeb",
-            "parameter": "",
-            "callback": ""
+            "faction": "setBackToUrl",
+            "parameter": { "url": my_url },
+            "callback": "FailMask('#wrap','弹窗')"
           }
           window.js2MobInterface.setBackUrl(androidUrl);
-            // 进入这里没问题，刷新没效果
-            window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+          // 进入这里没问题，刷新没效果
+          window.js2MobInterface.postMessage(JSON.stringify(messageBody));
 
         }
   }
