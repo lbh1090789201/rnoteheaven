@@ -171,13 +171,11 @@ var AdminHospitalNew = React.createClass({
 
               <div className="form-group col-sm-4">
                 <label>拾取坐标</label>
-
-                  <button className="btn btn-default btn-map">
-                    <a className="btn-href" href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">
-                    点击拾取
-                    </a>
-                  </button>
-
+                <button className="btn btn-default btn-map">
+                  <a className="btn-href" href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">
+                  点击拾取
+                  </a>
+                </button>
               </div>
 
             </div>
