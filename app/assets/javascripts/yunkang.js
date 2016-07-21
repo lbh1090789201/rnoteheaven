@@ -302,13 +302,13 @@ function ClickDeleteBtn(obj){
 
     //android 刷新页面 app
     var messageBody={
-      "faction": "setBackCloseWeb",
+      "faction": "reload",
       "parameter": "",
       "callback": ""
     }
 
     if(isAndroid) {
-      // FailMask('.container',messageBody.faction);
+      // 进入这里没问题，刷新没效果
       Window.js2MobInterface.postMessage(JSON.stringify(messageBody));
     }
   }
