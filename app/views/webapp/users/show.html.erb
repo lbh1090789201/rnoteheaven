@@ -2,8 +2,9 @@
 
 <script type="text/javascript">
 <% unless params[:no_refresh] %>
-  set_back("/webapp/home")
+  android_reload()
 <% end %>
+set_back("/webapp/home")
 </script>
 
 <div class="main user-first-page home-user user-info-ct">
