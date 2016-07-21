@@ -475,7 +475,10 @@ a:hover {
 #avatar_box {
   height: 3.81rem;
   border-radius: 50%;
-  // background-size: cover !important;
+}
+#avatar_preview {
+  height: 3.75rem;
+  border-radius: 50%;
 }
 .box-avatar {
   .edit_user {
