@@ -163,10 +163,22 @@ var AdminVipTableHead = React.createClass({
 
 
 var AdminVipTableContent = React.createClass({
-
+  // handleload: function() {
+  //   var totalCount = Number(获取数据的长度), showCount = 在页面上最大的分页数，如 > 1 2 3 4 5 <,
+  //       limit = Number(需要显示的数据数量) || 10;
+  //   createTable(1, limit, totalCount);
+  //   $('#callBackPager').extendPagination({
+  //       totalCount: totalCount,
+  //       showCount: showCount,
+  //       limit: limit,
+  //       callback: function (curr, limit, totalCount) {
+  //           createTable(curr, limit, totalCount);
+  //       }
+  //   });
+  // }
   render: function(){
       return(
-        <tbody>
+        <tbody id="mainContent" onLoad={this.handleload}>
           {
             this.props.vips.map(
               function(vip, index) {
