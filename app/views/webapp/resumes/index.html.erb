@@ -23,13 +23,24 @@
     <title>demo</title>
  <%= javascript_include_tag "jquery-1.8.3.min" %>
   <script type="text/javascript">
+  function FailMask(div_class,text) {
+    var div = $('<div class="mask-fail"></div>');
+    var p = $('<p class="mask-middle"></p>');
+    p.text(text);
+    div.append(p);
+    var parent_div = $(div_class);
+    parent_div.append(div);
+    var timer = setTimeout(function(){
+      div.remove();
+    },1000);
+  }
   function onLoad(){
   	var u = navigator.userAgent;
   	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
       var mb = {
         "faction": "setBackCloseWeb",
         "parameter": "",
-        "callback": ""
+        "callback": "FailMask('#wrap','text')"
       }
 
       if(isAndroid){
@@ -37,6 +48,23 @@
       }
   }
   </script>
+  <style type="text/css">
+  .mask-middle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -2.8rem;
+    margin-left: -6.75rem;
+    width: 13.5rem;
+    height: 5.6rem;
+    line-height: 5.6rem;
+    text-align: center;
+    font-size: 0.9rem;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border-radius: 0.5rem;
+  }
+  </style>
 </head>
 
 <body>
