@@ -267,8 +267,8 @@ function ClickDeleteBtn(obj){
           //   "callback": "my_refresh()"
           // }
           var androidUrl={
-            "faction": "setBackUrl",
-            "parameter": "",
+            "faction": "setBackToUrl",
+            "parameter": '{ "url": my_url}',
             "callback": ""
           }
           // window.js2MobInterface.setBackUrl(androidUrl);
