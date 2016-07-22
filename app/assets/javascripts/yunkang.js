@@ -348,7 +348,7 @@ function ClickDeleteBtn(obj){
   //
   function my_refresh() {
     FailMask('#wrap', 'tess')
-    // window.location.href = window.location.href + '?no_refresh=true'
+    window.location.href = window.location.href + '?no_refresh=true'
   }
 
   function getWholeUrl() {
