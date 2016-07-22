@@ -89,7 +89,7 @@
         $('#submit').trigger('click');
       } else {
         if(vip_status == 'false') {
-          alert('您的可发布职位数已满，若想发布更多，请购买VIP');
+          FailMask('#wrap', '您的可发布职位数已满，若想发布更多，请购买VIP');
           // $('.may-release').css('display','block');
         } else {
           $('#job_status').attr('value','reviewing');
