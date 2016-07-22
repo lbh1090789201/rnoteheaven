@@ -4,7 +4,7 @@ class Webapp::CertificatesController < ApplicationController
 
   def index
     @certificates = Certificate.where user_id: current_user.id
-    @resume_id = Resume.find_by(user_id: current_user.id).id
+    @resume = Resume.find_by(user_id: current_user.id)
   end
 
   def new
