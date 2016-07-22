@@ -295,20 +295,16 @@ function ClickDeleteBtn(obj){
 
     //android 首页返回 app
     var androidUrl={
-      "faction": "setBackCloseWeb",
+      "faction": "setBackToIndex",
       "parameter": "",
       "callback": ""
-    }
-
-    function no_refresh() {
-      console.log('ok')
     }
 
 		if(isiOS){
 	    window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
 	    }
 	  if(isAndroid){
-			Window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
+			window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
 		}
 	}
 
