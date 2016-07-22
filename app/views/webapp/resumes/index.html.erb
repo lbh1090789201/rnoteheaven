@@ -40,11 +40,11 @@
       var mb = {
         "faction": "reload",
         "parameter": "",
-        "callback": "FailMask('#wrap','text')"
+        "callback": "FailMask('body','text')"
       }
 
       if(isAndroid){
-        FailMask('#wrap','11111111111')
+        // FailMask('body','11111111111');
       	window.js2MobInterface.postMessage(JSON.stringify(mb));
       }
   }
