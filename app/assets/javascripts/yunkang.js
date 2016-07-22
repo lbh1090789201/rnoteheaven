@@ -260,13 +260,19 @@ function ClickDeleteBtn(obj){
         	  window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
           }
         if(isAndroid){
-          //android 刷新页面 app
+          // android 刷新页面 app
           // var messageBody={
           //   "faction": "setBackToUrl",
           //   "parameter": { "url": my_url },
           //   "callback": "my_refresh()"
           // }
-          window.js2MobInterface.setBackUrl(androidUrl);
+          var androidUrl={
+            "faction": "setBackUrl",
+            "parameter": "",
+            "callback": ""
+          }
+          // window.js2MobInterface.setBackUrl(androidUrl);
+          Window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
         }
   }
 
@@ -322,8 +328,8 @@ function ClickDeleteBtn(obj){
     }
   }
 
-
-  function my_refresh() {
-    FailMask('#wrap','text')
-    window.location.href= window.location.href + "?no_refresh=true"
-  }
+  //
+  // function my_refresh() {
+  //   FailMask('#wrap','text')
+  //   window.location.href= window.location.href + "?no_refresh=true"
+  // }
