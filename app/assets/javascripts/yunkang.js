@@ -270,7 +270,7 @@ function ClickDeleteBtn(obj){
             var messageBody={
               "faction": "setBackToUrl",
               "parameter": {"url": my_url},
-              "callback": ""
+              "callback": "my_refresh()"
             }
           }
 
@@ -331,7 +331,7 @@ function ClickDeleteBtn(obj){
   }
 
   //
-  // function my_refresh() {
-  //   FailMask('#wrap','text')
-  //   window.location.href= window.location.href + "?no_refresh=true"
-  // }
+  function my_refresh() {
+    FailMask('#wrap','text')
+    window.location.href= window.location.href + "?no_refresh=true"
+  }
