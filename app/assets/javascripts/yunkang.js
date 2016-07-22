@@ -295,7 +295,7 @@ function ClickDeleteBtn(obj){
 
     //android 首页返回 app
     var androidUrl={
-      "faction": "setBackToIndex",
+      "faction": "setBackCloseWeb",
       "parameter": "",
       "callback": ""
     }
