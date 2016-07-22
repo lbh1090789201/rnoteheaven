@@ -6,6 +6,11 @@ class Admin::VipsController < AdminController
   def index
     @vips = Plan.all
 
+    # 练习　开始
+    @vip = Plan.page(params[:page]).per(1)
+    puts "-------------" + @vip.to_json.to_s
+    # 练习　结束
+
     if params[:search]
       @vvs = Plan.filter_by_status(params[:status]).filter_by_name(params[:vip_name])
 
@@ -42,7 +47,7 @@ class Admin::VipsController < AdminController
 
     if vip.update vip_params
       EventLog.create_log current_user.id, current_user.show_name, 'Plan', vip.id, "套餐", '更新'
-      
+
       render json: {
         success: true,
         info: "更新成功",
