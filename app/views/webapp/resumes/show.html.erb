@@ -3,7 +3,7 @@
 <%= provide :content, "预览" %>
 <script>
   <% unless params[:no_refresh] %>
-    // my_refresh()
+    my_refresh()
   <% end %>
 
   set_back("/webapp/users/<%= current_user.id %>");
