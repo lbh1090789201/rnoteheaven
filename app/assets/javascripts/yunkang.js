@@ -10,7 +10,7 @@ function FailMask(div_class,text) {
   parent_div.append(div);
   var timer = setTimeout(function(){
     div.remove();
-  },1000);
+  },6000);
 }
 
 //页面小浮动脚本
@@ -336,7 +336,7 @@ function ClickDeleteBtn(obj){
         var messageBody={
           "faction": "setBackToUrl",
           "parameter": {"url": my_url},
-          "callback": "my_refresh()"
+          "callback": "FailMask('#wrap', 'tess')"
         }
       }
 
