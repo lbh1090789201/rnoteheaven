@@ -359,43 +359,19 @@ function ClickDeleteBtn(obj){
   }
 
 
-//单次刷新
-function refreshOnce() {
-  if(getCookie('refresh') != null) {
-    delCookie('refresh');
-  } else {
-    setCookie('refresh','true');
-    history.go(0);
+
+function app_reload() {
+  var u = navigator.userAgent;
+  var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+  var messageBody={
+    "faction": "reload",
+    "parameter": '',
+    "callback": ""
   }
-};
 
-// 设置cookie
-function setCookie(name,value)
-{
-    var Days = 30;
-    var exp = new Date();
-    exp.setTime(exp.getTime() + Days*24*60*60*1000);
-    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
-}
-
-// 读取cookie
-function getCookie(name)
-{
-    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-
-    if(arr=document.cookie.match(reg))
-
-        return unescape(arr[2]);
-    else
-        return null;
-}
-
-// 删除cookie
-function delCookie(name)
-{
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cval=getCookie(name);
-    if(cval!=null)
-        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+  if(isAndroid){
+    FailMask('#wrap', 'tess')
+    window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+  }
 }

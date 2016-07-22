@@ -2,12 +2,8 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
-  <% unless params[:no_refresh] %>
-    // my_refresh()
-    refreshOnce()
-  <% end %>
-
   set_back("/webapp/users/<%= current_user.id %>");
+  app_reload()
 </script>
 
 <div class="container resume-show " style="background: f3f3f3;">
