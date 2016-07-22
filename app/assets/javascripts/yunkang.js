@@ -249,7 +249,7 @@ function ClickDeleteBtn(obj){
       	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
         //Android 设置链接
-        var androidUrl = my_url;
+        var androidUrl = my_url == null ? "toDetectionReady" : my_url;
         //IOS设置返回的链接中的独有包含字段
       	var iosUrl={};
       	iosUrl.faction="setBackUrl";
