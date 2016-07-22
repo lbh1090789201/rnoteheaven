@@ -266,13 +266,13 @@ function ClickDeleteBtn(obj){
           //   "parameter": { "url": my_url },
           //   "callback": "my_refresh()"
           // }
-          var androidUrl={
-            "faction": "setBackToUrl",
-            "parameter": { "url": my_url},
-            "callback": ""
-          }
-          // window.js2MobInterface.setBackUrl(androidUrl);
-          Window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
+          // var androidUrl={
+          //   "faction": "setBackToUrl",
+          //   "parameter": { "url": my_url},
+          //   "callback": ""
+          // }
+          window.js2MobInterface.setBackUrl(backUrl);
+          // Window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
         }
   }
 
