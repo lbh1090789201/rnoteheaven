@@ -249,7 +249,7 @@ function ClickDeleteBtn(obj){
       	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
         //Android 设置链接
-
+        var androidUrl = "toDetectionReady";
         //IOS设置返回的链接中的独有包含字段
       	var iosUrl={};
       	iosUrl.faction="setBackUrl";
@@ -259,16 +259,10 @@ function ClickDeleteBtn(obj){
       	iosUrl.parameter=backUrl;
 
       	if(isiOS){
-        	  window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
+        	window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
           }
         if(isAndroid){
-          // android 刷新页面 app
-          var messageBody={
-            "faction": "setBackToUrl",
-            "parameter": { "url": my_url },
-            "callback": ""
-          }
-          Window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+          window.js2MobInterface.setBackUrl(androidUrl);
         }
   }
 
