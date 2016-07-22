@@ -3,10 +3,13 @@ class Webapp::JobFairsController < ApplicationController
 
   def index
     fairs = Fair.where(status: 'processing')
+    @fairs = []
     fairs.each do |f|
-      f.end_at = time_diff Time.now, f.end_at
+      fair = f.as_json
+      fair["diff"] = time_diff(Time.now, f.end_at)
+      @fairs.push fair
     end
-    @fairs = fairs
+
     @fairs_length = @fairs.length
   end
 
@@ -44,18 +47,17 @@ class Webapp::JobFairsController < ApplicationController
   end
 
   private
-  def time_diff(start_time, end_time)
-    seconds_diff = (start_time - end_time).to_i.abs
+    def time_diff(start_time, end_time)
+      seconds_diff = (start_time - end_time).to_i.abs
 
-    hours = seconds_diff / 3600
-    seconds_diff -= hours * 3600
+      hours = seconds_diff / 3600
+      seconds_diff -= hours * 3600
 
-    minutes = seconds_diff / 60
-    seconds_diff -= minutes * 60
+      minutes = seconds_diff / 60
+      seconds_diff -= minutes * 60
 
-    seconds = seconds_diff
-
-    "#{hours.to_s.rjust(2, '0')}:#{minutes.to_s.rjust(2, '0')}:#{seconds.to_s.rjust(2, '0')}"
-  end
+      seconds = seconds_diff
+      "#{hours.to_s.rjust(2, '0')}:#{minutes.to_s.rjust(2, '0')}:#{seconds.to_s.rjust(2, '0')}"
+    end
 
 end
