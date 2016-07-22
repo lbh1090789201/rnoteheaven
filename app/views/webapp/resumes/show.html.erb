@@ -101,11 +101,11 @@
                          </a>
                      </h3>
                      <p class="job-desc-show">
-                       <%= w.job_desc[0, 60] + '……' %>
+                       <%= w.job_desc %>
                      </p>
-                      <p class="job-desc-hide" style="display:none;">
-                        <%= w.job_desc %>
-                      </p>
+                     <p class="job-desc-hide" style="display: none">
+                       <%= w.job_desc %>
+                     </p>
                  </div>
                </div>
               <% end %>
@@ -187,7 +187,7 @@
                 <a href="<%= edit_webapp_expect_job_path(@expect_job.id) %>" class="edit">
                     <%= image_tag "edit.png" %>
                 </a>
-                <h3><%= @expect_job.name %><a class="expend expect-expend expend-education" onclick="expend_desc(this)">
+                <h3><%= @expect_job.name %><a class="expend expect-expend expend-education"  onclick="expend_desc(this)">
                         <%= image_tag "show.png" %>
                     </a>
                 </h3>
@@ -199,7 +199,7 @@
                   <%= @expect_job.expected_salary_range %>
                 </p>
                 <p class="job-desc-show">
-                  <%= @expect_job.job_desc[0, 60] + '……' if @expect_job.job_desc %>
+                  <%= @expect_job.job_desc if @expect_job.job_desc %>
                 </p>
                  <p class="job-desc-hide" style="display:none;">
                    <%= @expect_job.job_desc if @expect_job.job_desc %>
@@ -215,11 +215,27 @@
 </div>
 
 <script type="text/javascript">
+  //判断描述内容是否过长，长则加省略号
+  var desc_p = $('.job-desc-show');
+  for(var i=0;i<desc_p.length;i++){
+    desc_text = desc_p[i].innerText;
+    if(desc_text.length > 60) {
+       var p_text = desc_text.substring(0,60) + ".....";
+       desc_p[i].innerText = p_text;
+    }
+  }
 
-function expend_desc(obj) {
-    $(obj).parent().siblings('.job-desc-hide').slideToggle(300);
-    $(obj).parent().siblings('.job-desc-show').slideToggle(300);
-};
+  // 通过判断两个P的内容长度是否一样，不一样相互交换内容
+  function expend_desc(obj) {
+      var p_1 = $(obj).parent().siblings('p.job-desc-show');
+      var p_text_1 = p_1.text();
+      var p_2 = $(obj).parent().siblings('p.job-desc-hide');
+      var p_text_2 = p_2.text();
+      if(p_text_1.length != p_text_2.length) {
+        p_1.text(p_text_2);
+        p_2.text(p_text_1);
+      }
+  };
 
 // $(document).on('ready page:load', function () {
 //   $('.avatar-box').click(function() {
@@ -233,40 +249,40 @@ function expend_desc(obj) {
 //   })
 // });
 
-$('.avatar-box').click(function() {
-  $('#user_avatar').click();
-}),
-$('.pencil').click(function() {
-  $('#user_avatar').click();
-}),
-$('#user_avatar').change(function() {
-  $('#avatar_submit').click();
-})
+  $('.avatar-box').click(function() {
+    $('#user_avatar').click();
+  }),
+  $('.pencil').click(function() {
+    $('#user_avatar').click();
+  }),
+  $('#user_avatar').change(function() {
+    $('#avatar_submit').click();
+  })
 
-// 刷新简历
-$('.refresh').click(function() {
-  $.ajax({
-    url: '<%= webapp_resume_path(params[:id]) %>',
-    type: 'PATCH',
-    data: {refresh: true},
-    success: function() {
-      $('.refresh').html('6天后可再次刷新');
+  // 刷新简历
+  $('.refresh').click(function() {
+    $.ajax({
+      url: '<%= webapp_resume_path(params[:id]) %>',
+      type: 'PATCH',
+      data: {refresh: true},
+      success: function() {
+        $('.refresh').html('6天后可再次刷新');
+        $('.refresh').css('background-color', 'gray');
+        $('.refresh').off();
+      },
+      error: function() {
+        alert('刷新失败。')
+      }
+    });
+  });
+
+  // 判断剩余写几天
+  <% if @refresh_left  %>
+    $(function() {
+      $('.refresh').html('<%= @refresh_left %>天后可再次刷新');
       $('.refresh').css('background-color', 'gray');
       $('.refresh').off();
-    },
-    error: function() {
-      alert('刷新失败。')
-    }
-  });
-});
-
-// 判断剩余写几天
-<% if @refresh_left  %>
-  $(function() {
-    $('.refresh').html('<%= @refresh_left %>天后可再次刷新');
-    $('.refresh').css('background-color', 'gray');
-    $('.refresh').off();
-  });
-<% end %>
+    });
+  <% end %>
 
 </script>
