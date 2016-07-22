@@ -309,7 +309,7 @@ function ClickDeleteBtn(obj){
 	}
 
   //Android 刷新页面
-  function set_back_reload() {
+  function set_back_reload(my_url) {
     var u = navigator.userAgent;
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
