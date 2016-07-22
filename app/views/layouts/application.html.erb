@@ -25,22 +25,6 @@
   <%= csrf_meta_tags %>
   <%= javascript_include_tag "yunkang" %>
 
-  <script>
-  function onLoad(){
-    var u = navigator.userAgent;
-    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-      var messageBody = {
-        "faction": "reload",
-        "parameter": "",
-        "callback": ""
-      }
-
-      if(isAndroid){
-        window.js2MobInterface.postMessage(JSON.stringify(messageBody));
-      }
-  }
-  </script>
-
 
 </head>
 <body>
