@@ -336,7 +336,7 @@ function ClickDeleteBtn(obj){
         var messageBody={
           "faction": "setBackToUrl",
           "parameter": {"url": my_url + '?refresh=true'},
-          "callback": ""
+          "callback": "my_refresh()"
         }
       }
 
