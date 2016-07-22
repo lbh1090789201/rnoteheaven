@@ -1,7 +1,7 @@
 
 <% @fairs.each do |f| %>
 <div id="hospital_home">
-  <div class="fair-image" style="background: url(<%= asset_path(f['banner']) %>) no-repeat;background-size: cover"></div>
+  <div class="fair-image" style='background: url(<%= asset_path(f["banner"]["url"]) %>) no-repeat;background-size: cover'></div>
   <div class="home-bg"></div>
   <div class="home-note">
     <p><%= f["name"] %> 沟通专场</p>
