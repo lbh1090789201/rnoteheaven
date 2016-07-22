@@ -270,7 +270,7 @@ function ClickDeleteBtn(obj){
             var messageBody={
               "faction": "setBackToUrl",
               "parameter": {"url": my_url},
-              "callback": "my_refresh()"
+              "callback": ""
             }
           }
 
@@ -309,19 +309,37 @@ function ClickDeleteBtn(obj){
 	}
 
   //Android 刷新页面
-  function android_reload() {
+  function set_back_reload() {
     var u = navigator.userAgent;
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
-    //android 刷新页面 app
-    var messageBody={
-      "faction": "setBackToLast",
-      "parameter": "",
-      "callback": ""
-    }
+    //IOS设置返回的链接中的独有包含字段
+    var iosUrl={};
+    iosUrl.faction="setBackUrl";
+    iosUrl.type="1";
+    var backUrl={};
+    backUrl.from_index = my_url == null ? "/pageJump/toDetectionReady.do" : my_url;
+    iosUrl.parameter=backUrl;
 
-    if(isAndroid) {
-      // 进入这里没问题，刷新没效果
+    if(isiOS){
+      window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
+      }
+    if(isAndroid){
+      if(my_url == null) {
+        var messageBody={
+          "faction": "setBackToLast",
+          "parameter": '',
+          "callback": ""
+        }
+      } else {
+        var messageBody={
+          "faction": "setBackToUrl",
+          "parameter": {"url": my_url + '?refresh=true'},
+          "callback": ""
+        }
+      }
+
       window.js2MobInterface.postMessage(JSON.stringify(messageBody));
     }
   }
@@ -330,5 +348,14 @@ function ClickDeleteBtn(obj){
   //
   function my_refresh() {
     FailMask('#wrap','text')
-    // window.location.href= window.location.href + "?no_refresh=true"
+    var url = getWholeUrl()
+    window.location.href = url
+  }
+
+  function getWholeUrl() {
+    var url = document.location.toString();
+    if(url.indexOf("?") != -1){
+    　　　　　　relUrl = relUrl.split("?")[0];
+    　　　　}
+    return relUrl;
   }
