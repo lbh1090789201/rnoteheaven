@@ -266,9 +266,7 @@ function ClickDeleteBtn(obj){
           //   "parameter": { "url": my_url },
           //   "callback": "my_refresh()"
           // }
-          // window.js2MobInterface.setBackUrl(androidUrl);
-          // 进入这里没问题，刷新没效果
-          // window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+          window.js2MobInterface.setBackUrl(androidUrl);
 
         }
   }
