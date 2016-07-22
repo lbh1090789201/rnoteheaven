@@ -267,7 +267,6 @@ function ClickDeleteBtn(obj){
           //   "callback": "my_refresh()"
           // }
           window.js2MobInterface.setBackUrl(androidUrl);
-
         }
   }
 
@@ -323,7 +322,7 @@ function ClickDeleteBtn(obj){
     }
   }
 
-  
+
   function my_refresh() {
     FailMask('#wrap','text')
     window.location.href= window.location.href + "?no_refresh=true"
