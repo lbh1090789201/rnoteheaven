@@ -335,7 +335,7 @@ function ClickDeleteBtn(obj){
       } else {
         var messageBody={
           "faction": "setBackToUrl",
-          "parameter": {"url": my_url + '?refresh=true'},
+          "parameter": {"url": '/'},
           "callback": "my_refresh()"
         }
       }
