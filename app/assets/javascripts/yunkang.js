@@ -271,10 +271,7 @@ function ClickDeleteBtn(obj){
         }
   }
 
-function my_refresh() {
-  FailMask('#wrap','text')
-  window.location.href= window.location.href + "?no_refresh=true"
-}
+
   //返回APP首页
   function go_home(){
 		var u = navigator.userAgent;
@@ -326,6 +323,8 @@ function my_refresh() {
     }
   }
 
-  function SetTime(){
-    alert("1111111");
+  
+  function my_refresh() {
+    FailMask('#wrap','text')
+    window.location.href= window.location.href + "?no_refresh=true"
   }
