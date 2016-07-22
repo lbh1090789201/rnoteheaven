@@ -2,7 +2,7 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
-  <% if params[:refresh] %>
+  <% unless params[:no_refresh] %>
     my_refresh()
   <% end %>
 
