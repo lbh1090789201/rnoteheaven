@@ -336,7 +336,7 @@ function ClickDeleteBtn(obj){
         var messageBody={
           "faction": "setBackToUrl",
           "parameter": {"url": my_url},
-          "callback": "FailMask('#wrap', 'tess')"
+          "callback": ""
         }
       }
 
