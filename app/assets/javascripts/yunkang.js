@@ -367,11 +367,10 @@ function app_reload() {
   var messageBody={
     "faction": "reload",
     "parameter": '',
-    "callback": ""
+    "callback": "my_refresh()"
   }
 
   if(isAndroid){
-    FailMask('#wrap', 'tess')
     window.js2MobInterface.postMessage(JSON.stringify(messageBody));
   }
 }
