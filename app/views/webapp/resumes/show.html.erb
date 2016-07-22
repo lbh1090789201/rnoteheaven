@@ -3,7 +3,19 @@
 <%= provide :content, "预览" %>
 <script>
   // android_reload()
-  set_back("/webapp/users/<%= current_user.id %>");
+  // set_back("/webapp/users/<%# current_user.id %>");
+  var u = navigator.userAgent;
+  var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+  //android 首页返回 app
+  var androidUrl={
+    "faction": "notification",
+    "parameter": {"title": "ooooook"},
+    "callback": ""
+  }
+  if(isAndroid){
+    window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
+  }
+
 </script>
 
 <div class="container resume-show " style="background: f3f3f3;">
