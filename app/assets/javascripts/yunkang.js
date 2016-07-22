@@ -308,7 +308,7 @@ function ClickDeleteBtn(obj){
 
     //android 刷新页面 app
     var messageBody={
-      "faction": "setBackToIndex",
+      "faction": "setBackToLast",
       "parameter": "",
       "callback": ""
     }
