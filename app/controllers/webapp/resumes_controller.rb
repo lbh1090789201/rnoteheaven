@@ -45,7 +45,10 @@ class Webapp::ResumesController < ApplicationController
       resume.refresh_at = Time.now
 
       if resume.save
-        render js: 'location.href = document.referrer'
+        render json: {
+                   success: true,
+                   info: '简历刷新成功'
+               }, status: 200
       else
         render json: {
                    success: false,
