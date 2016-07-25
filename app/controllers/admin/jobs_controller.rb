@@ -7,7 +7,7 @@ class Admin::JobsController < AdminController
       @jobs = Job.where.not(status: ['reviewing', 'saved'])
                  .filter_job_status(params[:status])
                  .filter_release_before(params[:time_before])
-                 .filter_release_before(params[:time_after])
+                 .filter_release_after(params[:time_after])
                  .filter_job_type(params[:job_type])
                  .filter_hospital_name(params[:hospital_name])
                  .filter_job_name(params[:job_name])
@@ -25,8 +25,8 @@ class Admin::JobsController < AdminController
   def check
     if params[:search]
       @jobs = Job.filter_job_status('reviewing')
-                 .filter_release_before(params[:time_before])
-                 .filter_release_before(params[:time_after])
+                 .filter_create_begin(params[:time_begin])
+                 .filter_create_end(params[:time_end])
                  .filter_job_type(params[:job_type])
                  .filter_hospital_name(params[:hospital_name])
                  .filter_job_name(params[:job_name])
@@ -38,6 +38,8 @@ class Admin::JobsController < AdminController
       }, status: 200
     else
       @jobs = Job.filter_job_status('reviewing').as_json
+      # jobs = Job.filter_job_status('reviewing').as_json
+      # @jobs = jobs.get_job_info jobs
     end
 
   end
