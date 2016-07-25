@@ -101,11 +101,31 @@
   <div class="inter-phone">
     <p><%= @user.show_name %></p>
     <p><%= @user.cellphone %></p>
-    <a href="tel:<%= @user.cellphone %>"><%= image_tag 'icon_26.png' %></a>
+    <a href="javascript:void(0);" id="callNode"><%= image_tag 'icon_26.png' %></a>
   </div>
 </div>
 
 <script type="text/javascript">
+    function callPhone(){
+      var u = navigator.userAgent;
+  		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+    	//href="tel:400-830-3620"
+      var YKPhone = {};
+          YKPhone.faction = "YKPhone";
+          YKPhone.type = 1;
+      var paramMsg = {};
+          paramMsg.phone = "<%= @user.cellphone %>";
+          YKPhone.parameter = paramMsg;
+      if(isiOS){
+          window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(YKPhone));
+      }
+      if(isAndroid){
+          $("#callNode").attr("href","tel:<%= @user.cellphone %>");
+      }
+    }
+
     // 面试提示页面
     function CellPhone() {
       $('#job_interview').css('display','block');
