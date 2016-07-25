@@ -1,3 +1,7 @@
+function showTime(element_id){
+document.getElementById(element_id).innerHTML="Time:("+new Date().getTime()+")";
+}
+
 /*请求失败弹窗,1.5秒后自动消失*/
 // text: 弹窗展示的内容信息
 // div_class: 弹窗插入的父节点id　或 class
