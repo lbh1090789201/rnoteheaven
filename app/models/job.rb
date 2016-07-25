@@ -163,4 +163,18 @@ class Job < ActiveRecord::Base
     end
   end
 
+  # 获取职位信息
+  def self.get_job_info jobs
+    job_infos = []
+    jobs.each do |j|
+      hospital = Hospital.find j["hospital_id"]
+      job_info = {}
+      job_info["job"] = j
+      job_info["hospital_industry"] = hospital.industry
+      job_info["hospital_name"] = hospital.name
+      job_infos.push job_info
+    end
+    return job_infos
+  end
+
 end

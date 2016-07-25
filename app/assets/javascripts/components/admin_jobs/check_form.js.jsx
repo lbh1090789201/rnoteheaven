@@ -25,8 +25,8 @@ var ReviewJob = React.createClass({
       type: 'GET',
       data: {
         'search': true,
-        'time_begin': time_begin,
-        'time_end': time_end,
+        'time_after': time_begin,
+        'time_before': time_end,
         'job_type': job_type,
         'hospital_name': hospital_name,
         'job_name': job_name

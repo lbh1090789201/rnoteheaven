@@ -118,4 +118,23 @@ RSpec.describe Job, type: :model do
     expect(res2).to eq(0)
     expect(res3).to eq(14)
   end
+
+  describe "test get_job_info" do
+    before :each do
+      job1 = create(:job, :hospital_id => @hospital1.id)
+      job2 = create(:job2, :name => "医生", :hospital_id => @hospital1.id)
+    end
+
+    it "test get_job_info" do
+      jobs = Job.where(hospital_id: @hospital1.id).as_json
+      job_infos = Job.get_job_info jobs
+      expect(job_infos[0]["job"]["name"]).to eq("护士")
+    end
+
+    it "test hospital industry" do
+      jobs = Job.where(hospital_id: @hospital1.id).as_json
+      job_infos = Job.get_job_info jobs
+      expect(job_infos[0]["hospital_industry"]).to eq("医疗")
+    end
+  end
 end
