@@ -2,11 +2,9 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
-  //  document.getElementById("#wrap").innerHTML="Time:("+new Date().getTime()+")";
   // android_reload()
-  // set_back("/webapp/users/<%= current_user.id %>");
+  set_back("/webapp/users/<%= current_user.id %>");
 </script>
-<div id="refresh_one" style="display: none"></div>
 <div class="container resume-show " style="background: f3f3f3;">
     <div class="wrap">
         <section class="show-style">
