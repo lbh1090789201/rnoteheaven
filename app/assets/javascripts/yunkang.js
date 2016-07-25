@@ -363,17 +363,16 @@ function ClickDeleteBtn(obj){
 //
 //
 //
-// function app_reload() {
-//   var u = navigator.userAgent;
-//   var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-//   var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-//   var messageBody={
-//     "faction": "setBackToLast",
-//     "parameter": '',
-//     "callback": "my_refresh()"
-//   }
-//
-//   if(isAndroid){
-//     window.js2MobInterface.postMessage(JSON.stringify(messageBody));
-//   }
-// }
+function app_reload() {
+  var u = navigator.userAgent;
+  var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+  var messageBody={
+    "faction": "registAutoReload",
+    "parameter": '',
+    "callback": ""
+  }
+
+  if(isAndroid){
+    window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+  }
+}
