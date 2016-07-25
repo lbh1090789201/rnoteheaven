@@ -101,7 +101,7 @@
   <div class="inter-phone">
     <p><%= @user.show_name %></p>
     <p><%= @user.cellphone %></p>
-    <a href="javascript:void(0);" id="callNode"><%= image_tag 'icon_26.png' %></a>
+    <a href="javascript:void(0);" id="callNode" onClick="callPhone()"><%= image_tag 'icon_26.png' %></a>
   </div>
 </div>
 
@@ -125,6 +125,10 @@
           $("#callNode").attr("href","tel:<%= @user.cellphone %>");
       }
     }
+
+    // function call_phone() {
+    //   callPhone();
+    // }
 
     // 面试提示页面
     function CellPhone() {
