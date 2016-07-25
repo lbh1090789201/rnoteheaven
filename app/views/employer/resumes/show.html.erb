@@ -46,7 +46,7 @@
     <% end %>
     <div class="show-img" style="background: url('<%= asset_path(@avatar) %>') no-repeat center;background-size: cover"></div>
     <div class="show-top">
-      <p><%= @user.show_name ? @user.show_name : @user.username %></p>
+      <p><%= @user.show_name.blank?? @user.username : @user.show_name %></p>
       <% if @apply_record %>
         <div><span>应聘:</span><span><%= @apply_record.job_name %></span></div>
       <% end %>
