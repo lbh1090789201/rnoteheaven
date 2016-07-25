@@ -25,7 +25,7 @@ function againRelease(div_class,text) {
   parent_div.append(div);
   var timer = setTimeout(function(){
     div.remove();
-  },1000);
+  },100000);
 }
 
 /* new页面类型选择脚本 开始 */
