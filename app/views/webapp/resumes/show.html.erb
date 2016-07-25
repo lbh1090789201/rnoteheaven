@@ -2,10 +2,7 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
-   function showTime(){
-   document.getElementById("innerHTMLtxt").innerHTML="Time:("+new Date().getTime()+")";
-   }
-   showTime();
+   document.getElementById("#wrap").innerHTML="Time:("+new Date().getTime()+")";
   // android_reload()
   // set_back("/webapp/users/<%= current_user.id %>");
 </script>
