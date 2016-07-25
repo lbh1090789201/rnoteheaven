@@ -29,7 +29,6 @@ showTime();
             </div>
         </section>
 
-        <%# @user.each do |u| %>
         <section class="show-style">
             <h2>基本信息</h2>
             <div class="box box-table borDer" id="box_table">
@@ -78,7 +77,6 @@ showTime();
                 </table>
             </div>
         </section>
-        <%# end %>
 
 
         <section class="show-style">
@@ -263,7 +261,7 @@ showTime();
       type: 'PATCH',
       data: {refresh: true},
       success: function() {
-        $('.refresh').html('6天后可再次刷新');
+        $('.refresh').html('7天后可再次刷新');
         $('.refresh').css('background-color', 'gray');
         $('.refresh').off();
       },

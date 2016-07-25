@@ -1,10 +1,10 @@
 
 <% @fairs.each do |f| %>
 <div id="hospital_home">
-  <div class="fair-image" style="background: url(<%= asset_path(f.banner) %>) no-repeat;background-size: cover"></div>
+  <div class="fair-image" style='background: url(<%= asset_path(f["banner"]["url"]) %>) no-repeat;background-size: cover'></div>
   <div class="home-bg"></div>
   <div class="home-note">
-    <p><%= f.name %> 沟通专场</p>
+    <p><%= f["name"] %> 沟通专场</p>
   </div>
 </div>
 <div id="hospital-data">
@@ -15,15 +15,15 @@
   <span></span>
   <div class="hospital-time">
     <p>距专场结束</p>
-    <p><%= f.end_at.strftime("%Y-%m-%d") %></p>
+    <p><%= f["diff"] %></p>
   </div>
 </div>
 <div id="hospital_rule">
   <h2>专场细则</h2>
-  <p><%= f.intro %></p>
+  <p><%= f["intro"] %></p>
 </div>
 <p class="button">
-  <a href="/webapp/job_fairs/<%= f.id %>">
+  <a href="/webapp/job_fairs/<%= f['id'] %>">
     进入专场
   </a>
 </p>

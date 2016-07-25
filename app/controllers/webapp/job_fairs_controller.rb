@@ -2,16 +2,14 @@ class Webapp::JobFairsController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
 
   def index
-    @fairs = Fair.where(status: 'processing')
-    # @fairs = []
-    # fairs.each do |f|
-    #   o = {
-    #     fair = f,
-    #     left_end = ((f.end_at - Time.now)/1.day).to_i
-    #   }
-    #   @fairs.push(o)
-    # end
-    # return @fairs
+    fairs = Fair.where(status: 'processing')
+    @fairs = []
+    fairs.each do |f|
+      fair = f.as_json
+      fair["diff"] = time_diff(Time.now, f.end_at)
+      @fairs.push fair
+    end
+
     @fairs_length = @fairs.length
   end
 
@@ -47,5 +45,19 @@ class Webapp::JobFairsController < ApplicationController
 
   def destroy
   end
+
+  private
+    def time_diff(start_time, end_time)
+      seconds_diff = (start_time - end_time).to_i.abs
+
+      hours = seconds_diff / 3600
+      seconds_diff -= hours * 3600
+
+      minutes = seconds_diff / 60
+      seconds_diff -= minutes * 60
+
+      seconds = seconds_diff
+      "#{hours.to_s.rjust(2, '0')}:#{minutes.to_s.rjust(2, '0')}:#{seconds.to_s.rjust(2, '0')}"
+    end
 
 end

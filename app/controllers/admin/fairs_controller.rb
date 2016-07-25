@@ -46,8 +46,9 @@ class Admin::FairsController < AdminController
       fair = Fair.set_end fair
     end
 
-    fair = Fair.fair_statistic fair
     EventLog.create_log current_user.id, current_user.show_name, 'Fair', fair.id, "专场", '更新'
+    fair = Fair.fair_statistic fair
+    
     render json: {
       success: true,
       info: '更新专场成功',

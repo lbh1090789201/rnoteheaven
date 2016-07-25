@@ -248,8 +248,6 @@ function ClickDeleteBtn(obj){
       	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
       	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
-        //Android 设置链接
-        var androidUrl = my_url == null ? "toDetectionReady" : my_url;
         //IOS设置返回的链接中的独有包含字段
       	var iosUrl={};
       	iosUrl.faction="setBackUrl";
@@ -262,13 +260,21 @@ function ClickDeleteBtn(obj){
         	window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
           }
         if(isAndroid){
-          var messageBody={
-            "faction": "setBackToUrl",
-            "parameter": {"url":androidUrl},
-            "callback": ""
+          if(my_url == null) {
+            var messageBody={
+              "faction": "setBackToLast",
+              "parameter": '',
+              "callback": ""
+            }
+          } else {
+            var messageBody={
+              "faction": "setBackToUrl",
+              "parameter": {"url": my_url},
+              "callback": ""
+            }
           }
+
           window.js2MobInterface.postMessage(JSON.stringify(messageBody));
-          // window.js2MobInterface.setBackUrl(androidUrl);
         }
   }
 
@@ -294,38 +300,78 @@ function ClickDeleteBtn(obj){
       "callback": ""
     }
 
-    function no_refresh() {
-      console.log('ok')
-    }
-
 		if(isiOS){
 	    window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
 	    }
 	  if(isAndroid){
-			Window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
+			window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
 		}
 	}
 
   //Android 刷新页面
-  function android_reload() {
+  function set_back_reload(my_url) {
     var u = navigator.userAgent;
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 
-    //android 刷新页面 app
-    var messageBody={
-      "faction": "setBackToLast",
-      "parameter": "",
-      "callback": ""
-    }
+    //IOS设置返回的链接中的独有包含字段
+    var iosUrl={};
+    iosUrl.faction="setBackUrl";
+    iosUrl.type="1";
+    var backUrl={};
+    backUrl.from_index = my_url == null ? "/pageJump/toDetectionReady.do" : my_url;
+    iosUrl.parameter=backUrl;
 
-    if(isAndroid) {
-      // 进入这里没问题，刷新没效果
+    if(isiOS){
+      window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(iosUrl));
+      }
+    if(isAndroid){
+      if(my_url == null) {
+        var messageBody={
+          "faction": "setBackToLast",
+          "parameter": '',
+          "callback": ""
+        }
+      } else {
+        var messageBody={
+          "faction": "setBackToUrl",
+          "parameter": {"url": my_url},
+          "callback": "my_refresh()"
+        }
+      }
+
       window.js2MobInterface.postMessage(JSON.stringify(messageBody));
     }
   }
 
-  //
-  // function my_refresh() {
-  //   FailMask('#wrap','text')
-  //   window.location.href= window.location.href + "?no_refresh=true"
-  // }
+
+  function my_refresh() {
+    // FailMask('#wrap', 'tess')
+    var new_url = window.location.href + '?no_refresh=true'
+    window.location.href = new_url
+  }
+//
+//   function getWholeUrl() {
+//     var url = document.location.toString();
+//     if(url.indexOf("?") != -1){
+//     　　　　　　relUrl = relUrl.split("?")[0];
+//     　　　　}
+//     return relUrl;
+//   }
+//
+//
+//
+// function app_reload() {
+//   var u = navigator.userAgent;
+//   var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+//   var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+//   var messageBody={
+//     "faction": "setBackToLast",
+//     "parameter": '',
+//     "callback": "my_refresh()"
+//   }
+//
+//   if(isAndroid){
+//     window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+//   }
+// }
