@@ -50,7 +50,7 @@ class Admin::HospitalsController < AdminController
       hospital = Hospital.where(id: params[:id])
       @hospital_infos = hospital.get_info hospital
 
-      EventLog.create_log current_user.id, current_user.show_name, 'Hospital', hospital.id, "机构", '更新'
+      EventLog.create_log current_user.id, current_user.show_name, 'Hospital', hospital[0].id, "机构", '更新'
       render json: {
         success: true,
         info: "更新成功",
