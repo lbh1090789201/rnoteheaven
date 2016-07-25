@@ -46,7 +46,7 @@
     <% end %>
     <div class="show-img" style="background: url('<%= asset_path(@avatar) %>') no-repeat center;background-size: cover"></div>
     <div class="show-top">
-      <p><%= @user.show_name %></p>
+      <p><%= @user.show_name ? @user.show_name : @user.username %></p>
       <% if @apply_record %>
         <div><span>应聘:</span><span><%= @apply_record.job_name %></span></div>
       <% end %>
@@ -125,10 +125,6 @@
           $("#callNode").attr("href","tel:<%= @user.cellphone %>");
       }
     }
-
-    // function call_phone() {
-    //   callPhone();
-    // }
 
     // 面试提示页面
     function CellPhone() {
