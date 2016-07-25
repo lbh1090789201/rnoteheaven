@@ -238,3 +238,42 @@
      cursor: pointer;
    }
  }
+
+ // 失败弹窗，３秒后自动消失
+ .mask-middle {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   margin-top: -2.8rem;
+   margin-left: -6.75rem;
+   width: 13.5rem;
+   height: 5.6rem;
+   line-height: 5.6rem;
+   text-align: center;
+   font-size: 0.9rem;
+   background: rgba(0,0,0,0.5);
+   color: #fff;
+   border-radius: 0.5rem;
+ }
+
+ // 失败弹窗，３秒后自动消失
+ .release-fail {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   margin-top: -2.8rem;
+   margin-left: -6.75rem;
+   width: 13.5rem;
+   height: 5.6rem;
+   // line-height: 5.6rem;
+   text-align: center;
+   font-size: 0.9rem;
+   background: rgba(0,0,0,0.5);
+   color: #fff;
+   border-radius: 0.5rem;
+   .mask-release {
+     padding-top: 32px;
+     padding-left: 15px;
+     padding-right: 15px;
+   }
+ }
