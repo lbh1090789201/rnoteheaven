@@ -6,7 +6,7 @@
   // android_reload()
   // set_back("/webapp/users/<%= current_user.id %>");
 </script>
-
+<div id="refresh_one" style="display: none"></div>
 <div class="container resume-show " style="background: f3f3f3;">
     <div class="wrap">
         <section class="show-style">
@@ -120,7 +120,7 @@
             </h2>
             <% if !@education_experiences.blank? %>
             <div class="box work-show box-education borDer work-try">
-              <a href="<%= webapp_education_experiences_path %>" class="edit educate-edit">
+              <a href="<%= webapp_education_experiences_path %>" class="edit">
                   <%= image_tag "edit.png" %>
               </a>
                 <% @education_experiences.each do |e| %>

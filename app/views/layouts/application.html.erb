@@ -41,6 +41,9 @@
 </body>
 <%= javascript_include_tag "rem.min", "data-turbolinks-track" => true  %>
 <script>
-  showTime("#wrap");
+function showTime(){
+   document.getElementById("refresh_one").innerHTML="Time:("+new Date().getTime()+")";
+   }
+   showTime();
 </script>
 </html>
