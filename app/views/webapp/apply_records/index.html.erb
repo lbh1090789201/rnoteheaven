@@ -1,4 +1,7 @@
 <% provide :title, "我的应聘记录" %>
+<script>
+  app_reload();
+</script>
 <div class="main my_apply_records">
     <ul class="apply_records">
         <li class="active">
@@ -30,7 +33,7 @@
                           <%= image_tag "red_point.png"%>
                           <% end %>
                         </h3>
-                        <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
+                        <p class="job-time"><%= d[:recieve_at].strftime("%Y-%m-%d") if d[:recieve_at] %> | <%= d[:location] %></p>
                         <p class="job-hsname"><%= d[:hospital_name] %></p>
                       </div>
                       <div class="right">
