@@ -2,12 +2,12 @@
 <% provide :link, "#{current_user.id}/preview" %>
 <%= provide :content, "预览" %>
 <script>
-function showTime() {
-  document.getElementById('#wrap').innerHTML = 'Time:("+new Date().getTime()+")';
-}
-showTime();
+   function showTime(){
+   document.getElementById("#wrap").innerHTML="Time:("+new Date().getTime()+")";
+   }
+   showTime();
   // android_reload()
-  set_back("/webapp/users/<%= current_user.id %>");
+  // set_back("/webapp/users/<%= current_user.id %>");
 </script>
 
 <div class="container resume-show " style="background: f3f3f3;">
