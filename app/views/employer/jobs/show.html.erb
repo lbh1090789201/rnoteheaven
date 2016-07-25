@@ -70,7 +70,7 @@
                                                    .css('display','none');
         },
         error: function(){
-          alert('刷新失败');
+          FailMask('.wrap','刷新失败')
         },
       });
     })
@@ -145,7 +145,7 @@
         $('#postPause').off();
       },
       error: function() {
-        alert('暂停失败。');
+        FailMask('.wrap','暂停失败。')
       },
     });
   }
@@ -157,7 +157,7 @@
     var button_text = $(obj).text();
 
     if(button_text == '再次发布' && vip_status == 'false') {
-      alert('您的可发布职位数已满，若想发布更多，请购买VIP');
+      FailMask('.wrap','您的可发布职位数已满，若想发布更多，请购买VIP');
       return;
     }
       // 当值为再次发布时点击判断may_release
@@ -200,7 +200,7 @@
         $('#release').off();
       },
       error: function() {
-        alert('操作失败。');
+        FailMask('.wrap','操作失败。');
       },
     });
   }
@@ -229,7 +229,7 @@
         $('#end').off();
       },
       error: function() {
-        alert('结束发布失败。')
+        FailMask('.wrap','结束发布失败。')
       },
     });
   }
@@ -245,7 +245,7 @@
         console.log('删除成功！');
       },
       error: function() {
-        alert('删除失败。')
+        FailMask('.wrap','删除失败。')
       },
     });
   }

@@ -8,7 +8,7 @@
   var id = "<%= params[:job_id]%>";
   if(id == '' && may_view == 'false'){
     $('.resumes-show>.wrap').hide();
-    alert("您可查看的简历数已满，若想查看更多，请购买VIP");
+    FailMask('.wrap','您可查看的简历数已满，若想查看更多，请购买VIP');
   }
   // 进入后传该医院已查看该简历 user_id
   $.ajax({
@@ -145,7 +145,7 @@
                                    .siblings().css({'width':'100%','background':'#a1a1a1','color':'#dadada'});
         },
         error: function(){
-          alert("操作失败");
+          FailMask('.wrap','操作失败');
         }
       });
       $('#hide_btn').css('display','none');
@@ -162,7 +162,7 @@
                                    .siblings().css({'width':'100%','background':'#a1a1a1','color':'#dadada'});
         },
         error: function(){
-          alert("操作失败");
+          FailMask('.wrap','操作失败');
         }
       })
     }
