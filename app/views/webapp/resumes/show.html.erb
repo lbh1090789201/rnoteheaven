@@ -120,14 +120,14 @@
             </h2>
             <% if !@education_experiences.blank? %>
             <div class="box work-show box-education borDer work-try">
+              <a href="<%= webapp_education_experiences_path %>" class="edit educate-edit">
+                  <%= image_tag "edit.png" %>
+              </a>
                 <% @education_experiences.each do |e| %>
                 <div class="blue-left">
                   <div class="blue-point"></div>
                   <time><%= e.entry_at.strftime("%Y-%m-%d") if e.entry_at %>－<%= e.graduated_at.strftime("%Y-%m-%d") if e.graduated_at %></time>
                   <div class="time-line-box">
-                    <a href="<%= webapp_education_experiences_path %>" class="edit educate-edit">
-                        <%= image_tag "edit.png" %>
-                    </a>
                       <h3><%= e.college %>
                       </h3>
                     <p><%= e.major %></p>
