@@ -6,7 +6,7 @@ module Webapp::ResumeViewersHelper
     res = []
     resume_viewers.each do |r|
       hospital = Hospital.find_by_id r.hospital_id
-      job_num = Job.where(hospital_id: hospital.id).length
+      job_num = Job.where(hospital_id: hospital.id, status: "release").length
       o = {
           hospital_id:r.hospital_id,
           hospital_name:hospital.name,
