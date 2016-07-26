@@ -34,7 +34,8 @@ var AdminResumeForm = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
-
+    //隐藏分页码
+    $('.pagination').hide()
     $.ajax({
       url: '/admin/resumes',
       type: 'GET',
@@ -49,10 +50,18 @@ var AdminResumeForm = React.createClass({
       success: function(res) {
         this.props.dad.setState({resumes : res.resumes})
         $('input:checkbox').removeAttr('checked');
+        this.setState({
+          public: '',
+          resume_freeze: '',
+        })
       }.bind(this),
       error: function(res){
         alert(res.responseText)
-      },
+        this.setState({
+          public: '',
+          resume_freeze: '',
+        })
+      }.bind(this),
     })
   }
   ,handleCheck: function(e) {

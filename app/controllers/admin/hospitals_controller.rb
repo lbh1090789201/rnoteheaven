@@ -35,6 +35,7 @@ class Admin::HospitalsController < AdminController
     else
       hospitals = Hospital.all
       @hospitals = Hospital.get_info hospitals
+      @hospitals = Kaminari.paginate_array(@hospitals).page(params[:page]).per(8)
       @vip_levels = Plan.where(status: true)
     end
 

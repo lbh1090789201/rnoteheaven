@@ -1,7 +1,7 @@
 class Admin::UsersController < AdminController
   before_action :require_acounts_manager!
   protect_from_forgery :except => [:create, :update, :destroy]
-  
+
   def index
     if params[:search]
       @users = User.filter_create_before(params[:time_to])
@@ -22,6 +22,7 @@ class Admin::UsersController < AdminController
 
   def record
     @log = EventLog.all.order('created_at DESC')
+    @log = Kaminari.paginate_array(@log).page(params[:page]).per(15)
   end
 
   def  create

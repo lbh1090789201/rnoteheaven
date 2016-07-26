@@ -4,21 +4,18 @@ class Admin::VipsController < AdminController
     protect_from_forgery :except => [:index, :create, :update, :destroy]
 
   def index
-    @vips = Plan.all
-
-    # 练习　开始
-    @vip = Plan.page(params[:page]).per(1)
-    puts "-------------" + @vip.to_json.to_s
-    # 练习　结束
 
     if params[:search]
-      @vvs = Plan.filter_by_status(params[:status]).filter_by_name(params[:vip_name])
+      @vips = Plan.filter_by_status(params[:status])
+                 .filter_by_name(params[:vip_name])
 
       render json: {
         success: true,
         info: "搜索成功",
-        vip: @vvs
+        vip: @vips
       }, status: 200
+    else
+      @vips = Plan.page(params[:page]).per(8)
     end
   end
 

@@ -16,22 +16,20 @@ class Webapp::JobFairsController < ApplicationController
   def show
     @fair = Fair.find params[:id]
     fair_hospitals = FairHospital.where(fair_id: @fair.id, status: 'on')
+      @fair_hospitals = []
 
-    @fair_hospitals = []
-
-    fair_hospitals.each do |f|
-      hospital = Hospital.find f.hospital_id
-      apply_record =ApplyRecord.where(hospital_id: hospital.id).length
-      o = {
-        fair_id: f.fair_id,
-        banner: f.banner,
-        hospital: hospital,
-        apply_length: apply_record,
-      }
-      @fair_hospitals.push o
-    end
-    return @fair_hospitals
-
+      fair_hospitals.each do |f|
+        hospital = Hospital.find f.hospital_id
+        apply_record =ApplyRecord.where(hospital_id: hospital.id).length
+        o = {
+          fair_id: f.fair_id,
+          banner: f.banner,
+          hospital: hospital,
+          apply_length: apply_record,
+        }
+        @fair_hospitals.push o
+      end
+      return @fair_hospitals
   end
 
   def edit

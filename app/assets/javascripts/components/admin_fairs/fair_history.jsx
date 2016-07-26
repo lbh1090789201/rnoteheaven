@@ -49,7 +49,8 @@ var FairHistroyForm = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
-
+    $(".pagination").hide()
+    
     $.ajax({
       url: '/admin/fairs',
       type: 'GET',

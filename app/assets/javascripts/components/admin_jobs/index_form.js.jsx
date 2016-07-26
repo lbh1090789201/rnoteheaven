@@ -16,7 +16,9 @@ var ReviewJobAll = React.createClass({
   }
   ,handleSubmit: function(e){
     e.preventDefault()
-    console.log(this.state.status)
+    //隐藏分页码
+    $('.pagination').hide()
+    
     let time_before = this.refs.time_before.value,
         time_after = this.refs.time_after.value,
         job_type = this.refs.job_type.value,

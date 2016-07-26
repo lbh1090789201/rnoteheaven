@@ -22,6 +22,7 @@ class Admin::JobsController < AdminController
     else
       jobs = Job.where.not(status: ['reviewing', 'saved'])
       @jobs = Job.get_job_info jobs
+      @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(8)
     end
   end
 
@@ -43,6 +44,7 @@ class Admin::JobsController < AdminController
     else
       jobs = Job.filter_job_status('reviewing')
       @jobs = Job.get_job_info jobs
+      @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(8)
 
     end
 

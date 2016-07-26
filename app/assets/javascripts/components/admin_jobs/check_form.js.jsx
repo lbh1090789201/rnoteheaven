@@ -13,6 +13,8 @@ var ReviewJob = React.createClass({
   //点击搜索提交按钮事件
   ,handleSubmit: function(e){
     e.preventDefault()
+    //隐藏分页码
+    $('.pagination').hide()
     // 获取真实dom节点
     let time_begin = this.refs.time_begin.value,
         time_end = this.refs.time_end.value,
