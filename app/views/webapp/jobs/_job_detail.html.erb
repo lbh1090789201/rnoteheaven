@@ -40,7 +40,10 @@
 
 
 <script type="text/javascript">
+$("#job_map").click(
   FailMask("#wrap",$("#job_map").attr("href"))
+  $("#job_map").attr("href","javascript:void(0)")
+)
 
   // 应聘职位
   $('#btn_apply').bind('click', function(event){
