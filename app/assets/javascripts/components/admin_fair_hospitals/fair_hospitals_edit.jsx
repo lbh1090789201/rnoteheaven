@@ -91,9 +91,6 @@ var FairHospitalEdit = React.createClass({
                       style={this.state.divStyle} name="banner" ref="banner" />
             </div>
 
-            <input className="hidden" name="status" defaultValue="on" />
-            <input className="hidden" name="hospital_id" defaultValue={gold.id} />
-
             <button type="button" className="btn btn-bottom btn-secondary"
                     onClick={this.props.dad.handleClick} name="edit_display" value="false" >取消</button>
 
