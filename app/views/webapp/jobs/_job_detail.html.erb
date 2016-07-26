@@ -9,7 +9,7 @@
         <li><span>地区</span><%= @job.region %><span class="job-number">人数</span><span><%= @job.needed_number %>人</span></li>
       </ul>
     </div>
-    <div class="job-place"><a id="job_map" href="http://api.map.baidu.com/marker?location=39.916979519873,116.41004950566&title=医院&content=我的位置&output=html"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
+    <div class="job-place"><a id="job_map" href="http://api.map.baidu.com/marker?location=<%= @hospital.lat %>,<%= @hospital.lng %>&title=<%= @hospital.name %>&content=<%= @job.location %>&output=html"><span>工作地点</span><%= @job.location %><i><%= image_tag "jobright.png" %></i></a></div>
   </section>
 
   <section class="job-right">
@@ -40,10 +40,6 @@
 
 
 <script type="text/javascript">
-$("#job_map").click(
-  FailMask("#wrap",$("#job_map").attr("href"))
-  $("#job_map").attr("href","javascript:void(0)")
-)
 
   // 应聘职位
   $('#btn_apply').bind('click', function(event){
