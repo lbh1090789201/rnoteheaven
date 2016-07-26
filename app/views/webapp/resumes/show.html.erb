@@ -1,6 +1,6 @@
 <% provide :title, "我的简历" %>
-<% provide :link, "#{current_user.id}/preview" %>
-<%= provide :content, "预览" %>
+<%# provide :link, "#{current_user.id}/preview" %>
+<%# provide :content, "预览" %>
 <script>
   app_reload();
   set_back("/webapp/users/<%= current_user.id %>");
