@@ -149,6 +149,7 @@ footer {
 
 
 .pagination {
+  margin: 0;
   float: right;
   a {
     padding: 4px 12px;
@@ -160,5 +161,6 @@ footer {
   }
   a:hover {
     background-color: #428bca;
+    color: #fff;
   }
 }
