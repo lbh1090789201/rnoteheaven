@@ -57,6 +57,8 @@ class Hospital < ActiveRecord::Base
           introduction: h.introduction,
           contact_person: h.contact_person,
           contact_number: h.contact_number,
+          lng: h.lng,
+          lat: h.lat,
           vip_name: plan.name,
           may_release: plan.may_release,
           may_set_top: plan.may_set_top,

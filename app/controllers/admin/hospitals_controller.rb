@@ -86,7 +86,7 @@ class Admin::HospitalsController < AdminController
 
   def hospital_params
     params.permit(:name, :industry, :property, :scale, :region, :contact_number,
-                         :lng, :lat, :location, :introduction, :contact_person)
+                         :lng, :lat, :location, :introduction, :contact_person, :lng, :lat)
   end
 
   def employer_params
