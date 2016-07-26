@@ -15,6 +15,7 @@ class Webapp::JobFairsController < ApplicationController
 
   def show
     @fair = Fair.find params[:id]
+    @fair_name = @fair.name
     fair_hospitals = FairHospital.where(fair_id: @fair.id, status: 'on')
       @fair_hospitals = []
 

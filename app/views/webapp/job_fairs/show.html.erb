@@ -1,4 +1,4 @@
-
+<%= provide :title, @fair_name %>
 <% @fair_hospitals.each do |f| %>
 <div class="hospital-list fair-list">
   <a href="/webapp/hospitals/<%= f[:hospital].id %>?fair_id=<%= f[:fair_id] %>">
