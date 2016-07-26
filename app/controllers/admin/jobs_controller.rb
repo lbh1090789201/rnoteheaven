@@ -11,7 +11,6 @@ class Admin::JobsController < AdminController
                  .filter_job_type(params[:job_type])
                  .filter_hospital_name(params[:hospital_name])
                  .filter_job_name(params[:job_name])
-                 .as_json
 
       @jobs = Job.get_job_info jobs
 
@@ -21,7 +20,7 @@ class Admin::JobsController < AdminController
         jobs: @jobs
       }, status: 200
     else
-      jobs = Job.where.not(status: ['reviewing', 'saved']).as_json
+      jobs = Job.where.not(status: ['reviewing', 'saved'])
       @jobs = Job.get_job_info jobs
     end
   end
@@ -34,7 +33,6 @@ class Admin::JobsController < AdminController
                  .filter_job_type(params[:job_type])
                  .filter_hospital_name(params[:hospital_name])
                  .filter_job_name(params[:job_name])
-                 .as_json
 
       @jobs = Job.get_job_info jobs
       render json: {
@@ -43,7 +41,7 @@ class Admin::JobsController < AdminController
         jobs: @jobs
       }, status: 200
     else
-      jobs = Job.filter_job_status('reviewing').as_json
+      jobs = Job.filter_job_status('reviewing')
       @jobs = Job.get_job_info jobs
 
     end
@@ -77,9 +75,11 @@ class Admin::JobsController < AdminController
       end
 
       if btn_params[:status] == 'release'
-        @jobs = Job.filter_job_status('reviewing').as_json
+        jobs = Job.filter_job_status('reviewing')
+        @jobs = Job.get_job_info jobs
       else
-        @jobs = Job.where.not(status: ['reviewing', 'saved'])
+        jobs = Job.where.not(status: ['reviewing', 'saved'])
+        @jobs = Job.get_job_info jobs
       end
 
       render json: {

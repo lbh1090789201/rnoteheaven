@@ -126,13 +126,13 @@ RSpec.describe Job, type: :model do
     end
 
     it "test get_job_info" do
-      jobs = Job.where(hospital_id: @hospital1.id).as_json
+      jobs = Job.where(hospital_id: @hospital1.id)
       job_infos = Job.get_job_info jobs
-      expect(job_infos[0]["job"]["name"]).to eq("护士")
+      expect(job_infos[0]["name"]).to eq("护士")
     end
 
     it "test hospital industry" do
-      jobs = Job.where(hospital_id: @hospital1.id).as_json
+      jobs = Job.where(hospital_id: @hospital1.id)
       job_infos = Job.get_job_info jobs
       expect(job_infos[0]["hospital_industry"]).to eq("医疗")
     end

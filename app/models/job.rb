@@ -167,12 +167,11 @@ class Job < ActiveRecord::Base
   def self.get_job_info jobs
     job_infos = []
     jobs.each do |j|
-      hospital = Hospital.find j["hospital_id"]
-      job_info = {}
-      job_info["job"] = j
-      job_info["hospital_industry"] = hospital.industry
-      job_info["hospital_name"] = hospital.name
-      job_infos.push job_info
+      hospital = Hospital.find j.hospital_id
+      job = j.as_json
+      job["hospital_industry"] = hospital.industry
+      job["hospital_name"] = hospital.name
+      job_infos.push job
     end
     return job_infos
   end
