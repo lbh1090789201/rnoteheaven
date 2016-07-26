@@ -146,3 +146,19 @@ header {
 footer {
   text-align: center;
 }
+
+
+.pagination {
+  float: right;
+  a {
+    padding: 4px 12px;
+    line-height: 1.44rem;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-left-width: 0;
+  }
+  a:hover {
+    background-color: #428bca;
+  }
+}
