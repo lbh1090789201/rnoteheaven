@@ -1,6 +1,7 @@
 <% provide :title, "我的应聘记录" %>
 <script>
   app_reload();
+  set_back("/webapp/users/<%= current_user.id %>");
 </script>
 <div class="main my_apply_records">
     <ul class="apply_records">

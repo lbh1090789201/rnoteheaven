@@ -1,6 +1,6 @@
 <% provide :title, "简历隐私" %>
 <script>
-  set_back("/webapp/resumes/<%= @resume.id %>")
+  set_back("/webapp/users/<%= current_user.id %>");
 </script>
 <div class="block-hospital">
   <section class="block-btn">
