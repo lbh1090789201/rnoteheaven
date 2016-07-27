@@ -310,6 +310,23 @@ function ClickDeleteBtn(obj){
 		}
 	}
 
+  //安卓返回APP首页
+  function go_home_android(){
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+    //android 首页返回 app
+    var androidUrl={
+      "faction": "setBackCloseWeb",
+      "parameter": "",
+      "callback": ""
+    }
+
+    if(isAndroid){
+      window.js2MobInterface.postMessage(JSON.stringify(androidUrl));
+    }
+  }
+
   //Android 刷新页面
   function set_back_reload(my_url) {
     var u = navigator.userAgent;
