@@ -22,8 +22,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
     # "default.png"
-    process :auto_orient
-    process :resize_to_fill => [300, 300]
   end
 
   def auto_orient

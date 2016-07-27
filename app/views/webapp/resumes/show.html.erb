@@ -234,8 +234,8 @@
     $('#user_avatar').click();
   }),
   $('#user_avatar').change(function() {
+    FailMask('#wrap', '图片上传中....')
     $('#avatar_submit').click();
-    console.log('uploading')
   })
 
   // 刷新简历

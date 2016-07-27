@@ -12,7 +12,7 @@ class Webapp::ResumesController < ApplicationController
     @work_experiences = WorkExperience.where(:user_id => @user.id)
     @education_experiences = EducationExperience.where(:user_id => @user.id)
     @expect_job = ExpectJob.find_by_user_id(@user.id)
-    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
+    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url(:square)
     @certificates = Certificate.where(:user_id => @user.id)
   end
 
