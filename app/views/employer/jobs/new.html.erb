@@ -106,6 +106,7 @@
 
   // 职位类型
   $('.job-type').click(function() {
+    this.blur()
     var job_type = ['机构管理人员','综合门诊/全科医生','内科医生','外科医生','专科医生','牙科医生','美容整形师',
     '麻醉医生','放射科医师','理疗师','中医科医生','针灸/推拿','儿科医生','心理医生','营养师','药库主任/药剂师','医药学检验',
     '公共卫生/疾病控制','护理主任/护士长','护士/护理人员','兽医','验光师','其他'];
@@ -115,6 +116,7 @@
 
   // 薪资
   $('.job-range').click(function() {
+    this.blur()
     var job_range = ['1500以下','2000-5000', '5000-10000', '10000-15000', '15000-25000', '25000-50000', '50000以上'];
     var pclass = 'job_range';
     JobBasicNew(job_range, ".job-range", pclass);
@@ -122,6 +124,7 @@
 
   // 职位类型
   $('.job-experience').click(function() {
+    this.blur()
     var job_experience = ['在读学生','应届毕业生', '1年', '2年', '3-4年', '5-7年', '10年以上'];
     var pclass = 'job_experience';
     JobBasicNew(job_experience, ".job-experience", pclass);
@@ -129,6 +132,7 @@
 
   // 发布期限
   $('.job-end').click(function() {
+    this.blur()
     var job_end = ['１星期','２星期', '半个月', '１个月', '２个月', '３个月'];
     var pclass = 'job_end';
     JobBasicNew(job_end, ".job-end", pclass);
