@@ -236,6 +236,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rmagick (2.15.4)
     rolify (5.1.0)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
@@ -365,6 +366,7 @@ DEPENDENCIES
   react-rails (= 1.7.2)
   remotipart
   rest-client (~> 2.0)
+  rmagick (~> 2.15, >= 2.15.4)
   rolify
   rspec
   rspec-rails

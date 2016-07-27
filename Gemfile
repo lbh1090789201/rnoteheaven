@@ -16,6 +16,7 @@ gem 'coffee-script-source', '1.9.1.1'
 # gem 'pingpp'
 #for upload files
 gem 'carrierwave'
+gem 'rmagick', '~> 2.15', '>= 2.15.4'
 gem 'ffmpeg'
 gem 'streamio-ffmpeg'
 gem 'carrierwave-video'
