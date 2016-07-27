@@ -6,7 +6,4 @@ class Webapp::ResumeViewersController < ApplicationController
   def index
     @resume_view = get_resume_viewers(current_user.id)
   end
-
-  def show
-  end
 end

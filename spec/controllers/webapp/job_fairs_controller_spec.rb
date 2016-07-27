@@ -25,13 +25,6 @@ RSpec.describe Webapp::JobFairsController, type: :controller do
     end
   end
 
-  describe 'GET #edit' do
-    it 'returns hettp success' do
-      get :edit, id: @user.id
-      expect(response.status).to eq(200)
-    end
-  end
-
   # describe 'POST #create' do
   #   context 'when sex is invalid' do
   #     it 'renders the page with error' do

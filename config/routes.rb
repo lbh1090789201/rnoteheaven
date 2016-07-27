@@ -62,9 +62,9 @@ Ryunkang::Application.routes.draw do
        get 'preview', on: :member
      end
 
-     resources :searchs do
-       get 'search', on: :collection
-     end
+    #  resources :searchs do
+    #    get 'search', on: :collection
+    #  end
 
      resources :hospitals
      resources :work_experiences

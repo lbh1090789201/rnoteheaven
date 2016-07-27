@@ -5,16 +5,6 @@ class Webapp::ResumesController < ApplicationController
   def index
   end
 
-  def create
-  end
-
-  def new
-
-  end
-
-  def destroy
-  end
-
   def preview
     resume = Resume.where(user_id: current_user.id).first_or_create!
 
