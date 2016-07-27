@@ -74,9 +74,17 @@
   }
   .IIInsomnia-city-picker {
     // position: fixed;
+    border-radius: 5px;
     width: 60%;
+    top: 95px!important;
     .line {
       width: 100%;
     }
+  }
+  .IIInsomnia-city-picker::before {
+    display: none;
+  }
+  .IIInsomnia-city-picker::after {
+    display: none;
   }
 }

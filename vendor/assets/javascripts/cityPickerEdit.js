@@ -17,6 +17,7 @@
 ;var IIInsomniaCityPickerEdit = function(options){
     this.settings = {
         'city_left': options.city_left,
+        'city_height': options.city_height,
         "data": options.data,
         "target": $(options.target),
         "valType": options.valType || 'k',

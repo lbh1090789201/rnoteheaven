@@ -12,12 +12,17 @@ var AdminEditHospital = React.createClass({
       vip_id: e.target.value,
     })
   }
-  ,handlefocus: function() {
+  ,handleFocus: function() {
+    console.log("11111")
+
     var input_id = this.refs.region.id,
         province = this.refs.region_2.id,
         city = this.refs.region_3.id
 
      var city_left = $(".user-box").css('margin-left');
+      var city_height = $(".user-box").height();
+
+
       var cityPicker = new IIInsomniaCityPickerEdit({
             data: cityData,
             target: '#'+input_id,
@@ -150,7 +155,7 @@ var AdminEditHospital = React.createClass({
               <div className="form-group col-sm-4">
                  <label>地区</label>
                    <input type="text" className="form-control" id="cityChoice" placeholder="地区" name="region"
-                             required ref="region" defaultValue={this.props.data.region} onFocus={this.handlefocus} />
+                             required ref="region" defaultValue={this.props.data.region} onClick={this.handleFocus} />
                    <input type="hidden" id="province" value="" ref="region_2" />
                    <input type="hidden" id="city" value="" ref="region_3" />
               </div>
