@@ -6,6 +6,7 @@ var FairHistroy = React.createClass({
       fairs: this.props.fairs,
       fair: '',
       view_display: false,
+      close: this.props.close,
     }
   }
   ,handleClick: function(e) {
@@ -19,7 +20,7 @@ var FairHistroy = React.createClass({
   ,render: function() {
     let fair_new = this.state.new_display ? <FairNew dad={this} /> : '',
         fair_edit = this.state.edit_display ? <FairEdit dad={this} /> : '',
-        fair_view = this.state.view_display ? <FairHistroyView dad={this} /> : ''
+        fair_view = this.state.view_display ? <FairHistroyView dad={this} close={this.state.close} /> : ''
 
     return (
       <div className="main">
@@ -50,7 +51,7 @@ var FairHistroyForm = React.createClass({
   ,handleSubmit: function(e) {
     e.preventDefault()
     $(".pagination").hide()
-    
+
     $.ajax({
       url: '/admin/fairs',
       type: 'GET',

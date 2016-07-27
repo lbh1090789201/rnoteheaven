@@ -4,12 +4,18 @@ var FairHistroyView = React.createClass({
       fair: this.props.dad.state.fair,
     }
   }
+  ,handleClick: function() {
+    this.props.dad.setState({
+      view_display: false,
+    })
+  }
   ,render: function() {
     let fair = this.state.fair
 
     return (
       <div className="mask-user">
         <div className="user-box">
+          <img className="img-close" src={this.props.close} onClick={this.handleClick} />
           <table>
             <tbody>
               <tr>
@@ -63,7 +69,7 @@ var FairHistroyView = React.createClass({
 
           <div className="form-group">
              <label>专场图片:</label>
-             <div><img src={fair.banner.url} /></div>
+             <div className="fair-img"><img src={fair.banner.url} /></div>
           </div>
 
         </div>
