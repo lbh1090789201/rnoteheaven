@@ -54,7 +54,7 @@
                     <li class="job-li apply-li">
                       <div class="left">
                         <h3 class="job-name"><%= d[:job_name] %></h3>
-                        <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
+                        <p class="job-time"><%= d[:recieve_at].strftime("%Y-%m-%d") if d[:recieve_at] %> | <%= d[:location] %></p>
                         <p class="job-hsname"><%= d[:hospital_name] %></p>
                       </div>
                       <div class="right">
@@ -79,7 +79,7 @@
                           <%= image_tag "red_point.png"%>
                           <% end %>
                         </h3>
-                        <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
+                        <p class="job-time"><%= d[:recieve_at].strftime("%Y-%m-%d") if d[:recieve_at] %> | <%= d[:location] %></p>
                         <p class="job-hsname"><%= d[:hospital_name] %></p>
                       </div>
                       <div class="right">
@@ -104,7 +104,7 @@
                           <%= image_tag "red_point.png"%>
                           <% end %>
                         </h3>
-                        <p class="job-time"><%= d[:apply_at].strftime("%Y-%m-%d") if d[:apply_at] %> | <%= d[:location] %></p>
+                        <p class="job-time"><%= d[:recieve_at].strftime("%Y-%m-%d") if d[:recieve_at] %> | <%= d[:location] %></p>
                         <p class="job-hsname"><%= d[:hospital_name] %></p>
                       </div>
                       <div class="right">
