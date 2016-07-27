@@ -81,7 +81,7 @@ class Webapp::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url
+    @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url(:square)
     @resume = Resume.where(user_id: current_user.id).first_or_create!
     @fhas_new = FavoriteJob.where(has_new: true, user_id: @user.id).length
     @ahas_new = ApplyRecord.where(has_new: true, user_id: @user.id).length
