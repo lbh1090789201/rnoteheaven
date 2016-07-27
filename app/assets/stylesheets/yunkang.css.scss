@@ -2731,7 +2731,7 @@ a:hover {
 
 // 工作经历首页　bh
 #work_edit_wrap {
-  margin: 0;
+  padding-bottom: 2.7rem;
 }
 .workindex-page {
   border: 1px solid #e3e3e3;
@@ -2838,7 +2838,7 @@ a:hover {
 //huangwei
 
 #preview-expect{padding: 0;}
-#preview-expect .work-time{padding: 0.8rem}
+// #preview-expect .work-time h3{margin-top: 0.2rem}
 #resumes-preview{padding-bottom: 3rem;}
 .wrap .borDer{min-height: 3rem;}
 .wrap .borDer>p.certi-p{padding-top: 0.7rem;}
@@ -2976,7 +2976,7 @@ a:hover {
   }
 
 
-// 失败弹窗，３秒后自动消失
+// 失败弹窗，1秒后自动消失
 .mask-middle {
   position: fixed;
   top: 50%;

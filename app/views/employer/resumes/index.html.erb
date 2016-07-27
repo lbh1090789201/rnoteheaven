@@ -1,9 +1,11 @@
-<script>
- $(go_home())
-</script>
+
 <%= provide :title, "简历管理" %>
 <%= provide :img_left, "home.png" %>
 <%= provide :back, '/employer/home' %>
+<script>
+ app_reload();
+ $(go_home())
+</script>
 
 <div id="resume_content">
   <div class="resume-content">

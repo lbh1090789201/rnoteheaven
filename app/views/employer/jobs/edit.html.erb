@@ -88,17 +88,8 @@
 	})
 
 	$('.job-slider').on('click',function () {
-	// if ($(this).css('background-color')=='rgb(244, 244, 244)') {//根据背景色判断，并移动和改变颜色样式
-	// 	  $('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
-	// 		$(this).css({'background':'#3f9e9f','margin-left':'#fff'});
-	// 		$('.job-top').attr('value',1);
-	// } else{
-	//   	$('.job-slider-inner').css('margin-left','0.1rem');
-	// 		$(this).css({'background':'#f4f4f4','margin-left':'#fff'});
-	// 		$('.job-top').attr('value',0);
-	// }
 		// 编辑页面不可编辑置顶
-		alert("置顶状态不可修改！");
+		FailMask('.wrap','置顶状态不可修改！');
 	})
 
   // 职位类型
@@ -123,13 +114,6 @@
     var pclass = 'job_experience';
     JobBasicNew(job_experience, ".job-experience", pclass);
   });
-
-	// // 发布期限
-  // $('.job-end').click(function() {
-  //   var job_end = ['１星期','２星期', '半个月', '１个月', '２个月', '３个月'];
-  //   var pclass = 'job_end';
-  //   JobBasicNew(job_end, ".job-end", pclass);
-  // });
 
  // 城市插件
   var cityPicker = new IIInsomniaCityPicker({

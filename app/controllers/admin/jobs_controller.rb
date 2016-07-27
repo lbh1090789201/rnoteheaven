@@ -4,13 +4,15 @@ class Admin::JobsController < AdminController
 
   def index
     if params[:search]
-      @jobs = Job.where.not(status: ['reviewing', 'saved'])
+      jobs = Job.where.not(status: ['reviewing', 'saved'])
                  .filter_job_status(params[:status])
                  .filter_release_before(params[:time_before])
-                 .filter_release_before(params[:time_after])
+                 .filter_release_after(params[:time_after])
                  .filter_job_type(params[:job_type])
                  .filter_hospital_name(params[:hospital_name])
                  .filter_job_name(params[:job_name])
+
+      @jobs = Job.get_job_info jobs
 
       render json: {
         success: true,
@@ -18,26 +20,32 @@ class Admin::JobsController < AdminController
         jobs: @jobs
       }, status: 200
     else
-      @jobs = Job.where.not(status: ['reviewing', 'saved']).as_json
+      jobs = Job.where.not(status: ['reviewing', 'saved'])
+      @jobs = Job.get_job_info jobs
+      @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(8)
     end
   end
 
   def check
     if params[:search]
-      @jobs = Job.filter_job_status('reviewing')
-                 .filter_release_before(params[:time_before])
-                 .filter_release_before(params[:time_after])
+      jobs = Job.filter_job_status('reviewing')
+                 .filter_create_begin(params[:time_after])
+                 .filter_create_end(params[:time_before])
                  .filter_job_type(params[:job_type])
                  .filter_hospital_name(params[:hospital_name])
                  .filter_job_name(params[:job_name])
 
+      @jobs = Job.get_job_info jobs
       render json: {
         success: true,
         info: '搜索成功',
         jobs: @jobs
       }, status: 200
     else
-      @jobs = Job.filter_job_status('reviewing').as_json
+      jobs = Job.filter_job_status('reviewing')
+      @jobs = Job.get_job_info jobs
+      @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(8)
+
     end
 
   end
@@ -51,7 +59,6 @@ class Admin::JobsController < AdminController
       info: '获取job成功',
       job: @job,
     }, status: 200
-
   end
 
   def update
@@ -70,9 +77,11 @@ class Admin::JobsController < AdminController
       end
 
       if btn_params[:status] == 'release'
-        @jobs = Job.filter_job_status('reviewing').as_json
+        jobs = Job.filter_job_status('reviewing')
+        @jobs = Job.get_job_info jobs
       else
-        @jobs = Job.where.not(status: ['reviewing', 'saved'])
+        jobs = Job.where.not(status: ['reviewing', 'saved'])
+        @jobs = Job.get_job_info jobs
       end
 
       render json: {

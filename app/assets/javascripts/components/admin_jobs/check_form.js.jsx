@@ -13,9 +13,11 @@ var ReviewJob = React.createClass({
   //点击搜索提交按钮事件
   ,handleSubmit: function(e){
     e.preventDefault()
+    //隐藏分页码
+    $('.pagination').hide()
     // 获取真实dom节点
-    let time_before = this.refs.time_before.value,
-        time_after = this.refs.time_after.value,
+    let time_begin = this.refs.time_begin.value,
+        time_end = this.refs.time_end.value,
         job_type = this.refs.job_type.value,
         hospital_name = this.refs.hospital_name.value,
         job_name = this.refs.job_name.value
@@ -25,8 +27,8 @@ var ReviewJob = React.createClass({
       type: 'GET',
       data: {
         'search': true,
-        'time_before': time_before,
-        'time_after': time_after,
+        'time_after': time_begin,
+        'time_before': time_end,
         'job_type': job_type,
         'hospital_name': hospital_name,
         'job_name': job_name
@@ -46,12 +48,12 @@ var ReviewJob = React.createClass({
     return (
       <form className='form-inline' onSubmit={this.handleSubmit}>
         <div className='form-group col-sm-4'>
-            <input type="date" className="form-control" placeholder='开始时间' name='time_after'
-                   defaultValue={this.state.time_after} ref="time_after" />
+            <input type="date" className="form-control" placeholder='开始时间' name='time_end'
+                   defaultValue={this.state.time_after} ref="time_begin" />
           </div>
           <div className='form-group col-sm-4'>
-            <input type="date" className="form-control" placeholder='结束时间' name='time_before'
-                   defaultValue={this.state.time_before} ref="time_before" />
+            <input type="date" className="form-control" placeholder='结束时间' name='time_begin'
+                   defaultValue={this.state.time_before} ref="time_end" />
           </div>
           <div className='form-group col-sm-4'>
             <input type='text' className='form-control' placeholder='工作类型' name='job_type'

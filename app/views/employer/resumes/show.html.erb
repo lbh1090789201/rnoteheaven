@@ -8,7 +8,7 @@
   var id = "<%= params[:job_id]%>";
   if(id == '' && may_view == 'false'){
     $('.resumes-show>.wrap').hide();
-    alert("您可查看的简历数已满，若想查看更多，请购买VIP");
+    FailMask('.wrap','您可查看的简历数已满，若想查看更多，请购买VIP');
   }
   // 进入后传该医院已查看该简历 user_id
   $.ajax({
@@ -46,7 +46,7 @@
     <% end %>
     <div class="show-img" style="background: url('<%= asset_path(@avatar) %>') no-repeat center;background-size: cover"></div>
     <div class="show-top">
-      <p><%= @user.show_name %></p>
+      <p><%= @user.show_name.blank?? @user.username : @user.show_name %></p>
       <% if @apply_record %>
         <div><span>应聘:</span><span><%= @apply_record.job_name %></span></div>
       <% end %>
@@ -101,11 +101,33 @@
   <div class="inter-phone">
     <p><%= @user.show_name %></p>
     <p><%= @user.cellphone %></p>
-    <a href="tel:<%= @user.cellphone %>"><%= image_tag 'icon_26.png' %></a>
+    <a href="javascript:void(0);" id="callNode" onClick="callPhone()"><%= image_tag 'icon_26.png' %></a>
   </div>
 </div>
 
 <script type="text/javascript">
+    function callPhone(){
+      var u = navigator.userAgent;
+  		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
+    	//href="tel:400-830-3620"
+      var YKPhone = {};
+          YKPhone.faction = "YKPhone";
+          YKPhone.type = 1;
+      var paramMsg = {};
+          paramMsg.phone = "<%= @user.cellphone %>";
+          YKPhone.parameter = paramMsg;
+      if(isiOS){
+          window.webkit.messageHandlers.interOp.postMessage(JSON.stringify(YKPhone));
+      }
+      if(isAndroid){
+          $("#callNode").attr("href","tel:<%= @user.cellphone %>");
+      }
+      $('#job_interview').hide();
+      $('.resumes-show .resume-content').show();
+    }
+
     // 面试提示页面
     function CellPhone() {
       $('#job_interview').css('display','block');
@@ -145,7 +167,7 @@
                                    .siblings().css({'width':'100%','background':'#a1a1a1','color':'#dadada'});
         },
         error: function(){
-          alert("操作失败");
+          FailMask('.wrap','操作失败');
         }
       });
       $('#hide_btn').css('display','none');
@@ -162,7 +184,7 @@
                                    .siblings().css({'width':'100%','background':'#a1a1a1','color':'#dadada'});
         },
         error: function(){
-          alert("操作失败");
+          FailMask('.wrap','操作失败');
         }
       })
     }

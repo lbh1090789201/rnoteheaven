@@ -1,3 +1,5 @@
+
+
 /*请求失败弹窗,1.5秒后自动消失*/
 // text: 弹窗展示的内容信息
 // div_class: 弹窗插入的父节点id　或 class
@@ -361,17 +363,16 @@ function ClickDeleteBtn(obj){
 //
 //
 //
-// function app_reload() {
-//   var u = navigator.userAgent;
-//   var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-//   var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-//   var messageBody={
-//     "faction": "setBackToLast",
-//     "parameter": '',
-//     "callback": "my_refresh()"
-//   }
-//
-//   if(isAndroid){
-//     window.js2MobInterface.postMessage(JSON.stringify(messageBody));
-//   }
-// }
+function app_reload() {
+  var u = navigator.userAgent;
+  var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+  var messageBody={
+    "faction": "registAutoReload",
+    "parameter": '',
+    "callback": ""
+  }
+
+  if(isAndroid){
+    window.js2MobInterface.postMessage(JSON.stringify(messageBody));
+  }
+}

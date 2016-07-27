@@ -87,79 +87,105 @@ var AdminEditHospital = React.createClass({
       <div className="mask-user">
         <div className="user-box">
           <form onSubmit={this.handleSubmit}>
-            <div className="form-group col-sm-4">
-               <label>账号</label>
-                 <input type="text" className="form-control" placeholder="账号" name="contact_number"
-                        disabled  required ref="contact_number" defaultValue={this.props.data.contact_number} />
+            <div className="row">
+              <div className="form-group col-sm-4">
+                 <label>账号</label>
+                   <input type="text" className="form-control" placeholder="账号" name="contact_number"
+                          disabled  required ref="contact_number" defaultValue={this.props.data.contact_number} />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>机构名称</label>
+                   <input className="form-control" type="text" placeholder="机构名称"
+                      name="name" required ref="name" defaultValue={this.props.data.name} />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>负责人</label>
+                   <input type="text" className="form-control" placeholder="姓名" name="contact_person"
+                            required ref="contact_person" defaultValue={this.props.data.contact_person} />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>联系电话</label>
+                   <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
+                            required ref="contact_number" defaultValue={this.props.data.contact_number} />
+              </div>
+
+              <div className="form-group col-sm-4">
+                <select name="industry" className="form-control form-magrin-top" defaultValue={this.props.data.industry}>
+                  <option value="">行业</option>
+                  <option value="医疗">医疗</option>
+                  <option value="医院">医院</option>
+                  <option value="美容">美容</option>
+                  <option value="卫生">卫生</option>
+                  <option value="医药">医药</option>
+                  <option value="医疗器械">医疗器械</option>
+                  <option value="整形">整形</option>
+                  <option value="口腔">口腔</option>
+                  <option value="门诊">门诊</option>
+                  <option value="诊所">诊所</option>
+                  <option value="药店">药店</option>
+                  <option value="保健">保健</option>
+                </select>
+              </div>
+
+              <div className="form-group col-sm-4">
+                <select name="property" className="form-control form-magrin-top" defaultValue={this.props.data.property}>
+                  <option value="">性质</option>
+                  <option value="综合医院">综合医院</option>
+                  <option value="专科医院">专科医院</option>
+                  <option value="民营医院">民营医院</option>
+                  <option value="公立诊所">公立诊所</option>
+                  <option value="民营诊所">民营诊所</option>
+                </select>
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>规模</label>
+                   <input type="text" className="form-control" placeholder="规模" name="scale"
+                              required ref="scale" defaultValue={this.props.data.scale} />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>地区</label>
+                   <input type="text" className="form-control" id="cityChoice" placeholder="地区" name="region"
+                             required ref="region" defaultValue={this.props.data.region} onFocus={this.handlefocus} />
+                   <input type="hidden" id="province" value="" ref="region_2" />
+                   <input type="hidden" id="city" value="" ref="region_3" />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>级别配置</label>(原：{this.props.data.vip_name})
+                 <select onChange={this.handleSelect} defaultValue={this.props.data.vip_id} className="form-control" >
+                   {select_plan}
+                 </select>
+              </div>
             </div>
 
-            <div className="form-group col-sm-4">
-               <label>机构名称</label>
-                 <input className="form-control" type="text" placeholder="机构名称"
-                    name="name" required ref="name" defaultValue={this.props.data.name} />
+            <div className="row">
+              <div className="form-group col-sm-4">
+                 <label>经度</label>
+                   <input type="text" className="form-control" defaultValue={this.props.data.lng} name="lng"
+                             required ref="lng" />
+              </div>
+
+              <div className="form-group col-sm-4">
+                 <label>纬度</label>
+                   <input type="text" className="form-control" defaultValue={this.props.data.lat} name="lat"
+                             required ref="lat" />
+              </div>
+
+              <div className="form-group col-sm-4">
+                <label>拾取坐标</label>
+                <button className="btn btn-default btn-map">
+                  <a className="btn-href" href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank">
+                  点击拾取
+                  </a>
+                </button>
+              </div>
             </div>
 
-            <div className="form-group col-sm-4">
-               <label>负责人</label>
-                 <input type="text" className="form-control" placeholder="姓名" name="contact_person"
-                          required ref="contact_person" defaultValue={this.props.data.contact_person} />
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>联系电话</label>
-                 <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
-                          required ref="contact_number" defaultValue={this.props.data.contact_number} />
-            </div>
-
-            <div className="form-group col-sm-4">
-              <select name="industry" className="form-control form-magrin-top" defaultValue={this.props.data.industry}>
-                <option value="">行业</option>
-                <option value="医疗">医疗</option>
-                <option value="医院">医院</option>
-                <option value="美容">美容</option>
-                <option value="卫生">卫生</option>
-                <option value="医药">医药</option>
-                <option value="医疗器械">医疗器械</option>
-                <option value="整形">整形</option>
-                <option value="口腔">口腔</option>
-                <option value="门诊">门诊</option>
-                <option value="诊所">诊所</option>
-                <option value="药店">药店</option>
-                <option value="保健">保健</option>
-              </select>
-            </div>
-
-            <div className="form-group col-sm-4">
-              <select name="property" className="form-control form-magrin-top" defaultValue={this.props.data.property}>
-                <option value="">性质</option>
-                <option value="综合医院">综合医院</option>
-                <option value="专科医院">专科医院</option>
-                <option value="民营医院">民营医院</option>
-                <option value="公立诊所">公立诊所</option>
-                <option value="民营诊所">民营诊所</option>
-              </select>
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>规模</label>
-                 <input type="text" className="form-control" placeholder="规模" name="scale"
-                            required ref="scale" defaultValue={this.props.data.scale} />
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>地区</label>
-                 <input type="text" className="form-control" id="cityChoice" placeholder="地区" name="region"
-                           required ref="region" defaultValue={this.props.data.region} onFocus={this.handlefocus} />
-                 <input type="hidden" id="province" value="" ref="region_2" />
-                 <input type="hidden" id="city" value="" ref="region_3" />
-            </div>
-
-            <div className="form-group col-sm-4">
-               <label>级别配置</label>(原：{this.props.data.vip_name})
-               <select onChange={this.handleSelect} defaultValue={this.props.data.vip_id} className="form-control" >
-                 {select_plan}
-               </select>
-            </div>
 
             <div className="form-group col-sm-12">
                <label>机构地址</label>

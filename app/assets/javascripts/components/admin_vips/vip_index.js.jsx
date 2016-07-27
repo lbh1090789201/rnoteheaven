@@ -64,6 +64,7 @@ var AdminVipForm = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    $('.pagination').hide()
     $.ajax({
       url: '/admin/vips',
       type: 'GET',

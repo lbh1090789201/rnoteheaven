@@ -37,7 +37,8 @@ class Resume < ActiveRecord::Base
 
   # 按 用户所在地 筛选
   scope :filter_by_city, -> (city){
-    includes(:user).where(users: {location: city}) if city.present?
+    # includes(:user).where(users: {location: city}) if city.present?
+    includes(:user).where('users.location LIKE ?', "%#{city}%").references(:user) if city.present?
    }
 
   # 按 用户名 搜索

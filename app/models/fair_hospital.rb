@@ -7,7 +7,7 @@ class FairHospital < ActiveRecord::Base
 
     fair_hospitals.each do |f|
       fair_hospital = FairHospital.statistic f
-
+      
       res.push fair_hospital
     end
 

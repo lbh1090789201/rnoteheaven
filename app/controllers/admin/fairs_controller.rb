@@ -19,6 +19,7 @@ class Admin::FairsController < AdminController
       fairs = Fair.where(status: ['processing', 'pause'])
       fairs = Fair.is_end fairs
       @fairs = Fair.get_info fairs
+      @fairs = Kaminari.paginate_array(@fairs).page(params[:page]).per(8)
     end
   end
 
@@ -48,7 +49,7 @@ class Admin::FairsController < AdminController
 
     EventLog.create_log current_user.id, current_user.show_name, 'Fair', fair.id, "专场", '更新'
     fair = Fair.fair_statistic fair
-    
+
     render json: {
       success: true,
       info: '更新专场成功',
@@ -58,6 +59,7 @@ class Admin::FairsController < AdminController
 
   def history
     @fairs = Fair.filter_by_status 'end'
+    @fairs = Kaminari.paginate_array(@fairs).page(params[:page]).per(8)
   end
 
   private

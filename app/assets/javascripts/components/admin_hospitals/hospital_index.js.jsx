@@ -56,6 +56,7 @@ var AdminHospitalForm = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    $(".pagination").hide()
 
     let hospital_name = this.refs.hospital_name.value,
         time_before = this.refs.time_before.value,

@@ -1,3 +1,32 @@
+/*请求失败弹窗,1.5秒后自动消失*/
+// text: 弹窗展示的内容信息
+// div_class: 弹窗插入的父节点id　或 class
+function FailMask(div_class,text) {
+  var div = $('<div class="mask-fail"></div>');
+  var p = $('<p class="mask-middle"></p>');
+  p.text(text);
+  div.append(p);
+  var parent_div = $(div_class);
+  parent_div.append(div);
+  var timer = setTimeout(function(){
+    div.remove();
+  },1000);
+}
+
+/*再次发布职位失败弹窗,1.5秒后自动消失*/
+// text: 弹窗展示的内容信息
+// div_class: 弹窗插入的父节点id　或 class
+function againRelease(div_class,text) {
+  var div = $('<div class="release-fail"></div>');
+  var p = $('<p class="mask-release"></p>');
+  p.text(text);
+  div.append(p);
+  var parent_div = $(div_class);
+  parent_div.append(div);
+  var timer = setTimeout(function(){
+    div.remove();
+  },1000);
+}
 
 /* new页面类型选择脚本 开始 */
 function JobBasicNew(obj,api,pclass) {

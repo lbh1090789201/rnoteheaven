@@ -12,8 +12,8 @@ var Job = React.createClass({
         <td>{this.props.index + 1}</td>
         <td>{this.props.data.name}</td>
         <td>{this.props.data.job_type}</td>
-        <td>行业</td>
-        <td>发布机构</td>
+        <td>{this.props.data.hospital_industry}</td>
+        <td>{this.props.data.hospital_name}</td>
         <td>{this.props.data.submit_at ? this.props.data.submit_at.slice(0,10) : '----'}</td>
         <td>{this.props.data.status}</td>
         <td><button onClick={this.handleClick} className="btn btn-default btn-form" id={this.props.data.id}>查看</button></td>

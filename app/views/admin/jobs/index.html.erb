@@ -3,3 +3,4 @@
 <% end %>
 
 <%= react_component 'AdminJobAll', {data: @jobs, close: image_path('close_red.png')} %>
+<%= paginate @jobs,:param_name => "page", :window => 2 %>

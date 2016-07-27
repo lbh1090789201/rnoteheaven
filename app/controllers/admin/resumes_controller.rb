@@ -22,6 +22,7 @@ class Admin::ResumesController < AdminController
     else
       resumes = Resume.filter_maturity(70)
       @resumes = get_info resumes
+      @resumes = Kaminari.paginate_array(@resumes).page(params[:page]).per(8)
     end
 
     if params[:resume_id]

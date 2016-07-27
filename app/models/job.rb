@@ -34,12 +34,22 @@ class Job < ActiveRecord::Base
 
   # 按发布时间
   scope :filter_release_before, -> (time) {
-    where('operate_at < ?', time) if time.present?
+    where('operate_at <= ?', time) if time.present?
   }
 
   # 按发布时间
   scope :filter_release_after, -> (time) {
-    where('operate_at > ?', time) if time.present?
+    where('operate_at >= ?', time) if time.present?
+  }
+
+  #按创建时间
+  scope :filter_create_end, ->(time) {
+    where('created_at <= ?', time) if time.present?
+  }
+
+  #按创建时间
+  scope :filter_create_begin, ->(time) {
+    where('created_at >= ?', time) if time.present?
   }
 
   # 按工作类型
@@ -151,6 +161,19 @@ class Job < ActiveRecord::Base
     else
       return 0
     end
+  end
+
+  # 获取职位信息
+  def self.get_job_info jobs
+    job_infos = []
+    jobs.each do |j|
+      hospital = Hospital.find j.hospital_id
+      job = j.as_json
+      job["hospital_industry"] = hospital.industry
+      job["hospital_name"] = hospital.name
+      job_infos.push job
+    end
+    return job_infos
   end
 
 end

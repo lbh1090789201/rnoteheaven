@@ -1,4 +1,4 @@
-
+<%= provide :title, "双选会" %>
 <% @fairs.each do |f| %>
 <div id="hospital_home">
   <div class="fair-image" style='background: url(<%= asset_path(f["banner"]["url"]) %>) no-repeat;background-size: cover'></div>
@@ -10,7 +10,7 @@
 <div id="hospital-data">
   <div class="hospital-number">
     <p>本期入驻机构</p>
-    <p><span><%= @fairs_length %></span>家</p>
+    <p><span><%= f["hospital_num"] %></span>家</p>
   </div>
   <span></span>
   <div class="hospital-time">
@@ -23,7 +23,7 @@
   <p><%= f["intro"] %></p>
 </div>
 <p class="button">
-  <a href="/webapp/job_fairs/<%= f['id'] %>">
+  <a href='/webapp/job_fairs/<%= f["id"] %>'>
     进入专场
   </a>
 </p>
