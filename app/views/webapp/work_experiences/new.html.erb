@@ -1,7 +1,7 @@
 <% provide :title, "添加工作经历" %>
 <% provide :content, "保存" %>
 
-<div class="edit_basic edit-work-experiences work-edit-page" id="work_eidt">
+<div class="edit_basic edit-work-experiences work-edit-page work-mask" id="work_eidt">
     <%= simple_form_for :work_experience, as: :post,remote: true, url: webapp_work_experiences_path do |f| %>
     <div class="job-pubilc">
       <%= f.input :company, label: "机        构", input_html: { class: "user-input", id: "user_hospital"} %>
