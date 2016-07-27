@@ -23,10 +23,6 @@ class Webapp::WorkExperiencesController < ApplicationController
     end
   end
 
-  def show
-
-  end
-
   def edit
       @work_experience = WorkExperience.find params[:id]
       @work_experience.started_at = @work_experience.started_at.strftime('%Y-%m-%d') if @work_experience.started_at

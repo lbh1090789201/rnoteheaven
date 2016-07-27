@@ -68,7 +68,6 @@ class ApplicationController < ActionController::Base
   end
 
   # Only permits copper
-  # TODO 待加入限制 webapp
   helper_method :require_copper!
   def require_copper!
     authenticate_user!

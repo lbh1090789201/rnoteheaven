@@ -29,13 +29,6 @@ RSpec.describe Webapp::WorkExperiencesController, type: :controller do
     end
   end
 
-  describe 'GET #show' do
-    it 'returns http success' do
-      get :show, id: @work_experience.id
-      expect(response.status).to eq(200)
-    end
-  end
-
   describe 'GET #new' do
     it 'returns http success' do
 

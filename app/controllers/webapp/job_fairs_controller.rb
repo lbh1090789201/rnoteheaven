@@ -10,8 +10,6 @@ class Webapp::JobFairsController < ApplicationController
       fair["hospital_num"] = FairHospital.where(fair_id: f["id"]).length
       @fairs.push fair
     end
-
-    # @fairs_length = @fairs.length
   end
 
   def show
@@ -32,18 +30,6 @@ class Webapp::JobFairsController < ApplicationController
         @fair_hospitals.push o
       end
       return @fair_hospitals
-  end
-
-  def edit
-  end
-
-  def create
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

@@ -20,11 +20,6 @@ class Webapp::JobsController < ApplicationController
                 .length
    end
 
-
-   # private
-   # def job_params
-   #   params.require(:job).permit(:name, :job_type, :salary_range, :location)
-   # end
    private
    #根据情况回传按钮状态
    def btn_info(is_applied, maturity, is_freeze)
