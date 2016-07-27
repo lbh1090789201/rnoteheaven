@@ -131,6 +131,13 @@ header {
       text-align: center;
     }
   }
+
+ .mask-user {
+   position: absolute;
+   top: 0;
+   height: auto;
+   min-height: 100%;
+ }
 }
 
 // 红色关闭按钮
