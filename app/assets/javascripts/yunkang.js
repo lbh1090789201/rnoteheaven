@@ -369,17 +369,7 @@ function ClickDeleteBtn(obj){
     var new_url = window.location.href + '?no_refresh=true'
     window.location.href = new_url
   }
-//
-//   function getWholeUrl() {
-//     var url = document.location.toString();
-//     if(url.indexOf("?") != -1){
-//     　　　　　　relUrl = relUrl.split("?")[0];
-//     　　　　}
-//     return relUrl;
-//   }
-//
-//
-//
+
 function app_reload() {
   var u = navigator.userAgent;
   var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
