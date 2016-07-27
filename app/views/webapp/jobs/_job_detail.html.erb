@@ -54,6 +54,7 @@
     $.post("/api/v1/apply_records", {
       apply_record: formDate
     }).done(function() {
+      app_reload();
       $('#apply_box').attr('class', 'hidden');
       $('#apply_job > span').html('已应聘');
       $('#apply_job').attr('class', 'is_applied');
