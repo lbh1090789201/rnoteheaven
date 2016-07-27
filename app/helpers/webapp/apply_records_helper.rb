@@ -11,7 +11,7 @@ module Webapp::ApplyRecordsHelper
         id: ar.id,
         job_name: job.name,
         salary_range: job.salary_range,
-        location: job.location,
+        region: job.region,
         resume_status: ar.resume_status,
         recieve_at: ar.recieve_at,
         hospital_name: hospital.name,
