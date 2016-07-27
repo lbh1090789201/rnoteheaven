@@ -11,7 +11,7 @@
         <%= f.input :major, label: '专       业', input_html: { class: "user-input", id: "user_major"} %>
         <span class="empty-cont" onclick="EmptyCont('user_major')"></span>
       </div>
-      <%= f.input :education_degree, label: '学        历', input_html: { readonly: "readonly",unselectable:"on" class: "education-degree user-input", id: "education_degree"} %>
+      <%= f.input :education_degree, label: '学        历', input_html: { readonly: "readonly", class: "education-degree user-input", id: "education_degree"} %>
       <%= f.input :entry_at, label: '开始时间', as: :string, input_html: { class: "user-input", id: "beginTime"} %>
       <%= f.input :graduated_at, label: '结束时间', as: :string, input_html: { class: "user-input", id: "endTime"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right class-display"%>
@@ -40,6 +40,7 @@
 
   //学历
   $('.education-degree').click(function() {
+    this.blur()
     var education_degree = ['大专以下', '大专','本科', '硕士', '博士', '博士后'];
     var pclass = 'education_degree';
     workExperience(education_degree, ".education-degree", pclass);
