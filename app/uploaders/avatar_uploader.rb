@@ -3,7 +3,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -22,6 +22,20 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
     # "default.png"
+    process :auto_orient
+    process :resize_to_fill => [300, 300]
+  end
+
+  def auto_orient
+    manipulate! do |img|
+      img = img.auto_orient
+    end
+  end
+
+
+  version :square do
+    process :auto_orient
+    process :resize_to_fill => [300, 300]
   end
 
   # Process files as they are uploaded:
