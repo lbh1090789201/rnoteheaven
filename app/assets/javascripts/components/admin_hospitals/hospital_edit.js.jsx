@@ -204,20 +204,6 @@ var AdminEditHospital = React.createClass({
                           pattern=".{6,}" required title="最少6个字符" ref="introduction" defaultValue={this.props.data.introduction} />
             </div>
 
-
-            {
-              // <div className="form-group">
-              //   <div>{this.state.plan.name}:
-              //      <span>可发布职位{this.state.plan.may_release}个</span>
-              //      <span>可置顶职位{this.state.plan.may_set_top}个</span>
-              //      <span>可接收简历{this.state.plan.may_receive}份</span>
-              //      <span>可查看简历{this.state.plan.may_view}份</span>
-              //      <span>可参加专场{this.state.plan.may_join_fairs}次</span>
-              //   </div>
-              // </div>
-            }
-
-
             <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>
             <button type="submit" className="btn btn-success btn-bottom">提交</button>
           </form>
