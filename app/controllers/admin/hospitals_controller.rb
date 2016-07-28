@@ -45,7 +45,7 @@ class Admin::HospitalsController < AdminController
   def update
     hospital = Hospital.find params[:id]
     employer = Employer.find_by hospital_id: hospital.id
-    employer = Employer.employer_plan employer, params[:plan_id] 
+    employer = Employer.employer_plan employer, params[:plan_id]
 
     if hospital.update(hospital_params) && employer.present?
       hospital = Hospital.where(id: params[:id])
@@ -92,10 +92,10 @@ class Admin::HospitalsController < AdminController
   def destroy
     hospital = Hospital.find params[:id]
     employer = Employer.find_by hospital_id: hospital.id
+    user = User.find_by id: employer.user_id
 
     if hospital.destroy
-      if employer.present?
-        user = User.find employer.user_id
+      if user.present?
         user.user_type = "copper"
         user.save
         user.remove_role :gold
