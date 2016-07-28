@@ -115,11 +115,11 @@ Ryunkang::Application.routes.draw do
 
       resources :vips, :except => [:show]
 
-      resources :hospitals, :only => [:index, :update, :create]
+      resources :hospitals, :only => [:index, :update, :create, :destroy]
     end
 
     # 404页面
-    get "*any", via: :all, to: "errors#not_found"
+    # get "*any", via: :all, to: "errors#not_found"
    ########### yunkang end ###########
 
 end

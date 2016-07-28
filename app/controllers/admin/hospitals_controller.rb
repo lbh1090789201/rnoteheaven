@@ -1,6 +1,6 @@
 class Admin::HospitalsController < AdminController
   before_action :require_hospitals_manager!
-  protect_from_forgery :except => [:index, :update, :create]
+  protect_from_forgery :except => [:index, :update, :create, :destroy]
 
   def index
 
@@ -80,6 +80,38 @@ class Admin::HospitalsController < AdminController
         success: false,
         info: "新建失败"
       }, status: 403
+    end
+  end
+
+  def destroy
+    hospital = Hospital.find params[:id]
+    employer = Employer.find_by hospital_id: hospital.id
+
+    if employer.present?
+      user = User.find employer.user_id
+      if hospital.destroy && employer.destroy && user.destroy
+        render json: {
+          success: true,
+          info: "删除机构成功",
+        }, status: 200
+      else
+        render json: {
+          success: false,
+          info: "删除机构失败"
+        }, status: 403
+      end
+    else
+      if hospital.destroy
+        render json: {
+          success: true,
+          info: "删除机构成功",
+        }, status: 200
+      else
+        render json: {
+          success: false,
+          info: "删除机构失败"
+        }, status: 403
+      end
     end
   end
 
