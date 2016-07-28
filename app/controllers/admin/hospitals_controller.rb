@@ -87,31 +87,19 @@ class Admin::HospitalsController < AdminController
     hospital = Hospital.find params[:id]
     employer = Employer.find_by hospital_id: hospital.id
 
-    if employer.present?
-      user = User.find employer.user_id
-      if hospital.destroy && employer.destroy && user.destroy
-        render json: {
-          success: true,
-          info: "删除机构成功",
-        }, status: 200
-      else
-        render json: {
-          success: false,
-          info: "删除机构失败"
-        }, status: 403
+    if hospital.destroy
+      if employer.present?
+        user = User.find employer.user_id
+        user.user_type = "copper"
+        user.save
+        user.remove_role :gold
+        employer.destroy
       end
-    else
-      if hospital.destroy
-        render json: {
-          success: true,
-          info: "删除机构成功",
-        }, status: 200
-      else
-        render json: {
-          success: false,
-          info: "删除机构失败"
-        }, status: 403
-      end
+
+      render json: {
+        success: true,
+        info: "删除机构成功",
+      }, status: 200
     end
   end
 

@@ -61,7 +61,9 @@ class Role < ActiveRecord::Base #用户角色
         return user
       else
         user.user_type = "gold"
+        user.save
         user.add_role :gold
+
         new_employer = {
           user_id: user.id,
           hospital_id: hospital.id
@@ -75,7 +77,9 @@ class Role < ActiveRecord::Base #用户角色
         return user
       else
         user.user_type = "copper"
+        user.save
         user.remove_role :gold
+
         return user
       end
     end
