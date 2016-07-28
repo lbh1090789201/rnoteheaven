@@ -53,4 +53,32 @@ class Role < ActiveRecord::Base #用户角色
     return true
   end
 
+  # 校检用户类型
+  def self.checkUser user
+    hospital = Hospital.find_by contact_number: user.cellphone
+    if hospital
+      if user.user_type == "gold"
+        return user
+      else
+        user.user_type = "gold"
+        user.add_role :gold
+        new_employer = {
+          user_id: user.id,
+          hospital_id: hospital.id
+        }
+        employer = Employer.create! new_employer
+        set_plan = Employer.set_plan user.id, 0
+        return user
+      end
+    else
+      if user.user_type == "copper"
+        return user
+      else
+        user.user_type = "copper"
+        user.remove_role :gold
+        return user
+      end
+    end
+  end
+
 end

@@ -26,6 +26,8 @@ class Api::ConnectAppController < ApiController
     user = User.find_by user_number: params[:userId]
 
     if user
+      # 校检用户
+      user = Role.checkUser user
       sign_in(user)
       if user.user_type == "copper"
         to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
@@ -129,5 +131,7 @@ class Api::ConnectAppController < ApiController
       sign_in(user)
       redirect_to employer_resumes_path
     end
+
+
 
 end

@@ -77,5 +77,34 @@ RSpec.describe Role, type: :model do
 
   end
 
+  describe "test checkUser user" do
+    it ' change copper to gold' do
+      @user = create(:user)
+      @hospital = create(:hospital, contact_number: @user.cellphone)
+      res = Role.checkUser @user
+      employer = Employer.find_by user_id: @user.id
+      expect(res.user_type).to eq("gold")
+      expect(employer.hospital_id).to eq(@hospital.id)
+    end
+
+    it 'test checkUser user copper' do
+      @user = create(:user, user_type: "gold")
+      res = Role.checkUser @user
+      expect(res.user_type).to eq("copper")
+    end
+
+    it 'test checkUser user gold' do
+      @user = create(:user, user_type: "gold")
+      @hospital = create(:hospital, contact_number: @user.cellphone)
+      res = Role.checkUser @user
+      expect(res.user_type).to eq("gold")
+    end
+
+    it 'test checkUser user gold' do
+      @user = create(:user, user_type: "gold")
+      res = Role.checkUser @user
+      expect(res.user_type).to eq("copper")
+    end
+  end
 
 end
