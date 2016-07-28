@@ -15,6 +15,15 @@ function FailMask(div_class,text) {
   },1000);
 }
 
+function ourNotice(div_class,text) {
+  var div = $('<div class="mask-fail"></div>');
+  var p = $('<p class="mask-middle"></p>');
+  p.text(text);
+  div.append(p);
+  var parent_div = $(div_class);
+  parent_div.append(div);
+}
+
 //页面小浮动脚本
 // function Float_icon(div_class,text,url){
 //   var a = $('<a class="float-color"></a>');
@@ -365,7 +374,6 @@ function ClickDeleteBtn(obj){
 
 
   function my_refresh() {
-    // FailMask('#wrap', 'tess')
     var new_url = window.location.href + '?no_refresh=true'
     window.location.href = new_url
   }
