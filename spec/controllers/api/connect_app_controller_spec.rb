@@ -17,5 +17,4 @@ RSpec.describe Api::ConnectAppController, type: :controller do
       post :get_hospital, telephone: @hospital.contact_number
       expect(response.status).to eq(200)
     end
-
 end
