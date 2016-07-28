@@ -272,8 +272,8 @@ var AdminHospitalItem =React.createClass({
         <td>{this.props.data.vip_name}</td>
         <td>{this.props.data.status}</td>
         <td>
-          <button onClick={this.handleClick} className="btn btn-default btn-form ">修改</button>
-          <button onClick={this.handleDelete} className="btn btn-danger btn-form ">删除</button>
+          <button onClick={this.handleClick} className="btn btn-default btn-form">修改</button>
+          <button onClick={this.handleDelete} className="btn btn-danger btn-form">删除</button>
         </td>
       </tr>
     )
