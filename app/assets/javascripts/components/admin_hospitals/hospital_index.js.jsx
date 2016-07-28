@@ -235,6 +235,29 @@ var AdminHospitalItem =React.createClass({
       }
     })
   }
+  ,handleDelete: function() {
+    var hospital_id = this.props.data.id,
+        index = this.props.index,
+        hospitals = this.props.dad.state.hospitals
+
+    if(confirm("确定删除"+this.props.data.name+"机构?")){
+      $.ajax({
+        url: "/admin/hospitals/"+hospital_id,
+        type: "DELETE",
+        data: {id: hospital_id},
+        success: function(){
+          hospitals.splice(index,1)
+          this.props.dad.setState({
+            hospitals: hospitals
+          })
+        }.bind(this),
+        error: function(){
+          alert("删除"+this.props.data.name+"机构失败")
+        },
+      })
+    }
+
+  }
   ,render: function() {
     let is_new
     this.props.data.may_release == undefined ? is_new = 'disabled' : is_new = ''
@@ -250,6 +273,7 @@ var AdminHospitalItem =React.createClass({
         <td>{this.props.data.vip_name}</td>
         <td>
           <button onClick={this.handleClick} className={"btn btn-default btn-form " + is_new} >修改</button>
+          <button onClick={this.handleDelete} className={"btn btn-danger btn-form"} >删除</button>
         </td>
       </tr>
     )
