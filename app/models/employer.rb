@@ -101,6 +101,32 @@ class Employer < ActiveRecord::Base
     return employer
   end
 
+  # 根据 employer 设定 vip 限额
+  def self.employer_plan employer, plan_id
+    plan = Plan.find_by  id: plan_id
+
+    if plan.nil?
+      plan = Plan.first_or_create!(
+        name: 'vip0',
+        may_receive: 10,
+        may_release: 10,
+        may_set_top: 1,
+        may_view: 10,
+        may_join_fairs: 1
+      )
+    end
+
+    employer.plan_id = plan.id
+    employer.may_receive = plan.may_receive
+    employer.may_release = plan.may_release
+    employer.may_set_top = plan.may_set_top
+    employer.may_view = plan.may_view
+    employer.may_join_fairs = plan.may_join_fairs
+
+    employer.save
+    return employer
+  end
+
   # 按 hospital 医院名
   scope :filter_hospital_name, ->(name) {
     includes(:hospital).where{(name =~  "%#{name}%")} if name.present?

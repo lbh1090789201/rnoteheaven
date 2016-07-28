@@ -3,7 +3,7 @@ var AdminHospitalNew = React.createClass({
     return {
       plan: '',
       index: this.props.dad.state.hos_info.index,
-      vip_id: '',
+      vip_id: this.props.plans[0].id,
       property: '',
     }
   }
