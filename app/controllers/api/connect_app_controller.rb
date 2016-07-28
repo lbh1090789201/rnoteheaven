@@ -105,7 +105,8 @@ class Api::ConnectAppController < ApiController
 
       sign_in(user)
 
-      redirect_to webapp_home_path
+      to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
+      redirect_to to_url
     end
 
     def sign_up_gold user_info, hospital
@@ -121,12 +122,9 @@ class Api::ConnectAppController < ApiController
       user = User.create! new_gold
       user.add_role :gold
 
-      new_employer = {
-        user_id: user.id,
-        hospital_id: hospital.id
-      }
-      employer = Employer.create! new_employer
-      set_plan = Employer.set_plan user.id, 0
+      employer = Employer.find_by hospital_id: hospital.id
+      employer.user_id = user.id
+      employer.save
 
       sign_in(user)
       redirect_to employer_resumes_path

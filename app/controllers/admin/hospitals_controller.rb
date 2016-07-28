@@ -45,11 +45,11 @@ class Admin::HospitalsController < AdminController
   def update
     hospital = Hospital.find params[:id]
     employer = Employer.find_by hospital_id: hospital.id
-    employer = Employer.set_plan employer.user_id, params[:plan_id]
+    employer = Employer.employer_plan employer, params[:plan_id] 
 
     if hospital.update(hospital_params) && employer.present?
       hospital = Hospital.where(id: params[:id])
-      @hospital_infos = hospital.get_info hospital
+      @hospital_infos = Hospital.get_info hospital
 
       EventLog.create_log current_user.id, current_user.show_name, 'Hospital', hospital[0].id, "机构", '更新'
       render json: {
@@ -67,13 +67,19 @@ class Admin::HospitalsController < AdminController
 
   def create
     hospital = Hospital.create! hospital_params
+    plan_id = employer_params[:plan_id]
+
+    employer = Employer.create! hospital_id: hospital.id
+    employer = Employer.employer_plan employer, plan_id
 
     if hospital
       EventLog.create_log current_user.id, current_user.show_name, 'Hospital', hospital.id, "机构", '新建'
+      hospital = Hospital.get_info [hospital]
+
       render json: {
         success: true,
         info: "新建成功",
-        hospital: hospital
+        hospital: hospital[0]
       }, status: 200
     else
       render json: {

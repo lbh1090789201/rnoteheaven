@@ -64,12 +64,10 @@ class Role < ActiveRecord::Base #用户角色
         user.save
         user.add_role :gold
 
-        new_employer = {
-          user_id: user.id,
-          hospital_id: hospital.id
-        }
-        employer = Employer.create! new_employer
-        set_plan = Employer.set_plan user.id, 0
+        employer = Employer.find_by hospital_id: hospital.id
+        employer.user_id = user.id
+        employer.save
+        
         return user
       end
     else

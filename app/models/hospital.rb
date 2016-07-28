@@ -45,6 +45,7 @@ class Hospital < ActiveRecord::Base
       employer = Employer.find_by(hospital_id: h.id)
       if employer.present?
         plan = Plan.find employer.plan_id
+        status = employer.user_id ? '已激活' : '未激活'
 
         o = {
           id: h.id,
@@ -65,7 +66,8 @@ class Hospital < ActiveRecord::Base
           may_receive: plan.may_receive,
           may_view: plan.may_receive,
           may_join_fairs: plan.may_join_fairs,
-          vip_id: plan.id
+          vip_id: plan.id,
+          status: status
         }
         @hospitals.push(o)
       else
