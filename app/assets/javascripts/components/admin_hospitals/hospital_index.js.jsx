@@ -261,6 +261,8 @@ var AdminHospitalItem =React.createClass({
   ,render: function() {
     let is_new
     this.props.data.may_release == undefined ? is_new = 'disabled' : is_new = ''
+    let edite_text
+    this.props.data.may_release == undefined ? edite_text = '未激活' : edite_text = '修改'
     return (
       <tr>
         <td>{this.props.index + 1}</td>
@@ -272,7 +274,7 @@ var AdminHospitalItem =React.createClass({
         <td>{this.props.data.may_view}</td>
         <td>{this.props.data.vip_name}</td>
         <td>
-          <button onClick={this.handleClick} className={"btn btn-default btn-form " + is_new} >修改</button>
+          <button onClick={this.handleClick} className={"btn btn-default btn-form " + is_new} >{edite_text}</button>
           <button onClick={this.handleDelete} className={"btn btn-danger btn-form"} >删除</button>
         </td>
       </tr>

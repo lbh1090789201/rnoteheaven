@@ -88,7 +88,7 @@ var AdminHospitalNew = React.createClass({
             <div className="row">
               <div className="form-group col-sm-4">
                  <label>账号(手机号)</label>
-                   <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
+                   <input type="tel" className="form-control" placeholder="手机号码" name="contact_number"
                             required ref="contact_number"/>
               </div>
 
