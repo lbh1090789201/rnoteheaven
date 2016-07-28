@@ -60,6 +60,7 @@ class Role < ActiveRecord::Base #用户角色
       if user.user_type == "gold"
         return user
       else
+        user = User.find user.id
         user.user_type = "gold"
         user.save
         user.add_role :gold
@@ -76,6 +77,7 @@ class Role < ActiveRecord::Base #用户角色
       if user.user_type == "copper"
         return user
       else
+        user = User.find user.id
         user.user_type = "copper"
         user.save
         user.remove_role :gold
