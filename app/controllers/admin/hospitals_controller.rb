@@ -94,6 +94,8 @@ class Admin::HospitalsController < AdminController
     employer = Employer.find_by hospital_id: hospital.id
     user = User.find_by id: employer.user_id
 
+    EventLog.create_log current_user.id, current_user.show_name, 'Hospital', hospital.id, "机构", '删除'
+    
     if hospital.destroy
       if user.present?
         user.user_type = "copper"
