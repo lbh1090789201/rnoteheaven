@@ -12,6 +12,13 @@ var AdminEditHospital = React.createClass({
       vip_id: e.target.value,
     })
   }
+  ,handleBlur: function(e) {
+    var value = e.target.value
+
+    if(value.length < 6){
+      alert("机构介绍长度不能少于６!")
+    }
+  }
   ,handleFocus: function() {
     console.log("11111")
 
@@ -94,9 +101,9 @@ var AdminEditHospital = React.createClass({
           <form onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="form-group col-sm-4">
-                 <label>账号</label>
-                   <input type="text" className="form-control" placeholder="账号" name="contact_number"
-                          disabled  required ref="contact_number" defaultValue={this.props.data.contact_number} />
+                 <label>登陆账号（联系电话）</label>
+                   <input type="tel" className="form-control" placeholder="账号" name="contact_number"
+                           required ref="contact_number" defaultValue={this.props.data.contact_number} />
               </div>
 
               <div className="form-group col-sm-4">
@@ -109,12 +116,6 @@ var AdminEditHospital = React.createClass({
                  <label>负责人</label>
                    <input type="text" className="form-control" placeholder="姓名" name="contact_person"
                             required ref="contact_person" defaultValue={this.props.data.contact_person} />
-              </div>
-
-              <div className="form-group col-sm-4">
-                 <label>联系电话</label>
-                   <input type="text" className="form-control" placeholder="手机号码" name="contact_number"
-                            required ref="contact_number" defaultValue={this.props.data.contact_number} />
               </div>
 
               <div className="form-group col-sm-4">
@@ -147,9 +148,15 @@ var AdminEditHospital = React.createClass({
               </div>
 
               <div className="form-group col-sm-4">
-                 <label>规模</label>
-                   <input type="text" className="form-control" placeholder="规模" name="scale"
-                              required ref="scale" defaultValue={this.props.data.scale} />
+                  <select className="form-control form-magrin-top" name="scale" defaultValue={this.props.data.scale}>
+                    <option value="">规模</option>
+                    <option value="10人以下">10人以下</option>
+                    <option value="10~50人">10~50人</option>
+                    <option value="50~200人">50~200人</option>
+                    <option value="200~500人">200~500人</option>
+                    <option value="500~1000人">500~1000人</option>
+                    <option value="1000人以上">1000人以上</option>
+                  </select>
               </div>
 
               <div className="form-group col-sm-4">
@@ -172,13 +179,13 @@ var AdminEditHospital = React.createClass({
               <div className="form-group col-sm-4">
                  <label>经度</label>
                    <input type="text" className="form-control" defaultValue={this.props.data.lng} name="lng"
-                             required ref="lng" />
+                            pattern="^[+-]?\d+(\.\d+)?$" required ref="lng" />
               </div>
 
               <div className="form-group col-sm-4">
                  <label>纬度</label>
                    <input type="text" className="form-control" defaultValue={this.props.data.lat} name="lat"
-                             required ref="lat" />
+                            pattern="^[+-]?\d+(\.\d+)?$" required ref="lat" />
               </div>
 
               <div className="form-group col-sm-4">
@@ -200,8 +207,8 @@ var AdminEditHospital = React.createClass({
 
             <div className="form-group col-sm-12">
                <label>机构介绍</label>
-                 <textarea type="text" className="form-control" placeholder="机构介绍" name="introduction" rows="5"
-                          pattern=".{6,}" required title="最少6个字符" ref="introduction" defaultValue={this.props.data.introduction} />
+                 <textarea className="form-control" name="introduction" rows="5" required title="最少6个字符"
+                    ref="introduction" defaultValue={this.props.data.introduction} onBlur={this.handleBlur} />
             </div>
 
             <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>

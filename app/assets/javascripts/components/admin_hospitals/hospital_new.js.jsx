@@ -17,6 +17,13 @@ var AdminHospitalNew = React.createClass({
       property: e.target.value,
     })
   }
+  ,handleBlur: function(e) {
+    var value = e.target.value
+
+    if(value.length < 6){
+      alert("机构介绍长度不能少于６!")
+    }
+  }
   ,handlefocus: function() {
     var input_id = this.refs.region.id,
         province = this.refs.region_2.id,
@@ -89,7 +96,7 @@ var AdminHospitalNew = React.createClass({
               <div className="form-group col-sm-4">
                  <label>账号(手机号)</label>
                    <input type="tel" className="form-control" placeholder="手机号码" name="contact_number"
-                            required ref="contact_number"/>
+                            pattern="^1[345678][0-9]{9}$" required ref="contact_number"/>
               </div>
 
               <div className="form-group col-sm-4">
@@ -134,9 +141,15 @@ var AdminHospitalNew = React.createClass({
               </div>
 
               <div className="form-group col-sm-4">
-                 <label>规模</label>
-                   <input type="text" className="form-control" placeholder="规模" name="scale"
-                              required ref="scale" />
+                 <select className="form-control form-magrin-top" name="scale">
+                   <option value="">规模</option>
+                   <option value="10人以下">10人以下</option>
+                   <option value="10~50人">10~50人</option>
+                   <option value="50~200人">50~200人</option>
+                   <option value="200~500人">200~500人</option>
+                   <option value="500~1000人">500~1000人</option>
+                   <option value="1000人以上">1000人以上</option>
+                 </select>
               </div>
 
               <div className="form-group col-sm-4">
@@ -160,13 +173,13 @@ var AdminHospitalNew = React.createClass({
               <div className="form-group col-sm-4">
                  <label>经度</label>
                    <input type="text" className="form-control" placeholder="经度" name="lng"
-                             required ref="lng" />
+                            pattern="^[+-]?\d+(\.\d+)?$" required ref="lng" />
               </div>
 
               <div className="form-group col-sm-4">
                  <label>纬度</label>
                    <input type="text" className="form-control" placeholder="纬度" name="lat"
-                             required ref="lat" />
+                            pattern="^[+-]?\d+(\.\d+)?$" required ref="lat" />
               </div>
 
               <div className="form-group col-sm-4">
@@ -188,8 +201,9 @@ var AdminHospitalNew = React.createClass({
 
             <div className="form-group col-sm-12">
                <label>机构介绍</label>
-                 <textarea type="text" className="form-control" placeholder="机构介绍" name="introduction" rows="5"
-                          pattern=".{6,}" required title="最少6个字符" ref="introduction" />
+                 <textarea className="form-control input-textarea" placeholder="机构介绍" name="introduction"
+                           required title="最少6个字符" ref="introduction" onBlur={this.handleBlur} />
+
             </div>
 
             {
