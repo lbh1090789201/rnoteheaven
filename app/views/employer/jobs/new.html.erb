@@ -54,7 +54,7 @@ $("#sub_btn").on('click', function(){
   var u = navigator.userAgent;
   var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
   if(isiOS){
-    var input = $(':text');
+    var input = $(':input').not(":button");
 
     var empty_text = function(){
       for(var i=0;i<input.length;i++){
@@ -64,7 +64,7 @@ $("#sub_btn").on('click', function(){
         }
       }
     }
-    console.log("1111")
+    
     if(empty_text() == "有空值"){
       FailMask('.wrap',"请填写完整信息！")
     }
