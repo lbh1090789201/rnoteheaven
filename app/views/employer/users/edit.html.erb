@@ -14,7 +14,7 @@
     <span class="empty-cont" onclick="EmptyCont('hos_location')"></span>
   </div>
   <%= f.input :introduction, label: '相关介绍', as: :text, input_html: { class: "", id: "", placeholder: "最多输入1000字"} %>
-  <div class="submit-box"><%= f.submit '保存',id: "submit"%></div>
+  <div class="submit-box"><%= f.submit '保存',id: "submit", onClick: "submitForm(this)"%></div>
   <% end %>
 </div>
 

@@ -393,25 +393,67 @@ function app_reload() {
   }
 }
 
-//存在未填框时iOS会有弹窗提示
+//医院端存在未填框时iOS会有弹窗提示
 function submitMask(submit_id) {
   $(submit_id).on('click', function(){
   var u = navigator.userAgent;
   var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
   if(isiOS){
-    var input = $(':input').not(":button");
+    var input_text = $(":text"),
+        input_textarea = $("textarea");
 
-    var empty_text = function(){
-      for(var i=0;i<input.length;i++){
-        var value = input.eq(i).val();
+    var empty_value = function(){
+      for(var i=0;i<input_text.length;i++){
+        var value = input_text.eq(i).val();
         if(value == ''){
           return "有空值"
         }
       }
     }
 
-    if(empty_text() == "有空值"){
-      FailMask('.wrap',"请填写完整信息！")
+    var empty_text = function(){
+      for(var i=0;i<input_textarea.length;i++){
+        var value = input_textarea.eq(i).val();
+        if(value == ''){
+          return "有空值"
+        }
+      }
+    }
+
+    if(empty_value() == "有空值" || empty_text() == "有空值"){
+      FailMask('.wrap',"请完善信息！")
+    }
+  }
+  })
+}
+
+//医生端存在未填框时iOS会有弹窗提示
+function doctorMask(submit_id) {
+  $(submit_id).on('click', function(){
+  var u = navigator.userAgent;
+  var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  if(isiOS){
+    var input_text = $(":text"),
+        input_textarea = $("textarea");
+
+    var empty_value = function(){
+      for(var i=0;i<input_text.length;i++){
+        var value = input_text.eq(i).val();
+        if(value == ''){
+          return "有空值"
+        }
+      }
+    }
+
+    var empty_text = function(){
+      var text = input_textarea.val();
+      if(text == ""){
+        return "有空值"
+      }
+    }
+
+    if(empty_value() == "有空值" || empty_text() == "有空值"){
+      FailMask('.wrap',"请完善信息！")
     }
   }
   })
