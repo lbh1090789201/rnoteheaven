@@ -70,12 +70,8 @@ var AdminEditHospital = React.createClass({
           })
         }.bind(this),
         error: function(data) {
-          console.log(data.responseText)
-          this.props.dad.setState({
-            hos_info: {
-              eidt_display: false,
-            }
-          })
+          let info = JSON.parse(data.responseText)
+          alert(info["info"])
         }.bind(this),
       })
     }

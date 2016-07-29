@@ -75,10 +75,8 @@ var AdminHospitalNew = React.createClass({
           })
         }.bind(this),
         error: function(data) {
-          console.log(data.responseText)
-          this.props.dad.setState({
-          new_display: false,
-          })
+          let info = JSON.parse(data.responseText)
+          alert(info["info"])
         }.bind(this),
       })
     }
