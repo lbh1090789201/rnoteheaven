@@ -392,3 +392,27 @@ function app_reload() {
     window.js2MobInterface.postMessage(JSON.stringify(messageBody));
   }
 }
+
+//存在未填框时iOS会有弹窗提示
+function submitMask(submit_id) {
+  $(submit_id).on('click', function(){
+  var u = navigator.userAgent;
+  var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  if(isiOS){
+    var input = $(':input').not(":button");
+
+    var empty_text = function(){
+      for(var i=0;i<input.length;i++){
+        var value = input.eq(i).val();
+        if(value == ''){
+          return "有空值"
+        }
+      }
+    }
+
+    if(empty_text() == "有空值"){
+      FailMask('.wrap',"请填写完整信息！")
+    }
+  }
+  })
+}
