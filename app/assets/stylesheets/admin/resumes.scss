@@ -83,17 +83,18 @@
       margin-top: 10px;
       position: relative;
       border: 1px solid #a1a1a1;
-      .avatar {
-        width: 56px;
-        height: 56px;
-        float: left;
-        margin-top: 13px;
-        margin-left: 20px;
-        img {
+      // .avatar {
+      //   width: 56px;
+      //   height: 56px;
+      //   float: left;
+      //   margin-top: 13px;
+      //   margin-left: 20px;
+        img.img-show {
           width: auto;
           height: 56px;
+          margin-left: 12px;
         }
-      }
+      // }
       span {
         display: inline-block;
         height: 80px;

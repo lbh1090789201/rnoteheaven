@@ -59,7 +59,7 @@ var AdminJobSee = React.createClass({
                 </tr>
                 <tr>
                   <td>发布期限:</td>
-                  <td>{this.state.job.duration}</td>
+                  <td>{this.state.job.duration}天</td>
                 </tr>
                 <tr>
                   <td>职位描述:</td>

@@ -58,9 +58,7 @@ var ResumeContent = React.createClass({
         </ul>
         <div className="resume-content">
           <div className="show-img">
-            <div className="avatar">
-              <img src={avatar} />
-            </div>
+              <img className="img-show" src={avatar} />
             <span>{resume.user.show_name}</span>
           </div>
         </div>
@@ -169,7 +167,7 @@ var UserInfo = React.createClass({
         </tr>
         <tr>
           <td>出生年限：</td>
-          <td>{user.birthday}</td>
+          <td>{user.birthday? user.birthday.slice(0,10) : ""}</td>
         </tr>
         <tr>
           <td>所在城市：</td>
@@ -199,7 +197,7 @@ var WorkExperience = React.createClass({
     return (
       <div className="box">
         <div className="green-point"></div>
-        <time>{resume.started_at}-{resume.left_time}</time>
+        <time>{resume.started_at? resume.started_at.slice(0,10) : ""} - {resume.left_time? resume.left_time.slice(0,10) : ""}</time>
         <div className="time-line-box work-time">
           <h3>{resume.company}
           </h3>
@@ -222,7 +220,7 @@ var EducationExperience = React.createClass({
           <div className="blue-point"></div>
         </div>
         <div className="green-point"></div>
-        <time>{resume.graduated_at}年毕业</time>
+        <time>{resume.graduated_at? resume.graduated_at.slice(0,10) : ""}年毕业</time>
         <div className="time-line-box work-time">
           <h3>{resume.college}
           </h3>
