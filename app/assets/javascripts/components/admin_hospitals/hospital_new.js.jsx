@@ -202,7 +202,7 @@ var AdminHospitalNew = React.createClass({
             <div className="form-group col-sm-12">
                <label>机构介绍</label>
                  <textarea className="form-control input-textarea" placeholder="机构介绍" name="introduction"
-                           required title="最少6个字符" ref="introduction" onBlur={this.handleBlur} />
+                           required title="最少6个字符" ref="introduction" onBlur={this.handleBlur} ></textarea>
 
             </div>
 

@@ -208,7 +208,7 @@ var AdminEditHospital = React.createClass({
             <div className="form-group col-sm-12">
                <label>机构介绍</label>
                  <textarea className="form-control" name="introduction" rows="5" required title="最少6个字符"
-                    ref="introduction" defaultValue={this.props.data.introduction} onBlur={this.handleBlur} />
+                    ref="introduction" onBlur={this.handleBlur} >{this.props.data.introduction}</textarea>
             </div>
 
             <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>
