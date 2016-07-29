@@ -54,29 +54,34 @@ var AdminHospitalNew = React.createClass({
     formData.append('plan_id',this.state.vip_id);
     formData.append('property',this.state.property);
 
-    $.ajax({
-      url: "/admin/hospitals",
-      type: "POST",
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function(data) {
-        let hospitals = this.props.dad.state.hospitals
+    var text = $("#input_textarea").val();
+    if(text.length < 6){
+      alert("机构介绍长度不能少于６!")
+    }else{
+      $.ajax({
+        url: "/admin/hospitals",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+          let hospitals = this.props.dad.state.hospitals
 
-        hospitals.push(data.hospital)
+          hospitals.push(data.hospital)
 
-        this.props.dad.setState({
-          hospitals: hospitals,
+          this.props.dad.setState({
+            hospitals: hospitals,
+            new_display: false,
+          })
+        }.bind(this),
+        error: function(data) {
+          console.log(data.responseText)
+          this.props.dad.setState({
           new_display: false,
-        })
-      }.bind(this),
-      error: function(data) {
-        console.log(data.responseText)
-        this.props.dad.setState({
-        new_display: false,
-        })
-      }.bind(this),
-    })
+          })
+        }.bind(this),
+      })
+    }
   }
   ,render: function() {
     var plans = this.props.plans
@@ -171,14 +176,14 @@ var AdminHospitalNew = React.createClass({
             <div className="row">
 
               <div className="form-group col-sm-4">
-                 <label>经度</label>
-                   <input type="text" className="form-control" placeholder="经度" name="lng"
+                 <label>经度(73°E~135°E)</label>
+                   <input type="text" className="form-control" placeholder="请填写数字" name="lng"
                             pattern="^[+-]?\d+(\.\d+)?$" required ref="lng" />
               </div>
 
               <div className="form-group col-sm-4">
-                 <label>纬度</label>
-                   <input type="text" className="form-control" placeholder="纬度" name="lat"
+                 <label>纬度(4°N~53°N)</label>
+                   <input type="text" className="form-control" placeholder="请填写数字" name="lat"
                             pattern="^[+-]?\d+(\.\d+)?$" required ref="lat" />
               </div>
 
@@ -201,23 +206,10 @@ var AdminHospitalNew = React.createClass({
 
             <div className="form-group col-sm-12">
                <label>机构介绍</label>
-                 <textarea className="form-control input-textarea" placeholder="机构介绍" name="introduction"
-                           required title="最少6个字符" ref="introduction" onBlur={this.handleBlur} ></textarea>
+                 <textarea id="input_textarea" className="form-control input-textarea" placeholder="机构介绍" name="introduction"
+                           required title="最少6个字符" ref="introduction" ></textarea>
 
             </div>
-
-            {
-              // <div className="form-group">
-              //   <div>{this.state.plan.name}:
-              //      <span>可发布职位{this.state.plan.may_release}个</span>
-              //      <span>可置顶职位{this.state.plan.may_set_top}个</span>
-              //      <span>可接收简历{this.state.plan.may_receive}份</span>
-              //      <span>可查看简历{this.state.plan.may_view}份</span>
-              //      <span>可参加专场{this.state.plan.may_join_fairs}次</span>
-              //   </div>
-              // </div>
-            }
-
 
             <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>
             <button type="submit" className="btn btn-success btn-bottom">提交</button>

@@ -12,16 +12,7 @@ var AdminEditHospital = React.createClass({
       vip_id: e.target.value,
     })
   }
-  ,handleBlur: function(e) {
-    var value = e.target.value
-
-    if(value.length < 6){
-      alert("机构介绍长度不能少于６!")
-    }
-  }
   ,handleFocus: function() {
-    console.log("11111")
-
     var input_id = this.refs.region.id,
         province = this.refs.region_2.id,
         city = this.refs.region_3.id
@@ -55,34 +46,39 @@ var AdminEditHospital = React.createClass({
     var formData = new FormData(e.target)
     formData.append('plan_id',this.state.vip_id);
 
-    $.ajax({
-      url: "/admin/hospitals/" + this.props.data.id,
-      type: "PATCH",
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function(data) {
-        let hospitals = this.props.dad.state.hospitals,
-            index = this.state.index
+    var text = $("#input_textarea").val();
+    if(text.length < 6){
+      alert("机构介绍长度不能少于６!")
+    }else{
+      $.ajax({
+        url: "/admin/hospitals/" + this.props.data.id,
+        type: "PATCH",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+          let hospitals = this.props.dad.state.hospitals,
+              index = this.state.index
 
-        hospitals[index] = data.hospital[0]
+          hospitals[index] = data.hospital[0]
 
-        this.props.dad.setState({
-          hospitals: hospitals,
-          hos_info: {
-            eidt_display: false,
-          }
-        })
-      }.bind(this),
-      error: function(data) {
-        console.log(data.responseText)
-        this.props.dad.setState({
-          hos_info: {
-            eidt_display: false,
-          }
-        })
-      }.bind(this),
-    })
+          this.props.dad.setState({
+            hospitals: hospitals,
+            hos_info: {
+              eidt_display: false,
+            }
+          })
+        }.bind(this),
+        error: function(data) {
+          console.log(data.responseText)
+          this.props.dad.setState({
+            hos_info: {
+              eidt_display: false,
+            }
+          })
+        }.bind(this),
+      })
+    }
   }
   ,render: function() {
     var plans = this.props.plans
@@ -177,13 +173,13 @@ var AdminEditHospital = React.createClass({
 
             <div className="row">
               <div className="form-group col-sm-4">
-                 <label>经度</label>
+                 <label>经度(73°E~135°E)</label>
                    <input type="text" className="form-control" defaultValue={this.props.data.lng} name="lng"
                             pattern="^[+-]?\d+(\.\d+)?$" required ref="lng" />
               </div>
 
               <div className="form-group col-sm-4">
-                 <label>纬度</label>
+                 <label>纬度(4°N~53°N)</label>
                    <input type="text" className="form-control" defaultValue={this.props.data.lat} name="lat"
                             pattern="^[+-]?\d+(\.\d+)?$" required ref="lat" />
               </div>
@@ -207,8 +203,8 @@ var AdminEditHospital = React.createClass({
 
             <div className="form-group col-sm-12">
                <label>机构介绍</label>
-                 <textarea className="form-control" name="introduction" rows="5" required title="最少6个字符"
-                    ref="introduction" onBlur={this.handleBlur} >{this.props.data.introduction}</textarea>
+                 <textarea id="input_textarea" className="form-control" name="introduction" rows="5" required title="最少6个字符"
+                    ref="introduction" onBlur={this.handleBlur}>{this.props.data.introduction}</textarea>
             </div>
 
             <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>
