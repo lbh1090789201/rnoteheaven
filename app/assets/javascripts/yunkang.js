@@ -436,6 +436,7 @@ function doctorMask(submit_id) {
     var input_text = $(":text"),
         input_textarea = $("textarea");
 
+
     var empty_value = function(){
       for(var i=0;i<input_text.length;i++){
         var value = input_text.eq(i).val();
@@ -453,7 +454,7 @@ function doctorMask(submit_id) {
     }
 
     if(empty_value() == "有空值" || empty_text() == "有空值"){
-      FailMask('.wrap',"请完善信息！")
+      FailMask('#wrap',"请完善信息！")
     }
   }
   })
