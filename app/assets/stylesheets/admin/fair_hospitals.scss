@@ -43,6 +43,9 @@
     }
 
   }
+  .btn-secondary {
+    background: #a1a1a1;
+  }
 }
 
 .search-box {
@@ -72,4 +75,32 @@
 }
 
 
+}
+
+//show
+.fairs-history {
+  ul.fair-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      width: 50%;
+      float: left;
+      label {
+        width: 80px;
+      }
+      span {
+        margin-left: 20px;
+      }
+    }
+    .fair-intro {
+      width: 100%;
+      p {
+        text-indent: 2em;
+      }
+    }
+  }
+  .fair-image {
+    clear: both;
+  }
 }

@@ -162,6 +162,13 @@ var AdminResumeTable = React.createClass({
           resumes: res,
         })
 
+        let status = data.status
+
+        if(status){
+          alert("简历已被冻结")
+        }else {
+          alert("简历已被解冻")
+        }
       }.bind(this),
       error: function(data) {
         alert(data.responseText)
@@ -237,7 +244,7 @@ var AdminResumeItem = React.createClass({
         <td>{resume.show_name}</td>
         <td>{resume.location}</td>
         <td>{resume.public ? "公开" : "隐私"}</td>
-        <td>{resume.resume_freeze ? "冻结" : "正常"}</td>
+        <td className="resume-freeze">{resume.resume_freeze ? "冻结" : "正常"}</td>
         <td>{resume.apply_count}</td>
         <td>{resume.viewed_count}</td>
         <td><button onClick={this.handleClick} className="btn btn-default btn-form" id={resume.id}>查看</button></td>

@@ -53,7 +53,8 @@ class Admin::ResumesController < AdminController
       render json: {
         success: true,
         info: '简历操作成功',
-        resumes: @resumes
+        resumes: @resumes,
+        status: resumes[0].resume_freeze
       }, status: 200
     else
       render json: '简历操作成功，检查您是否勾选简历', status: 403
