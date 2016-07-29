@@ -81,6 +81,7 @@ RSpec.describe Role, type: :model do
     it ' change copper to gold' do
       @user = create(:user)
       @hospital = create(:hospital, contact_number: @user.cellphone)
+      @employer = create(:employer, hospital_id: @hospital.id)
       user = Role.checkUser @user
       res = User.find user.id
       employer = Employer.find_by user_id: @user.id

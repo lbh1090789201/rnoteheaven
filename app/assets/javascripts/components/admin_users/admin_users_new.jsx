@@ -95,7 +95,7 @@
              <div className="form-group">
                 <label>用户名称</label>
                   <input className="form-control" placeholder="用户名" name="show_name"
-                              pattern=".{4,}" required title="用户名最少4个字符" defaultValue={this.state.show_name} ref="show_name" />
+                              pattern=".{2,}" required title="用户名最少2个字符" defaultValue={this.state.show_name} ref="show_name" />
              </div>
 
              <div className="form-group">
