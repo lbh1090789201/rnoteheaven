@@ -174,13 +174,13 @@ var AdminEditHospital = React.createClass({
             <div className="row">
               <div className="form-group col-sm-4">
                  <label>经度(73°E~135°E)</label>
-                   <input type="text" className="form-control" defaultValue={this.props.data.lng} name="lng"
+                   <input type="text" className="form-control" placeholder="请填写数字" defaultValue={this.props.data.lng} name="lng"
                             pattern="^[+-]?\d+(\.\d+)?$" required ref="lng" />
               </div>
 
               <div className="form-group col-sm-4">
                  <label>纬度(4°N~53°N)</label>
-                   <input type="text" className="form-control" defaultValue={this.props.data.lat} name="lat"
+                   <input type="text" className="form-control" placeholder="请填写数字" defaultValue={this.props.data.lat} name="lat"
                             pattern="^[+-]?\d+(\.\d+)?$" required ref="lat" />
               </div>
 
