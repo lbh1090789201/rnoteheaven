@@ -37,30 +37,33 @@ function ourNotice(div_class,text) {
 $(document).scrollTop('0');
 
 /*屏幕自适应开始*/
-function getWidth()
-  {
-    xWidth = null;
-    if(window.screen != null)
-      xWidth = window.screen.availWidth;
+var u = navigator.userAgent;
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+if(isiOS) {
+  var realWidth = Math.min(window.innerWidth, screen.width)
+  var font_size = (realWidth/414*20).toFixed(2) + 'px'
+  $('html').css('fontSize', font_size);
+} else {
+  function getWidth()
+    {
+      xWidth = null;
+      if(window.screen != null)
+        xWidth = window.screen.availWidth;
 
-    if(window.innerWidth != null)
-      xWidth = window.innerWidth;
+      if(window.innerWidth != null)
+        xWidth = window.innerWidth;
 
-    if(document.body != null)
-      xWidth = document.body.clientWidth;
+      if(document.body != null)
+        xWidth = document.body.clientWidth;
 
-    return xWidth;
-  }
+      return xWidth;
+    }
 
-var realWidth = getWidth()
-
-if (realWidth == 414){
-    $('html').css('font-size','20px');
-}else{
+  var realWidth = getWidth()
   var font_size = (realWidth/414*20).toFixed(2) + 'px';
   $('html').css('fontSize', font_size);
-};
-
+}
 /*屏幕自适应结束*/
 
 /* 取得屏幕高度并减去 head 开始 */

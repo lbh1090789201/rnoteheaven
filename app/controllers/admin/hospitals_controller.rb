@@ -43,6 +43,15 @@ class Admin::HospitalsController < AdminController
   end
 
   def update
+    is_repeate = Hospital.find_by contact_number: hospital_params[:contact_number]
+    if is_repeate
+      render json: {
+        success: false,
+        info: "此帐号已被使用。"
+      }, status: 403
+      return
+    end
+
     hospital = Hospital.find params[:id]
     employer = Employer.find_by hospital_id: hospital.id
     employer = Employer.employer_plan employer, params[:plan_id]
@@ -66,6 +75,15 @@ class Admin::HospitalsController < AdminController
   end
 
   def create
+    is_repeate = Hospital.find_by contact_number: hospital_params[:contact_number]
+    if is_repeate
+      render json: {
+        success: false,
+        info: "此帐号已被使用。"
+      }, status: 403
+      return
+    end
+
     hospital = Hospital.create! hospital_params
     plan_id = employer_params[:plan_id]
 
@@ -95,7 +113,7 @@ class Admin::HospitalsController < AdminController
     user = User.find_by id: employer.user_id
 
     EventLog.create_log current_user.id, current_user.show_name, 'Hospital', hospital.id, "机构", '删除'
-    
+
     if hospital.destroy
       if user.present?
         user.user_type = "copper"
