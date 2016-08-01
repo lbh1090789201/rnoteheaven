@@ -1,6 +1,6 @@
 
     <% provide :link, "sign_up"  %>
-    <% provide :title, "用户登陆" %>
+    <% provide :title, "用户登录" %>
     <% provide :content, "注册"  %>
     <style>
     // 覆盖样式
@@ -45,7 +45,7 @@
         <%= simple_form_for(resource, :as => resource_name, :url => user_session_path) do |f| %>
             <%= f.input :username, label: '用户名：', input_html: {class: "form-control"} %>
             <%= f.input :password, label: '密    码：',as: :password, input_html: {class: "form-control"} %>
-            <%= f.button :submit, "登陆", class: "btn-blue", style: "width: 100%" %>
+            <%= f.button :submit, "登录", class: "btn-blue", style: "width: 100%" %>
         <% end %>
     </div>
 

@@ -26,3 +26,7 @@
 //= require_tree
 
 //= require iscroll
+
+//= bootstrap-datetimepicker.zh-CN
+//= bootstrap-datetimepicker
+//= bootstrap-datetimepicker.fr
