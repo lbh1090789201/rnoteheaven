@@ -34,7 +34,10 @@ var AdminJobAll = React.createClass({
       type: 'PATCH',
       data: {'ids': ids, 'status': status},
       success: function(data) {
-        this.setState({jobs : data.jobs})
+        this.setState({
+          jobs : data.jobs,
+          checkValue: [],
+        })
         $('input:checkbox').removeAttr('checked');
       }.bind(this),
       error: function(data){
@@ -46,6 +49,7 @@ var AdminJobAll = React.createClass({
     console.log(this)
   }
   ,render: function() {
+    console.log(this.state.checkValue.slice())
     var job_view = this.state.view_display ? <AdminJobSee dad={this} /> : ''
     return (
       <div className="admin-jobs">
