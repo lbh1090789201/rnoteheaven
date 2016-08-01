@@ -14,11 +14,23 @@ var ReviewJobAll = React.createClass({
       status: e.target.value,
     })
   }
+  ,handleFocus: function(e) {
+      let id = e.target.id
+
+      $("#"+id).datetimepicker({
+        language: 'zh-CN',
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        minView: "month",
+        todayBtn:  1,
+        showMeridian: 1,
+      });
+    }
   ,handleSubmit: function(e){
     e.preventDefault()
     //隐藏分页码
     $('.pagination').hide()
-    
+
     let time_before = this.refs.time_before.value,
         time_after = this.refs.time_after.value,
         job_type = this.refs.job_type.value,
@@ -56,12 +68,12 @@ var ReviewJobAll = React.createClass({
             <RadioButtons ref="goodRadio" handleRadio={this.handleRadio} />
           </div>
           <div className='form-group col-sm-4'>
-            <input type="date" className="form-control" placeholder='开始时间' name='time_after'
-                   defaultValue={this.state.time_after} ref="time_after" />
+            <input type="text" id="time_after" className="form-control" placeholder='开始时间' name='time_after'
+                   onFocus={this.handleFocus} defaultValue={this.state.time_after} ref="time_after" />
           </div>
           <div className='form-group col-sm-4'>
-            <input type="date" className="form-control" placeholder='结束时间' name='time_before'
-                   defaultValue={this.state.time_before} ref="time_before" />
+            <input type="text" id="time_before" className="form-control" placeholder='结束时间' name='time_before'
+                   onFocus={this.handleFocus} defaultValue={this.state.time_before} ref="time_before" />
           </div>
           <div className='form-group col-sm-4'>
             <input type='text' className='form-control' placeholder='工作类型' name='job_type'

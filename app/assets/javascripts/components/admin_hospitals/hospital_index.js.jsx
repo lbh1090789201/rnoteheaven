@@ -44,6 +44,18 @@ var AdminHospitalForm = React.createClass({
       vip_id: '',
     }
   }
+  ,handleFocus: function(e) {
+    let id = e.target.id
+
+    $("#"+id).datetimepicker({
+      language: 'zh-CN',
+      format: "yyyy-mm-dd",
+      autoclose: true,
+      minView: "month",
+      todayBtn:  1,
+      showMeridian: 1,
+    });
+  }
   ,handleChange: function(e) {
     this.setState({
       property: e.target.value,
@@ -114,16 +126,14 @@ var AdminHospitalForm = React.createClass({
           </select>
         </div>
 
-        <div className='form-group col-sm-2 form-margin-right'>
-          <input type="date" className="form-control" placeholder='开始时间' name='time_before'
-                 ref="time_before" />
+        <div className='form-group col-sm-2'>
+          <input type="text" id="time_before" className="form-control" placeholder='开始时间' name='time_before'
+                 onFocus={this.handleFocus} ref="time_before" />
         </div>
 
-        <div className="underline" style={{'float':'left','paddingTop':'8px'}}>——</div>
-
-        <div className='form-group col-sm-2 form-margin-left'>
-          <input type="date" className="form-control" placeholder='结束时间' name='time_after'
-                 ref="time_after" />
+        <div className='form-group col-sm-2'>
+          <input type="text" id="time_after" className="form-control" placeholder='结束时间' name='time_after'
+                 onFocus={this.handleFocus} ref="time_after" />
         </div>
 
         <input type="hidden" ref="hide_search" value="search"/>

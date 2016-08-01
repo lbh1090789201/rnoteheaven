@@ -52,6 +52,18 @@ var AdminUserForm = React.createClass({
       manager: e.target.value,
     })
   }
+  ,handleFocus: function(e) {
+      let id = e.target.id
+
+      $("#"+id).datetimepicker({
+        language: 'zh-CN',
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        minView: "month",
+        todayBtn:  1,
+        showMeridian: 1,
+      });
+    }
   ,handleSubmit: function(e) {
     e.preventDefault()
     $.ajax({
@@ -80,12 +92,12 @@ var AdminUserForm = React.createClass({
           <AdminUserRadio handleRadio={this.handleRadio} />
         </div>
           <div className='form-group col-sm-3'>
-            <input type="date" className="form-control" placeholder='开始时间' name='time_from'
-                   defaultValue={this.state.time_from} ref="time_from" />
+            <input type="text" id="time_from" className="form-control" placeholder='开始时间' name='time_from'
+                  onFocus={this.handleFocus} defaultValue={this.state.time_from} ref="time_from" />
           </div>
           <div className='form-group col-sm-3'>
-            <input type="date" className="form-control" placeholder='结束时间' name='time_to'
-                   defaultValue={this.state.time_to} ref="time_to" />
+            <input type="text" id="time_to" className="form-control" placeholder='结束时间' name='time_to'
+                   onFocus={this.handleFocus} defaultValue={this.state.time_to} ref="time_to" />
           </div>
           <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='用户名' name='show_name'

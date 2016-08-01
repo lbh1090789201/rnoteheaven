@@ -27,6 +27,6 @@
 
 //= require iscroll
 
-//= bootstrap-datetimepicker.zh-CN
-//= bootstrap-datetimepicker
-//= bootstrap-datetimepicker.fr
+//= require bootstrap-datetimepicker
+//= require bootstrap-datetimepicker.fr
+//= require bootstrap-datetimepicker.zh-CN
