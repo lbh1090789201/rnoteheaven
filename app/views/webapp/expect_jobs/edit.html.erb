@@ -2,7 +2,7 @@
 <% provide :content, "保存"%>
 
 <div class="edit_basic edit-work-experiences edit-expectjob" id="work_eidt">
-  <%= simple_form_for @expect_job, method: :patch,remote: true, url: webapp_expect_job_path(params[:id]) do |e| %>
+  <%= simple_form_for @expect_job, method: :patch,remote: true, url: webapp_expect_job_path(params[:id]), id: "formid" do |e| %>
       <%= e.input :name, label: '职        能', input_html: { readonly: "readonly", class: "expect-name job-fair", id: "expect_name"} %>
       <%= e.input :job_type, label: '工作类型', input_html: { readonly: "readonly", class: "expect-type job-fair", id: "expect_type"} %>
       <%= e.input :location, label: '期望城市', input_html: { readonly: "readonly", class: "job-fair", id: "cityChoice"} %>
@@ -11,14 +11,20 @@
       <input type="hidden" id="city" value="">
       <%= e.input :expected_salary_range, label: '期望薪水', input_html: { readonly: "readonly", class: "expect-range job-fair", id: "expect_range"} %>
       <%= e.input :job_desc, label: '补充说明', as: :text, input_html: { class: "user-input", placeholder: "请输入最多1000字"} %>
-      <%= e.submit "保存", id: "submit", class: "btn btn-info btn-right"%>
+      <%= e.submit "保存", id: "submit", style: "display: none"%>
+      <button type="button" name="button" id="btn_save" class="btn btn-info btn-right">保存</button>
 <% end %>
 </div>
 
 
 <script type="text/javascript">
     fullScreen('.edit_basic');
-    clickRignt('#submit');
+    // clickRignt('#submit');
+
+    // 防重复点击
+    $("#btn_save").on('click',function() {
+      EditMask("#btn_save", "请完善信息！");
+    })
 
    //职能
    $('.expect-name').click(function() {

@@ -65,12 +65,15 @@
 				var job_demand_2 = $('.form-group:eq(10)').children('textarea').val();
 				if(job_name_1==job_name_2 && job_desc_1==job_desc_2 && job_demand_1==job_demand_2) {
 					$('#submit').trigger('click');
+					$('.btn-sright').css("pointer-events","none");
 				}else{
 					$('#job_status').attr('value','reviewing');
 					$('#submit').trigger('click');
+					$('.btn-sright').css("pointer-events","none");
 				};
 			}else{
 				$('#submit').trigger('click');
+				$('.btn-sright').css("pointer-events","none");
 			};
 		});
 	});

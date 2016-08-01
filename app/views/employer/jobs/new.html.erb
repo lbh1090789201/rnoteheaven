@@ -85,6 +85,8 @@
       if(index==0) {
         $('#job_status').attr('value','saved');
         $('#submit').trigger('click');
+        $('#save_form').css("pointer-events","none");
+        $('#sub_btn').css("pointer-events","none");
       } else {
         if(vip_status == 'false') {
           // $('.may-release').css('display','block');
@@ -92,6 +94,8 @@
         } else {
           $('#job_status').attr('value','reviewing');
           $('#submit').trigger('click');
+          $('#sub_btn').css("pointer-events","none");
+          $('#save_form').css("pointer-events","none");
         }
       }
     });
