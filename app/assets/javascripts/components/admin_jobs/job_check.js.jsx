@@ -110,6 +110,18 @@ var ReviewJob = React.createClass({
       job_name: '',
     }
   }
+  ,handleFocus: function(e) {
+      let id = e.target.id
+
+      $("#"+id).datetimepicker({
+        language: 'zh-CN',
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        minView: "month",
+        todayBtn:  1,
+        showMeridian: 1,
+      });
+    }
   //点击搜索提交按钮事件
   ,handleSubmit: function(e){
     e.preventDefault()
@@ -148,12 +160,12 @@ var ReviewJob = React.createClass({
     return (
       <form className='form-inline' onSubmit={this.handleSubmit}>
         <div className='form-group col-sm-4'>
-            <input type="date" className="form-control" placeholder='开始时间' name='time_end'
-                   defaultValue={this.state.time_after} ref="time_begin" />
+            <input type="text" id="time_begin" className="form-control" placeholder='开始时间' name='time_end'
+                   onFocus={this.handleFocus} defaultValue={this.state.time_after} ref="time_begin" />
           </div>
           <div className='form-group col-sm-4'>
-            <input type="date" className="form-control" placeholder='结束时间' name='time_begin'
-                   defaultValue={this.state.time_before} ref="time_end" />
+            <input type="text" id="time_end" className="form-control" placeholder='结束时间' name='time_begin'
+                   onFocus={this.handleFocus} defaultValue={this.state.time_before} ref="time_end" />
           </div>
           <div className='form-group col-sm-4'>
             <input type='text' className='form-control' placeholder='工作类型' name='job_type'

@@ -15,6 +15,18 @@ var FairNew = React.createClass({
       }
     })
   }
+  ,handleFocus: function(e) {
+      let id = e.target.id
+
+      $("#"+id).datetimepicker({
+        language: 'zh-CN',
+        format: "yyyy-mm-dd",
+        autoclose: true,
+        minView: "month",
+        todayBtn:  1,
+        showMeridian: 1,
+      });
+    }
   ,handleSubmit: function(e) {
     e.preventDefault()
     let banner_file = this.refs.banner.files[0],
@@ -62,14 +74,14 @@ var FairNew = React.createClass({
 
             <div className="form-group col-sm-6">
                <label>开始时间</label>
-               <input type="date" className="form-control" name="begain_at"
-                               pattern=".{1,}" required title="开始时间不能为空" ref="begain_at" />
+               <input type="text" id="begain_at" className="form-control" name="begain_at" placeholder="开始时间"
+                              onFocus={this.handleFocus} pattern=".{1,}" required title="开始时间不能为空" ref="begain_at" />
             </div>
 
             <div className="form-group col-sm-6">
                <label>结束时间</label>
-               <input type="date" className="form-control" name="end_at"
-                               pattern=".{1,}" required title="结束时间不能为空" ref="end_at" />
+               <input type="text" id="end_at" className="form-control" name="end_at" placeholder="结束时间"
+                              onFocus={this.handleFocus} pattern=".{1,}" required title="结束时间不能为空" ref="end_at" />
             </div>
 
             <div className="form-group col-sm-12">
