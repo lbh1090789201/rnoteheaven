@@ -43,14 +43,21 @@ class Admin::HospitalsController < AdminController
   end
 
   def update
-    is_repeate = Hospital.find_by contact_number: hospital_params[:contact_number]
-    if is_repeate
-      render json: {
-        success: false,
-        info: "此帐号已被使用。"
-      }, status: 403
-      return
+    my_hospital = Hospital.find params[:id]
+
+    unless my_hospital.contact_number == hospital_params[:contact_number]
+      is_repeate = Hospital.find_by contact_number: hospital_params[:contact_number]
+      if is_repeate
+        render json: {
+          success: false,
+          info: "此帐号已被使用。"
+        }, status: 403
+        return
+      end
     end
+
+
+
 
     hospital = Hospital.find params[:id]
     employer = Employer.find_by hospital_id: hospital.id
