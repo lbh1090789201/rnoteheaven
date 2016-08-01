@@ -1,30 +1,37 @@
 <%= provide :title, "双选会" %>
-<% @fairs.each do |f| %>
-<div id="hospital_home">
-  <div class="fair-image" style='background: url(<%= asset_path(f["banner"]["url"]) %>) no-repeat;background-size: cover'></div>
-  <div class="home-bg"></div>
-  <div class="home-note">
-    <p><%= f["name"] %> 沟通专场</p>
+
+  <% @fairs.each do |f| %>
+  <div class="fairs-item">
+  <div id="hospital_home">
+    <div class="fair-image" style='background: url(<%= asset_path(f["banner"]["url"]) %>) no-repeat;background-size: cover'></div>
+    <div class="home-bg"></div>
+    <div class="home-note">
+      <p><%= f["name"] %> 沟通专场</p>
+    </div>
   </div>
-</div>
-<div id="hospital-data">
-  <div class="hospital-number">
-    <p>本期入驻机构</p>
-    <p><span><%= f["hospital_num"] %></span>家</p>
+  <div id="hospital-data">
+    <div class="hospital-number">
+      <p>本期入驻机构</p>
+      <p><span><%= f["hospital_num"] %></span>家</p>
+    </div>
+    <span></span>
+    <div class="hospital-time">
+      <p>距专场结束</p>
+      <p><%= f["diff"] %></p>
+    </div>
   </div>
-  <span></span>
-  <div class="hospital-time">
-    <p>距专场结束</p>
-    <p><%= f["diff"] %></p>
+  <div id="hospital_rule">
+    <h2>专场细则</h2>
+    <p><%= f["intro"] %></p>
   </div>
-</div>
-<div id="hospital_rule">
-  <h2>专场细则</h2>
-  <p><%= f["intro"] %></p>
-</div>
-<p class="button">
-  <a href='/webapp/job_fairs/<%= f["id"] %>'>
-    进入专场
-  </a>
-</p>
-<% end %>
+  <p class="button">
+    <a href='/webapp/job_fairs/<%= f["id"] %>'>
+      进入专场
+    </a>
+  </p>
+  </div>
+  <% end %>
+
+  <script type="text/javascript">
+    // fullScreen('.fairs-item')
+  </script>

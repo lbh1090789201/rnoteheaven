@@ -6,7 +6,6 @@ var Job = React.createClass({
     })
   }
   ,render: function() {
-    // console.log(this.props.dad.state.jid)
     var status = this.props.data.status
     var zh_status = function(){
       if(status == "saved"){

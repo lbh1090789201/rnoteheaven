@@ -22,6 +22,16 @@ class Admin::FairHospitalsController < AdminController
   end
 
   def create
+    is_repeate = FairHospital.find_by hospital_id: fair_hospitals_params[:hospital_id]
+
+    if is_repeate
+      render json: {
+        success: false,
+        info: "此机构已添加。"
+      }, status: 403
+      return
+    end
+
     fair_hospital = FairHospital.new fair_hospitals_params
     fair_hospital.user_id = current_user.id
     fair_hospital.operator = current_user.show_name

@@ -30,7 +30,7 @@ var FairHistroyView = React.createClass({
           </ul>
 
           <div className="form-group fair-image">
-             <label>专场图片:</label>
+             <label>专场封面:</label>
              <div className="fair-img"><img src={fair.banner.url} /></div>
           </div>
 

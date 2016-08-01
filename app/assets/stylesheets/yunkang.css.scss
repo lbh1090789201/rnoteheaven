@@ -1152,6 +1152,12 @@ a:hover {
 /* 我的应聘记录 结束-汤伟*/
 
 /* 双选会列表页 开始-冰华*/
+.fairs-item {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
 #hospital_home {
   position: relative;
   width: 100%;
@@ -1251,6 +1257,7 @@ a:hover {
   text-align: center;
   height: 1.9rem;
   margin-top: 2.98rem;
+  margin-bottom: 3rem;
   a {
     display: block;
     width: 6.45rem;
