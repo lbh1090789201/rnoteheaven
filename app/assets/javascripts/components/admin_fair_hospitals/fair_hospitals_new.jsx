@@ -37,7 +37,8 @@ var FairHospitalNew = React.createClass({
         })
       }.bind(this),
       error: function(data){
-        alert(data.responseText)
+        info = JSON.parse(data.responseText)
+        alert(info["info"])
         this.props.dad.setState({
             new_display: false,
         })

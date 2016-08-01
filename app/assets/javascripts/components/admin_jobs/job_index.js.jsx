@@ -177,23 +177,27 @@ var RadioButtons = React.createClass({
     return (
       <span>
         <label className="checkbox-inline">
-          <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="" />全部职位
+          <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="" />全部
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="release" />发布中职位
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="release" />发布中
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="end" />已结束职位
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="pause" />暂停中
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="fail" />审核失败职位
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="end" />已结束
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="freeze" />冻结中职位
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="fail" />审核失败
+        </label>
+
+        <label className="checkbox-inline">
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="freeze" />冻结中
         </label>
       </span>
     )
