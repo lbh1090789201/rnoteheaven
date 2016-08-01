@@ -22,7 +22,10 @@ class Admin::FairHospitalsController < AdminController
   end
 
   def create
-    is_repeate = FairHospital.find_by hospital_id: fair_hospitals_params[:hospital_id]
+    is_repeate = FairHospital.find_by(
+      hospital_id: fair_hospitals_params[:hospital_id],
+      fair_id: fair_hospitals_params[:fair_id]
+    )
 
     if is_repeate
       render json: {
