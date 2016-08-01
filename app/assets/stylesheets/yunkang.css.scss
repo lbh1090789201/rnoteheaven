@@ -1155,7 +1155,12 @@ a:hover {
 .fairs-item {
   margin-bottom: 1rem;
   border-bottom: 1px solid #ccc;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid #fff;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.container .fairs-item:last-child {
+  border-top: 0;
+  margin-bottom: 0;
 }
 
 #hospital_home {

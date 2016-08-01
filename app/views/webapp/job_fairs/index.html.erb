@@ -1,7 +1,7 @@
 <%= provide :title, "双选会" %>
 
   <% @fairs.each do |f| %>
-  <div class="fairs-item">
+  <div class=<%= @fairs.length > 1 ? "fairs-item" : "" %>>
   <div id="hospital_home">
     <div class="fair-image" style='background: url(<%= asset_path(f["banner"]["url"]) %>) no-repeat;background-size: cover'></div>
     <div class="home-bg"></div>
@@ -31,7 +31,3 @@
   </p>
   </div>
   <% end %>
-
-  <script type="text/javascript">
-    // fullScreen('.fairs-item')
-  </script>
