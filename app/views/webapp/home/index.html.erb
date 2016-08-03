@@ -102,6 +102,10 @@
       });
       cityPicker.init();
 
+    $('#cityChoice').click(function() {
+      this.blur()
+    })
+
     <% if params[:city] %>
     $(function() {
         console.log('<%= params[:city] %>');
