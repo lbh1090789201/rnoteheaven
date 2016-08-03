@@ -119,7 +119,7 @@ Ryunkang::Application.routes.draw do
     end
 
     # 404页面
-    # get "*any", via: :all, to: "errors#not_found"
+    get "*any", via: :all, to: "errors#not_found"
    ########### yunkang end ###########
 
 end

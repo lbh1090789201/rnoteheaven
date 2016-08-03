@@ -37,14 +37,16 @@
     <p class="basic_info">任职资格<%= image_tag "icon_36.png" %></p>
     <%= f.input :job_demand, label: '', as: :text, input_html: { class: "", placeholder: "资格要求"} %>
     <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status"} %>
-    <%= f.submit id: "submit", class: ""%>
-    <button class="btn-sright">保存</button>
+    <%= f.submit id: "submit"%>
+    <p class="btn-sright">保存</p>
     <% end %>
 
 </div>
 <script type="text/javascript">
-	//存在未填框时iOS会有弹窗提示
-	submitMask(".btn-sright")
+
+	$('.btn-sright').on('click', function() {
+		$('.btn-sright').css('pointer-events','none');
+	})
 
 	// 返回顶部
 	$("#job_region").bind('click',function(){
@@ -65,15 +67,12 @@
 				var job_demand_2 = $('.form-group:eq(10)').children('textarea').val();
 				if(job_name_1==job_name_2 && job_desc_1==job_desc_2 && job_demand_1==job_demand_2) {
 					$('#submit').trigger('click');
-					$('.btn-sright').css("pointer-events","none");
 				}else{
 					$('#job_status').attr('value','reviewing');
 					$('#submit').trigger('click');
-					$('.btn-sright').css("pointer-events","none");
 				};
 			}else{
 				$('#submit').trigger('click');
-				$('.btn-sright').css("pointer-events","none");
 			};
 		});
 	});
@@ -81,7 +80,6 @@
 	//6.24 VIP置顶栏的滑动条 Huangwei
 	$(function(){
 		var status = "<%= @job.is_top %>";
-		console.log(status);
 		if(status == "false"){
 			$('.job-slider-inner').css('margin-left','0.1rem');
 			$('.job-slider').css({'background':'#f4f4f4','margin-left':'#fff'});

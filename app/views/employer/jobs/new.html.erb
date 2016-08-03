@@ -54,6 +54,7 @@
   submitMask("#sub_btn");
   submitMask("#save_form");
 
+
   // 返回顶部
   $("#job_region").bind('click',function(){
     var height = $('body').height();
@@ -85,17 +86,18 @@
       if(index==0) {
         $('#job_status').attr('value','saved');
         $('#submit').trigger('click');
-        $('#save_form').css("pointer-events","none");
-        $('#sub_btn').css("pointer-events","none");
+        employerMask("#sub_btn","#save_form");
       } else {
         if(vip_status == 'false') {
-          // $('.may-release').css('display','block');
+          var mask_fail = $('.mask-fail').length
+          if(mask_fail != 0) {
+            $('.mask-fail').remove();
+          }
           againRelease('.wrap','您的可发布职位数已满，若想发布更多，请购买VIP');
         } else {
           $('#job_status').attr('value','reviewing');
           $('#submit').trigger('click');
-          $('#sub_btn').css("pointer-events","none");
-          $('#save_form').css("pointer-events","none");
+          employerMask("#sub_btn","#save_form");
         }
       }
     });
