@@ -1,5 +1,7 @@
 class FairHospital < ActiveRecord::Base
   mount_uploader :banner, AvatarUploader
+  belongs_to :fair
+  belongs_to :hospital
 
   # 获取参与专场的医院的统计信息
   def self.get_info fair_hospitals
@@ -7,7 +9,7 @@ class FairHospital < ActiveRecord::Base
 
     fair_hospitals.each do |f|
       fair_hospital = FairHospital.statistic f
-      
+
       res.push fair_hospital
     end
 
