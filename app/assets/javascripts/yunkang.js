@@ -1,7 +1,4 @@
-//防止重复点击事件pointer-events
-function cancelClick(obj) {
-  $(obj).css("pointer-events", "none");
-}
+
 
 /*请求失败弹窗,1.5秒后自动消失*/
 // text: 弹窗展示的内容信息
@@ -461,8 +458,6 @@ function doctorMask(submit_id) {
 
     if(empty_value() == "有空值" || empty_text() == "有空值"){
       FailMask('#wrap',"请完善信息！")
-    }else{
-      $(":submit").css("pointer-events","none")
     }
   }
   })

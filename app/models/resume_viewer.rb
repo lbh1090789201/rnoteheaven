@@ -1,5 +1,6 @@
 class ResumeViewer < ActiveRecord::Base
-
+  belongs_to :hospital
+  
   def self.set_viewer hid, uid
 
     if ResumeViewer.where(hospital_id: hid, user_id: uid).blank?

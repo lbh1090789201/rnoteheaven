@@ -1,6 +1,8 @@
 class Fair < ActiveRecord::Base
   mount_uploader :banner, AvatarUploader
 
+  has_many :fair_hospitals, dependent: :destroy
+
   scope :filter_begain_at, -> (begain_at) {
      where('begain_at > ?', begain_at) if begain_at.present?
    }
