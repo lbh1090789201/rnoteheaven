@@ -50,7 +50,7 @@ var AdminJobAll = React.createClass({
     console.log(this)
   }
   ,render: function() {
-    console.log(this.state.checkValue.slice())
+    // console.log(this.state.checkValue.slice())
     var job_view = this.state.view_display ? <AdminJobSee dad={this} /> : ''
     return (
       <div className="admin-jobs">

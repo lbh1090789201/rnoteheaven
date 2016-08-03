@@ -29,10 +29,82 @@
 FairHospital	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair_hospital.rb	/^class FairHospital < ActiveRecord::Base$/;"	class	line:1
 get_info	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair_hospital.rb	/^  def self.get_info fair_hospitals$/;"	singleton method	line:7	class:FairHospital
 statistic	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair_hospital.rb	/^  def self.statistic f$/;"	singleton method	line:19	class:FairHospital
-Hospital	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/hospital.rb	/^class Hospital < ActiveRecord::Base$/;"	class	line:1
-get_info	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/hospital.rb	/^  def self.get_info hospitals$/;"	singleton method	line:43	class:Hospital
 Fair	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^class Fair < ActiveRecord::Base$/;"	class	line:1
 get_info	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^  def self.get_info fairs$/;"	singleton method	line:23	class:Fair
 fair_statistic	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^  def self.fair_statistic f$/;"	singleton method	line:35	class:Fair
 set_end	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^  def self.set_end fair$/;"	singleton method	line:52	class:Fair
 is_end	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^  def self.is_end fairs$/;"	singleton method	line:66	class:Fair
+FailMask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function FailMask(div_class,text) {$/;"	function	line:6
+FailMask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function FailMask(div_class,text) {$/;"	function	line:6
+ourNotice	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function ourNotice(div_class,text) {$/;"	function	line:18
+ourNotice	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function ourNotice(div_class,text) {$/;"	function	line:18
+Float_icon	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^\/\/ function Float_icon(div_class,text,url){$/;"	function	line:28
+u	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^var u = navigator.userAgent;$/;"	variable	line:40
+getWidth	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function getWidth()$/;"	function	line:48
+fullScreen	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function fullScreen(dom) {$/;"	function	line:70
+wordLimit	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function wordLimit(dom, word) {$/;"	function	line:79
+generate_mask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^\/\/ function generate_mask() {$/;"	function	line:96
+workExperience	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function workExperience(obj,api,pclass) {$/;"	function	line:108
+change_val	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function change_val(obj) {$/;"	function	line:141
+delete_mask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function delete_mask() {$/;"	function	line:149
+clickRignt	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function clickRignt(ojb) {$/;"	function	line:156
+setTimeout	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^setTimeout(function() {$/;"	function	line:170
+refreshOnce	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function refreshOnce() {$/;"	function	line:180
+setCookie	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function setCookie(name,value)$/;"	function	line:190
+getCookie	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function getCookie(name)$/;"	function	line:199
+delCookie	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function delCookie(name)$/;"	function	line:211
+ClickShowHide	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function ClickShowHide(){$/;"	function	line:222
+ClickDeleteBtn	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function ClickDeleteBtn(obj){$/;"	function	line:225
+job_page	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function job_page() {$/;"	function	line:238
+hospital_page	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function hospital_page() {$/;"	function	line:245
+EmptyCont	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function EmptyCont(input_id) {$/;"	function	line:253
+set_back	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function set_back(my_url){$/;"	function	line:261
+go_home	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function go_home(){$/;"	function	line:298
+go_home_android	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function go_home_android(){$/;"	function	line:327
+set_back_reload	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function set_back_reload(my_url) {$/;"	function	line:344
+my_refresh	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function my_refresh() {$/;"	function	line:380
+app_reload	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function app_reload() {$/;"	function	line:385
+submitMask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function submitMask(submit_id) {$/;"	function	line:400
+empty_value	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^    var empty_value = function(){$/;"	function	line:408
+empty_text	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^    var empty_text = function(){$/;"	function	line:417
+doctorMask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function doctorMask(submit_id) {$/;"	function	line:434
+empty_value	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^    var empty_value = function(){$/;"	function	line:443
+empty_text	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^    var empty_text = function(){$/;"	function	line:452
+FailMask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function FailMask(div_class,text) {$/;"	function	line:6
+FailMask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function FailMask(div_class,text) {$/;"	function	line:6
+ourNotice	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function ourNotice(div_class,text) {$/;"	function	line:18
+ourNotice	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function ourNotice(div_class,text) {$/;"	function	line:18
+Float_icon	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^\/\/ function Float_icon(div_class,text,url){$/;"	function	line:28
+u	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^var u = navigator.userAgent;$/;"	variable	line:40
+getWidth	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function getWidth()$/;"	function	line:48
+fullScreen	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function fullScreen(dom) {$/;"	function	line:70
+wordLimit	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function wordLimit(dom, word) {$/;"	function	line:79
+generate_mask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^\/\/ function generate_mask() {$/;"	function	line:96
+workExperience	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function workExperience(obj,api,pclass) {$/;"	function	line:108
+change_val	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function change_val(obj) {$/;"	function	line:141
+delete_mask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function delete_mask() {$/;"	function	line:149
+clickRignt	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function clickRignt(ojb) {$/;"	function	line:156
+setTimeout	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^setTimeout(function() {$/;"	function	line:170
+refreshOnce	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function refreshOnce() {$/;"	function	line:180
+setCookie	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function setCookie(name,value)$/;"	function	line:190
+getCookie	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function getCookie(name)$/;"	function	line:199
+delCookie	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function delCookie(name)$/;"	function	line:211
+ClickShowHide	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function ClickShowHide(){$/;"	function	line:222
+ClickDeleteBtn	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function ClickDeleteBtn(obj){$/;"	function	line:225
+job_page	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function job_page() {$/;"	function	line:238
+hospital_page	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function hospital_page() {$/;"	function	line:245
+EmptyCont	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function EmptyCont(input_id) {$/;"	function	line:253
+set_back	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function set_back(my_url){$/;"	function	line:261
+go_home	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function go_home(){$/;"	function	line:298
+go_home_android	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function go_home_android(){$/;"	function	line:327
+set_back_reload	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function set_back_reload(my_url) {$/;"	function	line:344
+my_refresh	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^  function my_refresh() {$/;"	function	line:380
+app_reload	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function app_reload() {$/;"	function	line:385
+submitMask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function submitMask(submit_id) {$/;"	function	line:400
+empty_value	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^    var empty_value = function(){$/;"	function	line:408
+empty_text	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^    var empty_text = function(){$/;"	function	line:417
+doctorMask	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^function doctorMask(submit_id) {$/;"	function	line:434
+empty_value	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^    var empty_value = function(){$/;"	function	line:443
+empty_text	/home/luyunstaff020/zwb/workspace/ryunkang/app/assets/javascripts/yunkang.js	/^    var empty_text = function(){$/;"	function	line:452
+Hospital	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/hospital.rb	/^class Hospital < ActiveRecord::Base$/;"	class	line:1
+get_info	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/hospital.rb	/^  def self.get_info hospitals$/;"	singleton method	line:43	class:Hospital

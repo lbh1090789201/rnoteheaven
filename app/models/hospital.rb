@@ -1,7 +1,7 @@
 class Hospital < ActiveRecord::Base
   belongs_to :employer
   has_many :resume_views
-  has_many :jobs
+  has_many :jobs, dependent: :destroy
   has_many :fair_hospitals, dependent: :destroy
 
   validates :introduction, length: { in: 4..800 }

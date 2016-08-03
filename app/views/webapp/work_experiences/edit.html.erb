@@ -38,12 +38,16 @@
   <%= javascript_include_tag "date" %>
 <script type="text/javascript">
   fullScreen('.edit_basic');
-  clickRignt('#submit');
 
   $(function(){
 	$('#beginTime').date();
 	$('#endTime').date();
    });
+
+   // 防重复点击
+   $(".btm-save").on('click',function() {
+     EditMask(".btm-save", "请完善信息！");
+   })
 
    //职称
    $('.work-position').click(function() {

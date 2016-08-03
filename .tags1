@@ -4,8 +4,5 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-Fair	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^class Fair < ActiveRecord::Base$/;"	class	line:1
-get_info	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^  def self.get_info fairs$/;"	singleton method	line:23	class:Fair
-fair_statistic	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^  def self.fair_statistic f$/;"	singleton method	line:35	class:Fair
-set_end	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^  def self.set_end fair$/;"	singleton method	line:52	class:Fair
-is_end	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/fair.rb	/^  def self.is_end fairs$/;"	singleton method	line:66	class:Fair
+Hospital	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/hospital.rb	/^class Hospital < ActiveRecord::Base$/;"	class	line:1
+get_info	/home/luyunstaff020/zwb/workspace/ryunkang/app/models/hospital.rb	/^  def self.get_info hospitals$/;"	singleton method	line:43	class:Hospital
