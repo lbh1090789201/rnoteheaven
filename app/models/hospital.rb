@@ -3,6 +3,7 @@ class Hospital < ActiveRecord::Base
   has_many :resume_views
   has_many :jobs, dependent: :destroy
   has_many :fair_hospitals, dependent: :destroy
+  has_many :resume_viewers, dependent: :destroy
 
   validates :introduction, length: { in: 4..800 }
 
