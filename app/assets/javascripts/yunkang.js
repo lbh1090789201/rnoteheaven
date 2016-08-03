@@ -462,3 +462,82 @@ function doctorMask(submit_id) {
   }
   })
 }
+
+
+//医生端存在未填框时会有弹窗提示
+function EditMask(btn_id, text) {
+    var input_text = $(":text"),
+        input_textarea = $("textarea");
+
+    if(input_text.length >= 2) {
+      var empty_value = function(){
+        for(var i=0;i<input_text.length;i++){
+          var value = input_text.eq(i).val();
+          if(value == ''){
+            return "有空值"
+          }
+        }
+      }
+    }else{
+      var empty_value = function() {
+        var value = input_text.val();
+        if(value == ""){
+          return "有空值"
+        }
+      }
+    }
+
+    var empty_text = function(){
+      var text = input_textarea.val();
+      if(text == ""){
+        return "有空值"
+      }
+    }
+
+    if(empty_value() == "有空值" || empty_text() == "有空值"){
+      FailMask('#wrap', text)
+    }else{
+      $(btn_id).css("pointer-events","none");
+      $(':submit').trigger('click');
+    }
+}
+
+//医院端不存在未填框时
+function employerMask(btn_id,save_id) {
+    var input_text = $(":text"),
+        input_textarea = $("textarea");
+
+    if(input_text.length >= 2) {
+      var empty_value = function(){
+        for(var i=0;i<input_text.length;i++){
+          var value = input_text.eq(i).val();
+          if(value == ''){
+            return "有空值"
+          }
+        }
+      }
+    }else{
+      var empty_value = function() {
+        var value = input_text.val();
+        if(value == ""){
+          return "有空值"
+        }
+      }
+    }
+
+    var empty_text = function(){
+      for(var i=0;i<input_textarea.length;i++){
+        var value = input_textarea.eq(i).val();
+        if(value == ''){
+          return "有空值"
+        }
+      }
+    }
+
+    if(empty_value() != "有空值" && empty_text() != "有空值"){
+      $(btn_id).css("pointer-events","none");
+      if(save_id){
+        $(save_id).css("pointer-events","none");
+      }
+    }
+}
