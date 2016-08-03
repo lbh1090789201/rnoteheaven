@@ -1,6 +1,6 @@
 class Job < ActiveRecord::Base
   belongs_to :hospital
-  has_many :favorite_jobs, dependent :destroy
+  has_many :favorite_jobs, dependent: :destroy
 
   # 限定字串非空
   validates :name, presence: true, :on => :create
