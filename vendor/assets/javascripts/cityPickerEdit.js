@@ -17,7 +17,6 @@
 ;var IIInsomniaCityPickerEdit = function(options){
     this.settings = {
         'city_left': options.city_left,
-        'city_height': options.city_height,
         "data": options.data,
         "target": $(options.target),
         "valType": options.valType || 'k',
@@ -35,7 +34,7 @@
 IIInsomniaCityPickerEdit.prototype = {
     init: function(){
         var that = this;
-
+console.log(that.settings.city_left)
         $(window).click(function(event) {
             /* Act on the event */
             that.template.remove();

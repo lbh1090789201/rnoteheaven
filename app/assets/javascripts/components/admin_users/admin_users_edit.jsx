@@ -117,7 +117,7 @@
              <input onChange={this.handleChange} value={this.props.user_info.uid} name="id" ref="id" style={{"display": "none"}} />
              <div className="form-group">
                 <label>用户名称</label>
-                  <input className="form-control" placeholder="用户名" name="show_name"
+                  <input className="form-control" placeholder="用户名" name="show_name" pattern="^.{2,10}$" title="用户名必须为2~10个字符"
                                       value={this.props.user_info.show_name} onChange={this.handleChange} />
              </div>
 

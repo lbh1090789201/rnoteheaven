@@ -32,6 +32,26 @@ var AdminResumeForm = React.createClass({
       resume_freeze: '',
     }
   }
+  ,handleFocus: function() {
+    var input_id = this.refs.location.id,
+        province = this.refs.region_2.id,
+        city = this.refs.region_3.id
+
+     var city_left = $("#cityChoice").offset().left;
+
+      var cityPicker = new IIInsomniaCityPickerEdit({
+            data: cityData,
+            target: '#'+input_id,
+            valType: 'k-v',
+            hideCityInput: '#'+city,
+            hideProvinceInput: '#'+province,
+            city_left: city_left+'px',
+            callback: function(){
+              $(".IIInsomnia-city-picker").remove();
+            }
+        });
+        cityPicker.init();
+  }
   ,handleSubmit: function(e) {
     e.preventDefault()
     //隐藏分页码
@@ -89,8 +109,10 @@ var AdminResumeForm = React.createClass({
                    defaultValue={this.state.show_name} ref="show_name" />
           </div>
           <div className='form-group col-sm-3'>
-            <input type="text" className="form-control" placeholder='所在省市' name='location'
-                   defaultValue={this.state.location} ref="location" />
+            <input type="text" className="form-control" id="cityChoice" placeholder='所在省市' name='location'
+                   defaultValue={this.state.location} ref="location" onFocus={this.handleFocus} />
+            <input type="hidden" id="province" value="" ref="region_2" />
+            <input type="hidden" id="city" value="" ref="region_3" />
           </div>
           <button type='submit' className='btn btn-primary'>查询</button>
       </form>
