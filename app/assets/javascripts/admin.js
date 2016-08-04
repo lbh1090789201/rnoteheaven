@@ -33,7 +33,7 @@ function myDatePicker(id, begin_id, end_id) {
     todayBtn:  1,
     showMeridian: 1,
   }).on('changeDate', function (e) {
-    let time_begin = $('#' + begin_id).val(),
+    var time_begin = $('#' + begin_id).val(),
         time_end = $('#' + end_id).val()
 
     if(time_begin != '' && time_end != '') {
