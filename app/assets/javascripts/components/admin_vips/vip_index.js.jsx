@@ -223,7 +223,8 @@ var AdminVipItem = React.createClass({
           })
         }.bind(this),
         error: function(data){
-          alert('删除用户失败。')
+          let info = JSON.parse(data.responseText)
+          alert(info["info"])
         }
       })
     }

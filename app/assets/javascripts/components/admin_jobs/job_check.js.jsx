@@ -112,15 +112,7 @@ var ReviewJob = React.createClass({
   }
   ,handleFocus: function(e) {
       let id = e.target.id
-
-      $("#"+id).datetimepicker({
-        language: 'zh-CN',
-        format: "yyyy-mm-dd",
-        autoclose: true,
-        minView: "month",
-        todayBtn:  1,
-        showMeridian: 1,
-      });
+      myDatePicker(id, 'time_begin', 'time_end')
     }
   //点击搜索提交按钮事件
   ,handleSubmit: function(e){
