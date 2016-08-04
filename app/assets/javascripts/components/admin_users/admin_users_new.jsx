@@ -94,7 +94,7 @@
            <form onSubmit={this.handleSubmit}>
              <div className="form-group">
                 <label>用户名称</label>
-                  <input className="form-control" placeholder="用户名" name="show_name"　
+                  <input className="form-control" placeholder="用户名" name="show_name" required
                               pattern="^.{2,10}$" required title="用户名2~10个字符" defaultValue={this.state.show_name} ref="show_name" />
              </div>
 

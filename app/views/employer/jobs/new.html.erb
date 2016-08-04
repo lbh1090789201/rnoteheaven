@@ -81,6 +81,18 @@
   // 按钮提交表单
   $(function(){
     $('.btn-status>button').bind('click',function(){
+      // 验证表单
+			var form_pattern = function() {
+				var number = person_number("#job_number");
+			  if( number) {
+					return true
+				}else {
+					return false
+				}
+			}
+      if(! form_pattern()) {
+        return
+      }
       var vip_status = "<%= @vip_status['may_release'] %>";
       var index = $(this).index();
       if(index==0) {

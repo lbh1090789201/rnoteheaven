@@ -1,3 +1,91 @@
+// 表单元素验证
+// var form_pattern = function(id) {
+//   if( !person_email() && !person_number() && !person_phone() && !person_name() && !hos_name())
+// }
+
+// 验证邮箱
+var person_email = function(id) {
+  var value = $(id).val(),
+      pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+  if(!pattern.test(value)){
+    $(id).css('border', '1px solid red');
+    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
+    return false
+  }else {
+    return true
+  }
+}
+
+// 招聘人数
+var person_number = function(id) {
+  var value = $(id).val(),
+      pattern = /^[0-9]*[1-9][0-9]*$/;
+  if(!pattern.test(value)){
+    $(id).css('border', '1px solid red');
+    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000);
+    return false
+  }else {
+    return true
+  }
+}
+
+// 验证电话号码
+var person_phone = function(id) {
+  var value = $(id).val(),
+      pattern = /^1[345678][0-9]{9}$/;
+  if(!pattern.test(value)){
+    $(id).css('border', '1px solid red')
+    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
+    return false
+  }else {
+    return true
+  }
+}
+
+// 个人基本信息－姓名不超过５个字
+var person_name = function(id) {
+  var value = $(id).val(),
+      pattern = /^.{0,5}$/,
+      not_empty = /^[\s]{0,}$/;
+
+  if(!pattern.test(value) || not_empty.test(value) ){
+    $(id).css('border', '1px solid red')
+    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
+    return false
+  }else {
+    return true
+  }
+}
+
+// 机构名称不超过２０个字
+var hos_name = function(id) {
+  var value = $(id).val(),
+      pattern = /^.{0,20}$/,
+      not_empty = /^[\s]{0,}$/;
+
+  if(!pattern.test(value) || not_empty.test(value)){
+    $(id).css('border', '1px solid red')
+    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
+    return false
+  }else {
+    return true
+  }
+}
+
+// 工作内容不超过２００个字
+var job_desc = function(id) {
+  var value = $(id).val(),
+      pattern = /^.{0,200}$/,
+      not_empty = /^[\s]{0,}$/;
+
+  if(!pattern.test(value) || not_empty.test(value)){
+    $(id).css('border', '1px solid red')
+    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
+    return false
+  }else {
+    return true
+  }
+}
 
 
 /*请求失败弹窗,1.5秒后自动消失*/
@@ -496,9 +584,6 @@ function EditMask(btn_id, text) {
 
     if(empty_value() == "有空值" || empty_text() == "有空值"){
       FailMask('#wrap', text)
-    }else{
-      $(btn_id).css("pointer-events","none");
-      $(':submit').trigger('click');
     }
 }
 

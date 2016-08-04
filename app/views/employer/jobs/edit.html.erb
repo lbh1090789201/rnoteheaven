@@ -11,7 +11,7 @@
     <%= f.input :salary_range, label: '薪资', input_html: { class: "job-range", id: "job_range"} %>
     <%= f.input :experience, label: '经验要求', input_html: { class: "job-experience", id: "job_experience"} %>
 		<div class="job-pubilc">
-			<%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist", id: "job_number"} %>
+			<%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist", id: "job_number" } %>
 			<span class="empty-cont" onclick="EmptyCont('job_number')"></span>
 		</div>
     <%= f.input :region, label: '工作地区', input_html: { class: "", id: "job_region"} %>
@@ -44,10 +44,6 @@
 </div>
 <script type="text/javascript">
 
-	$('.btn-sright').on('click', function() {
-		$('.btn-sright').css('pointer-events','none');
-	})
-
 	// 返回顶部
 	$("#job_region").bind('click',function(){
 		var height = $('body').height();
@@ -61,19 +57,35 @@
 		var job_demand_1 = "<%= @job.job_demand %>";
 		var job_satus = "<%= @job.status %>";
 		$('.btn-sright').bind('click',function(){
+			// 验证表单
+			var form_pattern = function() {
+				var number = person_number("#job_number");
+			  if( number) {
+					return true
+				}else {
+					return false
+				}
+			}
+			if(!form_pattern()) {
+				return
+			}
 			if(job_satus == 'reviewing' || job_satus == 'pause'){
 				var job_name_2 = $('.form-group:eq(0)').children('input').val();
 				var job_desc_2 = $('.form-group:eq(9)').children('textarea').val();
 				var job_demand_2 = $('.form-group:eq(10)').children('textarea').val();
 				if(job_name_1==job_name_2 && job_desc_1==job_desc_2 && job_demand_1==job_demand_2) {
 					$('#submit').trigger('click');
+					$('.btn-sright').css('pointer-events','none');
 				}else{
 					$('#job_status').attr('value','reviewing');
 					$('#submit').trigger('click');
+					$('.btn-sright').css('pointer-events','none');
 				};
 			}else{
 				$('#submit').trigger('click');
+				$('.btn-sright').css('pointer-events','none');
 			};
+
 		});
 	});
 

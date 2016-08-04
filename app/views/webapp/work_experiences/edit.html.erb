@@ -47,6 +47,22 @@
    // 防重复点击
    $(".btm-save").on('click',function() {
      EditMask(".btm-save", "请完善信息！");
+     // 验证表单
+     var form_pattern = function() {
+       var name = hos_name("#user_hospital"),
+           desc = job_desc("#text_area");
+
+       if( name && desc) {
+         return true
+       }else {
+         return false
+       }
+     }
+     if(!form_pattern()) {
+       return
+     }
+     $(".btm-save").css("pointer-events","none");
+     $(':submit').trigger('click');
    })
 
    //职称

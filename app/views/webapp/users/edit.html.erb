@@ -42,6 +42,23 @@
   // 防重复点击
   $("#btn_save").on('click',function() {
     EditMask("#btn_save", "请完善信息！");
+    // 验证表单
+    var form_pattern = function() {
+      var email = person_email("#user_email"),
+          phone = person_phone("#user_phone"),
+          name = person_name("#user_name");
+
+      if( email && phone && name) {
+        return true
+      }else {
+        return false
+      }
+    }
+    if(! form_pattern()) {
+      return
+    }
+    $("#btn_save").css("pointer-events","none");
+    $(':submit').trigger('click');
   })
 
   // 返回顶部
