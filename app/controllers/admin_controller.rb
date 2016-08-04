@@ -29,16 +29,6 @@ class AdminController < ActionController::Base
     }
   end
 
-
-  # Only permits admin users
-  # helper_method :require_admin!
-  # def require_admin!
-  #   authenticate_user!
-  #   if current_user && !current_user.admin?
-  #     redirect_to root_path
-  #   end
-  # end
-
   # Only permits employer
   helper_method :require_jobs_manager!
   def require_jobs_manager!
@@ -94,10 +84,10 @@ class AdminController < ActionController::Base
     if current_user && current_user.admin?
       @show_tabs = [true, true, true, true, true, true]
     elsif current_user
-    @show_tabs = [current_user.jobs_manager?, current_user.resumes_manager?, current_user.hospitals_manager?,
+      @show_tabs = [current_user.jobs_manager?, current_user.resumes_manager?, current_user.hospitals_manager?,
                   current_user.fairs_manager?, current_user.vips_manager?, current_user.acounts_manager?]
     else
-      
+
     end
   end
 
