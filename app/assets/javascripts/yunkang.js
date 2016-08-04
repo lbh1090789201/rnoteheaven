@@ -112,6 +112,9 @@ function ourNotice(div_class,text) {
   parent_div.append(div);
 }
 
+function test() {
+  alert('lllllll')
+}
 //页面小浮动脚本
 // function Float_icon(div_class,text,url){
 //   var a = $('<a class="float-color"></a>');

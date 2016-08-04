@@ -60,6 +60,14 @@ class Admin::VipsController < AdminController
 
   def destroy
       vip = Plan.find params[:id]
+      employers = Employer.where plan_id: params[:id]
+      unless employers.blank?
+        render json: {
+          success: false,
+          info: "有#{employers.length}家医院在使用此套餐，请变更后再执行删除操作。"
+        }, status: 403
+        return
+      end
 
       if vip.destroy
         EventLog.create_log current_user.id, current_user.show_name, 'Plan', vip.id, "套餐", '删除'

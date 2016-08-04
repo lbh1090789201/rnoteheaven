@@ -64,11 +64,9 @@
            scopes: scopes
          },
          success: function(data){
-           console.log(data)
            let  users = this.props.dad.state.users
-
+           myInfo('新建用户成功！', 'success')
            new_users = users.push(data.user)
-
            this.props.dad.setState({
               users: users,
               user_info: {
@@ -77,12 +75,8 @@
            })
          }.bind(this),
          error: function(data){
-           alert(data.responseText)
-           this.props.dad.setState({
-             user_info: {
-               new_display: false,
-             }
-           })
+           let info = JSON.parse(data.responseText)
+           myInfo(info["info"], 'fail')
          },
        })
      }

@@ -26,6 +26,8 @@ class Admin::UsersController < AdminController
   end
 
   def  create
+   return if is_repeate?# 判用户名重复
+
     id = User.last.id + 1
 
     new_platinum = {
@@ -51,6 +53,7 @@ class Admin::UsersController < AdminController
   end
 
   def edit
+    return if is_repeate?# 判用户名重复
     user = User.find params[:id]
 
     res = Role.get_manager user
@@ -66,6 +69,7 @@ class Admin::UsersController < AdminController
   end
 
   def update
+    return if is_repeate?# 判用户名重复
     user = User.find params[:id]
     user.show_name = params[:show_name]
     user.password = params[:password] if params[:password].present?
@@ -98,5 +102,26 @@ class Admin::UsersController < AdminController
       render json: '删除用户失败。', status: 403
     end
   end
+
+  private
+    def is_repeate?
+      if params[:id]
+        my_user = User.find params[:id]
+        return false if my_user.show_name == params[:show_name]
+      end
+
+      is_repeate = User.find_by(
+        show_name: params[:show_name],
+        user_type: ['admin', 'platinum']
+      )
+
+      unless is_repeate.nil?
+          render json: {
+            success: false,
+            info: "此用户名已被使用。"
+          }, status: 403
+          return true
+      end
+    end
 
 end

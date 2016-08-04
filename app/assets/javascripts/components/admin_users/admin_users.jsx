@@ -55,14 +55,7 @@ var AdminUserForm = React.createClass({
   ,handleFocus: function(e) {
       let id = e.target.id
 
-      $("#"+id).datetimepicker({
-        language: 'zh-CN',
-        format: "yyyy-mm-dd",
-        autoclose: true,
-        minView: "month",
-        todayBtn:  1,
-        showMeridian: 1,
-      });
+      myDatePicker(id, 'time_from', 'time_to')
     }
   ,handleSubmit: function(e) {
     e.preventDefault()

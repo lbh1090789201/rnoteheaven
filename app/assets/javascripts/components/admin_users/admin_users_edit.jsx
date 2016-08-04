@@ -23,7 +23,8 @@
             })
           }.bind(this),
           error: function(data) {
-            console.log(data)
+            let info = JSON.parse(data.responseText)
+            myInfo(info["info"], 'fail')
           }
         })
       }
@@ -70,9 +71,11 @@
      console.log(scopes.toString())
 
      if(password != password2) {
-       alert('两次输入密码不一致')
+       myInfo('两次输入密码不一致。', 'fail')
+     } else if(password.length < 6) {
+       myInfo('密码长度至少6位。', 'fail')
      } else if (scopes.length = 0) {
-       alert('至少需要设置一项权限')
+       myInfo('至少需要设置一项权限。', 'fail')
      } else {
        $.ajax({
          url: '/admin/users',
@@ -84,6 +87,7 @@
            id: id
          },
          success: function(data){
+           myInfo('用户修改成功！', 'success')
            let index = this.props.dad.state.user_info.index,
                users = this.props.dad.state.users
 
@@ -97,12 +101,8 @@
            })
          }.bind(this),
          error: function(data){
-           alert(data.responseText)
-           this.props.dad.setState({
-             user_info: {
-               edit_display: false,
-             }
-           })
+           let info = JSON.parse(data.responseText)
+           myInfo(info["info"], 'fail')
          }
        })
      }

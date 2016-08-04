@@ -38,7 +38,7 @@
     <p class="basic_infoo">职位描述<%= image_tag "icon_36.png" %></p>
     <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等"} %>
     <p class="basic_infoo">任职资格<%= image_tag "icon_36.png" %></p>
-    <%= f.input :job_demand, label: '', as: :text, input_html: { class: "", placeholder: "资格要求"} %>
+    <%= f.input :job_demand, label: '', as: :text, input_html: {id:"job_demand", placeholder: "资格要求"} %>
 
     <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status"} %>
     <%= f.submit id: "submit", class: ""%>
@@ -95,6 +95,11 @@
       }
       var vip_status = "<%= @vip_status['may_release'] %>";
       var index = $(this).index();
+      var is_valid = validation()
+      if(! is_valid){
+        return
+      }
+
       if(index==0) {
         $('#job_status').attr('value','saved');
         $('#submit').trigger('click');
@@ -159,5 +164,29 @@
     });
   cityPicker.init();
 
+
+/********************** 以下为字符合法性检测 **********************/
+function validation() {
+  var status = true
+  var job_demand = $('#job_demand').val()
+
+  if(job_demand.length > 500) {
+    $('#job_demand').addClass("red-border")
+    status = false
+  }
+
+  return status
+}
+
+$('#job_demand').change(function() {
+  var val = $(this).val()
+
+  if(val.length > 500) {
+    $('#job_demand').addClass("red-border")
+    status = false
+  } else {
+    $('#job_demand').removeClass("red-border")
+  }
+})
 
 </script>
