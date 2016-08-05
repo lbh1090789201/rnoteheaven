@@ -1,2 +1,0 @@
-module Employer::HomeHelper
-end

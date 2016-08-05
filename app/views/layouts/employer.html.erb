@@ -14,14 +14,9 @@
 </head>
 
 <body class="<%= params[:controller][9,99] + '-' + params[:action] %>" >
-
-    <header>
-        <%#  render 'layouts/header' %>
-    </header>
-
     <div class="wrap">
           <%= yield %>
     </div>
 </body>
-<%= javascript_include_tag "rem.min", "data-turbolinks-track" => true  %>
+
 </html>

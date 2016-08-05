@@ -1,6 +1,13 @@
-/*请求失败弹窗,1.5秒后自动消失*/
-// text: 弹窗展示的内容信息
-// div_class: 弹窗插入的父节点id　或 class
+//= require bootstrap-datetimepicker
+//= require bootstrap-datetimepicker.fr
+//= require bootstrap-datetimepicker.zh-CN
+
+
+/* 请求失败弹窗,1.5秒后自动消失
+ * text: 弹窗展示的内容信息
+ * div_class: 弹窗插入的父节点id　或 class
+ */
+
 function myInfo(text, status) {
   var div = $('<div class="mask-fail"></div>');
 

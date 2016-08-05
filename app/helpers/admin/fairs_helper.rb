@@ -1,2 +1,0 @@
-module Admin::FairsHelper
-end

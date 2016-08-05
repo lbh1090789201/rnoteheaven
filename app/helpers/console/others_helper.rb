@@ -1,2 +1,0 @@
-module Console::OthersHelper
-end
