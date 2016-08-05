@@ -231,7 +231,7 @@ var AdminUserItem = React.createClass({
       <tr>
         <td>{this.props.index}</td>
         <td>{this.props.data.username}</td>
-        <td>{this.props.data.show_name}</td>
+        <td className="limit-width">{this.props.data.show_name}</td>
         <td>{transType(this.props.data.user_type)}</td>
         <td>{this.props.data.created_at.slice(0, 10)}</td>
         <td><button onClick={this.handleClick} className="btn btn-default btn-form">修改</button></td>

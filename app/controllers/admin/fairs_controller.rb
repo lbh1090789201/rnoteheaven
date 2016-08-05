@@ -24,6 +24,7 @@ class Admin::FairsController < AdminController
   end
 
   def create
+    return if is_repeate? # 判断名称是否重复
     fair = Fair.new(fair_params)
 
     if fair.save
@@ -40,6 +41,7 @@ class Admin::FairsController < AdminController
   end
 
   def update
+    return if is_repeate? # 判断名称是否重复
     fair = Fair.find params[:id]
     fair.update! fair_params
 
@@ -65,5 +67,22 @@ class Admin::FairsController < AdminController
   private
     def fair_params
       params.permit(:name, :begain_at, :end_at, :creator, :intro, :status, :banner)
+    end
+
+    def is_repeate?
+      if params[:id]
+        my_fair = Fair.find params[:id]
+        return false if my_fair.name == params[:name]
+      end
+
+      is_repeate = Fair.find_by name: params[:name]
+
+      unless is_repeate.nil?
+          render json: {
+            success: false,
+            info: "此名称已被使用。"
+          }, status: 403
+          return true
+      end
     end
 end

@@ -266,12 +266,12 @@ var AdminHospitalItem =React.createClass({
       <tr>
         <td>{this.props.index + 1}</td>
         <td>{this.props.data.contact_number}</td>
-        <td>{this.props.data.name}</td>
+        <td className="limit-width">{this.props.data.name}</td>
         <td>{this.props.data.may_release}</td>
         <td>{this.props.data.may_set_top}</td>
         <td>{this.props.data.may_receive}</td>
         <td>{this.props.data.may_view}</td>
-        <td>{this.props.data.vip_name}</td>
+        <td className="limit-width">{this.props.data.vip_name}</td>
         <td>{this.props.data.status}</td>
         <td>
           <button onClick={this.handleClick} className="btn btn-default btn-form">修改</button>

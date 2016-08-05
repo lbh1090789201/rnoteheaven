@@ -70,7 +70,7 @@ var AdminVipNew = React.createClass({
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
                <label>套餐名称</label>
-                 <input className="form-control" type="text" placeholder="用户名"
+                 <input className="form-control" type="text" placeholder="套餐名"
                     name="vip_name" required ref="vip_name"  />
             </div>
 

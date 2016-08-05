@@ -242,7 +242,7 @@ var AdminVipItem = React.createClass({
     return (
       <tr>
         <td>{this.props.index + 1}</td>
-        <td>{this.props.data.name}</td>
+        <td className="limit-width">{this.props.data.name}</td>
         <td>{this.props.data.may_release}</td>
         <td>{this.props.data.may_set_top}</td>
         <td>{this.props.data.may_receive}</td>

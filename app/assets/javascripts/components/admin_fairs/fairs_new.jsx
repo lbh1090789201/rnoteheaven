@@ -48,10 +48,8 @@ var FairNew = React.createClass({
         })
       }.bind(this),
       error: function(data){
-        alert(data.responseText)
-        this.props.dad.setState({
-            new_display: false,
-        })
+        var info = JSON.parse(data.responseText)
+        myInfo(info["info"], 'fail')
       }
     })
   }

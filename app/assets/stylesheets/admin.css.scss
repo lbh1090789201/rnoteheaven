@@ -205,3 +205,11 @@ footer {
   color: #8a6d3b;
   background: #fcf8e3;
 }
+
+// 限制表格宽度
+.limit-width {
+  max-width: 160px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

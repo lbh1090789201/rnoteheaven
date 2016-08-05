@@ -1,132 +1,3 @@
-// 表单元素验证
-// var form_pattern = function(id) {
-//   if( !person_email() && !person_number() && !person_phone() && !person_name() && !hos_name())
-// }
-
-// 验证邮箱
-var person_email = function(id) {
-  var value = $(id).val(),
-      pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
-  if(!pattern.test(value)){
-    $(id).css('border', '1px solid red');
-    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
-    return false
-  }else {
-    return true
-  }
-}
-
-// 招聘人数
-var person_number = function(id) {
-  var value = $(id).val(),
-      pattern = /^[0-9]*[1-9][0-9]*$/;
-  if(!pattern.test(value)){
-    $(id).css('border', '1px solid red');
-    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000);
-    return false
-  }else {
-    return true
-  }
-}
-
-// 验证电话号码
-var person_phone = function(id) {
-  var value = $(id).val(),
-      pattern = /^1[345678][0-9]{9}$/;
-  if(!pattern.test(value)){
-    $(id).css('border', '1px solid red')
-    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
-    return false
-  }else {
-    return true
-  }
-}
-
-// 个人基本信息－姓名不超过５个字
-var person_name = function(id) {
-  var value = $(id).val(),
-      pattern = /^.{0,5}$/,
-      not_empty = /^[\s]{0,}$/;
-
-  if(!pattern.test(value) || not_empty.test(value) ){
-    $(id).css('border', '1px solid red')
-    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
-    return false
-  }else {
-    return true
-  }
-}
-
-// 机构名称不超过２０个字
-var hos_name = function(id) {
-  var value = $(id).val(),
-      pattern = /^.{0,20}$/,
-      not_empty = /^[\s]{0,}$/;
-
-  if(!pattern.test(value) || not_empty.test(value)){
-    $(id).css('border', '1px solid red')
-    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
-    return false
-  }else {
-    return true
-  }
-}
-
-// 工作内容不超过２００个字
-var job_desc = function(id) {
-  var value = $(id).val(),
-      pattern = /^.{0,200}$/,
-      not_empty = /^[\s]{0,}$/;
-
-  if(!pattern.test(value) || not_empty.test(value)){
-    $(id).css('border', '1px solid red')
-    var timer = setTimeout(function(){$(id).css('border', 'none')}, 2000)
-    return false
-  }else {
-    return true
-  }
-}
-
-
-/*请求失败弹窗,1.5秒后自动消失*/
-// text: 弹窗展示的内容信息
-// div_class: 弹窗插入的父节点id　或 class
-function FailMask(div_class,text) {
-  var div = $('<div class="mask-fail"></div>');
-  var p = $('<p class="mask-middle"></p>');
-  p.text(text);
-  div.append(p);
-  var parent_div = $(div_class);
-  parent_div.append(div);
-  var timer = setTimeout(function(){
-    div.remove();
-  },1000);
-}
-
-function ourNotice(div_class,text) {
-  var div = $('<div class="mask-fail"></div>');
-  var p = $('<p class="mask-middle"></p>');
-  p.text(text);
-  div.append(p);
-  var parent_div = $(div_class);
-  parent_div.append(div);
-}
-
-function test() {
-  alert('lllllll')
-}
-//页面小浮动脚本
-// function Float_icon(div_class,text,url){
-//   var a = $('<a class="float-color"></a>');
-//   a.text(text);
-//   a.attr('href',url)
-//   var parent_div = $(div_class);
-//   parent_div.append(a);
-// }
-
-/*返回顶部*/
-$(document).scrollTop('0');
-
 /*屏幕自适应开始*/
 var u = navigator.userAgent;
 var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
@@ -157,6 +28,33 @@ if(isiOS) {
 }
 /*屏幕自适应结束*/
 
+/*请求失败弹窗,1.5秒后自动消失*/
+// text: 弹窗展示的内容信息
+// div_class: 弹窗插入的父节点id　或 class
+function FailMask(div_class,text) {
+  var div = $('<div class="mask-fail"></div>');
+  var p = $('<p class="mask-middle"></p>');
+  p.text(text);
+  div.append(p);
+  var parent_div = $(div_class);
+  parent_div.append(div);
+  var timer = setTimeout(function(){
+    div.remove();
+  },1000);
+}
+
+function ourNotice(div_class,text) {
+  var div = $('<div class="mask-fail"></div>');
+  var p = $('<p class="mask-middle"></p>');
+  p.text(text);
+  div.append(p);
+  var parent_div = $(div_class);
+  parent_div.append(div);
+}
+
+/*返回顶部*/
+$(document).scrollTop('0');
+
 /* 取得屏幕高度并减去 head 开始 */
 function fullScreen(dom) {
   $(dom).css('height', $(document.body).height() - 2.32*20);
@@ -180,26 +78,7 @@ function wordLimit(dom, word) {
 };
 /* 超过一定字体变成省略号 结束 */
 
-/* 蒙版 开始 */
-
-// 进入页面即生成蒙版div
-
-// function generate_mask() {
-//   var parentdiv = $('<div></div>');
-//   parentdiv.attr('class','before-mask div-hidden');;
-//   for (var i = 0; i < obj.length; i++) {
-//     var childBtn = $('<p>'+obj[i]+'</p>');
-//     childBtn.attr('value',obj[i]);
-//     childBtn.attr('onclick', 'change_val(this)');
-//     childBtn.attr('class', pclass)
-//     parentdiv.append(childBtn);
-//   }
-// }
-
 function workExperience(obj,api,pclass) {
-  // var now_url = window.location.href;
-  // now_url+= "?index=1"
-  // window.location.href = now_url
   var parentdiv = $('<div></div>');
   parentdiv.attr('class','before-mask div-hidden float-style');;
   for (var i = 0; i < obj.length; i++) {
@@ -215,17 +94,6 @@ function workExperience(obj,api,pclass) {
   delete_mask.text('返回');
   delete_mask.attr('onClick','delete_mask()');
   parentdiv.append(delete_mask);
-  // edit_title =  $(".title").text();
-  // var h1 = $(api).siblings().text();
-  // $(".title").text(h1);
-  // $('.right').text('');
-  //生成返回按钮
-  // var span = document.createElement("span");
-  // span.setAttribute('class','title-over');
-  // span.setAttribute('onclick','TitleOver(this)');
-  // console.log(span);
-  // var div = $(".top");
-  // div.prepend(span);
   $(document).scrollTop('0');
 }
 
@@ -587,6 +455,9 @@ function EditMask(btn_id, text) {
 
     if(empty_value() == "有空值" || empty_text() == "有空值"){
       FailMask('#wrap', text)
+    }else{
+      $(btn_id).css("pointer-events","none");
+      $(':submit').trigger('click');
     }
 }
 
