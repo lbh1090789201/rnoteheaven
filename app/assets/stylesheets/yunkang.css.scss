@@ -1,4 +1,3 @@
-
 @import "cityPicker.css";
 @import "common.css";
 @import "mixin.scss";
@@ -250,37 +249,6 @@ a:hover {
     line-height: 0.7rem;
     color: #fff;
   }
-}
-/*搜索首页结束*/
-@media only screen and  ( min-width: 374px ) {
-    html  {
-        font-size: 18px  ! important ;
-    }
-}
-@media only screen and ( min-width: 401px ) {
-    html {
-        font-size: 20px !important;
-    }
-}
-@media only screen and ( min-width : 428px ) {
-    html {
-        font-size: 26.75px !important;
-    }
-}
-@media only screen and (min-width: 481px ) {
-    html {
-        font-size: 30px !important;
-    }
-}
-@media only screen and (min-width : 569px ) {
-    html {
-        font-size: 35px !important;
-    }
-}
-@media only screen and ( min-width : 641px ) {
-    html {
-        font-size: 40px !important;
-    }
 }
 
 /* 我的简历 开始 bobo */
@@ -2970,66 +2938,66 @@ a:hover {
 }
 
 
-// 添加按钮
-  #new_edit_btn {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 46px;
-    text-align: center;
-    line-height: 46px;
-    background-color: $beauty-blue;
-    text-decoration: none;
-    color: #fff;
-    font-size: 0.87rem;
-  }
-
-
-// 失败弹窗，1秒后自动消失
-.mask-middle {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-top: -2.8rem;
-  margin-left: -6.75rem;
-  width: 13.5rem;
-  height: 5.6rem;
-  line-height: 5.6rem;
-  text-align: center;
-  font-size: 0.9rem;
-  background: rgba(0,0,0,0.5);
-  color: #fff;
-  border-radius: 0.5rem;
-}
-
-// 页面浮动小脚本
-.float-color {
-  display: block;
-  position: fixed;
-  bottom: 3rem;
-  right: 1rem;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 3rem;
-  font-size: 0.7rem;
-  background: #3d9e9f;
-  color: #fff;
-}
-
-#user-edit {
-  .IIInsomnia-city-picker {
-    width: 100%!important;
-  }
-  .IIInsomnia-province {
-    float: left;
-  }
-}
-
-// 验证加红框
-.red-border {
-  border: 0.5px solid red !important;
-}
+// // 添加按钮
+//   #new_edit_btn {
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     display: block;
+//     width: 100%;
+//     height: 46px;
+//     text-align: center;
+//     line-height: 46px;
+//     background-color: $beauty-blue;
+//     text-decoration: none;
+//     color: #fff;
+//     font-size: 0.87rem;
+//   }
+//
+//
+// // 失败弹窗，1秒后自动消失
+// .mask-middle {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   margin-top: -2.8rem;
+//   margin-left: -6.75rem;
+//   width: 13.5rem;
+//   height: 5.6rem;
+//   line-height: 5.6rem;
+//   text-align: center;
+//   font-size: 0.9rem;
+//   background: rgba(0,0,0,0.5);
+//   color: #fff;
+//   border-radius: 0.5rem;
+// }
+//
+// // 页面浮动小脚本
+// .float-color {
+//   display: block;
+//   position: fixed;
+//   bottom: 3rem;
+//   right: 1rem;
+//   width: 3rem;
+//   height: 3rem;
+//   border-radius: 50%;
+//   text-align: center;
+//   line-height: 3rem;
+//   font-size: 0.7rem;
+//   background: #3d9e9f;
+//   color: #fff;
+// }
+//
+// #user-edit {
+//   .IIInsomnia-city-picker {
+//     width: 100%!important;
+//   }
+//   .IIInsomnia-province {
+//     float: left;
+//   }
+// }
+//
+// // 验证加红框
+// .red-border {
+//   border: 0.5px solid red !important;
+// }
