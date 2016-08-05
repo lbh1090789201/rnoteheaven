@@ -2,6 +2,7 @@
 var u = navigator.userAgent;
 var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+
 if(isiOS) {
   var realWidth = Math.min(window.innerWidth, screen.width)
   var font_size = (realWidth/414*20).toFixed(2) + 'px'
@@ -131,51 +132,6 @@ setTimeout(function() {
 }, 1000);
 /* notice 自动消失 结束 bobo */
 
-
-/*
- * 单次刷新 开始 bobo
- * 调用方法,页面引入 $(refreshOnce());
- */
-function refreshOnce() {
-  if(getCookie('refresh') != null) {
-    delCookie('refresh');
-  } else {
-    setCookie('refresh','true');
-    refresh_cli()
-  }
-};
-
-// 设置cookie
-function setCookie(name,value)
-{
-    var Days = 30;
-    var exp = new Date();
-    exp.setTime(exp.getTime() + Days*24*60*60*1000);
-    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
-}
-
-// 读取cookie
-function getCookie(name)
-{
-    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-
-    if(arr=document.cookie.match(reg))
-
-        return unescape(arr[2]);
-    else
-        return null;
-}
-
-// 删除cookie
-function delCookie(name)
-{
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cval=getCookie(name);
-    if(cval!=null)
-        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
-}
-/* 单次刷新 结束 bobo */
 
 // 编辑　删除弹窗
 function ClickShowHide(){
