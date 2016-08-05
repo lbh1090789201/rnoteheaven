@@ -3033,36 +3033,3 @@ a:hover {
 .red-border {
   border: 0.5px solid red !important;
 }
-
-
-// 测试弹窗，1秒后自动消失
-.mask {
-  position: fixed;
-  top: 67px;
-
-  margin-left: 1%;
-  padding: 15px;
-
-  width: 98%;
-  height: 50px;
-
-  box-sizing: border-box;
-  border: 1px solid transparent;
-  border-radius: 4px;
-}
-.info-success {
-  color: #3c763d;
-  background: #dff0d8;
-}
-.info-fail {
-  color: #a94442;
-  background: #f2dede;
-}
-.info-default {
-  color: #fff;
-  background: rgba(0,0,0,0.5);
-}
-.info-warning {
-  color: #8a6d3b;
-  background: #fcf8e3;
-}
