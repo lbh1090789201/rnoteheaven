@@ -70,9 +70,9 @@ function getWidth(){
     xWidth = window.innerWidth;
   }
 
-  // if(document.body != null) {
-  //   xWidth = document.body.clientWidth;
-  // }
+  if(document.body != null) {
+    xWidth = document.body.clientWidth;
+  }
 
   return xWidth;
 }
