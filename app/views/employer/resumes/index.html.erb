@@ -106,7 +106,7 @@
       $('.resume-nav>li:eq(1)').siblings().children().css({'color':'#9f9f9f','border-bottom':'none'});
       $(".resume-content>section").eq(1).css('display','block').siblings('section').css('display','none');
     }
-    
+
     // 简历管理的导航栏
     $(document).ready(function(){
       $(".resume-content>ul>li").bind('click',function(){
@@ -142,12 +142,6 @@
         $(".time-resume").toggle();
       }
     }
-
-
-    // index_len = '<%= @apply_records.length %>';
-    // for(var i=0;i<index_len;i++){
-    //   $('.sort-time-all>li').eq(i).attr('class','li_'+i);
-    // }
 
     // 底部按钮样式
     ReplayImg(0, "<%= image_path 'icon_16.png' %>");

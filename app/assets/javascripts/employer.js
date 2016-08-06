@@ -12,8 +12,8 @@ function FailMask(div_class,text) {
     div.remove();
   },1000);
 }
-
 /*再次发布职位失败弹窗,1.5秒后自动消失*/
+
 // text: 弹窗展示的内容信息
 // div_class: 弹窗插入的父节点id　或 class
 function againRelease(div_class,text) {
@@ -34,7 +34,7 @@ function JobBasicNew(obj,api,pclass) {
   parentdiv.attr('class','before-mask');
   for (var i = 0; i < obj.length; i++) {
     var childBtn = $('<p>'+obj[i]+'</p>');
-    childBtn.attr('value',obj[i]);
+    childBtn.attr('index',obj[i]);
     childBtn.attr('onclick', 'change_val(this)');
     childBtn.attr('class', pclass)
     parentdiv.append(childBtn);
@@ -51,8 +51,8 @@ function JobBasicNew(obj,api,pclass) {
 function change_val(obj) {
   var input = $("#" + $(obj).attr("class"));
   if(input.parent().attr('class') == 'job-endtime'){
-    input.text(obj.value);
-    var val = obj.value;
+    input.text($(obj).text());
+    var val = $(obj).text();
     switch(val){
       case '１星期':
         val = 7;
@@ -80,7 +80,7 @@ function change_val(obj) {
         break;
     }
   }else {
-    input.attr('value', obj.value);
+    input.attr('value', $(obj).text());
   }
   $('.before-mask').animate({
     top: '1500px',
