@@ -107,6 +107,7 @@ function change_val(obj) {
     top: '1500px',
   },300);
   $('.before-mask').css("display","none");
+  $("#" + $(obj).attr("class")).blur();
 };
 
 function delete_mask() {
@@ -415,9 +416,6 @@ function EditMask(btn_id, text) {
 
     if(empty_value() == "有空值" || empty_text() == "有空值"){
       FailMask('#wrap', text)
-    }else{
-      $(btn_id).css("pointer-events","none");
-      $(':submit').trigger('click');
     }
 }
 

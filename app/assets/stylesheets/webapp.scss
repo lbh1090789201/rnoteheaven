@@ -1,3 +1,11 @@
 @import "yunkang";
 // @import "flickerplate";
 @import "slider";
+
+// 验证表单
+.has-error {
+  border: 1px solid #b94a48 !important;
+}
+.has-success {
+  border: none !important;
+}

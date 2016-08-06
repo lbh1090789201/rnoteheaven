@@ -40,6 +40,6 @@ class Webapp::CertificatesController < ApplicationController
 
   private
   def certificate_params
-    params.require(:certificate).permit(:title)
+    params.permit(:title)
   end
 end

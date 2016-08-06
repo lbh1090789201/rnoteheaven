@@ -58,7 +58,7 @@ class Webapp::EducationExperiencesController < ApplicationController
 
   private
   def education_experience_params
-    params.require(:education_experience).permit(:college, :education_degree, :major, :entry_at, :graduated_at)
+    params.permit(:college, :education_degree, :major, :entry_at, :graduated_at)
   end
 
 end

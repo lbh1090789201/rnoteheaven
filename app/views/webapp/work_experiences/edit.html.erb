@@ -3,13 +3,13 @@
 <div class="edit_basic edit-work-experiences work-edit-page work-mask" id="work_eidt">
     <%= simple_form_for @work_experience, :method => :patch, remote: true, url: webapp_work_experience_path(params[:id]), class: "form-btn-submit" do |f| %>
       <div class="job-pubilc">
-        <%= f.input :company, label: "机        构", input_html: { class: "user-input", id: "user_hospital"} %>
+        <%= f.input :company, label: "机        构", input_html: { class: "user-input", id: "user_hospital", name: "company"} %>
         <span class="empty-cont" onclick="EmptyCont('user_hospital')"></span>
       </div>
-      <%= f.input :position, label: '职        位', input_html: { readonly: "readonly", class: "work-position user-input", id: "work_position"} %>
-      <%= f.input :started_at, label: '入职时间', as: :string, input_html: { class: "user-input", id: "beginTime"} %>
-      <%= f.input :left_time, label: '离职时间', as: :string, input_html: { class: "user-input", id: "endTime"} %>
-      <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", id: "text_area", placeholder: "最多一千字"} %>
+      <%= f.input :position, label: '职        位', input_html: { readonly: "readonly", class: "work-position user-input", id: "work_position", name: "position"} %>
+      <%= f.input :started_at, label: '入职时间', as: :string, input_html: { class: "user-input", id: "beginTime", name: "started_at"} %>
+      <%= f.input :left_time, label: '离职时间', as: :string, input_html: { class: "user-input", id: "endTime", name: "left_time"} %>
+      <%= f.input :job_desc, label: '工作内容', as: :text, input_html: { class: "user-input", id: "text_area", placeholder: "最多一千字", name: "job_desc"} %>
       <%= f.submit id: "submit", class: "btn btn-info btn-right class-display"%>
       <div class="btm-nav">
         <p class="btm-delete" onclick="ClickShowHide(this)">删除此经历</p>
@@ -38,6 +38,8 @@
   <%= javascript_include_tag "date" %>
 <script type="text/javascript">
   fullScreen('.edit_basic');
+  // 表单验证
+  formAll("#work_eidt form")
 
   $(function(){
 	$('#beginTime').date();
@@ -47,18 +49,9 @@
    // 防重复点击
    $(".btm-save").on('click',function() {
      EditMask(".btm-save", "请完善信息！");
-     // 验证表单
-     var form_pattern = function() {
-       var name = hos_name("#user_hospital"),
-           desc = job_desc("#text_area");
 
-       if( name && desc) {
-         return true
-       }else {
-         return false
-       }
-     }
-     if(!form_pattern()) {
+     // 验证表单,失败返回
+     if(valid("#work_eidt form")){
        return
      }
      $(".btm-save").css("pointer-events","none");
