@@ -195,7 +195,7 @@ var AdminVipItem = React.createClass({
     })
   }
   ,handleDel: function() {
-    if(confirm('确定要删除用户' + this.props.data.name + '?')) {
+    if(confirm('确定要删除套餐' + this.props.data.name + '?')) {
       let vip_id = this.props.data.id,
           index = this.props.index,
           vips = this.props.dad.state.vips
