@@ -8,6 +8,9 @@ var FairEdit = React.createClass({
       }
     }
   }
+  ,componentDidMount: function() {
+    formFair('#form_fair_edit')
+  }
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
@@ -22,8 +25,15 @@ var FairEdit = React.createClass({
       status: e.target.value,
     })
   }
+  ,handleFocus: function(e) {
+      let id = e.target.id
+
+      myDatePicker(id, 'begain_at', 'end_at')
+    }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_fair_edit')) return // 不合法就返回
+
     let banner_file = this.refs.banner.files[0],
         formData = new FormData(e.target),
         id = this.refs.id.value.toString()
@@ -44,6 +54,8 @@ var FairEdit = React.createClass({
            fairs: fairs,
            edit_display: false
         })
+
+        myInfo('专场修改成功！', 'success')
       }.bind(this),
       error: function(data){
         var info = JSON.parse(data.responseText)
@@ -57,35 +69,34 @@ var FairEdit = React.createClass({
     return (
       <div className="mask-user">
         <div className="user-box">
-          <form method="post" action="/admin/fairs" encType="multipart/form-data" onSubmit={this.handleSubmit}>
+          <form method="post" action="/admin/fairs" id="form_fair_edit"
+                encType="multipart/form-data" onSubmit={this.handleSubmit}>
             <div className="form-group col-sm-6">
                <label>专场名称</label>
-               <input className="form-control" placeholder="专场名称" name="name" defaultValue={fair.name}
-                             pattern=".{1,}" required title="专场名称不能为空" ref="name" />
+               <input className="form-control" placeholder="专场名称" name="name" defaultValue={fair.name} ref="name" />
             </div>
 
             <div className="form-group col-sm-6">
                <label>发布人</label>
-               <input type="text" className="form-control" name="creator" defaultValue={fair.creator}
-                           pattern=".{1,}" required title="发布人不能为空" ref="creator" />
+               <input type="text" className="form-control" name="creator" defaultValue={fair.creator} ref="creator" />
             </div>
 
             <div className="form-group col-sm-6">
                <label>开始时间</label>
-               <input type="date" name="begain_at" defaultValue={fair.begain_at.slice(0, 10)}
-                      className="form-control" pattern=".{1,}" required title="开始时间不能为空" ref="begain_at" />
+               <input type="text" name="begain_at" defaultValue={fair.begain_at.slice(0, 10)} onFocus={this.handleFocus}
+                      id="begain_at" className="form-control" required  ref="begain_at" />
             </div>
 
             <div className="form-group col-sm-6">
                <label>结束时间</label>
-               <input type="date"  name="end_at" defaultValue={fair.end_at.slice(0, 10)}
-                      className="form-control" pattern=".{1,}" required title="结束时间不能为空" ref="end_at" />
+               <input type="text"  name="end_at" defaultValue={fair.end_at.slice(0, 10)} onFocus={this.handleFocus}
+                      id="end_at" className="form-control" required ref="end_at" />
             </div>
 
             <div className="form-group">
                <label>专场介绍</label>
                <textarea className="form-control" name="intro" rows="5" defaultValue={fair.intro}
-                               pattern=".{6,}" required title="最少6个字符" ref="intro" />
+                               pattern=".{6,}" required ref="intro" />
             </div>
 
             <div className="form-group">

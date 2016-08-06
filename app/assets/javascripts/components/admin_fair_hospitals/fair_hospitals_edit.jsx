@@ -9,6 +9,9 @@ var FairHospitalEdit = React.createClass({
       index: this.props.dad.state.index,
     }
   }
+  ,componentDidMount: function() {
+    formFairHospital('#form_hospital_edit')
+  }
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
@@ -20,6 +23,8 @@ var FairHospitalEdit = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_hospital_edit')) return // 不合法就返回
+
     let formData = new FormData(e.target),
         fair_id = this.props.dad.state.fair.id,
         fair_hospital_id = this.state.fair_hospital.id,
@@ -55,7 +60,8 @@ var FairHospitalEdit = React.createClass({
     return (
       <div className="mask-user">
         <div className="user-box">
-          <form method="post" action="/admin/fairs" encType="multipart/form-data" onSubmit={this.handleSubmit}>
+          <form method="post" action="/admin/fairs" id="form_hospital_edit"
+                encType="multipart/form-data" onSubmit={this.handleSubmit}>
             <div className="gold-info">
             <span className="col-sm-4"><label>机构名称：</label>{fair_hospital.hospital_name}</span>
             <span className="col-sm-4"><label>机构帐号：</label>{fair_hospital.hospital_contact_number}</span>
@@ -76,7 +82,7 @@ var FairHospitalEdit = React.createClass({
             <div className="form-group col-sm-6">
                <label>手机号码</label>
                <input type="tel" className="form-control" name="contact_number" defaultValue={fair_hospital.contact_number}
-                      pattern=".{1,}" required title="手机号码不能为空" ref="contact_number" />
+                      required ref="contact_number" />
             </div>
 
             <div className="form-group col-sm-12">

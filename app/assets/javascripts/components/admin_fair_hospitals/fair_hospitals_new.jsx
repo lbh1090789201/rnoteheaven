@@ -7,6 +7,9 @@ var FairHospitalNew = React.createClass({
       gold: this.props.dad.state.gold
     }
   }
+  ,componentDidMount: function() {
+    formFairHospital('#form_hospital_new')
+  }
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
@@ -18,6 +21,8 @@ var FairHospitalNew = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_hospital_new')) return // 不合法就返回
+
     let formData = new FormData(e.target),
         fair_id = this.props.dad.state.fair.id
 
@@ -35,10 +40,12 @@ var FairHospitalNew = React.createClass({
            fair_hospitals: fair_hospitals,
            new_display: false
         })
+
+        myInfo('机构添加成功！', 'success')
       }.bind(this),
       error: function(data){
         info = JSON.parse(data.responseText)
-        alert(info["info"])
+        myInfo(info["info"], 'fail')
         this.props.dad.setState({
             new_display: false,
         })
@@ -51,9 +58,10 @@ var FairHospitalNew = React.createClass({
     return (
       <div className="mask-user">
         <div className="user-box">
-          <form method="post" action="/admin/fairs" encType="multipart/form-data" onSubmit={this.handleSubmit}>
+          <form method="post" action="/admin/fairs" id="form_hospital_new"
+                encType="multipart/form-data" onSubmit={this.handleSubmit}>
             <div className="gold-info">
-            <span className="col-sm-4"><label>机构名称：</label>{gold.name}</span>
+            <span className="col-sm-4 limit-width"><label>机构名称：</label>{gold.name}</span>
             <span className="col-sm-4"><label>机构帐号：</label>{gold.contact_number}</span>
             <span className="col-sm-4"><label>负责人：</label>{gold.contact_person}</span>
             </div>
@@ -61,25 +69,25 @@ var FairHospitalNew = React.createClass({
             <div className="form-group col-sm-6">
                <label>专场联系人</label>
                <input type="text" className="form-control" name="contact_person"
-                      pattern=".{1,}" required title="专场联系人不能为空" ref="contact_person" />
+                      pattern=".{1,}" required ref="contact_person" />
             </div>
 
             <div className="form-group col-sm-6">
                <label>手机号码</label>
                <input type="tel" className="form-control" name="contact_number"
-                      pattern=".{1,}" required title="手机号码不能为空" ref="contact_number" />
+                      required  ref="contact_number" />
             </div>
 
             <div className="form-group col-sm-12">
                <label>专场介绍</label>
                <textarea className="form-control" name="intro" rows="5"
-                               pattern=".{6,}" required title="最少6个字符" ref="intro" />
+                               pattern=".{6,}" required ref="intro" />
             </div>
 
             <div className="form-group col-sm-12">
                <label>上传图片</label>
                <input type="file" className="form-control preview-img" onChange={this.handleChange}
-                      style={this.state.divStyle} name="banner" ref="banner" />
+                      required style={this.state.divStyle} name="banner" ref="banner" />
             </div>
 
             <input className="hidden" name="status" defaultValue="on" />

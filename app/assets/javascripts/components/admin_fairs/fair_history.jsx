@@ -9,6 +9,9 @@ var FairHistroy = React.createClass({
       close: this.props.close,
     }
   }
+  ,componentDidMount: function() {
+    formFairSearch('#form_fair_histroy')
+  }
   ,handleClick: function(e) {
     let key = e.target.name,
         val = JSON.parse(e.target.value);
@@ -79,7 +82,7 @@ var FairHistroyForm = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' onSubmit={this.handleSubmit} id="form_fair_histroy">
           <div className='form-group col-sm-3'>
             <input type="text" id="time_from" className="form-control" placeholder='开始时间' name='time_from'
                    onFocus={this.handleFocus} defaultValue={this.state.time_from} ref="time_from" />

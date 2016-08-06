@@ -5,6 +5,9 @@ var FairHospitalSearch = React.createClass({
       fair: this.props.dad.state.fair,
     }
   }
+  ,componentDidMount: function() {
+    formFairHospitalSearch('#form_fair_hospital_search')
+  }
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
@@ -16,6 +19,8 @@ var FairHospitalSearch = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_fair_hospital_search')) return // 不合法就返回
+
     let banner_file = this.refs.banner.files[0],
         formData = new FormData(e.target)
 
@@ -76,6 +81,7 @@ var SearchForm = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_fair_hospital_search')) return // 不合法就返回
 
     $.ajax({
       url: '/admin/fairs/' + this.state.fair_id + '/fair_hospitals',
@@ -98,7 +104,7 @@ var SearchForm = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit} ref="search">
+      <form className='form-inline' onSubmit={this.handleSubmit} ref="search" id="form_fair_hospital_search">
           <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='机构帐号' name='id'
                     ref="id" />

@@ -8,6 +8,9 @@ var FairNow = React.createClass({
       index: 0,
     }
   }
+  ,componentDidMount: function() {
+    formFairSearch('#form_fair_search')
+  }
   ,handleClick: function(e) {
     let key = e.target.name,
         val = JSON.parse(e.target.value);
@@ -63,6 +66,7 @@ var FairForm = React.createClass({
     }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_fair_search')) return // 不合法就返回
     $(".pagination").hide()
 
     $.ajax({
@@ -87,7 +91,7 @@ var FairForm = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' onSubmit={this.handleSubmit} id="form_fair_search">
         <div className='form-group col-sm-12'>
           <FairRadio handleRadio={this.handleRadio} />
         </div>
@@ -229,3 +233,75 @@ function trans_fair(status) {
       return '未知'
   }
 }
+
+
+/********************** 专场表单验证 **********************/
+ function formFair(id) {
+   $(id).validate({
+     rules: {
+       name: {
+         required: true,
+         maxlength: 20,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+       creator: {
+         required: true,
+         rangelength: [2, 10],
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+       begain_at: {
+         required: true,
+         date: true
+       },
+       end_at: {
+         required: true,
+         date: true
+       },
+       intro: {
+         required: true,
+         rangelength: [2, 300],
+       },
+     },
+     messages: {
+       name: {
+         maxlength: '最多20个字符',
+         pattern: '请输入中文、英文或数字'
+       },
+       creator: {
+         pattern: '请输入中文、英文或数字'
+       },
+       intro: {
+         rangelength: '2~300 个字符'
+       },
+     },
+     highlight: function ( element, errorClass, validClass ) {
+       $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+     },
+     unhighlight: function ( element, errorClass, validClass ) {
+       $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+     },
+   })
+ }
+
+ function formFairSearch(id) {
+   $(id).validate({
+     rules: {
+       name: {
+         maxlength: 20,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+       time_from: {
+         date: true,
+       },
+       time_to: {
+         date: true
+       }
+     },
+     messages: {
+       show_name: {
+         maxlength: '最多20个字符',
+         pattern: '请输入中文、英文或数字'
+       }
+     }
+   })
+ }
