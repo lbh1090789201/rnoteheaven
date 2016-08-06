@@ -47,6 +47,9 @@ var AdminUserForm = React.createClass({
       show_name: '',
     }
   }
+  ,componentDidMount: function() {
+    formUserSearch('#form_user_search')
+  }
   ,handleRadio: function(e) {
     this.setState({
       manager: e.target.value,
@@ -59,6 +62,8 @@ var AdminUserForm = React.createClass({
     }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_user_search')) return // 不合法就返回
+
     $.ajax({
       url: '/admin/users',
       type: 'GET',
@@ -80,7 +85,7 @@ var AdminUserForm = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' onSubmit={this.handleSubmit} id="form_user_search">
         <div className='form-group col-sm-12'>
           <AdminUserRadio handleRadio={this.handleRadio} />
         </div>
@@ -250,4 +255,54 @@ function transType(e)  {
    } else {
      return "未知"
    }
+ }
+
+
+
+ /********************** 表单验证 **********************/
+ function formUser(id) {
+   $(id).validate({
+     rules: {
+       show_name: {
+         required: true,
+         rangelength: [2, 10],
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+     },
+     messages: {
+       show_name: {
+         maxlength: '用户名为2~10字符',
+         pattern: '请输入中文、英文或数字'
+       }
+     },
+     highlight: function ( element, errorClass, validClass ) {
+       $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+     },
+     unhighlight: function ( element, errorClass, validClass ) {
+       $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+     },
+   })
+ }
+
+ function formUserSearch(id) {
+   $(id).validate({
+     rules: {
+       show_name: {
+         maxlength: 10,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+       time_from: {
+         date: true,
+       },
+       time_to: {
+         date: true
+       }
+     },
+     messages: {
+       show_name: {
+         maxlength: '最多10个字符',
+         pattern: '请输入中文、英文或数字'
+       }
+     }
+   })
  }

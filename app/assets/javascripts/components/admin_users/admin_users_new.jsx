@@ -9,6 +9,9 @@
                   "fairs_manager": false, "vips_manager": false, "acounts_manager": false},
      }
    }
+   ,componentDidMount: function() {
+     formUser('#form_user_new')
+   }
    ,handleChange: function(e) {
      let name = e.target.name
 
@@ -43,6 +46,8 @@
    }
    ,handleSubmit: function(e) {
      e.preventDefault()
+     if(invalid('#form_user_new')) return // 不合法就返回
+
      let show_name = this.refs.show_name.value,
          password = this.refs.password.value,
          password2 = this.refs.password2.value,
@@ -51,9 +56,9 @@
          console.log(scopes.toString())
 
      if(password != password2) {
-       alert('两次输入密码不一致')
+       myInfo('两次输入密码不一致', 'fail')
      } else if (scopes.length = 0) {
-       alert('至少需要设置一项权限')
+       myInfo('至少需要设置一项权限', 'fail')
      } else {
        $.ajax({
          url: '/admin/users',
@@ -85,7 +90,7 @@
      return (
        <div className="mask-user" style={{"display": this.props.dad.state.user_info.new_display}}>
          <div className="user-box">
-           <form onSubmit={this.handleSubmit}>
+           <form onSubmit={this.handleSubmit} id="form_user_new">
              <div className="form-group">
                 <label>用户名称</label>
                   <input className="form-control" placeholder="用户名" name="show_name" required

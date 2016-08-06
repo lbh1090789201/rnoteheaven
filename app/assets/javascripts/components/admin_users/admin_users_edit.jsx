@@ -8,6 +8,9 @@
        scopes: [],
      }
    }
+   ,componentDidMount: function() {
+     formUser('#form_user_edit')
+   }
    ,componentWillMount: function() {
         $.ajax({
           url: '/admin/users/edit',
@@ -62,6 +65,8 @@
    }
    ,handleSubmit: function(e) {
      e.preventDefault()
+     if(invalid('#form_user_edit')) return // 不合法就返回
+
      let show_name = this.props.dad.state.user_info.show_name,
          password = this.refs.password.value,
          password2 = this.refs.password2.value,
@@ -113,7 +118,7 @@
      return (
        <div className="mask-user" style={{"display": this.props.user_info.edit_display}}>
          <div className="user-box">
-           <form onSubmit={this.handleSubmit}>
+           <form onSubmit={this.handleSubmit} id="form_user_edit">
              <input onChange={this.handleChange} value={this.props.user_info.uid} name="id" ref="id" style={{"display": "none"}} />
              <div className="form-group">
                 <label>用户名称</label>
