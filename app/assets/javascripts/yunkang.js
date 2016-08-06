@@ -102,7 +102,7 @@ function workExperience(obj,api,pclass) {
 }
 
 function change_val(obj) {
-  $("#" + $(obj).attr("class")).attr('value', obj.value);
+  $("#" + $(obj).attr("class")).attr('value', $(obj).text());
   $('.before-mask').animate({
     top: '1500px',
   },300);
