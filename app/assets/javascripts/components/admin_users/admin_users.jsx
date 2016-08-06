@@ -268,6 +268,12 @@ function transType(e)  {
          rangelength: [2, 10],
          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
        },
+       password: {
+         minlength: 6
+       },
+       password2: {
+         minlength: 6
+       }
      },
      messages: {
        show_name: {
@@ -275,6 +281,7 @@ function transType(e)  {
          pattern: '请输入中文、英文或数字'
        }
      },
+
      highlight: function ( element, errorClass, validClass ) {
        $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
      },

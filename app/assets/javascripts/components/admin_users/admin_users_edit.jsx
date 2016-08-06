@@ -77,8 +77,6 @@
 
      if(password != password2) {
        myInfo('两次输入密码不一致。', 'fail')
-     } else if(password.length < 6) {
-       myInfo('密码长度至少6位。', 'fail')
      } else if (scopes.length = 0) {
        myInfo('至少需要设置一项权限。', 'fail')
      } else {
