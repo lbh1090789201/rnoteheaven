@@ -86,6 +86,7 @@ function change_val(obj) {
     top: '1500px',
   },300);
   $('.before-mask').css("display","none");
+  $("#" + $(obj).attr("class")).blur();
 };
 
 function delete_mask() {
@@ -103,3 +104,61 @@ function ReplayImg(index,img_src){
 function EmptyCont(input_id) {
 	$("#"+input_id).val('');
 }
+
+
+/********************** 表单验证 **********************/
+ function formAll(id) {
+   $(id).validate({
+     rules: {
+       // job验证
+        name: {
+          required: true,
+          maxlength: 15,
+          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
+        },
+        needed_number: {
+          required: true,
+          maxlength: 5,
+          pattern: '^[0-9]*[1-9][0-9]*$',
+        },
+        location: {
+          required: true,
+          maxlength: 20,
+          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
+        },
+        job_demand: {
+          required: true,
+          maxlength: 500,
+        },
+        job_desc: {
+          required: true,
+          maxlength: 500,
+        },
+      // user 验证
+      introduction: {
+        required: true,
+        maxlength: 500,
+      },
+     },
+     errorPlacement: function(error, element) {
+       return true
+     },
+
+     highlight: function ( element, errorClass, validClass ) {
+       $( element ).addClass( "has-error" ).removeClass( "has-success" );
+     },
+     unhighlight: function ( element, errorClass, validClass ) {
+       $( element ).addClass( "has-success" ).removeClass( "has-error" );
+     },
+   })
+ }
+
+ // 不合法返回 true, id 为表格id,"#form_id"，公用
+ function valid(id) {
+   var isvalidate=$(id).valid();
+   if(isvalidate) {
+     return false
+   } else {
+     return true
+   }
+ }

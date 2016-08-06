@@ -5,23 +5,34 @@
 <%= provide :title, "机构信息设置" %>
 <div id="job_basic">
   <%= simple_form_for @hospital, method: :patch, remote: true, url: employer_user_path(params[:id]) do |f| %>
-  <%= f.input :name, label: "机构全称", input_html: { readonly: "readonly"} %>
-  <%= f.input :property, label: '类型', input_html: { readonly: "readonly", class: "user-prop", id: "user_prop"} %>
-  <%= f.input :scale, label: '规模', input_html: { readonly: "readonly", class: "user-scale", id: "user_scale"} %>
-  <%= f.input :industry, label: '行业', input_html: { readonly: "readonly", class: "user-industry", id: "user_industry"} %>
+  <%= f.input :name, label: "机构全称", input_html: { readonly: "readonly", name: "name"} %>
+  <%= f.input :property, label: '类型', input_html: { readonly: "readonly", class: "user-prop", id: "user_prop", name: "property"} %>
+  <%= f.input :scale, label: '规模', input_html: { readonly: "readonly", class: "user-scale", id: "user_scale", name: "scale"} %>
+  <%= f.input :industry, label: '行业', input_html: { readonly: "readonly", class: "user-industry", id: "user_industry", name: "industry"} %>
   <div class="job-pubilc">
-    <%= f.input :location, label: '地址', input_html: { class: "", id: "hos_location"} %>
+    <%= f.input :location, label: '地址', input_html: { class: "", id: "hos_location", name: "location"} %>
     <span class="empty-cont" onclick="EmptyCont('hos_location')"></span>
   </div>
-  <%= f.input :introduction, label: '相关介绍', as: :text, input_html: { class: "", id: "", placeholder: "最多输入1000字"} %>
-  <div class="submit-box"><%= f.submit '保存',id: "submit", onClick: "submitForm(this);"%></div>
+  <%= f.input :introduction, label: '相关介绍', as: :text, input_html: { class: "", id: "", placeholder: "最多输入500字", name: "introduction"} %>
+  <div class="submit-box">
+    <%= f.submit '保存',id: "submit",style: "display: none", onClick: "submitForm(this);"%>
+    <button id="save_form">保存</button>
+  </div>
   <% end %>
 </div>
 
 <script type="text/javascript">
+  // 表单验证
+  formAll("form");
 
-  $("#submit").on('click', function() {
-    $('#submit').css('pointer-events','none');
+  $("#save_form").on('click', function() {
+    
+    // 验证表单,失败返回
+    if(valid("form")){
+      return
+    }
+    $(":submit").trigger('click');
+    $('#save_form').css('pointer-events','none');
   })
 
   // 医院类型

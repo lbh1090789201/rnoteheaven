@@ -7,40 +7,40 @@
     <%= simple_form_for :job, method: :post, remote: true, id: "submit_form", url: employer_jobs_path do |f| %>
     <p class="basic_infoo">任职资格<%= image_tag "icon_36.png" %></p>
     <div class="job-pubilc">
-      <%= f.input :name, label: "职位名称", input_html: { class: "job-frist_new", id: "job_frist"} %>
+      <%= f.input :name, label: "职位名称", input_html: { class: "job-frist_new", id: "job_frist", name: "name"} %>
 			<span class="empty-cont" onclick="EmptyCont('job_frist')"></span>
 		</div>
-    <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type"} %>
-    <%= f.input :salary_range, label: '薪        资', input_html: { readonly: 'readonly', class: "job-range", id: "job_range"} %>
-    <%= f.input :experience, label: '经验要求', input_html: { readonly: 'readonly', class: "job-experience", id: "job_experience"} %>
+    <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type", name: "job_type"} %>
+    <%= f.input :salary_range, label: '薪        资', input_html: { readonly: 'readonly', class: "job-range", id: "job_range", name: "salary_range"} %>
+    <%= f.input :experience, label: '经验要求', input_html: { readonly: 'readonly', class: "job-experience", id: "job_experience", name: "experience"} %>
     <div class="job-pubilc">
-      <%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist_new", id: "job_number"} %>
+      <%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist_new", id: "job_number", name: "needed_number"} %>
 			<span class="empty-cont" onclick="EmptyCont('job_number')"></span>
 		</div>
-    <%= f.input :region, label: '工作地区', input_html: { readonly: 'readonly', class: "", id: "job_region"} %>
+    <%= f.input :region, label: '工作地区', input_html: { readonly: 'readonly', class: "", id: "job_region", name: "region"} %>
     <!-- 城市插件需要用到 -->
     <input type="hidden" id="province" value="">
     <input type="hidden" id="city" value="">
     <div class="job-pubilc">
-      <%= f.input :location, label: '详细地址', input_html: { class: "job-frist_new", id: "job_location"} %>
+      <%= f.input :location, label: '详细地址', input_html: { class: "job-frist_new", id: "job_location", name: "location"} %>
 			<span class="empty-cont" onclick="EmptyCont('job_location')"></span>
 		</div>
     <div class="job-vip">
-      <%= f.input :is_top, label: 'VIP置顶', input_html: { value: false, class: "job-top", id: ""} %>
+      <%= f.input :is_top, label: 'VIP置顶', input_html: { value: false, class: "job-top", id: "", name: "is_top"} %>
       <div class="job-slider">
       	<div class="job-slider-inner"></div>
       </div>
     </div>
     <div class="job-endtime">
-        <%= f.input :duration, label: '发布期限', input_html: { value: "15", readonly: 'readonly', class: 'job-date' } %>
+        <%= f.input :duration, label: '发布期限', input_html: { value: "15", readonly: 'readonly', class: 'job-date', name: "duration" } %>
         <span class="job-end" id="job_end">半个月</span>
     </div>
     <p class="basic_infoo">职位描述<%= image_tag "icon_36.png" %></p>
-    <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等"} %>
+    <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等", name: "job_desc"} %>
     <p class="basic_infoo">任职资格<%= image_tag "icon_36.png" %></p>
-    <%= f.input :job_demand, label: '', as: :text, input_html: {id:"job_demand", placeholder: "资格要求"} %>
+    <%= f.input :job_demand, label: '', as: :text, input_html: {id:"job_demand", placeholder: "资格要求", name: "job_demand"} %>
 
-    <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status"} %>
+    <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status", name: "status"} %>
     <%= f.submit id: "submit", class: ""%>
     <div class="btn-status">
       <button type="button" name="button" id="save_form">仅保存</button>
@@ -50,10 +50,8 @@
 
 </div>
 <script type="text/javascript">
-  //存在未填框时iOS会有弹窗提示
-  submitMask("#sub_btn");
-  submitMask("#save_form");
-
+  // 表单验证
+  formAll("form");
 
   // 返回顶部
   $("#job_region").bind('click',function(){
@@ -83,15 +81,17 @@
     $('.btn-status>button').bind('click',function(){
       var vip_status = "<%= @vip_status['may_release'] %>";
       var index = $(this).index();
-      var is_valid = validation()
-      if(! is_valid){
+      EditMask(".wrap", "请完善信息!");
+
+      // 验证表单,失败返回
+      if(valid("form")){
         return
       }
 
       if(index==0) {
         $('#job_status').attr('value','saved');
         $('#submit').trigger('click');
-        employerMask("#sub_btn","#save_form");
+        $(".btn-status>button").css('pointer-events', 'none');
       } else {
         if(vip_status == 'false') {
           var mask_fail = $('.mask-fail').length
@@ -102,7 +102,7 @@
         } else {
           $('#job_status').attr('value','reviewing');
           $('#submit').trigger('click');
-          employerMask("#sub_btn","#save_form");
+          $(".btn-status>button").css('pointer-events', 'none');
         }
       }
     });
@@ -148,33 +148,36 @@
         target: '#job_region',
         valType: 'k-v',
         hideCityInput: '#city',
-        hideProvinceInput: '#province'
+        hideProvinceInput: '#province',
+        callback: function(){
+          $("#job_region").blur();
+        }
     });
   cityPicker.init();
 
 
 /********************** 以下为字符合法性检测 **********************/
-function validation() {
-  var status = true
-  var job_demand = $('#job_demand').val()
-
-  if(job_demand.length > 500) {
-    $('#job_demand').addClass("red-border")
-    status = false
-  }
-
-  return status
-}
-
-$('#job_demand').change(function() {
-  var val = $(this).val()
-
-  if(val.length > 500) {
-    $('#job_demand').addClass("red-border")
-    status = false
-  } else {
-    $('#job_demand').removeClass("red-border")
-  }
-})
+// function validation() {
+//   var status = true
+//   var job_demand = $('#job_demand').val()
+//
+//   if(job_demand.length > 500) {
+//     $('#job_demand').addClass("red-border")
+//     status = false
+//   }
+//
+//   return status
+// }
+//
+// $('#job_demand').change(function() {
+//   var val = $(this).val()
+//
+//   if(val.length > 500) {
+//     $('#job_demand').addClass("red-border")
+//     status = false
+//   } else {
+//     $('#job_demand').removeClass("red-border")
+//   }
+// })
 
 </script>

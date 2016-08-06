@@ -4,45 +4,47 @@
 	<p class="basic_info">职位基本信息<%= image_tag "icon_36.png" %></p>
     <%= simple_form_for :job, method: :patch, remote: true, id: "submzit_form", url: employer_job_path(params[:id]) do |f| %>
 		<div class="job-pubilc">
-			<%= f.input :name, label: "职位名称", input_html: { class: "job-frist" ,id:"job_frist"} %>
+			<%= f.input :name, label: "职位名称", input_html: { class: "job-frist" ,id:"job_frist", name: "name"} %>
 			<span class="empty-cont" onclick="EmptyCont('job_frist')"></span>
 		</div>
-    <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type"} %>
-    <%= f.input :salary_range, label: '薪资', input_html: { class: "job-range", id: "job_range"} %>
-    <%= f.input :experience, label: '经验要求', input_html: { class: "job-experience", id: "job_experience"} %>
+    <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type", name: "job_type"} %>
+    <%= f.input :salary_range, label: '薪资', input_html: { class: "job-range", id: "job_range", name: "salary_range"} %>
+    <%= f.input :experience, label: '经验要求', input_html: { class: "job-experience", id: "job_experience", name: "experience"} %>
 		<div class="job-pubilc">
-			<%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist", id: "job_number" } %>
+			<%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist", id: "job_number", name: "needed_number" } %>
 			<span class="empty-cont" onclick="EmptyCont('job_number')"></span>
 		</div>
-    <%= f.input :region, label: '工作地区', input_html: { class: "", id: "job_region"} %>
+    <%= f.input :region, label: '工作地区', input_html: { class: "", id: "job_region", name: "region"} %>
     <!-- 城市插件需要用到 -->
     <input type="hidden" id="province" value="">
     <input type="hidden" id="city" value="">
 		<div class="job-pubilc">
-			<%= f.input :location, label: '详细地址', input_html: { class: "job-frist", id: "job_location"} %>
+			<%= f.input :location, label: '详细地址', input_html: { class: "job-frist", id: "job_location", name: "location"} %>
 			<span class="empty-cont" onclick="EmptyCont('job_location')"></span>
 		</div>
     <div class="job-vip">
-	    <%= f.input :is_top, label: 'VIP置顶', input_html: { class: "job-top", id: ""}%>
+	    <%= f.input :is_top, label: 'VIP置顶', input_html: { class: "job-top", id: "", name: "is_top"}%>
 	    <div class="job-slider">
 	    	<div class="job-slider-inner"></div>
 	    </div>
     </div>
 		<div class="job-endtime">
-        <%= f.input :duration, label: '发布期限', input_html: { readonly: 'readonly', class: 'job-date' } %>
+        <%= f.input :duration, label: '发布期限', input_html: { readonly: 'readonly', class: 'job-date', name: "duration" } %>
         <span class="job-end" id="job_end">剩余<%= @job_end_at %>天</span>
     </div>
     <p class="basic_info">职位描述<%= image_tag "icon_36.png" %></p>
-    <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等"} %>
+    <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等", name: "job_desc"} %>
     <p class="basic_info">任职资格<%= image_tag "icon_36.png" %></p>
-    <%= f.input :job_demand, label: '', as: :text, input_html: { class: "", placeholder: "资格要求"} %>
-    <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status"} %>
+    <%= f.input :job_demand, label: '', as: :text, input_html: { class: "", placeholder: "资格要求", name: "job_demand"} %>
+    <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status", name: "status"} %>
     <%= f.submit id: "submit"%>
     <p class="btn-sright">保存</p>
     <% end %>
 
 </div>
 <script type="text/javascript">
+	// 表单验证
+	formAll("form");
 
 	// 返回顶部
 	$("#job_region").bind('click',function(){
@@ -57,18 +59,11 @@
 		var job_demand_1 = "<%= @job.job_demand %>";
 		var job_satus = "<%= @job.status %>";
 		$('.btn-sright').bind('click',function(){
-			// 验证表单
-			var form_pattern = function() {
-				var number = person_number("#job_number");
-			  if( number) {
-					return true
-				}else {
-					return false
-				}
-			}
-			if(!form_pattern()) {
-				return
-			}
+			// 验证表单,失败返回
+      if(valid("form")){
+        return
+      }
+			
 			if(job_satus == 'reviewing' || job_satus == 'pause'){
 				var job_name_2 = $('.form-group:eq(0)').children('input').val();
 				var job_desc_2 = $('.form-group:eq(9)').children('textarea').val();

@@ -103,7 +103,10 @@
           target: '#locationChoice',
           valType: 'k-v',
           hideCityInput: '#city',
-          hideProvinceInput: '#province'
+          hideProvinceInput: '#province',
+          callback: function(){
+            $("#locationChoice").blur();
+          }
       });
 
       cityPicker.init();

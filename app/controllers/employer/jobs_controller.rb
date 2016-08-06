@@ -97,7 +97,7 @@ class Employer::JobsController < ApplicationController
   private
 
     def job_params
-      params.require(:job).permit(:name, :job_type, :salary_range, :experience, :needed_number,:is_top,
+      params.permit(:name, :job_type, :salary_range, :experience, :needed_number,:is_top,
                               :duration, :region, :location, :job_desc, :job_demand, :status, :release_at)
     end
 

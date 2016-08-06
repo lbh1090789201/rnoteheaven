@@ -281,3 +281,11 @@
  .red-border {
    border: 0.5px solid red !important;
  }
+
+ // 验证表单
+ .has-error {
+   border: 1px solid #b94a48 !important;
+ }
+ .has-success {
+   border: none !important;
+ }
