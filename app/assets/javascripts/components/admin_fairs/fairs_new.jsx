@@ -6,6 +6,9 @@ var FairNew = React.createClass({
       }
     }
   }
+  ,componentDidMount: function() {
+    formFair('#form_fair_new')
+  }
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
@@ -17,18 +20,12 @@ var FairNew = React.createClass({
   }
   ,handleFocus: function(e) {
       let id = e.target.id
-
-      $("#"+id).datetimepicker({
-        language: 'zh-CN',
-        format: "yyyy-mm-dd",
-        autoclose: true,
-        minView: "month",
-        todayBtn:  1,
-        showMeridian: 1,
-      });
+      myDatePicker(id, 'begain_at', 'end_at')
     }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_fair_new')) return // 不合法就返回
+
     let banner_file = this.refs.banner.files[0],
         formData = new FormData(e.target)
 
@@ -46,6 +43,8 @@ var FairNew = React.createClass({
            fairs: fairs,
            new_display: false
         })
+
+        myInfo('专场发布成功！', 'success')
       }.bind(this),
       error: function(data){
         var info = JSON.parse(data.responseText)
@@ -57,41 +56,41 @@ var FairNew = React.createClass({
     return (
       <div className="mask-user">
         <div className="user-box">
-          <form method="post" action="/admin/fairs" encType="multipart/form-data" onSubmit={this.handleSubmit}>
+          <form method="post" action="/admin/fairs" encType="multipart/form-data"
+                id="form_fair_new" onSubmit={this.handleSubmit}>
             <div className="form-group col-sm-6">
                <label>用户名称</label>
                <input className="form-control" placeholder="专场名称" name="name"
-                             pattern=".{1,}" required title="专场名称不能为空" ref="name" />
+                       ref="name" />
             </div>
 
             <div className="form-group col-sm-6">
                <label>发布人</label>
-               <input type="text" className="form-control" name="creator"
-                           pattern=".{1,}" required title="发布人不能为空" ref="creator" />
+               <input type="text" className="form-control" name="creator" ref="creator" />
             </div>
 
             <div className="form-group col-sm-6">
                <label>开始时间</label>
                <input type="text" id="begain_at" className="form-control" name="begain_at" placeholder="开始时间"
-                              onFocus={this.handleFocus} pattern=".{1,}" required title="开始时间不能为空" ref="begain_at" />
+                              onFocus={this.handleFocus} pattern=".{1,}" required  ref="begain_at" />
             </div>
 
             <div className="form-group col-sm-6">
                <label>结束时间</label>
                <input type="text" id="end_at" className="form-control" name="end_at" placeholder="结束时间"
-                              onFocus={this.handleFocus} pattern=".{1,}" required title="结束时间不能为空" ref="end_at" />
+                              onFocus={this.handleFocus} pattern=".{1,}" required ref="end_at" />
             </div>
 
             <div className="form-group col-sm-12">
                <label>专场介绍</label>
                <textarea className="form-control col-sm-12" name="intro" rows="5"
-                               pattern=".{6,}" required title="最少6个字符" ref="intro" />
+                         required ref="intro" />
             </div>
 
             <div className="form-group col-sm-12">
                <label>上传图片</label>
                <input type="file" className="form-control preview-img" onChange={this.handleChange}
-                      style={this.state.divStyle} name="banner" ref="banner" />
+                      required style={this.state.divStyle} name="banner" ref="banner" />
             </div>
 
             <input className="hidden" name="status" defaultValue="processing" />

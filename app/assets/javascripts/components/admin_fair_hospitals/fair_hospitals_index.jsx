@@ -125,7 +125,8 @@ var FairHospitalItem = React.createClass({
   ,ChangeStatus: function(e) {
     let fair_id = this.props.dad.state.fair.id,
         fair_hospital_id = this.props.fair_hospital.id,
-        index = this.props.index
+        index = this.props.index,
+        status_zh = trans_fair_hospital(e.target.value)
 
     $.ajax({
       url: '/admin/fairs/' + fair_id + '/fair_hospitals/' + fair_hospital_id,
@@ -140,9 +141,12 @@ var FairHospitalItem = React.createClass({
         this.props.dad.setState({
            fair_hospitals: fair_hospitals
         })
+
+
+        myInfo(`${status_zh}成功！`, 'success')
       }.bind(this),
       error: function(data){
-        alert('修改状态失败。')
+        myInfo(`${status_zh}失败。`, 'fail')
       }
     })
   }
@@ -188,3 +192,55 @@ function trans_fair_hospital(status) {
       return '未知'
   }
 }
+
+
+/********************** 专场医院验证 **********************/
+ function formFairHospital(id) {
+   $(id).validate({
+     rules: {
+       contact_person: {
+         required: true,
+         maxlength: 10,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+       contact_number: {
+         pattern: '1[0-9]{10}'
+       },
+       intro: {
+         rangelength: [6, 300]
+       }
+     },
+     messages: {
+       contact_person: {
+         pattern: '请输入中文、英文或数字'
+       },
+       contact_number: {
+         pattern: '号码不合法'
+       }
+     },
+     highlight: function ( element, errorClass, validClass ) {
+       $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+     },
+     unhighlight: function ( element, errorClass, validClass ) {
+       $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+     },
+   })
+ }
+
+ function formFairHospitalSearch(id) {
+   $(id).validate({
+     rules: {
+       id: {
+         maxlength: 10,
+         digits: true
+       },
+       name: {
+         maxlength: 20,
+       },
+       contact_person: {
+         maxlength: 10,
+       }
+     },
+     messages: {}
+   })
+ }

@@ -7,6 +7,9 @@ var AdminHospitalNew = React.createClass({
       property: '',
     }
   }
+  ,componentDidMount: function() {
+    formHospital('#form_hospital_new')
+  }
   ,handleSelect: function(e) {
     this.setState({
       vip_id: e.target.value,
@@ -50,6 +53,8 @@ var AdminHospitalNew = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_hospital_new')) return // 不合法就返回
+
     var formData = new FormData(e.target)
     formData.append('plan_id',this.state.vip_id);
     formData.append('property',this.state.property);
@@ -73,10 +78,12 @@ var AdminHospitalNew = React.createClass({
             hospitals: hospitals,
             new_display: false,
           })
+
+          myInfo('新建机构成功！', 'success')
         }.bind(this),
         error: function(data) {
           let info = JSON.parse(data.responseText)
-          alert(info["info"])
+          myInfo(info["info"], 'fail')
         }.bind(this),
       })
     }
@@ -94,7 +101,7 @@ var AdminHospitalNew = React.createClass({
     return (
       <div className="mask-user">
         <div className="user-box">
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} id='form_hospital_new'>
             <div className="row">
               <div className="form-group col-sm-4">
                  <label>账号(手机号)</label>
@@ -113,7 +120,9 @@ var AdminHospitalNew = React.createClass({
                    <input type="text" className="form-control" placeholder="姓名" name="contact_person"
                             required ref="contact_person"/>
               </div>
+            </div>
 
+            <div className="row">
               <div className="form-group col-sm-4">
                 <select name="industry" className="form-control form-magrin-top" defaultValue="行业">
                   <option value="">行业</option>
@@ -154,7 +163,9 @@ var AdminHospitalNew = React.createClass({
                    <option value="1000人以上">1000人以上</option>
                  </select>
               </div>
+            </div>
 
+            <div className="row">
               <div className="form-group col-sm-4">
                  <label>地区</label>
                    <input type="text" className="form-control" id="cityChoice" placeholder="地区" name="region"
@@ -172,7 +183,6 @@ var AdminHospitalNew = React.createClass({
             </div>
 
             <div className="row">
-
               <div className="form-group col-sm-4">
                  <label>经度(73°E~135°E)</label>
                    <input type="text" className="form-control" placeholder="请填写数字" name="lng"
@@ -205,7 +215,7 @@ var AdminHospitalNew = React.createClass({
             <div className="form-group col-sm-12">
                <label>机构介绍</label>
                  <textarea id="input_textarea" className="form-control input-textarea" placeholder="机构介绍" name="introduction"
-                           required title="最少6个字符" ref="introduction" ></textarea>
+                           required ref="introduction" ></textarea>
 
             </div>
 

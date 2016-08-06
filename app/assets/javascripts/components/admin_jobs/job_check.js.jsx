@@ -29,6 +29,7 @@ var AdminJob = React.createClass({
   // 点击审核通过或者审核失败发生的事件
   ,handleClick: function(e) {
     e.preventDefault();
+
     var name = e.target.name,
         ids = this.state.checkValue.toString(),
         status= e.target.value
@@ -111,13 +112,9 @@ var ReviewJob = React.createClass({
       job_type: '',
     }
   }
-  // ,handleChange: function(e) {
-  //   let select_value = e.target.value
-  //
-  //   this.setState({
-  //     job_type: select_value
-  //   })
-  // }
+  ,componentDidMount: function() {
+    formJobCheck('#form_job_check')
+  }
   ,handleFocus: function(e) {
       let id = e.target.id
       myDatePicker(id, 'time_begin', 'time_end')
@@ -125,6 +122,8 @@ var ReviewJob = React.createClass({
   //点击搜索提交按钮事件
   ,handleSubmit: function(e){
     e.preventDefault()
+    if(invalid('#form_job_check')) return // 不合法就返回
+
     //隐藏分页码
     $('.pagination').hide()
     // 获取真实dom节点
@@ -158,7 +157,7 @@ var ReviewJob = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' onSubmit={this.handleSubmit} id='form_job_check'>
         <div className='form-group col-sm-4'>
             <input type="text" id="time_begin" className="form-control" placeholder='开始时间' name='time_end'
                    onFocus={this.handleFocus} defaultValue={this.state.time_after} ref="time_begin" />
@@ -208,3 +207,33 @@ var ReviewJob = React.createClass({
     )
   }
 })
+
+/********************** 表单验证 **********************/
+ function formJobCheck(id) {
+   $(id).validate({
+     rules: {
+       time_end: {
+         date: true,
+       },
+       time_begin: {
+         date: true,
+       },
+       hospital_name: {
+         maxlength: 20,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+       job_name: {
+         maxlength: 10,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+     },
+     messages: {
+       hospital_name: {
+         pattern: '请输入中文、英文或数字'
+       },
+       job_name: {
+         pattern: '请输入中文、英文或数字'
+       }
+     }
+   })
+ }

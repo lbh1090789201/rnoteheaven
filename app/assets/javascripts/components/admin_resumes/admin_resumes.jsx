@@ -9,6 +9,9 @@ var AdminResume = React.createClass({
     }
 
   }
+  ,componentDidMount: function() {
+    formResumeSearch('#form_resume_search')
+  }
   ,render: function() {
     var see_resume = this.state.view_display ? <AdminResumeView dad={this} /> : ''
     return (
@@ -51,9 +54,11 @@ var AdminResumeForm = React.createClass({
             }
         });
         cityPicker.init();
+        $("#cityChoice").blur()
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_resume_search')) return // 不合法就返回
     //隐藏分页码
     $('.pagination').hide()
     $.ajax({
@@ -96,7 +101,7 @@ var AdminResumeForm = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' onSubmit={this.handleSubmit} id='form_resume_search'>
         <div className='form-group col-sm-12'>
           <AdminResumeCheckbox handleCheck={this.handleCheck}/>
         </div>
@@ -275,3 +280,26 @@ var AdminResumeItem = React.createClass({
     )
   }
 })
+
+
+/********************** 表单验证 **********************/
+ function formResumeSearch(id) {
+   $(id).validate({
+     rules: {
+       rid: {
+         maxlength: 10,
+         digits: true,
+       },
+       show_name: {
+         maxlength: 10,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+     },
+     messages: {
+       show_name: {
+         maxlength: '最多10个字符',
+         pattern: '请输入中文、英文或数字'
+       }
+     }
+   })
+ }

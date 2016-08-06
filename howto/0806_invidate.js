@@ -49,9 +49,9 @@
    function formUserSearch(id) {
      $(id).validate({
        rules: {
-         show_name: {
+         id: {
            maxlength: 10,
-           pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+           di
          },
          time_from: {
            date: true,
@@ -68,3 +68,10 @@
        }
      })
    }
+
+   /********************** 去掉提示 **********************/
+   $('#form').validate({
+  errorPlacement: function(error,element) {
+    return true;
+  }
+});
