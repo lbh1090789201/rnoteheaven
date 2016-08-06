@@ -91,24 +91,23 @@
 <%= render '/layouts/employer_footer' %>
 
 <script>
-// 进入简历管理，判断进入哪个分页
-var enter_url = window.location.href,
-    index = enter_url.length,
-    string = enter_url.slice(index-4,index);
+    // 进入简历管理，判断进入哪个分页
+    var enter_url = window.location.href,
+        index = enter_url.length,
+        string = enter_url.slice(index-4,index);
 
-if(string == "time") {
-  $('.resume-nav>li .month-resume').css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'}).children('img').attr('src', '../assets/icon_31.png');
-  $('.resume-nav>li:eq(1)').siblings().children().css({'color':'#9f9f9f','border-bottom':'none'});
-  $(".resume-content>section").eq(1).css('display','block').siblings('section').css('display','none');
-}else if(string == "open") {
-  $('.resume-nav>li').eq(2).children().css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'})
-  $('.resume-nav>li').eq(2).siblings().children().css({'color':'#9f9f9f','border-bottom':'none'});
-  $('.resume-nav>li .month-resume').css({'color':'#9f9f9f','border-bottom':'none'}).children('img').attr('src', '../assets/icon_30.png');
-  $(".resume-content>section").eq(2).css('display','block').siblings('section').css('display','none');
-}
-    console.log(enter_url)
-  console.log(string)
+    if(string == "time") {
+      $('.resume-nav>li .month-resume').css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'}).children('img').attr('src', '../assets/icon_31.png');
+      $('.resume-nav>li:eq(1)').siblings().children().css({'color':'#9f9f9f','border-bottom':'none'});
+      $(".resume-content>section").eq(1).css('display','block').siblings('section').css('display','none');
+    }else if(string == "open") {
+      $('.resume-nav>li:eq(2)').children().css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'})
+      $('.resume-nav>li:eq(2)').siblings().children().css({'color':'#9f9f9f','border-bottom':'none'});
+      $('.resume-nav>li .month-resume').css({'color':'#9f9f9f','border-bottom':'none'}).children('img').attr('src', '../assets/icon_30.png');
+      $(".resume-content>section").eq(2).css('display','block').siblings('section').css('display','none');
+    }
 
+    // 简历管理的导航栏
     $(document).ready(function(){
       $(".resume-content>ul>li").bind('click',function(){
         var index = $(this).index();
