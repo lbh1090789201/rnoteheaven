@@ -57,7 +57,7 @@ function invalid(id) {
   if(isvalidate) {
     return false
   } else {
-    myInfo('请检查表单', 'fail')
+    myInfo('内容不合法，提交失败。', 'fail')
     return true
   }
 }
