@@ -11,6 +11,9 @@ var AdminHospital = React.createClass({
       },
     }
   }
+  ,componentDidMount: function() {
+    formHospitalSearch('#form_hospital_search')
+  }
   ,handleClick: function() {
     this.setState({
       new_display: true
@@ -60,6 +63,7 @@ var AdminHospitalForm = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_hospital_search')) return // 不合法就返回
     $(".pagination").hide()
 
     let hospital_name = this.refs.hospital_name.value,
@@ -101,7 +105,7 @@ var AdminHospitalForm = React.createClass({
         )
 
     return (
-      <form className='form-inline' encType="multipart/form-data" onSubmit={this.handleSubmit}>
+      <form className='form-inline' encType="multipart/form-data" onSubmit={this.handleSubmit} id="form_hospital_search">
         <div className='form-group col-sm-12'>
           <AdminHospitalRadio handleChange={this.handleChange} />
         </div>
@@ -281,3 +285,85 @@ var AdminHospitalItem =React.createClass({
     )
   }
 })
+
+/********************** 入住机构表单验证 **********************/
+ function formHospital(id) {
+   $(id).validate({
+     rules: {
+       contact_number: {
+         required: true,
+         pattern: '^1[345678][0-9]{9}$'
+       },
+       hospital_name: {
+         required: true,
+         rangelength: [2, 20],
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+       contact_person: {
+         required: true,
+         maxlength: 10,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+       lng: {
+         required: true,
+         range: [73, 135],
+       },
+       lat: {
+         required: true,
+         range: [4, 53],
+       },
+       location: {
+         required: true,
+         rangelength: [2, 30],
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9-,， ]+$',
+       },
+       introduction: {
+         required: true,
+         rangelength: [6, 300],
+       }
+     },
+     messages: {
+       contact_number: {
+         pattern: '手机号码不合法'
+       },
+       hospital_name: {
+         pattern: '请输入中文、英文或数字'
+       },
+       contact_person: {
+         pattern: '请输入中文、英文或数字'
+       },
+       location: {
+         pattern: '请输入中文、英文、数字或逗号，-'
+       }
+     },
+     highlight: function ( element, errorClass, validClass ) {
+       $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+     },
+     unhighlight: function ( element, errorClass, validClass ) {
+       $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+     },
+   })
+ }
+
+ function formHospitalSearch(id) {
+   $(id).validate({
+     rules: {
+       hospital_name: {
+         maxlength: 20,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+       },
+       time_before: {
+         date: true,
+       },
+       time_after: {
+         date: true
+       }
+     },
+     messages: {
+       hospital_name: {
+         maxlength: '最多20个字符',
+         pattern: '请输入中文、英文或数字'
+       }
+     }
+   })
+ }

@@ -99,6 +99,9 @@ var ReviewJobAll = React.createClass({
       status: '',
     }
   }
+  ,componentDidMount: function() {
+    formJobCheck('#form_job_index')
+  }
   ,handleRadio: function(e) {
     this.setState({
       status: e.target.value,
@@ -110,6 +113,8 @@ var ReviewJobAll = React.createClass({
     }
   ,handleSubmit: function(e){
     e.preventDefault()
+    if(invalid('#form_job_index')) return // 不合法就返回
+
     //隐藏分页码
     $('.pagination').hide()
 
@@ -145,7 +150,7 @@ var ReviewJobAll = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' onSubmit={this.handleSubmit} id='form_job_index'>
           <div className="form-group col-sm-12">
             <RadioButtons ref="goodRadio" handleRadio={this.handleRadio} />
           </div>

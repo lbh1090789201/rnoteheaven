@@ -7,6 +7,9 @@ var AdminEditHospital = React.createClass({
       index: this.props.dad.state.hos_info.index,
     }
   }
+  ,componentDidMount: function() {
+    formHospital('#form_hospital_edit')
+  }
   ,handleSelect: function(e) {
     this.setState({
       vip_id: e.target.value,
@@ -43,38 +46,37 @@ var AdminEditHospital = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_hospital_edit')) return // 不合法就返回
+
     var formData = new FormData(e.target)
     formData.append('plan_id',this.state.vip_id);
 
-    var text = $("#input_textarea").val();
-    if(text.length < 6){
-      alert("机构介绍长度不能少于６!")
-    }else{
-      $.ajax({
-        url: "/admin/hospitals/" + this.props.data.id,
-        type: "PATCH",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(data) {
-          let hospitals = this.props.dad.state.hospitals,
-              index = this.state.index
+    $.ajax({
+      url: "/admin/hospitals/" + this.props.data.id,
+      type: "PATCH",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(data) {
+        let hospitals = this.props.dad.state.hospitals,
+            index = this.state.index
 
-          hospitals[index] = data.hospital[0]
+        hospitals[index] = data.hospital[0]
 
-          this.props.dad.setState({
-            hospitals: hospitals,
-            hos_info: {
-              eidt_display: false,
-            }
-          })
-        }.bind(this),
-        error: function(data) {
-          let info = JSON.parse(data.responseText)
-          alert(info["info"])
-        }.bind(this),
-      })
-    }
+        this.props.dad.setState({
+          hospitals: hospitals,
+          hos_info: {
+            eidt_display: false,
+          }
+        })
+
+        myInfo('编辑机构成功', 'success')
+      }.bind(this),
+      error: function(data) {
+        let info = JSON.parse(data.responseText)
+        myInfo(info["info"], 'fail')
+      }.bind(this),
+    })
   }
   ,render: function() {
     var plans = this.props.plans
@@ -90,7 +92,7 @@ var AdminEditHospital = React.createClass({
     return (
       <div className="mask-user">
         <div className="user-box">
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} id='form_hospital_edit'>
             <div className="row">
               <div className="form-group col-sm-4">
                  <label>登陆账号（联系电话）</label>
@@ -109,7 +111,9 @@ var AdminEditHospital = React.createClass({
                    <input type="text" className="form-control" placeholder="姓名" name="contact_person"
                             required ref="contact_person" defaultValue={this.props.data.contact_person} />
               </div>
+            </div>
 
+            <div className="row">
               <div className="form-group col-sm-4">
                 <select name="industry" className="form-control form-magrin-top" defaultValue={this.props.data.industry}>
                   <option value="">行业</option>
@@ -150,7 +154,9 @@ var AdminEditHospital = React.createClass({
                     <option value="1000人以上">1000人以上</option>
                   </select>
               </div>
+            </div>
 
+            <div className="row">
               <div className="form-group col-sm-4">
                  <label>地区</label>
                    <input type="text" className="form-control" id="cityChoice" placeholder="地区" name="region"
@@ -199,8 +205,8 @@ var AdminEditHospital = React.createClass({
 
             <div className="form-group col-sm-12">
                <label>机构介绍</label>
-                 <textarea id="input_textarea" className="form-control" name="introduction" rows="5" required title="最少6个字符"
-                    ref="introduction" onBlur={this.handleBlur}>{this.props.data.introduction}</textarea>
+                 <textarea id="input_textarea" className="form-control" name="introduction" rows="5" required
+                     ref="introduction" onBlur={this.handleBlur}>{this.props.data.introduction}</textarea>
             </div>
 
             <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>

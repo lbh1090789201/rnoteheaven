@@ -49,6 +49,8 @@ function myDatePicker(id, begin_id, end_id) {
       }
     }
   })
+
+  $("#"+id).blur()
 }
 
 // 不合法返回 ture， id 为表格id,"#form_id"
