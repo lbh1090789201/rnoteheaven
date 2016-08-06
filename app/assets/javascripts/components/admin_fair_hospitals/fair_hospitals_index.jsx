@@ -157,7 +157,7 @@ var FairHospitalItem = React.createClass({
     return (
       <tr>
         <td>{index}</td>
-        <td>{fair_hospital.hospital_name}</td>
+        <td style={this.state.tdStyle}>{fair_hospital.hospital_name}</td>
         <td style={this.state.tdStyle}>{fair_hospital.intro}</td>
         <td>{fair_hospital.created_at.slice(0, 10)}</td>
         <td>{fair_hospital.jobs_count}</td>
@@ -231,7 +231,7 @@ function trans_fair_hospital(status) {
    $(id).validate({
      rules: {
        id: {
-         maxlength: 10,
+         maxlength: 11,
          digits: true
        },
        name: {

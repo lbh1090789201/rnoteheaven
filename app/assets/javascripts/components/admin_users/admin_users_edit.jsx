@@ -77,7 +77,7 @@
 
      if(password != password2) {
        myInfo('两次输入密码不一致。', 'fail')
-     } else if (scopes.length = 0) {
+     } else if (scopes.length == 0) {
        myInfo('至少需要设置一项权限。', 'fail')
      } else {
        $.ajax({
