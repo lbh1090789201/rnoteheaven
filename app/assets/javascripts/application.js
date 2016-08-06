@@ -2,8 +2,8 @@
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require jquery.form
-//= require messages_zh.min
 //= require jquery.validate.min
+//= require messages_zh.min
 
 //= require bootstrap
 //= require bootstrap/alert
