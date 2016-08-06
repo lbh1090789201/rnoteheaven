@@ -224,7 +224,7 @@ var AdminVipItem = React.createClass({
         }.bind(this),
         error: function(data){
           let info = JSON.parse(data.responseText)
-          alert(info["info"])
+          myInfo(info["info"], 'fail')
         }
       })
     }
@@ -257,3 +257,45 @@ var AdminVipItem = React.createClass({
     )
   }
 })
+
+
+/********************** 表单验证 **********************/
+function formVip(id) {
+  $(id).validate({
+    rules: {
+      vip_name: {
+        required: true,
+        maxlength: 10,
+        pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+      },
+      may_release: {
+        digits: true,
+      },
+      may_set_top: {
+        required: true,
+        digits: true,
+      },
+      may_receive: {
+        digits: true,
+      },
+      may_view: {
+        digits: true,
+      },
+      may_join_fairs: {
+        digits: true,
+      },
+    },
+    messages: {
+      vip_name: {
+        maxlength: '最多十个字符',
+        pattern: '请输入中文、英文或数字'
+      }
+    },
+    highlight: function ( element, errorClass, validClass ) {
+      $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+    },
+    unhighlight: function ( element, errorClass, validClass ) {
+      $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+    },
+  })
+}

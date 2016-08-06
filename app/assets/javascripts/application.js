@@ -3,6 +3,7 @@
 //= require jquery.remotipart
 //= require jquery.form
 //= require jquery.validate.min
+//= require additional-methods.min
 //= require messages_zh.min
 
 //= require bootstrap

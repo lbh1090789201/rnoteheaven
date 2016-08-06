@@ -1,7 +1,7 @@
 var AdminVipNew = React.createClass({
   getInitialState: function() {
     return {
-      status: '',
+      status: 'true',
       show_name: '',
       role: '',
       edit_display: '',
@@ -9,8 +9,7 @@ var AdminVipNew = React.createClass({
     }
   }
   ,componentDidMount: function() {
-    // 表单验证见底部
-    formVipNew()
+    formVip('#form_vip_new') // 表单验证见底部
   }
   ,handleCheck: function(e) {
     this.setState({
@@ -26,6 +25,8 @@ var AdminVipNew = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_vip_new')) return // 不合法就返回
+
     let vip_name = this.refs.vip_name.value,
         may_release = this.refs.may_release.value,
         may_set_top = this.refs.may_set_top.value,
@@ -57,13 +58,7 @@ var AdminVipNew = React.createClass({
           })
         }.bind(this),
         error: function(data){
-          alert(data.responseText)
-          this.props.dad.setState({
-            vip_info: {
-              new_display: false,
-            }
-
-          })
+          myInfo('新建套餐失败，请检查表单。', 'fail')
         },
       })
   }
@@ -110,7 +105,7 @@ var AdminVipNew = React.createClass({
 
             <div className="form-group">
                <label>套餐状态</label>
-               <AdminVipCheckbox handleCheck={this.handleCheck} />
+               <AdminVipCheckbox handleCheck={this.handleCheck} status={this.state.status}/>
             </div>
 
             <button type="button" className="btn btn-secondary" onClick={this.handleClick}>取消</button>
@@ -128,64 +123,15 @@ var AdminVipCheckbox = React.createClass({
     return (
       <div>
         <label className="checkbox-inline">
-          <input type="radio" name="status" onChange={this.props.handleCheck} value={true}/>启用
+          <input type="radio" name="status" checked={this.props.status == 'true'}
+                 onChange={this.props.handleCheck} value={true}/>启用
         </label>
 
         <label className="checkbox-inline">
-          <input type="radio" name="status" onChange={this.props.handleCheck} value={false} />禁止
+          <input type="radio" name="status" checked={this.props.status == 'false'}
+                 onChange={this.props.handleCheck} value={false} />禁止
         </label>
       </div>
     )
   }
 })
-
-/********************** 表单验证 **********************/
-function formVipNew() {
-  $('#form_vip_new').validate({
-    rules: {
-      may_set_top: {
-        required: true,
-        minlength: 10,
-      }
-    },
-    messages: {
-      may_set_top: {
-        required: '不能为空',
-        minlength: '太短了',
-      }
-    },
-    errorPlacement: function ( error, element ) {
-      // Add the `help-block` class to the error element
-      error.addClass( "help-block" );
-
-      // Add `has-feedback` class to the parent div.form-group
-      // in order to add icons to inputs
-      element.parents( ".form-group" ).addClass( "has-feedback" );
-
-      if ( element.prop( "type" ) === "checkbox" ) {
-        error.insertAfter( element.parent( "label" ) );
-      } else {
-        error.insertAfter( element );
-      }
-
-      // Add the span element, if doesn't exists, and apply the icon classes to it.
-      if ( !element.next( "span" )[ 0 ] ) {
-        $( "<span class='glyphicon glyphicon-remove form-control-feedback'></span>" ).insertAfter( element );
-      }
-    },
-    success: function ( label, element ) {
-      // Add the span element, if doesn't exists, and apply the icon classes to it.
-      if ( !$( element ).next( "span" )[ 0 ] ) {
-        $( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
-      }
-    },
-    highlight: function ( element, errorClass, validClass ) {
-      $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
-      $( element ).next( "span" ).addClass( "glyphicon-remove" ).removeClass( "glyphicon-ok" );
-    },
-    unhighlight: function ( element, errorClass, validClass ) {
-      $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
-      $( element ).next( "span" ).addClass( "glyphicon-ok" ).removeClass( "glyphicon-remove" );
-    }
-  })
-}
