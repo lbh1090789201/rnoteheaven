@@ -108,8 +108,16 @@ var ReviewJob = React.createClass({
       job_type: '',
       hospital_name: '',
       job_name: '',
+      job_type: '',
     }
   }
+  // ,handleChange: function(e) {
+  //   let select_value = e.target.value
+  //
+  //   this.setState({
+  //     job_type: select_value
+  //   })
+  // }
   ,handleFocus: function(e) {
       let id = e.target.id
       myDatePicker(id, 'time_begin', 'time_end')
@@ -160,8 +168,32 @@ var ReviewJob = React.createClass({
                    onFocus={this.handleFocus} defaultValue={this.state.time_before} ref="time_end" />
           </div>
           <div className='form-group col-sm-4'>
-            <input type='text' className='form-control' placeholder='工作类型' name='job_type'
-                   defaultValue={this.state.job_type} ref="job_type" />
+            <select name="job_type" ref="job_type" className="form-control">
+              <option value="">工作类型</option>
+              <option value="机构管理人员">机构管理人员</option>
+              <option value="综合门诊/全科医生">综合门诊/全科医生</option>
+              <option value="内科医生">内科医生</option>
+              <option value="外科医生">外科医生</option>
+              <option value="专科医生">专科医生</option>
+              <option value="牙科医生">牙科医生</option>
+              <option value="美容整形师">美容整形师</option>
+              <option value="麻醉医生">麻醉医生</option>
+              <option value="放射科医师">放射科医师</option>
+              <option value="理疗师">理疗师</option>
+              <option value="中医科医生">中医科医生</option>
+              <option value="针灸/推拿">针灸/推拿</option>
+              <option value="儿科医生">儿科医生</option>
+              <option value="心理医生">心理医生</option>
+              <option value="营养师">营养师</option>
+              <option value="药库主任/药剂师">药库主任/药剂师</option>
+              <option value="医药学检验">医药学检验</option>
+              <option value="公共卫生/疾病控制">公共卫生/疾病控制</option>
+              <option value="护理主任/护士长">护理主任/护士长</option>
+              <option value="护士/护理人员">护士/护理人员</option>
+              <option value="兽医">兽医</option>
+              <option value="验光师">验光师</option>
+              <option value="其他">工作类型</option>
+            </select>
           </div>
           <div className='form-group col-sm-4'>
             <input type="text" className="form-control" placeholder='机构名称' name='hospital_name'
