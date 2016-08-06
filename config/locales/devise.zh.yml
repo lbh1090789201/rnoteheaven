@@ -60,10 +60,10 @@ zh:
       not_saved:
         one: "因为1个错误导致此%{resource}保存失败:"
         other: "因为%{count}个错误导致此%{resource}保存失败:"
-  kaminari:
+  views:
     pagination:
-      first: "&laquo; 首页"
-      last: "末页 &raquo;"
-      previous: "&laquo; 上一页"
-      next: "下一页 &raquo;"
+      first: " 首页"
+      last: "末页"
+      previous: " 上一页"
+      next: "下一页 "
       truncate: "..."
