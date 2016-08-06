@@ -214,3 +214,9 @@ footer {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+// 表单验证
+.error {
+  color: red;
+  font-weight: normal;
+}
