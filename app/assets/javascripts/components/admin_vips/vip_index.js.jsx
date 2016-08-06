@@ -224,7 +224,7 @@ var AdminVipItem = React.createClass({
         }.bind(this),
         error: function(data){
           let info = JSON.parse(data.responseText)
-          alert(info["info"])
+          myInfo(info["info"], 'fail')
         }
       })
     }

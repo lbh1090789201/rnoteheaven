@@ -50,3 +50,14 @@ function myDatePicker(id, begin_id, end_id) {
     }
   })
 }
+
+// 不合法返回 ture， id 为表格id,"#form_id"
+function invalid(id) {
+  var isvalidate=$(id).valid();
+  if(isvalidate) {
+    return false
+  } else {
+    myInfo('请检查表单', 'fail')
+    return true
+  }
+}
