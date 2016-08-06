@@ -319,7 +319,7 @@ var AdminHospitalItem =React.createClass({
        },
        introduction: {
          required: true,
-         rangelength: [6, 300],
+         rangelength: [6, 800],
        }
      },
      messages: {

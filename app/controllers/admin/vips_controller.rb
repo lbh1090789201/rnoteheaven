@@ -20,6 +20,7 @@ class Admin::VipsController < AdminController
   end
 
   def create
+    return if is_repeate?
     vips = Plan.new vip_params
 
     if vips.save
@@ -40,6 +41,7 @@ class Admin::VipsController < AdminController
   end
 
   def update
+    return if is_repeate?
     vip = Plan.find params[:id]
 
     if vip.update vip_params
@@ -89,5 +91,24 @@ class Admin::VipsController < AdminController
   def vip_params
     params.permit(:name, :may_release, :may_view, :may_set_top,
                                         :may_receive, :may_join_fairs, :status)
+  end
+
+  def is_repeate?
+    if params[:id]
+      my_vip = Plan.find params[:id]
+      return false if my_vip.name == params[:name]
+    end
+
+    is_repeate = Plan.find_by(
+      name: params[:name]
+    )
+
+    unless is_repeate.nil?
+        render json: {
+          success: false,
+          info: "套餐名已被使用。"
+        }, status: 403
+        return true
+    end
   end
 end

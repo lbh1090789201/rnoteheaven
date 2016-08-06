@@ -6,7 +6,7 @@ class Admin::FairHospitalsController < AdminController
     if params[:search]
       golds = Hospital.filter_hospital_name(params[:name])
                       .filter_contact_person(params[:contact_person])
-      golds = golds.where(id: params[:id]) if params[:id].present?
+                      .filter_contact_number(params[:id])
 
       render json: {
         success: true,

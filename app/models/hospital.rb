@@ -25,6 +25,12 @@ class Hospital < ActiveRecord::Base
     where(filter) if name.present?
   }
 
+  #按负责人
+  scope :filter_contact_number, -> (number) {
+    filter = "contact_number LIKE '%" + number + "%'" if number.present?
+    where(filter) if number.present?
+  }
+
   #按医院类别查找
   scope :filter_by_property, ->(property) {
     where("property like '%" + property + "%'") if property.present?

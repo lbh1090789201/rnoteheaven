@@ -67,7 +67,8 @@ var AdminVipEdit = React.createClass({
           myInfo('套餐修改成功！', 'success')
         }.bind(this),
         error: function(data){
-          myInfo('套餐修改失败', 'fail')
+          var info = JSON.parse(data.responseText)
+          myInfo(info["info"], 'fail')
         },
       })
   }

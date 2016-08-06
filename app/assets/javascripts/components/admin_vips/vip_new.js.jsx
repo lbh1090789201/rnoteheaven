@@ -58,7 +58,8 @@ var AdminVipNew = React.createClass({
           })
         }.bind(this),
         error: function(data){
-          myInfo('新建套餐失败，请检查表单。', 'fail')
+          var info = JSON.parse(data.responseText)
+          myInfo(info["info"], 'fail')
         },
       })
   }
