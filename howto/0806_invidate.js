@@ -28,7 +28,7 @@
          show_name: {
            required: true,
            rangelength: [2, 10],
-           pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+           pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
          },
        },
        messages: {

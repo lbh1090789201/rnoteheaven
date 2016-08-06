@@ -36,6 +36,6 @@ class Webapp::ExpectJobsController < ApplicationController
 
   private
   def expect_job_params
-    params.require(:expect_job).permit(:name, :job_type, :location, :expected_salary_range, :job_desc)
+    params.permit(:name, :job_type, :location, :expected_salary_range, :job_desc)
   end
 end
