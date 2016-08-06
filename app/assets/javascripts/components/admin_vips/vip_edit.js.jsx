@@ -6,6 +6,9 @@ var AdminVipEdit = React.createClass({
       vip_info: this.props.data,
     }
   }
+  ,componentDidMount: function() {
+    formVip('#form_vip_edit') // 表单验证见底部
+  }
   ,handleCheck: function(e) {
     var val = e.target.value
     if(val == 'true') {
@@ -27,6 +30,8 @@ var AdminVipEdit = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_vip_edit')) return // 不合法就返回
+
     let vip_name = this.refs.vip_name.value,
         may_release = this.refs.may_release.value,
         may_set_top = this.refs.may_set_top.value,
@@ -58,14 +63,11 @@ var AdminVipEdit = React.createClass({
                edit_display: false,
              }
           })
+
+          myInfo('套餐修改成功！', 'success')
         }.bind(this),
         error: function(data){
-          alert(data.responseText)
-          this.props.dad.setState({
-            vip_info: {
-              edit_diaplay: false,
-            }
-          })
+          myInfo('套餐修改失败', 'fail')
         },
       })
   }
@@ -73,7 +75,7 @@ var AdminVipEdit = React.createClass({
     return (
       <div className="mask-user">
         <div className="user-box">
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} id="form_vip_edit">
             <div className="form-group">
                <label>套餐名称</label>
                  <input className="form-control" type="text" placeholder="用户名"

@@ -19,7 +19,6 @@ var AdminVip = React.createClass({
     })
   }
   ,render: function() {
-
     var edit_vip = this.state.vip_info.edit_display ? <AdminVipEdit dad={this} data={this.state.vip_info} /> : '',
         new_vip = this.state.vip_info.new_display ? <AdminVipNew dad={this} /> : ''
 
@@ -45,6 +44,9 @@ var AdminVipForm = React.createClass({
       vip_name: '',
     }
   }
+  ,componentDidMount: function() {
+    formVipSearch('#form_vip_search')
+  }
   ,handleRadio: function(e) {
     let val = e.target.value
     if(val == 'true') {
@@ -64,6 +66,8 @@ var AdminVipForm = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_vip_search')) return // 不合法就返回
+
     $('.pagination').hide()
     $.ajax({
       url: '/admin/vips',
@@ -86,7 +90,7 @@ var AdminVipForm = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit}>
+      <form className='form-inline' onSubmit={this.handleSubmit} id="form_vip_search">
         <div className='form-group vip-status'>
           <label>
             <span>状态:</span>
@@ -164,19 +168,6 @@ var AdminVipTableHead = React.createClass({
 
 
 var AdminVipTableContent = React.createClass({
-  // handleload: function() {
-  //   var totalCount = Number(获取数据的长度), showCount = 在页面上最大的分页数，如 > 1 2 3 4 5 <,
-  //       limit = Number(需要显示的数据数量) || 10;
-  //   createTable(1, limit, totalCount);
-  //   $('#callBackPager').extendPagination({
-  //       totalCount: totalCount,
-  //       showCount: showCount,
-  //       limit: limit,
-  //       callback: function (curr, limit, totalCount) {
-  //           createTable(curr, limit, totalCount);
-  //       }
-  //   });
-  // }
   render: function(){
       return(
         <tbody id="mainContent" onLoad={this.handleload}>
@@ -297,5 +288,22 @@ function formVip(id) {
     unhighlight: function ( element, errorClass, validClass ) {
       $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
     },
+  })
+}
+
+function formVipSearch(id) {
+  $(id).validate({
+    rules: {
+      vip_name: {
+        maxlength: 10,
+        pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+      },
+    },
+    messages: {
+      vip_name: {
+        maxlength: '最多十个字符',
+        pattern: '请输入中文、英文或数字'
+      }
+    }
   })
 }
