@@ -44,9 +44,11 @@ var AdminJob = React.createClass({
           checkValue: [],
         })
         $('input:checkbox').removeAttr('checked');
+        myInfo('审核成功！', 'success')
       }.bind(this),
       error: function(data){
-        alert(data.responseText)
+        let info = data.responseText
+        myInfo(info["info"], 'fail')
       },
     })
   }
