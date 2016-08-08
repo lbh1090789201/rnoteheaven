@@ -84,7 +84,7 @@ class User < ActiveRecord::Base #用户
   }
 
   scope :filter_create_before, -> (time){
-    where('created_at < ?', time) if time.present? && !time.blank?
+    where('created_at < ?', time.to_datetime + 1.day) if time.present? && !time.blank?
   }
 
   #按 角色 role 筛选

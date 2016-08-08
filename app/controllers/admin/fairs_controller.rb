@@ -4,6 +4,8 @@ class Admin::FairsController < AdminController
 
   def index
     if params[:search]
+      params[:status] = ['processing', 'pause'] if params[:status].blank?
+
       fairs = Fair.filter_by_status(params[:status])
                    .filter_begain_at(params[:time_from])
                    .filter_end_at(params[:time_to])

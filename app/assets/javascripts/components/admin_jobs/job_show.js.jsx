@@ -31,7 +31,7 @@ var AdminJobSee = React.createClass({
         <div className="user-box">
           <img src={this.state.close}  onClick={this.handleClick} className="img-close" />
           <div className="job-content">
-            <table className="job-table">
+            <table className="job-table table table-hover">
               <tbody>
                 <tr>
                   <td>职位名称:</td>

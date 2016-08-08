@@ -56,6 +56,8 @@ var AdminVipNew = React.createClass({
                new_display: false,
              }
           })
+
+          myInfo('新建套餐成功！', 'success')
         }.bind(this),
         error: function(data){
           var info = JSON.parse(data.responseText)
