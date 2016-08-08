@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_cache_headers
   # before_filter :reject_locked!, if: :devise_controller?
 
   #alias_method :devise_current_user, :current_user
@@ -76,6 +77,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
+  private
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
 
 end

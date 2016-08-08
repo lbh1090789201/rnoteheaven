@@ -6,6 +6,7 @@ class AdminController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :show_tabs
+  before_filter :set_cache_headers
 
   # Devise permitted params
   def configure_permitted_parameters
@@ -87,8 +88,14 @@ class AdminController < ActionController::Base
       @show_tabs = [current_user.jobs_manager?, current_user.resumes_manager?, current_user.hospitals_manager?,
                   current_user.fairs_manager?, current_user.vips_manager?, current_user.acounts_manager?]
     else
-
     end
+  end
+
+  private
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 
 end
