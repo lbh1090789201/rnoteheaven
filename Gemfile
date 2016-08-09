@@ -1,6 +1,7 @@
 source 'https://ruby.taobao.org'
  # source 'http://gems.ruby-china.org'
 
+gem 'therubyracer'
 # Standard Rails gems
 gem 'rails', '4.2.4'
 gem 'sass-rails', '5.0.3'

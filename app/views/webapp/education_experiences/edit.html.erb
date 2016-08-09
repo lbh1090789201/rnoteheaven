@@ -62,8 +62,13 @@
   $('.right').css("display","none");
 
  //时间插件
-  $(function(){
-	$('#beginTime').date();
-  $('#endTime').date();
-   });
+ $(function(){
+    $('#beginTime').date(null, function(datestr) {
+      beginBack(datestr, 'beginTime', 'endTime')
+    })
+
+    $('#endTime').date(null, function(datestr) {
+      endBack(datestr, 'beginTime', 'endTime')
+    })
+  })
 </script>

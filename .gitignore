@@ -113,3 +113,6 @@ vendor/extensions/**/spec/dummy
 
 # Atom
 .tag*
+
+# image
+ignore*/*

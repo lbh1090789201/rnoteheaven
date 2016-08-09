@@ -26,10 +26,16 @@
     // 表单验证
     formAll("#work_eidt form")
 
+    // 时间插件
     $(function(){
-  	$('#beginTime').date();
-  	$('#endTime').date();
-  });
+       $('#beginTime').date(null, function(datestr) {
+         beginBack(datestr, 'beginTime', 'endTime')
+       })
+
+       $('#endTime').date(null, function(datestr) {
+         endBack(datestr, 'beginTime', 'endTime')
+       })
+     })
 
   // 防重复点击
   $("#btn_save").on('click',function() {

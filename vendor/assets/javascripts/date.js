@@ -114,11 +114,12 @@
 
                 if(Ycallback===undefined){
                      if(docType){that.val(datestr);}else{that.html(datestr);}
+
+                     $("#datePage").hide();
+                     $("#dateshadow").hide();
                 }else{
                       Ycallback(datestr);
                 }
-                $("#datePage").hide();
-                $("#dateshadow").hide();
                 that.blur(); // 点击确定后是input失焦
             });
             $("#datecancle").click(function () {

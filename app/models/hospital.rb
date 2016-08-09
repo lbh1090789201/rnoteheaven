@@ -43,7 +43,7 @@ class Hospital < ActiveRecord::Base
 
   # 按医院创建时间
   scope :filter_create_after, ->(created_at) {
-    where("created_at <= ?", created_at) if created_at.present?
+    where("created_at <= ?", created_at.to_date + 1.day) if created_at.present?
   }
 
   #admin hospital　
