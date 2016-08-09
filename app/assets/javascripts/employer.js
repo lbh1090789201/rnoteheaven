@@ -153,12 +153,24 @@ function EmptyCont(input_id) {
    })
  }
 
- // 不合法返回 true, id 为表格id,"#form_id"，公用
- function valid(id) {
+  // 不合法返回 true, id 为表格id,"#form_id"，公用
+  function valid(id) {
    var isvalidate=$(id).valid();
    if(isvalidate) {
      return false
    } else {
      return true
    }
- }
+  }
+
+
+  // 职位名称不超过１０个字符
+  function limitNumber(className) {
+   var name_length = $(className).length;
+   for(var i=0;i<name_length;i++) {
+     var text = $(className).eq(i).text();
+     if(text.length > 10) {
+       $(className).eq(i).text(text.substr(0,10))
+     }
+   }
+  }

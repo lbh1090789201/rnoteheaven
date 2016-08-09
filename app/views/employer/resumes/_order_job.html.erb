@@ -109,13 +109,7 @@
 </section>
 <script type="text/javascript">
     // 职位名称不超过１０个字符
-    var name_length = $(".job-h").length;
-    for(var i=0;i<name_length;i++) {
-      var text = $(".job-h").eq(i).text();
-      if(text.length > 10) {
-        $(".job-h").eq(i).text(text.substr(0,10))
-      }
-    }
+    limitNumber(".job-h");
 
    var header_title = $("header>div>div").text();
    var resume_url = window.location.href;
