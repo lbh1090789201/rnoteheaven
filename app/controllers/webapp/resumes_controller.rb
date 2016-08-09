@@ -3,6 +3,8 @@ class Webapp::ResumesController < ApplicationController
   protect_from_forgery except: :update
 
   def index
+    url = after_sign_in_path_for(current_user)
+    redirect_to url
   end
 
   def preview
@@ -63,6 +65,16 @@ class Webapp::ResumesController < ApplicationController
         }, status: 403
       end
     end
+  end
+
+  private
+  def after_sign_in_path_for(resource)
+    return unless resource
+    return "/employer/resumes" if resource.has_role? :gold
+    return "/admin/jobs/check" if (resource.admin? || resource.jobs_manager?)
+    return "/admin/resumes/" if resource.resumes_manager?
+    return "/admin/users/" if resource.acounts_manager?
+    return "/webapp/home/"
   end
 
 end
