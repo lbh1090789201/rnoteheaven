@@ -14,9 +14,9 @@
     <span class="empty-cont" onclick="EmptyCont('hos_location')"></span>
   </div>
   <%= f.input :introduction, label: '相关介绍', as: :text, input_html: { class: "", id: "", placeholder: "最多输入500字", name: "introduction"} %>
+  <%= f.submit '保存', id: "submit", style: "display: none"%>
   <div class="submit-box">
-    <%= f.submit '保存',id: "submit",style: "display: none", onClick: "submitForm(this);"%>
-    <button id="save_form">保存</button>
+    <p id="save_form">保存</p>
   </div>
   <% end %>
 </div>
@@ -31,7 +31,7 @@
     if(valid("form")){
       return
     }
-    $(":submit").trigger('click');
+    $('#submit').trigger('click');
     $('#save_form').css('pointer-events','none');
   })
 
@@ -72,7 +72,7 @@
       }
     }
 
-    $(".before-mask>p").eq(text_index()).css('color', 'blue');
+    $(".before-mask>p").eq(text_index()).css('color', '#3f9d9e');
   });
 
 

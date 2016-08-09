@@ -36,7 +36,7 @@ class Employer::UsersController < ApplicationController
 
   private
     def hospital_params
-      params.require(:hospital).permit(:name, :property, :scale, :industry, :region, :location, :introduction)
+      params.permit(:name, :property, :scale, :industry, :region, :location, :introduction)
     end
 
     def fair_info fair_hospital
