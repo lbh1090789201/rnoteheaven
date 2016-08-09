@@ -1,4 +1,4 @@
-## **CentOS 6.5下安装mysql+nginx+ruby**
+## **CentOS 6.5 云康环境搭建**
 ```
 版本号： V2.0
 撰写人： 张文博
@@ -6,24 +6,22 @@
 ```
 
 ## 一、设置项目文件夹
-1. 将 `yunkang.tar.gz` 拷贝到桌面
+1. 将 `yunkang.tgz` 拷贝到桌面
 2. 点击鼠标右键，打开 Terminal
 
 ```bash
 sudo mkdir /home/www/ # 创建项目文件夹
-sudo mv yunkang.tar.gz /home/www/ # 移动到www目录
+sudo mv ryunkang.tgz /home/www/ # 移动到www目录
 ```
-3. 创建 mysql , `yum isntall mysql-server`
+3. 创建 mysql , `sudo yum install mysql-server`
 
 ![新建文件夹](ignore_img/2016-08-08_143225.png)
 
 ## 二、安装 Ruby 环境
 ```bash
-# 安装公钥
-curl -sSL https://rvm.io/mpapis.asc | gpg --import
+curl -sSL https://rvm.io/mpapis.asc | gpg --import # 安装公钥
 
-# 安装Rvm
-curl -L https://get.rvm.io | bash -s stable
+curl -L https://get.rvm.io | bash -s stable # 安装Rvm
 
 # 载入RVM环境并获取需要的支持安装包
 source /etc/profile.d/rvm.sh
@@ -32,6 +30,9 @@ rvm requirements
 # 安装 Ruby
 rvm install 2.2.3
 rvm use 2.2.3 --default
+
+gem sources --remove https://rubygems.org/
+gem sources -a https://ruby.taobao.org/ # 切换gem源为淘宝
 ```
 
 ![安装公钥](ignore_img/2016-08-08_152028.png)
@@ -282,8 +283,6 @@ RAILS_ENV=production rake db:create db:migrate db:seed
 ```
 
 ![安装 nginx](ignore_img/2016-08-08_183337.png)
-
-
 
 ## 六、启动 nginx 服务器
 ```
