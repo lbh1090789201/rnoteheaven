@@ -262,6 +262,9 @@
 </div>
 <%= render '/layouts/employer_footer' %>
 <script>
+  // 职位名称不超过１０个字符
+  limitNumber("h4");
+
   //医院查看更改is_update
   function EditUpdate(obj,eve) {
     var is_update = obj;

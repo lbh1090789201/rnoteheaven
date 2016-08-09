@@ -16,7 +16,7 @@
                         <!-- 已修改样式 bobo -->
                     </div>
                      <%= simple_form_for @user, method: :patch, url: webapp_user_path(params[:id]), input_html: {id:"avatar_form"} do |f| %>
-                         <%= f.input :avatar, label: '头像', id:"user_avatar" %>
+                         <%= f.input :avatar, label: '头像', id:"user_avatar", input_html: {name: "avatar"} %>
                          <%= f.button :submit, id: "avatar_submit" %>
                      <% end %>
                     <span class="update-img">点击更换</span>
