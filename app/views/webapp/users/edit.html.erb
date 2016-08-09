@@ -38,13 +38,13 @@
 <script type="text/javascript">
   fullScreen('.edit_basic');
   // 表单验证
-  formAll("#edit_user_1");
+  formAll("form");
 
   // 防重复点击
   $("#btn_save").on('click',function() {
     EditMask("#btn_save", "请完善信息！");
     // 表单验证失败返回
-    if(valid('#edit_user_1')){
+    if(valid('form')){
       return
     }
     $("#btn_save").css("pointer-events","none");
