@@ -80,7 +80,7 @@ class Job < ActiveRecord::Base
   def self.get_seekers jid, may_receive
     job = Job.select(:id, :name, :hospital_id, :region).find(jid).as_json
 
-    apply_records = ApplyRecord.where(hospital_id: job[:hospital_id])
+    apply_records = ApplyRecord.where(hospital_id: job["hospital_id"])
                                .order("recieve_at")
                                .limit(may_receive)
                                .where(job_id: job["id"])
