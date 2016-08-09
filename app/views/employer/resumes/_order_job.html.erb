@@ -118,6 +118,7 @@
    $('.job-Arrang').attr('onclick','javascript:void(0);');
    var second_index = "<%= params[:index] %>";
    $('li.job-Arrang').eq(second_index).children('div.order-job-list').css('display','block');
+   $('li.job-Arrang').eq(second_index).siblings('li').hide();
    <% end %>
 
     // 职位查看二级页面展示

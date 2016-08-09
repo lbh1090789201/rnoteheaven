@@ -79,7 +79,8 @@
   // 按钮提交表单
   $(function(){
     $('.btn-status>button').bind('click',function(){
-      var vip_status = "<%= @vip_status['may_release'] %>";
+      var may_release = "<%= @vip_status['may_release'] %>";
+      var may_set_top = "<%= @vip_status['may_set_top'] %>";
       var index = $(this).index();
       EditMask(".wrap", "请完善信息!");
 
@@ -93,17 +94,28 @@
         $('#submit').trigger('click');
         $(".btn-status>button").css('pointer-events', 'none');
       } else {
-        if(vip_status == 'false') {
+        
+        if(may_release == 'false') {
           var mask_fail = $('.mask-fail').length
           if(mask_fail != 0) {
             $('.mask-fail').remove();
           }
           againRelease('.wrap','您的可发布职位数已满，若想发布更多，请购买VIP');
-        } else {
-          $('#job_status').attr('value','reviewing');
-          $('#submit').trigger('click');
-          $(".btn-status>button").css('pointer-events', 'none');
+          return;
         }
+
+        if(may_set_top == 'false') {
+          var mask_fail = $('.mask-fail').length
+          if(mask_fail != 0) {
+            $('.mask-fail').remove();
+          }
+          againRelease('.wrap','您的可置顶职位数已满，若想置顶更多职位，请购买VIP');
+          return;
+        }
+
+        $('#job_status').attr('value','reviewing');
+        $('#submit').trigger('click');
+        $(".btn-status>button").css('pointer-events', 'none');
       }
     });
   })
