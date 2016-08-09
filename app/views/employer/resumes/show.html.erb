@@ -10,6 +10,7 @@
     $('.resumes-show>.wrap').hide();
     FailMask('.wrap','您可查看的简历数已满，若想查看更多，请购买VIP');
   }
+  
   // 进入后传该医院已查看该简历 user_id
   $.ajax({
     url: "<%= api_employer_viewers_path %>",
