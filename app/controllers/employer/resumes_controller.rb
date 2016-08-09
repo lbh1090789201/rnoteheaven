@@ -33,9 +33,15 @@ class Employer::ResumesController < ApplicationController
     end
 
     # 按职位查看
+    recieve_at = ApplyRecord.where(hospital_id: hospital.id)
+                                .order("recieve_at")
+                                .limit(may_receive)
+                                .last
+                                .recieve_at
+
     @jobs_by_position = []
     jobs.each do |f|
-      @jobs_by_position.push Job.get_seekers(f.id, may_receive)
+      @jobs_by_position.push Job.get_seekers(f.id, recieve_at)
     end
 
   end

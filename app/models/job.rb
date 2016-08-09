@@ -77,13 +77,9 @@ class Job < ActiveRecord::Base
   }
 
   # 获得求职者信息
-  def self.get_seekers jid, may_receive
+  def self.get_seekers jid, recieve_at
     job = Job.select(:id, :name, :hospital_id, :region).find(jid).as_json
-
-    apply_records = ApplyRecord.where(hospital_id: job["hospital_id"])
-                               .order("recieve_at")
-                               .limit(may_receive)
-                               .where(job_id: job["id"])
+    apply_records = ApplyRecord.where('recieve_at <= ? && job_id = ?', recieve_at, job["id"])
 
     has_new = apply_records.where(view_at: nil).blank? ? false : true
     seekers = []
