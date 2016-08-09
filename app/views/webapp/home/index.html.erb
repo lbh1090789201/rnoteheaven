@@ -13,7 +13,7 @@
   <div class="box">
 
     <form id="myform" name="filter" method="get" action="/webapp/home">
-      <input class="left" type="text" name="city" id="cityChoice" placeholder="深圳市" onchange="show();" >
+      <input class="left" type="text" name="city" id="cityChoice" placeholder=<%= @search_city %> onchange="show();" >
       <input type="hidden" id="province" value="">
       <input type="hidden" id="city" value="">
       <input id="search" class="right" type="text" name="search" placeholder="搜索职位/机构" onkeydown="show();" />
