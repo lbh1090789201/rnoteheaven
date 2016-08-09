@@ -3,6 +3,15 @@
 <%= provide :img_left, "home.png" %>
 <%= provide :back, '/employer/home' %>
 <script>
+  var may_receive = "<%= @vip_status['may_receive'] %>",
+      may_receive_url = window.location.href,
+      may_receive_index = may_receive_url.length,
+      may_receive_string = may_receive_url.slice(may_receive_index-7, may_receive_index);
+
+  if(may_receive == "false" && may_receive_string == "resumes") {
+    againRelease('.resumes-index','您可接收的简历数已满，若想接收更多，请购买VIP');
+  }
+
  app_reload();
  $(go_home())
 </script>
