@@ -10,11 +10,17 @@ class Employer::ResumesController < ApplicationController
     check_vip = Employer.check_vip current_user.id
     hospital = Employer.get_hospital current_user.id
     jobs = Job.where(hospital_id: hospital.id).where.not(status: ['saved', 'fail', 'delete'])
+    employer = Employer.find_by user_id: current_user.id
+    may_receive = employer.may_receive
 
 
     # 三个月内简历
-    @apply_records = ApplyRecord.where("hospital_id = ? && recieve_at > ?",hospital.id, Time.now - 90.days)
+    @apply_records = ApplyRecord.where(hospital_id: hospital.id)
+                                .order("recieve_at")
+                                .limit(may_receive)
+                                .where("recieve_at > ?", Time.now - 90.days)
                                 .order("recieve_at DESC")
+
 
     # 公开简历
     public_resumes = Resume.where( "public = ? && maturity >= ?", true, 70)
@@ -29,7 +35,7 @@ class Employer::ResumesController < ApplicationController
     # 按职位查看
     @jobs_by_position = []
     jobs.each do |f|
-      @jobs_by_position.push Job.get_seekers(f.id)
+      @jobs_by_position.push Job.get_seekers(f.id, may_receive)
     end
 
   end
