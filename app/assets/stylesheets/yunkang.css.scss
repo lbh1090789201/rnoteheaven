@@ -1070,7 +1070,7 @@ a:hover {
         }
         .job-time {
           font-size: 0.7rem;
-          display: inline-block;
+          // display: inline-block;
           margin-top: 0.58rem;
         }
         .job-hsname {
@@ -2842,6 +2842,12 @@ a:hover {
 #apply-bg .position-info a .record-hh h3 span {margin-left:0;float: right;margin-right:2.3rem;}
 #apply-bg .apply-info a .record-hh p span {margin-left:0;float: right;margin-right:2.3rem;}
 #apply-bg .apply-info a .record-hh p span img {width: 0.38rem; height: auto;}
+#apply-bg .apply-info a .record-hh {
+  padding-top: 1.3rem;
+  p.record-time {
+    margin: 0.6rem 0 0.4rem 0;
+  }
+}
 
 .edit-expectjob {
   .form-group:nth-of-type(1)::after {

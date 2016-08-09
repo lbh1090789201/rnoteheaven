@@ -6,7 +6,7 @@
       <div class="position-detail record-job record-hh">
         <h3><%=  @apply_record.job_name %><span><%=  @apply_record.salary_range %></span></h3>
 
-        <p><%= @apply_record.created_at.strftime("%Y-%m-%d") %>　|　<%= @apply_record.hospital_region %><span><%= image_tag "list-icon.png" %></span></p>
+        <p class="record-time"><%= @apply_record.created_at.strftime("%Y-%m-%d") %>　|　<%= @apply_record.hospital_region %><span><%= image_tag "list-icon.png" %></span></p>
         <p><%= @hospital.name %></p>
       </div>
     </a>
