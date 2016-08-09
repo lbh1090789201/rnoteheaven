@@ -115,4 +115,5 @@ vendor/extensions/**/spec/dummy
 .tag*
 
 # image
-ignore_img/*.png
+todo/ignore_*/
+todo/ignore_img/*.png
