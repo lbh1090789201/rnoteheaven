@@ -11,8 +11,10 @@ class Webapp::HomeController < ApplicationController
     #只搜索城市
     if filter[:city]
       @jobs = Job.filter_location(filter[:city]).filter_job_status("release")
+      current_user.update search_city: filter[:city] if current_user.search_city != filter[:city]
     else
-      @jobs = Job.filter_location("深圳").filter_job_status("release")
+      @search_city = get_search_city
+      @jobs = Job.filter_location(@search_city).filter_job_status("release")
     end
 
     #搜索城市和医院
@@ -21,6 +23,7 @@ class Webapp::HomeController < ApplicationController
                        .filter_job_name(filter[:search])
                        .filter_job_status("release")
       hospitals = Hospital.filter_location(filter[:city]).filter_hospital_name(filter[:search])
+
       @jobs = []
       if !job_careers.blank?
         job_careers.each do |j|
@@ -35,6 +38,8 @@ class Webapp::HomeController < ApplicationController
           end
         end
       end
+
+      current_user.update search_city: filter[:city] if current_user.search_city != filter[:city]
     end
 
       @arjob = []
@@ -53,4 +58,15 @@ class Webapp::HomeController < ApplicationController
     return @arjob
 
   end
+
+  private
+    def get_search_city
+      if current_user.search_city.present?
+        return current_user.search_city
+      elsif current_user.location.present?
+        return current_user.location
+      else
+        return '广州市'
+      end
+    end
 end

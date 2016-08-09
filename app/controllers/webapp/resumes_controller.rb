@@ -4,7 +4,7 @@ class Webapp::ResumesController < ApplicationController
 
   def index
     url = after_sign_in_path_for(current_user)
-    redirect_to url
+    # redirect_to url
   end
 
   def preview

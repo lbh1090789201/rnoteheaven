@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713082534) do
+ActiveRecord::Schema.define(version: 20160809081642) do
 
   create_table "apply_records", force: :cascade do |t|
     t.integer  "resume_id",       limit: 4
@@ -289,6 +289,7 @@ ActiveRecord::Schema.define(version: 20160713082534) do
     t.boolean  "is_top",                               default: false,   null: false
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
+    t.string   "search_city",            limit: 191
   end
 
   add_index "users", ["cellphone"], name: "index_users_on_cellphone", using: :btree
