@@ -65,8 +65,28 @@ class Webapp::HomeController < ApplicationController
         return current_user.search_city
       elsif current_user.location.present?
         return current_user.location
+      elsif params[:lat] && params[:lng]
+        return get_location params[:lat], params[:lng]
       else
         return '广州市'
       end
+    end
+
+    ###################### 通过经纬度从百度获取数据 ######################
+    def get_location lat, lng
+      # lat 纬度 32.055677
+      # lng 经度 118.802891
+      res = RestClient.get "http://api.map.baidu.com/geocoder/v2/", {
+        params: {
+          ak: 'RBFDlZ7kBtxeP8McYkaTxm7aDZ9UwlXy',
+          location: "#{lat},#{lng}",
+          output: 'json',
+          pois: 1
+        },  :accept => :json
+      }
+
+      info = JSON.parse(res.body)
+
+      return info["result"]["addressComponent"]["city"]
     end
 end

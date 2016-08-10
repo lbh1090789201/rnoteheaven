@@ -30,7 +30,7 @@ class Api::ConnectAppController < ApiController
       user = Role.checkUser user
       sign_in(user)
       if user.user_type == "copper"
-        to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
+        to_url = params[:to] == 'fair' ? webapp_job_fairs_path : "/webapp/home?lat=#{params[:lat]}&lng=#{params[:lng]}"
         redirect_to to_url
       elsif user.user_type == "gold"
         redirect_to employer_resumes_path
@@ -105,7 +105,7 @@ class Api::ConnectAppController < ApiController
 
       sign_in(user)
 
-      to_url = params[:to] == 'fair' ? webapp_job_fairs_path : webapp_home_path
+      to_url = params[:to] == 'fair' ? webapp_job_fairs_path : "/webapp/home?lat=#{params[:lat]}&lng=#{params[:lng]}"
       redirect_to to_url
     end
 
@@ -129,6 +129,7 @@ class Api::ConnectAppController < ApiController
       sign_in(user)
       redirect_to employer_resumes_path
     end
+
 
 
 

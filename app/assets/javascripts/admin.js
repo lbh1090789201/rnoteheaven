@@ -63,3 +63,15 @@ function invalid(id) {
     return true
   }
 }
+
+// 判断浏览器是否支持文件上传
+function isAjaxUploadSupported(){
+          var input = document.createElement("input");
+          input.type = "file";
+
+          return (
+              "multiple" in input &&
+                  typeof File != "undefined" &&
+                  typeof FormData != "undefined" &&
+                  typeof (new XMLHttpRequest()).upload != "undefined" );
+  }
