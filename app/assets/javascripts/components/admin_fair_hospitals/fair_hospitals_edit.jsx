@@ -73,7 +73,7 @@ var FairHospitalEdit = React.createClass({
 
             <div className="form-group col-sm-6">
                <label>专场联系人</label>
-               <input type="text" className="form-control" name="contact_person" required title="专场联系人不能为空"
+               <input type="text" className="form-control" name="contact_person" required
                       defaultValue={fair_hospital.contact_person} pattern=".{1,}" ref="contact_person" />
             </div>
 
@@ -99,6 +99,7 @@ var FairHospitalEdit = React.createClass({
                     onClick={this.props.dad.handleClick} name="edit_display" value="false" >取消</button>
 
             <button type="submit" className="btn btn-bottom btn-success">提交</button>
+
           </form>
         </div>
       </div>

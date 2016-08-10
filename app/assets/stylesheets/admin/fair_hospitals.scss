@@ -27,19 +27,14 @@
 
   form {
     position: relative;
+    overflow: hidden;
     margin: 0 auto;
 
     .btn-bottom {
+      float: left;
       margin-top: 25px;
       width: 50%;
       border-radius: 0;
-
-      .btn-success {
-        float: right;
-      }
-      .btn-secondary {
-        float: left;
-      }
     }
 
   }
