@@ -46,10 +46,8 @@ var FairHospitalEdit = React.createClass({
         })
       }.bind(this),
       error: function(data){
-        alert(data.responseText)
-        this.props.dad.setState({
-            edit_display: false,
-        })
+        let info = JSON.parse(data.responseText)
+        myInfo(info["info"], 'fail')
       }
     })
   }

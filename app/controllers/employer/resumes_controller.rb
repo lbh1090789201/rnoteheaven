@@ -33,11 +33,12 @@ class Employer::ResumesController < ApplicationController
     end
 
     # 按职位查看
-    recieve_at = ApplyRecord.where(hospital_id: hospital.id)
+    last_apply_record= ApplyRecord.where(hospital_id: hospital.id)
                                 .order("recieve_at")
                                 .limit(may_receive)
                                 .last
-                                .recieve_at
+
+    recieve_at = last_apply_record ? last_apply_record.recieve_at : Time.now
 
     @jobs_by_position = []
     jobs.each do |f|

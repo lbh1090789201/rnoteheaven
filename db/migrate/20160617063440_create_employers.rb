@@ -18,7 +18,7 @@ class CreateEmployers < ActiveRecord::Migration
       t.integer :has_release, null:false, default: 0 #已发布简历
       t.integer :has_set_top, null:false, default: 0 #已置顶简历
       t.integer :has_view, null:false, default: 0 #已查看简历
-      t.integer :has_join_fairs, null:false, default: 0 #可参加专场数
+      t.integer :has_join_fairs, null:false, default: 0 #已参加专场数
 
       t.timestamps null: false
     end

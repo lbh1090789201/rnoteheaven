@@ -44,11 +44,8 @@ var FairHospitalNew = React.createClass({
         myInfo('机构添加成功！', 'success')
       }.bind(this),
       error: function(data){
-        info = JSON.parse(data.responseText)
+        let info = JSON.parse(data.responseText)
         myInfo(info["info"], 'fail')
-        this.props.dad.setState({
-            new_display: false,
-        })
       }
     })
   }
@@ -81,7 +78,7 @@ var FairHospitalNew = React.createClass({
             <div className="form-group col-sm-12">
                <label>专场介绍</label>
                <textarea className="form-control" name="intro" rows="5"
-                               pattern=".{6,}" required ref="intro" />
+                                required ref="intro" />
             </div>
 
             <div className="form-group col-sm-12">

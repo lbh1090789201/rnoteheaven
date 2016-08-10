@@ -96,7 +96,7 @@ var FairEdit = React.createClass({
             <div className="form-group">
                <label>专场介绍</label>
                <textarea className="form-control" name="intro" rows="5" defaultValue={fair.intro}
-                               pattern=".{6,}" required ref="intro" />
+                                required ref="intro" />
             </div>
 
             <div className="form-group">

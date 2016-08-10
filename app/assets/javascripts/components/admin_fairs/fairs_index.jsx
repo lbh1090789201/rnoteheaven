@@ -259,7 +259,7 @@ function trans_fair(status) {
        },
        intro: {
          required: true,
-         rangelength: [2, 300],
+         rangelength: [6, 300],
        },
      },
      messages: {
@@ -271,7 +271,7 @@ function trans_fair(status) {
          pattern: '请输入中文、英文或数字'
        },
        intro: {
-         rangelength: '2~300 个字符'
+         rangelength: '请输入 6~300 个字符'
        },
      },
      highlight: function ( element, errorClass, validClass ) {

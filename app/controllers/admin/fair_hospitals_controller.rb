@@ -35,6 +35,9 @@ class Admin::FairHospitalsController < AdminController
       return
     end
 
+    return unless can_join_fairs fair_hospitals_params[:hospital_id] #验证vip限额
+
+
     fair_hospital = FairHospital.new fair_hospitals_params
     fair_hospital.user_id = current_user.id
     fair_hospital.operator = current_user.show_name
@@ -75,5 +78,21 @@ class Admin::FairHospitalsController < AdminController
 
     def other_params
       params.permit(:id)
+    end
+
+    def can_join_fairs hid
+      employer = Employer.find_by hospital_id: hid
+      res = employer.may_join_fairs > employer.has_join_fairs
+
+      if res
+        return true
+      else
+        render json: {
+          success: false,
+          info: "此机构可参加专场限额已满。"
+        }, status: 403
+
+        return false
+      end
     end
 end

@@ -29,6 +29,7 @@ class Employer < ActiveRecord::Base
     ee[:has_release] = Job.where(hospital_id: ee.hospital_id).where.not(status: ["saved", "fail"]).length
     ee[:has_set_top] = Job.where(hospital_id: ee.hospital_id, is_top: true).where.not(status: ["saved", "fail"]).length
     ee[:has_view] = ResumeViewer.where(hospital_id: ee.hospital_id).length
+    ee[:has_join_fairs] = FairHospital.where(hospital_id: ee.hospital_id).length
 
     ee.save
     return ee

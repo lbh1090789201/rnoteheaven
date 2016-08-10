@@ -216,6 +216,9 @@ function trans_fair_hospital(status) {
        },
        contact_number: {
          pattern: '号码不合法'
+       },
+       intro: {
+         rangelength: '请输入 6~300 字符'
        }
      },
      highlight: function ( element, errorClass, validClass ) {
