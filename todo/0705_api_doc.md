@@ -1,6 +1,7 @@
 ## 集成到APP后流程
 1、目前只需将 云康APP 【云康医聘】/【云康医才】的链接设置为如下格式：
-     http://yk.yundaioa.com/api/v1/connect_app?userId=289&token=dsafafasfasfs
+     http://yk.yundaioa.com/api/v1/connect_app?userId=289&token=dsafafasfasfs&lat=39.983424&lng=116.322987
+
 
 2、其中，userId：用户ID，token：由云康APP生成
 
