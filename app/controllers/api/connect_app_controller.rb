@@ -29,9 +29,9 @@ class Api::ConnectAppController < ApiController
       # 校检用户
       user = Role.checkUser user
       sign_in(user)
+
       if user.user_type == "copper"
-        to_url = params[:to] == 'fair' ? webapp_job_fairs_path : "/webapp/home?lat=#{params[:lat]}&lng=#{params[:lng]}"
-        redirect_to to_url
+        redirect_to copper_home # 查看底部
       elsif user.user_type == "gold"
         redirect_to employer_resumes_path
       end
@@ -130,7 +130,18 @@ class Api::ConnectAppController < ApiController
       redirect_to employer_resumes_path
     end
 
+    # 定义主页
+    def copper_home
+      if params[:to] == 'fair'
+        to_url = webapp_job_fairs_path
+      elsif params[:lat] && params[:lng]
+        to_url = "/webapp/home?lat=#{params[:lat]}&lng=#{params[:lng]}"
+      else
+        to_url = "/webapp/home"
+      end
 
+      return to_url
+    end
 
 
 end

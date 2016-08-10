@@ -129,9 +129,7 @@
           <li class="job-release">
             <a href="<%= employer_job_path(j.id) %>" onclick= "EditUpdate('<%= j.is_update %>',this)" index="<%= j.id %>">
               <div class="name-box">
-                <h4>
-                  <%= j.name %>
-                </h4>
+                <h4><%= j.name %></h4>
                 <span><%= j.region %></span>
                 <p><%= j.created_at.strftime("%Y-%m-%d") %> 至 <%= j.end_at ? j.end_at.strftime("%Y-%m-%d") : '----' %></p>
               </div>
