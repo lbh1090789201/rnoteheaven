@@ -7,7 +7,7 @@
        // user验证
        show_name: {
          required: true,
-         maxlength: 5,
+         maxlength: 12,
          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
        },
        cellphone: {

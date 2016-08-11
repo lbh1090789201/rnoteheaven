@@ -47,6 +47,9 @@
 
 <div class="jobs">
   <div class="jobs-list" id="jobs_home_list">
+    <% if @arjob.length == 0 %>
+      <p class="no-resurt">暂无搜索结果</p>
+    <% end %>
 　　<% @arjob.each do |j| %>
     <a href="jobs/<%= j[:id] %>">
     <div class="job">
@@ -108,7 +111,6 @@
 
     <% if params[:city] %>
     $(function() {
-        console.log('<%= params[:city] %>');
         $('#cityChoice').val( '<%= params[:city] %>' );
     });
     <% end %>
