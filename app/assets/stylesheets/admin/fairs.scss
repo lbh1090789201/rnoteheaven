@@ -6,6 +6,12 @@
     font-size: 14px;
   }
 
+  #form_fair_search  {
+    .btn-search {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
   .mask-user {
     position: fixed;
     top: 65px;
@@ -73,7 +79,13 @@
     text-align: right;
     font-size: 14px;
   }
-  
+
+  #form_fair_histroy {
+    .btn-search {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
   .mask-user {
     position: fixed;
     top: 65px;

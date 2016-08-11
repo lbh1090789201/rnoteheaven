@@ -58,6 +58,11 @@ var FairHistroyForm = React.createClass({
     }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#form_fair_histroy')) return // 不合法就返回
+    if(this.refs.time_from.value == this.refs.time_to.value == this.refs.name.value == ''){
+      myInfo('请输入搜索条件', 'warning')
+      return
+    }
     $(".pagination").hide()
 
     $.ajax({
@@ -98,7 +103,7 @@ var FairHistroyForm = React.createClass({
             <input type="text" className="form-control" placeholder='专场名' name='name'
                    defaultValue={this.state.show_name} ref="name" />
           </div>
-          <button type='submit' className='btn btn-primary'>查询</button>
+          <button type='submit' className='btn btn-primary btn-search'>查询</button>
      </form>
     )
   }

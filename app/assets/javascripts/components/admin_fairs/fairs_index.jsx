@@ -51,12 +51,13 @@ var FairForm = React.createClass({
   getInitialState: function() {
     return {
       status: '',
-
+      status_change: false
     }
   }
   ,handleRadio: function(e) {
     this.setState({
-      status: e.target.value
+      status: e.target.value,
+      status_change: true
     })
   }
   ,handleFocus: function(e) {
@@ -65,8 +66,18 @@ var FairForm = React.createClass({
       myDatePicker(id, 'time_from', 'time_to')
     }
   ,handleSubmit: function(e) {
+    let time_from = this.refs.time_from.value,
+        time_to = this.refs.time_to.value,
+        name = this.refs.name.value,
+        status_change = this.state.status_change
+
     e.preventDefault()
     if(invalid('#form_fair_search')) return // 不合法就返回
+
+    if((time_from == '') && (time_to == '') && (name == '') && (status_change == false)){
+      myInfo('请输入搜索条件', 'warning')
+      return
+    }
     $(".pagination").hide()
 
     $.ajax({
@@ -110,7 +121,7 @@ var FairForm = React.createClass({
             <input type="text" className="form-control" placeholder='专场名' name='name'
                    defaultValue={this.state.show_name} ref="name" />
           </div>
-          <button type='submit' className='btn btn-primary'>查询</button>
+          <button type='submit' className='btn btn-primary btn-search'>查询</button>
      </form>
     )
   }
