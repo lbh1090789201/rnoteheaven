@@ -227,7 +227,7 @@ var RadioButtons = React.createClass({
         </label>
 
         <label className="checkbox-inline">
-        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="fail" />审核失败
+        <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="fail" />审核拒绝
         </label>
 
         <label className="checkbox-inline">
