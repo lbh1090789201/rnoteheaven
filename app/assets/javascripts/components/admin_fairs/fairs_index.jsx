@@ -74,6 +74,7 @@ var FairForm = React.createClass({
 
     if((time_from == '') && (time_to == '') && (name == '') && (status == '')){
       location.replace(location)
+      return
     }
     $(".pagination").hide()
 

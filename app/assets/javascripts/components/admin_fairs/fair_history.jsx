@@ -65,6 +65,7 @@ var FairHistroyForm = React.createClass({
     if(invalid('#form_fair_histroy')) return // 不合法就返回
     if((time_from == '') && (time_to == '') && (name == '')){
       location.replace(location)
+      return
     }
     $(".pagination").hide()
 
