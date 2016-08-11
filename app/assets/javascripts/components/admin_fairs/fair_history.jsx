@@ -57,9 +57,13 @@ var FairHistroyForm = React.createClass({
       myDatePicker(id, 'time_from', 'time_to')
     }
   ,handleSubmit: function(e) {
+    let time_from = this.refs.time_from.value,
+        time_to = this.refs.time_to.value,
+        name = this.refs.name.value
+
     e.preventDefault()
     if(invalid('#form_fair_histroy')) return // 不合法就返回
-    if(this.refs.time_from.value == this.refs.time_to.value == this.refs.name.value == ''){
+    if((time_from == '') && (time_to == '') && (name == '')){
       myInfo('请输入搜索条件', 'warning')
       return
     }
