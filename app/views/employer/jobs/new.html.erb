@@ -61,6 +61,17 @@
 
   //6.24 VIP置顶栏的滑动条 Huangwei
   $('.job-slider').on('click',function () {
+    $('.job-top').blur()
+    
+    if(may_set_top == 'false') {
+      var mask_fail = $('.mask-fail').length
+      if(mask_fail != 0) {
+        $('.mask-fail').remove();
+      }
+      againRelease('.wrap','您的可置顶职位数已满，若想置顶更多职位，请购买VIP');
+      return;
+    }
+
     if ($(this).css('background-color')=='rgb(244, 244, 244)') {//根据背景色判断，并移动和改变颜色样式
       $('.job-slider-inner').css('margin-left','1.4rem');//利用margin值来移动
         $(this).css('background','#3f9e9f');
@@ -94,22 +105,13 @@
         $('#submit').trigger('click');
         $(".btn-status>button").css('pointer-events', 'none');
       } else {
-        
+
         if(may_release == 'false') {
           var mask_fail = $('.mask-fail').length
           if(mask_fail != 0) {
             $('.mask-fail').remove();
           }
           againRelease('.wrap','您的可发布职位数已满，若想发布更多，请购买VIP');
-          return;
-        }
-
-        if(may_set_top == 'false') {
-          var mask_fail = $('.mask-fail').length
-          if(mask_fail != 0) {
-            $('.mask-fail').remove();
-          }
-          againRelease('.wrap','您的可置顶职位数已满，若想置顶更多职位，请购买VIP');
           return;
         }
 
