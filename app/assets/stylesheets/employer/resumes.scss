@@ -514,7 +514,6 @@ $light-gray: #f4f4f4;
               display: block;
               width: 100%;
               height: 100%;
-              pointer-events: none;
               .expect-job {
                 font-size: 0.87rem;
                 display: inline-block;
@@ -571,6 +570,12 @@ $light-gray: #f4f4f4;
             }
             a:hover {
               color: black;
+            }
+            a.no_viewed {
+              color: #9e9e9e;
+            }
+            a.is_viewed {
+              color: #9e9e9e;
             }
           }
         }

@@ -80,7 +80,7 @@
      <ul>
        <% @public_seekers.each do |p| %>
        <li class="pubilc-resume-view">
-         <a href="/employer/resumes/<%= p["resume_id"]%>" class="<%= p["is_view"] %>">
+         <a href="/employer/resumes/<%= p["resume_id"]%>" class="<%= p["is_viewed"] %>">
              <span class="expect-job"><%= p["expect_job"] %></span>
              <div class="middle-info">
                <span><%= p["show_name"] %></span>
@@ -101,7 +101,14 @@
 <script>
 
 
-
+$(".no_viewed").on('click', function() {
+  event.preventDefault();
+  // may_view 为false时
+  var may_view = "<%= @vip_status['may_view'] %>";
+  if(may_view == 'false'){
+    againRelease('.resumes-index','您可查看的简历数已满，若想查看更多，请购买VIP');
+  }
+})
 
     // 进入简历管理，判断进入哪个分页
     var enter_url = window.location.href,
@@ -112,11 +119,6 @@
       $('.resume-nav>li:eq(2)').children().css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'})
       $('.resume-nav>li:eq(2)').siblings().children().css({'color':'#9f9f9f','border-bottom':'none'});
       $(".resume-content>section").eq(2).css('display','block').siblings('section').css('display','none');
-      // may_view 为false时
-      var may_view = "<%= @vip_status['may_view'] %>";
-      if(may_view == 'false'){
-        againRelease('.resumes-index','您可查看的简历数已满，若想查看更多，请购买VIP');
-      }
     }
     else if(string == "time") {
       $('.resume-nav>li .month-resume').css({'color':'#3f9e9d','border-bottom':'2px solid #3f9e9d'}).children('img').attr('src', '../assets/icon_31.png');
