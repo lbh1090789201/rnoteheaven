@@ -1190,12 +1190,13 @@ a:hover {
     width: 49%;
     height: 100%;
     float: left;
-    p:nth-child(1) {
+    .time-left-text {
       font-size: 0.67rem;
       color: #6c6c6c;
       margin-bottom: 0.87rem;
     }
-    p:nth-child(2) {
+
+    .left-time {
       font-size: 1.55rem;
       color: #399da0;
     }
