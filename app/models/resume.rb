@@ -67,7 +67,7 @@ class Resume < ActiveRecord::Base
     info[:expect_job] = expect_job
     info[:age] = info["birthday"] ? ((Time.now - info["birthday"])/1.year).to_i : 0
     info[:resume_id] = resume.id
-    info[:is_viewed] = resume_viewer ? true : false
+    info[:is_viewed] = resume_viewer ? "is_viewed" : "no_viewed"
 
     return info.as_json
   end

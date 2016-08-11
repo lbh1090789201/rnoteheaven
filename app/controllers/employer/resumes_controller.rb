@@ -87,7 +87,8 @@ end
 #     "age": 0,
 #     "resume_id ": 49
 #     "edu_num": 2,
-#     "exp_num": 4
+#     "exp_num": 4,
+#     "is_viewed": "is_viewed"
 # },……]
 
 # @jobs_by_position 按职位查看 类型：json 数组
@@ -114,7 +115,8 @@ end
 #         "from":"common",
 #         "recieve_at": "2016-05-18T18:04:53.000Z",
 #         "edu_num": 2,
-#         "exp_num": 4
+#         "exp_num": 4,
+#         "is_viewed": "is_viewed"
 #     }, {
 #         "id": 3337,
 #         "start_work_at": null,
