@@ -58,14 +58,16 @@ class Resume < ActiveRecord::Base
   end
 
   # 获取简历拥有者个人信息
-  def self.info(uid)
+  def self.info uid, hid
     resume = Resume.find_by user_id: uid
+    resume_viewer = ResumeViewer.find_by user_id: uid, hospital_id: hid
 
     expect_job = ExpectJob.find_by(user_id: uid).name if ExpectJob.find_by(user_id: uid)
     info = User.select(:id, :show_name, :sex, :highest_degree, :start_work_at, :birthday).find(uid).as_json
     info[:expect_job] = expect_job
     info[:age] = info["birthday"] ? ((Time.now - info["birthday"])/1.year).to_i : 0
     info[:resume_id] = resume.id
+    info[:is_viewed] = resume_viewer ? true : false
 
     return info.as_json
   end

@@ -85,7 +85,7 @@ class Job < ActiveRecord::Base
     seekers = []
 
     apply_records.each do |f|
-      resume_info = Resume.info f.user_id
+      resume_info = Resume.info f.user_id, job["hospital_id"]
       resume_info[:recieve_at] = f.recieve_at
       resume_info[:from] = f.from
       resume_info[:resume_status] = f.resume_status

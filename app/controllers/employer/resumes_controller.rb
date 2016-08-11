@@ -29,7 +29,7 @@ class Employer::ResumesController < ApplicationController
                            .order("refresh_at DESC")
     @public_seekers = []
     public_resumes.each do |f|
-      @public_seekers.push Resume.info(f.user_id)
+      @public_seekers.push Resume.info f.user_id, hospital.id
     end
 
     # 按职位查看
@@ -51,8 +51,10 @@ class Employer::ResumesController < ApplicationController
     resume_id = params[:id]
     job_id = params[:job_id]
 
+    hospital = Employer.get_hospital current_user.id
     resume = Resume.find resume_id
-    @seeker = Resume.info resume.user_id
+
+    @seeker = Resume.info resume.user_id, hospital.id
     @apply_record = ApplyRecord.select(:id, :job_name, :resume_status, :age, :job_name, :from).find_by(job_id: job_id, user_id: resume.user_id)
     # 简历预览
     @user = User.find resume.user_id
