@@ -38,6 +38,10 @@ var FairEdit = React.createClass({
         formData = new FormData(e.target),
         id = this.refs.id.value.toString()
 
+    console.log(e.target)
+    console.log('---------------')
+    console.log(formData)
+
     $.ajax({
       url: '/admin/fairs/' + id,
       type: 'PATCH',
