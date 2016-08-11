@@ -8,7 +8,7 @@ class Fair < ActiveRecord::Base
    }
 
   scope :filter_end_at, -> (end_at) {
-    where('begain_at < ?', end_at) if end_at.present?
+    where('begain_at < ?', end_at.to_date + 1.day) if end_at.present?
   }
 
   scope :filter_by_name, -> (name) {

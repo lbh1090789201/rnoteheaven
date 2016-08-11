@@ -57,7 +57,16 @@ var FairHistroyForm = React.createClass({
       myDatePicker(id, 'time_from', 'time_to')
     }
   ,handleSubmit: function(e) {
+    let time_from = this.refs.time_from.value,
+        time_to = this.refs.time_to.value,
+        name = this.refs.name.value
+
     e.preventDefault()
+    if(invalid('#form_fair_histroy')) return // 不合法就返回
+    if((time_from == '') && (time_to == '') && (name == '')){
+      location.replace(location)
+      return
+    }
     $(".pagination").hide()
 
     $.ajax({
@@ -83,19 +92,22 @@ var FairHistroyForm = React.createClass({
   ,render: function() {
     return (
       <form className='form-inline' onSubmit={this.handleSubmit} id="form_fair_histroy">
-          <div className='form-group col-sm-3'>
-            <input type="text" id="time_from" className="form-control" placeholder='开始时间' name='time_from'
+          <div className='form-group col-sm-1 fair-begin-text'>
+            举办时间
+          </div>
+          <div className='form-group col-sm-2'>
+            <input type="text" id="time_from" className="form-control" placeholder='从' name='time_from'
                    onFocus={this.handleFocus} defaultValue={this.state.time_from} ref="time_from" />
           </div>
-          <div className='form-group col-sm-3'>
-            <input type="text" id="time_to" className="form-control" placeholder='结束时间' name='time_to'
+          <div className='form-group col-sm-2'>
+            <input type="text" id="time_to" className="form-control" placeholder='至' name='time_to'
                    onFocus={this.handleFocus} defaultValue={this.state.time_to} ref="time_to" />
           </div>
           <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='专场名' name='name'
                    defaultValue={this.state.show_name} ref="name" />
           </div>
-          <button type='submit' className='btn btn-primary'>查询</button>
+          <button type='submit' className='btn btn-primary btn-search'>查询</button>
      </form>
     )
   }
@@ -126,7 +138,7 @@ var FairHistroyTableHead = React.createClass({
         <tr>
           <th>序号</th>
           <th>专场名称</th>
-          <th>开始时间</th>
+          <th>举办时间</th>
           <th>结束时间</th>
           <th>参加机构数</th>
           <th>发布职位数</th>

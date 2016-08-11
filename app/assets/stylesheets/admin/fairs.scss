@@ -1,4 +1,17 @@
 .fairs-index {
+  .fair-begin-text {
+    padding: 0;
+    line-height: 38px;
+    text-align: right;
+    font-size: 14px;
+  }
+
+  #form_fair_search  {
+    .btn-search {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
   .mask-user {
     position: fixed;
     top: 65px;
@@ -20,6 +33,7 @@
     form {
       width: 95%;
       margin: 0 auto;
+
       button {
         position: absolute;
         bottom: 0;
@@ -59,6 +73,19 @@
 
 
 .fairs-history {
+  .fair-begin-text {
+    padding: 0;
+    line-height: 38px;
+    text-align: right;
+    font-size: 14px;
+  }
+
+  #form_fair_histroy {
+    .btn-search {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
   .mask-user {
     position: fixed;
     top: 65px;
