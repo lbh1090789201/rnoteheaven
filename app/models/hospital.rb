@@ -75,7 +75,8 @@ class Hospital < ActiveRecord::Base
           may_view: plan.may_receive,
           may_join_fairs: plan.may_join_fairs,
           vip_id: plan.id,
-          status: status
+          status: status,
+          created_at: h.created_at
         }
         @hospitals.push(o)
       else

@@ -200,12 +200,13 @@ var AdminHospitalTable = React.createClass({
             <th>序号</th>
             <th>账号</th>
             <th>机构名称</th>
-            <th>可发布职位数</th>
-            <th>可置顶职位数</th>
-            <th>可接收简历数</th>
-            <th>可查看简历数</th>
+            <th title="可发布职位限额">可发布</th>
+            <th title="可置顶职位限额">可置顶</th>
+            <th title="可接受简历限额">可接收</th>
+            <th title="可查看简历限额">可查看</th>
             <th>级别</th>
             <th>状态</th>
+            <th>入驻时间</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -271,12 +272,13 @@ var AdminHospitalItem =React.createClass({
         <td>{this.props.index + 1}</td>
         <td>{this.props.data.contact_number}</td>
         <td className="limit-width">{this.props.data.name}</td>
-        <td>{this.props.data.may_release}</td>
-        <td>{this.props.data.may_set_top}</td>
-        <td>{this.props.data.may_receive}</td>
-        <td>{this.props.data.may_view}</td>
+        <td title="可发布职位限额">{this.props.data.may_release}</td>
+        <td title="可置顶职位限额">{this.props.data.may_set_top}</td>
+        <td title="可接受简历限额">{this.props.data.may_receive}</td>
+        <td title="可查看简历限额">{this.props.data.may_view}</td>
         <td className="limit-width">{this.props.data.vip_name}</td>
         <td>{this.props.data.status}</td>
+        <td>{this.props.data.created_at.slice(0, 10)}</td>
         <td>
           <button onClick={this.handleClick} className="btn btn-default btn-form">修改</button>
           <button onClick={this.handleDelete} className="btn btn-danger btn-form">删除</button>
