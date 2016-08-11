@@ -125,7 +125,7 @@
     <ul class="sort-content">
       <% @jobs.each do |j| %>
           <!-- 发布中 -->
-        <% if j['status'] == "release" %>
+        <% if j.status == "release" %>
           <li class="job-release">
             <a href="<%= employer_job_path(j.id) %>" onclick= "EditUpdate('<%= j.is_update %>',this)" index="<%= j.id %>">
               <div class="name-box">
