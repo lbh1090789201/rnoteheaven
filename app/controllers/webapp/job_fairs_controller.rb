@@ -7,9 +7,10 @@ class Webapp::JobFairsController < ApplicationController
     fairs.each do |f|
       fair = f.as_json
       fair["diff"] = time_diff(Time.now, f.end_at)
-      fair["hospital_num"] = FairHospital.where(fair_id: f["id"], status:"processing").length
+      fair["hospital_num"] = FairHospital.where(fair_id: f["id"], status:"on").length
       @fairs.push fair
     end
+    p @fairs
   end
 
   def show
