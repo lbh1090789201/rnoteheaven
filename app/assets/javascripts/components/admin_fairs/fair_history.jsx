@@ -64,8 +64,7 @@ var FairHistroyForm = React.createClass({
     e.preventDefault()
     if(invalid('#form_fair_histroy')) return // 不合法就返回
     if((time_from == '') && (time_to == '') && (name == '')){
-      myInfo('请输入搜索条件', 'warning')
-      return
+      location.replace(location)
     }
     $(".pagination").hide()
 

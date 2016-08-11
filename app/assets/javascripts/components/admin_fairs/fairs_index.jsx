@@ -51,13 +51,11 @@ var FairForm = React.createClass({
   getInitialState: function() {
     return {
       status: '',
-      status_change: false
     }
   }
   ,handleRadio: function(e) {
     this.setState({
       status: e.target.value,
-      status_change: true
     })
   }
   ,handleFocus: function(e) {
@@ -69,14 +67,13 @@ var FairForm = React.createClass({
     let time_from = this.refs.time_from.value,
         time_to = this.refs.time_to.value,
         name = this.refs.name.value,
-        status_change = this.state.status_change
+        status = this.state.status
 
     e.preventDefault()
     if(invalid('#form_fair_search')) return // 不合法就返回
 
-    if((time_from == '') && (time_to == '') && (name == '') && (status_change == false)){
-      myInfo('请输入搜索条件', 'warning')
-      return
+    if((time_from == '') && (time_to == '') && (name == '') && (status == '')){
+      location.replace(location)
     }
     $(".pagination").hide()
 
