@@ -16,8 +16,8 @@
     </div>
     <span></span>
     <div class="hospital-time">
-      <p>距专场结束</p>
-      <p><%= f["diff"] %></p>
+      <p class="time-left-text">距专场结束</p>
+      <%= react_component 'TimeLeft', time: f["time_left"] %>
     </div>
   </div>
   <div id="hospital_rule">

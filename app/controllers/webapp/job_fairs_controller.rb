@@ -6,11 +6,10 @@ class Webapp::JobFairsController < ApplicationController
     @fairs = []
     fairs.each do |f|
       fair = f.as_json
-      fair["diff"] = time_diff(Time.now, f.end_at)
+      fair["time_left"] = time_left(Time.now, f.end_at)
       fair["hospital_num"] = FairHospital.where(fair_id: f["id"], status:"on").length
       @fairs.push fair
     end
-    p @fairs
   end
 
   def show
@@ -45,6 +44,10 @@ class Webapp::JobFairsController < ApplicationController
 
       seconds = seconds_diff
       "#{hours.to_s.rjust(2, '0')}:#{minutes.to_s.rjust(2, '0')}:#{seconds.to_s.rjust(2, '0')}"
+    end
+
+    def time_left(start_time, end_time)
+      seconds_diff = (start_time - end_time).to_i.abs
     end
 
 end
