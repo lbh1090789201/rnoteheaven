@@ -61,8 +61,10 @@
 
   //6.24 VIP置顶栏的滑动条 Huangwei
   $('.job-slider').on('click',function () {
+    var may_set_top = "<%= @vip_status['may_set_top'] %>"
+
     $('.job-top').blur()
-    
+
     if(may_set_top == 'false') {
       var mask_fail = $('.mask-fail').length
       if(mask_fail != 0) {
