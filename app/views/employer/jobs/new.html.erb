@@ -66,10 +66,6 @@
     $('.job-top').blur()
 
     if(may_set_top == 'false') {
-      var mask_fail = $('.mask-fail').length
-      if(mask_fail != 0) {
-        $('.mask-fail').remove();
-      }
       againRelease('.wrap','您的可置顶职位数已满，若想置顶更多职位，请购买VIP');
       return;
     }
@@ -93,7 +89,6 @@
   $(function(){
     $('.btn-status>button').bind('click',function(){
       var may_release = "<%= @vip_status['may_release'] %>";
-      var may_set_top = "<%= @vip_status['may_set_top'] %>";
       var index = $(this).index();
       EditMask(".wrap", "请完善信息!");
 
@@ -116,7 +111,6 @@
           againRelease('.wrap','您的可发布职位数已满，若想发布更多，请购买VIP');
           return;
         }
-
         $('#job_status').attr('value','reviewing');
         $('#submit').trigger('click');
         $(".btn-status>button").css('pointer-events', 'none');
@@ -157,6 +151,11 @@
     var pclass = 'job_end';
     JobBasicNew(job_end, ".job-end", pclass);
   });
+
+  // 城市插件再次点击删掉原来的
+  $("#job_region").on('click', function() {
+    againClick();
+  })
 
  // 城市插件
   var cityPicker = new IIInsomniaCityPicker({

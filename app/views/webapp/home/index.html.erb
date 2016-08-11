@@ -91,6 +91,11 @@
     $('.flexslider').flexslider();
     $('.flexslider').flexslider({slideshow: true});
 
+    // 城市插件再次点击删掉原来的
+    $("#cityChoice").on('click', function() {
+      againClick();
+    })
+
     // 城市插件
     var cityPicker = new IIInsomniaCityPicker({
           data: cityData,

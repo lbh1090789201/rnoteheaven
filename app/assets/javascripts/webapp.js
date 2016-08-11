@@ -80,3 +80,11 @@
      return true
    }
  }
+
+ // 城市插件再次点击删掉原来的
+function againClick() {
+   var input_city = $("#IIInsomnia_city_picker").length;
+   if(input_city > 0){
+     $("#IIInsomnia_city_picker").remove();
+   }
+ }
