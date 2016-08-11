@@ -97,18 +97,22 @@
       workExperience(seeking_job, ".seeking-job", pclass);
     });
 
-    // 城市插件
-    var cityPicker = new IIInsomniaCityPicker({
-          data: cityData,
-          target: '#locationChoice',
-          valType: 'k-v',
-          hideCityInput: '#city',
-          hideProvinceInput: '#province',
-          callback: function(){
-            $("#locationChoice").blur();
-          }
-      });
+    // 城市插件再次点击删掉原来的
+    $("#locationChoice").on('click', function() {
+      againClick();
+    })
 
-      cityPicker.init();
+      // 城市插件
+      var cityPicker = new IIInsomniaCityPicker({
+            data: cityData,
+            target: '#locationChoice',
+            valType: 'k-v',
+            hideCityInput: '#city',
+            hideProvinceInput: '#province',
+            callback: function(){
+              $("#locationChoice").blur();
+            }
+        });
 
+        cityPicker.init();
 </script>

@@ -63,7 +63,7 @@
       if(valid("form")){
         return
       }
-			
+
 			if(job_satus == 'reviewing' || job_satus == 'pause'){
 				var job_name_2 = $('.form-group:eq(0)').children('input').val();
 				var job_desc_2 = $('.form-group:eq(9)').children('textarea').val();
@@ -128,6 +128,11 @@
     var pclass = 'job_experience';
     JobBasicNew(job_experience, ".job-experience", pclass);
   });
+
+	// 城市插件再次点击删掉原来的
+	$("#job_region").on('click', function() {
+		againClick();
+	})
 
  // 城市插件
   var cityPicker = new IIInsomniaCityPicker({
