@@ -32,7 +32,7 @@ var FairHospitalEdit = React.createClass({
 
     $.ajax({
       url: '/admin/fairs/' + fair_id + '/fair_hospitals/' + fair_hospital_id,
-      type: 'PATCH',
+      type: 'PUT',
       data: formData,
       contentType: false,
       processData: false,
