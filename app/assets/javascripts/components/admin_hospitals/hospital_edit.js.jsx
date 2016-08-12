@@ -53,7 +53,7 @@ var AdminEditHospital = React.createClass({
 
     $.ajax({
       url: "/admin/hospitals/" + this.props.data.id,
-      type: "PATCH",
+      type: "PUT",
       data: formData,
       processData: false,
       contentType: false,
