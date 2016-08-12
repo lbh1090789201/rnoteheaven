@@ -1,4 +1,5 @@
 //= require slider
+//= require mobiscroll.custom-3.0.0-beta4.min
 
 /********************** 表单验证 **********************/
  function formAll(id) {

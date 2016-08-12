@@ -58,9 +58,16 @@
   })
 
   // 时间插件
-  $(function(){
-	$('#birthday').date();
-   });
+   $(function () {
+     $('#birthday').mobiscroll().calendar({
+         theme: 'mobiscroll',
+         lang: 'zh',
+         display: 'bottom',
+         calendarScroll: 'vertical',
+         // min: new Date(2014, 8, 15),
+         max: new Date()
+     });
+  })
 
 　　//性别
     $('.user-sex').click(function() {

@@ -42,15 +42,35 @@
   formAll("#work_eidt form")
 
   // 时间插件
-  $(function(){
-     $('#beginTime').date(null, function(datestr) {
-       beginBack(datestr, 'beginTime', 'endTime')
-     })
+  // $(function(){
+  //    $('#beginTime').date(null, function(datestr) {
+  //      beginBack(datestr, 'beginTime', 'endTime')
+  //    })
+  //
+  //    $('#endTime').date(null, function(datestr) {
+  //      endBack(datestr, 'beginTime', 'endTime')
+  //    })
+  //  })
 
-     $('#endTime').date(null, function(datestr) {
-       endBack(datestr, 'beginTime', 'endTime')
-     })
-   })
+   $(function () {
+     $('#beginTime').mobiscroll().calendar({
+         theme: 'mobiscroll',
+         lang: 'zh',
+         display: 'bottom',
+         calendarScroll: 'vertical',
+         // min: new Date(2014, 8, 15),
+         max: new Date()
+     });
+
+     $('#endTime').mobiscroll().calendar({
+         theme: 'mobiscroll',
+         lang: 'zh',
+         display: 'bottom',
+         calendarScroll: 'vertical',
+         // min: new Date($('#beginTime').val()),
+         max: new Date()
+     });
+  })
 
    // 防重复点击
    $(".btm-save").on('click',function() {

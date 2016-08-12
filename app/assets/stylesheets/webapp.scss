@@ -1,6 +1,6 @@
 @import "yunkang";
-// @import "flickerplate";
 @import "slider";
+@import "mobiscroll.custom-3.0.0-beta4.min";
 
 // 验证表单
 .has-error {
@@ -21,4 +21,8 @@
     color: #c3c3c3;
     font-size: 0.88rem;
   }
+}
+
+.mbsc-cal-day-fg div {
+  display: none;
 }
