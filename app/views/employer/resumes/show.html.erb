@@ -160,8 +160,9 @@
           $("#btn_action>li").eq(1).css('display','none')
                                    .siblings().css({'width':'100%','background':'#a1a1a1','color':'#dadada'});
         },
-        error: function(){
-          FailMask('.wrap','操作失败');
+        error: function(data){
+          var info = JSON.parse(data.responseText)
+          FailMask('.wrap', info["info"]);
         }
       });
       $('#hide_btn').css('display','none');

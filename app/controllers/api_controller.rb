@@ -8,7 +8,7 @@ class ApiController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :reject_locked!, if: :devise_controller?
 
-  include DeviseTokenAuth::Concerns::SetUserByToken
+  # include DeviseTokenAuth::Concerns::SetUserByToken
 
   # Devise permitted params
   def configure_permitted_parameters

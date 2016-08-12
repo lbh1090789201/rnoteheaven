@@ -24,7 +24,7 @@ class Api::EmployerResumesController < ApiController
     else
       render json: {
         success: false,
-        info: "Api::EmployerResumesController update传入参数错误",
+        info: "传入参数错误",
       }, status: 403
     end
   end
