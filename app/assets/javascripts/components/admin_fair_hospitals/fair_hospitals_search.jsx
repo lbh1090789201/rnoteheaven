@@ -104,7 +104,7 @@ var SearchForm = React.createClass({
   }
   ,render: function() {
     return (
-      <form className='form-inline' onSubmit={this.handleSubmit} ref="search" id="form_fair_hospital_search">
+      <form className='form-inline form-search' onSubmit={this.handleSubmit} ref="search" id="form_fair_hospital_search">
           <div className='form-group col-sm-3'>
             <input type="text" className="form-control" placeholder='机构帐号' name='id'
                     ref="id" />

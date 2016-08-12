@@ -17,6 +17,8 @@ var FairNew = React.createClass({
         backgroundImage: 'url(' + url + ')',
       }
     })
+
+    myInfo('图片上传成功！', 'success')
   }
   ,handleFocus: function(e) {
       let id = e.target.id
