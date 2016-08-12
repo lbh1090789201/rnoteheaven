@@ -105,11 +105,12 @@
 
 <script>
 
-
 $(".no_viewed").on('click', function() {
+  var may_view = "<%= @vip_status['may_view'] %>";
+  if(may_view == 'true') return
+
   event.preventDefault();
   // may_view 为false时
-  var may_view = "<%= @vip_status['may_view'] %>";
   if(may_view == 'false'){
     againRelease('.resumes-index','您可查看的简历数已满，若想查看更多，请购买VIP');
   }
