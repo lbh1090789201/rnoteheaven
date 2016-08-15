@@ -241,7 +241,7 @@ var AdminVipItem = React.createClass({
         <td>{this.props.data.may_join_fairs}</td>
         <td>{vip_status()}</td>
         <td>
-          <button onClick={this.handleClick} className="btn btn-default btn-form btn-view">修改</button>
+          <button onClick={this.handleClick} className="btn btn-default btn-form btn-view hidden">修改</button>
           <button onClick={this.handleDel} className="btn btn-danger btn-form">删除</button>
         </td>
       </tr>
