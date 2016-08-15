@@ -5,11 +5,11 @@
 
 <%= provide :title, @job.name %>
 
-<% if @job.status != 'release' && @job.status != 'end' %>
-  <div class="float-image">
+
+  <div class="float-image hidden">
     <a href="<%= edit_employer_job_path(params[:id]) %>"><%= image_tag "icon_37.png" %></a>
   </div>
-<% end %>
+
 <div id="job_show">
   <% if @job.operate_at && (@job.status == 'release' || @job.status == 'pause') %>
     <div class="job-time">
@@ -111,6 +111,9 @@
 
 
 <script type="text/javascript">
+<% if @job.status != 'release' && @job.status != 'end' %>
+  $('.float-image').attr('class', 'float-image')
+<% end %>
 
   var popup = function(li_text, call_fun){
     var len = $("body>div#popup").length;
@@ -144,7 +147,7 @@
         set_class('pause');
         $('#release span').text("再次发布");
         $('#postPause').off();
-        $('.float-image').show()
+        $('.float-image').attr('style', 'display: block')
       },
       error: function() {
         FailMask('.wrap','暂停失败。')
@@ -201,7 +204,7 @@
         $('#release span').text(btn_txt);
         set_class(btn_class);
         $('#release').off();
-        $('.float-image').hide()
+        $('.float-image').attr('style', 'display: none')
       },
       error: function() {
         FailMask('.wrap','操作失败。');
@@ -231,6 +234,7 @@
         $('#release span').text("再次发布")
         set_class('end');
         $('#end').off();
+        $('.float-image').attr('style', 'display: block')
       },
       error: function() {
         FailMask('.wrap','结束发布失败。')
