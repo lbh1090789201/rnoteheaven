@@ -59,7 +59,7 @@
         <div class="blue-point"></div>
       </div>
       <div class="green-point"></div>
-      <time><%= w.started_at.strftime("%Y-%m-%d") if w.started_at %>-<%= w.left_time.strftime("%Y-%m-%d") if w.left_time %></time>
+      <time><%= w.started_at.strftime("%Y.%m.%d") if w.started_at %>-<%= w.left_time.strftime("%Y.%m.%d") if w.left_time %></time>
       <div class="time-line-box work-time">
         <h3><%= w.company %>
         </h3>

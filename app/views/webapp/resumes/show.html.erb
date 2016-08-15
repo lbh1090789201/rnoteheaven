@@ -84,7 +84,7 @@
                <% @work_experiences.each do |w| %>
                <div class="blue-left">
                  <div class="blue-point"></div>
-                 <time><%= w.started_at.strftime("%Y-%m-%d") if w.started_at %>-<%= w.left_time.strftime("%Y-%m-%d") if w.left_time %></time>
+                 <time><%= w.started_at.strftime("%Y.%m.%d") if w.started_at %>-<%= w.left_time.strftime("%Y.%m.%d") if w.left_time %></time>
                  <div class="time-line-box">
                      <h3><%= w.company %><a class="expend expend-show" onclick="expend_desc(this)">
                              <%= image_tag "show.png" %>
@@ -124,7 +124,7 @@
                 <% @education_experiences.each do |e| %>
                 <div class="blue-left">
                   <div class="blue-point"></div>
-                  <time><%= e.entry_at.strftime("%Y-%m-%d") if e.entry_at %>－<%= e.graduated_at.strftime("%Y-%m-%d") if e.graduated_at %></time>
+                  <time><%= e.entry_at.strftime("%Y.%m.%d") if e.entry_at %>－<%= e.graduated_at.strftime("%Y.%m.%d") if e.graduated_at %></time>
                   <div class="time-line-box">
                       <h3><%= e.college %>
                       </h3>
