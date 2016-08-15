@@ -144,6 +144,7 @@
         set_class('pause');
         $('#release span').text("再次发布");
         $('#postPause').off();
+        $('.float-image').show()
       },
       error: function() {
         FailMask('.wrap','暂停失败。')
@@ -200,6 +201,7 @@
         $('#release span').text(btn_txt);
         set_class(btn_class);
         $('#release').off();
+        $('.float-image').hide()
       },
       error: function() {
         FailMask('.wrap','操作失败。');

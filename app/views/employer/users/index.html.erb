@@ -25,12 +25,15 @@
       <a href="<%= employer_user_path(@hospital.id) %>">
         <%= image_tag "shop",class: "img-shop" %>
         <span>我购买的服务</span>
-        <%= image_tag "vip" ,class: "img-vip"%>
+        <%# image_tag "vip" ,class: "img-vip"%>
+        <span class="img-vip"> <%= @plan_name %> </span>
+
       </a>
     </li>
     <li>
       <%= image_tag "fair",class: "img-fair" %>
-      <span><%= @fair_info[:name] %></span><span class="join-in"><%= @fair_info[:text] %></span>
+      <!-- <span><%# @fair_info[:name] %></span><span class="join-in"><%# @fair_info[:text] %></span> -->
+      <%= @fair_num == 0 ? '未参与专场' : "已参与#{@fair_num}家专场" %>
     </li>
   </ul>
 </div>

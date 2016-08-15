@@ -10,8 +10,12 @@ class Employer::UsersController < ApplicationController
   def index
     @user = current_user
     @user.avatar_url.blank? ? @avatar = "icon_29.png" : @avatar = @user.avatar_url
-    fair_hospital = FairHospital.find_by hospital_id: @hospital.id
-    @fair_info = fair_info fair_hospital
+    # fair_hospital = FairHospital.find_by hospital_id: @hospital.id
+    fair_hospitals = FairHospital.where hospital_id: @hospital.id
+    @fair_num = fair_hospitals.length
+    @employer = Employer.find_by user_id: current_user.id
+    @plan_name = Plan.find(@employer.plan_id).name
+    # @fair_info = fair_info fair_hospital
   end
 
   def show
