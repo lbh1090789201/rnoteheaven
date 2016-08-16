@@ -11,7 +11,7 @@
             <section class="workindex-page">
               <div class="box-table">
                 <a href="<%= edit_webapp_work_experience_path(w.id) %>" class="edit"><%= image_tag "edit2.png" %></a>
-                <time><%= w.started_at.strftime("%Y-%m-%d") if w.started_at %>-<%= w.left_time.strftime("%Y-%m-%d") if w.left_time %></time>
+                <time><%= w.started_at.strftime("%Y.%m.%d") if w.started_at %>-<%= w.left_time.strftime("%Y.%m.%d") if w.left_time %></time>
                 <div class="work-box">
                   <h3><%= w.company %></h3>
                   <p class="word_edit_page">

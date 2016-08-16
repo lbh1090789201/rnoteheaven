@@ -124,7 +124,7 @@
                 <% @education_experiences.each do |e| %>
                 <div class="blue-left">
                   <div class="blue-point"></div>
-                  <time><%= e.entry_at.strftime("%Y.%m.%d") if e.entry_at %>－<%= e.graduated_at.strftime("%Y.%m.%d") if e.graduated_at %></time>
+                  <time><%= e.entry_at.strftime("%Y.%m.%d") if e.entry_at %>-<%= e.graduated_at.strftime("%Y.%m.%d") if e.graduated_at %></time>
                   <div class="time-line-box">
                       <h3><%= e.college %>
                       </h3>

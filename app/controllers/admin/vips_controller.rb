@@ -6,8 +6,7 @@ class Admin::VipsController < AdminController
   def index
 
     if params[:search]
-      @vips = Plan.filter_by_status(params[:status])
-                 .filter_by_name(params[:vip_name])
+      @vips = Plan.filter_by_name(params[:vip_name])
 
       render json: {
         success: true,

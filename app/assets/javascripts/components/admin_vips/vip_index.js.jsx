@@ -47,23 +47,23 @@ var AdminVipForm = React.createClass({
   ,componentDidMount: function() {
     formVipSearch('#form_vip_search')
   }
-  ,handleRadio: function(e) {
-    let val = e.target.value
-    if(val == 'true') {
-      this.setState({
-        status: 1,
-      })
-    }else if(val == 'false') {
-      this.setState({
-        status: 0,
-      })
-    }else{
-      this.setState({
-        status: '',
-      })
-    }
-
-  }
+  // ,handleRadio: function(e) {
+  //   let val = e.target.value
+  //   if(val == 'true') {
+  //     this.setState({
+  //       status: 1,
+  //     })
+  //   }else if(val == 'false') {
+  //     this.setState({
+  //       status: 0,
+  //     })
+  //   }else{
+  //     this.setState({
+  //       status: '',
+  //     })
+  //   }
+  //
+  // }
   ,handleSubmit: function(e) {
     e.preventDefault()
     if(invalid('#form_vip_search')) return // 不合法就返回
@@ -73,7 +73,6 @@ var AdminVipForm = React.createClass({
       url: '/admin/vips',
       type: 'GET',
       data: {
-        status: this.state.status,
         vip_name: this.refs.vip_name.value,
         search: this.refs.hide_search.value,
       },
@@ -91,12 +90,6 @@ var AdminVipForm = React.createClass({
   ,render: function() {
     return (
       <form className='form-inline' onSubmit={this.handleSubmit} id="form_vip_search">
-        <div className='form-group vip-status'>
-          <label>
-            <span>状态:</span>
-            <AdminVipRadio handleRadio={this.handleRadio} />
-          </label>
-        </div>
 
         <div className='form-group col-sm-6'>
           <input type="text" className="form-control" placeholder='套餐名称' name='vip_name'
