@@ -89,3 +89,17 @@ function againClick() {
      $("#IIInsomnia_city_picker").remove();
    }
  }
+
+
+ // 判断开始时间是否大于结束时间
+ function dataCompare() {
+   var begin_time = $("#beginTime").val(),
+       end_time = $("#endTime").val(),
+       begin_time_day = parseInt(begin_time.substr(0,4))*365+parseInt(begin_time.substr(6,1))*30+parseInt(begin_time.substr(8,2)),
+       end_time_day = parseInt(end_time.substr(0,4))*365+parseInt(end_time.substr(6,1))*30+parseInt(end_time.substr(8,2));
+
+   if(begin_time_day > end_time_day) {
+     FailMask("body", "开始时间不能大于结束时间");
+     return true;
+   }
+ }

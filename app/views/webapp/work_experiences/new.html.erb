@@ -36,6 +36,9 @@
     //      endBack(datestr, 'beginTime', 'endTime')
     //    })
     //  })
+    $('#endTime').click(function() {
+      this.blur();
+    })
 
     $(function () {
       $('#beginTime').mobiscroll().calendar({
@@ -47,14 +50,21 @@
           max: new Date()
       });
 
-      $('#endTime').mobiscroll().calendar({
-          theme: 'mobiscroll',
-          lang: 'zh',
-          display: 'bottom',
-          calendarScroll: 'vertical',
-          // min: new Date($('#beginTime').val()),
-          max: new Date()
-      });
+      $('#beginTime').change(function() {
+        var beginTime = $('#beginTime').val(),
+          begin_year = parseInt(beginTime.substr(0,4)),
+          begin_mouth = parseInt(beginTime.substr(6,1))-1,
+          begin_day = parseInt(beginTime.substr(8,2));
+
+         $('#endTime').mobiscroll().calendar({
+             theme: 'mobiscroll',
+             lang: 'zh',
+             display: 'bottom',
+             calendarScroll: 'vertical',
+             min: new Date(begin_year, begin_mouth, begin_day),
+             max: new Date()
+         });
+      })
    })
 
   // 防重复点击
@@ -65,6 +75,13 @@
     if(valid("#work_eidt form")){
       return
     }
+
+    // 判断开始时间是否大于结束时间
+    var data_compare = dataCompare();
+    if(data_compare) {
+      return;
+    }
+
     $("#btn_save").css("pointer-events","none");
     $(':submit').trigger('click');
   })
