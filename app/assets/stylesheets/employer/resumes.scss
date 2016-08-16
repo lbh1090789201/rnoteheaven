@@ -654,6 +654,10 @@ $light-gray: #f4f4f4;
           margin-top: 1.87rem;
           font-size: 0.87rem;
           margin-bottom: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 4rem;
         }
         p:nth-child(2) {
           margin-top: 0.6rem;
