@@ -4,11 +4,12 @@ class Admin::UsersController < AdminController
 
   def index
     if params[:search]
-      @users = User.filter_create_before(params[:time_to])
-                   .filter_create_after(params[:time_from])
-                   .where('show_name LIKE ?', "%#{params[:show_name]}%")
-                   .filter_by_role(['platinum', 'admin'])
-                   .filter_by_manager(params[:manager])
+     @before_users = User.filter_by_role(['platinum', 'admin'])
+                          .where('show_name LIKE ?', "%#{params[:show_name]}%")
+                          .filter_by_manager(params[:manager])
+
+     @after_users = User.filter_create_after(params[:time_from]).filter_create_before(params[:time_to])
+     @users = (@before_users & @after_users)
 
       render json: {
         success: true,

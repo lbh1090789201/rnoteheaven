@@ -99,6 +99,11 @@ class User < ActiveRecord::Base #用户
     with_role manager if manager.present?
   }
 
+  #按用户名筛选
+  scope :filter_by_name, ->(show_name){
+    where("show_name LIKE '%"+show_name+"%'" ) if show_name.present?
+  }
+
   def admin?
     has_role? 'admin'
   end

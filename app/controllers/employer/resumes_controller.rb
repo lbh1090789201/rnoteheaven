@@ -44,7 +44,6 @@ class Employer::ResumesController < ApplicationController
     jobs.each do |f|
       @jobs_by_position.push Job.get_seekers(f.id, recieve_at)
     end
-    p @jobs_by_position
   end
 
   def show

@@ -64,6 +64,7 @@ var AdminUserForm = React.createClass({
     e.preventDefault()
     if(invalid('#form_user_search')) return // 不合法就返回
 
+    console.log(this.state.manager, this.refs.time_from.value, this.refs.show_name.value)
     $.ajax({
       url: '/admin/users',
       type: 'GET',
