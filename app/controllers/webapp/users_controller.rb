@@ -66,6 +66,8 @@ class Webapp::UsersController < ApplicationController
     if @user.update(user_params)
       # 更新简历完整度
       resume_maturity = Resume.get_maturity @user.id
+      # 更新user时更新apply_record的冗余信息
+      ApplyRecord.update_apply_record @user
 
       if user_params[:avatar]
 

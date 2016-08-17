@@ -66,6 +66,8 @@ class Employer::JobsController < ApplicationController
       # 通知用户，职位信息有更新
       res = FavoriteJob.set_new job.id
       render js: "history.go(-2);"
+      # 更新job时更新apply_record的冗余信息
+      ApplyRecord.job_update_record job
     else
       render json: {
         success: false,
