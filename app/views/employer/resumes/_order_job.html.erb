@@ -100,6 +100,7 @@
           <!-- 按学历排序 -->
           <ul class="job-pubilc job-degee-page">
             <%= render :partial => 'resume_sort', :locals => {:resume_sorts => j["seekers"].sort_by{|s| -s['edu_num']},:job_id => j["id"]} %>
+            <p>这是按学历排序</p>
           </ul>
       </div>
     </div>
