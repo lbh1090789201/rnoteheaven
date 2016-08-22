@@ -37,7 +37,7 @@
    //职能
    $('.expect-name').click(function() {
      this.blur()
-     var expect_name = ['全科医生','内科医生', '外科医生', '专科医生', '牙科医生', '外科医生', '护士'];
+     var expect_name = ['全科医生','内科医生', '外科医生', '专科医生', '牙科医生', '护士'];
      var pclass = 'expect_name';
      workExperience(expect_name, ".expect-name", pclass);
    });
@@ -61,20 +61,52 @@
    // 城市插件再次点击删掉原来的
    $("#cityChoice").on('click', function() {
      againClick();
+     educationCityText = $("#cityChoice").attr('value');
    })
 
    // 城市插件
-       var cityPicker = new IIInsomniaCityPicker({
-             data: cityData,
-             target: '#cityChoice',
-             valType: 'k-v',
-             hideCityInput: '#city',
-             hideProvinceInput: '#province',
-             callback: function(){
-               $("#cityChoice").blur();
-             }
-         });
+   var cityPicker = new IIInsomniaCityPicker({
+         data: cityData,
+         target: '#cityChoice',
+         valType: 'k-v',
+         hideCityInput: '#city',
+         hideProvinceInput: '#province',
+         callback: function(){
+           $("#cityChoice").blur();
+           var city = $("#city").val();
+           var index = city.indexOf('-');
+           city = city.substring(index+1, city.length);
+           var num = patch('|', educationCityText);
 
-         cityPicker.init();
+           function patch(re, s) {
+             re = eval("/"+re+"/g");
+             var len = s.match(re).length;
+             return len;
+           }
+           console.log(num)
+           if(educationCityText && educationCityText != '') {
+             if(educationCityText.match(city)) {
+               $("#cityChoice").attr('value', educationCityText);
+               $("#cityChoice").val(educationCityText);
+               return;
+             }
+             if(num > 8) {
+               var index = educationCityText.indexOf('|');
+               educationCityText = educationCityText.substring(index+1, educationCityText.length);
+               $("#cityChoice").attr('value', educationCityText+'|'+city);
+               $("#cityChoice").val(educationCityText+'|'+city);
+             }else{
+               $("#cityChoice").attr('value', educationCityText+'|'+city);
+               $("#cityChoice").val(educationCityText+'|'+city);
+             }
+
+           }else{
+             $("#cityChoice").attr('value', city);
+             $("#cityChoice").val(city);
+           }
+         }
+     });
+
+     cityPicker.init();
 
 </script>

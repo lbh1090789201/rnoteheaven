@@ -26,3 +26,47 @@
 .mbsc-cal-day-fg div {
   display: none;
 }
+.box-minheight {
+  .expect-location {
+    position: relative;
+    margin: 0.4rem 0;
+  }
+}
+
+.expect-employer {
+  .expect-location {
+    position: relative;
+    margin: 0.4rem 0;
+  }
+}
+.float-style {
+  .may-fill {
+    position: relative;
+    width: 19.05rem !important;
+    margin: 0 auto;
+    text-indent: 4px;
+    input {
+      position: absolute;
+      top: 0.35rem;
+      left: 3.7rem;
+      height: 1.83rem;
+      width: 50%;
+    }
+    span {
+      display: block;
+      position: absolute;
+      top: 0.45rem;
+      left: 72%;
+      border: none;
+      border-radius: 0.2rem;
+      box-shadow: none;
+      text-align: center;
+      text-indent: 0;
+      height: 1.63rem;
+      line-height: 1.63rem;
+      width: 3rem;
+      color: #fff;
+      background: #428bca;
+    }
+  }
+}

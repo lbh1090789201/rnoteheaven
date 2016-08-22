@@ -177,16 +177,18 @@
                 <a href="<%= edit_webapp_expect_job_path(@expect_job.id) %>" class="edit">
                     <%= image_tag "edit.png" %>
                 </a>
-                <h3><%= @expect_job.name %><a class="expend expect-expend expend-education"  onclick="expend_desc(this)">
-                        <%= image_tag "show.png" %>
-                    </a>
+                <h3><%= @expect_job.name %>
                 </h3>
                 <p>
                   <%= @expect_job.job_type %>
-                  <%= @expect_job.job_type.present? ? '/' : '' %>
-                  <%= @expect_job.location %>
-                  <%= @expect_job.location.present? ? '/' : '' %>
+                  <%= @expect_job.expected_salary_range.present? ? '/' : '' %>
                   <%= @expect_job.expected_salary_range %>
+                </p>
+                <p class="expect-location">
+                  <%= @expect_job.location %>
+                  <a class="expend expect-expend expend-education"  onclick="expend_desc(this)">
+                    <%= image_tag "show.png" %>
+                  </a>
                 </p>
                 <p class="job-desc-show">
                   <%= @expect_job.job_desc if @expect_job.job_desc %>
@@ -245,7 +247,7 @@
       type: 'PATCH',
       data: {refresh: true},
       success: function() {
-        $('.refresh').html('7天后可再次刷新');
+        $('.refresh').html('24小时后可再次刷新');
         $('.refresh').css('background-color', 'gray');
         $('.refresh').off();
       },
@@ -258,7 +260,7 @@
   // 判断剩余写几天
   <% if @refresh_left  %>
     $(function() {
-      $('.refresh').html('<%= @refresh_left %>天后可再次刷新');
+      $('.refresh').html('<%= @refresh_left %>小时后可再次刷新');
       $('.refresh').css('background-color', 'gray');
       $('.refresh').off();
     });

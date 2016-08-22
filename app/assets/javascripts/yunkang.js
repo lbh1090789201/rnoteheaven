@@ -82,7 +82,7 @@ function wordLimit(dom, word) {
 };
 /* 超过一定字体变成省略号 结束 */
 
-function workExperience(obj,api,pclass) {
+function workExperience(obj,api,pclass,filled) {
   var parentdiv = $('<div></div>');
   parentdiv.attr('class','before-mask div-hidden float-style');;
   for (var i = 0; i < obj.length; i++) {
@@ -94,7 +94,15 @@ function workExperience(obj,api,pclass) {
   }
   var workExperienceDiv = $('.edit_basic');
   parentdiv.appendTo(workExperienceDiv);
-  var delete_mask = $('<p></p>');
+  // 插入可填选项
+  if(filled) {
+    var input = $("<p class='may-fill'></p>");
+    input.html("其它:"+"<input type='text' class='form-control' />"+
+              "<span onClick='enterText(this)' class='"+pclass+"'>确定</span>");
+    parentdiv.prepend(input);
+  }
+  // 插入返回选项
+  var delete_mask = $('<p class="return"></p>');
   delete_mask.text('返回');
   delete_mask.attr('onClick','delete_mask()');
   parentdiv.append(delete_mask);
@@ -109,6 +117,16 @@ function change_val(obj) {
   $('.before-mask').css("display","none");
   $("#" + $(obj).attr("class")).blur();
 };
+
+function enterText(obj) {
+  var otherText = $(obj).siblings('input').val();
+  $("#" + $(obj).attr("class")).attr('value', otherText);
+  $('.before-mask').animate({
+    top: '1500px',
+  },300);
+  $('.before-mask').css("display","none");
+  $("#" + $(obj).attr("class")).blur();
+}
 
 function delete_mask() {
   $('.before-mask').remove();

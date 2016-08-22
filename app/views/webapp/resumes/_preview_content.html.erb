@@ -121,10 +121,11 @@
       <h3><%= @expect_job.name %></h3>
       <p class="expect-preview">
         <%= @expect_job.job_type %>
-        <%= @expect_job.job_type.present? ? '/' : '' %>
-        <%= @expect_job.location %>
-        <%= @expect_job.location.present? ? '/' : '' %>
+        <%= @expect_job.expected_salary_range.present? ? '/' : '' %>
         <%= @expect_job.expected_salary_range %>
+      </p>
+      <p class="expect-location">
+        <%= @expect_job.location %>
       </p>
       <p><%= @expect_job.job_desc %></p>
     </div>

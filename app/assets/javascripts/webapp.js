@@ -11,6 +11,9 @@
          maxlength: 12,
          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
        },
+       position: {
+         required: true,
+       },
        cellphone: {
          required: true,
          pattern: '^1[345678][0-9]{9}$',

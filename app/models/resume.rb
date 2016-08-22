@@ -50,8 +50,8 @@ class Resume < ActiveRecord::Base
   def self.refresh_left(rid)
     resume = Resume.find rid
 
-    if resume.refresh_at && resume.refresh_at > 7.days.ago
-      return ((resume.refresh_at + 7.days + 1.hours - Time.now)/1.day).to_i
+    if resume.refresh_at && resume.refresh_at > 1.days.ago
+      return (((resume.refresh_at + 1.days + 1.hours - Time.now)/1.day)*24).to_i
     else
       return false
     end

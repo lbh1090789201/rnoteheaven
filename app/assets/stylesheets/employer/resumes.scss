@@ -752,6 +752,11 @@ $light-gray: #f4f4f4;
         border-left: none;
         .expect-preview {
           padding-bottom: 0;
+          margin-bottom: 0.14rem;
+        }
+        .expect-location {
+          padding: 0;
+          margin-bottom: 0.47rem;
         }
       }
       .employer-style {
