@@ -36,25 +36,27 @@ RSpec.describe Resume, type: :model do
     end
 
     it "test refresh_left" do
-      @resume = create(:resume, refresh_at: Time.now - 3.days)
+      @resume = create(:resume, refresh_at: Time.now - 0.5.days)
       @resume2 = create(:resume, refresh_at: Time.now - 8.days)
       @resume3 = create(:resume, refresh_at: nil)
       res = Resume.refresh_left(@resume.id)
       res2 = Resume.refresh_left(@resume2.id)
       res3 = Resume.refresh_left(@resume3.id)
 
-      expect(res).to eq(4)
+      expect(res).to eq(12)
       expect(res2).to eq(false)
       expect(res3).to eq(false)
     end
 
     it "test Resume.info" do
       @user = create(:user)
+      @hospital = create(:hospital)
       @resume = create(:resume, user_id: @user.id)
+      @resume_viewer = create(:resume_viewer, user_id: @user.id, hospital_id: @hospital.id)
       @expect_job = create(:expect_job, user_id: @user.id)
 
-      res = Resume.info @user.id
-      expect(res.length).to eq(10)
+      res = Resume.info @user.id,@hospital.id
+      expect(res.length).to eq(11)
     end
 
     describe "test filter" do

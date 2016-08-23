@@ -14,7 +14,7 @@ class Employer::UsersController < ApplicationController
     fair_hospitals = FairHospital.where hospital_id: @hospital.id
     @fair_num = fair_hospitals.length
     @employer = Employer.find_by user_id: current_user.id
-    @plan_name = Plan.find(@employer.plan_id).name
+    @plan_name = Plan.find(@employer.plan_id).name if @employer.plan_id.present?
     # @fair_info = fair_info fair_hospital
   end
 

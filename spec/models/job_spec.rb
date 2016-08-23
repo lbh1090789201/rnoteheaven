@@ -23,7 +23,7 @@ RSpec.describe Job, type: :model do
     apply_record = create(:apply_record, job_id: job.id, user_id: user.id, hospital_id: @hospital1.id)
     apply_record2 = create(:apply_record, job_id: job.id, user_id: user2.id, hospital_id: @hospital1.id)
 
-    res = Job.get_seekers job.id
+    res = Job.get_seekers job.id,apply_record.recieve_at
     expect(res.length).to eq(6)
   end
 
