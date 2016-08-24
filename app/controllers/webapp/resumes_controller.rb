@@ -24,6 +24,7 @@ class Webapp::ResumesController < ApplicationController
     @user = User.find_by_id(current_user.id)
     @work_experiences = WorkExperience.where(:user_id => @user.id).order('started_at DESC')
     @education_experiences = EducationExperience.where(:user_id => @user.id).order('graduated_at DESC')
+    @training_experiences = TrainingExperience.where(:user_id => @user.id).order('started_at DESC')
     expect_job = ExpectJob.where(user_id: current_user.id).first_or_create!
     @expect_job = ExpectJob.find_by_user_id(@user.id)
     @certificates = Certificate.where user_id: current_user.id

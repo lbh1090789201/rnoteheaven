@@ -51,6 +51,8 @@
       // 期盼工作
       name: {
         required: true,
+        maxlength: 20,
+        pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
       },
       job_type: {
         required: true,
@@ -60,6 +62,16 @@
       },
       expected_salary_range: {
         required: true,
+      },
+      // 培训经历
+      certificate: {
+        required: true,
+        maxlength: 30,
+        pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
+      },
+      desc: {
+        required: true,
+        maxlength: 500,
       },
      },
      errorPlacement: function(error, element) {

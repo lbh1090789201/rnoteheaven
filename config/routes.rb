@@ -76,6 +76,7 @@ Ryunkang::Application.routes.draw do
 
      resources :favorite_jobs, :only => [:index, :update]
      resources :searchs, :only => [:index]
+     resources :training_experiences
 
      end
 

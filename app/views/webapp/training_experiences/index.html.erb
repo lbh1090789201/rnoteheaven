@@ -1,0 +1,41 @@
+<% provide :link, new_webapp_training_experience_path  %>
+<% provide :title, "培训经历" %>
+<% provide :content, "添加" %>
+<script>
+  set_back("/webapp/resumes/<%= @resume.id %>")
+</script>
+<div class="resume-show work-experience">
+  <div class="wrap" id="work_edit_wrap">
+    <% if @training_experiences %>
+        <% @training_experiences.each do|w| %>
+            <section class="workindex-page">
+              <div class="box-table">
+                <a href="<%= edit_webapp_training_experience_path(w.id) %>" class="edit"><%= image_tag "edit2.png" %></a>
+                <time><%= w.started_at.strftime("%Y.%m.%d") if w.started_at %>-<%= w.ended_at.strftime("%Y.%m.%d") if w.ended_at %></time>
+                <div class="work-box">
+                  <h3><%= w.name %></h3>
+                  <p class="word_edit_page">
+                    <%= w.desc %>
+                  </p>
+                </div>
+              </div>
+            </section>
+        <% end %>
+    <% end %>
+
+  </div>
+  <a id="new_edit_btn" href="/webapp/training_experiences/new">添加</a>
+</div>
+
+<script type="text/javascript">
+    //  job_desc　限制字数
+    var section = $(".word_edit_page");
+    for(var i=0;i<section.length;i++){
+      var text = section[i].innerText;
+      if(text.length>=45){
+        section[i].innerText = text.substr(0,45)+"....";
+      }
+    }
+
+  fullScreen('.resume-show');
+</script>

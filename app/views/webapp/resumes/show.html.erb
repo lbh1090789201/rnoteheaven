@@ -145,29 +145,67 @@
             <% end %>
         </section>
 
-          <section class="show-style">
-              <h2>持有证书
-              </h2>
-              <div class="box work-show box-certif borDer">
-                <% if !@certificates.blank? %>
-                  <a href="/webapp/certificates" class="edit">
-                      <%= image_tag "edit.png" %>
-                  </a>
-                  <% @certificates.each do |f| %>
-                  <p class="certi-p"><%= f.title %></p>
-                  <% end %>
-                  <% elsif %>
-                    <div class="edit-blank edit-certi">
-                      <a href="/webapp/certificates">
-                        <p>
-                            <%= image_tag "ti"%>
-                            <span>添加持有证书</span>
-                       </p>
-                      </a>
-                    </div>
-                  <% end %>
-              </div>
-          </section>
+        <section class="show-style">
+            <h2>培训经历</h2>
+            <% if !@training_experiences.blank? %>
+            <div class="box work-show borDer work-try">
+                <a href="<%= webapp_training_experiences_path %>" class="edit">
+                    <%= image_tag "edit.png" %>
+                </a>
+               <% @training_experiences.each do |w| %>
+               <div class="blue-left">
+                 <div class="blue-point"></div>
+                 <time><%= w.started_at.strftime("%Y.%m.%d") if w.started_at %>-<%= w.ended_at.strftime("%Y.%m.%d") if w.ended_at %></time>
+                 <div class="time-line-box">
+                     <h3><%= w.name %><a class="expend expend-show" onclick="expend_desc(this)">
+                             <%= image_tag "show.png" %>
+                         </a>
+                     </h3>
+                     <p class="job-desc-show">
+                       <%= w.desc %>
+                     </p>
+                     <p class="job-desc-hide" style="display: none">
+                       <%= w.desc %>
+                     </p>
+                 </div>
+               </div>
+              <% end %>
+            </div>
+            <% else %>
+               <div class="edit-blank">
+                 <a href="<%= new_webapp_training_experience_path %>">
+                   <p>
+                       <%= image_tag "ti"%>
+                       <span>添加培训经历</span>
+                  </p>
+                 </a>
+               </div>
+            <% end %>
+        </section>
+
+        <section class="show-style">
+            <h2>持有证书
+            </h2>
+            <div class="box work-show box-certif borDer">
+              <% if !@certificates.blank? %>
+                <a href="/webapp/certificates" class="edit">
+                    <%= image_tag "edit.png" %>
+                </a>
+                <% @certificates.each do |f| %>
+                <p class="certi-p"><%= f.title %></p>
+                <% end %>
+                <% elsif %>
+                  <div class="edit-blank edit-certi">
+                    <a href="/webapp/certificates">
+                      <p>
+                          <%= image_tag "ti"%>
+                          <span>添加持有证书</span>
+                     </p>
+                    </a>
+                  </div>
+                <% end %>
+            </div>
+        </section>
 
         <section class="show-style expect-img">
             <h2>期望工作<span><%= image_tag "must.png" %></span>
