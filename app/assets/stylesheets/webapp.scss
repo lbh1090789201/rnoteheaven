@@ -284,6 +284,13 @@
     }
   }
   .job-detail {
+    .result {
+      text-align: center;
+      height: 4rem;
+      line-height: 4rem;
+      color: #7C7C7C;
+      font-size: 0.9rem;
+    }
     a {
       display: block;
       margin: 0 auto;

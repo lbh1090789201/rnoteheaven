@@ -51,8 +51,8 @@
       <p class="no-resurt">暂无搜索结果</p>
     <% end %>
 　　<% @arjob.each do |j| %>
-    <a href="jobs/<%= j[:id] %>">
-    <div class="job">
+    <a href="/webapp/jobs/<%= j[:id] %>">
+    <div class="job"> 
     <div class="title">
     <div class="left job-name"><%= j[:job_name] %></div>
     <div class="right right-range"><%= j[:salary_range] %>/月</div>

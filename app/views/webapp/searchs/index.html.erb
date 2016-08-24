@@ -194,10 +194,18 @@
             section = document.getElementsByTagName('section')[1];
 
         $('.job-detail').children().remove();
+        if(jobs.length == 0){
+          var div = document.createElement('div');
+          div.innerHTML = "暂无搜索结果";
+          div.className = "result"
+          section.appendChild(div);
+          $('.job-condition').show();
+          return;
+        }
         for(var index in jobs) {
           var j = jobs[index]
           var div = document.createElement('div');
-          div.innerHTML = '<a href="jobs/'+j.id+'">'+'<div class="job"><div class="title"><div class="left job-name">'+
+          div.innerHTML = '<a href="/webapp/jobs/'+j.id+'">'+'<div class="job"><div class="title"><div class="left job-name">'+
                         j.job_name+'</div><div class="right right-range">'+j.salary_range+'/月</div><div style="clear:both"></div></div><div class="detail"><div class="left">'+
                         j.hospital_name+'</div><div class="right">'+j.region+'</div><div style="clear:both"></div></div></div></a>';
           section.appendChild(div);
