@@ -16,7 +16,7 @@
       <input class="left" type="text" name="city" id="cityChoice" value='<%= @search_city %>' onchange="show();" />
       <input type="hidden" id="province" value="">
       <input type="hidden" id="city" value="">
-      <input id="search" class="right" type="text" name="search" placeholder="搜索职位/机构" onkeydown="show();" />
+      <input id="search" class="right" type="text" name="search" placeholder="搜索职位/机构" onFocus="goAhead();this.blur();" />
       <%= image_tag "search.png"%>
       <input id="submit" class="btn btn-success btn-order" type="submit" value="搜索" style="display:none"/>
     </form>
@@ -81,7 +81,7 @@
   </div>
 </div>
 <script>
-    function show () {
+    function show() {
         var e=window.event||arguments.callee.caller.arguments[0];
         if(e.keyCode==13){
             $("#submit").trigger("click");
@@ -120,11 +120,15 @@
     });
     <% end %>
 
-     //软键盘弹出定位
-      $("#myform>input:eq(3)").bind('focus',function(){
-        $("#show-me").css('display','none');
-      }).bind('blur',function(){
-        $("#show-me").css('display','block');
-      })
+   //软键盘弹出定位
+    $("#myform>input:eq(3)").bind('focus',function(){
+      $("#show-me").css('display','none');
+    }).bind('blur',function(){
+      $("#show-me").css('display','block');
+    })
+
+    function goAhead() {
+      window.location.href = '/webapp/searchs';
+    }
 
 </script>

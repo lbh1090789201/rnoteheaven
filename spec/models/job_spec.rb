@@ -71,6 +71,10 @@ RSpec.describe Job, type: :model do
       expect(Job.filter_job_type("全科").size).to eq(1)
     end
 
+    it "test filter salary_range" do
+      expect(Job.filter_salary_range('2000-5000').size).to eq(1)
+    end
+
   end
 
   it "test time_left jid" do

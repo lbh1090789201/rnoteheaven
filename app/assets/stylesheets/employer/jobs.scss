@@ -247,7 +247,10 @@
             margin-top: 0.5rem;
           }
           li:nth-child(4) {
-            margin-top: 0.7rem;
+            margin-top: 0.5rem;
+          }
+          li:nth-child(5) {
+            margin-top: 0.5rem;
           }
         }
       }
@@ -525,24 +528,32 @@
     display: none;
   }
 
-  .form-group:nth-of-type(5)::after{
-    display: none;
-  }
+  // .form-group:nth-of-type(5)::after{
+  //   display: none;
+  // }
 
   .form-group:nth-of-type(7)::after{
     display: none;
     text-align: left;
   }
 
-  .form-group:nth-of-type(8)::after{
-    display: none;
-  }
+  // .form-group:nth-of-type(8)::after{
+  //   display: none;
+  // }
 
   .form-group:nth-of-type(10)::after{
     display: none;
   }
 
   .form-group:nth-of-type(11)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(12)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(13)::after{
     display: none;
   }
 
@@ -707,18 +718,18 @@
     display: none;
   }
 
-  .form-group:nth-of-type(5)::after{
-    display: none;
-  }
+  // .form-group:nth-of-type(5)::after{
+  //   display: none;
+  // }
 
   .form-group:nth-of-type(7)::after{
     display: none;
     text-align: left;
   }
-  .form-group:nth-of-type(8)::after{
-    display: none;
-    text-align: left;
-  }
+  // .form-group:nth-of-type(8)::after{
+  //   display: none;
+  //   text-align: left;
+  // }
 
   .form-group:nth-of-type(11)::after{
     display: none;
@@ -729,8 +740,25 @@
     display: none;
   }
 
+  .form-group:nth-of-type(11)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(12)::after{
+    display: none;
+  }
+
+  .form-group:nth-of-type(13)::after{
+    display: none;
+    margin-bottom: 2.6rem;
+  }
+
   .hospital_introduction {
     height: 13.37rem;
+  }
+
+  form {
+    padding-bottom: 1rem;
   }
 
   #submit {

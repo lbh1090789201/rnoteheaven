@@ -100,7 +100,8 @@ class Employer::JobsController < ApplicationController
 
     def job_params
       params.permit(:name, :job_type, :salary_range, :experience, :needed_number,:is_top,
-                              :duration, :region, :location, :job_desc, :job_demand, :status, :release_at)
+                              :duration, :region, :location, :job_desc, :job_demand, :status,
+                              :release_at, :recruit_type, :degree_demand)
     end
 
     # 按钮显示名称

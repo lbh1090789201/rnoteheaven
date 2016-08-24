@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809081642) do
+ActiveRecord::Schema.define(version: 20160823064609) do
 
   create_table "apply_records", force: :cascade do |t|
     t.integer  "resume_id",       limit: 4
@@ -203,6 +203,8 @@ ActiveRecord::Schema.define(version: 20160809081642) do
     t.datetime "end_at"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+    t.string   "recruit_type",  limit: 191
+    t.string   "degree_demand", limit: 191
   end
 
   create_table "plans", force: :cascade do |t|

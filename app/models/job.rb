@@ -59,6 +59,26 @@ class Job < ActiveRecord::Base
     where('job_type LIKE ?', "%#{type}%") if type.present?
   }
 
+  # 薪资范围
+  scope :filter_salary_range, -> (salary_range){
+    where("salary_range LIKE '%" + salary_range +"%'") if salary_range.present?
+  }
+
+  # 工作经验
+  scope :filter_job_experience, ->(experience){
+    where("experience = ?", experience) if experience.present?
+  }
+
+  # 学历要求
+  scope :filter_degree_demand, ->(degree_demand){
+    where("degree_demand = ?", degree_demand) if degree_demand.present?
+  }
+
+  # 招聘类型
+  scope :filter_recruit_type, ->(recruit_type){
+    where("recruit_type = ?", recruit_type) if recruit_type.present?
+  }
+
   # 按Hospital Name
   scope :filter_hospital_name, -> (name) {
     if name.present?

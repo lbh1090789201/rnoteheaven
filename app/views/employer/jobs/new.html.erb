@@ -13,6 +13,8 @@
     <%= f.input :job_type, label: '职位类型', input_html: { readonly: "readonly", class: "job-type", id: "job_type", name: "job_type"} %>
     <%= f.input :salary_range, label: '薪        资', input_html: { readonly: 'readonly', class: "job-range", id: "job_range", name: "salary_range"} %>
     <%= f.input :experience, label: '经验要求', input_html: { readonly: 'readonly', class: "job-experience", id: "job_experience", name: "experience"} %>
+    <%= f.input :degree_demand, label: '学历要求', input_html: { readonly: 'readonly', class: "job-degree", id: "job_degree", name: "degree_demand"} %>
+    <%= f.input :recruit_type, label: '招聘类型', input_html: { readonly: 'readonly', class: "job-recruit", id: "job_recruit", name: "recruit_type"} %>
     <div class="job-pubilc">
       <%= f.input :needed_number, label: '招聘人数', input_html: { class: "job-frist_new", id: "job_number", name: "needed_number"} %>
 			<span class="empty-cont" onclick="EmptyCont('job_number')"></span>
@@ -136,12 +138,28 @@
     JobBasicNew(job_range, ".job-range", pclass);
   });
 
-  // 职位类型
+  // 工作经验
   $('.job-experience').click(function() {
     this.blur()
-    var job_experience = ['在读学生','应届毕业生', '1年', '2年', '3-4年', '5-7年', '10年以上'];
+    var job_experience = ['应届毕业生', '1-3年', '3-5年', '5-10年', '10年以上', '经验不限'];
     var pclass = 'job_experience';
     JobBasicNew(job_experience, ".job-experience", pclass);
+  });
+
+  // 学历要求
+  $('.job-degree').click(function() {
+    this.blur()
+    var job_degree = ['高中','大专', '本科', '硕士', '博士', '博士后', '不要求'];
+    var pclass = 'job_degree';
+    JobBasicNew(job_degree, ".job-degree", pclass);
+  });
+
+  // 招聘类型
+  $('.job-recruit').click(function() {
+    this.blur()
+    var job_recruit = ['全职','兼职', '实习'];
+    var pclass = 'job_recruit';
+    JobBasicNew(job_recruit, ".job-recruit", pclass);
   });
 
   // 发布期限

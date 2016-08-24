@@ -75,6 +75,7 @@ Ryunkang::Application.routes.draw do
      resources :block_hospitals, :except => [:update, :edit, :show]
 
      resources :favorite_jobs, :only => [:index, :update]
+     resources :searchs, :only => [:index]
 
      end
 

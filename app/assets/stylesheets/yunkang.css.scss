@@ -1676,12 +1676,16 @@ a:hover {
             position: absolute;
             top: 0;
             left: 8rem;
+            color: #9b9b9b;
           }
           span:nth-child(3) {
             position: absolute;
             top: 0;
             left: 10rem;
-            color: #000;
+            color: #424242;
+          }
+          .job-degree {
+            left: 11.3rem !important;
           }
         }
       }
