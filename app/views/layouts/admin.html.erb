@@ -10,45 +10,6 @@
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'admin' %>
 
-    <script>
-      // IE8兼容Array.isArray()方法
-      if (!Array.isArray) {
-        Array.isArray = function(arg) {
-          return Object.prototype.toString.call(arg) === '[object Array]';
-        };
-      }
-
-      // IE8兼容支持“bind”属性或方法
-      if (!Function.prototype.bind) {
-	      Function.prototype.bind = function (oThis) {
-          if (typeof this !== "function") {
-            throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
-          }
-		      var aArgs = Array.prototype.slice.call(arguments, 1),
-		      fToBind = this,
-		      fNOP = function () {},
-		      fBound = function () {
-		        return fToBind.apply(this instanceof fNOP && oThis
-		        ? this
-		        : oThis,
-		        aArgs.concat(Array.prototype.slice.call(arguments)));
-		      };
-		      fNOP.prototype = this.prototype;
-		      fBound.prototype = new fNOP();
-		      return fBound;
-		    };
-		  }
-
-      // IE8兼容支持“forEach”属性或方法
-      if (typeof Array.prototype.forEach != 'function') {
-        Array.prototype.forEach = function(callback){
-          for (var i = 0; i < this.length; i++){
-            callback.apply(this, [this[i], i, this]);
-          }
-        };
-      }
-    </script>
-
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "admin" %>
     <%= csrf_meta_tags %>
@@ -59,7 +20,7 @@
     <%= javascript_include_tag "respond.min" %>
     <![endif]-->
   </head>
-  <body class="<%= params[:controller][6,99] + '-' + params[:action] %> container-fluid" >
+  <body class="<%= params[:controller][6,99] + '-' + params[:action] %>" >
 
     <header>
         <%= render 'layouts/admin_header' %>
