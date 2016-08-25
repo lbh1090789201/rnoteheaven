@@ -58,8 +58,9 @@ class Employer::ResumesController < ApplicationController
     # 简历预览
     @user = User.find resume.user_id
     @user_age = @user.birthday.nil? ? "保密" : ((Time.now - @user.birthday)/1.year).to_i
-    @work_experiences = WorkExperience.where(:user_id => @user.id)
-    @education_experiences = EducationExperience.where(:user_id => @user.id)
+    @work_experiences = WorkExperience.where(:user_id => @user.id).order('started_at DESC')
+    @education_experiences = EducationExperience.where(:user_id => @user.id).order('graduated_at DESC')
+    @training_experiences = TrainingExperience.where(:user_id => @user.id).order('started_at DESC')
     @expect_job = ExpectJob.find_by_user_id(@user.id)
     @user.avatar_url.blank? ? @avatar = "avator.png" : @avatar = @user.avatar_url
     @certificates = Certificate.where(:user_id => @user.id)

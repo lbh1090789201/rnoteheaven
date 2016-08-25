@@ -75,6 +75,15 @@
   height: 2rem !important;
 }
 
+// resume show
+#preview-expect {
+  min-height: 2.5rem;
+  .expect-employer {
+    padding-top: 0.8rem;
+    padding-bottom: 0.5rem;
+  }
+}
+// resume show
 
 // 搜索页面样式
 .search-content {

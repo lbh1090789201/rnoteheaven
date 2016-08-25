@@ -55,4 +55,7 @@ class Webapp::SearchsController < ApplicationController
     end
   end
 
+  def show
+  end
+
 end

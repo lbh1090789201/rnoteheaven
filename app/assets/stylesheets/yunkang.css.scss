@@ -336,26 +336,19 @@ a:hover {
               margin-bottom: 0;
               display:block;
             }
-            // time::before {
-            //   content: "";
-            //   display: block;
-            //   position: absolute;
-            //   margin-left: -1.05rem;
-            //   margin-top: 0.25rem;
-            //   width: 0.6rem;
-            //   height: 0.6rem;
-            //   border-radius: 0.3rem;
-            //   background-color: $beauty-blue;
-            //
-            // }
             .time-line-box {
               margin-top: -0.4rem;
               padding-top: 0.5rem;
-              // border-left: 1px solid $beauty-blue;
               padding-left: 0.77rem;
               padding-bottom: 0.3rem;
               h3 {
                 margin: 0.3rem 0 0.5rem 0;
+                color: #232323;
+              }
+              .train-certificate {
+                display: block;
+                margin: -0.2rem 0 0.3rem 0;
+                font-size: 0.77rem;
               }
             }
         }
@@ -1520,6 +1513,11 @@ a:hover {
       font-size: 0.7rem;
       color: #696969;
       line-height: 1.08rem;
+    }
+    .train-certificate {
+      margin-top: 0.4rem !important;
+      font-size: 0.7rem !important;
+      color: #696969;
     }
   }
 }

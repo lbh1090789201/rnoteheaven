@@ -11,8 +11,9 @@ class Webapp::ResumesController < ApplicationController
     resume = Resume.where(user_id: current_user.id).first_or_create!
 
     @user = User.find_by_id(current_user.id)
-    @work_experiences = WorkExperience.where(:user_id => @user.id)
-    @education_experiences = EducationExperience.where(:user_id => @user.id)
+    @work_experiences = WorkExperience.where(:user_id => @user.id).order('started_at DESC')
+    @education_experiences = EducationExperience.where(:user_id => @user.id).order('graduated_at DESC')
+    @training_experiences = TrainingExperience.where(:user_id => @user.id).order('started_at DESC')
     @expect_job = ExpectJob.find_by_user_id(@user.id)
     @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url(:square)
     @certificates = Certificate.where(:user_id => @user.id)
