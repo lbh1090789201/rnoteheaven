@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="这是运行在云贷oa上的云康后台" />
+    <meta name="description" content="这是云康后台" />
     <meta name="keywords" content="区块链,以太坊,比特币,移动信贷,云贷oa,云康后台" />
     <title>区块链-移动信贷-云贷oa-云康 Admin</title>
     <%= stylesheet_link_tag 'application' %>
@@ -38,6 +38,15 @@
 		      return fBound;
 		    };
 		  }
+
+      // IE8兼容支持“forEach”属性或方法
+      if (typeof Array.prototype.forEach != 'function') {
+        Array.prototype.forEach = function(callback){
+          for (var i = 0; i < this.length; i++){
+            callback.apply(this, [this[i], i, this]);
+          }
+        };
+      }
     </script>
 
     <%= javascript_include_tag "application" %>
