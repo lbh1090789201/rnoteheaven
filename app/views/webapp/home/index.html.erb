@@ -52,7 +52,7 @@
     <% end %>
 　　<% @arjob.each do |j| %>
     <a href="/webapp/jobs/<%= j[:id] %>">
-    <div class="job"> 
+    <div class="job">
     <div class="title">
     <div class="left job-name"><%= j[:job_name] %></div>
     <div class="right right-range"><%= j[:salary_range] %>/月</div>
@@ -121,11 +121,11 @@
     <% end %>
 
    //软键盘弹出定位
-    $("#myform>input:eq(3)").bind('focus',function(){
-      $("#show-me").css('display','none');
-    }).bind('blur',function(){
-      $("#show-me").css('display','block');
-    })
+    // $("#myform>input:eq(3)").bind('focus',function(){
+    //   $("#show-me").css('display','none');
+    // }).bind('blur',function(){
+    //   $("#show-me").css('display','block');
+    // })
 
     function goAhead() {
       window.location.href = '/webapp/searchs';

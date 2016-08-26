@@ -47,16 +47,33 @@ var AdminEditHospital = React.createClass({
   ,handleSubmit: function(e) {
     e.preventDefault()
     if(invalid('#form_hospital_edit')) return // 不合法就返回
-
-    var formData = new FormData(e.target)
-    formData.append('plan_id',this.state.vip_id);
-
+    // if(typeof(FormData) != 'undefined'){
+    //   var formData = new FormData(e.target)
+    //   formData.append('plan_id',this.state.vip_id)
+    //   console.log("1111111111")
+    // }else {
+    //   var formData = $("#form_hospital_edit").serialize()
+    //   console.log(formData)
+    // }
+    // var formData = new FormData(e.target)
+    // formData.append('plan_id',this.state.vip_id);
     $.ajax({
       url: "/admin/hospitals/" + this.props.data.id,
       type: "PUT",
-      data: formData,
-      processData: false,
-      contentType: false,
+      data: {
+        plan_id: this.state.vip_id,
+        contact_number: this.refs.contact_number.value,
+        name: this.refs.name.value,
+        contact_person: this.refs.contact_person.value,
+        industry: this.refs.industry.value,
+        property: this.refs.property.value,
+        scale: this.refs.scale.value,
+        region: this.refs.region.value,
+        lng: this.refs.lng.value,
+        lat: this.refs.lat.value,
+        location: this.refs.location.value,
+        introduction: this.refs.introduction.value,
+      },
       success: function(data) {
         let hospitals = this.props.dad.state.hospitals,
             index = this.state.index
@@ -115,7 +132,7 @@ var AdminEditHospital = React.createClass({
 
             <div className="row">
               <div className="form-group col-sm-4">
-                <select name="industry" className="form-control form-magrin-top" defaultValue={this.props.data.industry}>
+                <select name="industry" className="form-control form-magrin-top" ref="industry" defaultValue={this.props.data.industry}>
                   <option value="">行业</option>
                   <option value="医疗">医疗</option>
                   <option value="医院">医院</option>
@@ -133,7 +150,7 @@ var AdminEditHospital = React.createClass({
               </div>
 
               <div className="form-group col-sm-4">
-                <select name="property" className="form-control form-magrin-top" defaultValue={this.props.data.property}>
+                <select name="property" className="form-control form-magrin-top" ref="property" defaultValue={this.props.data.property}>
                   <option value="">性质</option>
                   <option value="综合医院">综合医院</option>
                   <option value="专科医院">专科医院</option>
@@ -144,7 +161,7 @@ var AdminEditHospital = React.createClass({
               </div>
 
               <div className="form-group col-sm-4">
-                  <select className="form-control form-magrin-top" name="scale" defaultValue={this.props.data.scale}>
+                  <select className="form-control form-magrin-top" name="scale" ref="scale" defaultValue={this.props.data.scale}>
                     <option value="">规模</option>
                     <option value="10人以下">10人以下</option>
                     <option value="10~50人">10~50人</option>

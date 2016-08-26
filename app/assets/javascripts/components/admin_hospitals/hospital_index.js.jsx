@@ -4,6 +4,7 @@ var AdminHospital = React.createClass({
       hospitals: this.props.data,
       plans: this.props.plan,
       new_display: false,
+      mass_display: false,
       hos_info: {
         index: 0,
         hospital: '',
@@ -17,6 +18,11 @@ var AdminHospital = React.createClass({
   ,handleClick: function() {
     this.setState({
       new_display: true
+    })
+  }
+  ,handleClickMass: function() {
+    this.setState({
+      mass_display: true
     })
   }
   ,render: function() {

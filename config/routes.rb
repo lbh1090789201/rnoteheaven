@@ -38,6 +38,7 @@ Ryunkang::Application.routes.draw do
       resources :favorite_jobs
       resource :employer_resumes, :only => [:update]
       resource :admin_roles, :only => [:update]
+      resource :admin_hospitals, :only => [:create]
       resource :employer_viewers, :only => [:create]
       post 'connect_app/login_app', to:'connect_app#login_app'
       post 'connect_app/get_hospital', to: 'connect_app#get_hospital'

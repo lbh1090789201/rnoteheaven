@@ -23,9 +23,9 @@ var AdminHospitalNew = React.createClass({
   ,handleBlur: function(e) {
     var value = e.target.value
 
-    if(value.length < 6){
-      alert("机构介绍长度不能少于６!")
-    }
+    // if(value.length < 6){
+    //   alert("机构介绍长度不能少于６!")
+    // }
   }
   ,handlefocus: function() {
     var input_id = this.refs.region.id,
@@ -59,34 +59,29 @@ var AdminHospitalNew = React.createClass({
     formData.append('plan_id',this.state.vip_id);
     formData.append('property',this.state.property);
 
-    var text = $("#input_textarea").val();
-    if(text.length < 6){
-      alert("机构介绍长度不能少于６!")
-    }else{
-      $.ajax({
-        url: "/admin/hospitals",
-        type: "POST",
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(data) {
-          let hospitals = this.props.dad.state.hospitals
+    $.ajax({
+      url: "/admin/hospitals",
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(data) {
+        let hospitals = this.props.dad.state.hospitals
 
-          hospitals.push(data.hospital)
+        hospitals.push(data.hospital)
 
-          this.props.dad.setState({
-            hospitals: hospitals,
-            new_display: false,
-          })
+        this.props.dad.setState({
+          hospitals: hospitals,
+          new_display: false,
+        })
 
-          myInfo('新建机构成功！', 'success')
-        }.bind(this),
-        error: function(data) {
-          let info = JSON.parse(data.responseText)
-          myInfo(info["info"], 'fail')
-        }.bind(this),
-      })
-    }
+        myInfo('新建机构成功！', 'success')
+      }.bind(this),
+      error: function(data) {
+        let info = JSON.parse(data.responseText)
+        myInfo(info["info"], 'fail')
+      }.bind(this),
+    })
   }
   ,render: function() {
     var plans = this.props.plans
@@ -219,6 +214,48 @@ var AdminHospitalNew = React.createClass({
 
             </div>
 
+            <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>
+            <button type="submit" className="btn btn-success btn-bottom">提交</button>
+          </form>
+        </div>
+      </div>
+    )
+  }
+})
+
+
+
+
+/**********************AdminHospitalMassNew**********************/
+var AdminHospitalMassNew = React.createClass({
+  handleClick: function() {
+    this.props.dad.setState({
+      mass_display: false,
+    })
+  }
+  ,handleSubmit: function(e) {
+    e.preventDefault()
+    var formData = new FormData(e.target)
+    $.ajax({
+      url: '/api/v1/admin_hospitals',
+      type: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function() {
+
+      }.bind(this),
+      error: function() {
+
+      }.bind(this)
+    })
+  }
+  ,render: function() {
+    return (
+      <div className="mask-user">
+        <div className="user-box">
+          <form onSubmit={this.handleSubmit} style={{'height':'100px'}} enctype="multipart/form-data">
+            <input type="file" name="hospital" accept=".xls" className="form-control" />
             <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>
             <button type="submit" className="btn btn-success btn-bottom">提交</button>
           </form>

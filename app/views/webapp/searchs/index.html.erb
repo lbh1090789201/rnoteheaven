@@ -199,7 +199,7 @@
           div.innerHTML = "暂无搜索结果";
           div.className = "result"
           section.appendChild(div);
-          $('.job-condition').show();
+          // $('.job-condition').show();
           return;
         }
         for(var index in jobs) {
@@ -210,7 +210,7 @@
                         j.hospital_name+'</div><div class="right">'+j.region+'</div><div style="clear:both"></div></div></div></a>';
           section.appendChild(div);
         }
-        $('.job-condition').show();
+        // $('.job-condition').show();
       },
       error: function() {
         console.log("搜索失败");
