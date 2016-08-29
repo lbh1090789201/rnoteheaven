@@ -410,7 +410,7 @@ function EditMask(btn_id, text) {
     if(input_text.length >= 2) {
       var empty_value = function(){
         for(var i=0;i<input_text.length;i++){
-          var value = input_text.eq(i).val();
+          var value = input_text.eq(i).attr('value');
           if(value == ''){
             return "有空值"
           }
@@ -418,7 +418,7 @@ function EditMask(btn_id, text) {
       }
     }else{
       var empty_value = function() {
-        var value = input_text.val();
+        var value = input_text.attr('value');
         if(value == ""){
           return "有空值"
         }
@@ -442,7 +442,6 @@ function EditMask(btn_id, text) {
         }
       }
     }
-
 
     if(empty_value() == "有空值" || empty_text() == "有空值"){
       FailMask('#wrap', text);

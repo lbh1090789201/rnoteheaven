@@ -24,6 +24,7 @@ gem 'carrierwave-video'
 gem 'remotipart'
 # gem 'responder', '~> 2.0'
 gem 'spreadsheet'
+# gem 'parseexcel'
 
 #for admin console, discarded 20160530
 # gem 'activeadmin', '~> 1.0.0.pre1'

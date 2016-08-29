@@ -65,12 +65,12 @@
       },
       // 培训经历
       certificate: {
-        required: true,
+        required: false,
         maxlength: 30,
         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
       },
       desc: {
-        required: true,
+        required: false,
         maxlength: 500,
       },
      },

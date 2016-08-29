@@ -22,7 +22,6 @@
     // 表单验证
     formAll("#work_eidt form");
 
-    // 防重复点击
     $("#btn_save").on('click',function() {
       EditMask("#btn_save", "请完善信息！");
 
@@ -39,7 +38,7 @@
      this.blur()
      var expect_name = ['全科医生','内科医生', '外科医生', '专科医生', '牙科医生', '护士'];
      var pclass = 'expect_name';
-     workExperience(expect_name, ".expect-name", pclass);
+     workExperience(expect_name, ".expect-name", pclass, true);
    });
 
    //工作类型

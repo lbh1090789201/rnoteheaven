@@ -60,10 +60,8 @@
      });
   })
 
-   // 防重复点击
-   $(".btm-save").on('click',function() {
-     EditMask(".btm-save", "请完善信息！");
 
+   $(".btm-save").on('click',function() {
      // 验证表单,失败返回
      if(valid("#work_eidt form")){
        return

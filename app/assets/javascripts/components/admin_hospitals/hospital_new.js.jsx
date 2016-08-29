@@ -242,11 +242,18 @@ var AdminHospitalMassNew = React.createClass({
       data: formData,
       processData: false,
       contentType: false,
-      success: function() {
+      success: function(data) {
+
+        this.props.dad.setState({
+          mass_display: false,
+        })
+
+        successNew("批量导入机构成功！")
 
       }.bind(this),
-      error: function() {
-
+      error: function(data) {
+        let info = JSON.parse(data.responseText)
+        myInfo(info["info"], 'fail')
       }.bind(this)
     })
   }
@@ -255,7 +262,7 @@ var AdminHospitalMassNew = React.createClass({
       <div className="mask-user">
         <div className="user-box">
           <form onSubmit={this.handleSubmit} style={{'height':'100px'}} enctype="multipart/form-data">
-            <input type="file" name="hospital" accept=".xls" className="form-control" />
+            <input type="file" name="hospital" accept=".csv" className="form-control" />
             <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>
             <button type="submit" className="btn btn-success btn-bottom">提交</button>
           </form>

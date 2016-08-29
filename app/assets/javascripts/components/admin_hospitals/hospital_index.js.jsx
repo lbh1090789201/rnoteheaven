@@ -27,17 +27,20 @@ var AdminHospital = React.createClass({
   }
   ,render: function() {
     var edit_hospital = this.state.hos_info.edit_display ? <AdminEditHospital plans={this.state.plans} data={this.state.hos_info.hospital} dad={this} /> : '',
-        new_hospital = this.state.new_display ? <AdminHospitalNew plans={this.state.plans} dad={this} /> : ''
+        new_hospital = this.state.new_display ? <AdminHospitalNew plans={this.state.plans} dad={this} /> : '',
+        mass_new_hospital = this.state.mass_display ? <AdminHospitalMassNew plans={this.state.plans} dad={this} /> : ''
 
     return (
       <div className="main">
         <AdminHospitalForm data={this.state.plans} dad={this} />
         <div className="handle-button">
+          <button className="btn btn-info pull-right" onClick={this.handleClickMass} name="new_display" >批量创建</button>
           <button className="btn btn-info pull-right" onClick={this.handleClick} name="new_display" >新建</button>
         </div>
         <AdminHospitalTable hospitals={this.state.hospitals} dad={this}/>
         {edit_hospital}
         {new_hospital}
+        {mass_new_hospital}
       </div>
     )
   }

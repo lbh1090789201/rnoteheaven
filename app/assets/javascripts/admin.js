@@ -75,3 +75,20 @@ function isAjaxUploadSupported(){
                   typeof FormData != "undefined" &&
                   typeof (new XMLHttpRequest()).upload != "undefined" );
   }
+
+
+// 批量导入机构成功弹窗
+function successNew(text) {
+  var mask_user = $('<div class="mask-user" id="mask_user"></div>'),
+      user_box = $('<div class="success-box"></div>'),
+      parent = $('.admin_main');
+
+  user_box.html('<span>'+text+'</span>'+'<p onClick="refressPage()">确定</p>');
+  mask_user.append(user_box);
+  parent.append(mask_user);
+}
+
+function refressPage() {
+  $("#mask_user").remove();
+  window.location.href = window.location.href;
+}
