@@ -6,13 +6,14 @@
    $(id).validate({
      rules: {
        // user验证
-       show_name: {
+       show_name: {1
          required: true,
          maxlength: 12,
          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
        },
        position: {
          required: true,
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
        },
        cellphone: {
          required: true,
