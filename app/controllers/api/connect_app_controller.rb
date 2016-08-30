@@ -7,7 +7,7 @@ class Api::ConnectAppController < ApiController
 
   def login_app
     p "111111111111"
-    @res = RestClient.post "#{$auto_token_url}/HealthComm/modelToken/getToken",
+    @res = RestClient.post "http://120.27.142.6:8080/HealthComm/modelToken/getToken",
                            {
                              userId: login_params[:userId],
                              target: login_params[:target],
