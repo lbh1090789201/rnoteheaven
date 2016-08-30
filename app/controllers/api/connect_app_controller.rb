@@ -66,10 +66,12 @@ class Api::ConnectAppController < ApiController
     end
 
     def new_user token
+      p "111111111111"
       @user_info = RestClient.post "#{$auto_token_url}/HealthComm/modelToken/accreditLogin",
                                     {
                                       token: token
                                     }.to_json, :content_type => :json, :accept => :json
+      p "2222222222222222"
       @user_info = JSON.parse(@user_info)
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
