@@ -6,7 +6,6 @@ class Api::ConnectAppController < ApiController
   protect_from_forgery :except => [:login_app, :get_hospital]
 
   def login_app
-    p "777777777777777"
     @res = RestClient.post "#{$auto_token_url}/HealthComm/modelToken/getToken",
                            {
                              userId: login_params[:userId],
@@ -24,6 +23,7 @@ class Api::ConnectAppController < ApiController
   end
 
   def index
+    p "66666666666666666"
     user = User.find_by user_number: params[:userId]
 p "555555555555555555"
     if user
