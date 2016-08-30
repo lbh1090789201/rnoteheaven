@@ -6,6 +6,7 @@ class Api::ConnectAppController < ApiController
   protect_from_forgery :except => [:login_app, :get_hospital]
 
   def login_app
+    p "111111111111"
     @res = RestClient.post "#{$auto_token_url}/HealthComm/modelToken/getToken",
                            {
                              userId: login_params[:userId],
@@ -23,9 +24,8 @@ class Api::ConnectAppController < ApiController
   end
 
   def index
-    p "66666666666666666"
     user = User.find_by user_number: params[:userId]
-p "555555555555555555"
+p "2222222222222"
     if user
       # 校检用户
       user = Role.checkUser user
@@ -37,7 +37,6 @@ p "555555555555555555"
         redirect_to employer_resumes_path
       end
     else
-      p "444444444444444"
       new_user params[:token]
     end
   end
@@ -68,12 +67,10 @@ p "555555555555555555"
     end
 
     def new_user token
-      p "111111111111"
-      @user_info = RestClient.post "#{$auto_token_url}/HealthComm/modelToken/accreditLogin",
+      @user_info = RestClient.post "http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin",
                                     {
                                       token: token
                                     }.to_json, :content_type => :json, :accept => :json
-      p "2222222222222222"
       @user_info = JSON.parse(@user_info)
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
