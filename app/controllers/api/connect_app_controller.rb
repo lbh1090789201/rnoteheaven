@@ -6,6 +6,7 @@ class Api::ConnectAppController < ApiController
   protect_from_forgery :except => [:login_app, :get_hospital]
 
   def login_app
+    p "777777777777777"
     @res = RestClient.post "#{$auto_token_url}/HealthComm/modelToken/getToken",
                            {
                              userId: login_params[:userId],
