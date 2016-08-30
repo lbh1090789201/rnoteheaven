@@ -119,3 +119,49 @@ function againClick() {
      return true;
    }
  }
+
+
+
+
+// 选择脚本插件
+function addComponent(parent_class, options, input_id) {
+  var parent_class = parent_class || '#wrap';
+  var mask = $('<div id="pop_mask"></div>'),
+      mask_pop = $('<div class="pop-mask"></div>'),
+      box_1 = $('<div class="pop-box_1"></div>'),
+      box_2 = $('<div class="pop-box_2"></div>'),
+      button_div = $('<div class="pop-button"></div>')
+      parent = $(parent_class);
+
+  var title_text = $(input_id).siblings('label').text();
+
+  parent.append(mask);
+  mask.append(mask_pop);
+  mask_pop.append(box_1);
+  mask_pop.append(button_div);
+  box_1.append(box_2);
+  button_div.html('<button class="remove-btn" onClick="removePop()">取消</button><span>'+title_text+'</span>');
+  var button = $('<button class="success-btn">确定</button>');
+  button.attr('onClick',"successPop("+"'"+input_id+"'"+")");
+  button_div.append(button);
+  for(var i=0;i<options.length;i++) {
+    var p = $('<p class="pop-option" onclick="selectOption(this)"></p>');
+    p.text(options[i]);
+    box_2.append(p);
+  }
+}
+
+function selectOption(e) {
+  $(e).addClass('p-on').siblings('p').removeClass('p-on');
+  $('.success-btn').css({'pointer-events':'auto','color':'#fff'});
+}
+
+function removePop() {
+  $('#pop_mask').remove();
+}
+
+function successPop(input_id) {
+  var p_text = $('.pop-box_2 > .p-on').text();
+  $(input_id).attr('value', p_text);
+  $('#pop_mask').remove();
+}

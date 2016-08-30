@@ -6,7 +6,7 @@ class Api::ConnectAppController < ApiController
   protect_from_forgery :except => [:login_app, :get_hospital]
 
   def login_app
-    @res = RestClient.post "http://119.97.224.253:9014/HealthComm/modelToken/getToken",
+    @res = RestClient.post "#{$auto_token_url}/HealthComm/modelToken/getToken",
                            {
                              userId: login_params[:userId],
                              target: login_params[:target],
@@ -66,7 +66,7 @@ class Api::ConnectAppController < ApiController
     end
 
     def new_user token
-      @user_info = RestClient.post "http://119.97.224.253:9014/HealthComm/modelToken/accreditLogin",
+      @user_info = RestClient.post "#{$auto_token_url}/HealthComm/modelToken/accreditLogin",
                                     {
                                       token: token
                                     }.to_json, :content_type => :json, :accept => :json

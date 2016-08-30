@@ -49,3 +49,8 @@ $cn_user_geotable_id = '135715'
 
 
 $app_models = ['users','foods','orders','food_packages','restaurants','user_albumns','user_infos']
+
+
+# yk
+# $auto_token_url = 'http://119.97.224.253:9014'
+$auto_token_url = 'http://120.27.142.6:8080'

@@ -53,8 +53,9 @@
    $('.expect-range').click(function() {
      this.blur()
      var expect_range = ['1500以下','2000-5000', '5000-10000', '10000-15000', '15000-25000', '25000-50000', '50000以上'];
-     var pclass = 'expect_range';
-     workExperience(expect_range, ".expect-range", pclass);
+    //  var pclass = 'expect_range';
+    //  workExperience(expect_range, ".expect-range", pclass);
+     addComponent("#wrap", expect_range, '#expect_range')
    });
 
    // 城市插件再次点击删掉原来的
