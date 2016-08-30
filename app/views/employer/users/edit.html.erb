@@ -39,40 +39,36 @@
   $('.user-prop').click(function() {
     this.blur()
     var user_prop = ['综合医院','专科医院', '民营', '公立诊所', '民营诊所'];
-    var pclass = 'user_prop';
-    JobBasicNew(user_prop, ".user-prop", pclass);
+    addComponent('.wrap', user_prop, "#user_prop");
   });
 
   // 医院规模
   $('.user-scale').click(function() {
     this.blur()
     var user_scale = ['10人以下','10~50人', '50~200人', '200~500人', '500~1000人', '1000人以上'];
-    var pclass = 'user_scale';
-    JobBasicNew(user_scale, ".user-scale", pclass);
+    addComponent('.wrap', user_scale, "#user_scale");
   });
 
   // 医院行业
   $('.user-industry').click(function() {
     this.blur();
-    var mask_size = $('.before-mask').length;
-    if(mask_size > 0) {
-      $('.before-mask').remove();
-    };
-    var industry_text = $("#user_industry").attr('value');
-    // console.log(industry_text)
+    // var mask_size = $('.before-mask').length;
+    // if(mask_size > 0) {
+    //   $('.before-mask').remove();
+    // };
+    // var industry_text = $("#user_industry").attr('value');
     var user_industry = ['医疗','医院', '美容', '卫生', '医药', '医疗器械', '整形', '口腔', '门诊', '诊所', '药店', '保健'];
-    var pclass = 'user_industry';
-    JobBasicNew(user_industry, ".user-industry", pclass);
+    addComponent('.wrap', user_industry, "#user_industry");
     // 获取下标
-    var text_index = function() {
-      for(var i=0;i<user_industry.length;i++){
-        if(user_industry[i] == industry_text) {
-          return i
-        }
-      }
-    }
-
-    $(".before-mask>p").eq(text_index()).css('color', '#3f9d9e');
+    // var text_index = function() {
+    //   for(var i=0;i<user_industry.length;i++){
+    //     if(user_industry[i] == industry_text) {
+    //       return i
+    //     }
+    //   }
+    // }
+    //
+    // $(".before-mask>p").eq(text_index()).css('color', '#3f9d9e');
   });
 
 

@@ -134,40 +134,35 @@
   $('.job-range').click(function() {
     this.blur()
     var job_range = ['1500以下','2000-5000', '5000-10000', '10000-15000', '15000-25000', '25000-50000', '50000以上'];
-    var pclass = 'job_range';
-    JobBasicNew(job_range, ".job-range", pclass);
+    addComponent('.wrap', job_range, "#job_range");
   });
 
   // 工作经验
   $('.job-experience').click(function() {
     this.blur()
     var job_experience = ['应届毕业生', '1-3年', '3-5年', '5-10年', '10年以上', '经验不限'];
-    var pclass = 'job_experience';
-    JobBasicNew(job_experience, ".job-experience", pclass);
+    addComponent('.wrap', job_experience, "#job_experience");
   });
 
   // 学历要求
   $('.job-degree').click(function() {
     this.blur()
     var job_degree = ['高中','大专', '本科', '硕士', '博士', '博士后', '不要求'];
-    var pclass = 'job_degree';
-    JobBasicNew(job_degree, ".job-degree", pclass);
+    addComponent('.wrap', job_degree, "#job_degree");
   });
 
   // 招聘类型
   $('.job-recruit').click(function() {
     this.blur()
     var job_recruit = ['全职','兼职', '实习'];
-    var pclass = 'job_recruit';
-    JobBasicNew(job_recruit, ".job-recruit", pclass);
+    addComponent('.wrap', job_recruit, "#job_recruit");
   });
 
   // 发布期限
   $('.job-end').click(function() {
     this.blur()
     var job_end = ['１星期','２星期', '半个月', '１个月', '２个月', '３个月'];
-    var pclass = 'job_end';
-    JobBasicNew(job_end, ".job-end", pclass);
+    addComponent('.wrap', job_end, "#job_end");
   });
 
   // 城市插件再次点击删掉原来的

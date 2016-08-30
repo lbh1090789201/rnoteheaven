@@ -330,6 +330,7 @@
       width: 100%;
     }
     p {
+      position: relative;
       margin: 0 auto;
       border-bottom: 1px solid #e3e3e3;
       width: 100%;
@@ -353,7 +354,7 @@
       font-size: 0.8rem;
       background: #3d9f9e;
     }
-    span {
+    span.input-title {
       position: absolute;
       top: 0;
       left: 50%;
@@ -384,6 +385,27 @@
       background: #3f9d9e;
       pointer-events: none;
       color: #b94a48;
+    }
+    .option-other {
+      position: relative;
+      left: -1rem;
+    }
+    .importability {
+      position: absolute;
+      top: 50%;
+      margin-top: -0.6rem;
+      padding: 0.6rem 0;
+      width: 8rem;
+      height: 1.2rem;
+      line-height: 1.2rem;
+      border: none;
+      box-shadow: none;
+      text-indent: 0.4rem;
+      background: #fff;
+    }
+    input[type="text"]:focus {
+      outline: 0;
+      border: none !important;
     }
   }
 }

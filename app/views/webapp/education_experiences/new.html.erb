@@ -56,8 +56,7 @@
   $('.education-degree').click(function() {
     this.blur()
     var education_degree = ['大专以下', '大专','本科', '硕士', '博士', '博士后'];
-    var pclass = 'education_degree';
-    workExperience(education_degree, ".education-degree", pclass);
+    addComponent("#wrap", education_degree, '#education_degree')
   });
 
   //时间插件

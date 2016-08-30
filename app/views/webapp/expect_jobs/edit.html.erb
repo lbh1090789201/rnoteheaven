@@ -37,24 +37,20 @@
    $('.expect-name').click(function() {
      this.blur()
      var expect_name = ['全科医生','内科医生', '外科医生', '专科医生', '牙科医生', '护士'];
-     var pclass = 'expect_name';
-     workExperience(expect_name, ".expect-name", pclass, true);
+     addComponent("#wrap", expect_name, "#expect_name", true);
    });
 
    //工作类型
    $('.expect-type').click(function() {
      this.blur()
      var expect_type = ['全职','兼职', '实习'];
-     var pclass = 'expect_type';
-     workExperience(expect_type, ".expect-type", pclass);
+     addComponent("#wrap", expect_type, '#expect_type')
    });
 
    //期望薪水
    $('.expect-range').click(function() {
      this.blur()
      var expect_range = ['1500以下','2000-5000', '5000-10000', '10000-15000', '15000-25000', '25000-50000', '50000以上'];
-    //  var pclass = 'expect_range';
-    //  workExperience(expect_range, ".expect-range", pclass);
      addComponent("#wrap", expect_range, '#expect_range')
    });
 

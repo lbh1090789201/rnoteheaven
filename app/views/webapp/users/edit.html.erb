@@ -73,40 +73,35 @@
     $('.user-sex').click(function() {
         this.blur()
         var sex = ['男','女'];
-        var pclass = 'sex';
-        workExperience(sex,".user-sex",pclass);
+        addComponent("#wrap", sex, '#sex')
     });
 
 　　　//最高学历
     $('.highest-degree').click(function() {
       this.blur()
       var highest_degree = ['大专以下', '大专','本科', '硕士', '博士', '博士后'];
-      var pclass = 'highest_degree';
-      workExperience(highest_degree, ".highest-degree", pclass);
+      addComponent("#wrap", highest_degree, '#highest_degree')
     });
 
 　　　//职称
     $('.user-title').click(function() {
       this.blur()
       var user_title = ['医师','主治医师', '副主任医师', '主任医师'];
-      var pclass = 'user_title';
-      workExperience(user_title, ".user-title", pclass, true);
+      addComponent("#wrap", user_title, '#user_title', true);
     });
 
     //工作年限
     $('.start-work').click(function() {
       this.blur()
       var start_work = ['在读','应届', '1年', '２年', '3-4年', '5-7年', '8-9年', '10年以上'];
-      var pclass = 'start_work';
-      workExperience(start_work, ".start-work", pclass);
+      addComponent("#wrap", start_work, '#start_work')
     });
 
     //当前状态
     $('.seeking-job').click(function() {
       this.blur()
       var seeking_job = ['目前正在找工作','半年内无换工作的计划', '一年内无换工作的计划', '观望有好的机会再考虑', '我暂时不想找工作'];
-      var pclass = 'seeking_job';
-      workExperience(seeking_job, ".seeking-job", pclass);
+      addComponent("#wrap", seeking_job, '#seeking_job')
     });
 
     // 城市插件再次点击删掉原来的

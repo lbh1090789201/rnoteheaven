@@ -182,3 +182,79 @@ function EmptyCont(input_id) {
       $("#IIInsomnia_city_picker").remove();
     }
   }
+
+
+  // 选择脚本插件
+  function addComponent(parent_class, options, input_id) {
+    var parent_class = parent_class || '.wrap';
+    var mask = $('<div id="pop_mask"></div>'),
+        mask_pop = $('<div class="pop-mask"></div>'),
+        box_1 = $('<div class="pop-box_1"></div>'),
+        box_2 = $('<div class="pop-box_2"></div>'),
+        button_div = $('<div class="pop-button"></div>')
+        parent = $(parent_class);
+
+    var title_text = $(input_id).siblings('label').text(),
+        index = title_text.indexOf('*');
+    if(index != -1) {
+      title_text = title_text.substring(index+1,title_text.length);
+    }
+
+    parent.append(mask);
+    mask.append(mask_pop);
+    mask_pop.append(box_1);
+    mask_pop.append(button_div);
+    box_1.append(box_2);
+    button_div.html('<button class="remove-btn" onClick="removePop()">取消</button><span>'+title_text+'</span>');
+    var button = $('<button class="success-btn">确定</button>');
+    button.attr('onClick',"successPop("+"'"+input_id+"'"+")");
+    button_div.append(button);
+    for(var i=0;i<options.length;i++) {
+      var p = $('<p class="pop-option" onclick="selectOption(this)"></p>');
+      p.text(options[i]);
+      box_2.append(p);
+    }
+  }
+
+  // 点击选项事件
+  function selectOption(e) {
+    $(e).addClass('p-on').siblings('p').removeClass('p-on');
+    $('.success-btn').css({'pointer-events':'auto','color':'#fff'});
+  }
+
+  // 取消按钮
+  function removePop() {
+    $('#pop_mask').remove();
+  }
+
+  // 确定按钮
+  function successPop(input_id) {
+    var p_text = $('.pop-box_2 > .p-on').text();
+    var input = $(input_id);
+    if(input.parent().attr('class') == 'job-endtime') {
+      $("#job_end").text(p_text);
+      switch(p_text){
+        case '１星期':
+          $("#job_duration").attr('value', '7')
+          break;
+        case '２星期':
+          $("#job_duration").attr('value', '14')
+          break;
+        case '半个月':
+          $("#job_duration").attr('value', '15')
+          break;
+        case '１个月':
+          $("#job_duration").attr('value', '31')
+          break;
+        case '２个月':
+          $("#job_duration").attr('value', '62')
+          break;
+        case '３个月':
+          $("#job_duration").attr('value', '93')
+          break;
+      }
+    }else{
+      input.attr('value', p_text)
+    }
+    $('#pop_mask').remove();
+  }

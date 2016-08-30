@@ -13,7 +13,8 @@
        },
        position: {
          required: true,
-         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
+         maxlength: 15,
+         pattern: '^[^ ]{0,15}$',
        },
        cellphone: {
          required: true,
@@ -124,7 +125,7 @@ function againClick() {
 
 
 // 选择脚本插件
-function addComponent(parent_class, options, input_id) {
+function addComponent(parent_class, options, input_id, boolean) {
   var parent_class = parent_class || '#wrap';
   var mask = $('<div id="pop_mask"></div>'),
       mask_pop = $('<div class="pop-mask"></div>'),
@@ -133,14 +134,18 @@ function addComponent(parent_class, options, input_id) {
       button_div = $('<div class="pop-button"></div>')
       parent = $(parent_class);
 
-  var title_text = $(input_id).siblings('label').text();
+  var title_text = $(input_id).siblings('label').text(),
+      index = title_text.indexOf('*');
+  if(index != -1) {
+    title_text = title_text.substring(index+1,title_text.length);
+  }
 
   parent.append(mask);
   mask.append(mask_pop);
   mask_pop.append(box_1);
   mask_pop.append(button_div);
   box_1.append(box_2);
-  button_div.html('<button class="remove-btn" onClick="removePop()">取消</button><span>'+title_text+'</span>');
+  button_div.html('<button class="remove-btn" onClick="removePop()">取消</button><span class="input-title">'+title_text+'</span>');
   var button = $('<button class="success-btn">确定</button>');
   button.attr('onClick',"successPop("+"'"+input_id+"'"+")");
   button_div.append(button);
@@ -149,19 +154,45 @@ function addComponent(parent_class, options, input_id) {
     p.text(options[i]);
     box_2.append(p);
   }
+  // 插入可填框
+  if(title_text == '职        称'){
+    title_text = '职称';
+  }
+
+  var boolean = boolean || false;
+  if(boolean) {
+    var p = $('<p class="pop-option"></p>');
+    p.html('<span class="option-other">其他</span><input type="text" class="importability" placeholder="请输入'+title_text+'" onClick="enterInput()" />');
+    box_2.append(p);
+  }
 }
 
+function enterInput(e) {
+  $('.success-btn').css({'pointer-events':'auto','color':'#fff'});
+  $('.pop-option').removeClass('p-on');
+}
+
+// 点击选项事件
 function selectOption(e) {
   $(e).addClass('p-on').siblings('p').removeClass('p-on');
   $('.success-btn').css({'pointer-events':'auto','color':'#fff'});
 }
 
+// 取消按钮
 function removePop() {
   $('#pop_mask').remove();
 }
 
+// 确定按钮
 function successPop(input_id) {
-  var p_text = $('.pop-box_2 > .p-on').text();
+  var p = $('.pop-box_2 > .p-on'),
+      p_text;
+  if(p.length == 0){
+     p_text = $('.importability').val();
+  }else{
+     p_text = $('.pop-box_2 > .p-on').text();
+  }
   $(input_id).attr('value', p_text);
   $('#pop_mask').remove();
+  $(input_id).blur();
 }
