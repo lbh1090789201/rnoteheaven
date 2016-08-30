@@ -6,7 +6,7 @@ class Api::ConnectAppController < ApiController
   protect_from_forgery :except => [:login_app, :get_hospital]
 
   def login_app
-    p "111111111111"
+    # http://120.27.142.6:8080/HealthComm/modelToken/getToken
     @res = RestClient.post "http://120.27.142.6:8080/HealthComm/modelToken/getToken",
                            {
                              userId: login_params[:userId],
@@ -25,7 +25,7 @@ class Api::ConnectAppController < ApiController
 
   def index
     user = User.find_by user_number: params[:userId]
-p "2222222222222"
+
     if user
       # 校检用户
       user = Role.checkUser user
@@ -65,7 +65,7 @@ p "2222222222222"
     def login_params
       params.permit(:userId, :target, :session, :seq)
     end
-
+# http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin
     def new_user token
       @user_info = RestClient.post "http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin",
                                     {
