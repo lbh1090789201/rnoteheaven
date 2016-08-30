@@ -24,7 +24,7 @@ class Api::ConnectAppController < ApiController
 
   def index
     user = User.find_by user_number: params[:userId]
-
+p "555555555555555555"
     if user
       # 校检用户
       user = Role.checkUser user
@@ -36,6 +36,7 @@ class Api::ConnectAppController < ApiController
         redirect_to employer_resumes_path
       end
     else
+      p "444444444444444"
       new_user params[:token]
     end
   end
