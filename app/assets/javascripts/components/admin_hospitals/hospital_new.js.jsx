@@ -262,7 +262,7 @@ var AdminHospitalMassNew = React.createClass({
       <div className="mask-user">
         <div className="user-box">
           <form onSubmit={this.handleSubmit} style={{'height':'100px'}} enctype="multipart/form-data">
-            <input type="file" name="hospital" accept=".csv" className="form-control" />
+            <input type="file" name="hospital" accept=".xlsx" className="form-control" />
             <button type="button" className="btn btn-secondary btn-bottom" onClick={this.handleClick}>取消</button>
             <button type="submit" className="btn btn-success btn-bottom">提交</button>
           </form>

@@ -25,6 +25,7 @@ gem 'remotipart'
 # gem 'responder', '~> 2.0'
 gem 'spreadsheet'
 # gem 'parseexcel'
+gem 'roo', '~> 2.4.0'
 
 #for admin console, discarded 20160530
 # gem 'activeadmin', '~> 1.0.0.pre1'

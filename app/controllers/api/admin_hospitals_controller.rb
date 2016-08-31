@@ -48,37 +48,40 @@ class Api::AdminHospitalsController < AdminController
         success: true,
         info: "批量创建机构成功！",
       }, status: 200
+
+
+
+
+      # hospitals_params
     end
 
     private
 
     def hospitals_params
-      tmp = params[:hospital]
-      # 读取csv文件
-      csv_text = File.read(tmp.path)
 
-      csv = CSV.parse(csv_text,:headers => true)
+      tmp = params[:hospital]
+
+      xlsx = Roo::Spreadsheet.open(tmp.path, extension: :xlsx)
 
       @hospitals = []
-      csv.each do |row|
-        hospital_text = row[0].to_s
-        array = hospital_text.split('@')
+      xlsx.each do |row|
         o = {
-          name: array[0],
-          contact_number: array[1],
-          contact_person: array[2],
-          property: array[3],
-          scale: array[4],
-          industry: array[5],
-          region: array[6],
-          location: array[7],
-          lng: array[8],
-          lat: array[9],
-          introduction: array[10],
-          vip_name: array[11],
+          name: row[0].to_s,
+          contact_number: row[1].to_s,
+          contact_person: row[2],
+          property: row[3].to_s,
+          scale: row[4].to_s,
+          industry: row[5].to_s,
+          region: row[6].to_s,
+          location: row[7].to_s,
+          lng: row[8].to_s,
+          lat: row[9].to_s,
+          introduction: row[10].to_s,
+          vip_name: row[11].to_s,
         }
         @hospitals.push o
       end
+      @hospitals.shift
       return @hospitals
     end
 end
