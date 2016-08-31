@@ -67,7 +67,6 @@ class Api::ConnectAppController < ApiController
     end
 # http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin
     def new_user token
-      p "1111111111111"
       logger.info('token:' + token)
       @user_info = RestClient.post "http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin",
                                     {
@@ -78,7 +77,6 @@ class Api::ConnectAppController < ApiController
 
       logger.info('token_test:' + @user_info.to_json.to_s)
       logger.info('token_test:' + params[:lat].to_s+'----'+params[:lng].to_s)
-      p "222222222222222"
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
       else
@@ -113,7 +111,10 @@ class Api::ConnectAppController < ApiController
 
       sign_in(user)
 
-      to_url = params[:to] == 'fair' ? webapp_job_fairs_path : "/webapp/home?lat=#{params[:lat]}&lng=#{params[:lng]}"
+      lat = params[:lat].blank? ? 39.983424 : params[:lat]
+      lng = params[:lng].blank? ? 116.322987 : params[:lng]
+
+      to_url = params[:to] == 'fair' ? webapp_job_fairs_path : "/webapp/home?lat=#{lat}&lng=#{lng}"
       redirect_to to_url
     end
 
