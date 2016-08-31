@@ -32,7 +32,7 @@ class Api::ConnectAppController < ApiController
       sign_in(user)
 
       if user.user_type == "copper"
-        redirect_to copper_home # 查看底部
+        redirect_to copper_home # 查看底部1
       elsif user.user_type == "gold"
         redirect_to employer_resumes_path
       end
