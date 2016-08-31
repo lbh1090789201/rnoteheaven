@@ -76,7 +76,7 @@ class Api::ConnectAppController < ApiController
       @user_info = JSON.parse(@user_info)
 
 
-      logger.info('token_test:' + @user_info)
+      logger.info('token_test:' + @user_info.to_json.to_s)
       p "222222222222222"
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
