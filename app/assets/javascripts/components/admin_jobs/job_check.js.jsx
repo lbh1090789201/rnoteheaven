@@ -121,7 +121,7 @@ var ReviewJob = React.createClass({
       let id = e.target.id
       myDatePicker(id, 'time_begin', 'time_end')
     }
-  //点击搜索提交按钮事件
+  //点击搜索提交按钮事件1
   ,handleSubmit: function(e){
     e.preventDefault()
     if(invalid('#form_job_check')) return // 不合法就返回
