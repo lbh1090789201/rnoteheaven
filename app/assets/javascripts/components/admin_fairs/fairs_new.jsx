@@ -8,15 +8,20 @@ var FairNew = React.createClass({
   }
   ,componentDidMount: function() {
     formFair('#form_fair_new')
+
+    $('.preview-img').on('click', function(){
+      $(".upload-file").trigger('click')
+    })
   }
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
-    this.setState({
-      divStyle: {
-        backgroundImage: 'url(' + url + ')',
-      }
-    })
+    // this.setState({
+    //   divStyle: {
+    //     backgroundImage: 'url(' + url + ')',
+    //   }
+    // })
+    $('.preview-img').css('background-image', 'url(' + url + ')')
 
     myInfo('图片上传成功！', 'success')
   }
@@ -91,8 +96,9 @@ var FairNew = React.createClass({
 
             <div className="form-group col-sm-12">
                <label>上传图片</label>
-               <input type="file" className="form-control preview-img" onChange={this.handleChange}
-                      required style={this.state.divStyle} name="banner" ref="banner" />
+               <input type="file" style={{'display':'none'}} className="form-control upload-file" onChange={this.handleChange}
+                      required name="banner" ref="banner" />
+                    <div className="preview-img"></div>
             </div>
 
             <input className="hidden" name="status" defaultValue="processing" />

@@ -103,7 +103,7 @@ var FairEdit = React.createClass({
 
             <div className="form-group">
                <label>修改图片</label>
-               <input type="file" className="form-control preview-img" onChange={this.handleChange}
+               <input type="file" className="form-control" onChange={this.handleChange}
                       style={this.state.divStyle} name="banner" ref="banner" />
             </div>
 
