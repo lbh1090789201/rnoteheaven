@@ -67,7 +67,6 @@ class Api::ConnectAppController < ApiController
     end
 # http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin
     def new_user token
-      logger.info('token:' + token)
       @user_info = RestClient.post "http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin",
                                     {
                                       token: token
