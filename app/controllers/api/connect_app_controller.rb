@@ -76,7 +76,6 @@ class Api::ConnectAppController < ApiController
 
 
       logger.info('token_test:' + @user_info.to_json.to_s)
-      logger.info('token_test:' + params[:lat].to_s+'----'+params[:lng].to_s)
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
       else
@@ -113,6 +112,7 @@ class Api::ConnectAppController < ApiController
 
       lat = params[:lat].blank? ? 39.983424 : params[:lat]
       lng = params[:lng].blank? ? 116.322987 : params[:lng]
+      logger.info('token_test:' + lat.to_s+'----'+lng.to_s)
 
       to_url = params[:to] == 'fair' ? webapp_job_fairs_path : "/webapp/home?lat=#{lat}&lng=#{lng}"
       redirect_to to_url
