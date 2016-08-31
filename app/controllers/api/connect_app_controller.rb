@@ -30,9 +30,9 @@ class Api::ConnectAppController < ApiController
       # 校检用户
       user = Role.checkUser user
       sign_in(user)
-      p "555555555555555"
 
       if user.user_type == "copper"
+        logger.info('token_test:' + params[:token])
         redirect_to copper_home # 查看底部1
       elsif user.user_type == "gold"
         redirect_to employer_resumes_path
