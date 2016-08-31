@@ -143,6 +143,7 @@ class Api::ConnectAppController < ApiController
       if params[:to] == 'fair'
         to_url = webapp_job_fairs_path
       elsif params[:lat] && params[:lng]
+        logger.info('token_test:' + params[:lat].to_s+'----'+params[:lng].to_s)
         to_url = "/webapp/home?lat=#{params[:lat]}&lng=#{params[:lng]}"
       else
         to_url = "/webapp/home"
