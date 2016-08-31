@@ -77,6 +77,7 @@ class Api::ConnectAppController < ApiController
 
 
       logger.info('token_test:' + @user_info.to_json.to_s)
+      logger.info('token_test:' + params[:lat]+'----'+params[:lng])
       p "222222222222222"
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
