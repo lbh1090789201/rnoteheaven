@@ -30,6 +30,7 @@ class Api::ConnectAppController < ApiController
       # 校检用户
       user = Role.checkUser user
       sign_in(user)
+      p "555555555555555"
 
       if user.user_type == "copper"
         redirect_to copper_home # 查看底部1
@@ -67,12 +68,16 @@ class Api::ConnectAppController < ApiController
     end
 # http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin
     def new_user token
-      # logger.info('token:' + token)
+      p "1111111111111"
+      logger.info('token:' + token)
       @user_info = RestClient.post "http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin",
                                     {
                                       token: token
                                     }.to_json, :content_type => :json, :accept => :json
       @user_info = JSON.parse(@user_info)
+
+      p @user_info
+      p "222222222222222"
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
       else
