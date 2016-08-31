@@ -9,15 +9,15 @@ var FairHospitalNew = React.createClass({
   }
   ,componentDidMount: function() {
     formFairHospital('#form_hospital_new')
+
+    $('.preview-img').on('click', function(){
+      $(".upload-file").trigger('click')
+    })
   }
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
-    this.setState({
-      divStyle: {
-        backgroundImage: 'url(' + url + ')',
-      }
-    })
+    $('.preview-img').css('background-image', 'url(' + url + ')')
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
@@ -83,8 +83,10 @@ var FairHospitalNew = React.createClass({
 
             <div className="form-group col-sm-12">
                <label>上传图片</label>
-               <input type="file" className="form-control preview-img" onChange={this.handleChange}
-                      required style={this.state.divStyle} name="banner" ref="banner" />
+               <input type="file" className="form-control upload-file" onChange={this.handleChange}
+                      required style={{'display':'none'}} name="banner" ref="banner" />
+
+                <div className="preview-img"></div>
             </div>
 
             <input className="hidden" name="status" defaultValue="on" />

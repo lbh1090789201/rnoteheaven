@@ -11,15 +11,16 @@ var FairHospitalEdit = React.createClass({
   }
   ,componentDidMount: function() {
     formFairHospital('#form_hospital_edit')
+
+    $('.show-img').on('click', function(){
+      console.log('11111')
+      $(".edit-file").trigger('click')
+    })
   }
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
-    this.setState({
-      divStyle: {
-        backgroundImage: 'url(' + url + ')',
-      }
-    })
+    $('.show-img').css('background-image', 'url(' + url + ')')
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
@@ -91,8 +92,10 @@ var FairHospitalEdit = React.createClass({
 
             <div className="form-group col-sm-12">
                <label>上传图片</label>
-               <input type="file" className="form-control preview-img" onChange={this.handleChange}
-                      style={this.state.divStyle} name="banner" ref="banner" />
+               <input type="file" className="form-control edit-file" onChange={this.handleChange}
+                      style={{'display':'none'}} name="banner" ref="banner" />
+
+              <div className="show-img" style={{"backgroundImage":'url('+this.props.dad.state.fair_hospital.banner.url+')'}}></div>
             </div>
 
             <button type="button" className="btn btn-bottom btn-secondary"

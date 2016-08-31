@@ -10,15 +10,16 @@ var FairEdit = React.createClass({
   }
   ,componentDidMount: function() {
     formFair('#form_fair_edit')
+
+    $('.show-img').on('click', function(){
+      console.log('11111')
+      $(".edit-file").trigger('click')
+    })
   }
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
-    this.setState({
-      divStyle: {
-        backgroundImage: 'url(' + url + ')',
-      }
-    })
+    $('.show-img').css('background-image', 'url(' + url + ')')
   }
   ,handleRadio: function(e) {
     this.setState({
@@ -103,8 +104,10 @@ var FairEdit = React.createClass({
 
             <div className="form-group">
                <label>修改图片</label>
-               <input type="file" className="form-control" onChange={this.handleChange}
-                      style={this.state.divStyle} name="banner" ref="banner" />
+               <input type="file" className="form-control edit-file" onChange={this.handleChange}
+                      style={{'display':'none'}} name="banner" ref="banner" />
+
+                <div className="show-img" style={{"backgroundImage":'url('+this.props.dad.state.fair.banner.url+')'}}></div>
             </div>
 
             <FairEditRadio handleRadio={this.handleRadio} status={fair.status} />

@@ -16,11 +16,6 @@ var FairNew = React.createClass({
   ,handleChange: function(e) {
     let url = URL.createObjectURL(e.target.files[0])
 
-    // this.setState({
-    //   divStyle: {
-    //     backgroundImage: 'url(' + url + ')',
-    //   }
-    // })
     $('.preview-img').css('background-image', 'url(' + url + ')')
 
     myInfo('图片上传成功！', 'success')
@@ -98,7 +93,7 @@ var FairNew = React.createClass({
                <label>上传图片</label>
                <input type="file" style={{'display':'none'}} className="form-control upload-file" onChange={this.handleChange}
                       required name="banner" ref="banner" />
-                    <div className="preview-img"></div>
+               <div className="preview-img"></div>
             </div>
 
             <input className="hidden" name="status" defaultValue="processing" />
