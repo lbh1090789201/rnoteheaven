@@ -26,6 +26,7 @@ class Api::ConnectAppController < ApiController
   def index
     logger.info('token_test:' + params[:userId].to_s+'----22222222222222')
     user = User.find_by user_number: params[:userId]
+    logger.info('用户:' + user.to_json.to_s+'----22222222222222')
 
     if user
       # 校检用户
