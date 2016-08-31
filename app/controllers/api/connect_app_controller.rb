@@ -114,7 +114,7 @@ class Api::ConnectAppController < ApiController
 
       lat = params[:lat].blank? ? 39.983424 : params[:lat]
       lng = params[:lng].blank? ? 116.322987 : params[:lng]
-      logger.info('token_test:' + lat.to_s+'----'+lng.to_s)
+      logger.info('token_test:' + lat.to_s+'----22222222222'+lng.to_s)
 
       to_url = params[:to] == 'fair' ? webapp_job_fairs_path : "/webapp/home?lat=#{lat}&lng=#{lng}"
       redirect_to to_url
