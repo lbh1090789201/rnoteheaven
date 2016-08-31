@@ -24,12 +24,15 @@ class Api::ConnectAppController < ApiController
   end
 
   def index
+    logger.info('token_test:' + params[:userId].to_s+'----22222222222222')
     user = User.find_by user_number: params[:userId]
 
     if user
       # 校检用户
       user = Role.checkUser user
       sign_in(user)
+
+      logger.info('token_test:' + params[:lat].to_s+'----'+params[:lng].to_s)
 
       if user.user_type == "copper"
         redirect_to copper_home # 查看底部1
