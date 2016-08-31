@@ -32,7 +32,6 @@ class Api::ConnectAppController < ApiController
       sign_in(user)
 
       if user.user_type == "copper"
-        logger.info('token_test:' + params[:token])
         redirect_to copper_home # 查看底部1
       elsif user.user_type == "gold"
         redirect_to employer_resumes_path
@@ -76,7 +75,8 @@ class Api::ConnectAppController < ApiController
                                     }.to_json, :content_type => :json, :accept => :json
       @user_info = JSON.parse(@user_info)
 
-      p @user_info
+
+      logger.info('token_test:' + @user_info)
       p "222222222222222"
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
