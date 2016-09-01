@@ -1,5 +1,6 @@
 //= require slider
 //= require mobiscroll.custom-3.0.0-beta4.min
+//= require jedate.min
 
 /********************** 表单验证 **********************/
  function formAll(id) {
@@ -196,4 +197,45 @@ function successPop(input_id) {
   $(input_id).attr('value', p_text);
   $('#pop_mask').remove();
   $(input_id).blur();
+}
+
+
+// 判断时间插件 今天按钮是否需置灰
+function preventClick(beginTime_id,endTime_id) {
+  $("#beginTime").on('click', function(){
+    var timer = setTimeout(function(){
+      var end_time = $("#endTime").val(),
+          begin_time = $("#beginTime").val(),
+          toDate = new Date(),
+          year = toDate.getFullYear(),
+          month = toDate.getMonth()+1,
+          day = toDate.getDate(),
+          ToNumber = year*365+month*30+day;
+
+      if(end_time != ''){
+        end_time = parseInt(end_time.substring(0,4))*365 + parseInt(end_time.substring(5,7))*30 + parseInt(end_time.substring(8,10))
+        if(end_time < ToNumber) {
+          $('.jedatebtn > .jedatetodaymonth').css({'pointer-events':'none','background-color':'#c2c2c2'})
+        }
+      }
+    },50)
+  })
+  $("#endTime").on('click', function(){
+    var timer = setTimeout(function(){
+      var end_time = $("#endTime").val(),
+          begin_time = $("#beginTime").val(),
+          toDate = new Date(),
+          year = toDate.getFullYear(),
+          month = toDate.getMonth()+1,
+          day = toDate.getDate(),
+          ToNumber = year*365+month*30+day;
+
+      if(begin_time != ''){
+        begin_time = parseInt(begin_time.substring(0,4))*365 + parseInt(begin_time.substring(5,7))*30 + parseInt(begin_time.substring(8,10))
+        if(begin_time > ToNumber) {
+          $('.jedatebtn > .jedatetodaymonth').css({'pointer-events':'none','background-color':'#c2c2c2'})
+        }
+      }
+    },50)
+  })
 }

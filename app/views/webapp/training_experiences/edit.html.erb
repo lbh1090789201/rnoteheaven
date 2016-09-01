@@ -1,6 +1,6 @@
-<% provide :title, "编辑工作经历" %>
+<% provide :title, "编辑培训经历" %>
 
-<div class="edit_basic edit-work-experiences work-edit-page work-mask" id="work_eidt">
+<div class="edit_basic edit-work-experiences work-edit-page work-mask train-edit" id="work_eidt">
     <%= simple_form_for @training_experience, :method => :patch, remote: true, url: webapp_training_experience_path(params[:id]), class: "form-btn-submit" do |f| %>
     <div class="job-pubilc">
       <%= f.input :name, label: "培训名称", input_html: { class: "user-input", id: "train_name", name: "name"} %>
@@ -16,11 +16,12 @@
       <p class="btm-delete" onclick="ClickShowHide(this)">删除此经历</p>
       <p class="btm-save">保存</p>
     </div>
+    <div class="datePlugin" style="clear: both"></div>
     <% end %>
     <%= link_to "删除此经历", webapp_training_experience_path(params[:id]), method: :delete, remote: true, id: "delete_bottom_id"%>
 
     <!-- 时间代码生成处 -->
-　　　<div id="datePlugin"></div>
+　　　<div id="datePlugin" style="clear: both"></div>
 </div>
 
 <div id="popup_delete">
@@ -43,22 +44,36 @@
   formAll("#work_eidt form")
 
    $(function () {
-     $('#beginTime').mobiscroll().calendar({
-         theme: 'mobiscroll',
-         lang: 'zh',
-         display: 'bottom',
-         calendarScroll: 'vertical',
-         max: new Date()
-     });
-
-     $('#endTime').mobiscroll().calendar({
-         theme: 'mobiscroll',
-         lang: 'zh',
-         display: 'bottom',
-         calendarScroll: 'vertical',
-         max: new Date()
-     });
+    //  $('#beginTime').mobiscroll().calendar({
+    //      theme: 'mobiscroll',
+    //      lang: 'zh',
+    //      display: 'bottom',
+    //      calendarScroll: 'vertical',
+    //      max: new Date()
+    //  });
+     //
+    //  $('#endTime').mobiscroll().calendar({
+    //      theme: 'mobiscroll',
+    //      lang: 'zh',
+    //      display: 'bottom',
+    //      calendarScroll: 'vertical',
+    //      max: new Date()
+    //  });
   })
+
+  // function selectDate() {
+  //   console.log("11111")
+  //   jeDate({
+  //     dateCell: "#beginTime",
+  //     format: "YYYY-MM-DD",
+  //     isTime: true,
+  //     isinitVal: true,
+  //     isClick: false,
+  //     // minDate:"2014-09-19 00:00:00"
+  //     maxDate: "2016-09-19 00:00:00",
+  //     // fixed: false,
+  //   })
+  // }
 
 
    $(".btm-save").on('click',function() {

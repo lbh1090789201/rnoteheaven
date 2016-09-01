@@ -1,6 +1,7 @@
 @import "yunkang";
 @import "slider";
 @import "mobiscroll.custom-3.0.0-beta4.min";
+@import "jedate";
 
 // 验证表单
 .has-error {
@@ -408,4 +409,29 @@
       border: none !important;
     }
   }
+}
+
+// 培训经历
+.train-edit {
+  padding-bottom: 3.2rem;
+  .form-group:nth-of-type(5) {
+    // height: 11rem !important;
+  }
+}
+
+// 时间插件样式
+.out-jedate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6)
+}
+#jedatebox {
+  position: fixed;
+  bottom: 0 !important;
+  left: 0 !important;
+  display: block;
+  z-index: 999;
 }
