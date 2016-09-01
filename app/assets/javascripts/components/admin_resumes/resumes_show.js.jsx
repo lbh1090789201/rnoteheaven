@@ -100,6 +100,21 @@ var ResumeContent = React.createClass({
           </div>
         </section>
 
+        <section className="resume-show resumes-preview-public" id="preview_resume">
+          <h1>培训经历</h1>
+          <div className="wrap resumes-preview-bg public-preview-style work-try">
+            {
+              resume.training_experiences.map(
+                function(training_experience) {
+                  return (
+                    <TrainingExperience key={training_experience.id} info={training_experience} />
+                  )
+                }
+              )
+            }
+          </div>
+        </section>
+
         <section className="resume-show resumes-preview-public">
             <h1>持有证书
             </h1>
@@ -226,6 +241,27 @@ var EducationExperience = React.createClass({
           </h3>
           <p>
             <span>{resume.education_degree}</span>，<span>{resume.major}</span>
+          </p>
+        </div>
+      </div>
+    )
+  }
+})
+
+/**********培训经历展示组件*****************/
+var TrainingExperience = React.createClass({
+  render: function() {
+    let resume = this.props.info
+    return (
+      <div className="box">
+        <div className="green-point"></div>
+        <time>{resume.started_at? resume.started_at.slice(0,10) : ""} - {resume.ended_at? resume.ended_at.slice(0,10) : ""}</time>
+        <div className="time-line-box work-time">
+          <h3>{resume.name}
+          </h3>
+          <span className="train-certificate">{resume.certificate}</span>
+          <p>
+            {resume.desc}
           </p>
         </div>
       </div>

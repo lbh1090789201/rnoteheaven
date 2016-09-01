@@ -93,6 +93,7 @@ class Resume < ActiveRecord::Base
     user = User.find resume.user_id
     education_experiences = EducationExperience.where(user_id: user.id)
     work_experiences = WorkExperience.where(user_id: user.id)
+    training_experiences = TrainingExperience.where(user_id: user.id)
     certificates = Certificate.where(user_id: user.id)
     expect_job = ExpectJob.find_by user_id: user.id
     apply_count = ApplyRecord.where(user_id: user.id).length
@@ -112,6 +113,7 @@ class Resume < ActiveRecord::Base
       education_experiences: education_experiences,
       work_experiences: work_experiences,
       certificates: certificates,
+      training_experiences: training_experiences,
       avatar: avatar,
     }
     return @resume

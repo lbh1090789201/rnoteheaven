@@ -7,7 +7,7 @@ class Api::ConnectAppController < ApiController
 
   def login_app
     # http://120.27.142.6:8080/HealthComm/modelToken/getToken
-    @res = RestClient.post "http://120.27.142.6:8080/HealthComm/modelToken/getToken",
+    @res = RestClient.post "http://119.97.224.253:9014/HealthComm/modelToken/getToken",
                            {
                              userId: login_params[:userId],
                              target: login_params[:target],
@@ -71,7 +71,7 @@ class Api::ConnectAppController < ApiController
     end
 # http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin
     def new_user token
-      @user_info = RestClient.post "http://120.27.142.6:8080/HealthComm/modelToken/accreditLogin",
+      @user_info = RestClient.post "http://119.97.224.253:9014/HealthComm/modelToken/accreditLogin",
                                     {
                                       token: token
                                     }.to_json, :content_type => :json, :accept => :json

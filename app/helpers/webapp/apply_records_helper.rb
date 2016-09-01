@@ -1,7 +1,7 @@
 module Webapp::ApplyRecordsHelper
   # 获取数据
   def get_apply_records(user_id)
-    ars = ApplyRecord.where(user_id: user_id)
+    ars = ApplyRecord.where(user_id: user_id).order('created_at DESC')
     apply_records = []
     ars.each do |ar|
       job = Job.find_by_id ar.job_id

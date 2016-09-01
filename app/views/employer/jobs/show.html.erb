@@ -28,7 +28,7 @@
         <li><span>性质     </span><%= @hospital.property %><p><span class="job-scale">规模</span><%= @hospital.scale %></p></li>
         <li><span>地区     </span><%= @job.region %><p><span class="job-number">人数</span><%= @job.needed_number %>人</p></li>
         <li><span>经验要求</span>   <%= @job.experience %><p><span>学历要求</span><%= @job.degree_demand %></p></li>
-        <li><span>招募类型</span>   <%= @job.recruit_type %></li>
+        <li><span>招聘类型</span>   <%= @job.recruit_type %></li>
       </ul>
     </div>
     <div class="job-place"><a href="http://api.map.baidu.com/marker?location=<%= @hospital.lat %>,<%= @hospital.lng %>&title=<%= @hospital.name %>&content=<%= @job.location %>&output=html"><span>工作地点</span><%= @job.location %><%= image_tag "jobright.png" %></a></div>
