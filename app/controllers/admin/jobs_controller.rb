@@ -21,6 +21,12 @@ class Admin::JobsController < AdminController
       }, status: 200
     else
       jobs = Job.where.not(status: ['reviewing', 'saved'])
+      jobs.each do |j|
+        if j.status == 'release' || j.status == 'pause'
+          j.status = 'end' if Time.now > j.end_at
+          j.save
+        end
+      end
       @jobs = Job.get_job_info jobs
       @jobs = Kaminari.paginate_array(@jobs).page(params[:page]).per(8)
     end
