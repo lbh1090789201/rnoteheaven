@@ -202,7 +202,8 @@ function successPop(input_id) {
 
 // 判断时间插件 今天按钮是否需置灰
 function preventClick(beginTime_id,endTime_id) {
-  $("#beginTime").on('click', function(){
+  $(beginTime_id).on('click', function(){
+    $(this).blur();
     var timer = setTimeout(function(){
       var end_time = $("#endTime").val(),
           begin_time = $("#beginTime").val(),
@@ -220,7 +221,8 @@ function preventClick(beginTime_id,endTime_id) {
       }
     },50)
   })
-  $("#endTime").on('click', function(){
+  $(endTime_id).on('click', function(){
+    $(this).blur();
     var timer = setTimeout(function(){
       var end_time = $("#endTime").val(),
           begin_time = $("#beginTime").val(),
