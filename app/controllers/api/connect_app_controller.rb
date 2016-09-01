@@ -24,16 +24,12 @@ class Api::ConnectAppController < ApiController
   end
 
   def index
-    logger.info('token_test:' + params[:userId].to_s+'----22222222222222')
     user = User.find_by user_number: params[:userId]
-    logger.info('用户:' + user.to_json.to_s+'----22222222222222')
 
     if user
       # 校检用户
       user = Role.checkUser user
       sign_in(user)
-
-      logger.info('token_test:' + params[:lat].to_s+'----'+params[:lng].to_s)
 
       if user.user_type == "copper"
         redirect_to copper_home # 查看底部1
@@ -77,8 +73,6 @@ class Api::ConnectAppController < ApiController
                                     }.to_json, :content_type => :json, :accept => :json
       @user_info = JSON.parse(@user_info)
 
-
-      logger.info('token_test:' + @user_info.to_json.to_s+"33333333333333")
       if @user_info["responseCode"] == "200"
         auto_login @user_info["userInfo"]
       else
@@ -115,7 +109,6 @@ class Api::ConnectAppController < ApiController
 
       lat = params[:lat].blank? ? 39.983424 : params[:lat]
       lng = params[:lng].blank? ? 116.322987 : params[:lng]
-      logger.info('token_test:' + lat.to_s+'----22222222222'+lng.to_s)
 
       to_url = params[:to] == 'fair' ? webapp_job_fairs_path : "/webapp/home?lat=#{lat}&lng=#{lng}"
       redirect_to to_url
@@ -147,8 +140,10 @@ class Api::ConnectAppController < ApiController
       if params[:to] == 'fair'
         to_url = webapp_job_fairs_path
       elsif params[:lat] && params[:lng]
-        logger.info('token_test:' + params[:lat].to_s+'----55555555'+params[:lng].to_s)
-        to_url = "/webapp/home?lat=#{params[:lat]}&lng=#{params[:lng]}"
+        lat = params[:lat].blank? ? 39.983424 : params[:lat]
+        lng = params[:lng].blank? ? 116.322987 : params[:lng]
+
+        to_url = "/webapp/home?lat=#{lat}&lng=#{lng}"
       else
         to_url = "/webapp/home"
       end

@@ -11,7 +11,6 @@ class Employer::JobsController < ApplicationController
     @hospital = Employer.get_hospital current_user.id
     @jobs = Job.where(hospital_id: @hospital.id).where.not(status: 'delete')
 
-    # p @jobs
     @jobs.each do |f|
       if f.status == 'release' || f.status == 'pause'
         f.status = "end" if (Time.now > f.end_at)
