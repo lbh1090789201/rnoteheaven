@@ -57,17 +57,15 @@
     var timer = setTimeout(function(){$('body').scrollTop(height)},1)
   })
 
-  // 时间插件
-   $(function () {
-     $('#birthday').mobiscroll().calendar({
-         theme: 'mobiscroll',
-         lang: 'zh',
-         display: 'bottom',
-         calendarScroll: 'vertical',
-         // min: new Date(2014, 8, 15),
-         max: new Date()
-     });
-  })
+  var start = {
+      dateCell: '#birthday',
+      format: 'YYYY-MM-DD',
+      minDate: '1900-01-01', //设定最小日期为当前日期
+      maxDate: jeDate.now(0),
+      ishmsVal:false,
+      // maxDate: '2099-06-30', //最大日期
+  };
+  jeDate(start);
 
 　　//性别
     $('.user-sex').click(function() {

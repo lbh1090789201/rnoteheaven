@@ -43,49 +43,38 @@
   // 表单验证
   formAll("#work_eidt form")
 
-   $(function () {
-    //  $('#beginTime').mobiscroll().calendar({
-    //      theme: 'mobiscroll',
-    //      lang: 'zh',
-    //      display: 'bottom',
-    //      calendarScroll: 'vertical',
-    //      max: new Date()
-    //  });
-     //
-    //  $('#endTime').mobiscroll().calendar({
-    //      theme: 'mobiscroll',
-    //      lang: 'zh',
-    //      display: 'bottom',
-    //      calendarScroll: 'vertical',
-    //      max: new Date()
-    //  });
-  })
+  var start = {
+      dateCell: '#beginTime',
+      format: 'YYYY-MM-DD',
+      minDate: '1900-01-01', //设定最小日期为当前日期
+      ishmsVal:false,
+      maxDate: '2099-06-30', //最大日期
+      choosefun: function(elem,datas){
+          //console.log(datas)
+          end.minDate = datas; //开始日选好后，重置结束日的最小日期
+      }
+  };
+  var end = {
+      dateCell: '#endTime',
+      format: 'YYYY-MM-DD',
+      minDate: '1900-01-01', //设定最小日期为当前日期
+      ishmsVal:false,
+      maxDate: '2099-06-16', //最大日期
+      choosefun: function(elem,datas){
+          //console.log(end.minDate)
+          start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+      }
+  };
+  jeDate(start);
+  jeDate(end);
 
-  // function selectDate() {
-  //   console.log("11111")
-  //   jeDate({
-  //     dateCell: "#beginTime",
-  //     format: "YYYY-MM-DD",
-  //     isTime: true,
-  //     isinitVal: true,
-  //     isClick: false,
-  //     // minDate:"2014-09-19 00:00:00"
-  //     maxDate: "2016-09-19 00:00:00",
-  //     // fixed: false,
-  //   })
-  // }
-
+  // 判断时间插件 今天按钮是否需置灰
+  preventClick("#beginTime", "#endTime");
 
    $(".btm-save").on('click',function() {
      // 验证表单,失败返回
      if(valid("#work_eidt form")){
        return
-     }
-
-     // 判断开始时间是否大于结束时间
-     var data_compare = dataCompare();
-     if(data_compare) {
-       return;
      }
 
      $(".btm-save").css("pointer-events","none");

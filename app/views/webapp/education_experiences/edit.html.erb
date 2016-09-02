@@ -49,12 +49,6 @@
       return
     }
 
-    // 判断开始时间是否大于结束时间
-    var data_compare = dataCompare();
-    if(data_compare) {
-      return;
-    }
-
     $("#btn_save").css("pointer-events","none");
     $(':submit').trigger('click');
   })
@@ -67,35 +61,31 @@
   });
   $('.right').css("display","none");
 
- //时间插件
- // $(function(){
- //    $('#beginTime').date(null, function(datestr) {
- //      beginBack(datestr, 'beginTime', 'endTime')
- //    })
- //
- //    $('#endTime').date(null, function(datestr) {
- //      endBack(datestr, 'beginTime', 'endTime')
- //    })
- //  })
+  var start = {
+      dateCell: '#beginTime',
+      format: 'YYYY-MM-DD',
+      minDate: '1900-01-01', //设定最小日期为当前日期
+      ishmsVal:false,
+      maxDate: '2099-06-30', //最大日期
+      choosefun: function(elem,datas){
+          //console.log(datas)
+          end.minDate = datas; //开始日选好后，重置结束日的最小日期
+      }
+  };
+  var end = {
+      dateCell: '#endTime',
+      format: 'YYYY-MM-DD',
+      minDate: '1900-01-01', //设定最小日期为当前日期
+      ishmsVal:false,
+      maxDate: '2099-06-16', //最大日期
+      choosefun: function(elem,datas){
+          //console.log(end.minDate)
+          start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+      }
+  };
+  jeDate(start);
+  jeDate(end);
 
-
- $(function () {
-   $('#beginTime').mobiscroll().calendar({
-       theme: 'mobiscroll',
-       lang: 'zh',
-       display: 'bottom',
-       calendarScroll: 'vertical',
-       // min: new Date(2014, 8, 15),
-       max: new Date()
-   });
-
-   $('#endTime').mobiscroll().calendar({
-       theme: 'mobiscroll',
-       lang: 'zh',
-       display: 'bottom',
-       calendarScroll: 'vertical',
-       // min: new Date($('#beginTime').val()),
-       max: new Date()
-   });
-})
+  // 判断时间插件 今天按钮是否需置灰
+  preventClick("#beginTime", "#endTime");
 </script>

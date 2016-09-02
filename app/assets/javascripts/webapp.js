@@ -1,5 +1,4 @@
 //= require slider
-//= require mobiscroll.custom-3.0.0-beta4.min
 //= require jedate.min
 
 /********************** 表单验证 **********************/
