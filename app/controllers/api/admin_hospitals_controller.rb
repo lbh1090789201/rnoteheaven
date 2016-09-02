@@ -14,6 +14,7 @@ class Api::AdminHospitalsController < AdminController
         reg_length = /^.{0,15}$/
         reg_lng = /^[+-]?\d+(\.\d+)?$/
         reg_vip_name = /^.{1,10}$/
+        reg_location = /^.{0,50}$/
 
         if reg_pattern.match(h[:name]).nil? || reg_length.match(h[:name]).nil?
           render json: {
@@ -71,7 +72,7 @@ class Api::AdminHospitalsController < AdminController
           return
         end
 
-        if reg_length.match(h[:location]).nil?
+        if reg_location.match(h[:location]).nil?
           render json: {
             success: false,
             info: "第"+ i.to_s + "行的地址格式不对!",

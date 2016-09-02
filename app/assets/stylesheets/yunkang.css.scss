@@ -345,6 +345,9 @@ a:hover {
                 margin: 0.3rem 0 0.5rem 0;
                 color: #232323;
               }
+              p {
+                word-break: break-all;
+              }
               .train-certificate {
                 display: block;
                 margin: -0.2rem 0 0.3rem 0;

@@ -49,6 +49,12 @@
       return
     }
 
+    // 判断开始时间是否大于结束时间
+    var data_compare = dataCompare();
+    if(data_compare) {
+      return;
+    }
+
     $("#btn_save").css("pointer-events","none");
     $(':submit').trigger('click');
   })
