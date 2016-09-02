@@ -3,7 +3,9 @@ class Webapp::SearchsController < ApplicationController
   helper_method :get_searchs
 
   def index
-    
+    @params = params[:index]
+    logger.info('token_test:' + @params.to_s)
+    logger.info('token_test:' + "22222222222222222222")
     if params[:search]
       jobs = Job.filter_job_status("release")
                 .filter_job_name(params[:name])

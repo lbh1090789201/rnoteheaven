@@ -1,6 +1,12 @@
 <% if params[:hospital] %>
   <%= provide :title, "职位详情" %>
 <% else %>
+<script>
+  <% if params[:home] %>
+    set_back("/webapp/searchs?index=search");
+  <% end %>
+</script>
+
 <div class="job-head">
   <div>
     <a class="job-page" onclick="job_page()" id="job_page">职位详情</a>
