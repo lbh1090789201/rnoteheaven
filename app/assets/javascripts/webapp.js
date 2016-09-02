@@ -69,12 +69,10 @@
       certificate: {
         required: false,
         maxlength: 30,
-        pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
       },
       desc: {
         required: false,
         maxlength: 500,
-        pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
       },
      },
      errorPlacement: function(error, element) {

@@ -1,4 +1,4 @@
-var AdminHospital = React.createClass({
+  var AdminHospital = React.createClass({
   getInitialState: function() {
     return {
       hospitals: this.props.data,

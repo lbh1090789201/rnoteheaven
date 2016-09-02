@@ -191,7 +191,6 @@ var ReviewJob = React.createClass({
               <option value="公共卫生/疾病控制">公共卫生/疾病控制</option>
               <option value="护理主任/护士长">护理主任/护士长</option>
               <option value="护士/护理人员">护士/护理人员</option>
-              <option value="兽医">兽医</option>
               <option value="验光师">验光师</option>
               <option value="其他">工作类型</option>
             </select>
