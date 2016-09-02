@@ -3,6 +3,7 @@ class Webapp::SearchsController < ApplicationController
   helper_method :get_searchs
 
   def index
+    
     if params[:search]
       jobs = Job.filter_job_status("release")
                 .filter_job_name(params[:name])
