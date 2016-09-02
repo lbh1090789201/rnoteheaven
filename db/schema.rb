@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824073404) do
+ActiveRecord::Schema.define(version: 20160902080226) do
 
   create_table "apply_records", force: :cascade do |t|
     t.integer  "resume_id",       limit: 4
@@ -251,6 +251,18 @@ ActiveRecord::Schema.define(version: 20160824073404) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "searches", force: :cascade do |t|
+    t.integer  "user_id",       limit: 4
+    t.string   "name",          limit: 191, default: "", null: false
+    t.string   "region",        limit: 191, default: "", null: false
+    t.string   "salary_range",  limit: 191, default: "", null: false
+    t.string   "experience",    limit: 191, default: "", null: false
+    t.string   "degree_demand", limit: 191, default: "", null: false
+    t.string   "recruit_type",  limit: 191, default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
 
   create_table "training_experiences", force: :cascade do |t|
     t.integer  "user_id",     limit: 4

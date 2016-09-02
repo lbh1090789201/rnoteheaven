@@ -1,17 +1,8 @@
 <% provide :title, "搜索" %>
-<script>
-// var i = '<%= params[:index] %>';
-// if(i != ''){
-// var oldUrl = window.location.href,
-//     index = oldUrl.indexOf('?'),
-//     newUrl = oldUrl.substring(0,index);
-//     console.log(newUrl)
-//     window.location.href = newUrl
-// }
-</script>
+
 <div class="search-content">
   <section class="filter-form">
-    <form id="submit_form">
+    <form id="submit_form" method="get" action="/webapp/searchs">
       <input id="job_name" type="text" name="name" class="form-control job-name" placeholder="搜索职位/机构" onkeydown="show();" />
       <span class="refress" onClick="submitForm()">搜索</span>
       <ul class="job-condition">
@@ -73,11 +64,29 @@
         </div>
         <p id="submit_btn" onClick="submitAllForm()">确定</p>
       </div>
+      <input type="submit" value="提交" style="display: none" />
     </form>
   </section>
 
   <section class="job-detail">
-    <p><%= @params %></p>
+    <% if @arrjob && @arrjob != [] %>
+      <% @arrjob.each do |a| %>
+        <a href="/webapp/jobs/<%= a[:id] %>">
+          <div class="job">
+            <div class="title">
+              <div class="left job-name"><%= a[:job_name] %></div>
+              <div class="right right-range"><%= a[:salary_range] %>/月</div>
+              <div style="clear:both"></div>
+            </div>
+            <div class="detail">
+              <div class="left"><%= a[:hospital_name] %></div>
+              <div class="right"><%= a[:region] %></div>
+              <div style="clear:both"></div>
+            </div>
+          </div>
+        </a>
+      <% end %>
+    <% end %>
   </section>
 </div>
 
@@ -90,13 +99,13 @@
   }
 
   function handleChange() {
-    $('.job-detail').show();
+    $('.job-detail').show().children().remove();
     submitForm();
   }
 
   function submitAllForm() {
     $('.filter-main').hide();
-    $('.job-detail').show();
+    $('.job-detail').show().children().remove();
     submitForm();
     $(".job-condition>li:eq(2)").css('color', '#232323').children('img').attr('src',"<%= image_path('icon_39.png') %>")
   }
@@ -170,6 +179,7 @@
   })
 
   $(".salary_range > li").on('click', function() {
+    $('.job-detail').children().remove();
     $(this).addClass('focus').siblings('li').removeClass('focus');
     var text = $(this).attr('index');
     $("#job_salary").val(text).trigger('change');
@@ -179,52 +189,27 @@
 
   // 提交表单
   function submitForm() {
-    var search = $("#job_search").val(),
-        name = $("#job_name").val(),
-        region = $("#cityChoice").val(),
-        salary_range = $("#job_salary").val(),
-        experience = $("#job_experience").val(),
-        degree_demand = $("#job_degree").val(),
-        recruit_type = $("#job_recruit").val();
-
-    $.ajax({
-      url: "/webapp/searchs",
-      type: "GET",
-      data: {
-        search: search,
-        name: name,
-        region: region,
-        salary_range: salary_range,
-        experience: experience,
-        degree_demand: degree_demand,
-        recruit_type: recruit_type
-      },
-      success: function(data) {
-        var jobs = data.jobs,
-            section = document.getElementsByTagName('section')[1];
-
-        $('.job-detail').children().remove();
-        if(jobs.length == 0){
-          var div = document.createElement('div');
-          div.innerHTML = "暂无搜索结果";
-          div.className = "result"
-          section.appendChild(div);
-          // $('.job-condition').show();
-          return;
-        }
-        for(var index in jobs) {
-          var j = jobs[index]
-          var div = document.createElement('div');
-          div.innerHTML = '<a href="/webapp/jobs/'+j.id+'?home=search">'+'<div class="job"><div class="title"><div class="left job-name">'+
-                        j.job_name+'</div><div class="right right-range">'+j.salary_range+'/月</div><div style="clear:both"></div></div><div class="detail"><div class="left">'+
-                        j.hospital_name+'</div><div class="right">'+j.region+'</div><div style="clear:both"></div></div></div></a>';
-          section.appendChild(div);
-        }
-        // $('.job-condition').show();
-      },
-      error: function() {
-        console.log("搜索失败");
-      }
-    })
+    $(":submit").trigger("click");
   }
+
+  // 职位返回搜索页面，神还原
+  <% if @search_params %>
+    var name = '<%= @search_params[:name] %>',
+        experience = '<%= @search_params[:experience] %>',
+        degree_demand = '<%= @search_params[:degree_demand] %>',
+        recruit_type = '<%= @search_params[:recruit_type] %>',
+        region = '<%= @search_params[:region] %>',
+        salary_range = '<%= @search_params[:salary_range] %>';
+    $("#job_name").val(name);
+    $("#job_experience").val(experience);
+    $("#job_degree").val(degree_demand);
+    $("#job_recruit").val(recruit_type);
+    $("#cityChoice").val(region);
+    $("#job_salary").val(salary_range);
+
+    experience != '' ? $(".experience-part li[index="+experience+"]").addClass('on') : $(".experience-part li[index='']").addClass('on');
+    recruit_type != '' ? $(".recruit-part li[index="+recruit_type+"]").addClass('on') : $(".recruit-part li[index='']").addClass('on');
+    degree_demand != '' ? $(".degree-part li[index="+degree_demand+"]").addClass('on') : $(".degree-part li[index='']").addClass('on');
+    salary_range != '' ? $(".salary_range li[index="+salary_range+"]").addClass('focus') : '';
+  <% end %>
 </script>

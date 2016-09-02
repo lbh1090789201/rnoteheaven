@@ -3,10 +3,9 @@ class Webapp::SearchsController < ApplicationController
   helper_method :get_searchs
 
   def index
-    @params = params[:index]
-    logger.info('token_test:' + @params.to_s)
-    logger.info('token_test:' + "22222222222222222222")
+
     if params[:search]
+
       jobs = Job.filter_job_status("release")
                 .filter_job_name(params[:name])
                 .filter_location(params[:region])
@@ -49,16 +48,17 @@ class Webapp::SearchsController < ApplicationController
         }
         @arrjob.push(o)
       end
+      @search_params = {
+        name: params[:name],
+        region: params[:region],
+        salary_range: params[:salary_range],
+        experience: params[:experience],
+        degree_demand: params[:degree_demand],
+        recruit_type: params[:recruit_type],
+      }
 
-      render json: {
-        success: true,
-        info: "搜索成功！",
-        jobs: @arrjob.as_json,
-      }, status: 200
+      return @arrjob, @search_params
     end
-  end
-
-  def show
   end
 
 end
