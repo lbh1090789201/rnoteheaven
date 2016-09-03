@@ -183,7 +183,7 @@
         string = string + character;
       }
     }
-    console.log(111111111)
+
    if($('.error-alert')) {
      $('.error-alert').remove();
    }
@@ -254,15 +254,21 @@ function addComponent(parent_class, options, input_id, boolean) {
     p.text(options[i]);
     box_2.append(p);
   }
+
   // 插入可填框
-  if(title_text == '职        称'){
-    title_text = '职称';
-  }
+  var string = '';
+   for(var i=0; i<title_text.length; i++) {
+     var character = title_text.substr(i,1),
+         pattern = /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
+     if(pattern.test(character)){
+       string = string + character;
+     }
+   }
 
   var boolean = boolean || false;
   if(boolean) {
     var p = $('<p class="pop-option"></p>');
-    p.html('<span class="option-other">其他</span><input type="text" class="importability" placeholder="请输入'+title_text+'" onClick="enterInput()" />');
+    p.html('<span class="option-other">其他</span><input type="text" class="importability" placeholder="请输入'+string+'" onClick="enterInput()" />');
     box_2.append(p);
   }
 }

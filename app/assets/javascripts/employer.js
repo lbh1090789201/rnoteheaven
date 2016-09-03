@@ -140,6 +140,37 @@ function EmptyCont(input_id) {
         maxlength: 500,
       },
      },
+     messages: {
+       // job验证
+        name: {
+          required: true,
+          maxlength: 15,
+          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
+        },
+        needed_number: {
+          required: true,
+          maxlength: 5,
+          pattern: '^[0-9]*[1-9][0-9]*$',
+        },
+        location: {
+          required: true,
+          maxlength: 20,
+          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
+        },
+        job_demand: {
+          required: true,
+          maxlength: 500,
+        },
+        job_desc: {
+          required: true,
+          maxlength: 500,
+        },
+      // user 验证
+      introduction: {
+        required: true,
+        maxlength: 500,
+      },
+     },
      errorPlacement: function(error, element) {
        return true
      },
