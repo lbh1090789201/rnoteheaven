@@ -37,12 +37,12 @@
       // 教育经历验证
        college: {
          required: true,
-         maxlength: 15,
+         maxlength: 20,
          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
        },
        major: {
          required: true,
-         maxlength: 10,
+         maxlength: 15,
          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
        },
        title: {
@@ -75,6 +75,74 @@
         maxlength: 500,
       },
      },
+     messages: {
+       show_name: {
+         required: "请输入内容",
+         maxlength: "输入格式不对，请输入1~12位中文、英文或数字",
+         pattern: "输入格式不对，请输入1~12位中文、英文或数字",
+       },
+       position: {
+         required: "请输入内容",
+         maxlength: "输入格式不对，请输入1~15个字",
+         pattern: "输入格式不对，请输入1~15个字",
+       },
+       cellphone: {
+         required: "请输入内容",
+         pattern: '请输入正确的手机号码',
+       },
+       user_email: {
+         required: "请输入内容",
+         email: '请输入正确的邮箱',
+       },
+      // 工作经历验证
+       company: {
+         required: "请输入内容",
+         maxlength: "输入格式不对，请输入1~20位中文、英文或数字",
+         pattern: "输入格式不对，请输入1~20位中文、英文或数字",
+       },
+       job_desc: {
+         required: "请输入内容",
+         maxlength: "输入格式不对，最多只能输入500个字",
+       },
+      // 教育经历验证
+       college: {
+         required: "请输入内容",
+         maxlength: "输入格式不对，请输入1~20位中文、英文或数字",
+         pattern: "输入格式不对，请输入1~20位中文、英文或数字",
+       },
+       major: {
+         required: "请输入内容",
+         maxlength: "输入格式不对，请输入1~15位中文、英文或数字",
+         pattern: "输入格式不对，请输入1~15位中文、英文或数字",
+       },
+       title: {
+         required: "请输入内容",
+         maxlength: "输入格式不对，请输入1~20位中文、英文或数字",
+         pattern: "输入格式不对，请输入1~20位中文、英文或数字",
+       },
+      // 期盼工作
+      name: {
+        required: "请输入内容",
+        maxlength: "输入格式不对，请输入1~20位中文、英文或数字",
+        pattern: "输入格式不对，请输入1~20位中文、英文或数字",
+      },
+      job_type: {
+        required: "请输入内容",
+      },
+      location: {
+        required: "请输入内容",
+      },
+      expected_salary_range: {
+        required: "请输入内容",
+      },
+      // 培训经历
+      certificate: {
+        maxlength: "输入格式不对，请输入0~30个字",
+      },
+      desc: {
+        maxlength: "输入格式不对，最多只能输入500个字",
+      },
+     },
      errorPlacement: function(error, element) {
        return true
      },
@@ -84,6 +152,10 @@
      },
      unhighlight: function ( element, errorClass, validClass ) {
        $( element ).addClass( "has-success" ).removeClass( "has-error" );
+       $( element ).siblings( "label.error" ).remove();
+     },
+     errorPlacement: function(error, element) {
+       error.appendTo(element.parent());
      },
    })
  }
@@ -96,6 +168,36 @@
    } else {
      return true
    }
+ }
+
+ // 表单验证提示语弹窗
+ function unvalidAlert() {
+   var form_div = $("#wrap") ? $("#wrap") : $(".wrap");
+   form_div.css("padding-top","2rem");
+   var lebelText = $('label.error').eq(0).siblings('label.control-label').text(),
+        string = '';
+    for(var i=0; i<lebelText.length; i++) {
+      var character = lebelText.substr(i,1),
+          pattern = /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
+      if(pattern.test(character)){
+        string = string + character;
+      }
+    }
+    console.log(111111111)
+   if($('.error-alert')) {
+     $('.error-alert').remove();
+   }
+   var alertText = $('label.error').eq(0).text(),
+       div = $('<div class="error-alert"></div>'),
+       p = $('<p></p>'),
+       parent = $('body');
+   p.text(string+": "+alertText);
+   parent.append(div);
+   div.append(p);
+   var timer = setTimeout(function(){
+     $('.error-alert').remove();
+     form_div.css("padding-top","0");
+   }, 2000)
  }
 
  // 城市插件再次点击删掉原来的

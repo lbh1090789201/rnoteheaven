@@ -1,13 +1,12 @@
 include Webapp::FavoriteJobsHelper
 
 class Webapp::FavoriteJobsController < ApplicationController
-  before_action :authenticate_user!   # 登陆验证
+  before_action :authenticate_user!   # 登陆验证1
   helper_method :get_favorite_jobs
   protect_from_forgery :except => [:update]
 
   def index
     @favorite_jobs = get_favorite_jobs current_user.id
-    @has_new = FavoriteJob.where(:has_new => true, :user_id => current_user.id).length
   end
 
   def update

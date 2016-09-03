@@ -85,7 +85,16 @@ class Webapp::UsersController < ApplicationController
     @user = current_user
     @user.avatar_url.blank? ? @avatar = "avator2.png" : @avatar = @user.avatar_url(:square)
     @resume = Resume.where(user_id: current_user.id).first_or_create!
-    @fhas_new = FavoriteJob.where(has_new: true, user_id: @user.id).length
+
+    # favorite_jobs = FavoriteJob.where(has_new: true, user_id: @user.id)
+    # @fhas_new = 0
+    # favorite_jobs.each do |f|
+    #   job = Job.where(id: f.job_id, status: "release")
+    #   if !job.blank?
+    #     @fhas_new = @fhas_new + 1
+    #   end
+    # end
+
     @ahas_new = ApplyRecord.where(has_new: true, user_id: @user.id).length
   end
 

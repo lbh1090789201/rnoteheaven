@@ -2,9 +2,9 @@ class Webapp::HomeController < ApplicationController
   before_action :authenticate_user!   # 登陆验证
 
   def index
-    @fhas_new = FavoriteJob.where(:has_new => true, :user_id => current_user.id)
-    @ahas_new = ApplyRecord.where(:has_new => true, :user_id => current_user.id)
-    @has_new_length = @fhas_new.length + @ahas_new.length
+    # @fhas_new = FavoriteJob.where(:has_new => true, :user_id => current_user.id)
+    @has_new_length = ApplyRecord.where(:has_new => true, :user_id => current_user.id).length
+    # @has_new_length = @fhas_new.length + @ahas_new.length
 
     filter = params
 

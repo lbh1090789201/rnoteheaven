@@ -72,6 +72,11 @@
   preventClick("#beginTime", "#endTime");
 
    $(".btm-save").on('click',function() {
+     // 表单验证提示语弹窗
+     var timer = setTimeout(function(){
+       unvalidAlert();
+     },5)
+     
      // 验证表单,失败返回
      if(valid("#work_eidt form")){
        return
