@@ -3,7 +3,7 @@
 
 <div class="block-form">
 <%= simple_form_for @Certificate, url: webapp_certificates_path, class: 'block-shield block-form', remote: true do |f| %>
-  <%= f.input :title, placeholder: "请输入证书名称", input_html: {class: "edit-text", name: "title"} %>
+  <%= f.input :title, placeholder: "请输入证书名称", label: '持有证书', input_html: {class: "edit-text", name: "title"} %>
   <%= f.submit "保存", id: "submit", style: "display: none" %>
   <button type="button" name="button" id="btn_save" class="btn btn-info btn-right">保存</button>
 <% end %>
@@ -14,7 +14,10 @@
   formAll("form");
 
   $("#btn_save").on('click', function() {
-    EditMask("#btn_save", "证书不能为空！");
+    // 表单验证提示语弹窗
+    var timer = setTimeout(function(){
+      unvalidAlert();
+    },5)
 
     // 验证表单,失败返回
     if(valid("form")){

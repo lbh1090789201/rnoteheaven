@@ -82,7 +82,7 @@
          pattern: "输入格式不对，请输入1~12位中文、英文或数字",
        },
        position: {
-         required: "请输入内容",
+         required: "不能为空",
          maxlength: "输入格式不对，请输入1~15个字",
          pattern: "输入格式不对，请输入1~15个字",
        },
@@ -187,11 +187,11 @@
    if($('.error-alert')) {
      $('.error-alert').remove();
    }
-   var alertText = $('label.error').eq(0).text(),
+   var alert_text = $('label.error').eq(0).text(),
        div = $('<div class="error-alert"></div>'),
        p = $('<p></p>'),
        parent = $('body');
-   p.text(string+": "+alertText);
+   p.text(string+": "+alert_text);
    parent.append(div);
    div.append(p);
    var timer = setTimeout(function(){
@@ -234,7 +234,7 @@ function addComponent(parent_class, options, input_id, boolean) {
       button_div = $('<div class="pop-button"></div>')
       parent = $(parent_class);
 
-  var title_text = $(input_id).siblings('label').text(),
+  var title_text = $(input_id).siblings('label.control-label').text(),
       index = title_text.indexOf('*');
   if(index != -1) {
     title_text = title_text.substring(index+1,title_text.length);
