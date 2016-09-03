@@ -511,6 +511,16 @@
       margin-bottom: 0;
     }
   }
+  .job_job_desc {
+    .control-label {
+      display: none;
+    }
+  }
+  .job_job_demand {
+    .control-label {
+      display: none;
+    }
+  }
 
   .form-group::after {
     content: "";
@@ -674,6 +684,16 @@
 
     label {
       margin-bottom: 0;
+    }
+  }
+  .job_job_desc {
+    .control-label {
+      display: none;
+    }
+  }
+  .job_job_demand {
+    .control-label {
+      display: none;
     }
   }
 

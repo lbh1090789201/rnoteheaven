@@ -35,9 +35,9 @@
         <span class="job-end" id="job_end">剩余<%= @job_end_at %>天</span>
     </div>
     <p class="basic_info">职位描述<%= image_tag "icon_36.png" %></p>
-    <%= f.input :job_desc, label: '', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等", name: "job_desc"} %>
+    <%= f.input :job_desc, label: '职位描述', as: :text, input_html: { class: "", placeholder: "描述职责范围／工作任务等", name: "job_desc"} %>
     <p class="basic_info">任职资格<%= image_tag "icon_36.png" %></p>
-    <%= f.input :job_demand, label: '', as: :text, input_html: { class: "", placeholder: "资格要求", name: "job_demand"} %>
+    <%= f.input :job_demand, label: '任职资格', as: :text, input_html: { class: "", placeholder: "资格要求", name: "job_demand"} %>
     <%= f.input :status, label: '状态', as: :hidden, input_html: { class: "", id: "job_status", name: "status"} %>
     <%= f.submit id: "submit"%>
     <p class="btn-sright">保存</p>
@@ -61,8 +61,14 @@
 		var job_demand_1 = "<%= @job.job_demand %>";
 		var job_satus = "<%= @job.status %>";
 		$('.btn-sright').bind('click',function(){
+
 			// 验证表单,失败返回
       if(valid("form")){
+	      // 表单验证提示语弹窗
+	      var timer = setTimeout(function(){
+	        unvalidAlert();
+	      },5);
+
         return
       }
 
@@ -111,8 +117,7 @@
     var job_type = ['机构管理人员','综合门诊/全科医生','内科医生','外科医生','专科医生','牙科医生','美容整形师',
     '麻醉医生','放射科医师','理疗师','中医科医生','针灸/推拿','儿科医生','心理医生','营养师','药库主任/药剂师','医药学检验',
     '公共卫生/疾病控制','护理主任/护士长','护士/护理人员','验光师','其他'];
-    var pclass = 'job_type';
-    JobBasicNew(job_type, ".job-type", pclass);
+    addComponent('.wrap', job_type, "#job_type");
   });
 
   // 薪资

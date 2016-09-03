@@ -42,13 +42,14 @@
 
   // 防重复点击
   $("#btn_save").on('click',function() {
-    // 表单验证提示语弹窗
-    var timer = setTimeout(function(){
-      unvalidAlert();
-    },5)
 
     // 表单验证失败返回
     if(valid('form')){
+      // 表单验证提示语弹窗
+      var timer = setTimeout(function(){
+        unvalidAlert();
+      },5)
+
       return
     }
     $("#btn_save").css("pointer-events","none");

@@ -23,6 +23,7 @@
 <%= javascript_include_tag "date" %>
 <script type="text/javascript">
     fullScreen('.edit_basic');
+
     // 表单验证
     formAll("#work_eidt form")
 
@@ -55,16 +56,16 @@
     preventClick("#beginTime", "#endTime");
 
   $("#btn_save").on('click',function() {
-    // 表单验证提示语弹窗
-    var timer = setTimeout(function(){
-      unvalidAlert();
-    },5)
 
     // 验证表单,失败返回
     if(valid("#work_eidt form")){
-      return
-    }
+      // 表单验证提示语弹窗
+      var timer = setTimeout(function(){
+        unvalidAlert();
+      },5)
 
+      return;
+    }
     // 判断开始时间是否大于结束时间
     var data_compare = dataCompare();
     if(data_compare) {

@@ -143,32 +143,50 @@ function EmptyCont(input_id) {
      messages: {
        // job验证
         name: {
-          required: true,
-          maxlength: 15,
-          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
+          required: "不能为空",
+          maxlength: "输入格式不对，请输入1~20位中文、英文或数字",
+          pattern: "输入格式不对，请输入1~20位中文、英文或数字",
         },
         needed_number: {
-          required: true,
-          maxlength: 5,
-          pattern: '^[0-9]*[1-9][0-9]*$',
+          required: "不能为空",
+          maxlength: "输入格式不对，请输入1~５位数字",
+          pattern: "输入格式不对，请输入1~５位数字",
         },
         location: {
-          required: true,
-          maxlength: 20,
-          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
+          required: "不能为空",
+          maxlength: "输入格式不对，请输入1~20位中文、英文或数字",
+          pattern: "输入格式不对，请输入1~20位中文、英文或数字",
         },
         job_demand: {
-          required: true,
-          maxlength: 500,
+          required: "不能为空",
+          maxlength: "输入格式不对，最多只能输入500个字",
         },
         job_desc: {
-          required: true,
-          maxlength: 500,
+          required: "不能为空",
+          maxlength: "输入格式不对，最多只能输入500个字",
+        },
+        job_type: {
+          required: "不能为空",
+        },
+        salary_range: {
+          required: "不能为空",
+        },
+        experience: {
+          required: "不能为空",
+        },
+        degree_demand: {
+          required: "不能为空",
+        },
+        recruit_type: {
+          required: "不能为空",
+        },
+        region: {
+          required: "不能为空",
         },
       // user 验证
       introduction: {
-        required: true,
-        maxlength: 500,
+        required: "不能为空",
+        maxlength: "输入格式不对，最多只能输入500个字",
       },
      },
      errorPlacement: function(error, element) {
@@ -180,6 +198,10 @@ function EmptyCont(input_id) {
      },
      unhighlight: function ( element, errorClass, validClass ) {
        $( element ).addClass( "has-success" ).removeClass( "has-error" );
+       $( element ).siblings( "label.error" ).remove();
+     },
+     errorPlacement: function(error, element) {
+       error.appendTo(element.parent());
      },
    })
  }
@@ -192,6 +214,37 @@ function EmptyCont(input_id) {
    } else {
      return true
    }
+  }
+
+  // 表单验证提示语弹窗
+  function unvalidAlert() {
+    var form_div = $("#wrap") ? $("#wrap") : $(".wrap");
+    form_div.css("padding-top","2rem");
+    var lebelText = $('label.error').eq(0).siblings('label.control-label').text(),
+         string = '';
+     for(var i=0; i<lebelText.length; i++) {
+       var character = lebelText.substr(i,1),
+           pattern = /^[\u4e00-\u9fa5_a-zA-Z0-9]+$/;
+       if(pattern.test(character)){
+         string = string + character;
+       }
+     }
+
+    if($('.error-alert')) {
+      $('.error-alert').remove();
+    }
+    var alert_text = $('label.error').eq(0).text(),
+        div = $('<div class="error-alert"></div>'),
+        p = $('<p></p>'),
+        parent = $('body');
+
+    p.text(string+": "+alert_text);
+    parent.append(div);
+    div.append(p);
+    var timer = setTimeout(function(){
+      $('.error-alert').remove();
+      form_div.css("padding-top","0");
+    }, 2000)
   }
 
 

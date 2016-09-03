@@ -284,10 +284,28 @@
 
  // 验证表单
  .has-error {
-   border: 1px solid #b94a48 !important;
+  //  border: 1px solid #b94a48 !important;
  }
  .has-success {
    border: none !important;
+ }
+ .error {
+   display: none !important;
+ }
+ .error-alert {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 2rem;
+   background-color: rgba(0,0,0,0.7);
+   p {
+     height: 2rem;
+     text-align: center;
+     line-height: 2rem;
+     color: #fff;
+     font-size: 0.7rem;
+   }
  }
 
 

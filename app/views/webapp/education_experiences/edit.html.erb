@@ -42,13 +42,14 @@
 
   // 防重复点击
   $(".btm-save").on('click',function() {
-    // 表单验证提示语弹窗
-    var timer = setTimeout(function(){
-      unvalidAlert();
-    },5)
 
     // 验证表单,失败返回
     if(valid("#edit_education form")){
+      // 表单验证提示语弹窗
+      var timer = setTimeout(function(){
+        unvalidAlert();
+      },5)
+      
       return
     }
 
