@@ -25,14 +25,14 @@
   // 表单验证
   formAll("form");
 
-  $("#save_form").on('click', function() {
+  $(".submit-box").on('click', function() {
 
     // 验证表单,失败返回
     if(valid("form")){
       return
     }
     $('#submit').trigger('click');
-    $('#save_form').css('pointer-events','none');
+    $('.submit-box').css('pointer-events','none');
   })
 
   // 医院类型
