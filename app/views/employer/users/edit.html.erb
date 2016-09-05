@@ -26,13 +26,20 @@
   formAll("form");
 
   $(".submit-box").on('click', function() {
+    FailMask('.wrap', "有点击事件发生");
 
     // 验证表单,失败返回
     if(valid("form")){
+      // 表单验证提示语弹窗
+      var timer = setTimeout(function(){
+        unvalidAlert();
+      },5);
+
       return
     }
+
     $('#submit').trigger('click');
-    $('.submit-box').css('pointer-events','none');
+    // $('.submit-box').css('pointer-events','none');
   })
 
   // 医院类型
