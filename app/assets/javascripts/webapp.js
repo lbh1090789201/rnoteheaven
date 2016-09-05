@@ -34,7 +34,7 @@
          required: true,
          maxlength: 500,
        },
-      // 教育经历验证
+      // 教育经历验证1
        college: {
          required: true,
          maxlength: 20,

@@ -123,8 +123,7 @@ function EmptyCont(input_id) {
         },
         location: {
           required: true,
-          maxlength: 20,
-          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$',
+          maxlength: 50,
         },
         job_demand: {
           required: true,
@@ -154,8 +153,7 @@ function EmptyCont(input_id) {
         },
         location: {
           required: "不能为空",
-          maxlength: "输入格式不对，请输入1~20位中文、英文或数字",
-          pattern: "输入格式不对，请输入1~20位中文、英文或数字",
+          maxlength: "输入格式不对，请输入1~50个字",
         },
         job_demand: {
           required: "不能为空",
