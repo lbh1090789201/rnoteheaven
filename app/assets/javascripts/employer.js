@@ -278,7 +278,7 @@ function EmptyCont(input_id) {
         button_div = $('<div class="pop-button"></div>')
         parent = $(parent_class);
 
-    var title_text = $(input_id).siblings('label').text(),
+    var title_text = $(input_id).siblings('label.control-label').text(),
         index = title_text.indexOf('*');
     if(index != -1) {
       title_text = title_text.substring(index+1,title_text.length);
