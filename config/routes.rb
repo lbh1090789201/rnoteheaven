@@ -115,6 +115,7 @@ Ryunkang::Application.routes.draw do
       resources :vips, :except => [:show]
 
       resources :hospitals, :only => [:index, :update, :create, :destroy]
+      resources :data_statistics, :only => [:index]
     end
 
     # 404页面
