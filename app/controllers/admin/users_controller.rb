@@ -124,7 +124,7 @@ class Admin::UsersController < AdminController
       if is_occupied
           render json: {
             success: false,
-            info: "此账户名已被使用。"
+            info: "此账号名称已被使用。"
           }, status: 403
           return true
       elsif is_repeate
