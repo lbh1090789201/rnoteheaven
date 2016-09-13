@@ -113,6 +113,10 @@ var AdminUserRadio = React.createClass({
     return (
       <span>
         <label className="checkbox-inline">
+          管理权限:
+        </label>
+
+        <label className="checkbox-inline">
         <input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="" />全部
         </label>
 
@@ -164,7 +168,7 @@ var AdminUserTableHead = React.createClass({
       <thead>
         <tr>
           <th>序号</th>
-          <th>登录名</th>
+          <th>账号名称</th>
           <th>用户名称</th>
           <th>用户类型</th>
           <th>创建时间</th>

@@ -1,10 +1,12 @@
 var AdminDataStatistic = React.createClass({
   render: function() {
+    // console.log(this.state.data_statistic)
     return (
       <div className="admin-statistics">
         <AdminDataStatisticForm dad={this} />
         <h3 className="data-title">数据展示:</h3>
-        <div id="data_statistic" style={{"minwidth":"310px","height":"400px"}}></div>
+        <div id="data_statistic" style={{"minwidth":"310px","height":"400px"}} name={this.state.data_statistic}>
+        </div>
       </div>
     )
   }
@@ -53,12 +55,14 @@ var AdminDataStatisticForm = React.createClass({
         hot_job_collect: hot_job_collect,
         resume_deliver: this.state.resume_deliver,
         job_release: this.state.job_release,
+        search: true,
       },
       success: function(data) {
-
+        // 趋势图函数
+        trendChart("#data_statistic", data.data_statistic)
       }.bind(this),
       error: function(data) {
-
+        console.log('搜索失败')
       }.bind(this),
     })
   }
@@ -79,7 +83,7 @@ var AdminDataStatisticForm = React.createClass({
 
         <div className="row inquiry-input">
           <div className="col-sm-3">
-            <label>职位发布数:</label>
+            <label>职位投递数:</label>
             <input type="text" name="hot_job" ref="hot_job" className=" form-control" placeholder="请输入职位全称" />
           </div>
 

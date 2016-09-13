@@ -1,6 +1,8 @@
 //= require bootstrap-datetimepicker
 //= require bootstrap-datetimepicker.fr
 //= require bootstrap-datetimepicker.zh-CN
+//= require highcharts
+//= require exporting
 
 
 /* 请求失败弹窗,1.5秒后自动消失
@@ -91,4 +93,65 @@ function successNew(text) {
 function refressPage() {
   $("#mask_user").remove();
   window.location.href = window.location.href;
+}
+
+
+function trendChart(div_id, options) {
+  var array = ["时间轴", "简历投递数", "职位发布数", "热门职位投递数", "热门机构投递数", "热门机构收藏数"],
+      index = [],
+      type_data = [],
+      type_block = [],
+      serie_array = [],
+      y = 0;
+
+  for(var i=0;i<options.length;i++) {
+    var option = options[i]
+    if(option.length != 0) {
+      index.push(i);
+      type_data.push(options[i]);
+      type_block.push(array[i]);
+    }
+  }
+  if(index.length <= 1) {
+    return;
+  }
+  // type_data.shift()
+  for(var z=0;z<type_block.length-1;z++) {
+    y ++;
+    var json_data = {
+      name: type_block[y],
+      data: [type_data[y][0], type_data[y][1], type_data[y][2], type_data[y][3], type_data[y][4]]
+    };
+    serie_array.push(json_data)
+  }
+
+
+  $(div_id).highcharts({
+      chart: {
+          type: 'line',
+      },
+      title: {
+          text: 'Monthly Average Temperature'
+      },
+      xAxis: {
+          categories: [type_data[0][0], type_data[0][1], type_data[0][2], type_data[0][3], type_data[0][4], type_data[0][5]]
+      },
+      yAxis: {
+          title: {
+              text: 'Temperature (°C)'
+          }
+      },
+      plotOptions: {
+          line: {
+              dataLabels: {
+                  enabled: true
+              },
+              enableMouseTracking: false
+          }
+      },
+      series: serie_array
+  });
+  console.log(type_data)
+  console.log(type_block)
+  console.log(serie_array)
 }
