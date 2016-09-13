@@ -11,7 +11,7 @@ var AdminDataStatistic = React.createClass({
 })
 
 
-/*******************AdminDataStatisticForm********************/
+/*****************1**AdminDataStatisticForm********************/
 var AdminDataStatisticForm = React.createClass({
   getInitialState: function() {
     return {
@@ -36,7 +36,7 @@ var AdminDataStatisticForm = React.createClass({
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
-    let time_form = this.refs.time_form.value,
+    let time_from = this.refs.time_from.value,
         time_to = this.refs.time_to.value,
         hot_job = this.refs.hot_job.value,
         hot_hospital_deliver = this.refs.hot_hospital_deliver.value,
@@ -46,7 +46,7 @@ var AdminDataStatisticForm = React.createClass({
       url: "/admin/data_statistics",
       type: "GET",
       data: {
-        time_form: time_form,
+        time_from: time_from,
         time_to: time_to,
         hot_job: hot_job,
         hot_hospital_deliver: hot_hospital_deliver,
@@ -69,7 +69,7 @@ var AdminDataStatisticForm = React.createClass({
         <div className="row">
           <label className="time-title">时间:</label>
           <div className="col-sm-4">
-            <input type="text" name="time_form" ref="time_form" className=" form-control" placeholder="从" />
+            <input type="text" name="time_from" ref="time_from" className=" form-control" placeholder="从" />
           </div>
 
           <div className="col-sm-4">
@@ -103,11 +103,6 @@ var AdminDataStatisticForm = React.createClass({
 
 /***************AdminDataStatisticRadio*************/
 var AdminDataStatisticRadio = React.createClass({
-  // handleChange: function() {
-  //   this.props.dad.setState({
-  //     job_release: !this.props.dad.state.job_release,
-  //   })
-  // }
   render: function() {
     return (
       <div className="radio-box">

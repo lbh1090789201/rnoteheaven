@@ -2,6 +2,15 @@ class ApplyRecord < ActiveRecord::Base
   def method
   end
 
+  # 按创建时间查找
+  scope :filter_time_from, ->(created_at){
+    where("created_at >= ?", created_at) if created_at.present?
+  }
+
+  scope :filter_time_to, ->(created_at){
+    where("created_at < ?", created_at) if created_at.present?
+  }
+
   # 是否应聘过？是：true;否：false
   def self.is_applied(uid, job_id)
     ! ApplyRecord.where(user_id: uid, job_id: job_id).blank?

@@ -263,6 +263,11 @@ function transType(e)  {
  function formUser(id) {
    $(id).validate({
      rules: {
+       username: {
+         required: true,
+         rangelength: [5,20],
+         pattern: '^[a-zA-Z][a-zA-Z0-9]{5,19}',
+       },
        show_name: {
          required: true,
          rangelength: [2, 10],
@@ -276,6 +281,10 @@ function transType(e)  {
        }
      },
      messages: {
+       username: {
+         maxlength: '用户名为5~20字符',
+         pattern: '请输入英文或数字，以英文开头'
+       },
        show_name: {
          maxlength: '用户名为2~10字符',
          pattern: '请输入中文、英文或数字'
@@ -294,6 +303,10 @@ function transType(e)  {
  function formUserSearch(id) {
    $(id).validate({
      rules: {
+       username: {
+         rangelength: [5,20],
+         pattern: '^[a-zA-Z][a-zA-Z0-9]{5,19}',
+       },
        show_name: {
          maxlength: 10,
          pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
@@ -306,6 +319,10 @@ function transType(e)  {
        }
      },
      messages: {
+       username: {
+         maxlength: '用户名为5~20字符',
+         pattern: '请输入英文或数字，以英文开头'
+       },
        show_name: {
          maxlength: '最多10个字符',
          pattern: '请输入中文、英文或数字'

@@ -54,6 +54,11 @@ class Job < ActiveRecord::Base
     where('created_at >= ?', time) if time.present?
   }
 
+  #按创建时间
+  scope :filter_time_to, ->(time) {
+    where('created_at < ?', time) if time.present?
+  }
+
   # 按工作类型
   scope :filter_job_type, -> (type){
     where('job_type LIKE ?', "%#{type}%") if type.present?

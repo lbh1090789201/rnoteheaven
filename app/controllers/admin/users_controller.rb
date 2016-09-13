@@ -33,7 +33,7 @@ class Admin::UsersController < AdminController
 
     new_platinum = {
       user_type: "platinum",
-      username: "admin" + id.to_s,
+      username: params[:username],
       password: params[:password],
       show_name: params[:show_name],
       email: "platinum" + id.to_s + "@example.com"
@@ -116,12 +116,23 @@ class Admin::UsersController < AdminController
         user_type: ['admin', 'platinum']
       )
 
-      unless is_repeate.nil?
+      is_occupied = User.find_by(
+        username: params[:username],
+        user_type: ['admin', 'platinum']
+      )
+
+      if is_occupied
           render json: {
             success: false,
-            info: "此用户名已被使用。"
+            info: "此账户名已被使用。"
           }, status: 403
           return true
+      elsif is_repeate
+        render json: {
+          success: false,
+          info: "此用户名已被使用。"
+        }, status: 403
+        return true
       end
     end
 

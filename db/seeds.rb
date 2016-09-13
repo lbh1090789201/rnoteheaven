@@ -22,17 +22,17 @@
 #     user_number: 289
 # )
 
-aa = User.create!(
-    username: "admin",
-    show_name: "admin",
-    password: "123456",
-    email: "admin2@example.com",
-    cellphone: "13833332222",
-    user_type: "admin",
-    sex: "女"
-)
-aa.add_role :admin
-
+# aa = User.create!(
+#     username: "admin",
+#     show_name: "admin",
+#     password: "123456",
+#     email: "admin2@example.com",
+#     cellphone: "13833332222",
+#     user_type: "admin",
+#     sex: "女"
+# )
+# aa.add_role :admin
+#
 # u = User.create!(
 #     username: "boss",
 #     show_name: "boss",
@@ -114,7 +114,7 @@ aa.add_role :admin
 #     may_join_fairs: 5,
 #     status: true
 # )
-
+#
 # Employer.create!({
 #   user_id: u.id,
 #   hospital_id: hospital.id,

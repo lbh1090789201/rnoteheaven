@@ -49,6 +49,7 @@
      if(invalid('#form_user_new')) return // 不合法就返回
 
      let show_name = this.refs.show_name.value,
+        　username = this.refs.username.value,
          password = this.refs.password.value,
          password2 = this.refs.password2.value,
          scopes = this.state.scopes.toString()
@@ -64,6 +65,7 @@
          url: '/admin/users',
          type: 'POST',
          data: {
+           username: username,
            show_name: show_name,
            password: password,
            scopes: scopes
@@ -91,6 +93,12 @@
        <div className="mask-user" style={{"display": this.props.dad.state.user_info.new_display}}>
          <div className="user-box">
            <form onSubmit={this.handleSubmit} id="form_user_new">
+             <div className="form-group">
+                <label>账号名称</label>
+                  <input className="form-control" placeholder="账号名称，以英文开头" name="username" required
+                              defaultValue={this.state.username} ref="username" />
+             </div>
+
              <div className="form-group">
                 <label>用户名称</label>
                   <input className="form-control" placeholder="用户名" name="show_name" required

@@ -1,6 +1,15 @@
-
+<%= provide :title, "职位管理" %>
+<%# provide :content,  image_tag('add-white.png') %>
+<%# provide :link, "/employer/jobs/new" %>
+<%# provide :img_left, "home.png" %>
+<%# provide :back, '/employer/home' %>
+<script>
+  app_reload();
+  $(go_home());
+</script>
 
 <script type="text/javascript">
+
   var getStatus = function(status) {
     // status=="release";
     if(status=="release"){
@@ -28,7 +37,6 @@
     document.write(status);
   }
 
-
   // 筛选弹框
   $(function(){
     $('.job-nav>span').bind('click',function(){
@@ -54,16 +62,6 @@
     $('ul.show-all').css('display','block').siblings('ul').css('display','none');
     $(obj).parent().parent().css('display','none');
   }
-</script>
-
-<%= provide :title, "职位管理" %>
-<%= provide :content,  image_tag('add-white.png') %>
-<%= provide :link, "/employer/jobs/new" %>
-<%= provide :img_left, "home.png" %>
-<%= provide :back, '/employer/home' %>
-<script>
-  app_reload();
-  $(go_home())
 </script>
 
 <div id="job_content">
