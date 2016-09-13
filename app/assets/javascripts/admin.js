@@ -138,7 +138,7 @@ function trendChart(div_id, options) {
       },
       yAxis: {
           title: {
-              text: 'Temperature (°C)'
+              text: '总数'
           }
       },
       plotOptions: {

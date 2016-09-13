@@ -96,7 +96,7 @@
              <div className="form-group">
                 <label>账号名称</label>
                   <input className="form-control" placeholder="账号名称，以英文开头" name="username" required
-                              defaultValue={this.state.username} ref="username" autocomplete="off" />
+                               ref="username" autocomplete="off" />
              </div>
 
              <div className="form-group">
