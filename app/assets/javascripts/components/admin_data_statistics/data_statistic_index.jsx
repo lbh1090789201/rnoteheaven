@@ -5,7 +5,7 @@ var AdminDataStatistic = React.createClass({
       <div className="admin-statistics">
         <AdminDataStatisticForm dad={this} />
         <h3 className="data-title">数据展示:</h3>
-        <div id="data_statistic" style={{"minwidth":"310px","height":"400px"}} name={this.state.data_statistic}>
+        <div id="data_statistic" style={{"minwidth":"310px","height":"400px"}}>
         </div>
       </div>
     )

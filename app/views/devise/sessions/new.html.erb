@@ -47,8 +47,8 @@
     <%= notice_message %>
     <div class=" sessions">
         <%= simple_form_for(resource, :as => resource_name, :url => user_session_path) do |f| %>
-            <%= f.input :username, label: '用户账号：', input_html: {class: "form-control"} %>
-            <%= f.input :password, label: '密   　 码：',as: :password, input_html: {class: "form-control"} %>
+            <%= f.input :username, label: '用户账号：', input_html: {class: "form-control", autocomplete: "off"} %>
+            <%= f.input :password, label: '密   　 码：',as: :password, input_html: {class: "form-control", autocomplete: "off"} %>
             <%= f.button :submit, "登录", class: "btn-blue", style: "width: 100%" %>
         <% end %>
     </div>

@@ -96,25 +96,25 @@
              <div className="form-group">
                 <label>账号名称</label>
                   <input className="form-control" placeholder="账号名称，以英文开头" name="username" required
-                              defaultValue={this.state.username} ref="username" />
+                              defaultValue={this.state.username} ref="username" autocomplete="off" />
              </div>
 
              <div className="form-group">
                 <label>用户名称</label>
                   <input className="form-control" placeholder="用户名" name="show_name" required
-                              pattern="^.{2,10}$" required title="用户名2~10个字符" defaultValue={this.state.show_name} ref="show_name" />
+                              pattern="^.{2,10}$" autocomplete="off" defaultValue={this.state.show_name} ref="show_name" />
              </div>
 
              <div className="form-group">
                 <label>设置密码</label>
                   <input type="password" className="form-control" placeholder="修改密码才需填写" name="password"
-                                pattern=".{6,}" required title="密码最少6个字符" defaultValue={this.state.pwd}  ref="password" />
+                                pattern=".{6,}" required autocomplete="off" defaultValue={this.state.pwd}  ref="password" />
              </div>
 
              <div className="form-group">
                 <label>重复密码</label>
                   <input type="password" className="form-control" placeholder="修改密码才需填写" name="password2"
-                            pattern=".{6,}" required title="密码最少6个字符" defaultValue={this.state.pwd2} ref="password2" />
+                            pattern=".{6,}" required autocomplete="off" defaultValue={this.state.pwd2} ref="password2" />
              </div>
 
              <div className="form-group">
