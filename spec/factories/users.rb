@@ -25,7 +25,7 @@ FactoryGirl.define do
     password "123465"
     birthday Time.now - 1365.days
   end
-  factory :myuser do
+  factory :myuser, :class => 'User' do
     show_name "zahng"
     username "username"
     email  { Faker::Internet.email }

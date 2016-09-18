@@ -113,6 +113,7 @@ function trendChart(div_id, options) {
     }
   }
   if(index.length <= 1) {
+
     return;
   }
   // type_data.shift()
@@ -131,14 +132,14 @@ function trendChart(div_id, options) {
           type: 'line',
       },
       title: {
-          text: 'Monthly Average Temperature'
+          text: '数据趋势图'
       },
       xAxis: {
-          categories: [type_data[0][0], type_data[0][1], type_data[0][2], type_data[0][3], type_data[0][4], type_data[0][5]]
+          categories: [type_data[0][1], type_data[0][2], type_data[0][3], type_data[0][4], type_data[0][5]]
       },
       yAxis: {
           title: {
-              text: '总数'
+              text: '数值'
           }
       },
       plotOptions: {
@@ -151,7 +152,14 @@ function trendChart(div_id, options) {
       },
       series: serie_array
   });
-  console.log(type_data)
-  console.log(type_block)
-  console.log(serie_array)
+  // console.log(type_data)
+  // console.log(type_block)
+  // console.log(serie_array)
+  $('.highcharts-button').hide();
+  var text = $("svg>text");
+  for(var o=0;o<text.length;o++) {
+    if(text.eq(o).text() == "Highcharts.com") {
+      text.eq(o).text('');
+    }
+  }
 }

@@ -1,11 +1,13 @@
 var AdminDataStatistic = React.createClass({
-  render: function() {
-    // console.log(this.state.data_statistic)
+  componentDidMount: function() {
+    formDataStatistic('#data_statistics')
+  }
+  ,render: function() {
     return (
       <div className="admin-statistics">
         <AdminDataStatisticForm dad={this} />
         <h3 className="data-title">数据展示:</h3>
-        <div id="data_statistic" style={{"minwidth":"310px","height":"400px"}}>
+        <div id="data_statistic" style={{"minwidth":"310px","height":"400px","position":"relative","top":"30px"}}>
         </div>
       </div>
     )
@@ -21,6 +23,10 @@ var AdminDataStatisticForm = React.createClass({
       job_release: '',
     }
   }
+  ,handleFocus: function(e) {
+    let id = e.target.id
+    myDatePicker(id, 'time_from', 'time_to')
+  }
   ,handleChange: function(e) {
     let name = e.target.name,
         checked = e.target.checked
@@ -34,10 +40,11 @@ var AdminDataStatisticForm = React.createClass({
         [name]: '',
       })
     }
-
   }
   ,handleSubmit: function(e) {
     e.preventDefault()
+    if(invalid('#data_statistics')) return // 不合法就返回
+
     let time_from = this.refs.time_from.value,
         time_to = this.refs.time_to.value,
         hot_job = this.refs.hot_job.value,
@@ -68,16 +75,18 @@ var AdminDataStatisticForm = React.createClass({
   }
   ,render: function() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} id="data_statistics">
         <AdminDataStatisticRadio dad={this} />
         <div className="row">
           <label className="time-title">时间:</label>
           <div className="col-sm-4">
-            <input type="text" name="time_from" ref="time_from" className=" form-control" placeholder="从" />
+            <input type="text" id="time_from" name="time_from" ref="time_from" className=" form-control"
+                    placeholder="从" onFocus={this.handleFocus} />
           </div>
 
           <div className="col-sm-4">
-            <input type="text" name="time_to" ref="time_to" className=" form-control" placeholder="至" />
+            <input type="text" id="time_to" name="time_to" ref="time_to" className=" form-control"
+                    placeholder="至" onFocus={this.handleFocus} />
           </div>
         </div>
 
@@ -123,3 +132,81 @@ var AdminDataStatisticRadio = React.createClass({
     )
   }
 })
+
+
+
+/********************** 表单验证 **********************/
+function formDataStatistic(id) {
+  $(id).validate({
+    rules: {
+      time_from: {
+        required: true,
+        date: true,
+      },
+      time_to: {
+        required: true,
+        date: true,
+      },
+      hot_job: {
+        rangelength: [0, 30],
+      },
+      hot_hospital_deliver: {
+        rangelength: [0, 30],
+      },
+      hot_job_collect: {
+        rangelength: [0, 30],
+      }
+    },
+    messages: {
+      hot_job: {
+        maxlength: '职位名称为0~30字符',
+      },
+      hot_hospital_deliver: {
+        maxlength: '职位名称为0~30字符',
+      },
+      hot_job_collect: {
+        maxlength: '职位名称为0~30字符',
+      },
+    },
+
+    highlight: function ( element, errorClass, validClass ) {
+      $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+    },
+    unhighlight: function ( element, errorClass, validClass ) {
+      $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+    },
+  })
+}
+
+function formDataStatisticSearch(id) {
+  $(id).validate({
+    rules: {
+      hot_job: {
+        rangelength: [0, 30],
+      },
+      hot_hospital_deliver: {
+        rangelength: [0, 30],
+      },
+      hot_job_collect: {
+        rangelength: [0, 30],
+      },
+      time_from: {
+        date: true,
+      },
+      time_to: {
+        date: true
+      }
+    },
+    messages: {
+      hot_job: {
+        maxlength: '职位名称为0~30字符',
+      },
+      hot_hospital_deliver: {
+        maxlength: '职位名称为0~30字符',
+      },
+      hot_job_collect: {
+        maxlength: '职位名称为0~30字符',
+      },
+    }
+  })
+}

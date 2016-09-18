@@ -2,7 +2,9 @@
 
 <script type="text/javascript">
 app_reload();
-set_back("/webapp/home")
+set_back("/webapp/home");
+console.log("document.cookie");
+// var username = document.cookie
 </script>
 
 <div class="main user-first-page home-user user-info-ct">
@@ -71,6 +73,22 @@ set_back("/webapp/home")
 </div>
 </div>
 <script>
+  // document.cookie = "username=李某某"
+  //获取cookie字符串
+  var strCookie=document.cookie;
+  //将多cookie切割为多个名/值对
+  var arrCookie=strCookie.split("; ");
+  var userName;
+  //遍历cookie数组，处理每个cookie对
+  for(var i=0;i<arrCookie.length;i++){
+               var arr=arrCookie[i].split("=");
+               //找到名称为userId的cookie，并返回它的值
+               if("userName"==arr[0]){
+                     userName=arr[1];
+                     break;
+               }
+  }
+  console.log(userName)
 // fullScreen('.user-info-ct');
 /*返回顶部*/
 $(document).ready(function(){

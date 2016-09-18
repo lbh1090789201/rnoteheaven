@@ -2,6 +2,15 @@ class FavoriteJob < ActiveRecord::Base
   belongs_to :user
   belongs_to :job
 
+  #按创建时间搜索
+  scope :filter_time_from, ->(created_at){
+    where("created_at >= ?", created_at) if created_at.present?
+  }
+
+  scope :filter_time_to, ->(created_at){
+    where("created_at < ?", created_at) if created_at.present?
+  }
+
   # 是否应收藏？是：true;否：false
   def self.is_favor(uid, job_id)
     ! FavoriteJob.where(user_id: uid, job_id: job_id).blank?

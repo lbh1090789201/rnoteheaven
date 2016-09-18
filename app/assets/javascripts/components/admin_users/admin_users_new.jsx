@@ -92,10 +92,10 @@
      return (
        <div className="mask-user" style={{"display": this.props.dad.state.user_info.new_display}}>
          <div className="user-box">
-           <form onSubmit={this.handleSubmit} id="form_user_new">
+           <form onSubmit={this.handleSubmit} id="form_user_new" autocomplete="off">
              <div className="form-group">
                 <label>账号名称</label>
-                  <input className="form-control" placeholder="账号名称，以英文开头" name="username" required
+                  <input className="form-control" disableautocomplete placeholder="账号名称，以英文开头" name="username" required
                                ref="username" autocomplete="off" />
              </div>
 

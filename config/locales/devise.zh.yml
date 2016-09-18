@@ -52,6 +52,7 @@ zh:
       unlocked: "您的帐号已成功解锁，您现在已登录。"
   errors:
     messages:
+      record_invalid: "model里做了一些限制 vaildates"
       already_confirmed: "已经确认，请重新登录。"
       confirmation_period_expired: "请在%{period}内确认注册, 请重新注册。"
       expired: "邮件确认已过期，请重新注册。"

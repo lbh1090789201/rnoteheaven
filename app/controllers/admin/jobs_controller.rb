@@ -77,6 +77,9 @@ class Admin::JobsController < AdminController
         j.operate_at = Time.now
         j.end_at = Time.now + (j.duration).days
         j.is_update = true
+        if btn_params[:status] == 'release'
+          j.release_at = Time.now
+        end
         j.save
 
         EventLog.create_log current_user.id, current_user.show_name, 'Job', j.id, "工作", btn_params[:status]
