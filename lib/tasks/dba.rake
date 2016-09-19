@@ -63,10 +63,10 @@ namespace :db do
             job_type: row[14],
             hospital_id: hospital.id
           })
-
+p Time.now
           job.save!
         else
-          p "不存在该公司--" + row[11].to_s
+          # p "不存在该公司--" + row[11].to_s
         end
       end
   end

@@ -28,6 +28,10 @@ module Ryunkang
     # config.i18n.default_locale = :de
     config.i18n.default_locale = :zh
 
+    # 设置时区在北京
+    config.time_zone = 'Beijing'
+    config.active_record.default_timezone = :local
+
     # turn off warnings triggered by friendly_id
     I18n.enforce_available_locales = false
     # turn off warnings triggered by active record

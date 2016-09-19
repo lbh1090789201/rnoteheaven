@@ -115,6 +115,27 @@ var ReviewJob = React.createClass({
     }
   }
   ,componentDidMount: function() {
+    let job_types = ["机构管理人员", "综合门诊/全科医生", "内科医生", "外科医生",
+                    "专科医生", "牙科医生", "美容整形师", "麻醉医生", "放射科医师", "理疗师",
+                    "中医科医生", "针灸/推拿", "儿科医生", "心理医生", "病理医生", "临床医生", "营养师",
+                    "药库主任/药剂师", "医药学检验", "公共卫生/疾病控制", "护理主任/护士长", "护士/护理人员",
+                    "验光师", "医学技术支持", "实验室主管", "病理技术员", "病理研究员", "医政研究员", "护管经理",
+                    "实施工程师", "临检技术员", "采购专员", "人事专员", "培训经理", "平台主管", "销售", "销售经理",
+                    "客户经理", "市场经理", "区域专员", "区域经理", "实验技术员", "检验技术员", "病理室技术员",
+                    "测序技术员", "供应链工程师", "质量技术员", "Web前端", "C#程序员", "软件架构师",
+                    "质量专员", "质量负责人", "绩效经理", "品牌经理", "需求经理", "仓库管理员", "行政专员",
+                    "临检专员", "运营主管", "采购主管", "交付管理", "实验室管理员",
+                    "物流专员", "物流主管", "临检内勤", "外勤", "其它"]
+
+    let parent = document.getElementById("job_type")
+    for(let i=0;i<job_types.length;i++) {
+        let option = document.createElement('option')
+
+        option.value = job_types[i]
+        option.innerText = job_types[i]
+        parent.appendChild(option)
+    }
+
     formJobCheck('#form_job_check')
   }
   ,handleFocus: function(e) {
@@ -158,6 +179,8 @@ var ReviewJob = React.createClass({
     })
   }
   ,render: function() {
+
+
     return (
       <form className='form-inline' onSubmit={this.handleSubmit} id='form_job_check'>
         <div className='form-group col-sm-4'>
@@ -169,30 +192,8 @@ var ReviewJob = React.createClass({
                    onFocus={this.handleFocus} defaultValue={this.state.time_before} ref="time_end" />
           </div>
           <div className='form-group col-sm-4'>
-            <select name="job_type" ref="job_type" className="form-control">
+            <select id="job_type" name="job_type" ref="job_type" className="form-control">
               <option value="">工作类型</option>
-              <option value="机构管理人员">机构管理人员</option>
-              <option value="综合门诊/全科医生">综合门诊/全科医生</option>
-              <option value="内科医生">内科医生</option>
-              <option value="外科医生">外科医生</option>
-              <option value="专科医生">专科医生</option>
-              <option value="牙科医生">牙科医生</option>
-              <option value="美容整形师">美容整形师</option>
-              <option value="麻醉医生">麻醉医生</option>
-              <option value="放射科医师">放射科医师</option>
-              <option value="理疗师">理疗师</option>
-              <option value="中医科医生">中医科医生</option>
-              <option value="针灸/推拿">针灸/推拿</option>
-              <option value="儿科医生">儿科医生</option>
-              <option value="心理医生">心理医生</option>
-              <option value="营养师">营养师</option>
-              <option value="药库主任/药剂师">药库主任/药剂师</option>
-              <option value="医药学检验">医药学检验</option>
-              <option value="公共卫生/疾病控制">公共卫生/疾病控制</option>
-              <option value="护理主任/护士长">护理主任/护士长</option>
-              <option value="护士/护理人员">护士/护理人员</option>
-              <option value="验光师">验光师</option>
-              <option value="其他">工作类型</option>
             </select>
           </div>
           <div className='form-group col-sm-4'>
