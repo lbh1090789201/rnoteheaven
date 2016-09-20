@@ -76,7 +76,7 @@ var FairHospitalNew = React.createClass({
             </div>
 
             <div className="form-group col-sm-12">
-               <label>专场介绍</label>
+               <label>机构介绍</label>
                <textarea className="form-control" name="intro" rows="5"
                                 required ref="intro" />
             </div>

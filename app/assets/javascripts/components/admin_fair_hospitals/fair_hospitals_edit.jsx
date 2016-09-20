@@ -85,7 +85,7 @@ var FairHospitalEdit = React.createClass({
             </div>
 
             <div className="form-group col-sm-12">
-               <label>专场介绍</label>
+               <label>机构介绍</label>
                <textarea className="form-control" name="intro" rows="5" defaultValue={fair_hospital.intro}
                                pattern=".{6,}" required title="最少6个字符" ref="intro" />
             </div>

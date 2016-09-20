@@ -61,7 +61,7 @@ var FairNew = React.createClass({
           <form method="post" action="/admin/fairs" encType="multipart/form-data"
                 id="form_fair_new" onSubmit={this.handleSubmit}>
             <div className="form-group col-sm-6">
-               <label>用户名称</label>
+               <label>专场名称</label>
                <input className="form-control" placeholder="专场名称" name="name"
                        ref="name" />
             </div>

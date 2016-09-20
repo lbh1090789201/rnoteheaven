@@ -254,7 +254,7 @@ function trans_fair(status) {
        name: {
          required: true,
          maxlength: 20,
-         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9\\s]+$'
        },
        creator: {
          required: true,
@@ -277,7 +277,7 @@ function trans_fair(status) {
      messages: {
        name: {
          maxlength: '最多20个字符',
-         pattern: '请输入中文、英文或数字'
+         pattern: '请输入中文、英文、数字或空格'
        },
        creator: {
          pattern: '请输入中文、英文或数字'
@@ -300,7 +300,7 @@ function trans_fair(status) {
      rules: {
        name: {
          maxlength: 20,
-         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9]+$'
+         pattern: '^[\u4e00-\u9fa5_a-zA-Z0-9\\s]+$'
        },
        time_from: {
          date: true,
@@ -310,9 +310,9 @@ function trans_fair(status) {
        }
      },
      messages: {
-       show_name: {
+       name: {
          maxlength: '最多20个字符',
-         pattern: '请输入中文、英文或数字'
+         pattern: '请输入中文、英文、数字或空格'
        }
      }
    })

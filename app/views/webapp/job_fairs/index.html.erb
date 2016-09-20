@@ -20,7 +20,7 @@
       <%= react_component 'TimeLeft', time: f["time_left"] %>
     </div>
   </div>
-  <div id="hospital_rule">
+  <div class="hospital_intro" id="hospital_rule">
     <h2>专场细则</h2>
     <p><%= f["intro"] %></p>
   </div>
@@ -31,3 +31,12 @@
   </p>
   </div>
   <% end %>
+
+  <script>
+    var p = $('.hospital_intro > p'),
+        length = p.length;
+    for(var i=0;i<length;i++) {
+      var p_text = p.eq(i).text();
+      p.eq(i).html(p_text)
+    }
+  </script>
