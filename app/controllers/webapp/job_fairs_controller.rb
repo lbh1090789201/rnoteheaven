@@ -10,6 +10,8 @@ class Webapp::JobFairsController < ApplicationController
       fair["hospital_num"] = FairHospital.where(fair_id: f["id"], status:"on").length
       @fairs.push fair
     end
+    user = User.find current_user.id
+    @cellphone = user.cellphone if user.present?
   end
 
   def show

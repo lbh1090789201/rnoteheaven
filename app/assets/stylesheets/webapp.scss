@@ -451,3 +451,20 @@
   display: block;
   z-index: 999;
 }
+
+// 双选会人才测评
+.fairs-item {
+  .button {
+    margin: 2.98rem auto 3rem auto;
+    width: 15rem;
+    a:nth-child(1) {
+      margin: 0;
+      float: left;
+      background: #e09a2c;
+    }
+    a:nth-child(2) {
+      margin: 0;
+      float: right;
+    }
+  }
+}
