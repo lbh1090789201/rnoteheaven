@@ -94,6 +94,7 @@ class Admin::DataStatisticsController < AdminController
       hospital = Hospital.find_by name: hospital_name
       hospital_delivers = []
       if hospital
+        hospital_delivers = [0, 0, 0, 0, 0]
         jobs = Job.where(hospital_id: hospital.id)
 
         if !jobs.blank?
@@ -105,15 +106,19 @@ class Admin::DataStatisticsController < AdminController
                                          .filter_time_to(@times[i + 1])
                                          .where(job_id: j.id)
                                          .size
+
               apply_number.push job_delivers
             }
             apply_numbers.push apply_number
           end
-          hospital_delivers[0] = apply_numbers[0][0] + apply_numbers[1][0] + apply_numbers[2][0] + apply_numbers[3][0] + apply_numbers[4][0]
-          hospital_delivers[1] = apply_numbers[0][1] + apply_numbers[1][1] + apply_numbers[2][1] + apply_numbers[3][1] + apply_numbers[4][1]
-          hospital_delivers[2] = apply_numbers[0][2] + apply_numbers[1][2] + apply_numbers[2][2] + apply_numbers[3][2] + apply_numbers[4][2]
-          hospital_delivers[3] = apply_numbers[0][3] + apply_numbers[1][3] + apply_numbers[2][3] + apply_numbers[3][3] + apply_numbers[4][3]
-          hospital_delivers[4] = apply_numbers[0][4] + apply_numbers[1][4] + apply_numbers[2][4] + apply_numbers[3][4] + apply_numbers[4][4]
+
+          apply_numbers.each do |a|
+            hospital_delivers[0] += a[0]
+            hospital_delivers[1] += a[1]
+            hospital_delivers[2] += a[2]
+            hospital_delivers[3] += a[3]
+            hospital_delivers[4] += a[4]
+          end
       end
     end
     return hospital_delivers
