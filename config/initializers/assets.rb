@@ -7,6 +7,7 @@ Rails.application.config.assets.precompile += %w( slider.css )
 Rails.application.config.assets.precompile += %w( employer.css )
 Rails.application.config.assets.precompile += %w( admin.css )
 Rails.application.config.assets.precompile += %w( webapp.css )
+Rails.application.config.assets.precompile += %w( cityPicker.css )
 
 ################JS
 Rails.application.config.assets.precompile += %w( jquery-1.8.3.min.js )

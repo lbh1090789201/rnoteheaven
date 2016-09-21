@@ -109,7 +109,7 @@ html[xmlns] .slides {
     display:inline-block
 }
 .flex-control-paging li a {
-	background: url('dot.png') no-repeat 0 -16px;
+	/*background: url('dot.png') no-repeat 0 -16px;*/
 	display:block;
 	height: 9px;
 	overflow: hidden;
