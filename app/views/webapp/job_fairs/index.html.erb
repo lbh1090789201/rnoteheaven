@@ -36,10 +36,10 @@
   <% end %>
 
   <script>
-    var p = $('.hospital_intro > p'),
-        length = p.length;
+    var p_fair = $('.hospital_intro > p'),
+        length = p_fair.length;
     for(var i=0;i<length;i++) {
-      var p_text = p.eq(i).text();
-      p_text.eq(i).html(p_text)
+      var p_text = p_fair.eq(i).text();
+      p_fair.eq(i).html(p_text)
     }
   </script>
