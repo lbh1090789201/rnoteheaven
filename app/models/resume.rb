@@ -156,4 +156,24 @@ class Resume < ActiveRecord::Base
     end
   end
 
+  # admin 获取简历投递内容1
+  def self.get_resume_deliver apply_record
+    o = {}
+    user = User.find apply_record.user_id
+    job = Job.find apply_record.job_id
+    hospital = Hospital.find apply_record.hospital_id
+    education_experiences = EducationExperience.where(user_id: user.id)
+
+    o["apply_record"] = apply_record.as_json
+    o["cellphone"] = user.cellphone
+    o["hospital_name"] = hospital.name
+    o["job_region"] = job.region
+    o["college"] = []
+    o["major"] = []
+    education_experiences.each do |e|
+      o["college"].push e.college
+      o["major"].push e.major
+    end
+    return o
+  end
 end

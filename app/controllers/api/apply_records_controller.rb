@@ -9,7 +9,7 @@ class Api::ApplyRecordsController < ApiController
     @apply_record.recieve_at = Time.now
     @apply_record.resume_status = "筛选"
 
-    #简历相关
+    #简历相关1
     resume = Resume.find_by_user_id current_user.id
     @apply_record.resume_id = resume.id if resume
 

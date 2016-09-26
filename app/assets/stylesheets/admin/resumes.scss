@@ -203,3 +203,26 @@
     width: 550px!important;
   }
 }
+
+.resumes-resume_deliver {
+  .handle-button {
+    padding-top: 20px;
+    width: 100%;
+    span {
+      position: relative;
+      top: 10px;
+      font-size: 18px;
+      color: #369ea2;
+    }
+    button {
+      border: 1px solid #e46049;
+      background: #e46049;
+    }
+    button:focus {
+      outline: none;
+    }
+  }
+  input[type="checkbox"] {
+    cursor: pointer;
+  }
+}

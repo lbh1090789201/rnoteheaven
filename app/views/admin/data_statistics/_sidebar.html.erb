@@ -1,3 +1,15 @@
-<li class="active">
-  <a href="/admin/data_statistics"><%= image_tag 'admin_fairs_index.png' %>数据统计</a>
+<li class="<%='active' if params[:action] == 'resume_deliver'%>">
+  <a href="/admin/data_statistics/resume_delivers">简历投递数</a>
+</li>
+<li class="<%='active' if params[:action] == 'job_release'%>">
+  <a href="/admin/data_statistics/job_releases">职位发布数</a>
+</li>
+<li class="<%='active' if params[:action] == 'job_deliver'%>">
+  <a href="/admin/data_statistics/job_delivers">热门职位投递数</a>
+</li>
+<li class="<%='active' if params[:action] == 'hospital_deliver'%>">
+  <a href="/admin/data_statistics/hospital_delivers">热门机构投递数</a>
+</li>
+<li class="<%='active' if params[:action] == 'hospital_collect'%>">
+  <a href="/admin/data_statistics/hospital_collects">热门机构收藏数</a>
 </li>

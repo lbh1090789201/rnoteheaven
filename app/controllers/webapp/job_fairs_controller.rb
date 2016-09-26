@@ -18,20 +18,30 @@ class Webapp::JobFairsController < ApplicationController
     @fair = Fair.find params[:id]
     @fair_name = @fair.name
     fair_hospitals = FairHospital.where(fair_id: @fair.id, status: 'on')
-      @fair_hospitals = []
+      @fair_jobs = []
 
       fair_hospitals.each do |f|
         hospital = Hospital.find f.hospital_id
-        apply_record =ApplyRecord.where(hospital_id: hospital.id).length
-        o = {
-          fair_id: f.fair_id,
-          banner: f.banner,
-          hospital: hospital,
-          apply_length: apply_record,
-        }
-        @fair_hospitals.push o
+        # apply_record =ApplyRecord.where(hospital_id: hospital.id).length
+        jobs = Job.where(hospital_id: hospital.id, status: "release")
+
+        if !jobs.blank?
+          jobs.each do |j|
+            o = {}
+              o["id"] = j.id
+              o["fair_id"] = f.fair_id
+              o["name"] = j.name
+              o["hospital_name"] = hospital.name
+              o["salary_range"] = j.salary_range
+              o["region"] = j.region
+
+            @fair_jobs.push o
+          end
+        end
+
+
       end
-      return @fair_hospitals
+      return @fair_jobs
   end
 
   private

@@ -1,3 +1,6 @@
 <li class="<%='active' if params[:action] == 'index'%>">
   <a href="/admin/resumes"><%= image_tag 'resume_index.png' %>简历管理</a>
 </li>
+<li class="<%='active' if params[:action] == 'resume_deliver'%>">
+  <a href="/admin/resumes/resume_deliver"><%= image_tag 'resume_index.png' %>简历投递管理</a>
+</li>

@@ -61,6 +61,55 @@ class Admin::ResumesController < AdminController
     end
  end
 
+ def resume_deliver
+   if params[:search]
+     if !params[:name].blank?
+       hospitals = Hospital.filter_hospital_name(params[:name])
+
+       unless !hospitals.blank?
+         render json: {
+           success: true,
+           info: "不存在该机构！",
+         }, status: 403
+         return
+       end
+
+       ids = []
+       hospitals.each do |h|
+         ids.push h.id
+       end
+
+       apply_records = ApplyRecord.filter_time_from(params[:time_from])
+                                  .filter_time_to(params[:time_to])
+                                  .where(hospital_id: ids)
+
+     else
+       apply_records = ApplyRecord.filter_time_from(params[:time_from])
+                                .filter_time_to(params[:time_to])
+
+     end
+
+     @resume_delivers = []
+     apply_records.each do |a|
+       resume_deliver = Resume.get_resume_deliver a
+       @resume_delivers.push resume_deliver
+     end
+
+     render json: {
+       success: true,
+       info: "查询成功！",
+       resume_delivers: @resume_delivers
+     }, status: 200
+   else
+     apply_records = ApplyRecord.all
+     @resume_delivers = []
+     apply_records.each do |a|
+       resume_deliver = Resume.get_resume_deliver a
+       @resume_delivers.push resume_deliver
+     end
+   end
+ end
+
 
   private
     def get_info resumes

@@ -5,7 +5,7 @@ var AdminDataStatistic = React.createClass({
   ,render: function() {
     return (
       <div className="admin-statistics">
-        <AdminDataStatisticForm dad={this} />
+        <AdminDataStatisticFormFirst dad={this} />
         <h3 className="data-title">数据展示:</h3>
         <div id="data_statistic" style={{"minwidth":"310px","height":"400px","position":"relative","top":"30px"}}>
         </div>
@@ -16,7 +16,7 @@ var AdminDataStatistic = React.createClass({
 
 
 /*****************1**AdminDataStatisticForm********************/
-var AdminDataStatisticForm = React.createClass({
+var AdminDataStatisticFormFirst = React.createClass({
   getInitialState: function() {
     return {
       resume_deliver: '',

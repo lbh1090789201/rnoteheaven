@@ -4,7 +4,7 @@
   <div class="jobs-list hosp-show">
     <% @jobs.each do |h| %>
 
-    <!-- 判断是否来自 resume_viewers -->
+    <!-- 判断是否来自 resume_viewers1 -->
     <% if params[:from] == "viewers" %>
       <a href="/webapp/jobs/<%= h.id %>">
     <% elsif params[:fair_id] %>

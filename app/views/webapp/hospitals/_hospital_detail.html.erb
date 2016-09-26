@@ -8,7 +8,15 @@
   </div>
   <div class="job-bg"></div>
   <div class="jobs">
-    <a href="<%= webapp_hospital_path(@hospital.id) %>">查看所有职位 <span><%= @jobs %></span><%= image_tag "jobright.png",class:"right"%> </a>
+    <% if params[:fair_id] %>
+      <a href="/webapp/hospitals/<%= @hospital.id %>?fair_id=<%= params[:fair_id] %>">
+    <% else %>
+      <a href="<%= webapp_hospital_path(@hospital.id) %>">
+    <% end %>
+        查看所有职位
+        <span><%= @jobs %></span>
+        <%= image_tag "jobright.png",class:"right"%>
+      </a>
   </div>
   <div class="job-bg"></div>
   <div class="details hospital-desc">

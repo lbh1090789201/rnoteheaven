@@ -51,10 +51,7 @@ class Admin::DataStatisticsController < AdminController
           @hospital_delivers = get_hospital_delivers(params[:hot_hospital_deliver])
         end
 
-        @hospital_collects = []
-        if !params[:hot_job_collect].blank?
-          @hospital_collects = get_hospital_collects params[:hot_job_collect]
-        end
+
 
 
         @data_statistic.push @apply_records
@@ -72,7 +69,57 @@ class Admin::DataStatisticsController < AdminController
     end
   end
 
+  def resume_deliver
+  end
+
+  def job_release
+  end
+
+  def job_deliver
+  end
+
+  def hospital_deliver
+  end
+
+  def hospital_collect
+
+    if params[:search]
+      return if is_existence? # 判断机构是否存在
+
+      @times = get_time
+
+      if !params[:hot_hospital_collect].blank?
+        @hospital_collects = get_hospital_collects params[:hot_hospital_collect]
+      end
+
+
+    end
+  end
+
   private
+
+  # 判断机构是否存在
+  def is_existence?
+    hospital = Hospital.find_by name: params[:hot_hospital_collect]
+
+    unless hospital
+      render json: {
+        success: true,
+        info: "不存在该机构！",
+      }, status: 304
+      return true
+    end
+  end
+
+  # 获取时间数组
+  def get_time
+    if params[:time_from].present? && params[:time_to].present?
+      from = params[:time_from].to_time
+      to = params[:time_to].to_time
+      @times = time_block(from, to)
+      return @times
+    end
+  end
 
   def time_block(time_start, time_end)
     if (time_start + 5.days) > time_end
@@ -139,7 +186,7 @@ class Admin::DataStatisticsController < AdminController
            favorite_jobs.each do |f|
              job = Job.find f.job_id
              hospital = Hospital.find job.hospital_id if job.present?
-             if hospital.name == params[:hot_job_collect] && y < 1
+             if hospital.name == params[:hot_hospital_collect] && y < 1
                y += 1
              else
                y += 0

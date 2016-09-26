@@ -48,6 +48,7 @@ Ryunkang::Application.routes.draw do
       resource :employer_jobs, :only => [:update, :destroy] do
         patch :view_update, on: :collection
       end
+      resource :admin_resumes, :only => [:create]
     end
   end
 
@@ -100,6 +101,7 @@ Ryunkang::Application.routes.draw do
 
       resources :resumes, :only => [:index, :edit] do
         patch 'update', on: :collection
+        get 'resume_deliver', on: :collection
       end
 
       resource :users, :only => [:create, :update, :destroy, :edit] do
@@ -115,7 +117,13 @@ Ryunkang::Application.routes.draw do
       resources :vips, :except => [:show]
 
       resources :hospitals, :only => [:index, :update, :create, :destroy]
-      resources :data_statistics, :only => [:index]
+      resources :data_statistics, :only => [:index] do
+        get "/resume_delivers", to: 'data_statistics#resume_deliver', on: :collection
+        get "/job_releases", to: 'data_statistics#job_release', on: :collection
+        get "/job_delivers", to: 'data_statistics#job_deliver', on: :collection
+        get "/hospital_delivers", to: 'data_statistics#hospital_deliver', on: :collection
+        get "/hospital_collects", to: 'data_statistics#hospital_collect', on: :collection
+      end
     end
 
     # 404页面
