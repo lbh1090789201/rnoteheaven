@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app/server.js",
     "build:dev": "webpack --config webpack.config.js --progress --colors",
-    "dev": "gulp"
+    "gulp": "gulp"
   },
   "keywords": [
     "react",

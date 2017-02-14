@@ -2,11 +2,12 @@
 
 - 前端配置均在client文件夹内
 - webpack -- gulp -- react
-- 运行项目(需搭配好ruby/node/webpack环境)
+- 运行项目(demo部分集中在client内)(需搭配好ruby/node/webpack环境)
 ```
 根目录: bundle install & rake db:create db:migrate db:seed & rails s -b 0.0.0.0
-client目录下: npm run dev
+client目录下:　cnpm i & npm run gulp　// 监听文件，文件变化自动重新打包
 ```
+- 在我设想中，gulp只用于监听作用，文件一切操作交由webpack处理
 - 该项目中前端自动化及模块化目前只是最简单的实现方式，简化及更多文件合并/压缩还有待提高
 
 This README would normally document whatever steps are necessary to get the
