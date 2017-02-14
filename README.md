@@ -1,5 +1,14 @@
 # README
 
+- 前端配置均在client文件夹内
+- webpack -- gulp -- react
+- 运行项目(需搭配好ruby/node/webpack环境)
+```
+根目录: bundle install & rake db:create db:migrate db:seed & rails s -b 0.0.0.0
+client目录下: npm run dev
+```
+- 该项目中前端自动化及模块化目前只是最简单的实现方式，简化及更多文件合并/压缩还有待提高
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -56,6 +65,3 @@ rails s -b 0.0.0.0 -p 端口　可指定端口
 
 局部测试方法
 rails c
-
-
-
