@@ -22,4 +22,4 @@ def secure_token
   end
 end
 
-Ryunkang::Application.config.secret_key_base = secure_token
+Rnoteheaven::Application.config.secret_key_base = secure_token

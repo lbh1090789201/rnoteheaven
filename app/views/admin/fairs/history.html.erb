@@ -1,6 +1,0 @@
-<% content_for :sidebar do %>
-  <%= render 'sidebar' %>
-<% end %>
-
-<%= react_component 'FairHistroy', fairs: @fairs, close: image_path('close_red.png') %>
-<%= paginate @fairs, :window => 2 %>

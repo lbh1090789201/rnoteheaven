@@ -2,6 +2,14 @@
  * Overwritten by RailsBricks
  */
  @import "bootstrap.min";
+ @import "font-awesome.min";
+ @import "summernote";
+ @import "articles";
+ @import "pages";
+ @import "gallerys";
+ @import "favorite_articles";
+ @import "collections";
+ @import "notes";
 
  // 限制表格宽度
  .limit-width {
@@ -10,3 +18,247 @@
    white-space: nowrap;
    text-overflow: ellipsis;
  }
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica", "Microsoft YaHei", "微软雅黑","SanFrancisco", "苹方字体"!important;
+}
+body {
+  font-size: 0.16rem;
+  // background: #282c34;
+}
+ul {
+  list-style: none;
+}
+a,a:hover {
+  text-decoration: none;
+}
+input:focus,button:focus,form:focus,textarea:focus {
+  outline: none;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0.6rem;
+  font-size: 0.18rem;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 1px 1px 1px #888888;
+  z-index: 10000;
+  .note-logo {
+    float: left;
+    width: 15%;
+    height: inherit;
+    // background: green;
+    div {
+      position: relative;
+      top: 0.1rem;
+      float: left;
+      margin-left: 0.1rem;
+      width: 0.4rem;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      color: #fff;
+      background: radial-gradient(circle, #B0E2FF, #EEB422);
+      background: -webkit-radial-gradient(circle, #B0E2FF, #EEB422);
+      background: -o-radial-gradient(circle, #B0E2FF, #EEB422);
+      background: -moz-radial-gradient(circle, #B0E2FF, #EEB422);
+      text-align: center;
+      animation: round 10s linear infinite;
+      -webkit-animation: round 10s linear infinite;
+    }
+    @keyframes round {
+      0% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        border-radius: 0%;
+      }
+      25% {
+        transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        border-radius: 25%;
+      }
+      50% {
+        transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        border-radius: 50%;
+      }
+      75% {
+        transform: rotate(270deg);
+        -webkit-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        -webkit-transform: rotate(270deg);
+        border-radius: 25%;
+      }
+      100% {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        border-radius: 0%;
+      }
+    }
+    @-webkit-keyframes round {
+      0% {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        border-radius: 0%;
+      }
+      25% {
+        transform: rotate(90deg);
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        border-radius: 25%;
+      }
+      50% {
+        transform: rotate(180deg);
+        border-radius: 50%;
+      }
+      75% {
+        transform: rotate(270deg);
+        -webkit-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        -webkit-transform: rotate(270deg);
+        border-radius: 25%;
+      }
+      100% {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        border-radius: 0%;
+      }
+    }
+  }
+  nav {
+    position: relative;
+    float: left;
+    width: 70%;
+    height: inherit;
+    .nav {
+      display: block;
+      width: 50%;
+      height: inherit;
+      line-height: 0.6rem;
+      min-width: 20%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    a {
+      padding: 0 0.3rem;
+      color: #fff;
+    }
+    a:hover {
+      color: #fff;
+    }
+  }
+  .select-title {
+    display: none;
+  }
+  .sgin-up {
+    position: relative;
+    float: left;
+    width: 15%;
+    height: inherit;
+    a:nth-child(1) {
+      position: absolute;
+      top: 0.2rem;
+      right: 0.7rem;
+      color: #fff;
+    }
+    a:nth-child(2) {
+      position: absolute;
+      top: 0.2rem;
+      right: 0.2rem;
+      color: #fff;
+    }
+    a:hover {
+      color: #fff;
+    }
+  }
+}
+
+.phone-articles {
+  margin: 0 auto;
+  max-width: 7.68rem;
+}
+
+
+/**** 媒体查询　可视窗口768以内 ****/
+@media screen and (max-width: 768px) {
+  header {
+    background: rgba(0, 0, 0, 0.8);
+    .note-logo {
+      width: 25%
+    }
+    nav {
+      width: 50%;
+      font-size: 0.25rem;
+      .nav {
+        a {
+          display: block;
+          float: left;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+        a:hover {
+            border-bottom: 1px solid #fff;
+        }
+      }
+    }
+    .select-title {
+      position: fixed;
+      top: 0.6rem;
+      left: 0;
+      width: 100%;
+      li {
+        border: none;
+        outline: none;
+        width: 100%;
+        height: 0.6rem;
+        background: rgba(0, 0, 0, 0.8);
+        font-size: 0.25rem;
+      }
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 0.6rem;
+        text-align: center;
+        color: #fff;
+      }
+      a:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+    .sgin-up {
+      width: 25%;
+      a {
+        display: block;
+        top: 0 !important;
+        float: left;
+        height: 0.6rem;
+        width: 0.5rem;
+        line-height: 0.6rem;
+        font-size: 0.25rem;
+      }
+      a:nth-child(2) {
+        right: 0.1rem;
+      }
+    }
+  }
+}

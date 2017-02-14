@@ -10,19 +10,19 @@ default: &default
 
 development:
   <<: *default
-  database: ryunkang_development
+  database: rnoteheaven_development
   # database: rtuyu_production
   encoding: utf8mb4
   collation: utf8mb4_bin
 
 test:
   <<: *default
-  database: ryunkang_test
+  database: rnoteheaven_test
   encoding: utf8mb4
   collation: utf8mb4_bin
 
 production:
   <<: *default
-  database: ryunkang_production
+  database: rnoteheaven_production
   encoding: utf8mb4
   collation: utf8mb4_bin

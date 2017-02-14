@@ -4,24 +4,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" id="viewport">
-  <title><%= content_for?(:title) ? content_for(:title) : '云康' %></title>
+  <meta http-equiv="last-modified" content="Mon, 03 Jan 2019 17:45:57 GMT">
+  <meta http-equiv="Cache-Control" content="max-age=60" />
+  <title><%= content_for?(:title) ? content_for(:title) : '笔记' %></title>
   <%= favicon_link_tag 'add.png', rel: 'apple-touch-icon', type: 'image/png' %>
 
-  <%= stylesheet_link_tag "application" %>
-  <%= stylesheet_link_tag "webapp" %>
+  <script>
+  (function (doc, win) {
+      var docEl = doc.documentElement,
+          resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+          recalc = function () {
+              var clientWidth = docEl.clientWidth;
+              if (!clientWidth) return;
+              if(clientWidth>=640){
+                  docEl.style.fontSize = '100px';
+              }else{
+                  docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+              }
+          };
 
-  <%= javascript_include_tag "application","data-turbolinks-track" => true %>
-  <%= javascript_include_tag "webapp", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener('DOMContentLoaded', recalc, false);
+  })(document, window);
+  </script>
+
+  <%= stylesheet_link_tag "application" %>
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%# csrf_meta_tags %>
 </head>
 
-<body>
+<body class="<%= params[:controller] %>-<%= params[:action] %>">
+  <%= render "layouts/header" %>
+
   <div id="wrap">
-    <div class="container">
-          <%= yield %>
+    <div class="container-fluid">
+      <%= yield %>
     </div>
   </div>
+
+  <%= render "layouts/footer" %>
 </body>
-<%= stylesheet_link_tag "cityPicker" %>
-<!-- <%# javascript_include_tag "rem.min", "data-turbolinks-track" => true  %> -->
+<%= javascript_include_tag "src/bundle-index", "data-turbolinks-track" => true %>
 </html>

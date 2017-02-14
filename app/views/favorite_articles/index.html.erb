@@ -1,0 +1,64 @@
+<div class="collect-articles">
+  <% @articles.each do |a| %>
+  <section>
+    <h4><%= a["article"]["title"] %></h4>
+    <p class="article-label">阅读 <%= a["article"]["amount"] %> · 评论 <%= a["comment_number"] %> · 收藏 <%= a["collect_number"] %> · 推荐 <%= a["recom_number"] %></p>
+    <article>
+      <%= a["article"]["content"] %>
+    </article>
+    <a class="connect-page" href="/articles/<%= a["article"]["id"] %>"></a>
+  </section>
+  <% end %>
+  <!-- <section>
+    <h4>若果说着是一个很大的标题</h4>
+    <p class="article-label">阅读 123 · 评论 123 · 收藏 412 · 推荐 22</p>
+    <article>
+      <p>
+          “你有权保持沉默，但你所说的每一句话都将作为呈堂证供”，这是最常见的tvb剧台词之一，其依据源自刑诉法层面的公民沉默权。
+        现在这句话的辐射范围，可能还要加上微信朋友圈——一个被7.6亿人正在使用的社交平台。日前，最高法、最高检、公安部日前联合发布
+        《关于办理刑事案件收集提取和审查判断电子数据若干问题的规定》。按照该《规定》，自2016年10月1日起，朋友圈、微博等信息经查证
+        属实可以作为定案证据，公检法机关有权依法定程序，向单位和个人调取涉案人员上述平台的信息。
+      </p>
+      <p>
+          “朋友圈也不安全啊”，这是初一看到此新规的一般公众感觉，之所以这么说，是因为微信朋友圈相较于其他互联网信息平台而言有相对
+        的封闭性——只有互加好友的人才能看到彼此朋友圈所发内容
+      </p>
+    </article>
+    <a class="connect-page" href="#"></a>
+  </section>
+
+  <section>
+    <h4>若果说着是一个很大的标题</h4>
+    <p class="article-label">阅读 123 · 评论 123 · 收藏 412 · 推荐 22</p>
+    <article>
+      <p>
+          “你有权保持沉默，但你所说的每一句话都将作为呈堂证供”，这是最常见的tvb剧台词之一，其依据源自刑诉法层面的公民沉默权。
+        现在这句话的辐射范围，可能还要加上微信朋友圈——一个被7.6亿人正在使用的社交平台。日前，最高法、最高检、公安部日前联合发布
+        《关于办理刑事案件收集提取和审查判断电子数据若干问题的规定》。按照该《规定》，自2016年10月1日起，朋友圈、微博等信息经查证
+        属实可以作为定案证据，公检法机关有权依法定程序，向单位和个人调取涉案人员上述平台的信息。
+      </p>
+      <p>
+          “朋友圈也不安全啊”，这是初一看到此新规的一般公众感觉，之所以这么说，是因为微信朋友圈相较于其他互联网信息平台而言有相对
+        的封闭性——只有互加好友的人才能看到彼此朋友圈所发内容
+      </p>
+    </article>
+    <a class="connect-page" href="#"></a>
+  </section> -->
+  <div style="clear:both"></div>
+</div>
+
+<script>
+  var colect_article = $("article");
+  for(var i=0;i < colect_article.length;i++) {
+    var text = colect_article.eq(i).text();
+    if(text.length > 200){
+      var div = document.createElement("div");
+      console.log(text.substr(0, 200), text.substr(0, 200).replace(/<.*?>/ig, ""), 9999)
+      text = text.substr(0, 200).replace(/<.*?>/ig, "");
+      div.innerHTML = text + " ···";
+      colect_article.eq(i).html(div);
+    }else {
+      colect_article.eq(i).html(text.substr(0, 200).replace(/<.*?>/ig, ""));
+    }
+  }
+</script>

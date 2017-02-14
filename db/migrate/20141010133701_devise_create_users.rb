@@ -4,11 +4,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       # merge user_info
       t.string :start_work_at #工作年限
-      t.string :location #所在区域
-      t.string :seeking_job #是否求职
-      t.string :highest_degree #最高学历
+      t.string :region #所在区域
+      t.string :highest_degree #最高学历1
       t.datetime :birthday #出生年月
-      t.string :position #职称，主治医师，医师……
+      t.string :position #职称，页面重构师……
+      t.string :company #所属公司
+      t.text :introduction #个人简介
+      t.string :achievement #个人成就
 
       # added for a basic user
       t.string :cellphone,         :null => false, :default => "" #电话

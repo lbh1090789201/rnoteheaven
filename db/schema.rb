@@ -11,78 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918020111) do
+ActiveRecord::Schema.define(version: 20161025134644) do
 
-  create_table "apply_records", force: :cascade do |t|
-    t.integer  "resume_id",       limit: 4
-    t.integer  "user_id",         limit: 4
-    t.integer  "job_id",          limit: 4
-    t.integer  "hospital_id",     limit: 4
-    t.datetime "end_at"
-    t.datetime "view_at"
-    t.datetime "recieve_at"
-    t.string   "from",            limit: 191, default: "common", null: false
-    t.string   "resume_status",   limit: 191
-    t.boolean  "has_new",                     default: false,    null: false
-    t.string   "job_name",        limit: 191
-    t.string   "job_type",        limit: 191
-    t.string   "job_location",    limit: 191
-    t.string   "salary_range",    limit: 191
-    t.string   "hospital_region", limit: 191
-    t.string   "show_name",       limit: 191
-    t.string   "sex",             limit: 191
-    t.integer  "age",             limit: 4
-    t.string   "highest_degree",  limit: 191
-    t.string   "start_work_at",   limit: 191
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-  end
-
-  create_table "block_hospitals", force: :cascade do |t|
-    t.integer  "user_id",       limit: 4
-    t.integer  "hospital_id",   limit: 4
-    t.string   "hospital_name", limit: 191
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
-  create_table "certificates", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
-    t.string   "title",      limit: 191
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "certificates", ["user_id"], name: "index_certificates_on_user_id", using: :btree
-
-  create_table "education_experiences", force: :cascade do |t|
-    t.integer  "user_id",          limit: 4
-    t.string   "college",          limit: 191
-    t.string   "education_degree", limit: 191
-    t.datetime "entry_at"
-    t.datetime "graduated_at"
-    t.string   "major",            limit: 191
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-  create_table "employers", force: :cascade do |t|
-    t.integer  "user_id",        limit: 4
-    t.integer  "hospital_id",    limit: 4
-    t.integer  "plan_id",        limit: 4
-    t.integer  "vip_level",      limit: 4, default: 1, null: false
-    t.integer  "may_receive",    limit: 4, default: 0, null: false
-    t.integer  "may_release",    limit: 4, default: 0, null: false
-    t.integer  "may_set_top",    limit: 4, default: 0, null: false
-    t.integer  "may_view",       limit: 4, default: 0, null: false
-    t.integer  "may_join_fairs", limit: 4, default: 0, null: false
-    t.integer  "has_receive",    limit: 4, default: 0, null: false
-    t.integer  "has_release",    limit: 4, default: 0, null: false
-    t.integer  "has_set_top",    limit: 4, default: 0, null: false
-    t.integer  "has_view",       limit: 4, default: 0, null: false
-    t.integer  "has_join_fairs", limit: 4, default: 0, null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.integer  "note_id",    limit: 4
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "event_logs", force: :cascade do |t|
@@ -96,59 +32,11 @@ ActiveRecord::Schema.define(version: 20160918020111) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "expect_jobs", force: :cascade do |t|
-    t.integer  "user_id",               limit: 4
-    t.string   "name",                  limit: 191
-    t.string   "job_type",              limit: 191
-    t.string   "location",              limit: 191
-    t.string   "expected_salary_range", limit: 191
-    t.text     "job_desc",              limit: 65535
-    t.boolean  "is_top"
-    t.datetime "is_top_at"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  create_table "fair_hospitals", force: :cascade do |t|
-    t.integer  "hospital_id",    limit: 4
-    t.integer  "fair_id",        limit: 4
-    t.integer  "user_id",        limit: 4
-    t.string   "contact_person", limit: 191
-    t.string   "contact_number", limit: 191
-    t.string   "intro",          limit: 191
-    t.string   "banner",         limit: 191
-    t.string   "status",         limit: 191
-    t.string   "operator",       limit: 191
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  create_table "fairs", force: :cascade do |t|
-    t.string   "name",            limit: 191
-    t.string   "creator",         limit: 191
-    t.string   "banner",          limit: 191
-    t.text     "intro",           limit: 65535
-    t.string   "status",          limit: 191
-    t.datetime "begain_at"
-    t.datetime "end_at"
-    t.integer  "hospitals_count", limit: 4
-    t.integer  "jobs_count",      limit: 4
-    t.integer  "resumes_count",   limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
-  create_table "favorite_jobs", force: :cascade do |t|
-    t.integer  "user_id",      limit: 4
-    t.integer  "job_id",       limit: 4
-    t.boolean  "has_new",                  default: false, null: false
-    t.string   "name",         limit: 191
-    t.string   "job_type",     limit: 191
-    t.string   "salary_range", limit: 191
-    t.string   "region",       limit: 191
-    t.datetime "collected_at"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+  create_table "favorite_articles", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "note_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -164,82 +52,28 @@ ActiveRecord::Schema.define(version: 20160918020111) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "hospitals", force: :cascade do |t|
-    t.integer  "job_fair_id",    limit: 4
-    t.string   "name",           limit: 191
-    t.string   "property",       limit: 191
-    t.string   "scale",          limit: 191
-    t.string   "industry",       limit: 191
-    t.string   "region",         limit: 191
-    t.string   "location",       limit: 191
-    t.text     "introduction",   limit: 65535
-    t.string   "image",          limit: 191
-    t.float    "lat",            limit: 24,    default: 30.5984
-    t.float    "lng",            limit: 24,    default: 114.312
-    t.string   "contact_person", limit: 191
-    t.string   "contact_number", limit: 191
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+  create_table "galleries", force: :cascade do |t|
+    t.string   "image",      limit: 191
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.integer  "hospital_id",   limit: 4
-    t.string   "name",          limit: 191
-    t.string   "job_type",      limit: 191
-    t.string   "salary_range",  limit: 191
-    t.string   "experience",    limit: 191
-    t.integer  "needed_number", limit: 4
-    t.string   "region",        limit: 191
-    t.string   "location",      limit: 191
-    t.text     "job_desc",      limit: 65535
-    t.text     "job_demand",    limit: 65535
-    t.integer  "duration",      limit: 4
-    t.string   "status",        limit: 191
-    t.boolean  "is_update",                   default: false, null: false
-    t.boolean  "is_top",                      default: false, null: false
-    t.datetime "submit_at"
-    t.datetime "operate_at"
-    t.datetime "refresh_at"
-    t.datetime "end_at"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.string   "recruit_type",  limit: 191
-    t.string   "degree_demand", limit: 191
-    t.datetime "release_at"
+  create_table "notes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4,                 null: false
+    t.string   "title",      limit: 191
+    t.text     "content",    limit: 65535
+    t.string   "author",     limit: 191
+    t.integer  "amount",     limit: 4,     default: 0, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
-  create_table "plans", force: :cascade do |t|
-    t.string   "name",           limit: 191
-    t.integer  "may_receive",    limit: 4,   default: 0,    null: false
-    t.integer  "may_release",    limit: 4,   default: 0,    null: false
-    t.integer  "may_set_top",    limit: 4,   default: 0,    null: false
-    t.integer  "may_view",       limit: 4,   default: 0,    null: false
-    t.integer  "may_join_fairs", limit: 4,   default: 0,    null: false
-    t.boolean  "status",                     default: true, null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-  end
-
-  create_table "resume_viewers", force: :cascade do |t|
-    t.integer  "user_id",     limit: 4
-    t.integer  "hospital_id", limit: 4
-    t.datetime "view_at"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  create_table "resumes", force: :cascade do |t|
-    t.integer  "user_id",               limit: 4
-    t.datetime "refresh_at"
-    t.string   "expected_job",          limit: 191
-    t.string   "expected_job_type",     limit: 191
-    t.string   "expected_base",         limit: 191
-    t.string   "expected_salary_range", limit: 191
-    t.integer  "maturity",              limit: 4,   default: 0,     null: false
-    t.boolean  "public",                            default: true,  null: false
-    t.boolean  "resume_freeze",                     default: false, null: false
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+  create_table "recommends", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.integer  "note_id",      limit: 4
+    t.integer  "recom_amount", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -253,36 +87,15 @@ ActiveRecord::Schema.define(version: 20160918020111) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
-  create_table "searches", force: :cascade do |t|
-    t.integer  "user_id",       limit: 4
-    t.string   "name",          limit: 191, default: "", null: false
-    t.string   "region",        limit: 191, default: "", null: false
-    t.string   "salary_range",  limit: 191, default: "", null: false
-    t.string   "experience",    limit: 191, default: "", null: false
-    t.string   "degree_demand", limit: 191, default: "", null: false
-    t.string   "recruit_type",  limit: 191, default: "", null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-  end
-
-  create_table "training_experiences", force: :cascade do |t|
-    t.integer  "user_id",     limit: 4
-    t.string   "name",        limit: 191
-    t.datetime "started_at"
-    t.datetime "ended_at"
-    t.text     "desc",        limit: 65535
-    t.string   "certificate", limit: 191
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "start_work_at",          limit: 191
-    t.string   "location",               limit: 191
-    t.string   "seeking_job",            limit: 191
+    t.string   "region",                 limit: 191
     t.string   "highest_degree",         limit: 191
     t.datetime "birthday"
     t.string   "position",               limit: 191
+    t.string   "company",                limit: 191
+    t.text     "introduction",           limit: 65535
+    t.string   "achievement",            limit: 191
     t.string   "cellphone",              limit: 191,   default: "",      null: false
     t.string   "avatar",                 limit: 191
     t.string   "show_name",              limit: 191,                     null: false
@@ -315,7 +128,6 @@ ActiveRecord::Schema.define(version: 20160918020111) do
     t.boolean  "is_top",                               default: false,   null: false
     t.datetime "created_at",                                             null: false
     t.datetime "updated_at",                                             null: false
-    t.string   "search_city",            limit: 191
   end
 
   add_index "users", ["cellphone"], name: "index_users_on_cellphone", using: :btree
@@ -331,17 +143,4 @@ ActiveRecord::Schema.define(version: 20160918020111) do
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
-  create_table "work_experiences", force: :cascade do |t|
-    t.integer  "resume_id",  limit: 4
-    t.integer  "user_id",    limit: 4
-    t.string   "company",    limit: 191
-    t.string   "position",   limit: 191
-    t.datetime "started_at"
-    t.datetime "left_time"
-    t.text     "job_desc",   limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_foreign_key "certificates", "users"
 end

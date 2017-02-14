@@ -16,11 +16,11 @@ class User < ActiveRecord::Base #用户
 
 
   # for user_albumns
-  has_one :resume, :dependent => :destroy
   has_one :role
-  has_many :favorite_jobs, :dependent => :destroy
-  has_many :work_experiences, :dependent => :destroy
-  has_many :certificates, :dependent => :destroy
+  has_many :favorite_articles, :dependent => :destroy
+  has_many :notes, :dependent => :destroy
+  has_many :comment
+  has_many :recommend
 
   # necessary to override friendly_id reserved words
   def friendify

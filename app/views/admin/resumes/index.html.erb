@@ -1,7 +1,0 @@
-<% content_for :sidebar do %>
-  <%= render 'sidebar' %>
-<% end %>
-
-
-<%= react_component 'AdminResume', {data: @resumes, close: image_path('close_red.png'), avatar: image_path('avator.png')} %>
-<%= paginate @resumes, :param_name => "page", :window => 2 %>

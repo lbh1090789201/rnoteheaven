@@ -67,7 +67,7 @@ class Role < ActiveRecord::Base #用户角色
         employer = Employer.find_by hospital_id: hospital.id
         employer.user_id = user.id
         employer.save
-        
+
         return user
       end
     else

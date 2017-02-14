@@ -1,6 +1,52 @@
-<div class="top">
-  <a href="<%= content_for?(:back) ? content_for(:back) : 'javascript:history.back()' %>"
-     class="left-img"><%= image_tag content_for?(:img_left) ? content_for(:img_left) : 'left2.png' %></a>
-  <div class="title"><%= yield :title %></div>
-  <a href="<%= yield :link %>" class="right"><%= yield :content %></a>
-</div>
+<header>
+  <div class="note-logo">
+    <div class="logo_1">笔</div>
+    <div class="logo_2">记</div>
+    <div class="logo_3">云</div>
+  </div>
+  <nav>
+    <div class="nav">
+      <a href="/pages" >首页</a>
+      <% if current_user %>
+      <a href="notes" >我的笔记</a>
+      <a href="favorite_articles" >收藏库</a>
+      <% end %>
+    </div>
+  </nav>
+  <ul class="select-title">
+    <li><a href="/pages">首页</a></li>
+    <li><a href="/notes/phone_notes">我的笔记</a></li>
+    <li><a href="/favorite_articles">收藏库</a></li>
+  </ul>
+  <div class="sgin-up">
+    <% if current_user %>
+      <a></a>
+      <%= link_to("退出", destroy_user_session_path, method: :delete) %>
+      <!-- <a href="/users/sign_out" >退出</a> -->
+    <% else %>
+      <a href="/users/sign_in" >登录</a>
+      <%= link_to("注册", new_user_registration_path) %>
+      <!-- <a href="/users/sign_up" >注册</a> -->
+    <% end %>
+  </div>
+</header>
+
+<script>
+  var window_width = $(window).width();
+  console.log(window_width, 11111111)
+  if(window_width <= 768) {
+    var current_page = "<%= @title %>",
+        nav_title = $(".nav > a");
+    for(var i=0;i < nav_title.length;i++) {
+      var nav_text = nav_title.eq(i).text();
+      if(nav_text == current_page) {
+        nav_title.eq(i).show().siblings("a").hide();
+        nav_title.eq(i).attr("href", "javascript:void(0)");
+      }
+    }
+
+    $(".nav").delegate("a", "click", function() {
+      $(".select-title").slideToggle();
+    })
+  }
+</script>

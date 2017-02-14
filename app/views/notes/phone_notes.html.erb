@@ -1,0 +1,11 @@
+<div class="phone-articles">
+  <ul class="article-list">
+    <% @articles.each do |a| %>
+      <li>
+        <h4><%= a["article"]["title"] %></h4>
+        <p>阅读 <%= a["article"]["amount"] %> · 评论 <%= a["comment_number"] %> · 收藏 <%= a["collect_number"] %> · 推荐 <%= a["recom_number"] %></p>
+        <a href="/articles/<%= a["article"]["id"] %>"></a>
+      </li>
+    <% end %>
+  </ul>
+</div>

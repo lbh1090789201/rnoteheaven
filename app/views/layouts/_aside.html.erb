@@ -1,0 +1,60 @@
+<aside class="recommend-topic">
+  <h5>热点推荐:</h5>
+</aside>
+
+<script>
+  var aside_data = window.localStorage.getItem("aside");
+      aside_region = "<%= @title %>";
+  if(aside_data && aside_region) {
+    window.localStorage.removeItem("aside");
+  }else {
+    window.localStorage.setItem("aside", "true");
+    $.ajax({
+      url: "/articles/recom_articles",
+      type: "get"
+    }).done(function(data){
+      var recom_articles = data.recom_articles;
+      recom_articles.sort(function(a1, b2) {
+        return (b2[0] - a1[0])
+      })
+      var aside = document.getElementsByTagName("aside")[0],
+          data_length = recom_articles.length;
+
+      if(data_length <= 5){
+        generateHtml(recom_articles, aside);
+      }else {
+        generateHtml(recom_articles, aside);
+        generateHtmlMore(recom_articles, aside)
+      }
+      var div_element = document.createElement("div");
+      div_element.style.clear = "both";
+      aside.appendChild(div_element);
+      var w_height = $(".article-info").height();
+      $("#user_info").css("height", w_height);
+    }).error(function(){
+      console.log("失败")
+    })
+  }
+
+  function generateHtml(recom_articles, aside) {
+    var ul_1 = document.createElement("ul"),
+        html_1 = "";
+    for(var n=0;n<=4;n++) {
+      var recom_article = recom_articles[n];
+      html_1 += "<li><a href='/articles/"+recom_article[2]+"'>"+recom_article[1]+"</a></li>";
+    }
+    ul_1.innerHTML = html_1;
+    aside.appendChild(ul_1);
+  }
+
+  function generateHtmlMore(recom_articles, aside) {
+    var ul_2 = document.createElement("ul"),
+        html_2 = "";
+    for(var i=5;i<=9;i++) {
+      var recom_article = recom_articles[i];
+      html_2 += "<li><a href='/articles/"+recom_article[2]+"'>"+recom_article[1]+"</a></li>";
+    }
+    ul_2.innerHTML = html_2;
+    aside.appendChild(ul_2);
+  }
+</script>

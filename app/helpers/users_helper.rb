@@ -25,7 +25,7 @@ module UsersHelper
       code += array[rand(26)]
     end
 
-    code = code + '@ryunkang.com'
+    code = code + '@rnoteheaven.com'
     user = User.find_by(email: code)
 
     if user

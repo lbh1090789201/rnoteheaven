@@ -1,9 +1,0 @@
-<% content_for :sidebar do %>
-  <li class="<%='active' if params[:action] == 'index'%>">
-    <a href="/admin/hospitals"><%= image_tag 'admin_hospitals.png' %>机构管理</a>
-  </li>
-<% end %>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MisYn2tnsrvBrLj7vCXprVdW"></script>
-
-<%= react_component "AdminHospital", {data: @hospitals, plan: @vip_levels} %>
-<%= paginate @hospitals, :window => 2 %>

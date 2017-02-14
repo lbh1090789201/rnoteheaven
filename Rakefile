@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Ryunkang::Application.load_tasks
+Rnoteheaven::Application.load_tasks

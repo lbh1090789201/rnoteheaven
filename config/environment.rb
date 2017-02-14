@@ -2,4 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
-Ryunkang::Application.initialize!
+Rnoteheaven::Application.initialize!

@@ -1,0 +1,300 @@
+<div class="note-content">
+  <section class="image-content">
+    <ul class="carousel">
+      <li class="li_1"></li>
+      <li class="li_2"></li>
+      <li class="li_3"></li>
+      <li class="li_4"></li>
+      <li class="li_5"></li>
+    </ul>
+  </section>
+  <section class="article-content">
+    <form id="page_form" class="form-first" action="/pages" method="get" data-remote="true">
+
+        <div class="col-sm-3">
+          <input type="text" name="time_from" class="form-control" placeholder="从" />
+        </div>
+
+        <div class="col-sm-3">
+          <input type="text" name="time_to" class="form-control" placeholder="至" />
+        </div>
+
+        <div class="col-sm-3">
+          <input type="text" name="title" class="form-control" placeholder="文章名" />
+        </div>
+
+        <div class="col-sm-3">
+          <input type="text" name="author" class="form-control" placeholder="作者名称" />
+        </div>
+
+        <input type="hidden" name="search" class="form-control" value="true" />
+    </form>
+
+    <div class="main-part">
+      <h4 onClick="changeContent(event)">
+        <span class="active" name="0">最新</span>
+        <span name="1">最热</span>
+      </h4>
+
+      <!-- 最新 -->
+      <div id="most_new">
+        <div class="artile-title">
+          <ul id="article_list_new">
+            <% @new_articles.each do |a| %>
+              <li>
+                <p><span><%= a["show_name"] %></span>·<span><%= a["created_at"] %></span></p>
+                <p><%= a["article"]["title"] %></p>
+                <p>阅读 <%= a["article"]["amount"] %> · 评论 <%= a["comment_number"] %> · 收藏 <%= a["collect_number"] %> · 推荐 <%= a["recom_number"] %></p>
+                <a index="<%= a["article"]["id"] %>" name="最新"></a>
+              </li>
+            <% end %>
+            <% if @new_total_pages != 1%>
+              <span class='load-more' name="<%= @new_total_pages %>" index="1" from="new" onclick='pageLoadMore(this)'>加载更多 >></span>
+            <% end %>
+          </ul>
+        </div>
+
+        <% if !@new_articles.blank? %>
+        <div class="article-intro">
+          <div class="article-info">
+            <a class="read-text" href="/articles/<%= @new_articles[0]["article"]["id"] %>">全文阅读</a>
+            <span onClick="recommendNote(<%= @new_articles[0]["article"]["id"] %>)" >推荐</span>
+            <span onClick="collectNote(<%= @new_articles[0]["article"]["id"] %>)" >收藏</span>
+            <div>
+              <h1><%= @new_articles[0]["article"]["title"] %></h1>
+              <p class="article-author">作者: <span><%= @new_articles[0]["show_name"] %></span></p>
+            </div>
+            <article class="from-new">
+              <%= @new_articles[0]["article"]["content"] %>
+            </article>
+          </div>
+
+          <%= render "layouts/aside" %>
+        </div>
+        <% end %>
+      </div>
+
+      <!-- 最热 -->
+      <div id="most_hot">
+        <div class="artile-title">
+          <ul id="article_list_hot">
+            <% @hot_articles.each do |a| %>
+              <li>
+                <p><span><%= a["show_name"] %></span>·<span><%= a["created_at"] %></span></p>
+                <p><%= a["article"]["title"] %></p>
+                <p>阅读 <%= a["article"]["amount"] %> · 评论 <%= a["comment_number"] %> · 收藏 <%= a["collect_number"] %> · 推荐 <%= a["recom_number"] %></p>
+                <a index="<%= a["article"]["id"] %>" name="最热"></a>
+              </li>
+            <% end %>
+            <% if @hot_total_pages != 1%>
+              <span class='load-more' name="<%= @hot_total_pages %>" index="1" from="hot" onclick='pageLoadMore(this)'>加载更多 >></span>
+            <% end %>
+          </ul>
+        </div>
+        <% if !@hot_articles.blank? %>
+        <div class="article-intro">
+          <div class="article-info">
+            <a class="read-text" href="/articles/<%= @hot_articles[0]["article"]["id"] %>">全文阅读</a>
+            <div>
+              <h1><%= @hot_articles[0]["article"]["title"] %></h1>
+              <p class="article-author">作者: <span><%= @hot_articles[0]["show_name"] %></span></p>
+            </div>
+            <article class="from-hot">
+              <%= @hot_articles[0]["article"]["content"] %>
+            </article>
+          </div>
+
+          <%= render "layouts/aside" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  $("article.from-new").html($("article.from-new").text());
+  $("article.from-hot").html($("article.from-hot").text());
+
+  var win_width = $(document).width();
+  if(win_width > 768) {
+    $("#most_new li:eq(0)").addClass("on");
+    $("#most_hot li:eq(0)").addClass("on");
+  }
+
+  function changeContent(e) {
+    var e = e || window.event,
+        obj = e.target || e.srcElement,
+        index = obj.getAttribute("name");
+
+    $(".main-part > div").eq(index).show().siblings("div").hide();
+    $(".main-part > h4 span").eq(index).addClass("active").siblings("span").removeClass("active");
+  }
+
+  // page首页读取文章1
+  articleView("#most_new")
+  articleView("#most_hot")
+
+  // 轮播图
+  // slidePhoto(".carousel")
+
+  // 提交表单
+  $("#page_form").delegate("input", "change", function(){
+    $("#page_form").submit();
+  })
+
+  // 还原搜索表单内容
+  var form_search = "<%= params[:search] %>";
+  if(form_search != "") {
+    $(".main-part > h4").hide();
+    var time_from = "<%= params[:time_from] %>",
+        time_to = "<%= params[:time_to] %>",
+        title = "<%= params[:title] %>",
+        author = "<%= params[:author] %>",
+        array = [time_from, time_to, title, author]
+        input = $("#page_form input");
+
+    for(var i=0;i < input.length - 1;i++) {
+      input.eq(i).val(array[i])
+    }
+  }
+
+  // 获取搜索结果
+  $("#page_form").bind("ajax:success", function(e, data, xml) {
+    // console.log(data, 1111)
+    var articles = data.articles,
+        total_pages = data.total_pages,
+        current_page = data.current_page,
+        parent = $(".main-part"),
+        html = "";
+
+    if(articles.length == 0) {
+      parent.children().hide();
+      var p = $("<p id='show_result'>暂无搜索结果</p>");
+      parent.append(p);
+      return;
+    }
+    parent.children().show();
+    $("#show_result").remove();
+    $("#most_hot").remove();
+    $(".main-part > h4").remove();
+    $("#article_list_new").children().remove();
+    $(".article-info").children().remove();
+    $(".artile-title").css("height", "6.5rem");
+    $(".article-intro").css("height", "6.5rem");
+
+    for(var i in articles) {
+      var article = articles[i];
+       html += '<li><p><span>'+article.show_name+'</span>·<span>'+article.created_at+
+                '</span></p><p>'+article.article.title+'</p><p>阅读 '+article.article.amount+
+                ' · 评论 '+article.comment_number+' · 收藏 '+article.collect_number+' · 推荐 '+
+                article.recom_number+'</p><a index="'+article.article.id+'" name="最新"></a></li>';
+    }
+    var index = html.indexOf("li");
+    var new_html = html.substr(0, index + 2) + " class='on'" + html.substr(index + 2, 10000);
+    if(total_pages > 1) {
+      // 加载更多按钮
+      new_html += "<span class='load-more' name='"+total_pages+"' index='"+current_page+"' from='search' onclick='pageLoadMore(this)'>加载更多 >></span>"
+    }
+    $("#article_list_new").html(new_html);
+
+    if(win_width > 768) {
+      $.ajax({
+        url: "/pages/" + articles[0].article.id,
+        type: "GET",
+        success: function(data) {
+          var article = data.article,
+              html = "";
+          html += '<a class="read-text" href="/articles/'+article.article.id+'">全文阅读</a>'+
+                  '<span onClick="recommendNote('+article.article.id+'">推荐</span><span onClick="collectNote('+
+                  article.article.id+'">收藏</span><div><h1>'+article.article.title+'</h1><p class="article-author">作者: <span>'+
+                  article.show_name+'</span></p></div><article class="from-new">'+
+                  article.article.content+'</article>';
+          $(".article-info").html(html);
+        }
+      })
+    }
+  })
+
+  // 加载更多按钮点击事件
+  function pageLoadMore(obj) {
+    var come = $(obj).attr("from"),
+        total_pages = parseInt($(obj).attr("name")),
+        current_page = parseInt($(obj).attr("index")),
+        _self = $(obj),
+        url = "";
+    if(come == "search") {
+      url = "/pages?search=true"
+    }else if(come == "new") {
+      url = "/pages?come=new"
+    }else {
+      url = "/pages?come=hot"
+    }
+    ajaxForContent(url, current_page + 1, total_pages, _self, come)
+  }
+
+  function ajaxForContent(url, page, total_pages, element, come) {
+    $.ajax({
+      url: url,
+      type: "GET",
+      data: {
+        page: page
+      },
+      success: function(data) {
+        // console.log(data, 3333333)
+        element.remove();
+
+        var current_page = data.current_page,
+            articles = data.articles,
+            ul;
+
+        if(come == "hot") {
+          ul = $("#article_list_hot")
+        }else {
+          ul = $("#article_list_new")
+        }
+
+        for(var i in articles) {
+          var article = articles[i],
+              li = $("<li></li>"),
+              html = "";
+           html += '<p><span>'+article.show_name+'</span>·<span>'+article.created_at+
+                    '</span></p><p>'+article.article.title+'</p><p>阅读 '+article.article.amount+
+                    ' · 评论 '+article.comment_number+' · 收藏 '+article.collect_number+' · 推荐 '+
+                    article.recom_number+'</p><a index="'+article.article.id+'" name="最新"></a>';
+           li.html(html);
+           ul.append(li);
+        }
+        if(total_pages > current_page) {
+          // 加载更多按钮
+          var span = $("<span class='load-more' onclick='pageLoadMore(this)'>加载更多 >></span>");
+          span.attr({"name":total_pages, "index":current_page,"from":come});
+          ul.append(span);
+        }
+      },
+      error: function() {
+        console.log("加载失败")
+      }
+    })
+  }
+
+  // 推荐文章
+  function recommendNote(article_id) {
+    var user_id = "<%= @user_id %>"
+    if(user_id == "") {
+      fairAlert("请先登录再推荐！");
+      return;
+    }
+    ajaxSendData(article_id, user_id, "/recommends", "推荐" )
+  }
+  // 收藏文章
+  function collectNote(article_id) {
+    var user_id = "<%= @user_id %>"
+    console.log(article_id, user_id, 9999)
+    if(user_id == "") {
+      fairAlert("请先登录再收藏文章！");
+      return;
+    }
+    ajaxSendData(article_id, user_id, "/favorite_articles", "收藏" )
+  }
+</script>

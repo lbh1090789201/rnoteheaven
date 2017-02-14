@@ -77,9 +77,11 @@ gem 'bootstrap-sass', '3.3.5.1'
 
 # SimpleForm http://railscasts.com/episodes/234-simple-form
 gem 'simple_form'
-gem 'react-rails', '1.7.2'
+# gem 'react-rails', '1.7.2'
 # get json from app_api
 gem 'rest-client', '~> 2.0'
+# 分页gem,可用.total_pages直接得到其总页数
+gem 'will_paginate'
 
 #paginate
 # gem 'will_paginate'

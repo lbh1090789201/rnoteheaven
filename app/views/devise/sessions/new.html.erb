@@ -1,58 +1,63 @@
 
-    <% provide :link, "sign_up"  %>
-    <% provide :title, "用户登录" %>
-    <% provide :content, "注册"  %>
     <style>
-    // 覆盖样式
-    .nav>li {
-      float: left;
+    .sessions {
+      position: relative;
+      top: 2rem;
+      /*padding: 0 2rem;*/
+      margin: 0 auto;
+      width: 40%;
     }
-    .navbar-inverse {
-      background-color: #3b9d9f;
-      height: 65px;
-      line-height: 35px;
-    }
-    .navbar-inverse .navbar-brand {
-      color:  #b4d7d6;
-      font-size: 24px !important;
-      font-weight: bold !important;
-      font-style: italic;
-    }
-    .navbar-inverse .navbar-nav>li>a {
-      color:  #b4d7d6;
-    }
-    .navbar-inverse .navbar-nav>.active>a,
-    .navbar-inverse .navbar-nav>.active>a:hover,
-    .navbar-inverse .navbar-nav>.active>a:focus {
-      background-color: #3b9d9f;
-    }
-    .navbar-brand {
-      height: 35px;
-      margin-top: 8px;
-      margin-right: 60px;
+    .sessions .form-group {
+      position: relative;
     }
     .sessions .form-control {
-      text-indent: 0.1rem;
+      text-indent: 0.13rem;
     }
-    // 覆盖样式结束
+    .sessions .form-group + .form-group {
+      position: relative;
+      top: 0.3rem;
+    }
+    .sessions label {
+      position: absolute;
+      bottom: 0;
+      left: 0.1rem;
+      height: 38px;
+      line-height: 38px;
+      margin: 0;
+      /*float: left;*/
+    }
+    .sessions input.form-control {
+      margin-right: 0;
+      /*float: left;*/
+      text-indent: 0.8rem;
+    }
+    .sessions .btn-blue {
+      position: relative;
+      top: 1rem;
+      border: none;
+      background-color: #218868;
+    }
+    .sessions .btn-blue:hover {
+      opacity: 0.8;
+    }
+     .alert-dismissable {
+       position: relative;
+       top: 0.6rem;
+     }
     </style>
 
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <a class="navbar-brand" href="#">云康控制台</a>
+    <!-- <nav class="navbar navbar-inverse navbar-fixed-top">
+      <a class="navbar-brand" href="#">笔记云控制台</a>
         <ul id="admin_nav" class="nav navbar-nav nav-console">
 
         </ul>
-    </nav>
+    </nav> -->
     <%= notice_message %>
-    <div class=" sessions">
+    <div class="sessions">
         <%= simple_form_for(resource, :as => resource_name, :url => user_session_path) do |f| %>
             <%= f.input :username, label: '用户账号：', input_html: {class: "form-control", autocomplete: "off"} %>
-            <%= f.input :password, label: '密   　 码：',as: :password, input_html: {class: "form-control", autocomplete: "off"} %>
+            <%= f.input :password, label: '密　　码：',as: :password, input_html: {class: "form-control", autocomplete: "off"} %>
             <%= f.button :submit, "登录", class: "btn-blue", style: "width: 100%" %>
         <% end %>
     </div>
-
-    <script type="text/javascript">
-        fullScreen('.edit_basic');
-    </script>

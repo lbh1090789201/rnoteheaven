@@ -1,9 +1,0 @@
-<% content_for :sidebar do %>
-  <li class="<%='active' if params[:action] == 'index'%>">
-    <a href="/admin/vips"><%= image_tag 'admin_vips_level.png' %>套餐管理</a>
-  </li>
-<% end %>
-
-<%= react_component "AdminVip", {vips: @vips} %>
-<%= paginate @vips,:param_name => "page", :window => 2 %>
-  

@@ -1,0 +1,407 @@
+<div class="notes-index">
+  <section class="note-titles">
+    <%= @articles %>
+    <!-- 搜索 -->
+    <div class="select-form">
+      <form class="submit-form" action="index.html" method="get">
+        <input type="text" id="seach_note" name="title" autocomplete="on" placeholder="请输入标题">
+      </form>
+      <img class="add-note" src="<%= asset_path('icon_6.png') %>" onClick="addNote()"/>
+    </div>
+    <!-- 标题列表１ -->
+    <div class="title-list">
+    </div>
+  </section>
+  <section class="note-content">
+    <input id="note_title" type="text" name="title" placeholder="标题" title="标题" />
+    <textarea id="summernote"></textarea>
+  </section>
+</div>
+
+
+<script>
+// 富文本编辑器
+$('#summernote').summernote({
+  height: 505,
+  minHeight: null,
+  maxHeight: null,
+  placeholder: "目前还没任何内容",
+  // code: value,
+  // focus: true,
+  lang: 'zh-CN',
+  fontNames: [
+    'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
+    'Helvetica Neue', 'Helvetica', 'Impact', 'Lucida Grande',
+    'Tahoma', 'Times New Roman', 'Verdana'
+  ],
+  toolbar: [
+    ['style', ['style','bold', 'underline', 'clear', 'strikethrough', 'italic']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['fontsize', ['fontsize']],
+    ['height', ['height']],
+    ['table', ['table']],
+    ['insert', ['link', 'picture', 'video']],
+    ['view', ['fullscreen', 'codeview', 'help']],
+    ['float', ['floatLeft', 'floatRight', 'floatNone']],
+    ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
+    ['remove', ['removeMedia']],
+  ],
+  fontSizes: ['12', '14', '16', '18', '20', '22', '24', '36'],
+  lineHeights: ['1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],
+  tableClassName: 'table table-bordered',
+  insertTableMaxSize: {
+    col: 10,
+    row: 10
+  },
+  callbacks: {
+    onImageUpload: function(files) {
+      // 上传图片到服务器并且插入图片到编辑框
+      var filename = false;
+      try{
+          filename = file['name'];
+      } catch(e){
+          filename = false;
+      }
+      if(!filename){
+          $(".note-alarm").remove();
+      }
+
+      console.log(files.length, 88888)
+      var formData = new FormData();
+      var file = [];
+      for(var i in files) {
+        formData.append('file_' + i,files[i]);
+      }
+
+      formData.append("length", files.length);
+
+      $.ajax({
+        url: '/notes?images=true',//houtaiwenjianshangchuanjiekou
+        type: 'POST',
+        data: formData,
+        cache: false,
+        processData: false,
+        comtentType: false,
+        success:　function(data){
+          console.log(data)
+          var images=data.images;
+          for(var i in images) {
+            $('#summernote').summernote('insertImage',images[i],'img');//根据回传图片链接，重新插入图片
+          }
+        }，
+        error: function(){
+          alert('上传图片失败')
+        }
+      })；
+
+//       $.ajax({
+//         url : '/notes?image=true',//后台文件上传接口
+//         type : 'POST',
+//         data : formData,
+//         cache: false,
+//         processData : false,
+//         contentType : false,
+//         success : function(data) {
+//           console.log(data)
+//           var images = data.images;
+//           for(var i in images) {
+//             $('#summernote').summernote('insertImage',images[i],'img');　// 根据回传图片链接，重新插入图片
+//           }
+//         },
+//         error: function() {
+//           alert("上传图片失败")
+//         }
+//       });
+//     }
+//   }
+// });
+
+// $(".note-remove")
+
+$.ajax({
+  url: "/notes?page=1&index=true",
+  type: "GET",
+  success: function(data) {
+    generateElement(data);
+  },
+  error: function() {
+    console.log("获取笔记列表失败")
+  }
+})
+
+// 监听所有列表中的a标签点击事件
+$(".title-list").delegate("a", "click", function(e) {
+  e.preventDefault()
+  $("li").removeClass("on");
+  var parent = e.target.parentNode;
+  for(var i=0;i < 100;i++) {
+    var tag = parent.tagName;
+    if(tag == "LI") {
+      parent.setAttribute("class", "on");
+      i = 101;
+    }else {
+      parent = parent.parentNode;
+    }
+  }
+  var id = $(e.target).attr("index");
+  $.ajax({
+    url: "/notes/" + id,
+    type: "GET",
+    success: function(data) {
+      var article = data.article;
+      // 为文本编辑器插入内容
+      $('#summernote').summernote("code", article.content);
+      $("#note_title").val(article.title);
+      $("#note_title").attr("index", article.id);
+    },
+    error: function() {
+      console.log("获取笔记详情失败")
+    }
+  })
+})
+
+// 生成编辑器中保存按钮
+$(function() {
+  if($(".note-toolbar")) {
+    var parent_element = $(".note-toolbar"),
+        div_element = $("<button name='save' id='sumbit_note'>保存</button>");
+    div_element.css({
+      "float":"right",
+      "width":"120px",
+      "height":"36px",
+      "backgroundColor":"#448aff",
+      "border":"1px solid #448aff",
+      "position":"relative",
+      "right":"70px",
+      "top":"5px",
+      "color":"#fff",
+      "borderRadius":"5px"
+    })
+    div_element.attr("onclick", "createNote(this)");
+    div_element.appendTo(parent_element);
+  }
+})
+
+// 编辑器中保存按钮的点击事件
+function createNote(obj) {
+  var name = $(obj).attr("name"),
+      input_value = $("#note_title").val(),
+      text = $("#summernote").summernote("code"),
+      article_id = $("#note_title").attr("index"),
+      url;
+
+  if(name == "save") {
+    url = "/notes/" + article_id
+  }else {
+    url = "/notes/0"
+  }
+
+  $.ajax({
+    url: url,
+    type: "PATCH",
+    data: {
+      title: input_value,
+      content: text
+    },
+    success: function(data) {
+      successAlert("保存成功！");
+      $("li.on > div").children().remove();
+      $("li.on > div").html(text.substr(0,100).replace(/<.*?>/ig, ""));
+      $("#sumbit_note").attr("name", "save");
+      $("#note_title").attr("index", data.article_id);
+      $(".article_id").eq(0).attr("index", data.article_id);
+    },
+    error: function() {
+      fairAlert("保存失败！")
+    }
+  })
+}
+
+// 同步更新标题
+$("#note_title").bind("change", function() {
+  var value = $(this).val();
+  $("li.on > h6.title").text(value);
+})
+
+// 搜索框事件
+$("#seach_note").bind("change", function(e) {
+  var input_value = $(this).val();
+  console.log(input_value, 111)
+  $.ajax({
+    url: "/notes",
+    type: "GET",
+    data: {
+      title: input_value,
+      search: true
+    },
+    success: function(data) {
+      console.log(data)
+      generateElement(data)
+    },
+    error: function() {
+      console.log("搜索失败")
+    }
+  })
+})
+
+// 添加新笔记事件
+function addNote() {
+  var optgroup = $("h5.optgroup").eq(0).text(),
+      nowDate = new Date(),
+      date = nowDate.getFullYear() + "-" + (nowDate.getMonth() + 1),
+      now_date = nowDate.getFullYear() + "-" + (nowDate.getMonth() + 1) + "-" + nowDate.getDate();
+
+  $("li").removeClass("on");
+  if(optgroup == date) {
+    var ul = $("ul.note-nav").eq(0),
+        li = $("<li class='note-title on'></li>");
+    li.html("<h6 class='title'></h6><span>"+now_date+"</span><div></div><a class='article_id' index='0'></a>");
+    ul.prepend(li);
+  }else {
+    var h5 = $("<h5 class='optgroup'>"+date+"</h5>"),
+        ul = $("<ul class='note-nav'></ul>"),
+        parent = $(".title-list");
+    ul.html("<li class='note-title on'><h6 class='title'></h6><span>"+now_date+"</span><div></div><a class='article_id' index='0'></a></li>");
+    parent.prepend(ul);
+    parent.prepend(h5);
+  }
+  $("#note_title").val("");
+  $("#summernote").summernote("code", "");
+  $("#sumbit_note").attr("name", "new");
+  $("#note_title").attr("index", "0");
+}
+
+// 加载更多
+function loadMore(obj) {
+  var total_pages = parseInt($(obj).attr("name")), // 总页数
+      c_page = parseInt($(obj).attr("index")), // 当前页数
+      come = $(obj).attr("class"); // 判断是index还是search
+
+  if(total_pages <= c_page) {
+    return;
+  }
+  loadMoreContent(c_page+1, "/notes", come);
+}
+
+function loadMoreContent(page, url, come) {
+  if(come) {
+    if(come == "index") {
+      data = {
+        page: page,
+        index: true
+      }
+    }else {
+      data = {
+        page: page,
+        search: true
+      }
+    }
+  }
+
+  $.ajax({
+    url: url,
+    type: "GET",
+    data: data,
+    success: function(data) {
+      // console.log(data, 7777)
+      var parent = $(".title-list"),
+          dates = data.dates,
+          articles = data.articles,
+          total_pages = data.total_pages,
+          c_page = data.c_page,
+          come = data.come;
+      for(var i in dates) {
+        if(articles[dates[i]]) {
+          if(articles[dates[i]].length != 0) {
+            // 先把加载按钮去掉
+            $("#load_more").remove();
+
+            var length = $("h5.optgroup").length;
+            var time = $("h5.optgroup").eq(length - 1).text();
+
+            if(dates[i] == time) {
+              var ul = $("ul.note-nav").eq(length - 1),
+                  html = "";
+
+              for(var n in articles[dates[i]]) {
+                var data = articles[dates[i]][n],
+                    li = document.createElement("li");
+                li.className = "note-title";
+                html = "<h6 class='title'>"+data.title+"</h6><span>"+data.created_at.substr(0, 10)+"</span><div>"+data.content.substr(0,100).replace(/<.*?>/ig, " ")+"</div><a class='article_id' index='"+data.id+"'></a>";
+                li.innerHTML = html;
+                ul.append(li);
+              }
+            }else {
+              var html = "",
+                  h5 = $("<h5 class='optgroup'>"+dates[i]+"</h5>"),
+                  ul = $("<ul class='note-nav'></ul>");
+              parent.append(h5);
+              parent.append(ul);
+              for(var n in articles[dates[i]]) {
+                var data = articles[dates[i]][n],
+                    li = document.createElement("li");
+                li.className = "note-title";
+                html = "<h6 class='title'>"+data.title+"</h6><span>"+data.created_at.substr(0, 10)+"</span><div>"+data.content.substr(0,100).replace(/<.*?>/ig, " ")+"</div><a class='article_id' index='"+data.id+"'></a>";
+                li.innerHTML = html;
+                ul.append(li);
+              }
+            }
+            // 再把加载按钮补回来
+            var span = $("<span id='load_more' onclick='loadMore(this)'>加载更多 >></span>");
+            span.attr({"name":total_pages, "index":c_page,"class":come});
+            parent.append(span);
+          }
+        }
+      }
+    },
+    error: function() {
+      console.log("加载失败")
+    }
+  })
+}
+
+
+
+// 获取数据后生成相对应的html
+function generateElement(data) {
+  var parent_element = $(".title-list"),
+      dates = data.dates,
+      articles = data.articles,
+      html = "",
+      total_pages = data.total_pages,
+      c_page = data.c_page,
+      come = data.come;
+
+  for(var i in dates) {
+    if(articles[dates[i]]) {
+      if(articles[dates[i]].length != 0) {
+        html += "<h5 class='optgroup'>"+dates[i]+"</h5><ul class='note-nav'>";
+        var datas = articles[dates[i]];
+        for(var n in datas) {
+          var data = datas[n]
+          html += "<li class='note-title'><h6 class='title'>"+data.title+"</h6><span>"+data.created_at.substr(0, 10)+"</span><div>"+data.content.substr(0,100).replace(/<.*?>/ig, " ")+"</div><a class='article_id' index='"+data.id+"'></a></li>";
+        }
+        html += "</ul>";
+      }
+    }
+  }
+  var str = "li"
+  html += "<span id='load_more' name="+total_pages+" onclick='loadMore(this)' index="+c_page+" class="+come+">加载更多 >></span>";
+  var index = html.indexOf(str);
+  new_html = html.substr(0,index + 2) + " class='on'" + html.substr(index + 2,100000);
+  // console.log(new_html, 9999)
+  parent_element.html(new_html);
+
+  // 为文本编辑器插入内容
+  if(articles[dates[0]] && articles[dates[0]].length != 0) {
+      $('#summernote').summernote("code", articles[dates[0]][0].content);
+      $("#note_title").val(articles[dates[0]][0].title);
+      $("#note_title").attr("index", articles[dates[0]][0].id);
+  }else if(articles[dates[0]] && articles[dates[0]].length == 0) {
+      $('#summernote').summernote("code", articles[dates[1]][0].content);
+      $("#note_title").val(articles[dates[1]][0].title);
+      $("#note_title").attr("index", articles[dates[1]][0].id);
+  }
+}
+</script>
